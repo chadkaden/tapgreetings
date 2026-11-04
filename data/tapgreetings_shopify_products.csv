@@ -1,0 +1,46 @@
+"Handle","Title","Body (HTML)","Vendor","Product Category","Type","Tags","Published","Option1 Name","Option1 Value","Variant SKU","Variant Grams","Variant Inventory Tracker","Variant Inventory Qty","Variant Inventory Policy","Variant Fulfillment Service","Variant Price","Variant Compare At Price","Variant Requires Shipping","Variant Taxable","Image Src","Image Position","Image Alt Text","Gift Card","SEO Title","SEO Description","Status"
+"custom-nfc-tapgreeting-card","Custom NFC Video TapGreeting Card (Front & Back Upload)","<div class=""tapgreeting-product-description"" style=""font-family: -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; color: #1e293b;"">
+  <h3>✨ Tap-to-Video NFC Custom Greeting Card</h3>
+  <p>Turn your cherished videos, photos, and personal greetings into an unforgettable keepsake. Tap with any smartphone to instantly launch your personalized video experience.</p>
+  <ul>
+    <li><strong>Full Custom Artwork:</strong> Upload your own front & back design.</li>
+    <li><strong>Embedded Microchip:</strong> High performance NTAG213/215 chip encoded with dynamic OTA redirection.</li>
+    <li><strong>Premium Build:</strong> Commercial-grade CR80 PVC card with UV scratch-resistant finish.</li>
+    <li><strong>No App Needed:</strong> Works natively with iPhone and Android NFC readers.</li>
+  </ul>
+</div>","TapGreetings","Office Supplies > Paper Products > Greeting Cards","NFC Greeting Card","TapGreetings, Custom Card, NFC Card, Video Greeting, TapThingy","TRUE","Title","Default Title","TG-CUSTOM-01","15","shopify","999","deny","manual","29.99","39.99","TRUE","TRUE","https://tapgreetings.com/public/custom_card_preview.jpg","1","Custom TapGreeting Card Preview","FALSE","Custom NFC Video TapGreeting Card | TapGreetings","Upload your personal photos and videos onto a custom high-end NFC PVC greeting card. Ships in premium packaging.","active"
+"tapgreeting-01-neon-birthday-bash","Neon Birthday Bash - TapGreeting Card","<div class=""tapgreeting-card-desc"" style=""font-family: -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; color: #1e293b;"">
+  <h3>Happy Birthday!</h3>
+  <p>Wishing you another incredible year packed with endless adventures and memorable celebrations.</p>
+  <div style=""background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin-top: 14px;"">
+    <strong>⚡ NFC Instant Unlock:</strong> Includes pre-programmed digital interactive video and audio memory card.
+  </div>
+</div>","TapGreetings","Office Supplies > Paper Products > Greeting Cards","NFC Greeting Card","TapGreetings, Birthday, Birthday, Neon, Party, Celebration","TRUE","Title","Default Title","TG-CARD-01","15","shopify","100","deny","manual","19.99","24.99","TRUE","TRUE","https://tapgreetings.com/public/cards/01_front.jpg","1","Neon Birthday Bash Front Artwork","FALSE","Neon Birthday Bash | TapGreetings NFC Card","Wishing you another incredible year packed with endless adventures and memorable celebrations.","active"
+"tapgreeting-02-golden-milestone-anniversary","Golden Milestone Anniversary - TapGreeting Card","<div class=""tapgreeting-card-desc"" style=""font-family: -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; color: #1e293b;"">
+  <h3>Forever & Always</h3>
+  <p>Celebrating the enduring love, laughter, and beautiful story you continue to build together.</p>
+  <div style=""background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin-top: 14px;"">
+    <strong>⚡ NFC Instant Unlock:</strong> Includes pre-programmed digital interactive video and audio memory card.
+  </div>
+</div>","TapGreetings","Office Supplies > Paper Products > Greeting Cards","NFC Greeting Card","TapGreetings, Anniversary, Anniversary, Gold, Romance, Love","TRUE","Title","Default Title","TG-CARD-02","15","shopify","100","deny","manual","19.99","24.99","TRUE","TRUE","https://tapgreetings.com/public/cards/02_front.jpg","1","Golden Milestone Anniversary Front Artwork","FALSE","Golden Milestone Anniversary | TapGreetings NFC Card","Celebrating the enduring love, laughter, and beautiful story you continue to build together.","active"
+"tapgreeting-03-heartfelt-gratitude","Heartfelt Gratitude - TapGreeting Card","<div class=""tapgreeting-card-desc"" style=""font-family: -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; color: #1e293b;"">
+  <h3>With Deepest Thanks</h3>
+  <p>Words cannot fully express how much your kindness and thoughtful support mean.</p>
+  <div style=""background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin-top: 14px;"">
+    <strong>⚡ NFC Instant Unlock:</strong> Includes pre-programmed digital interactive video and audio memory card.
+  </div>
+</div>","TapGreetings","Office Supplies > Paper Products > Greeting Cards","NFC Greeting Card","TapGreetings, Thank You, Thank You, Appreciation, Botanical","TRUE","Title","Default Title","TG-CARD-03","15","shopify","100","deny","manual","19.99","24.99","TRUE","TRUE","https://tapgreetings.com/public/cards/03_front.jpg","1","Heartfelt Gratitude Front Artwork","FALSE","Heartfelt Gratitude | TapGreetings NFC Card","Words cannot fully express how much your kindness and thoughtful support mean.","active"
+"tapgreeting-04-holiday-magic-glow","Holiday Magic Glow - TapGreeting Card","<div class=""tapgreeting-card-desc"" style=""font-family: -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; color: #1e293b;"">
+  <h3>Warmest Holiday Wishes</h3>
+  <p>May your season sparkle with moments of joy, peace, and warmth among family and friends.</p>
+  <div style=""background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin-top: 14px;"">
+    <strong>⚡ NFC Instant Unlock:</strong> Includes pre-programmed digital interactive video and audio memory card.
+  </div>
+</div>","TapGreetings","Office Supplies > Paper Products > Greeting Cards","NFC Greeting Card","TapGreetings, Holidays, Holiday, Winter, Christmas, New Year","TRUE","Title","Default Title","TG-CARD-04","15","shopify","100","deny","manual","19.99","24.99","TRUE","TRUE","https://tapgreetings.com/public/cards/04_front.jpg","1","Holiday Magic Glow Front Artwork","FALSE","Holiday Magic Glow | TapGreetings NFC Card","May your season sparkle with moments of joy, peace, and warmth among family and friends.","active"
+"tapgreeting-05-unstoppable-champion","Unstoppable Champion - TapGreeting Card","<div class=""tapgreeting-card-desc"" style=""font-family: -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; color: #1e293b;"">
+  <h3>You Crushed It!</h3>
+  <p>Big dreams become realities when matched with pure persistence. Massive congratulations on your victory!</p>
+  <div style=""background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin-top: 14px;"">
+    <strong>⚡ NFC Instant Unlock:</strong> Includes pre-programmed digital interactive video and audio memory card.
+  </div>
+</div>","TapGreetings","Office Supplies > Paper Products > Greeting Cards","NFC Greeting Card","TapGreetings, Congratulations, Congratulations, Graduation, Promotion, Win","TRUE","Title","Default Title","TG-CARD-05","15","shopify","100","deny","manual","19.99","24.99","TRUE","TRUE","https://tapgreetings.com/public/cards/05_front.jpg","1","Unstoppable Champion Front Artwork","FALSE","Unstoppable Champion | TapGreetings NFC Card","Big dreams become realities when matched with pure persistence. Massive congratulations on your victory!","active"
