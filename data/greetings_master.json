@@ -1,0 +1,72 @@
+[
+  {
+    "id": "tg-01",
+    "slug": "01",
+    "title": "Neon Birthday Bash",
+    "category": "Birthday",
+    "theme": "Celebration & Confetti",
+    "headline": "Happy Birthday!",
+    "message": "Wishing you another incredible year packed with endless adventures and memorable celebrations.",
+    "frontImage": "/public/cards/01_front.jpg",
+    "backImage": "/public/cards/01_back.jpg",
+    "videoUrl": "https://tapgreetings.com/media/01_video.mp4",
+    "audioUrl": "https://tapgreetings.com/media/01_audio.mp3",
+    "tags": ["Birthday", "Neon", "Party", "Celebration"]
+  },
+  {
+    "id": "tg-02",
+    "slug": "02",
+    "title": "Golden Milestone Anniversary",
+    "category": "Anniversary",
+    "theme": "Elegance & Gold",
+    "headline": "Forever & Always",
+    "message": "Celebrating the enduring love, laughter, and beautiful story you continue to build together.",
+    "frontImage": "/public/cards/02_front.jpg",
+    "backImage": "/public/cards/02_back.jpg",
+    "videoUrl": "https://tapgreetings.com/media/02_video.mp4",
+    "audioUrl": "https://tapgreetings.com/media/02_audio.mp3",
+    "tags": ["Anniversary", "Gold", "Romance", "Love"]
+  },
+  {
+    "id": "tg-03",
+    "slug": "03",
+    "title": "Heartfelt Gratitude",
+    "category": "Thank You",
+    "theme": "Warm Botanicals & Foil",
+    "headline": "With Deepest Thanks",
+    "message": "Words cannot fully express how much your kindness and thoughtful support mean.",
+    "frontImage": "/public/cards/03_front.jpg",
+    "backImage": "/public/cards/03_back.jpg",
+    "videoUrl": "https://tapgreetings.com/media/03_video.mp4",
+    "audioUrl": "https://tapgreetings.com/media/03_audio.mp3",
+    "tags": ["Thank You", "Appreciation", "Botanical"]
+  },
+  {
+    "id": "tg-04",
+    "slug": "04",
+    "title": "Holiday Magic Glow",
+    "category": "Holidays",
+    "theme": "Winter Sparkle & Cozy Lights",
+    "headline": "Warmest Holiday Wishes",
+    "message": "May your season sparkle with moments of joy, peace, and warmth among family and friends.",
+    "frontImage": "/public/cards/04_front.jpg",
+    "backImage": "/public/cards/04_back.jpg",
+    "videoUrl": "https://tapgreetings.com/media/04_video.mp4",
+    "audioUrl": "https://tapgreetings.com/media/04_audio.mp3",
+    "tags": ["Holiday", "Winter", "Christmas", "New Year"]
+  },
+  {
+    "id": "tg-05",
+    "slug": "05",
+    "title": "Unstoppable Champion",
+    "category": "Congratulations",
+    "theme": "Modern Cyber Wave",
+    "headline": "You Crushed It!",
+    "message": "Big dreams become realities when matched with pure persistence. Massive congratulations on your victory!",
+    "frontImage": "/public/cards/05_front.jpg",
+    "backImage": "/public/cards/05_back.jpg",
+    "videoUrl": "https://tapgreetings.com/media/05_video.mp4",
+    "audioUrl": "https://tapgreetings.com/media/05_audio.mp3",
+    "tags": ["Congratulations", "Graduation", "Promotion", "Win"]
+  }
+]

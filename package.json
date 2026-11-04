@@ -1,0 +1,22 @@
+{
+  "name": "tapgreetings",
+  "version": "1.0.0",
+  "description": "TapGreetings - Digital and Physical NFC Video Greeting Cards powered by TapThingy",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "build:cards": "node scripts/generate_cards.js"
+  },
+  "keywords": [
+    "nfc",
+    "tapgreetings",
+    "tapthingy",
+    "digital-cards",
+    "video-greetings",
+    "shopify"
+  ],
+  "author": "chadkaden",
+  "license": "UNLICENSED"
+}

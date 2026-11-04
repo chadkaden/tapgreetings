@@ -1,0 +1,238 @@
+{% comment %}
+  TapThingy Universal Global Bar & Dynamic Department Header Switcher
+  Provides:
+  1. Department-specific Header Badge (Pink-O-Ween, DipDen Confectionery, SOSATS & Pizza Mystery, TapQard, TapPhotoCards, TapThingy Home)
+  2. Multi-Brand Navigation Bar
+  3. Site-Wide Dark Mode Default + High-Contrast Light Mode Toggle Switch (persisted via localStorage)
+{% endcomment %}
+
+{% assign dept_badge = '🛸 TAPTHINGY.COM • The Ecosystem of Smart Cards, Confectionery & Innovations' %}
+{% assign dept_accent = '#ff69b4' %}
+{% assign dept_class = 'dept-tapthingy' %}
+
+{% if collection.handle contains 'pink-o-ween' or product.tags contains 'Pink-O-Ween' or product.type contains 'Pink-O-Ween' or template.suffix == 'pinkoween' %}
+  {% assign dept_badge = '💌 TAP GREETINGS • Pink-O-Ween 31-Card Coven Collection' %}
+  {% assign dept_accent = '#ff69b4' %}
+  {% assign dept_class = 'dept-pinkoween' %}
+{% elsif collection.handle contains 'dipden' or product.type contains 'Confectionery' or product.tags contains 'DipDen' or product.title contains 'DipDen' %}
+  {% assign dept_badge = '🍬 DIPDEN™ CONFECTIONERY • Sweets, Candies & Gourmet Dipping Treats' %}
+  {% assign dept_accent = '#ff4081' %}
+  {% assign dept_class = 'dept-dipden' %}
+{% elsif collection.handle contains 'sosats' or product.title contains 'Pizza Mystery' or product.tags contains 'SOSATS' or product.type contains 'Mystery' %}
+  {% assign dept_badge = '⚡ SOSATS™ INNOVATIONS • Pizza Mystery™ & Mystery Games' %}
+  {% assign dept_accent = '#ab47bc' %}
+  {% assign dept_class = 'dept-sosats' %}
+{% elsif collection.handle contains 'tap-qard' or product.type contains 'Business Card' or product.tags contains 'TapQard' %}
+  {% assign dept_badge = '🎴 TAPQARD™ • Smart Contactless NFC Business Cards' %}
+  {% assign dept_accent = '#29b6f6' %}
+  {% assign dept_class = 'dept-tapqard' %}
+{% elsif collection.handle contains 'tap-photo' or product.tags contains 'TapPhotoCards' %}
+  {% assign dept_badge = '🖼️ TAPPHOTOCARDS™ • Personalized Video Memory Keepsakes' %}
+  {% assign dept_accent = '#7e57c2' %}
+  {% assign dept_class = 'dept-tapphoto' %}
+{% endif %}
+
+<style>
+  /* GLOBAL SITE-WIDE DARK & LIGHT MODE STYLES */
+  body.tt-dark-mode,
+  body.tt-dark-mode .page-wrapper,
+  body.tt-dark-mode main#MainContent {
+    background-color: #110313 !important;
+    color: #ffffff !important;
+  }
+  body.tt-dark-mode h1, body.tt-dark-mode h2, body.tt-dark-mode h3, body.tt-dark-mode summary {
+    color: #ff9ebb !important;
+  }
+  body.tt-dark-mode p, body.tt-dark-mode li {
+    color: #e0e0e0 !important;
+  }
+  body.tt-dark-mode #header-component,
+  body.tt-dark-mode .header,
+  body.tt-dark-mode footer {
+    background: #18051b !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 105, 180, 0.3) !important;
+  }
+
+  /* LIGHT MODE GLOBAL HIGH-CONTRAST STYLES */
+  body.tt-light-mode,
+  body.tt-light-mode .page-wrapper,
+  body.tt-light-mode main#MainContent {
+    background-color: #fff5f8 !important;
+    color: #110313 !important;
+  }
+  body.tt-light-mode h1, body.tt-light-mode h2, body.tt-light-mode h3, body.tt-light-mode summary {
+    color: #b8005c !important;
+    text-shadow: none !important;
+  }
+  body.tt-light-mode p, body.tt-light-mode li, body.tt-light-mode label {
+    color: #110313 !important;
+  }
+  body.tt-light-mode strong {
+    color: #b8005c !important;
+  }
+  body.tt-light-mode #header-component,
+  body.tt-light-mode .header,
+  body.tt-light-mode footer {
+    background: #ffffff !important;
+    color: #110313 !important;
+    border-color: #fcc2d7 !important;
+  }
+
+  /* Department Header Bar Styling */
+  .tt-dept-header-bar {
+    background: rgba(24, 5, 27, 0.95);
+    border-bottom: 2px solid {{ dept_accent }};
+    padding: 10px 16px;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+  body.tt-light-mode .tt-dept-header-bar {
+    background: #ffffff !important;
+    border-bottom: 2px solid #ff69b4 !important;
+    box-shadow: 0 2px 10px rgba(255, 105, 180, 0.15);
+  }
+
+  .tt-dept-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, rgba(224,64,251,0.2), rgba(255,105,180,0.2));
+    border: 1px solid {{ dept_accent }};
+    color: #ff9ebb;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 0 12px rgba(255,105,180,0.3);
+  }
+  body.tt-light-mode .tt-dept-badge {
+    background: #fff0f6 !important;
+    color: #b8005c !important;
+    border-color: #ff69b4 !important;
+  }
+
+  .tt-nav-links {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .tt-nav-link {
+    color: #ff9ebb;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 105, 180, 0.3);
+    transition: all 0.2s ease;
+  }
+  .tt-nav-link:hover, .tt-nav-link.active {
+    background: linear-gradient(135deg, #d63384, #b026ff);
+    color: #ffffff !important;
+    border-color: #ff69b4;
+    box-shadow: 0 0 10px rgba(255,42,133,0.5);
+  }
+  body.tt-light-mode .tt-nav-link {
+    background: #ffffff !important;
+    color: #b8005c !important;
+    border-color: #fcc2d7 !important;
+  }
+  body.tt-light-mode .tt-nav-link:hover,
+  body.tt-light-mode .tt-nav-link.active {
+    background: linear-gradient(135deg, #d63384, #b026ff) !important;
+    color: #ffffff !important;
+  }
+
+  .tt-mode-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #ff69b4;
+    color: #ff9ebb;
+    padding: 6px 14px;
+    border-radius: 18px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    backdrop-filter: blur(8px);
+    transition: all 0.2s ease;
+  }
+  body.tt-light-mode .tt-mode-btn {
+    background: #ffffff !important;
+    color: #b8005c !important;
+    border-color: #ff69b4 !important;
+  }
+</style>
+
+<div class="tt-dept-header-bar {{ dept_class }}">
+  <div style="max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+    
+    <!-- Dynamic Department Title Badge -->
+    <div class="tt-dept-badge">
+      {{ dept_badge }}
+    </div>
+
+    <!-- Multi-Brand Department Navigation Pills & Global Theme Switcher -->
+    <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+      <nav class="tt-nav-links">
+        <a href="/" class="tt-nav-link {% if template.name == 'index' %}active{% endif %}">🏠 Home</a>
+        <a href="/collections/pink-o-ween-cards" class="tt-nav-link {% if collection.handle contains 'pink-o-ween' %}active{% endif %}">💌 Tap Greetings</a>
+        <a href="/collections/dipden-confectionery" class="tt-nav-link {% if collection.handle contains 'dipden' %}active{% endif %}">🍬 DipDen Confectionery</a>
+        <a href="/collections/sosats-innovations" class="tt-nav-link {% if collection.handle contains 'sosats' %}active{% endif %}">⚡ SOSATS Pizza Mystery</a>
+        <a href="/collections/tap-qard" class="tt-nav-link {% if collection.handle contains 'tap-qard' %}active{% endif %}">🎴 Tap Qard</a>
+      </nav>
+
+      <!-- Global Dark / Light Mode Toggle Button -->
+      <button type="button" class="tt-mode-btn" onclick="toggleTtGlobalThemeMode()">
+        <span id="tt-mode-icon">🌙</span> <span id="tt-mode-text">Dark Mode</span>
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function toggleTtGlobalThemeMode() {
+    var body = document.body;
+    var icon = document.getElementById('tt-mode-icon');
+    var text = document.getElementById('tt-mode-text');
+
+    if (body.classList.contains('tt-dark-mode')) {
+      body.classList.remove('tt-dark-mode');
+      body.classList.add('tt-light-mode');
+      if (icon) icon.innerHTML = '☀️';
+      if (text) text.innerHTML = 'Light Mode';
+      localStorage.setItem('tapthingy_theme_mode', 'light');
+    } else {
+      body.classList.remove('tt-light-mode');
+      body.classList.add('tt-dark-mode');
+      if (icon) icon.innerHTML = '🌙';
+      if (text) text.innerHTML = 'Dark Mode';
+      localStorage.setItem('tapthingy_theme_mode', 'dark');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var body = document.body;
+    var savedMode = localStorage.getItem('tapthingy_theme_mode');
+    
+    // Default to Dark Mode if not set or set to dark
+    if (savedMode === 'light') {
+      body.classList.remove('tt-dark-mode');
+      body.classList.add('tt-light-mode');
+      var icon = document.getElementById('tt-mode-icon');
+      var text = document.getElementById('tt-mode-text');
+      if (icon) icon.innerHTML = '☀️';
+      if (text) text.innerHTML = 'Light Mode';
+    } else {
+      body.classList.remove('tt-light-mode');
+      body.classList.add('tt-dark-mode');
+    }
+  });
+</script>

@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "main": {
+      "type": "tapgreetings-custom-card-designer"
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

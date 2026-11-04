@@ -1,0 +1,1563 @@
+{% comment %}
+  TapThingy Department Theme & Header Controller (Flawless Background & Card Theme Switching)
+  Enforces 100% background and card color switching across all departments (TapThingy, Pink-O-Ween, DipDen, SOSATS, Tap Qard, Tap Photo Cards).
+{% endcomment %}
+
+{% assign dept_id = 'tapthingy' %}
+{% assign dept_name = 'TapThingy' %}
+{% assign dept_announcement = '🛸 TAPTHINGY.COM • Smart Cards, Confectionery & Innovations' %}
+
+{% if collection.handle contains 'pink-o-ween' or product.tags contains 'Pink-O-Ween' or product.type contains 'Pink-O-Ween' or template.suffix == 'pinkoween' %}
+  {% assign dept_id = 'pinkoween' %}
+  {% assign dept_name = 'Tap Greetings • Pink-O-Ween' %}
+  {% assign dept_announcement = '💌 TAP GREETINGS • Pink-O-Ween 31-Card Coven Franchise' %}
+{% elsif collection.handle contains 'dipden' or product.type contains 'Confectionery' or product.tags contains 'DipDen' or product.title contains 'DipDen' %}
+  {% assign dept_id = 'dipden' %}
+  {% assign dept_name = 'DipDen Confectionery' %}
+  {% assign dept_announcement = '🍬 DIPDEN™ CONFECTIONERY • Sweets, Candies & Dipping Treats' %}
+{% elsif collection.handle contains 'sosats' or product.title contains 'Pizza Mystery' or product.tags contains 'SOSATS' or product.type contains 'Mystery' %}
+  {% assign dept_id = 'sosats' %}
+  {% assign dept_name = 'SOSATS & Pizza Mystery' %}
+  {% assign dept_announcement = '⚡ SOSATS™ INNOVATIONS • Pizza Mystery™ & Mystery Games' %}
+{% elsif collection.handle contains 'tap-qard' or product.type contains 'Business Card' or product.tags contains 'TapQard' %}
+  {% assign dept_id = 'tapqard' %}
+  {% assign dept_name = 'Tap Qard' %}
+  {% assign dept_announcement = '🎴 TAPQARD™ • Smart Contactless NFC Business Cards' %}
+{% elsif collection.handle contains 'tap-photo' or product.tags contains 'TapPhotoCards' %}
+  {% assign dept_id = 'tapphoto' %}
+  {% assign dept_name = 'Tap Photo Cards' %}
+  {% assign dept_announcement = '🖼️ TAPPHOTOCARDS™ • Personalized Video Memory Keepsakes' %}
+{% endif %}
+
+<style>
+  /* Native Header Action Icon - Sits on EXACT Same Horizontal Line */
+  header-actions,
+  .header-actions {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  header-actions .tt-nav-toggle-icon-btn,
+  .header-actions .tt-nav-toggle-icon-btn,
+  button.tt-nav-toggle-icon-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: transparent !important;
+    border: none !important;
+    color: inherit !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: var(--button-size, 44px) !important;
+    height: var(--button-size, 44px) !important;
+    cursor: pointer !important;
+    line-height: 1 !important;
+    vertical-align: middle !important;
+    transition: transform 0.2s ease, opacity 0.2s ease !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+  header-actions .tt-nav-toggle-icon-btn:hover,
+  .header-actions .tt-nav-toggle-icon-btn:hover {
+    transform: scale(1.15) !important;
+    opacity: 0.85 !important;
+  }
+  header-actions .tt-nav-toggle-icon-btn svg,
+  .header-actions .tt-nav-toggle-icon-btn svg {
+    width: 22px !important;
+    height: 22px !important;
+    fill: currentColor !important;
+    stroke: none !important;
+  }
+
+  /* MOBILE HEADER LAYOUT: Hamburger + Logo/Name on Left, All Action Icons on Right */
+  @media screen and (max-width: 749px) {
+    .header__row--top .header__columns {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      width: 100% !important;
+    }
+
+    .header__column--left {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      gap: 6px !important;
+      flex: 0 1 auto !important;
+    }
+
+    .header__column--center {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      margin: 0 !important;
+      position: static !important;
+      transform: none !important;
+    }
+
+    .header__column--right,
+    header-actions,
+    .header-actions {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-end !important;
+      gap: 4px !important;
+      margin-left: auto !important;
+    }
+
+    header-actions .header-actions__action,
+    .header-actions .header-actions__action,
+    .tt-nav-toggle-icon-btn,
+    .search-action {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    /* Hide any duplicate search buttons */
+    .search-action ~ .search-action,
+    search-button ~ search-button,
+    .header__column .search-action ~ .search-action {
+      display: none !important;
+    }
+  }
+
+  /* Mobile Drawer Menu Text Item */
+  .tt-drawer-theme-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: inherit;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  /* ==================================================================== */
+  /* UNIVERSAL DARK MODE FORCE RULES (PREVENTS BLACK TEXT & ILLUMINATES)  */
+  /* ==================================================================== */
+  .tt-dark-mode,
+  html.tt-dark-mode,
+  body.tt-dark-mode,
+  html.tt-dark-mode body,
+  .tt-dark-mode main#MainContent,
+  .tt-dark-mode .page-wrapper {
+    --color-foreground: 255, 255, 255 !important;
+    --color-background: 17, 3, 19 !important;
+    --color-text: #ffffff !important;
+    --color-body-text: #ffffff !important;
+    --palette-darkest: #ffffff !important;
+    --palette-lightest: #110313 !important;
+    color: #ffffff !important;
+  }
+
+  /* Force all body paragraphs, spans, headings, lists, cards, and custom components to be white in dark mode */
+  .tt-dark-mode p,
+  .tt-dark-mode span:not(.svg-wrapper),
+  .tt-dark-mode h1, .tt-dark-mode h2, .tt-dark-mode h3, .tt-dark-mode h4, .tt-dark-mode h5, .tt-dark-mode h6,
+  .tt-dark-mode li,
+  .tt-dark-mode label,
+  .tt-dark-mode strong,
+  .tt-dark-mode em,
+  .tt-dark-mode summary,
+  .tt-dark-mode dt, .tt-dark-mode dd,
+  .tt-dark-mode .card__heading,
+  .tt-dark-mode .card-information,
+  .tt-dark-mode .rte,
+  .tt-dark-mode .rte *,
+  .tt-dark-mode [class*="color-custom"] {
+    color: #ffffff !important;
+  }
+
+  /* Universal Header NAV link reset: transparent background, crisp positioning */
+  .menu-list__link,
+  .menu-list__link-title,
+  .menu-list__item,
+  .menu-list__trigger,
+  .menu-list__list-item,
+  .navigation-bar__link,
+  .header__menu-item,
+  .header__link,
+  .header__heading-text,
+  .header__heading-link,
+  .menu-drawer__menu-item,
+  .menu-drawer__link,
+  .menu-drawer__link-title,
+  .menu-drawer__navigation a {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  /* ==================================================================== */
+  /* 1. PINK-O-WEEN / TAP GREETINGS THEME (EXPLICIT BACKGROUND SWAPPING)  */
+  /* ==================================================================== */
+  body.dept-pinkoween.tt-dark-mode,
+  html.dept-pinkoween.tt-dark-mode,
+  html.dept-pinkoween.tt-dark-mode body,
+  body.dept-pinkoween.tt-dark-mode .page-wrapper,
+  body.dept-pinkoween.tt-dark-mode main#MainContent,
+  body.dept-pinkoween.tt-dark-mode #pkw-product-container,
+  body.dept-pinkoween.tt-dark-mode .pinkoween-collection-wrapper,
+  body.dept-pinkoween.tt-dark-mode .pinkoween-product-section {
+    background-color: #110313 !important;
+    background: #110313 !important;
+    color: #ffffff !important;
+  }
+  body.dept-pinkoween.tt-dark-mode #header-component,
+  body.dept-pinkoween.tt-dark-mode .header,
+  body.dept-pinkoween.tt-dark-mode .header__row,
+  body.dept-pinkoween.tt-dark-mode footer,
+  body.dept-pinkoween.tt-dark-mode .announcement-bar,
+  body.dept-pinkoween.tt-dark-mode .menu-drawer,
+  body.dept-pinkoween.tt-dark-mode header-drawer,
+  body.dept-pinkoween.tt-dark-mode .menu-drawer-container,
+  body.dept-pinkoween.tt-dark-mode details.menu-drawer-container,
+  body.dept-pinkoween.tt-dark-mode details#Details-menu-drawer-container,
+  body.dept-pinkoween.tt-dark-mode .menu-drawer__navigation,
+  body.dept-pinkoween.tt-dark-mode .menu-drawer__inner-container,
+  body.dept-pinkoween.tt-dark-mode .menu-drawer__navigation-container,
+  body.dept-pinkoween.tt-dark-mode .menu-drawer__submenu,
+  body.dept-pinkoween.tt-dark-mode .menu-drawer__inner-submenu,
+  body.dept-pinkoween.tt-dark-mode .menu-drawer__menu,
+  body.dept-pinkoween.tt-dark-mode .menu-drawer__utility-links,
+  body.dept-pinkoween.tt-dark-mode .drawer__content,
+  body.dept-pinkoween.tt-dark-mode .drawer__inner,
+  body.dept-pinkoween.tt-dark-mode .menu-list__submenu,
+  body.dept-pinkoween.tt-dark-mode .search-modal,
+  body.dept-pinkoween.tt-dark-mode .search-modal__content,
+  body.dept-pinkoween.tt-dark-mode predictive-search-component,
+  body.dept-pinkoween.tt-dark-mode .predictive-search,
+  body.dept-pinkoween.tt-dark-mode .predictive-search-form,
+  body.dept-pinkoween.tt-dark-mode .predictive-search-results,
+  body.dept-pinkoween.tt-dark-mode .predictive-search-form__header,
+  body.dept-pinkoween.tt-dark-mode #cart-drawer,
+  body.dept-pinkoween.tt-dark-mode .cart-drawer,
+  body.dept-pinkoween.tt-dark-mode .theme-drawer__dialog,
+  body.dept-pinkoween.tt-dark-mode .cart-drawer__inner,
+  body.dept-pinkoween.tt-dark-mode .cart-drawer__content,
+  body.dept-pinkoween.tt-dark-mode .cart-drawer__items,
+  body.dept-pinkoween.tt-dark-mode .cart-drawer__footer,
+  body.dept-pinkoween.tt-dark-mode .theme-drawer__header,
+  .tt-dark-mode .menu-drawer,
+  .tt-dark-mode header-drawer,
+  .tt-dark-mode .menu-drawer-container,
+  .tt-dark-mode .menu-drawer__submenu,
+  .tt-dark-mode .menu-drawer__navigation,
+  .tt-dark-mode .menu-drawer__inner-container,
+  .tt-dark-mode .menu-drawer__navigation-container,
+  .tt-dark-mode .menu-drawer__inner-submenu,
+  .tt-dark-mode .theme-drawer__dialog {
+    --color-foreground: 255, 158, 187 !important;
+    --color-background: 24, 5, 27 !important;
+    background: #18051b !important;
+    background-color: #18051b !important;
+    color: #ff9ebb !important;
+    border-color: rgba(255, 105, 180, 0.4) !important;
+    opacity: 1 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  body.dept-pinkoween.tt-dark-mode #pkw-info-panel,
+  body.dept-pinkoween.tt-dark-mode .pinkoween-product-card-container,
+  body.dept-pinkoween.tt-dark-mode details:not(.menu-drawer-container):not(#Details-menu-drawer-container):not(.menu-drawer *),
+  body.dept-pinkoween.tt-dark-mode .pkw-rating-card,
+  body.dept-pinkoween.tt-dark-mode .pkw-act-box,
+  body.dept-pinkoween.tt-dark-mode .promo-card,
+  body.dept-pinkoween.tt-dark-mode .ad-card {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 105, 180, 0.4) !important;
+    color: #ffffff !important;
+  }
+  body.dept-pinkoween.tt-dark-mode .pkw-act-box h1,
+  body.dept-pinkoween.tt-dark-mode .pkw-act-box h2,
+  body.dept-pinkoween.tt-dark-mode .pkw-act-box h3,
+  body.dept-pinkoween.tt-dark-mode .pkw-act-box h4,
+  body.dept-pinkoween.tt-dark-mode .pkw-act-box p,
+  body.dept-pinkoween.tt-dark-mode .pkw-act-box span {
+    color: #ffffff !important;
+  }
+  body.dept-pinkoween.tt-dark-mode .pkw-act-box h3 {
+    color: #ff9ebb !important;
+  }
+  body.dept-pinkoween.tt-dark-mode .pkw-media-card {
+    background-color: rgba(0, 0, 0, 0.4) !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    border-color: rgba(255, 105, 180, 0.3) !important;
+  }
+  body.dept-pinkoween.tt-dark-mode summary.header__icon--menu,
+  body.dept-pinkoween.tt-dark-mode .header__icon--menu,
+  body.dept-pinkoween.tt-dark-mode .header-drawer-icon,
+  body.dept-pinkoween.tt-dark-mode header-drawer summary,
+  body.dept-pinkoween.tt-dark-mode .header__column--left summary,
+  body.dept-pinkoween.tt-dark-mode summary.header__icon--summary {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  body.dept-pinkoween.tt-dark-mode .search-input,
+  body.dept-pinkoween.tt-dark-mode input.search-input {
+    background: rgba(255, 255, 255, 0.08) !important;
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    color: #ffffff !important;
+    border: 1px solid #ff69b4 !important;
+  }
+  body.dept-pinkoween.tt-dark-mode .search-input::placeholder {
+    color: #ff9ebb !important;
+    opacity: 0.8 !important;
+  }
+  body.dept-pinkoween.tt-dark-mode .cart-bubble,
+  body.dept-pinkoween.tt-dark-mode .cart-bubble__background,
+  body.dept-pinkoween.tt-dark-mode .theme-drawer__badge {
+    --cart-bubble-background: #ff69b4 !important;
+    --cart-bubble-background-fallback: #ff69b4 !important;
+    background: #ff69b4 !important;
+    background-color: #ff69b4 !important;
+  }
+  body.dept-pinkoween.tt-dark-mode .cart-bubble__text,
+  body.dept-pinkoween.tt-dark-mode .cart-bubble__text-count,
+  body.dept-pinkoween.tt-dark-mode #cart-bubble-text,
+  body.dept-pinkoween.tt-dark-mode .theme-drawer__badge {
+    --cart-bubble-text: #18051b !important;
+    --cart-bubble-text-fallback: #18051b !important;
+    color: #18051b !important;
+    font-weight: 900 !important;
+  }
+  body.dept-pinkoween.tt-dark-mode .cart-drawer h1,
+  body.dept-pinkoween.tt-dark-mode .cart-drawer h2,
+  body.dept-pinkoween.tt-dark-mode .cart-drawer h3,
+  body.dept-pinkoween.tt-dark-mode .cart-drawer h4,
+  body.dept-pinkoween.tt-dark-mode .cart-drawer p,
+  body.dept-pinkoween.tt-dark-mode .cart-drawer span:not(.cart-bubble__text-count):not(.theme-drawer__badge),
+  body.dept-pinkoween.tt-dark-mode .cart-drawer a {
+    color: #ffffff !important;
+  }
+  body.dept-pinkoween.tt-dark-mode .header__menu-item,
+  body.dept-pinkoween.tt-dark-mode .header__link,
+  body.dept-pinkoween.tt-dark-mode .header__heading-text,
+  body.dept-pinkoween.tt-dark-mode .header__heading-link,
+  body.dept-pinkoween.tt-dark-mode .announcement-bar__text,
+  body.dept-pinkoween.tt-dark-mode .menu-drawer,
+  body.dept-pinkoween.tt-dark-mode .menu-drawer__menu-item,
+  body.dept-pinkoween.tt-dark-mode .menu-list__link,
+  body.dept-pinkoween.tt-dark-mode .menu-list__link-title,
+  body.dept-pinkoween.tt-dark-mode .menu-list__item,
+  body.dept-pinkoween.tt-dark-mode .menu-list__trigger,
+  body.dept-pinkoween.tt-dark-mode .navigation-bar__link,
+  body.dept-pinkoween.tt-dark-mode .menu-drawer__link,
+  body.dept-pinkoween.tt-dark-mode .menu-drawer__link-title,
+  body.dept-pinkoween.tt-dark-mode header a,
+  body.dept-pinkoween.tt-dark-mode header nav a {
+    color: #ff9ebb !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    text-decoration: none !important;
+  }
+  body.dept-pinkoween.tt-dark-mode .menu-list__link:hover,
+  body.dept-pinkoween.tt-dark-mode .menu-list__link-title:hover,
+  body.dept-pinkoween.tt-dark-mode .header__menu-item:hover,
+  body.dept-pinkoween.tt-dark-mode .header__link:hover,
+  body.dept-pinkoween.tt-dark-mode .menu-drawer__link:hover,
+  body.dept-pinkoween.tt-dark-mode header a:hover {
+    color: #ff69b4 !important;
+    text-shadow: 0 0 8px rgba(255, 105, 180, 0.5) !important;
+  }
+  body.dept-pinkoween.tt-dark-mode header svg,
+  body.dept-pinkoween.tt-dark-mode header svg path,
+  body.dept-pinkoween.tt-dark-mode .header__icon,
+  body.dept-pinkoween.tt-dark-mode .header__icon *,
+  body.dept-pinkoween.tt-dark-mode .search-action svg,
+  body.dept-pinkoween.tt-dark-mode .cart-action svg,
+  body.dept-pinkoween.tt-dark-mode search-button svg,
+  body.dept-pinkoween.tt-dark-mode .header__icon--search svg,
+  body.dept-pinkoween.tt-dark-mode .header__icon--cart svg {
+    fill: #ff69b4 !important;
+    stroke: #ff69b4 !important;
+    color: #ff69b4 !important;
+  }
+
+  /* ==================================================================== */
+  /* PINKOWEEN DEPARTMENT FOOTER & SOCIAL ICONS (PINK ACCENTS ONLY)      */
+  /* ==================================================================== */
+  body.dept-pinkoween.tt-dark-mode footer,
+  body.dept-pinkoween.tt-dark-mode .footer,
+  body.dept-pinkoween.tt-dark-mode .footer-content,
+  body.dept-pinkoween.tt-dark-mode .footer-utilities {
+    background: #18051b !important;
+    background-color: #18051b !important;
+    color: #ffffff !important;
+    --color-foreground: 255, 158, 187 !important;
+    --color-background: 24, 5, 27 !important;
+    border-top: 1px solid rgba(255, 105, 180, 0.4) !important;
+  }
+
+  body.dept-pinkoween.tt-dark-mode footer a,
+  body.dept-pinkoween.tt-dark-mode footer a *,
+  body.dept-pinkoween.tt-dark-mode .footer a,
+  body.dept-pinkoween.tt-dark-mode .footer a *,
+  body.dept-pinkoween.tt-dark-mode .footer-utilities a,
+  body.dept-pinkoween.tt-dark-mode .footer-policy-list a,
+  body.dept-pinkoween.tt-dark-mode .footer-utilities__policy-list a,
+  body.dept-pinkoween.tt-dark-mode .menu-list__link {
+    color: #ff9ebb !important;
+    --color-foreground: 255, 158, 187 !important;
+    opacity: 1 !important;
+    text-decoration: none !important;
+  }
+
+  body.dept-pinkoween.tt-dark-mode footer a:hover,
+  body.dept-pinkoween.tt-dark-mode .footer a:hover {
+    color: #ffffff !important;
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.8) !important;
+  }
+
+  body.dept-pinkoween.tt-dark-mode .social-icons__wrapper a,
+  body.dept-pinkoween.tt-dark-mode .social-icons__icon-wrapper a,
+  body.dept-pinkoween.tt-dark-mode .social-link a,
+  body.dept-pinkoween.tt-dark-mode .list-social__link {
+    background: rgba(255, 105, 180, 0.15) !important;
+    border: 1.5px solid rgba(255, 105, 180, 0.4) !important;
+    color: #ff9ebb !important;
+  }
+
+  body.dept-pinkoween.tt-dark-mode .social-icons__wrapper a svg,
+  body.dept-pinkoween.tt-dark-mode .social-link a svg,
+  body.dept-pinkoween.tt-dark-mode .list-pinkoween svg path {
+    fill: #ff9ebb !important;
+  }
+
+  body.dept-pinkoween.tt-dark-mode .social-icons__wrapper a:hover,
+  body.dept-pinkoween.tt-dark-mode .social-link a:hover {
+    background: #ff69b4 !important;
+    border-color: #ff69b4 !important;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.8) !important;
+  }
+
+  body.dept-pinkoween.tt-dark-mode .social-icons__wrapper a:hover svg,
+  body.dept-pinkoween.tt-dark-mode .social-icons__wrapper a:hover svg path {
+    fill: #18051b !important;
+  }
+
+  /* PINKOWEEN CART COUNT BUBBLE */
+  body.dept-pinkoween.tt-dark-mode .cart-bubble,
+  body.dept-pinkoween.tt-dark-mode .cart-bubble__background {
+    --cart-bubble-background: #ff69b4 !important;
+    background: #ff69b4 !important;
+    background-color: #ff69b4 !important;
+  }
+  body.dept-pinkoween.tt-dark-mode .cart-bubble__text,
+  body.dept-pinkoween.tt-dark-mode .cart-bubble__text-count,
+  body.dept-pinkoween.tt-dark-mode #cart-bubble-text {
+    --cart-bubble-text: #18051b !important;
+    color: #18051b !important;
+    font-weight: 900 !important;
+    -webkit-text-fill-color: #18051b !important;
+  }
+
+  body.dept-pinkoween.tt-light-mode .cart-bubble,
+  body.dept-pinkoween.tt-light-mode .cart-bubble__background {
+    --cart-bubble-background: #b8005c !important;
+    background: #b8005c !important;
+    background-color: #b8005c !important;
+  }
+  body.dept-pinkoween.tt-light-mode .cart-bubble__text,
+  body.dept-pinkoween.tt-light-mode .cart-bubble__text-count,
+  body.dept-pinkoween.tt-light-mode #cart-bubble-text {
+    --cart-bubble-text: #ffffff !important;
+    color: #ffffff !important;
+    font-weight: 900 !important;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+
+  /* ==================================================================== */
+  /* REGULAR TAPTHINGY / NON-PINKOWEEN MONOCHROME (BLACK, WHITE & GRAYS)  */
+  /* ==================================================================== */
+  body:not(.dept-pinkoween).tt-dark-mode footer,
+  body:not(.dept-pinkoween).tt-dark-mode .footer,
+  body:not(.dept-pinkoween).tt-dark-mode .footer-content,
+  body:not(.dept-pinkoween).tt-dark-mode .footer-utilities {
+    background: #121212 !important;
+    background-color: #121212 !important;
+    color: #ffffff !important;
+    --color-foreground: 255, 255, 255 !important;
+    --color-background: 18, 18, 18 !important;
+    border-top: 1px solid #333333 !important;
+  }
+
+  body:not(.dept-pinkoween).tt-dark-mode footer p,
+  body:not(.dept-pinkoween).tt-dark-mode footer span,
+  body:not(.dept-pinkoween).tt-dark-mode footer div,
+  body:not(.dept-pinkoween).tt-dark-mode footer li,
+  body:not(.dept-pinkoween).tt-dark-mode footer small,
+  body:not(.dept-pinkoween).tt-dark-mode .footer-utilities__text,
+  body:not(.dept-pinkoween).tt-dark-mode .footer-utilities__copyright,
+  body:not(.dept-pinkoween).tt-dark-mode .copyright__content {
+    color: #ffffff !important;
+    opacity: 1 !important;
+  }
+
+  body:not(.dept-pinkoween).tt-dark-mode footer a,
+  body:not(.dept-pinkoween).tt-dark-mode footer a *,
+  body:not(.dept-pinkoween).tt-dark-mode .footer a,
+  body:not(.dept-pinkoween).tt-dark-mode .footer a *,
+  body:not(.dept-pinkoween).tt-dark-mode .footer-utilities a,
+  body:not(.dept-pinkoween).tt-dark-mode .footer-policy-list a,
+  body:not(.dept-pinkoween).tt-dark-mode .footer-utilities__policy-list a,
+  body:not(.dept-pinkoween).tt-dark-mode .menu-list__link {
+    color: #ffffff !important;
+    --color-foreground: 255, 255, 255 !important;
+    opacity: 1 !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+  }
+
+  body:not(.dept-pinkoween).tt-dark-mode footer a:hover,
+  body:not(.dept-pinkoween).tt-dark-mode .footer a:hover {
+    color: #aaaaaa !important;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4) !important;
+  }
+
+  /* MONOCHROME SOCIAL ICONS FOR REGULAR TAPTHINGY */
+  .social-icons__wrapper,
+  .social-icons,
+  .list-social,
+  .footer__list-social {
+    display: flex !important;
+    gap: 16px !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    padding: 6px 0 !important;
+  }
+
+  .social-icons__icon-wrapper,
+  .social-link,
+  .list-social__item {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  .social-icons__wrapper a,
+  .social-icons__icon-wrapper a,
+  .social-link a,
+  .list-social__link,
+  .footer__list-social a {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    transition: all 0.25s ease !important;
+    text-decoration: none !important;
+  }
+
+  body:not(.dept-pinkoween).tt-dark-mode .social-icons__wrapper a,
+  body:not(.dept-pinkoween).tt-dark-mode .social-icons__icon-wrapper a,
+  body:not(.dept-pinkoween).tt-dark-mode .social-link a,
+  body:not(.dept-pinkoween).tt-dark-mode .list-social__link {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.3) !important;
+    color: #ffffff !important;
+  }
+
+  body:not(.dept-pinkoween).tt-dark-mode .social-icons__wrapper a svg,
+  body:not(.dept-pinkoween).tt-dark-mode .social-icons__wrapper a svg path,
+  body:not(.dept-pinkoween).tt-dark-mode .social-link a svg,
+  body:not(.dept-pinkoween).tt-dark-mode .social-link a svg path,
+  body:not(.dept-pinkoween).tt-dark-mode .list-social__link svg,
+  body:not(.dept-pinkoween).tt-dark-mode .list-social__link svg path,
+  body:not(.dept-pinkoween).tt-dark-mode footer svg,
+  body:not(.dept-pinkoween).tt-dark-mode footer svg path {
+    fill: #ffffff !important;
+    color: #ffffff !important;
+    opacity: 1 !important;
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  body:not(.dept-pinkoween).tt-dark-mode .social-icons__wrapper a:hover,
+  body:not(.dept-pinkoween).tt-dark-mode .social-link a:hover,
+  body:not(.dept-pinkoween).tt-dark-mode .list-social__link:hover {
+    background: #ffffff !important;
+    border-color: #ffffff !important;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6) !important;
+    transform: translateY(-3px) scale(1.08) !important;
+  }
+
+  body:not(.dept-pinkoween).tt-dark-mode .social-icons__wrapper a:hover svg,
+  body:not(.dept-pinkoween).tt-dark-mode .social-icons__wrapper a:hover svg path,
+  body:not(.dept-pinkoween).tt-dark-mode .social-link a:hover svg,
+  body:not(.dept-pinkoween).tt-dark-mode .social-link a:hover svg path,
+  body:not(.dept-pinkoween).tt-dark-mode .list-social__link:hover svg,
+  body:not(.dept-pinkoween).tt-dark-mode .list-social__link:hover svg path {
+    fill: #000000 !important;
+    color: #000000 !important;
+  }
+
+  /* MONOCHROME CART BUBBLE FOR REGULAR TAPTHINGY */
+  body:not(.dept-pinkoween).tt-dark-mode .cart-bubble,
+  body:not(.dept-pinkoween).tt-dark-mode .cart-bubble__background,
+  body:not(.dept-pinkoween).tt-dark-mode cart-icon .cart-bubble,
+  body:not(.dept-pinkoween).tt-dark-mode cart-icon .cart-bubble__background,
+  body:not(.dept-pinkoween).tt-dark-mode .header-actions__cart-icon .cart-bubble {
+    --cart-bubble-background: #ffffff !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+  }
+
+  body:not(.dept-pinkoween).tt-dark-mode .cart-bubble__text,
+  body:not(.dept-pinkoween).tt-dark-mode .cart-bubble__text-count,
+  body:not(.dept-pinkoween).tt-dark-mode #cart-bubble-text,
+  body:not(.dept-pinkoween).tt-dark-mode cart-icon .cart-bubble__text,
+  body:not(.dept-pinkoween).tt-dark-mode .header-actions__cart-icon .cart-bubble__text {
+    --cart-bubble-text: #000000 !important;
+    color: #000000 !important;
+    font-weight: 900 !important;
+    -webkit-text-fill-color: #000000 !important;
+  }
+
+  body:not(.dept-pinkoween).tt-light-mode .cart-bubble,
+  body:not(.dept-pinkoween).tt-light-mode .cart-bubble__background,
+  body:not(.dept-pinkoween).tt-light-mode cart-icon .cart-bubble,
+  body:not(.dept-pinkoween).tt-light-mode cart-icon .cart-bubble__background,
+  body:not(.dept-pinkoween).tt-light-mode .header-actions__cart-icon .cart-bubble {
+    --cart-bubble-background: #000000 !important;
+    background: #000000 !important;
+    background-color: #000000 !important;
+  }
+
+  body:not(.dept-pinkoween).tt-light-mode .cart-bubble__text,
+  body:not(.dept-pinkoween).tt-light-mode .cart-bubble__text-count,
+  body:not(.dept-pinkoween).tt-light-mode #cart-bubble-text,
+  body:not(.dept-pinkoween).tt-light-mode cart-icon .cart-bubble__text,
+  body:not(.dept-pinkoween).tt-light-mode .header-actions__cart-icon .cart-bubble__text {
+    --cart-bubble-text: #ffffff !important;
+    color: #ffffff !important;
+    font-weight: 900 !important;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+
+  /* DARK MODE DISCOUNT & COUPON INPUT PLACEHOLDER FIXES */
+  body.tt-dark-mode input::placeholder,
+  body.tt-dark-mode textarea::placeholder,
+  body.tt-dark-mode [id*="discount"]::placeholder,
+  body.tt-dark-mode [name*="discount"]::placeholder,
+  body.tt-dark-mode .cart-discount input::placeholder,
+  body.tt-dark-mode .cart-drawer input::placeholder,
+  html.tt-dark-mode input::placeholder {
+    color: #bbbbbb !important;
+    opacity: 0.95 !important;
+    -webkit-text-fill-color: #bbbbbb !important;
+  }
+
+  /* HIDE POWERED BY SHOPIFY */
+  .powered-by-shopify,
+  .powered_by_link,
+  footer a[href*="shopify.com"],
+  small.copyright__content a[href*="shopify.com"] {
+    display: none !important;
+  }
+
+  /* PINK-O-WEEN SPECIFIC SOCIAL ICONS (PINK ACCENTS ONLY) */
+  body.dept-pinkoween .social-icons__wrapper a svg,
+  body.dept-pinkoween .social-icons__icon-wrapper a svg,
+  body.dept-pinkoween .social-link a svg,
+  body.dept-pinkoween .list-social__link svg,
+  body.dept-pinkoween .footer__list-social a svg,
+  body.dept-pinkoween.tt-dark-mode footer svg,
+  body.dept-pinkoween.tt-dark-mode footer .icon {
+    width: 22px !important;
+    height: 22px !important;
+    fill: #ff9ebb !important;
+    color: #ff9ebb !important;
+    opacity: 1 !important;
+    display: block !important;
+    margin: 0 !important;
+  }
+
+  body.dept-pinkoween.tt-dark-mode footer svg path,
+  body.dept-pinkoween.tt-dark-mode footer .icon path,
+  body.dept-pinkoween .social-icons__wrapper svg path,
+  body.dept-pinkoween .social-link svg path,
+  body.dept-pinkoween .list-social__link svg path {
+    fill: #ff9ebb !important;
+    opacity: 1 !important;
+  }
+
+  body.dept-pinkoween .social-icons__wrapper a:hover,
+  body.dept-pinkoween .social-icons__icon-wrapper a:hover,
+  body.dept-pinkoween .social-link a:hover,
+  body.dept-pinkoween .list-social__link:hover {
+    background: #ff69b4 !important;
+    border-color: #ff69b4 !important;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.8) !important;
+    transform: translateY(-3px) scale(1.08) !important;
+  }
+
+  body.dept-pinkoween .social-icons__wrapper a:hover svg,
+  body.dept-pinkoween .social-icons__wrapper a:hover svg path,
+  body.dept-pinkoween .social-link a:hover svg,
+  body.dept-pinkoween .social-link a:hover svg path,
+  body.dept-pinkoween .list-social__link:hover svg,
+  body.dept-pinkoween .list-social__link:hover svg path {
+    fill: #18051b !important;
+    color: #18051b !important;
+  }
+
+  /* MONOCHROME TAPTHINGY / HOMEPAGE LIGHT MODE SOCIAL ICONS */
+  body:not(.dept-pinkoween).tt-light-mode .social-icons__wrapper a,
+  body:not(.dept-pinkoween).tt-light-mode .social-icons__icon-wrapper a,
+  body:not(.dept-pinkoween).tt-light-mode .social-link a,
+  body:not(.dept-pinkoween).tt-light-mode .list-social__link {
+    background: rgba(0, 0, 0, 0.05) !important;
+    border: 1.5px solid rgba(0, 0, 0, 0.2) !important;
+    color: #000000 !important;
+  }
+
+  body:not(.dept-pinkoween).tt-light-mode .social-icons__wrapper a svg,
+  body:not(.dept-pinkoween).tt-light-mode .social-icons__wrapper a svg path,
+  body:not(.dept-pinkoween).tt-light-mode .social-link a svg,
+  body:not(.dept-pinkoween).tt-light-mode .social-link a svg path,
+  body:not(.dept-pinkoween).tt-light-mode .list-social__link svg,
+  body:not(.dept-pinkoween).tt-light-mode .list-social__link svg path,
+  body:not(.dept-pinkoween).tt-light-mode footer svg,
+  body:not(.dept-pinkoween).tt-light-mode footer svg path {
+    fill: #000000 !important;
+    color: #000000 !important;
+    opacity: 1 !important;
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  body:not(.dept-pinkoween).tt-light-mode .social-icons__wrapper a:hover,
+  body:not(.dept-pinkoween).tt-light-mode .social-link a:hover,
+  body:not(.dept-pinkoween).tt-light-mode .list-social__link:hover {
+    background: #000000 !important;
+    border-color: #000000 !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  body:not(.dept-pinkoween).tt-light-mode .social-icons__wrapper a:hover svg,
+  body:not(.dept-pinkoween).tt-light-mode .social-icons__wrapper a:hover svg path,
+  body:not(.dept-pinkoween).tt-light-mode .social-link a:hover svg,
+  body:not(.dept-pinkoween).tt-light-mode .social-link a:hover svg path,
+  body:not(.dept-pinkoween).tt-light-mode .list-social__link:hover svg,
+  body:not(.dept-pinkoween).tt-light-mode .list-social__link:hover svg path {
+    fill: #ffffff !important;
+    color: #ffffff !important;
+  }
+
+  /* FOOTER POLICY & UTILITY LINKS CONTRAST IN DARK MODE */
+  .tt-dark-mode footer a,
+  .tt-dark-mode footer a *,
+  .tt-dark-mode .footer-policy-list a,
+  .tt-dark-mode .footer-utilities__policy-list a,
+  .tt-dark-mode .footer-block__details-content a,
+  .tt-dark-mode .footer-utilities a,
+  .tt-dark-mode footer [href*="policies"],
+  .tt-dark-mode footer [href*="privacy"],
+  .tt-dark-mode footer [href*="terms"],
+  .tt-dark-mode footer [href*="shipping"],
+  .tt-dark-mode footer [href*="refund"],
+  .tt-dark-mode footer [href*="legal"],
+  .tt-dark-mode .policies a,
+  .tt-dark-mode .shopify-policy__container,
+  .tt-dark-mode .shopify-policy__container *,
+  .tt-dark-mode .shopify-policy__body,
+  .tt-dark-mode .shopify-policy__body * {
+    color: #ff9ebb !important;
+    opacity: 1 !important;
+    -webkit-text-fill-color: #ff9ebb !important;
+  }
+
+  .tt-dark-mode footer a:hover,
+  .tt-dark-mode footer a:hover *,
+  .tt-dark-mode .shopify-policy__container a:hover {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    text-decoration: underline !important;
+  }
+
+  body.dept-pinkoween.tt-light-mode,
+  html.dept-pinkoween.tt-light-mode,
+  html.dept-pinkoween.tt-light-mode body,
+  body.dept-pinkoween.tt-light-mode .page-wrapper,
+  body.dept-pinkoween.tt-light-mode main#MainContent,
+  body.dept-pinkoween.tt-light-mode #pkw-product-container,
+  body.dept-pinkoween.tt-light-mode .pinkoween-collection-wrapper,
+  body.dept-pinkoween.tt-light-mode .pinkoween-product-section {
+    background-color: #fff5f8 !important;
+    background: #fff5f8 !important;
+    color: #110313 !important;
+  }
+  body.dept-pinkoween.tt-light-mode #header-component,
+  body.dept-pinkoween.tt-light-mode .header,
+  body.dept-pinkoween.tt-light-mode .header__row,
+  body.dept-pinkoween.tt-light-mode footer,
+  body.dept-pinkoween.tt-light-mode .announcement-bar,
+  body.dept-pinkoween.tt-light-mode .menu-drawer,
+  body.dept-pinkoween.tt-light-mode header-drawer,
+  body.dept-pinkoween.tt-light-mode .menu-drawer-container,
+  body.dept-pinkoween.tt-light-mode details.menu-drawer-container,
+  body.dept-pinkoween.tt-light-mode details#Details-menu-drawer-container,
+  body.dept-pinkoween.tt-light-mode .menu-drawer__navigation,
+  body.dept-pinkoween.tt-light-mode .menu-drawer__inner-container,
+  body.dept-pinkoween.tt-light-mode .menu-drawer__navigation-container,
+  body.dept-pinkoween.tt-light-mode .menu-drawer__submenu,
+  body.dept-pinkoween.tt-light-mode .menu-drawer__inner-submenu,
+  body.dept-pinkoween.tt-light-mode .menu-drawer__menu,
+  body.dept-pinkoween.tt-light-mode .menu-drawer__utility-links,
+  body.dept-pinkoween.tt-light-mode .drawer__content,
+  body.dept-pinkoween.tt-light-mode .drawer__inner,
+  body.dept-pinkoween.tt-light-mode .menu-list__submenu,
+  body.dept-pinkoween.tt-light-mode .search-modal,
+  body.dept-pinkoween.tt-light-mode .search-modal__content,
+  body.dept-pinkoween.tt-light-mode predictive-search-component,
+  body.dept-pinkoween.tt-light-mode .predictive-search,
+  body.dept-pinkoween.tt-light-mode .predictive-search-form,
+  body.dept-pinkoween.tt-light-mode .predictive-search-results,
+  body.dept-pinkoween.tt-light-mode .predictive-search-form__header,
+  body.dept-pinkoween.tt-light-mode #cart-drawer,
+  body.dept-pinkoween.tt-light-mode .cart-drawer,
+  body.dept-pinkoween.tt-light-mode .theme-drawer__dialog,
+  body.dept-pinkoween.tt-light-mode .cart-drawer__inner,
+  body.dept-pinkoween.tt-light-mode .cart-drawer__content,
+  body.dept-pinkoween.tt-light-mode .cart-drawer__items,
+  body.dept-pinkoween.tt-light-mode .cart-drawer__footer,
+  body.dept-pinkoween.tt-light-mode .theme-drawer__header {
+    --color-foreground: 184, 0, 92 !important;
+    --color-background: 255, 255, 255 !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #b8005c !important;
+    border-color: #fcc2d7 !important;
+    opacity: 1 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  body.dept-pinkoween.tt-light-mode #pkw-info-panel,
+  body.dept-pinkoween.tt-light-mode .pinkoween-product-card-container,
+  body.dept-pinkoween.tt-light-mode details:not(.menu-drawer-container):not(#Details-menu-drawer-container):not(.menu-drawer *),
+  body.dept-pinkoween.tt-light-mode .pkw-rating-card,
+  body.dept-pinkoween.tt-light-mode .pkw-act-box,
+  body.dept-pinkoween.tt-light-mode .promo-card,
+  body.dept-pinkoween.tt-light-mode .ad-card {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    border-color: #fcc2d7 !important;
+    color: #110313 !important;
+    box-shadow: 0 4px 18px rgba(255, 105, 180, 0.08) !important;
+  }
+  body.dept-pinkoween.tt-light-mode .pkw-media-card {
+    background-color: #fff0f5 !important;
+    background: #fff0f5 !important;
+    border: 1.5px solid #fcc2d7 !important;
+    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.12) !important;
+  }
+  body.dept-pinkoween.tt-light-mode .search-input,
+  body.dept-pinkoween.tt-light-mode input.search-input {
+    background: #fff5f8 !important;
+    background-color: #fff5f8 !important;
+    color: #110313 !important;
+    border: 1px solid #fcc2d7 !important;
+  }
+  body.dept-pinkoween.tt-light-mode .cart-bubble,
+  body.dept-pinkoween.tt-light-mode .cart-bubble__background,
+  body.dept-pinkoween.tt-light-mode .theme-drawer__badge {
+    --cart-bubble-background: #b8005c !important;
+    --cart-bubble-background-fallback: #b8005c !important;
+    background: #b8005c !important;
+    background-color: #b8005c !important;
+  }
+  body.dept-pinkoween.tt-light-mode .cart-bubble__text,
+  body.dept-pinkoween.tt-light-mode .cart-bubble__text-count,
+  body.dept-pinkoween.tt-light-mode #cart-bubble-text,
+  body.dept-pinkoween.tt-light-mode .theme-drawer__badge {
+    --cart-bubble-text: #ffffff !important;
+    --cart-bubble-text-fallback: #ffffff !important;
+    color: #ffffff !important;
+    font-weight: 900 !important;
+  }
+  body.dept-pinkoween.tt-light-mode .cart-drawer h1,
+  body.dept-pinkoween.tt-light-mode .cart-drawer h2,
+  body.dept-pinkoween.tt-light-mode .cart-drawer h3,
+  body.dept-pinkoween.tt-light-mode .cart-drawer h4,
+  body.dept-pinkoween.tt-light-mode .cart-drawer p,
+  body.dept-pinkoween.tt-light-mode .cart-drawer span:not(.cart-bubble__text-count):not(.theme-drawer__badge),
+  body.dept-pinkoween.tt-light-mode .cart-drawer a {
+    color: #110313 !important;
+  }
+  body.dept-pinkoween.tt-light-mode .header__menu-item,
+  body.dept-pinkoween.tt-light-mode .header__link,
+  body.dept-pinkoween.tt-light-mode .header__heading-text,
+  body.dept-pinkoween.tt-light-mode .header__heading-link,
+  body.dept-pinkoween.tt-light-mode .announcement-bar__text,
+  body.dept-pinkoween.tt-light-mode .menu-drawer,
+  body.dept-pinkoween.tt-light-mode .menu-drawer__menu-item,
+  body.dept-pinkoween.tt-light-mode .menu-list__link,
+  body.dept-pinkoween.tt-light-mode .menu-list__link-title,
+  body.dept-pinkoween.tt-light-mode .menu-list__item,
+  body.dept-pinkoween.tt-light-mode .menu-list__trigger,
+  body.dept-pinkoween.tt-light-mode .navigation-bar__link,
+  body.dept-pinkoween.tt-light-mode .menu-drawer__link,
+  body.dept-pinkoween.tt-light-mode .menu-drawer__link-title,
+  body.dept-pinkoween.tt-light-mode header a,
+  body.dept-pinkoween.tt-light-mode header nav a {
+    color: #b8005c !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+  }
+  body.dept-pinkoween.tt-light-mode .menu-list__link:hover,
+  body.dept-pinkoween.tt-light-mode .menu-list__link-title:hover,
+  body.dept-pinkoween.tt-light-mode .header__menu-item:hover,
+  body.dept-pinkoween.tt-light-mode .header__link:hover,
+  body.dept-pinkoween.tt-light-mode .menu-drawer__link:hover,
+  body.dept-pinkoween.tt-light-mode header a:hover {
+    color: #e60073 !important;
+  }
+  body.dept-pinkoween.tt-light-mode header svg,
+  body.dept-pinkoween.tt-light-mode header svg path,
+  body.dept-pinkoween.tt-light-mode .header__icon,
+  body.dept-pinkoween.tt-light-mode .header__icon * {
+    fill: #b8005c !important;
+    stroke: #b8005c !important;
+    color: #b8005c !important;
+  }
+
+
+  /* ==================================================================== */
+  /* 2. TAPTHINGY MONOCHROME THEME                                        */
+  /* ==================================================================== */
+  body.dept-tapthingy.tt-dark-mode,
+  body.dept-tapthingy.tt-dark-mode .page-wrapper,
+  body.dept-tapthingy.tt-dark-mode main#MainContent {
+    background-color: #080808 !important;
+    background: #080808 !important;
+    color: #ffffff !important;
+  }
+  body.dept-tapthingy.tt-dark-mode #header-component,
+  body.dept-tapthingy.tt-dark-mode .header,
+  body.dept-tapthingy.tt-dark-mode .header__row,
+  body.dept-tapthingy.tt-dark-mode footer,
+  body.dept-tapthingy.tt-dark-mode .announcement-bar {
+    --color-foreground: 255, 255, 255 !important;
+    --color-background: 18, 18, 18 !important;
+    background-color: #121212 !important;
+    background: #121212 !important;
+    color: #ffffff !important;
+    border-color: #333333 !important;
+  }
+  body.dept-tapthingy.tt-dark-mode .header__menu-item,
+  body.dept-tapthingy.tt-dark-mode .header__link,
+  body.dept-tapthingy.tt-dark-mode .header__heading-link,
+  body.dept-tapthingy.tt-dark-mode .header__heading-text,
+  body.dept-tapthingy.tt-dark-mode .announcement-bar__text,
+  body.dept-tapthingy.tt-dark-mode .menu-drawer,
+  body.dept-tapthingy.tt-dark-mode .menu-drawer__menu-item {
+    color: #ffffff !important;
+    background-color: #121212 !important;
+    font-weight: 600 !important;
+  }
+  body.dept-tapthingy.tt-dark-mode header svg,
+  body.dept-tapthingy.tt-dark-mode header svg path,
+  body.dept-tapthingy.tt-dark-mode .header__icon,
+  body.dept-tapthingy.tt-dark-mode .header__icon * {
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+    color: #ffffff !important;
+  }
+
+  /* REGULAR TAPTHINGY DARK MODE ADD TO CART & SEARCH POP-UP FIXES */
+  body.tt-dark-mode button[type="submit"],
+  body.tt-dark-mode button[name="add"],
+  body.tt-dark-mode .product-form__submit,
+  body.tt-dark-mode .button--primary,
+  body.tt-dark-mode .button,
+  body.tt-dark-mode .quick-add__submit,
+  body.dept-tapthingy.tt-dark-mode button[type="submit"],
+  body.dept-tapthingy.tt-dark-mode button[name="add"],
+  body.dept-tapthingy.tt-dark-mode .product-form__submit,
+  body.dept-tapthingy.tt-dark-mode .button--primary,
+  body.dept-tapthingy.tt-dark-mode .button,
+  body.dept-tapthingy.tt-dark-mode .quick-add__submit {
+    color: #ffffff !important;
+    --color-button-text: #ffffff !important;
+  }
+  body.tt-dark-mode button[type="submit"] *,
+  body.tt-dark-mode button[name="add"] *,
+  body.tt-dark-mode .product-form__submit *,
+  body.tt-dark-mode .button--primary *,
+  body.tt-dark-mode .button *,
+  body.tt-dark-mode .quick-add__submit *,
+  body.dept-tapthingy.tt-dark-mode button[type="submit"] *,
+  body.dept-tapthingy.tt-dark-mode button[name="add"] *,
+  body.dept-tapthingy.tt-dark-mode .product-form__submit *,
+  body.dept-tapthingy.tt-dark-mode .button--primary *,
+  body.dept-tapthingy.tt-dark-mode .button *,
+  body.dept-tapthingy.tt-dark-mode .quick-add__submit * {
+    color: #ffffff !important;
+  }
+
+  body.tt-dark-mode .search-modal,
+  body.tt-dark-mode .search-modal__content,
+  body.tt-dark-mode .search-modal__form,
+  body.tt-dark-mode predictive-search,
+  body.tt-dark-mode .predictive-search,
+  body.tt-dark-mode .predictive-search-form,
+  body.tt-dark-mode .predictive-search-results,
+  body.tt-dark-mode #predictive-search-results,
+  body.tt-dark-mode .predictive-search-results-list,
+  body.tt-dark-mode .predictive-search__results-list,
+  body.tt-dark-mode .predictive-search__item,
+  body.tt-dark-mode .predictive-search__list-item,
+  body.tt-dark-mode [id*="predictive-search"],
+  html.tt-dark-mode .search-modal,
+  html.tt-dark-mode .search-modal__content,
+  html.tt-dark-mode .predictive-search {
+    background-color: #181818 !important;
+    background: #181818 !important;
+    color: #ffffff !important;
+    --color-background: 24, 24, 24 !important;
+    --color-foreground: 255, 255, 255 !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+  }
+
+  body.tt-dark-mode .search-modal input,
+  body.tt-dark-mode .search-modal .search-input,
+  body.tt-dark-mode .predictive-search input,
+  body.tt-dark-mode input[type="search"] {
+    background: #242424 !important;
+    background-color: #242424 !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  }
+
+  body.tt-dark-mode .search-modal input::placeholder,
+  body.tt-dark-mode input[type="search"]::placeholder {
+    color: #bbbbbb !important;
+    opacity: 0.9 !important;
+  }
+
+  body.tt-dark-mode .predictive-search__item-heading,
+  body.tt-dark-mode .predictive-search__item-title,
+  body.tt-dark-mode .predictive-search__item a,
+  body.tt-dark-mode .predictive-search-results a,
+  body.tt-dark-mode .predictive-search-results span,
+  body.tt-dark-mode .predictive-search-results p,
+  body.tt-dark-mode .search-modal a,
+  body.tt-dark-mode .search-modal p,
+  body.tt-dark-mode .search-modal span,
+  body.tt-dark-mode .search-modal button,
+  body.tt-dark-mode .search-modal svg {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+  }
+
+  body.tt-dark-mode .predictive-search__item:hover,
+  body.tt-dark-mode .predictive-search__item--term:hover,
+  body.tt-dark-mode .predictive-search-results a:hover {
+    background: #2a2a2a !important;
+  }
+
+  body.dept-tapthingy.tt-light-mode,
+  body.dept-tapthingy.tt-light-mode .page-wrapper,
+  body.dept-tapthingy.tt-light-mode main#MainContent {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  body.dept-tapthingy.tt-light-mode #header-component,
+  body.dept-tapthingy.tt-light-mode .header,
+  body.dept-tapthingy.tt-light-mode .header__row,
+  body.dept-tapthingy.tt-light-mode footer,
+  body.dept-tapthingy.tt-light-mode .announcement-bar {
+    --color-foreground: 0, 0, 0 !important;
+    --color-background: 248, 248, 248 !important;
+    background-color: #f8f8f8 !important;
+    background: #f8f8f8 !important;
+    color: #000000 !important;
+    border-color: #dddddd !important;
+  }
+  body.dept-tapthingy.tt-light-mode .header__menu-item,
+  body.dept-tapthingy.tt-light-mode .header__link,
+  body.dept-tapthingy.tt-light-mode .header__heading-link,
+  body.dept-tapthingy.tt-light-mode .header__heading-text,
+  body.dept-tapthingy.tt-light-mode .announcement-bar__text,
+  body.dept-tapthingy.tt-light-mode .menu-drawer,
+  body.dept-tapthingy.tt-light-mode .menu-drawer__menu-item {
+    color: #000000 !important;
+    background-color: #ffffff !important;
+    font-weight: 700 !important;
+  }
+  body.dept-tapthingy.tt-light-mode header svg,
+  body.dept-tapthingy.tt-light-mode header svg path,
+  body.dept-tapthingy.tt-light-mode .header__icon,
+  body.dept-tapthingy.tt-light-mode .header__icon * {
+    fill: #000000 !important;
+    stroke: #000000 !important;
+    color: #000000 !important;
+  }
+
+
+  /* ==================================================================== */
+  /* 3. DIPDEN™ CONFECTIONERY THEME                                       */
+  /* ==================================================================== */
+  body.dept-dipden.tt-dark-mode,
+  body.dept-dipden.tt-dark-mode .page-wrapper,
+  body.dept-dipden.tt-dark-mode main#MainContent {
+    background-color: #190813 !important;
+    background: #190813 !important;
+    color: #ffffff !important;
+  }
+  body.dept-dipden.tt-dark-mode #header-component,
+  body.dept-dipden.tt-dark-mode .header,
+  body.dept-dipden.tt-dark-mode .header__row,
+  body.dept-dipden.tt-dark-mode footer,
+  body.dept-dipden.tt-dark-mode .announcement-bar {
+    background: #240c1c !important;
+    color: #ff80ab !important;
+    border-color: #ff4081 !important;
+  }
+  body.dept-dipden.tt-dark-mode .header__menu-item,
+  body.dept-dipden.tt-dark-mode .header__link,
+  body.dept-dipden.tt-dark-mode .header__heading-text {
+    color: #ff80ab !important;
+  }
+  body.dept-dipden.tt-dark-mode header svg,
+  body.dept-dipden.tt-dark-mode header svg path {
+    fill: #ff4081 !important;
+    stroke: #ff4081 !important;
+  }
+
+  body.dept-dipden.tt-light-mode,
+  body.dept-dipden.tt-light-mode .page-wrapper,
+  body.dept-dipden.tt-light-mode main#MainContent {
+    background-color: #fff0f5 !important;
+    background: #fff0f5 !important;
+    color: #1a0510 !important;
+  }
+  body.dept-dipden.tt-light-mode #header-component,
+  body.dept-dipden.tt-light-mode .header,
+  body.dept-dipden.tt-light-mode .header__row,
+  body.dept-dipden.tt-light-mode footer,
+  body.dept-dipden.tt-light-mode .announcement-bar {
+    background: #ffffff !important;
+    color: #c2185b !important;
+    border-color: #ff80ab !important;
+  }
+  body.dept-dipden.tt-light-mode .header__menu-item,
+  body.dept-dipden.tt-light-mode .header__link,
+  body.dept-dipden.tt-light-mode .header__heading-text {
+    color: #c2185b !important;
+    font-weight: 700 !important;
+  }
+  body.dept-dipden.tt-light-mode header svg,
+  body.dept-dipden.tt-light-mode header svg path {
+    fill: #c2185b !important;
+    stroke: #c2185b !important;
+  }
+
+
+  /* ==================================================================== */
+  /* 4. SOSATS™ & PIZZA MYSTERY THEME                                     */
+  /* ==================================================================== */
+  body.dept-sosats.tt-dark-mode,
+  body.dept-sosats.tt-dark-mode .page-wrapper,
+  body.dept-sosats.tt-dark-mode main#MainContent {
+    background-color: #0f051d !important;
+    background: #0f051d !important;
+    color: #ffffff !important;
+  }
+  body.dept-sosats.tt-dark-mode #header-component,
+  body.dept-sosats.tt-dark-mode .header,
+  body.dept-sosats.tt-dark-mode .header__row,
+  body.dept-sosats.tt-dark-mode footer,
+  body.dept-sosats.tt-dark-mode .announcement-bar {
+    background: #1a0933 !important;
+    color: #e1bee7 !important;
+    border-color: #ab47bc !important;
+  }
+  body.dept-sosats.tt-dark-mode .header__menu-item,
+  body.dept-sosats.tt-dark-mode .header__link,
+  body.dept-sosats.tt-dark-mode .header__heading-text {
+    color: #e1bee7 !important;
+  }
+  body.dept-sosats.tt-dark-mode header svg,
+  body.dept-sosats.tt-dark-mode header svg path {
+    fill: #ab47bc !important;
+    stroke: #ab47bc !important;
+  }
+
+  body.dept-sosats.tt-light-mode,
+  body.dept-sosats.tt-light-mode .page-wrapper,
+  body.dept-sosats.tt-light-mode main#MainContent {
+    background-color: #f3e5f5 !important;
+    background: #f3e5f5 !important;
+    color: #12002b !important;
+  }
+  body.dept-sosats.tt-light-mode #header-component,
+  body.dept-sosats.tt-light-mode .header,
+  body.dept-sosats.tt-light-mode .header__row,
+  body.dept-sosats.tt-light-mode footer,
+  body.dept-sosats.tt-light-mode .announcement-bar {
+    background: #ffffff !important;
+    color: #4a148c !important;
+    border-color: #ce93d8 !important;
+  }
+  body.dept-sosats.tt-light-mode .header__menu-item,
+  body.dept-sosats.tt-light-mode .header__link,
+  body.dept-sosats.tt-light-mode .header__heading-text {
+    color: #4a148c !important;
+    font-weight: 700 !important;
+  }
+  body.dept-sosats.tt-light-mode header svg,
+  body.dept-sosats.tt-light-mode header svg path {
+    fill: #4a148c !important;
+    stroke: #4a148c !important;
+  }
+
+
+  /* ==================================================================== */
+  /* 5. TAPQARD™ EXECUTIVE THEME                                          */
+  /* ==================================================================== */
+  body.dept-tapqard.tt-dark-mode,
+  body.dept-tapqard.tt-dark-mode .page-wrapper,
+  body.dept-tapqard.tt-dark-mode main#MainContent {
+    background-color: #08121e !important;
+    background: #08121e !important;
+    color: #ffffff !important;
+  }
+  body.dept-tapqard.tt-dark-mode #header-component,
+  body.dept-tapqard.tt-dark-mode .header,
+  body.dept-tapqard.tt-dark-mode .header__row,
+  body.dept-tapqard.tt-dark-mode footer,
+  body.dept-tapqard.tt-dark-mode .announcement-bar {
+    background: #0e1d2f !important;
+    color: #b3e5fc !important;
+    border-color: #29b6f6 !important;
+  }
+  body.dept-tapqard.tt-dark-mode .header__menu-item,
+  body.dept-tapqard.tt-dark-mode .header__link,
+  body.dept-tapqard.tt-dark-mode .header__heading-text {
+    color: #b3e5fc !important;
+  }
+  body.dept-tapqard.tt-dark-mode header svg,
+  body.dept-tapqard.tt-dark-mode header svg path {
+    fill: #29b6f6 !important;
+    stroke: #29b6f6 !important;
+  }
+
+  body.dept-tapqard.tt-light-mode,
+  body.dept-tapqard.tt-light-mode .page-wrapper,
+  body.dept-tapqard.tt-light-mode main#MainContent {
+    background-color: #f4f8fb !important;
+    background: #f4f8fb !important;
+    color: #03101e !important;
+  }
+  body.dept-tapqard.tt-light-mode #header-component,
+  body.dept-tapqard.tt-light-mode .header,
+  body.dept-tapqard.tt-light-mode .header__row,
+  body.dept-tapqard.tt-light-mode footer,
+  body.dept-tapqard.tt-light-mode .announcement-bar {
+    background: #ffffff !important;
+    color: #0d47a1 !important;
+    border-color: #81d4fa !important;
+  }
+  body.dept-tapqard.tt-light-mode .header__menu-item,
+  body.dept-tapqard.tt-light-mode .header__link,
+  body.dept-tapqard.tt-light-mode .header__heading-text {
+    color: #0d47a1 !important;
+    font-weight: 700 !important;
+  }
+  body.dept-tapqard.tt-light-mode header svg,
+  body.dept-tapqard.tt-light-mode header svg path {
+    fill: #0d47a1 !important;
+    stroke: #0d47a1 !important;
+  }
+
+
+  /* ==================================================================== */
+  /* 6. TAPPHOTOCARDS™ MEMORY THEME                                       */
+  /* ==================================================================== */
+  body.dept-tapphoto.tt-dark-mode,
+  body.dept-tapphoto.tt-dark-mode .page-wrapper,
+  body.dept-tapphoto.tt-dark-mode main#MainContent {
+    background-color: #120824 !important;
+    background: #120824 !important;
+    color: #ffffff !important;
+  }
+  body.dept-tapphoto.tt-dark-mode #header-component,
+  body.dept-tapphoto.tt-dark-mode .header,
+  body.dept-tapphoto.tt-dark-mode .header__row,
+  body.dept-tapphoto.tt-dark-mode footer,
+  body.dept-tapphoto.tt-dark-mode .announcement-bar {
+    background: #1c0d38 !important;
+    color: #d1c4e9 !important;
+    border-color: #7e57c2 !important;
+  }
+  body.dept-tapphoto.tt-dark-mode .header__menu-item,
+  body.dept-tapphoto.tt-dark-mode .header__link,
+  body.dept-tapphoto.tt-dark-mode .header__heading-text {
+    color: #d1c4e9 !important;
+  }
+  body.dept-tapphoto.tt-dark-mode header svg,
+  body.dept-tapphoto.tt-dark-mode header svg path {
+    fill: #7e57c2 !important;
+    stroke: #7e57c2 !important;
+  }
+
+  body.dept-tapphoto.tt-light-mode,
+  body.dept-tapphoto.tt-light-mode .page-wrapper,
+  body.dept-tapphoto.tt-light-mode main#MainContent {
+    background-color: #f8f5fc !important;
+    background: #f8f5fc !important;
+    color: #15052b !important;
+  }
+  body.dept-tapphoto.tt-light-mode #header-component,
+  body.dept-tapphoto.tt-light-mode .header,
+  body.dept-tapphoto.tt-light-mode .header__row,
+  body.dept-tapphoto.tt-light-mode footer,
+  body.dept-tapphoto.tt-light-mode .announcement-bar {
+    background: #ffffff !important;
+    color: #4a148c !important;
+    border-color: #b39ddb !important;
+  }
+  body.dept-tapphoto.tt-light-mode .header__menu-item,
+  body.dept-tapphoto.tt-light-mode .header__link,
+  body.dept-tapphoto.tt-light-mode .header__heading-text {
+    color: #4a148c !important;
+    font-weight: 700 !important;
+  }
+  /* ==================================================================== */
+  /* 7. FEATURED COLLECTION & PRODUCT LIST TYPOGRAPHY & CONTRAST          */
+  /* ==================================================================== */
+  body.tt-dark-mode .product-list,
+  body.tt-dark-mode [data-testid="product-list"],
+  body.tt-dark-mode .section-resource-list {
+    color: #ffffff !important;
+  }
+  body.tt-dark-mode .product-list h1,
+  body.tt-dark-mode .product-list h2,
+  body.tt-dark-mode .product-list h3,
+  body.tt-dark-mode .product-list h4,
+  body.tt-dark-mode [data-testid="product-list"] h3,
+  body.tt-dark-mode ._product-list-text h3 {
+    color: #ff9ebb !important;
+  }
+  body.tt-dark-mode .product-card .product-title,
+  body.tt-dark-mode .product-title,
+  body.tt-dark-mode .product-title *,
+  body.tt-dark-mode [data-testid="product-list"] .product-title,
+  body.tt-dark-mode [data-testid="product-list"] a {
+    color: #ffffff !important;
+  }
+  body.tt-dark-mode .product-card .price,
+  body.tt-dark-mode .price,
+  body.tt-dark-mode .price *,
+  body.tt-dark-mode .price-item,
+  body.tt-dark-mode [data-testid="product-list"] .price {
+    color: #ff9ebb !important;
+  }
+
+  body.tt-light-mode .product-list,
+  body.tt-light-mode [data-testid="product-list"],
+  body.tt-light-mode .section-resource-list {
+    color: #110313 !important;
+  }
+  body.tt-light-mode .product-list h1,
+  body.tt-light-mode .product-list h2,
+  body.tt-light-mode .product-list h3,
+  body.tt-light-mode .product-list h4,
+  body.tt-light-mode [data-testid="product-list"] h3,
+  body.tt-light-mode ._product-list-text h3 {
+    color: #b8005c !important;
+  }
+  body.tt-light-mode .product-card .product-title,
+  body.tt-light-mode .product-title,
+  body.tt-light-mode .product-title *,
+  body.tt-light-mode [data-testid="product-list"] .product-title,
+  body.tt-light-mode [data-testid="product-list"] a {
+    color: #110313 !important;
+  }
+  body.tt-light-mode .product-card .price,
+  body.tt-light-mode .price,
+  body.tt-light-mode .price *,
+  body.tt-light-mode .price-item,
+  body.tt-light-mode [data-testid="product-list"] .price {
+    color: #b8005c !important;
+  }
+
+  /* ==================================================================== */
+  /* 8. MOBILE TOUCH SWIPE & SLIDE FOR MAIN MEDIA GALLERIES                */
+  /* ==================================================================== */
+  @media screen and (max-width: 749px) {
+    media-gallery,
+    media-gallery slideshow,
+    .product-media-gallery,
+    .product-media-gallery__slideshow,
+    .slideshow__scroller,
+    .card-gallery,
+    .card-gallery__scroller,
+    [data-testid="product-media-gallery"] {
+      display: flex !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      scroll-snap-type: x mandatory !important;
+      -webkit-overflow-scrolling: touch !important;
+      touch-action: pan-x pan-y !important;
+      scroll-behavior: smooth !important;
+      scrollbar-width: none !important;
+    }
+
+    media-gallery::-webkit-scrollbar,
+    media-gallery slideshow::-webkit-scrollbar,
+    .slideshow__scroller::-webkit-scrollbar,
+    .card-gallery::-webkit-scrollbar {
+      display: none !important;
+    }
+
+    media-gallery .slideshow__slide,
+    .product-media-gallery .slideshow__slide,
+    .card-gallery .card-gallery__slide,
+    .product-media-container {
+      scroll-snap-align: center !important;
+      flex: 0 0 100% !important;
+      min-width: 100% !important;
+      max-width: 100% !important;
+    }
+  }
+</style>
+
+<script>
+  // Material Design Vector SVGs for Dark Mode & Light Mode
+  var MATERIAL_DARK_SVG = '<svg xmlns="http://www.w3.org/2000/svg" height="22" viewBox="0 -960 960 960" width="22" fill="currentColor"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z"/></svg>';
+  var MATERIAL_LIGHT_SVG = '<svg xmlns="http://www.w3.org/2000/svg" height="22" viewBox="0 -960 960 960" width="22" fill="currentColor"><path d="M480-360q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm0 80q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z"/></svg>';
+
+  // Apply department & mode classes to html and body elements
+  (function() {
+    var dept = "{{ dept_id }}";
+    var body = document.body;
+    var html = document.documentElement;
+    body.classList.add('dept-' + dept);
+    html.classList.add('dept-' + dept);
+
+    var savedMode = localStorage.getItem('tapthingy_theme_mode');
+    if (savedMode === 'light') {
+      body.classList.remove('tt-dark-mode');
+      body.classList.add('tt-light-mode');
+      html.classList.remove('tt-dark-mode');
+      html.classList.add('tt-light-mode');
+    } else {
+      body.classList.remove('tt-light-mode');
+      body.classList.add('tt-dark-mode');
+      html.classList.remove('tt-light-mode');
+      html.classList.add('tt-dark-mode');
+    }
+  })();
+
+  function toggleTtDepartmentTheme() {
+    var body = document.body;
+    var html = document.documentElement;
+    var isDark = body.classList.contains('tt-dark-mode') || html.classList.contains('tt-dark-mode');
+
+    if (isDark) {
+      body.classList.remove('tt-dark-mode');
+      body.classList.add('tt-light-mode');
+      html.classList.remove('tt-dark-mode');
+      html.classList.add('tt-light-mode');
+      localStorage.setItem('tapthingy_theme_mode', 'light');
+    } else {
+      body.classList.remove('tt-light-mode');
+      body.classList.add('tt-dark-mode');
+      html.classList.remove('tt-light-mode');
+      html.classList.add('tt-dark-mode');
+      localStorage.setItem('tapthingy_theme_mode', 'dark');
+    }
+
+    updateTtNavToggleButtons();
+  }
+
+  function updateTtNavToggleButtons() {
+    var isDark = document.body.classList.contains('tt-dark-mode') || document.documentElement.classList.contains('tt-dark-mode');
+    
+    // Update Header Icon Action Button
+    var iconBtns = document.querySelectorAll('.tt-nav-toggle-icon-btn');
+    iconBtns.forEach(function(btn) {
+      btn.innerHTML = isDark ? MATERIAL_DARK_SVG : MATERIAL_LIGHT_SVG;
+      btn.setAttribute('title', isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode');
+      btn.setAttribute('aria-label', isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode');
+    });
+
+    // Update Mobile Drawer Text Item
+    var drawerBtns = document.querySelectorAll('.tt-drawer-theme-btn');
+    drawerBtns.forEach(function(btn) {
+      btn.innerHTML = isDark ? '🌙 Dark Mode (Tap for Light)' : '☀️ Light Mode (Tap for Dark)';
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var body = document.body;
+    var savedMode = localStorage.getItem('tapthingy_theme_mode');
+
+    if (savedMode === 'light') {
+      body.classList.remove('tt-dark-mode');
+      body.classList.add('tt-light-mode');
+    } else {
+      body.classList.remove('tt-light-mode');
+      body.classList.add('tt-dark-mode');
+    }
+
+    // 1. Inject Material SVG Icon Button DIRECTLY INSIDE <header-actions> on exact same line
+    var headerActions = document.querySelector('header-actions') || 
+                        document.querySelector('.header-actions') || 
+                        document.querySelector('.header__column--right') || 
+                        document.querySelector('.header__row--top');
+
+    if (headerActions && !document.querySelector('.tt-nav-toggle-icon-btn')) {
+      var iconBtn = document.createElement('button');
+      iconBtn.type = 'button';
+      iconBtn.className = 'header-actions__action tt-nav-toggle-icon-btn';
+      iconBtn.onclick = toggleTtDepartmentTheme;
+      
+      // Insert right at beginning of header-actions row so it sits on exact same line
+      headerActions.insertBefore(iconBtn, headerActions.firstChild);
+    }
+
+    // 2. Inject Text Button into Mobile Navigation Drawer Menu
+    var drawerNav = document.querySelector('.menu-drawer__navigation') || 
+                      document.querySelector('.menu-drawer') || 
+                      document.querySelector('.drawer__content');
+
+    if (drawerNav && !document.querySelector('.tt-drawer-theme-btn')) {
+      var drawerBtn = document.createElement('button');
+      drawerBtn.type = 'button';
+      drawerBtn.className = 'tt-drawer-theme-btn';
+      drawerBtn.onclick = toggleTtDepartmentTheme;
+      drawerNav.appendChild(drawerBtn);
+    }
+
+    updateTtNavToggleButtons();
+  });
+</script>

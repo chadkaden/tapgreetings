@@ -1,0 +1,882 @@
+{% comment %}
+  TapThingy Custom NFC Credit Card Designer Section ($29.99)
+  Includes Single-Row Toolbar (Front View, Back View, Horizontal, Vertical with no icons & overflow hidden),
+  Sticky Mobile Viewport, Required Front Artwork Validation, Hidden Cart Specs, and High-Contrast Add to Cart Button.
+{% endcomment %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  .tt-custom-card-container {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    max-width: 1080px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 16px 12px 32px;
+    color: #ffffff;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  body.tt-light-mode .tt-custom-card-container {
+    color: #110313 !important;
+  }
+
+  /* CARD PREVIEW STUDIO GRID */
+  .tt-studio-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 12px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  @media (min-width: 860px) {
+    .tt-studio-grid {
+      grid-template-columns: 1.15fr 1fr;
+      align-items: start;
+    }
+  }
+
+  /* STICKY LIVE PREVIEW CARD CONTAINER */
+  .tt-card-viewport-wrapper {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 16px 12px;
+    text-align: center;
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 12px;
+    z-index: 90;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  body.tt-light-mode .tt-card-viewport-wrapper {
+    background: #ffffff !important;
+    border-color: #e0e0e0 !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  /* SINGLE-ROW TOP TOOLBAR (NO ICONS, OVERFLOW HIDDEN, BALANCED BUTTON FLEX) */
+  .tt-toolbar-row {
+    display: flex !important;
+    gap: 4px !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 10px !important;
+    flex-wrap: nowrap !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .tt-toolbar-btn {
+    flex: 1 1 0px !important;
+    min-width: 0 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    font-size: 0.76rem !important;
+    padding: 7px 4px !important;
+    text-align: center !important;
+    border-radius: 20px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    color: inherit !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+  }
+
+  body.tt-light-mode .tt-toolbar-btn {
+    background: rgba(0, 0, 0, 0.04) !important;
+    border-color: rgba(0, 0, 0, 0.15) !important;
+  }
+
+  .tt-toolbar-btn.active {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-color: #ffffff !important;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.3) !important;
+  }
+
+  body.tt-light-mode .tt-toolbar-btn.active {
+    background: #110313 !important;
+    color: #ffffff !important;
+    border-color: #110313 !important;
+  }
+
+  /* CR80 CREDIT CARD MOCKUP VIEWPORT (STRICT OVERFLOW CLIPPING) */
+  .tt-card-canvas-container {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 400px !important;
+    aspect-ratio: 1.583 / 1 !important;
+    margin: 0 auto !important;
+    border-radius: 14px !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5) !important;
+    border: 2px solid rgba(255, 255, 255, 0.35) !important;
+    background: #1a1a1a !important;
+    user-select: none !important;
+    touch-action: none !important;
+    contain: paint !important;
+    clip-path: inset(0 round 14px) !important;
+  }
+
+  body.tt-light-mode .tt-card-canvas-container {
+    border-color: #cccccc !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+    background: #f4f4f4 !important;
+  }
+
+  .tt-card-canvas-container.portrait-mode {
+    aspect-ratio: 1 / 1.583 !important;
+    max-width: 270px !important;
+  }
+
+  .tt-card-side-view {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    clip-path: inset(0 round 14px) !important;
+  }
+
+  .tt-card-side-view.active-side {
+    display: flex !important;
+  }
+
+  .tt-card-side-view:not(.active-side) {
+    display: none !important;
+  }
+
+  .tt-card-layer-img {
+    position: absolute;
+    max-width: none;
+    cursor: move;
+    transform-origin: center center;
+    transition: transform 0.05s linear;
+  }
+
+  .tt-card-placeholder-text {
+    color: #888888;
+    font-size: 0.88rem;
+    font-weight: 600;
+    pointer-events: none;
+    text-align: center;
+    padding: 16px;
+  }
+
+  /* DOCK CONTROLS RIGHT BELOW PREVIEW */
+  .tt-adjustment-dock {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 12px 14px;
+    margin-top: 10px;
+    text-align: left;
+  }
+
+  body.tt-light-mode .tt-adjustment-dock {
+    background: #fcfcfc;
+    border-color: #e0e0e0;
+  }
+
+  .tt-dock-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .tt-dock-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    width: 90px;
+    flex-shrink: 0;
+  }
+
+  .tt-range-slider {
+    flex: 1;
+    accent-color: #ffffff;
+    cursor: pointer;
+  }
+
+  body.tt-light-mode .tt-range-slider {
+    accent-color: #110313;
+  }
+
+  .tt-dock-val {
+    font-size: 0.78rem;
+    font-weight: 700;
+    width: 42px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* RIGHT CONTROL PANEL & FORM */
+  .tt-control-panel {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 20px 16px;
+  }
+
+  body.tt-light-mode .tt-control-panel {
+    background: #ffffff !important;
+    border-color: #e0e0e0 !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+  }
+
+  .tt-file-dropzone {
+    border: 2px dashed rgba(255, 255, 255, 0.35);
+    border-radius: 14px;
+    padding: 14px;
+    text-align: center;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.02);
+    transition: all 0.2s ease;
+    margin-bottom: 12px;
+  }
+
+  body.tt-light-mode .tt-file-dropzone {
+    border-color: #bbbbbb !important;
+    background: #fafafa !important;
+  }
+
+  .tt-file-dropzone:hover,
+  .tt-file-dropzone.has-file {
+    border-color: #28a745 !important;
+    background: rgba(40, 167, 69, 0.1) !important;
+  }
+
+  /* HIGH CONTRAST ADD TO CART BUTTON IN DARK & LIGHT MODE */
+  .tt-custom-card-container button[type="submit"],
+  .tt-custom-card-container button[name="add"],
+  .tt-btn-add-to-cart {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: none !important;
+    padding: 16px 24px !important;
+    border-radius: 30px !important;
+    font-family: 'Outfit', sans-serif !important;
+    font-weight: 900 !important;
+    font-size: 1.1rem !important;
+    cursor: pointer !important;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.5) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    -webkit-text-fill-color: #000000 !important;
+    opacity: 1 !important;
+  }
+
+  body.tt-light-mode .tt-custom-card-container button[type="submit"],
+  body.tt-light-mode .tt-custom-card-container button[name="add"],
+  body.tt-light-mode .tt-btn-add-to-cart {
+    background: #110313 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  @keyframes ttSpinner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .tt-btn-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2.5px solid rgba(0,0,0,0.3);
+    border-top-color: #000000;
+    border-radius: 50%;
+    animation: ttSpinner 0.8s linear infinite;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  body.tt-light-mode .tt-btn-spinner {
+    border-color: rgba(255,255,255,0.3);
+    border-top-color: #ffffff;
+  }
+</style>
+
+<div class="tt-custom-card-container">
+  
+  <!-- Compact Section Header -->
+  <div style="text-align: center; margin-bottom: 12px;">
+    <div style="display: inline-block; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); color: inherit; padding: 3px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">
+      CUSTOM SMART NFC CARD STUDIO
+    </div>
+    
+    <h1 style="font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 900; margin: 0 0 4px 0;">
+      Design Your Custom TapThingy™ NFC Card
+    </h1>
+
+    <p style="font-size: 0.9rem; opacity: 0.85; max-width: 600px; margin: 0 auto; line-height: 1.4;">
+      Upload front & back artwork. Adjust scale, position, and orientation live!
+    </p>
+  </div>
+
+  <div class="tt-studio-grid">
+    
+    <!-- LEFT: STICKY LIVE PREVIEW CARD VIEWPORT + SINGLE-ROW TOOLBAR + DOCK -->
+    <div class="tt-card-viewport-wrapper">
+      
+      <!-- SINGLE-ROW TOP TOOLBAR (NO ICONS, HORIZONTAL SCROLL OVERFLOW HIDDEN) -->
+      <div class="tt-toolbar-row">
+        <button type="button" id="tt-view-front-btn" onclick="switchTtCardSide('front')" class="tt-toolbar-btn active">
+          Front View
+        </button>
+        <button type="button" id="tt-view-back-btn" onclick="switchTtCardSide('back')" class="tt-toolbar-btn">
+          Back View
+        </button>
+        <button type="button" id="tt-orient-horiz-btn" onclick="setTtCardOrientation('landscape')" class="tt-toolbar-btn active">
+          Horizontal
+        </button>
+        <button type="button" id="tt-orient-vert-btn" onclick="setTtCardOrientation('portrait')" class="tt-toolbar-btn">
+          Vertical
+        </button>
+      </div>
+
+      <!-- CR80 Credit Card Mockup Viewport Box -->
+      <div id="tt-card-viewport" class="tt-card-canvas-container">
+        <!-- Front Layer -->
+        <div id="tt-side-front" class="tt-card-side-view active-side">
+          <img id="tt-front-preview-img" src="" alt="Front Preview" class="tt-card-layer-img" style="display: none;">
+          <div id="tt-front-placeholder" class="tt-card-placeholder-text">
+            Upload Front Image Below<br>
+            <span style="font-size: 0.75rem; opacity: 0.7;">Credit Card Size (85.5 x 54 mm)</span>
+          </div>
+        </div>
+
+        <!-- Back Layer -->
+        <div id="tt-side-back" class="tt-card-side-view">
+          <img id="tt-back-preview-img" src="" alt="Back Preview" class="tt-card-layer-img" style="display: none;">
+          <div id="tt-back-placeholder" class="tt-card-placeholder-text">
+            Upload Back Image Below<br>
+            <span style="font-size: 0.75rem; opacity: 0.7;">Back Specs & Artwork</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FRONT ADJUSTMENT DOCK -->
+      <div id="tt-front-adjustments-dock" class="tt-adjustment-dock" style="display: none;">
+        <div style="font-weight: 800; font-size: 0.82rem; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+          <span>Adjust Front Image</span>
+          <button type="button" onclick="resetTtImageTransform('front')" style="background: transparent; border: none; color: inherit; font-size: 0.75rem; text-decoration: underline; cursor: pointer;">
+            Reset
+          </button>
+        </div>
+
+        <div class="tt-dock-row">
+          <span class="tt-dock-label">Scale / Zoom</span>
+          <input type="range" id="tt-front-scale-slider" class="tt-range-slider" min="30" max="300" value="100" oninput="updateTtImageTransform('front')">
+          <span id="tt-front-zoom-val" class="tt-dock-val">100%</span>
+        </div>
+
+        <div class="tt-dock-row">
+          <span class="tt-dock-label">Horizontal (X)</span>
+          <input type="range" id="tt-front-x-slider" class="tt-range-slider" min="-150" max="150" value="0" oninput="updateTtImageTransform('front')">
+          <span id="tt-front-x-val" class="tt-dock-val">0px</span>
+        </div>
+
+        <div class="tt-dock-row">
+          <span class="tt-dock-label">Vertical (Y)</span>
+          <input type="range" id="tt-front-y-slider" class="tt-range-slider" min="-150" max="150" value="0" oninput="updateTtImageTransform('front')">
+          <span id="tt-front-y-val" class="tt-dock-val">0px</span>
+        </div>
+
+        <div style="display: flex; gap: 6px; margin-top: 6px;">
+          <button type="button" onclick="rotateTtImage('front')" style="flex: 1; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.25); color: inherit; padding: 6px; border-radius: 8px; font-size: 0.75rem; font-weight: 700; cursor: pointer;">
+            Rotate 90°
+          </button>
+          <button type="button" onclick="centerTtImage('front')" style="flex: 1; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); color: inherit; padding: 6px; border-radius: 8px; font-size: 0.75rem; font-weight: 700; cursor: pointer;">
+            Center Image
+          </button>
+        </div>
+      </div>
+
+      <!-- BACK ADJUSTMENT DOCK -->
+      <div id="tt-back-adjustments-dock" class="tt-adjustment-dock" style="display: none;">
+        <div style="font-weight: 800; font-size: 0.82rem; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+          <span>Adjust Back Image</span>
+          <button type="button" onclick="resetTtImageTransform('back')" style="background: transparent; border: none; color: inherit; font-size: 0.75rem; text-decoration: underline; cursor: pointer;">
+            Reset
+          </button>
+        </div>
+
+        <div class="tt-dock-row">
+          <span class="tt-dock-label">Scale / Zoom</span>
+          <input type="range" id="tt-back-scale-slider" class="tt-range-slider" min="30" max="300" value="100" oninput="updateTtImageTransform('back')">
+          <span id="tt-back-zoom-val" class="tt-dock-val">100%</span>
+        </div>
+
+        <div class="tt-dock-row">
+          <span class="tt-dock-label">Horizontal (X)</span>
+          <input type="range" id="tt-back-x-slider" class="tt-range-slider" min="-150" max="150" value="0" oninput="updateTtImageTransform('back')">
+          <span id="tt-back-x-val" class="tt-dock-val">0px</span>
+        </div>
+
+        <div class="tt-dock-row">
+          <span class="tt-dock-label">Vertical (Y)</span>
+          <input type="range" id="tt-back-y-slider" class="tt-range-slider" min="-150" max="150" value="0" oninput="updateTtImageTransform('back')">
+          <span id="tt-back-y-val" class="tt-dock-val">0px</span>
+        </div>
+
+        <div style="display: flex; gap: 6px; margin-top: 6px;">
+          <button type="button" onclick="rotateTtImage('back')" style="flex: 1; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.25); color: inherit; padding: 6px; border-radius: 8px; font-size: 0.75rem; font-weight: 700; cursor: pointer;">
+            Rotate 90°
+          </button>
+          <button type="button" onclick="centerTtImage('back')" style="flex: 1; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); color: inherit; padding: 6px; border-radius: 8px; font-size: 0.75rem; font-weight: 700; cursor: pointer;">
+            Center Image
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: FILE UPLOADERS & ADD TO CART FORM -->
+    <div class="tt-control-panel">
+      
+      <!-- PRICE DISPLAY -->
+      <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding-bottom: 10px;">
+        <div>
+          <span style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 900;">$29.99</span>
+          <span style="font-size: 0.85rem; opacity: 0.7; margin-left: 6px;">USD</span>
+        </div>
+        <span style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); color: inherit; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 12px;">
+          Custom Made-to-Order
+        </span>
+      </div>
+
+      <!-- ERROR ALERT BANNER -->
+      <div id="tt-upload-error-banner" style="display: none; background: rgba(255, 77, 77, 0.15); border: 1.5px solid #ff4d4d; color: #ff6b6b; padding: 10px 14px; border-radius: 12px; font-size: 0.88rem; font-weight: 700; margin-bottom: 14px; text-align: center;">
+        ⚠️ Front Artwork image is required before adding to cart!
+      </div>
+
+      {% form 'product', product, id: 'tt-custom-card-form', enctype: 'multipart/form-data' %}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        
+        <!-- HIDDEN LINE ITEM PROPERTIES (Prefixed with _ so Shopify hides them from customer cart/receipt) -->
+        <input type="hidden" id="tt-hidden-front-data" name="properties[_Rendered Front HighRes]" value="">
+        <input type="hidden" id="tt-hidden-back-data" name="properties[_Rendered Back HighRes]" value="">
+        <input type="hidden" id="tt-hidden-specs-data" name="properties[_Customization Specs]" value="">
+
+        <!-- Fallback hidden inputs for preserved artwork URLs when editing from cart -->
+        <input type="hidden" id="tt-existing-front-url" name="properties[Front Artwork]" value="" disabled>
+        <input type="hidden" id="tt-existing-back-url" name="properties[Back Artwork]" value="" disabled>
+
+        <!-- Target NFC Destination Link Field -->
+        <div style="margin-bottom: 14px;">
+          <label for="tt-nfc-target-url" style="display: block; font-weight: 700; margin-bottom: 6px; font-size: 0.88rem;">
+            Target NFC Link (Where tapping your card goes):
+          </label>
+          <input type="url" id="tt-nfc-target-url" name="properties[Target NFC Link]" placeholder="https://yourwebsite.com or https://instagram.com/yourname" style="width: 100%; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.3); color: inherit; padding: 12px; border-radius: 12px; font-size: 0.88rem; box-sizing: border-box;">
+        </div>
+
+        <!-- FRONT ARTWORK UPLOADER -->
+        <div id="tt-front-controls-box" style="margin-bottom: 14px;">
+          <label style="display: block; font-weight: 800; margin-bottom: 6px; font-size: 0.88rem;">
+            1. Front Artwork Image (Required *):
+          </label>
+          
+          <div id="tt-dropzone-front" class="tt-file-dropzone" onclick="document.getElementById('tt-file-input-front').click()">
+            <strong id="tt-dropzone-label-front" style="display: block; font-size: 0.88rem;">Upload Front Artwork</strong>
+            <span style="font-size: 0.75rem; opacity: 0.7;">PNG, JPG, WEBP or SVG up to 20MB</span>
+          </div>
+          <input type="file" id="tt-file-input-front" name="properties[Front Artwork]" accept="image/*" onchange="handleTtFileSelect(this, 'front')" style="display: none;">
+        </div>
+
+        <!-- BACK ARTWORK UPLOADER -->
+        <div id="tt-back-controls-box" style="margin-bottom: 18px;">
+          <label style="display: block; font-weight: 800; margin-bottom: 6px; font-size: 0.88rem;">
+            2. Back Artwork Image (Optional):
+          </label>
+          
+          <div id="tt-dropzone-back" class="tt-file-dropzone" onclick="document.getElementById('tt-file-input-back').click()">
+            <strong id="tt-dropzone-label-back" style="display: block; font-size: 0.88rem;">Upload Back Artwork</strong>
+            <span style="font-size: 0.75rem; opacity: 0.7;">PNG, JPG, WEBP or SVG up to 20MB</span>
+          </div>
+          <input type="file" id="tt-file-input-back" name="properties[Back Artwork]" accept="image/*" onchange="handleTtFileSelect(this, 'back')" style="display: none;">
+        </div>
+
+        <!-- ADD TO CART & QUANTITY -->
+        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+          <div style="display: flex; align-items: center; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 30px; padding: 0 12px;">
+            <label for="TtCustomQty" style="font-size: 0.82rem; opacity: 0.8; margin-right: 6px;">Qty:</label>
+            <input type="number" id="TtCustomQty" name="quantity" value="1" min="1" max="100" style="width: 40px; background: transparent; border: none; color: inherit; font-size: 1rem; font-weight: 700; text-align: center;">
+          </div>
+
+          <button type="submit" name="add" onclick="prepareTtOrderSubmissions(event)" class="tt-btn-add-to-cart" style="flex: 1;">
+            ADD TO CART • $29.99
+          </button>
+        </div>
+
+      {% endform %}
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  var ttCardState = {
+    front: { scale: 100, rotation: 0, x: 0, y: 0, imageSrc: '' },
+    back: { scale: 100, rotation: 0, x: 0, y: 0, imageSrc: '' },
+    activeSide: 'front'
+  };
+
+  function switchTtCardSide(side) {
+    ttCardState.activeSide = side;
+    var frontView = document.getElementById('tt-side-front');
+    var backView = document.getElementById('tt-side-back');
+    var frontBtn = document.getElementById('tt-view-front-btn');
+    var backBtn = document.getElementById('tt-view-back-btn');
+    var frontDock = document.getElementById('tt-front-adjustments-dock');
+    var backDock = document.getElementById('tt-back-adjustments-dock');
+
+    if (side === 'front') {
+      frontView.classList.add('active-side');
+      backView.classList.remove('active-side');
+      frontBtn.classList.add('active');
+      backBtn.classList.remove('active');
+      if (ttCardState.front.imageSrc) {
+        frontDock.style.display = 'block';
+      }
+      backDock.style.display = 'none';
+    } else {
+      backView.classList.add('active-side');
+      frontView.classList.remove('active-side');
+      backBtn.classList.add('active');
+      frontBtn.classList.remove('active');
+      if (ttCardState.back.imageSrc) {
+        backDock.style.display = 'block';
+      }
+      frontDock.style.display = 'none';
+    }
+  }
+
+  function setTtCardOrientation(orient) {
+    var viewport = document.getElementById('tt-card-viewport');
+    var horizBtn = document.getElementById('tt-orient-horiz-btn');
+    var vertBtn = document.getElementById('tt-orient-vert-btn');
+
+    if (orient === 'portrait') {
+      viewport.classList.add('portrait-mode');
+      vertBtn.classList.add('active');
+      horizBtn.classList.remove('active');
+    } else {
+      viewport.classList.remove('portrait-mode');
+      horizBtn.classList.add('active');
+      vertBtn.classList.remove('active');
+    }
+  }
+
+  function handleTtFileSelect(input, side) {
+    if (!input.files || !input.files[0]) return;
+    var file = input.files[0];
+    var reader = new FileReader();
+
+    var existingUrlInput = document.getElementById('tt-existing-' + side + '-url');
+    if (existingUrlInput) {
+      existingUrlInput.value = '';
+      existingUrlInput.disabled = true;
+    }
+    input.disabled = false;
+
+    reader.onload = function(e) {
+      var src = e.target.result;
+      ttCardState[side].imageSrc = src;
+
+      var img = document.getElementById('tt-' + side + '-preview-img');
+      var placeholder = document.getElementById('tt-' + side + '-placeholder');
+      var dropzone = document.getElementById('tt-dropzone-' + side);
+      var dropLabel = document.getElementById('tt-dropzone-label-' + side);
+      var errBanner = document.getElementById('tt-upload-error-banner');
+
+      img.src = src;
+      img.style.display = 'block';
+      if (placeholder) placeholder.style.display = 'none';
+      if (dropzone) dropzone.classList.add('has-file');
+      if (dropLabel) dropLabel.innerText = '✓ ' + (side === 'front' ? 'Front' : 'Back') + ' Image Uploaded: ' + file.name;
+      if (errBanner) errBanner.style.display = 'none';
+
+      switchTtCardSide(side);
+      resetTtImageTransform(side);
+    };
+
+    reader.readAsDataURL(file);
+  }
+
+  function updateTtImageTransform(side) {
+    var scaleSlider = document.getElementById('tt-' + side + '-scale-slider');
+    var xSlider = document.getElementById('tt-' + side + '-x-slider');
+    var ySlider = document.getElementById('tt-' + side + '-y-slider');
+    
+    var zoomText = document.getElementById('tt-' + side + '-zoom-val');
+    var xText = document.getElementById('tt-' + side + '-x-val');
+    var yText = document.getElementById('tt-' + side + '-y-val');
+    var img = document.getElementById('tt-' + side + '-preview-img');
+
+    if (scaleSlider) {
+      ttCardState[side].scale = parseInt(scaleSlider.value, 10);
+      if (zoomText) zoomText.innerText = scaleSlider.value + '%';
+    }
+    if (xSlider) {
+      ttCardState[side].x = parseInt(xSlider.value, 10);
+      if (xText) xText.innerText = xSlider.value + 'px';
+    }
+    if (ySlider) {
+      ttCardState[side].y = parseInt(ySlider.value, 10);
+      if (yText) yText.innerText = ySlider.value + 'px';
+    }
+
+    if (img) {
+      var s = ttCardState[side].scale / 100;
+      var r = ttCardState[side].rotation;
+      var x = ttCardState[side].x;
+      var y = ttCardState[side].y;
+      img.style.transform = 'translate(' + x + 'px, ' + y + 'px) scale(' + s + ') rotate(' + r + 'deg)';
+    }
+  }
+
+  function rotateTtImage(side) {
+    ttCardState[side].rotation = (ttCardState[side].rotation + 90) % 360;
+    updateTtImageTransform(side);
+  }
+
+  function centerTtImage(side) {
+    ttCardState[side].x = 0;
+    ttCardState[side].y = 0;
+    var xSlider = document.getElementById('tt-' + side + '-x-slider');
+    var ySlider = document.getElementById('tt-' + side + '-y-slider');
+    if (xSlider) xSlider.value = 0;
+    if (ySlider) ySlider.value = 0;
+    updateTtImageTransform(side);
+  }
+
+  function resetTtImageTransform(side) {
+    ttCardState[side].scale = 100;
+    ttCardState[side].rotation = 0;
+    ttCardState[side].x = 0;
+    ttCardState[side].y = 0;
+
+    var scaleSlider = document.getElementById('tt-' + side + '-scale-slider');
+    var xSlider = document.getElementById('tt-' + side + '-x-slider');
+    var ySlider = document.getElementById('tt-' + side + '-y-slider');
+    
+    if (scaleSlider) scaleSlider.value = 100;
+    if (xSlider) xSlider.value = 0;
+    if (ySlider) ySlider.value = 0;
+
+    updateTtImageTransform(side);
+  }
+
+  var editingLineKey = null;
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var lineKey = urlParams.get('edit_line_key');
+
+    if (lineKey) {
+      editingLineKey = lineKey;
+      fetch('/cart.js')
+        .then(function(res) { return res.json(); })
+        .then(function(cart) {
+          var matchedItem = cart.items.find(function(item) {
+            return item.key === lineKey;
+          });
+          if (matchedItem && matchedItem.properties) {
+            var props = matchedItem.properties;
+            
+            // Restore Target NFC Link
+            if (props['Target NFC Link']) {
+              var targetInput = document.getElementById('tt-nfc-target-url');
+              if (targetInput) targetInput.value = props['Target NFC Link'];
+            }
+
+            // Restore Front Artwork preview
+            if (props['Front Artwork']) {
+              ttCardState.front.imageSrc = props['Front Artwork'];
+              var frontImg = document.getElementById('tt-front-preview-img');
+              var frontPlaceholder = document.getElementById('tt-front-placeholder');
+              var frontDropzone = document.getElementById('tt-dropzone-front');
+              var frontDropLabel = document.getElementById('tt-dropzone-label-front');
+              var existingFront = document.getElementById('tt-existing-front-url');
+              if (existingFront) {
+                existingFront.value = props['Front Artwork'];
+                existingFront.disabled = false;
+              }
+              if (frontImg) { frontImg.src = props['Front Artwork']; frontImg.style.display = 'block'; }
+              if (frontPlaceholder) frontPlaceholder.style.display = 'none';
+              if (frontDropzone) frontDropzone.classList.add('has-file');
+              if (frontDropLabel) frontDropLabel.innerText = '✓ Existing Front Image (Click to Upload New)';
+            }
+
+            // Restore Back Artwork preview
+            if (props['Back Artwork']) {
+              ttCardState.back.imageSrc = props['Back Artwork'];
+              var backImg = document.getElementById('tt-back-preview-img');
+              var backPlaceholder = document.getElementById('tt-back-placeholder');
+              var backDropzone = document.getElementById('tt-dropzone-back');
+              var backDropLabel = document.getElementById('tt-dropzone-label-back');
+              var existingBack = document.getElementById('tt-existing-back-url');
+              if (existingBack) {
+                existingBack.value = props['Back Artwork'];
+                existingBack.disabled = false;
+              }
+              if (backImg) { backImg.src = props['Back Artwork']; backImg.style.display = 'block'; }
+              if (backPlaceholder) backPlaceholder.style.display = 'none';
+              if (backDropzone) backDropzone.classList.add('has-file');
+              if (backDropLabel) backDropLabel.innerText = '✓ Existing Back Image (Click to Upload New)';
+            }
+
+            // Restore Customization Specs (Scale, X, Y, Rotation)
+            if (props['_Customization Specs']) {
+              try {
+                var specs = JSON.parse(props['_Customization Specs']);
+                if (specs.front) {
+                  if (typeof specs.front.scale !== 'undefined') ttCardState.front.scale = specs.front.scale;
+                  if (typeof specs.front.x !== 'undefined') ttCardState.front.x = specs.front.x;
+                  if (typeof specs.front.y !== 'undefined') ttCardState.front.y = specs.front.y;
+                  if (typeof specs.front.rotation !== 'undefined') ttCardState.front.rotation = specs.front.rotation;
+                  
+                  var fScale = document.getElementById('tt-front-scale-slider');
+                  var fX = document.getElementById('tt-front-x-slider');
+                  var fY = document.getElementById('tt-front-y-slider');
+                  if (fScale) fScale.value = ttCardState.front.scale;
+                  if (fX) fX.value = ttCardState.front.x;
+                  if (fY) fY.value = ttCardState.front.y;
+                  updateTtImageTransform('front');
+                }
+                if (specs.back) {
+                  if (typeof specs.back.scale !== 'undefined') ttCardState.back.scale = specs.back.scale;
+                  if (typeof specs.back.x !== 'undefined') ttCardState.back.x = specs.back.x;
+                  if (typeof specs.back.y !== 'undefined') ttCardState.back.y = specs.back.y;
+                  if (typeof specs.back.rotation !== 'undefined') ttCardState.back.rotation = specs.back.rotation;
+                  
+                  var bScale = document.getElementById('tt-back-scale-slider');
+                  var bX = document.getElementById('tt-back-x-slider');
+                  var bY = document.getElementById('tt-back-y-slider');
+                  if (bScale) bScale.value = ttCardState.back.scale;
+                  if (bX) bX.value = ttCardState.back.x;
+                  if (bY) bY.value = ttCardState.back.y;
+                  updateTtImageTransform('back');
+                }
+              } catch(err) {}
+            }
+
+            switchTtCardSide('front');
+
+            // Change submit button text
+            var submitBtn = document.querySelector('.tt-btn-add-to-cart');
+            if (submitBtn) {
+              submitBtn.innerText = '💾 UPDATE CARD IN CART • $29.99';
+            }
+          }
+        }).catch(function(err){ console.log(err); });
+    }
+  });
+
+  function prepareTtOrderSubmissions(e) {
+    // 1. Require Front Artwork upload before adding to cart!
+    var frontFileInput = document.getElementById('tt-file-input-front');
+    var existingFront = document.getElementById('tt-existing-front-url');
+    if (!ttCardState.front.imageSrc && (!frontFileInput || !frontFileInput.files || !frontFileInput.files.length) && (!existingFront || !existingFront.value)) {
+      e.preventDefault();
+      e.stopPropagation();
+      var errBanner = document.getElementById('tt-upload-error-banner');
+      if (errBanner) {
+        errBanner.style.display = 'block';
+        errBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return false;
+    }
+
+    if (frontFileInput && frontFileInput.files && frontFileInput.files.length) {
+      frontFileInput.disabled = false;
+      if (existingFront) existingFront.disabled = true;
+    } else if (existingFront && existingFront.value) {
+      existingFront.disabled = false;
+      if (frontFileInput) frontFileInput.disabled = true;
+    }
+
+    var backFileInput = document.getElementById('tt-file-input-back');
+    var existingBack = document.getElementById('tt-existing-back-url');
+    if (backFileInput && backFileInput.files && backFileInput.files.length) {
+      backFileInput.disabled = false;
+      if (existingBack) existingBack.disabled = true;
+    } else if (existingBack && existingBack.value) {
+      existingBack.disabled = false;
+      if (backFileInput) backFileInput.disabled = true;
+    }
+
+    // 2. Prepare hidden specs data (prefixed with _ so Shopify hides from customer view)
+    var specsInput = document.getElementById('tt-hidden-specs-data');
+    if (specsInput) {
+      specsInput.value = JSON.stringify({
+        front: { scale: ttCardState.front.scale, x: ttCardState.front.x, y: ttCardState.front.y, rotation: ttCardState.front.rotation },
+        back: { scale: ttCardState.back.scale, x: ttCardState.back.x, y: ttCardState.back.y, rotation: ttCardState.back.rotation }
+      });
+    }
+
+    // Show Loading Spinner on Submit Button
+    var submitBtn = document.querySelector('.tt-btn-add-to-cart');
+    if (submitBtn) {
+      var isUpdate = Boolean(editingLineKey);
+      submitBtn.style.opacity = '0.8';
+      submitBtn.style.cursor = 'wait';
+      submitBtn.innerHTML = '<span class="tt-btn-spinner"></span> ' + (isUpdate ? 'Updating Card in Cart...' : 'Uploading Artwork & Adding to Cart...');
+    }
+
+    // 3. If editing an existing item in cart, remove old line item first
+    if (editingLineKey) {
+      e.preventDefault();
+      fetch('/cart/change.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: editingLineKey, quantity: 0 })
+      }).then(function() {
+        var form = document.getElementById('tt-custom-card-form');
+        editingLineKey = null;
+        form.submit();
+      }).catch(function() {
+        var form = document.getElementById('tt-custom-card-form');
+        editingLineKey = null;
+        form.submit();
+      });
+      return false;
+    }
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Custom Card Designer",
+  "tag": "section",
+  "class": "tt-custom-card-section",
+  "presets": [
+    {
+      "name": "Custom Card Designer"
+    }
+  ]
+}
+{% endschema %}
