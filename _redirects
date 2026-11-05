@@ -1,0 +1,6 @@
+# TapGreetings Cloudflare Edge Redirects
+/holidays /delphine-holidays/ 301
+/01 /delphine-holidays/ 301
+/tools https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide 302
+/reprogram https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide 302
+/shop https://shop.tapthingy.com/collections/tapgreetings 302

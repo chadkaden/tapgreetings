@@ -2,18 +2,22 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "tapgreetings",
   "compatibility_date": "2026-11-03",
+  "routes": [
+    {
+      "pattern": "tapgreetings.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.tapgreetings.com",
+      "custom_domain": true
+    }
+  ],
   "observability": {
     "enabled": true
   },
   "assets": {
     "directory": ".",
-    "exclude": [
-      ".git",
-      ".git/**",
-      "node_modules",
-      "node_modules/**",
-      "scratch",
-      "scratch/**"
-    ]
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "single-page-application"
   }
 }

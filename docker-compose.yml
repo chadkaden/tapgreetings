@@ -1,0 +1,12 @@
+services:
+  tapgreetings:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: tapgreetings:latest
+    container_name: tapgreetings-app
+    ports:
+      - "3016:80"
+    restart: always
+    environment:
+      - NODE_ENV=production

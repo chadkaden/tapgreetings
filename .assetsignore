@@ -1,0 +1,30 @@
+# Ignore source files, git, and local scratch
+.git
+.git/**
+node_modules
+node_modules/**
+scratch
+scratch/**
+.env*
+*.log
+
+# Ignore large raw downloads and installers
+dlimages
+dlimages/**
+*.msi
+*.exe
+
+# Ignore server/build config files from public asset serving
+Dockerfile
+docker-compose.yml
+nginx.conf
+.dockerignore
+.assetsignore
+wrangler.jsonc
+package.json
+package-lock.json
+README.md
+scripts
+scripts/**
+data
+data/**

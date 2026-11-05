@@ -5,9 +5,12 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node --watch server.js",
-    "build:cards": "node scripts/generate_cards.js"
+    "start": "docker compose up -d",
+    "stop": "docker compose down",
+    "build:cards": "node scripts/generate_cards.cjs",
+    "build:csv": "node scripts/generate_shopify_products_csv.cjs",
+    "deploy:cf": "wrangler deploy",
+    "deploy:dry": "wrangler deploy --dry-run"
   },
   "keywords": [
     "nfc",
@@ -15,7 +18,8 @@
     "tapthingy",
     "digital-cards",
     "video-greetings",
-    "shopify"
+    "shopify",
+    "cloudflare"
   ],
   "author": "chadkaden",
   "license": "UNLICENSED"
