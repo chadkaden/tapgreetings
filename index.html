@@ -1,251 +1,340 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TapGreetings - Interactive Digital & NFC Video Greeting Cards</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              50: '#fdf4ff',
-              100: '#fae8ff',
-              400: '#e879f9',
-              500: '#d946ef',
-              600: '#c026d3',
-              700: '#a21caf',
-              900: '#4a044e',
-              950: '#2e0231'
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TapGreetings - Smart NFC Keepsake Greeting Cards | TapGreetings by TapThingy</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fdf4ff',
+                            100: '#fae8ff',
+                            200: '#f5d0fe',
+                            400: '#e879f9',
+                            500: '#d946ef',
+                            600: '#c026d3',
+                            700: '#a21caf',
+                            900: '#4a044e',
+                            950: '#1b051f'
+                        },
+                        cyanAccent: {
+                            400: '#22d3ee',
+                            500: '#06b6d4',
+                            600: '#0891b2'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif']
+                    }
+                }
             }
-          },
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            display: ['"Space Grotesk"', 'sans-serif']
-          }
         }
-      }
-    }
-  </script>
-  <style>
-    .glow-effect {
-      box-shadow: 0 0 35px -5px rgba(217, 70, 239, 0.35);
-    }
-    .card-preserve-3d {
-      transform-style: preserve-3d;
-      perspective: 1200px;
-    }
-    .backface-hidden {
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-    }
-  </style>
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .glow-card {
+            box-shadow: 0 10px 40px -10px rgba(217, 70, 239, 0.35);
+        }
+        .glow-cyan {
+            box-shadow: 0 10px 40px -10px rgba(6, 182, 212, 0.4);
+        }
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+    </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-brand-500 selection:text-white">
-  
-  <!-- Global Top Bar -->
-  <header class="border-b border-slate-800 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center font-display font-bold text-white text-lg shadow-md shadow-brand-500/20">
-          TG
+<body class="font-sans bg-slate-950 text-slate-100 min-h-screen transition-colors duration-300 selection:bg-brand-500 selection:text-white">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-brand-500/30 px-4 sm:px-8 py-3.5 flex justify-between items-center shadow-lg">
+        <a href="./index.html" class="font-display text-xl sm:text-2xl font-bold text-white flex items-center gap-2.5 drop-shadow-[0_0_15px_rgba(217,70,239,0.5)]">
+            <span class="w-8 h-8 rounded-xl bg-gradient-to-tr from-brand-600 to-cyan-500 flex items-center justify-center text-sm font-black text-white shadow-md">TG</span>
+            <span>TapGreetings</span>
+        </a>
+        <div class="flex items-center gap-5">
+            <nav class="hidden sm:flex gap-6 text-sm font-semibold text-slate-300">
+                <a href="./index.html" class="hover:text-brand-400 transition-colors">Home</a>
+                <a href="./index.html#collection" class="hover:text-brand-400 transition-colors">All Cards</a>
+                <a href="https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card" target="_blank" class="hover:text-cyanAccent-400 transition-colors">Custom Studio</a>
+                <a href="https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" target="_blank" class="hover:text-brand-400 transition-colors">NFC Tools</a>
+            </nav>
+            <button onclick="toggleTheme()" class="w-9 h-9 rounded-full bg-gradient-to-r from-brand-600 to-indigo-600 text-white flex items-center justify-center shadow-md hover:scale-105 transition-transform" title="Toggle Light/Dark Mode">
+                <i class="fa-solid fa-moon" id="themeIcon"></i>
+            </button>
         </div>
-        <span class="font-display font-bold text-xl tracking-tight bg-gradient-to-r from-white via-slate-200 to-brand-400 bg-clip-text text-transparent">TapGreetings</span>
-      </div>
-      
-      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
-        <a href="#featured" class="hover:text-white transition">Featured Greetings</a>
-        <a href="#custom-upload" class="hover:text-white transition">Create Your Own</a>
-        <a href="#how-it-works" class="hover:text-white transition">How NFC Works</a>
-        <a href="https://shop.tapgreetings.com" target="_blank" class="hover:text-brand-400 transition flex items-center gap-1.5">
-          Shopify Store
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-        </a>
-      </nav>
+    </header>
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                icon.className = 'fa-solid fa-sun';
+                localStorage.setItem('tapgreetings_theme', 'light');
+            } else {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                icon.className = 'fa-solid fa-moon';
+                localStorage.setItem('tapgreetings_theme', 'dark');
+            }
+        }
+        const savedTheme = localStorage.getItem('tapgreetings_theme') || 'dark';
+        if (savedTheme === 'light') {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.classList.add('light');
+            document.addEventListener('DOMContentLoaded', () => {
+                const icon = document.getElementById('themeIcon');
+                if (icon) icon.className = 'fa-solid fa-sun';
+            });
+        }
+    </script>
 
-      <div class="flex items-center gap-3">
-        <a href="https://shop.tapthingy.com/collections/tapgreetings" target="_blank" class="bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-lg shadow-brand-500/25 transition duration-200">
-          Shop TapGreetings
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <main class="flex-grow">
-    <section class="relative overflow-hidden py-20 lg:py-28">
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-brand-900/30 via-slate-950 to-slate-950"></div>
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+    <main class="max-w-7xl mx-auto px-4 py-12">
         
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-brand-500/30 bg-brand-500/10 text-brand-300 text-xs sm:text-sm font-medium mb-6">
-          <span class="w-2 h-2 rounded-full bg-brand-400 animate-pulse"></span>
-          Powered by TapThingy NFC Hardware & Cloud Engine
-        </div>
+        <!-- Hero Section -->
+        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-950 via-slate-900 to-brand-950/60 p-8 sm:p-16 mb-12 shadow-2xl border-2 border-brand-500/40 text-center backdrop-blur-md glow-card">
+            <div class="absolute -right-8 -bottom-8 opacity-15 pointer-events-none text-9xl">💌</div>
+            <div class="absolute -left-8 -top-8 opacity-15 pointer-events-none text-9xl">⚡</div>
+            
+            <span class="inline-block bg-brand-500/20 text-brand-300 border border-brand-400/40 text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-4 shadow">
+                ❄️ Holiday Season &amp; All Occasions &bull; Series 1
+            </span>
+            
+            <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-extrabold bg-gradient-to-r from-white via-pink-200 to-cyan-300 bg-clip-text text-transparent mb-6 drop-shadow-[0_0_30px_rgba(217,70,239,0.7)]">
+                TapGreetings
+            </h1>
+            
+            <p class="text-base sm:text-xl text-slate-300 max-w-3xl mx-auto mb-8 leading-relaxed">
+                Smart credit card-sized NFC keepsake greeting cards that come alive with a single smartphone tap. Immersive 4K video greetings, customizable artwork, and rewritable NTAG215 microchips.
+            </p>
 
-        <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6">
-          Greetings that come alive with a single <span class="bg-gradient-to-r from-brand-400 via-pink-300 to-indigo-400 bg-clip-text text-transparent">Tap</span>.
-        </h1>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#collection" class="bg-gradient-to-r from-brand-600 via-pink-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold px-8 py-3.5 rounded-full shadow-lg transition-transform hover:scale-105 flex items-center gap-2">
+                    <i class="fa-solid fa-gift"></i> Explore All Greeting Cards
+                </a>
+                <a href="https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-cyanAccent-300 border border-cyan-400/50 font-bold px-8 py-3.5 rounded-full shadow-lg transition-transform hover:scale-105 flex items-center gap-2">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Create Custom Card Studio
+                </a>
+                <a href="https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-brand-300 border border-brand-500/40 font-bold px-6 py-3.5 rounded-full shadow-lg transition-transform hover:scale-105 flex items-center gap-2">
+                    <i class="fa-solid fa-bolt"></i> NFC Reprogrammer (/tools)
+                </a>
+            </div>
 
-        <p class="max-w-2xl mx-auto text-slate-400 text-base sm:text-lg mb-10 leading-relaxed">
-          Physical high-end keepsake cards paired with immersive 9:16 interactive video greetings. Choose ready-to-tap designs or upload custom video memories.
-        </p>
-
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="#custom-upload" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-white text-slate-950 font-bold hover:bg-slate-100 transition shadow-lg shadow-white/10">
-            Create Custom Tap Card
-          </a>
-          <a href="https://shop.tapgreetings.com" target="_blank" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-slate-900 border border-slate-700 text-white font-semibold hover:bg-slate-800 transition">
-            Explore Collection on Shopify
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Interactive Live Preview / Custom Upload Demo -->
-    <section id="custom-upload" class="py-16 bg-slate-900/60 border-y border-slate-800/80">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6">
-        <div class="text-center mb-12">
-          <h2 class="font-display text-3xl font-bold text-white mb-3">Custom Card Studio Preview</h2>
-          <p class="text-slate-400 text-sm sm:text-base">Upload personal artwork or video links. Test live 3D card perspective before ordering.</p>
-        </div>
-
-        <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 sm:p-10 shadow-2xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          
-          <!-- 3D Card Preview Container -->
-          <div class="flex flex-col items-center justify-center">
-            <div id="card3d" class="w-64 h-96 sm:w-72 sm:h-[430px] rounded-2xl border-2 border-slate-700 bg-gradient-to-b from-slate-900 to-slate-950 shadow-2xl overflow-hidden relative transition-all duration-300 hover:border-brand-500 glow-effect flex flex-col justify-between p-6">
-              
-              <div class="flex justify-between items-start">
-                <div class="w-10 h-7 rounded-md bg-amber-400/90 shadow-sm border border-amber-300"></div>
-                <span class="text-xs uppercase tracking-widest text-slate-400 font-mono">NTAG215 NFC</span>
-              </div>
-
-              <div id="previewCardBody" class="text-center my-auto">
-                <div class="w-16 h-16 rounded-full bg-brand-500/20 text-brand-400 flex items-center justify-center mx-auto mb-3">
-                  <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <!-- Stats Bar -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12 pt-8 border-t border-brand-500/30 max-w-3xl mx-auto text-center">
+                <div class="bg-slate-950/70 p-3.5 rounded-2xl border border-brand-500/20">
+                    <div class="font-serif text-2xl sm:text-3xl font-bold text-brand-300">12</div>
+                    <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Keepsake Cards</div>
                 </div>
-                <h4 id="previewCardTitle" class="font-display font-bold text-white text-lg">Your Custom Greeting</h4>
-                <p id="previewCardMsg" class="text-xs text-slate-400 mt-2 line-clamp-3">Tap with any iPhone or Android phone to unlock video message.</p>
-              </div>
-
-              <div class="flex justify-between items-end text-xs text-slate-400 font-mono">
-                <span>TAPGREETINGS</span>
-                <span class="text-brand-400 font-bold">CR80 PVC</span>
-              </div>
+                <div class="bg-slate-950/70 p-3.5 rounded-2xl border border-brand-500/20">
+                    <div class="font-serif text-2xl sm:text-3xl font-bold text-cyanAccent-400">4K</div>
+                    <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Motion Video &amp; Sound</div>
+                </div>
+                <div class="bg-slate-950/70 p-3.5 rounded-2xl border border-brand-500/20">
+                    <div class="font-serif text-2xl sm:text-3xl font-bold text-white">NTAG215</div>
+                    <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">100% Rewritable Chip</div>
+                </div>
+                <div class="bg-slate-950/70 p-3.5 rounded-2xl border border-brand-500/20">
+                    <div class="font-serif text-2xl sm:text-3xl font-bold text-brand-300">Dual Aspect</div>
+                    <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Vertical &amp; Horizontal</div>
+                </div>
             </div>
-          </div>
-
-          <!-- Upload Controls -->
-          <div class="space-y-4">
-            <div>
-              <label class="block text-xs font-semibold uppercase text-slate-300 mb-1">Greeting Title</label>
-              <input id="inputTitle" type="text" placeholder="e.g. Happy 30th Birthday Sarah!" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
-            </div>
-
-            <div>
-              <label class="block text-xs font-semibold uppercase text-slate-300 mb-1">Message / Note</label>
-              <textarea id="inputMsg" rows="3" placeholder="Write your card note or video caption..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-brand-500"></textarea>
-            </div>
-
-            <div>
-              <label class="block text-xs font-semibold uppercase text-slate-300 mb-1">Front Artwork Upload</label>
-              <input id="inputFrontUpload" type="file" accept="image/*" class="w-full text-xs text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-brand-600 file:text-white hover:file:bg-brand-500 cursor-pointer">
-            </div>
-
-            <div class="pt-4">
-              <a href="https://shop.tapthingy.com/collections/tapgreetings" target="_blank" class="block w-full text-center bg-brand-600 hover:bg-brand-500 text-white font-bold py-3 px-6 rounded-xl transition shadow-lg shadow-brand-500/30">
-                Continue Order on Shopify ($29.99)
-              </a>
-              <p class="text-center text-xs text-slate-500 mt-2">Free shipping on standard orders • Fast dispatch</p>
-            </div>
-
-          </div>
-
         </div>
-      </div>
-    </section>
 
-    <!-- Featured Pre-made Collection -->
-    <section id="featured" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
-        <div>
-          <h2 class="font-display text-3xl font-bold text-white mb-2">Pre-Made TapGreetings</h2>
-          <p class="text-slate-400 text-sm">Instant, curated video greeting cards ready to ship or personalize.</p>
-        </div>
-        <a href="https://shop.tapthingy.com/collections/tapgreetings" target="_blank" class="text-brand-400 hover:text-brand-300 text-sm font-semibold flex items-center gap-1">
-          View full collection on Shopify &rarr;
-        </a>
-      </div>
-
-      <div id="cardsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Rendered via JS from greetings_master.json -->
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="border-t border-slate-900 bg-slate-950 py-10 text-center text-xs text-slate-500">
-    <p>&copy; 2026 TapGreetings. All rights reserved. Powered by TapThingy & Kadenco.</p>
-  </footer>
-
-  <script>
-    // Live Studio Update Logic
-    const inputTitle = document.getElementById('inputTitle');
-    const inputMsg = document.getElementById('inputMsg');
-    const previewTitle = document.getElementById('previewCardTitle');
-    const previewMsg = document.getElementById('previewCardMsg');
-    const inputFrontUpload = document.getElementById('inputFrontUpload');
-    const card3d = document.getElementById('card3d');
-
-    inputTitle.addEventListener('input', (e) => {
-      previewTitle.textContent = e.target.value.trim() || 'Your Custom Greeting';
-    });
-
-    inputMsg.addEventListener('input', (e) => {
-      previewMsg.textContent = e.target.value.trim() || 'Tap with any iPhone or Android phone to unlock video message.';
-    });
-
-    inputFrontUpload.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(evt) {
-          card3d.style.backgroundImage = `url('${evt.target.result}')`;
-          card3d.style.backgroundSize = 'cover';
-          card3d.style.backgroundPosition = 'center';
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-
-    // Populate Initial Master Cards
-    fetch('./data/greetings_master.json')
-      .then(res => res.json())
-      .then(cards => {
-        const grid = document.getElementById('cardsGrid');
-        grid.innerHTML = cards.map(c => `
-          <div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-5 hover:border-brand-500/50 transition duration-300 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-3">
-                <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-brand-500/20 text-brand-300">${c.category}</span>
-                <span class="text-xs text-slate-500 font-mono">#${c.slug}</span>
-              </div>
-              <h3 class="font-display font-bold text-white text-lg mb-2">${c.title}</h3>
-              <p class="text-slate-400 text-xs mb-4">${c.message}</p>
+        <!-- Controls Section: Search, Filters, Orientation Toggle, Sort -->
+        <div id="collection" class="bg-slate-900/90 rounded-2xl p-6 mb-8 shadow-xl border border-brand-500/30 backdrop-blur-md flex flex-col md:flex-row gap-4 items-center justify-between">
+            <div class="flex items-center gap-3 w-full md:w-auto">
+                <h2 class="font-serif text-2xl font-bold text-white whitespace-nowrap flex items-center gap-2">
+                    <i class="fa-solid fa-boxes-stacked text-brand-400"></i> Collection
+                </h2>
+                <span id="cardCountBadge" class="bg-slate-800 text-brand-300 text-xs font-bold px-3 py-1 rounded-full border border-brand-500/30">
+                    12 Cards
+                </span>
             </div>
-            <a href="https://shop.tapthingy.com/collections/tapgreetings" target="_blank" class="mt-4 text-center w-full py-2 bg-slate-800 hover:bg-brand-600 text-white rounded-xl text-xs font-semibold transition">
-              Order on Shopify
-            </a>
-          </div>
-        `).join('');
-      })
-      .catch(() => {});
-  </script>
+
+            <div class="flex flex-wrap gap-3 w-full md:w-auto items-center justify-end">
+                <!-- Search Input -->
+                <div class="relative flex-grow sm:flex-grow-0">
+                    <input type="text" id="searchInput" placeholder="Search cards, occasions..." oninput="filterCards()" class="w-full sm:w-52 bg-slate-950 text-white placeholder-slate-400 text-sm px-4 py-2 rounded-xl border border-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                </div>
+
+                <!-- Front / Back Toggle -->
+                <div class="flex bg-slate-950 p-1 rounded-xl border border-slate-700">
+                    <button onclick="setSide('front')" id="btnFront" class="px-3 py-1 text-xs font-bold rounded-lg bg-brand-600 text-white shadow transition-all">Front</button>
+                    <button onclick="setSide('back')" id="btnBack" class="px-3 py-1 text-xs font-bold rounded-lg text-slate-400 transition-all">Back</button>
+                </div>
+
+                <!-- Orientation / Aspect Filter -->
+                <select id="aspectFilter" onchange="filterCards()" class="bg-slate-950 text-white text-sm px-3.5 py-2 rounded-xl border border-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    <option value="">All Orientations</option>
+                    <option value="portrait">↕ Vertical (Portrait)</option>
+                    <option value="landscape">↔ Horizontal (Landscape)</option>
+                </select>
+
+                <!-- Occasion Filter -->
+                <select id="categoryFilter" onchange="filterCards()" class="bg-slate-950 text-white text-sm px-3.5 py-2 rounded-xl border border-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    <option value="">All Occasions</option>
+                    <option value="Holiday">🎄 Holiday &amp; Winter</option>
+                    <option value="Black Friday">🛍️ Black Friday</option>
+                    <option value="Birthday">🎂 Birthday</option>
+                    <option value="Anniversary">💍 Anniversary</option>
+                    <option value="Thank You">🙏 Thank You</option>
+                    <option value="Congratulations">🎉 Congratulations</option>
+                    <option value="Wedding">👰 Wedding</option>
+                    <option value="Everyday">💜 Thinking of You / Baby</option>
+                </select>
+
+                <!-- Sort Order -->
+                <select id="sortSelect" onchange="filterCards()" class="bg-slate-950 text-white text-sm px-3.5 py-2 rounded-xl border border-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    <option value="id-asc" selected>Card # (01 &rarr; 12)</option>
+                    <option value="id-desc">Card # (12 &rarr; 01)</option>
+                    <option value="title-asc">Title (A &rarr; Z)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Cards Grid Container -->
+        <div id="cardsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6">
+            <!-- Dynamically populated via JS -->
+        </div>
+
+        <!-- Dedicated Web NFC Reprogrammer Feature Box -->
+        <div class="mt-16 bg-slate-900/90 rounded-3xl p-8 sm:p-12 border-2 border-cyan-500/40 glow-cyan text-center max-w-4xl mx-auto">
+            <span class="inline-block bg-cyan-500/20 text-cyan-300 text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider mb-4 border border-cyan-500/30">
+                ⚡ TapThingy NFC Web Reprogrammer Tool
+            </span>
+            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white mb-3">
+                Update or Rewrite Any Card in Seconds
+            </h3>
+            <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto mb-6 leading-relaxed">
+                Want to change where your card links? Open our Web NFC Tool directly in your browser on Android Chrome, or use free NFC Tools on iPhone.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" target="_blank" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-8 py-3.5 rounded-2xl shadow-lg shadow-cyan-500/30 transition-transform hover:scale-105 inline-flex items-center gap-2">
+                    <i class="fa-solid fa-bolt"></i> Open Reprogrammer Webtool (/tools) ↗
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        const cardsData = [{"id":"01","slug":"01","title":"Winter Gala & Holiday Sparkle","alias":"Seraphina, The Winter Gala Hostess","header":"CARD 01 OF 12","category":"Holiday","occasion":"Christmas & Winter Holidays","aspect":"portrait","frontImg":"./public/cards/01_front.jpg","backImg":"./public/cards/01_back.jpg","shopifyUrl":"https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card"},{"id":"02","slug":"02","title":"Black Friday VIP Spree","alias":"Briar, The Midnight Shopper","header":"CARD 02 OF 12","category":"Black Friday","occasion":"Black Friday & Cyber Shopping","aspect":"portrait","frontImg":"./public/cards/02_front.jpg","backImg":"./public/cards/02_back.jpg","shopifyUrl":"https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card"},{"id":"03","slug":"03","title":"Cozy Fireside & Christmas Hearth","alias":"The Hearthside Sanctuary","header":"CARD 03 OF 12","category":"Holiday","occasion":"Christmas & Winter Holidays","aspect":"landscape","frontImg":"./public/cards/03_front.svg","backImg":"./public/cards/03_back.svg","shopifyUrl":"https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card"},{"id":"04","slug":"04","title":"Midnight Champagne & Fireworks","alias":"The New Year Sovereign","header":"CARD 04 OF 12","category":"Holiday","occasion":"New Year's Eve & New Beginnings","aspect":"landscape","frontImg":"./public/cards/04_front.svg","backImg":"./public/cards/04_back.svg","shopifyUrl":"https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card"},{"id":"05","slug":"05","title":"Neon Birthday Glow Bash","alias":"The Electric Celebrator","header":"CARD 05 OF 12","category":"Birthday","occasion":"Birthday","aspect":"portrait","frontImg":"./public/cards/05_front.svg","backImg":"./public/cards/05_back.svg","shopifyUrl":"https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card"},{"id":"06","slug":"06","title":"Golden Milestone Anniversary","alias":"The Eternal Bond","header":"CARD 06 OF 12","category":"Anniversary","occasion":"Anniversary & Romance","aspect":"portrait","frontImg":"./public/cards/06_front.svg","backImg":"./public/cards/06_back.svg","shopifyUrl":"https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card"},{"id":"07","slug":"07","title":"Heartfelt Botanical Gratitude","alias":"The Meadow of Thanks","header":"CARD 07 OF 12","category":"Thank You","occasion":"Appreciation & Thank You","aspect":"portrait","frontImg":"./public/cards/07_front.svg","backImg":"./public/cards/07_back.svg","shopifyUrl":"https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card"},{"id":"08","slug":"08","title":"Unstoppable Champion & Victory","alias":"The Pinnacle of Triumph","header":"CARD 08 OF 12","category":"Congratulations","occasion":"Graduation, Promotion & Big Wins","aspect":"landscape","frontImg":"./public/cards/08_front.svg","backImg":"./public/cards/08_back.svg","shopifyUrl":"https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card"},{"id":"09","slug":"09","title":"Thinking of You & Warm Hugs","alias":"A Pocket Hug Across the Miles","header":"CARD 09 OF 12","category":"Everyday","occasion":"Thinking of You & Encouragement","aspect":"portrait","frontImg":"./public/cards/09_front.svg","backImg":"./public/cards/09_back.svg","shopifyUrl":"https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card"},{"id":"10","slug":"10","title":"Sweet Baby Arrival & Starlight","alias":"The Celestial Welcome","header":"CARD 10 OF 12","category":"Everyday","occasion":"Baby Shower & New Arrival","aspect":"landscape","frontImg":"./public/cards/10_front.svg","backImg":"./public/cards/10_back.svg","shopifyUrl":"https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card"},{"id":"11","slug":"11","title":"Forever Vows & Wedding Elegance","alias":"The Sacred Union","header":"CARD 11 OF 12","category":"Wedding","occasion":"Wedding Day & Nuptials","aspect":"portrait","frontImg":"./public/cards/11_front.svg","backImg":"./public/cards/11_back.svg","shopifyUrl":"https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card"},{"id":"12","slug":"custom","title":"Custom NFC Video TapGreeting Card","alias":"Personalized Studio Edition","header":"FEATURED STUDIO","category":"Custom","occasion":"Any Occasion & Personalized Gift","aspect":"portrait","frontImg":"./public/cards/01_front.jpg","backImg":"./public/cards/01_back.jpg","shopifyUrl":"https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card"}];
+
+        let currentSide = 'front';
+
+        function setSide(side) {
+            currentSide = side;
+            const btnF = document.getElementById('btnFront');
+            const btnB = document.getElementById('btnBack');
+            if (side === 'front') {
+                btnF.className = 'px-3 py-1 text-xs font-bold rounded-lg bg-brand-600 text-white shadow transition-all';
+                btnB.className = 'px-3 py-1 text-xs font-bold rounded-lg text-slate-400 transition-all';
+            } else {
+                btnB.className = 'px-3 py-1 text-xs font-bold rounded-lg bg-brand-600 text-white shadow transition-all';
+                btnF.className = 'px-3 py-1 text-xs font-bold rounded-lg text-slate-400 transition-all';
+            }
+            filterCards();
+        }
+
+        function renderCards(data) {
+            const grid = document.getElementById('cardsGrid');
+            const badge = document.getElementById('cardCountBadge');
+            badge.innerText = data.length + ' Cards';
+
+            if (data.length === 0) {
+                grid.innerHTML = '<div class="col-span-full text-center py-16 text-slate-400 font-serif text-lg">No matching greeting cards found ✨</div>';
+                return;
+            }
+
+            let html = '';
+            data.forEach(c => {
+                const isLand = c.aspect === 'landscape';
+                const imgSrc = currentSide === 'back' && c.backImg ? c.backImg : c.frontImg;
+                const aspectClass = isLand ? 'aspect-[3/2]' : 'aspect-[2/3]';
+
+                html += `
+                    <a href="./${c.slug}/index.html" class="group bg-slate-900 rounded-2xl overflow-hidden shadow-xl border border-slate-800 hover:border-brand-500 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between glow-card">
+                        <div class="relative w-full ${aspectClass} bg-slate-950 overflow-hidden">
+                            <img src="${imgSrc}" alt="${c.title}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-2.5 right-2.5 bg-slate-950/80 backdrop-blur-sm text-[10px] font-bold px-2 py-0.5 rounded-md border border-slate-700 ${isLand ? 'text-cyanAccent-300' : 'text-brand-300'}">
+                                ${isLand ? '↔ Horizontal' : '↕ Vertical'}
+                            </div>
+                        </div>
+                        <div class="p-4 flex flex-col gap-1.5 flex-grow justify-between">
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-[10px] font-bold text-brand-400 tracking-wider uppercase">${c.header}</span>
+                                    <span class="text-[9px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded-full font-semibold border border-slate-700">${c.category}</span>
+                                </div>
+                                <div class="font-serif text-lg font-bold text-white group-hover:text-brand-300 transition-colors leading-snug">${c.title}</div>
+                                <div class="text-xs text-slate-400 italic line-clamp-1">${c.alias}</div>
+                            </div>
+                            <div class="mt-3 pt-2.5 border-t border-slate-800 flex justify-between items-center text-xs font-bold text-cyanAccent-400">
+                                <span>View TapGreeting &rarr;</span>
+                                <span class="text-white bg-brand-600/30 px-2 py-0.5 rounded-md text-[11px]">$29.99</span>
+                            </div>
+                        </div>
+                    </a>
+                `;
+            });
+            grid.innerHTML = html;
+        }
+
+        function filterCards() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const aspect = document.getElementById('aspectFilter').value;
+            const category = document.getElementById('categoryFilter').value;
+            const sort = document.getElementById('sortSelect').value;
+
+            let filtered = cardsData.filter(c => {
+                const matchesQuery = c.title.toLowerCase().includes(query) || c.alias.toLowerCase().includes(query) || c.category.toLowerCase().includes(query) || c.occasion.toLowerCase().includes(query);
+                const matchesAspect = aspect === '' || c.aspect === aspect;
+                const matchesCategory = category === '' || c.category === category || c.occasion.includes(category);
+                return matchesQuery && matchesAspect && matchesCategory;
+            });
+
+            if (sort === 'id-asc') {
+                filtered.sort((a, b) => parseInt(a.id || 0) - parseInt(b.id || 0));
+            } else if (sort === 'id-desc') {
+                filtered.sort((a, b) => parseInt(b.id || 0) - parseInt(a.id || 0));
+            } else if (sort === 'title-asc') {
+                filtered.sort((a, b) => a.title.localeCompare(b.title));
+            }
+
+            renderCards(filtered);
+        }
+
+        // Initial render
+        filterCards();
+    </script>
+
+    <footer class="text-center py-12 px-4 text-xs sm:text-sm text-slate-400 border-t border-slate-800/80 mt-20 flex flex-col items-center gap-6">
+        <div class="flex flex-wrap justify-center gap-6 text-xl text-brand-400">
+            <a href="https://instagram.com/tapgreetings" target="_blank" class="hover:text-cyanAccent-400 transition-transform hover:scale-110" title="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="https://tiktok.com/@tapgreetings" target="_blank" class="hover:text-cyanAccent-400 transition-transform hover:scale-110" title="TikTok"><i class="fa-brands fa-tiktok"></i></a><a href="https://twitter.com/tapgreetings" target="_blank" class="hover:text-cyanAccent-400 transition-transform hover:scale-110" title="Twitter / X"><i class="fa-brands fa-twitter"></i></a><a href="https://youtube.com/@tapthingy" target="_blank" class="hover:text-cyanAccent-400 transition-transform hover:scale-110" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <p class="max-w-md leading-relaxed text-slate-400">
+            &copy; 2026 TapGreetings. Powered by <a href="https://tapthingy.com" target="_blank" class="text-brand-400 font-bold hover:underline">TapThingy</a> smart hardware & OTA dynamic cloud routing.
+        </p>
+    </footer>
 </body>
 </html>
+

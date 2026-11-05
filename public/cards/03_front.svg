@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
+  <defs>
+    <linearGradient id="grad_03" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c0d14" />
+      <stop offset="50%" stop-color="#141829" />
+      <stop offset="100%" stop-color="#1e1430" />
+    </linearGradient>
+  </defs>
+  <rect width="900" height="600" rx="36" fill="url(#grad_03)" stroke="#fbbf24" stroke-width="5"/>
+  <rect x="18" y="18" width="864" height="564" rx="26" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2"/>
+  
+  <text x="40" y="65" fill="#fbbf24" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="22" letter-spacing="2">TAPGREETINGS</text>
+  <text x="860" y="65" fill="rgba(255,255,255,0.7)" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="16" text-anchor="end">CARD #03 ↔ HORIZONTAL</text>
+  
+  <text x="450" y="260" font-size="76" text-anchor="middle">🔥🎄✨</text>
+  <text x="450" y="335" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="32" text-anchor="middle">Cozy Fireside Hearth</text>
+  <text x="450" y="375" fill="#fbbf24" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="18" text-anchor="middle">Christmas & Winter Holiday</text>
+  <text x="450" y="415" fill="rgba(255,255,255,0.8)" font-family="system-ui, -apple-system, sans-serif" font-size="15" text-anchor="middle">Crackling Pine Logs • Warm Cocoa • Winter Hearth</text>
+  
+  <rect x="300" y="525" width="300" height="38" rx="19" fill="rgba(255,255,255,0.08)" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="450" y="550" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="13" text-anchor="middle">⚡ NTAG215 • 30MIL CR80 PVC</text>
+</svg>

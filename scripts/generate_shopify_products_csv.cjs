@@ -5,7 +5,8 @@ const greetingsFilePath = path.join(__dirname, '../data/greetings_master.json');
 const outputCsvPath = path.join(__dirname, '../data/tapgreetings_shopify_products.csv');
 
 const rawData = fs.readFileSync(greetingsFilePath, 'utf8');
-const greetings = JSON.parse(rawData);
+const parsed = JSON.parse(rawData);
+const greetings = Array.isArray(parsed) ? parsed : (parsed.cards || []);
 
 function escapeCsvField(val) {
   if (val === null || val === undefined) return '""';
@@ -93,18 +94,20 @@ rows.push([
 
 // 2. Add Pre-Made Flow Greetings
 greetings.forEach((card, idx) => {
+  const cardMessage = card.message || (card.narrative && card.narrative.card_back_lore) || '';
+  const frontImg = card.frontImage || (card.assets && card.assets.front_image) || '';
   const handle = `tapgreeting-${card.slug}-${card.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
   const desc = `
 <div class="tapgreeting-card-desc" style="font-family: -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; color: #1e293b;">
-  <h3>${card.headline}</h3>
-  <p>${card.message}</p>
+  <h3>${card.headline || card.title}</h3>
+  <p>${cardMessage}</p>
   <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin-top: 14px;">
-    <strong>⚡ NFC Instant Unlock:</strong> Includes pre-programmed digital interactive video and audio memory card.
+    <strong>⚡ NFC Instant Unlock:</strong> Includes pre-programmed digital interactive video and audio memory card (${card.aspect === 'landscape' ? 'Horizontal 16:9' : 'Vertical 9:16'}).
   </div>
 </div>
   `.trim();
 
-  const tags = ['TapGreetings', card.category, ...(card.tags || [])].join(', ');
+  const tags = ['TapGreetings', card.category, card.occasion, card.aspect, ...(card.tags || [])].filter(Boolean).join(', ');
 
   rows.push([
     escapeCsvField(handle),
@@ -127,12 +130,12 @@ greetings.forEach((card, idx) => {
     escapeCsvField('24.99'),
     escapeCsvField('TRUE'),
     escapeCsvField('TRUE'),
-    escapeCsvField(`https://tapgreetings.com${card.frontImage}`),
+    escapeCsvField(`https://tapgreetings.com${frontImg}`),
     escapeCsvField('1'),
     escapeCsvField(`${card.title} Front Artwork`),
     escapeCsvField('FALSE'),
     escapeCsvField(`${card.title} | TapGreetings NFC Card`),
-    escapeCsvField(card.message),
+    escapeCsvField(cardMessage),
     escapeCsvField('active')
   ].join(','));
 });

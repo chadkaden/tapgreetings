@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
+  <rect width="900" height="600" rx="36" fill="#090d16" stroke="#60a5fa" stroke-width="5"/>
+  <rect x="18" y="18" width="864" height="564" rx="26" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+  
+  <text x="40" y="65" fill="#60a5fa" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="20" letter-spacing="2">CARD BACK LORE</text>
+  <text x="860" y="65" fill="rgba(255,255,255,0.7)" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="15" text-anchor="end">TAPGREETINGS.COM/08</text>
+  
+  <circle cx="450" cy="255" r="45" fill="rgba(255,255,255,0.06)" stroke="#60a5fa" stroke-width="2"/>
+  <text x="450" y="265" font-size="38" text-anchor="middle">📡</text>
+  <text x="450" y="335" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="20" text-anchor="middle">TAP CARD TO BACK OF PHONE</text>
+  <text x="450" y="365" fill="rgba(255,255,255,0.7)" font-family="system-ui, -apple-system, sans-serif" font-size="14" text-anchor="middle">Launches Personalized 4K Video Experience</text>
+  
+  <text x="450" y="550" fill="#60a5fa" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="13" text-anchor="middle">POWERED BY TAPTHINGY • 100% WATERPROOF &amp; REWRITABLE</text>
+</svg>

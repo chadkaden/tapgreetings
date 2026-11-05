@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Baby Arrival & Starlight | TapGreetings by TapThingy</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fdf4ff',
+                            100: '#fae8ff',
+                            200: '#f5d0fe',
+                            400: '#e879f9',
+                            500: '#d946ef',
+                            600: '#c026d3',
+                            700: '#a21caf',
+                            900: '#4a044e',
+                            950: '#1b051f'
+                        },
+                        cyanAccent: {
+                            400: '#22d3ee',
+                            500: '#06b6d4',
+                            600: '#0891b2'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .glow-card {
+            box-shadow: 0 10px 40px -10px rgba(217, 70, 239, 0.35);
+        }
+        .glow-cyan {
+            box-shadow: 0 10px 40px -10px rgba(6, 182, 212, 0.4);
+        }
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+    </style>
+</head>
+<body class="font-sans bg-slate-950 text-slate-100 min-h-screen transition-colors duration-300 selection:bg-brand-500 selection:text-white">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-brand-500/30 px-4 sm:px-8 py-3.5 flex justify-between items-center shadow-lg">
+        <a href="../index.html" class="font-display text-xl sm:text-2xl font-bold text-white flex items-center gap-2.5 drop-shadow-[0_0_15px_rgba(217,70,239,0.5)]">
+            <span class="w-8 h-8 rounded-xl bg-gradient-to-tr from-brand-600 to-cyan-500 flex items-center justify-center text-sm font-black text-white shadow-md">TG</span>
+            <span>TapGreetings</span>
+        </a>
+        <div class="flex items-center gap-5">
+            <nav class="hidden sm:flex gap-6 text-sm font-semibold text-slate-300">
+                <a href="../index.html" class="hover:text-brand-400 transition-colors">Home</a>
+                <a href="../index.html#collection" class="hover:text-brand-400 transition-colors">All Cards</a>
+                <a href="https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card" target="_blank" class="hover:text-cyanAccent-400 transition-colors">Custom Studio</a>
+                <a href="https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" target="_blank" class="hover:text-brand-400 transition-colors">NFC Tools</a>
+            </nav>
+            <button onclick="toggleTheme()" class="w-9 h-9 rounded-full bg-gradient-to-r from-brand-600 to-indigo-600 text-white flex items-center justify-center shadow-md hover:scale-105 transition-transform" title="Toggle Light/Dark Mode">
+                <i class="fa-solid fa-moon" id="themeIcon"></i>
+            </button>
+        </div>
+    </header>
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                icon.className = 'fa-solid fa-sun';
+                localStorage.setItem('tapgreetings_theme', 'light');
+            } else {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                icon.className = 'fa-solid fa-moon';
+                localStorage.setItem('tapgreetings_theme', 'dark');
+            }
+        }
+        const savedTheme = localStorage.getItem('tapgreetings_theme') || 'dark';
+        if (savedTheme === 'light') {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.classList.add('light');
+            document.addEventListener('DOMContentLoaded', () => {
+                const icon = document.getElementById('themeIcon');
+                if (icon) icon.className = 'fa-solid fa-sun';
+            });
+        }
+    </script>
+
+    <main class="max-w-6xl mx-auto px-4 py-8 sm:py-12">
+        <div class="bg-slate-900/95 dark:bg-slate-900/95 rounded-3xl p-6 sm:p-10 shadow-2xl border-2 border-brand-500/40 backdrop-blur-md flex flex-col gap-8 glow-card">
+            
+            <!-- Banner / Headline -->
+            <div class="text-center">
+                <span class="inline-block bg-gradient-to-r from-brand-600 to-cyanAccent-600 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-md mb-2">
+                    Baby Shower & New Arrival
+                </span>
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold bg-gradient-to-r from-brand-400 via-pink-300 to-cyan-300 bg-clip-text text-transparent drop-shadow">
+                    Welcome to the World, Little Miracle!
+                </h2>
+            </div>
+
+            <!-- Main Layout: Dynamic Video Player + Details -->
+            <div class="grid grid-cols-1 lg:grid-cols-1 gap-8 items-start">
+                
+                <!-- Video Player Container (Supports 16:9 Landscape or 9:16 Portrait) -->
+                <div class="flex flex-col items-center justify-center bg-black rounded-3xl p-3 border-4 border-brand-500 ring-4 ring-brand-500/20 shadow-2xl relative overflow-hidden group">
+                    <video autoplay loop muted playsinline controls poster="../public/cards/10_front.svg" class="aspect-[16/9] w-full max-h-[60vh] object-contain rounded-2xl shadow-inner bg-black">
+                        <source src="https://tapgreetings.com/media/10_baby_arrival.mp4" type="video/mp4">
+                        Your browser does not support HTML5 video.
+                    </video>
+                    <div class="mt-2 text-xs font-bold text-slate-400 flex items-center gap-2">
+                        <span>⚡ Mobile NFC Tap-to-Video Experience</span>
+                        <span class="px-2 py-0.5 rounded-md bg-cyan-500/20 text-cyan-300 font-mono">16:9 Landscape</span>
+                    </div>
+                </div>
+
+                <!-- Features, Specs & Narrative Column -->
+                <div class="flex flex-col gap-5 max-w-3xl mx-auto w-full">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="inline-block bg-gradient-to-r from-brand-600 to-indigo-600 text-white text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider shadow">
+                            Milestone Edition
+                        </span>
+                        <span class="inline-block bg-slate-800 text-brand-300 text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider border border-brand-500/30">
+                            CARD 10 OF 12
+                        </span>
+                        <span class="inline-block bg-cyan-500/10 text-cyan-300 border-cyan-500/30 text-xs font-bold px-3 py-1 rounded-full border">
+                            ↔ Horizontal Format
+                        </span>
+                    </div>
+
+                    <h1 class="font-serif text-3xl sm:text-4xl font-bold text-white leading-tight">
+                        Sweet Baby Arrival & Starlight
+                    </h1>
+                    <p class="text-sm sm:text-base text-slate-300 italic -mt-2">
+                        The Celestial Welcome
+                    </p>
+
+                    <!-- Specs Grid -->
+                    <div class="grid grid-cols-2 gap-3 bg-slate-950/80 p-4 rounded-2xl border border-brand-500/20 shadow-inner">
+                        <div class="spec-item">
+                            <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Card Format</span>
+                            <span class="text-sm font-semibold text-white">CR80 30mil Horizontal PVC</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">NFC Chip Standard</span>
+                            <span class="text-sm font-semibold text-cyanAccent-400">NTAG215 (504 Bytes Rewritable)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Orientation</span>
+                            <span class="text-sm font-semibold text-white">Horizontal (Landscape 3:2)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Warmth Rating</span>
+                            <span class="text-sm font-semibold text-brand-300">100 / 100</span>
+                        </div>
+                    </div>
+
+                    <!-- Card Back Lore / Message Box -->
+                    <div class="bg-slate-950/90 p-5 rounded-2xl border-l-4 border-brand-500 shadow-sm">
+                        <h3 class="font-serif text-lg font-bold text-brand-400 mb-1">Card Message & Lore</h3>
+                        <p class="text-sm text-slate-200 leading-relaxed mb-3">Ten little fingers, ten little toes, and a love that knows no bounds. Welcome to the precious new bundle of joy whose arrival fills the entire universe with starlight and wonder.</p>
+                        <blockquote class="text-xs italic text-cyanAccent-300 border-t border-slate-800 pt-2">
+                            "Congratulations to the proud parents! Wishing your family a lifetime of laughter and sweet cuddles."
+                        </blockquote>
+                    </div>
+
+                    <!-- Buy Physical Card CTA & Share -->
+                    <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                        <a href="https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card" target="_blank" class="flex-1 bg-gradient-to-r from-brand-600 via-pink-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold px-6 py-3.5 rounded-2xl flex items-center justify-center gap-2 shadow-xl shadow-brand-600/30 transition-transform hover:scale-[1.02]">
+                            <i class="fa-solid fa-cart-shopping"></i> Order Physical NFC Card • $29.99
+                        </a>
+                        <button onclick="shareCard()" class="bg-slate-800 hover:bg-slate-700 text-white text-sm font-bold px-6 py-3.5 rounded-2xl flex items-center justify-center gap-2 border border-slate-700 shadow-lg transition-transform hover:scale-[1.02]">
+                            <i class="fa-solid fa-share-nodes"></i> Share
+                        </button>
+                    </div>
+                    <script>
+                        function shareCard() {
+                            if (navigator.share) {
+                                navigator.share({
+                                    title: 'Sweet Baby Arrival & Starlight',
+                                    text: 'Tap to view Sweet Baby Arrival & Starlight on TapGreetings!',
+                                    url: window.location.href
+                                }).catch(console.error);
+                            } else {
+                                navigator.clipboard.writeText(window.location.href);
+                                alert('Link copied to clipboard!');
+                            }
+                        }
+                    </script>
+
+                    <!-- Navigation Footer -->
+                    <div class="flex justify-between items-center pt-6 mt-2 border-t border-slate-800">
+                        <a href="../09/index.html" class="bg-slate-800 hover:bg-brand-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 transition-colors shadow">
+                            <i class="fa-solid fa-arrow-left"></i> Prev (#09)
+                        </a>
+                        <a href="../index.html" class="bg-slate-800 hover:bg-brand-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 transition-colors shadow">
+                            <i class="fa-solid fa-home"></i> All Cards
+                        </a>
+                        <a href="../11/index.html" class="bg-slate-800 hover:bg-brand-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 transition-colors shadow">
+                            Next (#11) <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Swipeable & Scrollable Card Artwork Gallery (Front & Back) -->
+            <div class="mt-4 pt-8 border-t border-brand-500/30">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="font-serif text-xl font-bold text-brand-300 flex items-center gap-2">
+                        <i class="fa-solid fa-id-card"></i> Physical CR80 PVC Card Artwork (Front & Back)
+                    </h3>
+                    <span class="text-xs text-slate-400 italic">Click to view high-res &rarr;</span>
+                </div>
+
+                <div class="flex overflow-x-auto gap-5 pb-4 pt-2 snap-x snap-mandatory">
+                    <!-- Front View -->
+                    <div class="flex-shrink-0 aspect-[3/2] w-56 sm:w-64 snap-center rounded-2xl overflow-hidden border-2 border-brand-500/60 shadow-xl bg-slate-950 cursor-pointer transition-transform hover:scale-105" onclick="openLightbox('../public/cards/10_front.svg')">
+                        <img src="../public/cards/10_front.svg" alt="Sweet Baby Arrival & Starlight - Front" class="w-full h-full object-contain">
+                        <div class="bg-slate-950/90 text-center py-1.5 text-xs text-brand-300 font-bold uppercase tracking-wider">Card Front</div>
+                    </div>
+
+                    <!-- Back View -->
+                    
+                    <div class="flex-shrink-0 aspect-[3/2] w-56 sm:w-64 snap-center rounded-2xl overflow-hidden border-2 border-brand-500/60 shadow-xl bg-slate-950 cursor-pointer transition-transform hover:scale-105" onclick="openLightbox('../public/cards/10_back.svg')">
+                        <img src="../public/cards/10_back.svg" alt="Sweet Baby Arrival & Starlight - Back" class="w-full h-full object-contain">
+                        <div class="bg-slate-950/90 text-center py-1.5 text-xs text-cyanAccent-400 font-bold uppercase tracking-wider">Card Back</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4 cursor-pointer" onclick="closeLightbox()">
+        <button class="absolute top-5 right-8 text-white text-4xl font-bold focus:outline-none">&times;</button>
+        <img id="lightboxImg" src="" alt="Enlarged Artwork" class="max-w-[90vw] max-h-[90vh] rounded-2xl border-2 border-brand-500 shadow-2xl object-contain">
+    </div>
+    <script>
+        function openLightbox(src) {
+            const lb = document.getElementById('lightbox');
+            const lbImg = document.getElementById('lightboxImg');
+            lbImg.src = src;
+            lb.classList.remove('hidden');
+            lb.classList.add('flex');
+        }
+        function closeLightbox() {
+            const lb = document.getElementById('lightbox');
+            lb.classList.remove('flex');
+            lb.classList.add('hidden');
+        }
+    </script>
+
+    <footer class="text-center py-12 px-4 text-xs sm:text-sm text-slate-400 border-t border-slate-800/80 mt-20 flex flex-col items-center gap-6">
+        <div class="flex flex-wrap justify-center gap-6 text-xl text-brand-400">
+            <a href="https://instagram.com/tapgreetings" target="_blank" class="hover:text-cyanAccent-400 transition-transform hover:scale-110" title="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="https://tiktok.com/@tapgreetings" target="_blank" class="hover:text-cyanAccent-400 transition-transform hover:scale-110" title="TikTok"><i class="fa-brands fa-tiktok"></i></a><a href="https://twitter.com/tapgreetings" target="_blank" class="hover:text-cyanAccent-400 transition-transform hover:scale-110" title="Twitter / X"><i class="fa-brands fa-twitter"></i></a><a href="https://youtube.com/@tapthingy" target="_blank" class="hover:text-cyanAccent-400 transition-transform hover:scale-110" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <p class="max-w-md leading-relaxed text-slate-400">
+            &copy; 2026 TapGreetings. Powered by <a href="https://tapthingy.com" target="_blank" class="text-brand-400 font-bold hover:underline">TapThingy</a> smart hardware & OTA dynamic cloud routing.
+        </p>
+    </footer>
+</body>
+</html>
+

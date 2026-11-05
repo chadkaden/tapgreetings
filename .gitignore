@@ -7,3 +7,6 @@ Thumbs.db
 scratch/
 dist/
 build/
+*.msi
+*.exe
+
