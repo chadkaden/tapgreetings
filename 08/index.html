@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unstoppable Champion & Victory | TapGreetings by TapThingy</title>
+    <title>Unstoppable Champion & Victory - You Conquered the Summit! | TapGreetings by TapThingy</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -12,6 +12,12 @@
             theme: {
                 extend: {
                     colors: {
+                        midnight: '#0A0E1A',
+                        iceBlue: '#E0F2FE',
+                        blushPink: '#38BDF8',
+                        champagneGold: '#F4E0A5',
+                        roseGold: '#0284C7',
+                        neonGlow: '#00E5FF',
                         brand: {
                             50: '#fdf4ff',
                             100: '#fae8ff',
@@ -30,9 +36,12 @@
                         }
                     },
                     fontFamily: {
+                        bubble: ['Cooper Black', 'Arial Black', display],
+                        title: ['Playfair Display', serif],
+                        header: ['Montserrat', sans-serif],
+                        body: ['Poppins', sans-serif],
                         serif: ['"Playfair Display"', 'Georgia', 'serif'],
-                        sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
-                        display: ['"Space Grotesk"', 'sans-serif']
+                        sans: ['"Montserrat"', '"Plus Jakarta Sans"', 'sans-serif']
                     }
                 }
             }
@@ -40,14 +49,33 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400&family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        .glow-card {
-            box-shadow: 0 10px 40px -10px rgba(217, 70, 239, 0.35);
+        :root {
+            --card-midnight: #0A0E1A;
+            --card-ice: #E0F2FE;
+            --card-pink: #38BDF8;
+            --card-gold: #F4E0A5;
+            --card-rose-gold: #0284C7;
+            --card-neon: #00E5FF;
         }
-        .glow-cyan {
-            box-shadow: 0 10px 40px -10px rgba(6, 182, 212, 0.4);
+        .glow-neon {
+            box-shadow: 0 0 35px -5px #00E5FF55;
+        }
+        .glow-gold {
+            box-shadow: 0 0 25px -5px #F4E0A555;
+        }
+        .starburst-corner {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            color: #F4E0A5;
+            font-size: 16px;
+            line-height: 1;
+            user-select: none;
+            pointer-events: none;
+            filter: drop-shadow(0 0 4px #F4E0A5);
         }
         .perspective-1000 {
             perspective: 1000px;
@@ -59,23 +87,29 @@
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
         }
+        .flip-card-inner {
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
     </style>
 </head>
-<body class="font-sans bg-slate-950 text-slate-100 min-h-screen transition-colors duration-300 selection:bg-brand-500 selection:text-white">
+<body class="font-sans bg-[#0A0E1A] text-slate-100 min-h-screen transition-colors duration-300 selection:bg-pink-500 selection:text-white">
     <!-- Header -->
-    <header class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-brand-500/30 px-4 sm:px-8 py-3.5 flex justify-between items-center shadow-lg">
-        <a href="../index.html" class="font-display text-xl sm:text-2xl font-bold text-white flex items-center gap-2.5 drop-shadow-[0_0_15px_rgba(217,70,239,0.5)]">
-            <span class="w-8 h-8 rounded-xl bg-gradient-to-tr from-brand-600 to-cyan-500 flex items-center justify-center text-sm font-black text-white shadow-md">TG</span>
+    <header class="sticky top-0 z-50 bg-[#0A0E1A]/95 backdrop-blur-md border-b border-rose-400/30 px-4 sm:px-8 py-3.5 flex justify-between items-center shadow-lg">
+        <a href="../index.html" class="font-header text-xl sm:text-2xl font-bold text-white flex items-center gap-2.5 drop-shadow-[0_0_15px_rgba(255,105,180,0.5)]">
+            <span class="w-8 h-8 rounded-xl bg-gradient-to-tr from-pink-600 via-rose-500 to-amber-300 flex items-center justify-center text-sm font-black text-white shadow-md">TG</span>
             <span>TapGreetings</span>
         </a>
         <div class="flex items-center gap-5">
             <nav class="hidden sm:flex gap-6 text-sm font-semibold text-slate-300">
-                <a href="../index.html" class="hover:text-brand-400 transition-colors">Home</a>
-                <a href="../index.html#collection" class="hover:text-brand-400 transition-colors">All Cards</a>
-                <a href="https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card" target="_blank" class="hover:text-cyanAccent-400 transition-colors">Custom Studio</a>
-                <a href="https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" target="_blank" class="hover:text-brand-400 transition-colors">NFC Tools</a>
+                <a href="../index.html" class="hover:text-pink-300 transition-colors">Home</a>
+                <a href="../index.html#collection" class="hover:text-pink-300 transition-colors">All Cards</a>
+                <a href="https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card" target="_blank" class="hover:text-amber-300 transition-colors">Custom Studio</a>
+                <a href="https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" target="_blank" class="hover:text-pink-300 transition-colors">NFC Tools</a>
             </nav>
-            <button onclick="toggleTheme()" class="w-9 h-9 rounded-full bg-gradient-to-r from-brand-600 to-indigo-600 text-white flex items-center justify-center shadow-md hover:scale-105 transition-transform" title="Toggle Light/Dark Mode">
+            <button onclick="toggleTheme()" class="w-9 h-9 rounded-full bg-gradient-to-r from-rose-600 to-amber-500 text-white flex items-center justify-center shadow-md hover:scale-105 transition-transform" title="Toggle Light/Dark Mode">
                 <i class="fa-solid fa-moon" id="themeIcon"></i>
             </button>
         </div>
@@ -108,177 +142,254 @@
     </script>
 
     <main class="max-w-6xl mx-auto px-4 py-8 sm:py-12">
-        <div class="bg-slate-900/95 dark:bg-slate-900/95 rounded-3xl p-6 sm:p-10 shadow-2xl border-2 border-brand-500/40 backdrop-blur-md flex flex-col gap-8 glow-card">
+        <!-- Main Card Container with Sharp Rectangular Borders and Rose Gold Stroke -->
+        <div class="relative bg-[#0A0E1A]/95 rounded-2xl p-6 sm:p-10 shadow-2xl border-[1.5pt] border-rose-400/40 backdrop-blur-md flex flex-col gap-8 glow-neon">
             
-            <!-- Banner / Headline -->
-            <div class="text-center">
-                <span class="inline-block bg-gradient-to-r from-brand-600 to-cyanAccent-600 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-md mb-2">
-                    Graduation, Promotion & Big Wins
-                </span>
-                <h2 class="font-serif text-2xl sm:text-4xl font-bold bg-gradient-to-r from-brand-400 via-pink-300 to-cyan-300 bg-clip-text text-transparent drop-shadow">
-                    You Conquered the Summit!
-                </h2>
+            <!-- 4-Point Gold Starburst Filigree Accents in Corners -->
+            <span class="starburst-corner top-3 left-3">⟡</span>
+            <span class="starburst-corner top-3 right-3">⟡</span>
+            <span class="starburst-corner bottom-3 left-3">⟡</span>
+            <span class="starburst-corner bottom-3 right-3">⟡</span>
+
+            <!-- Top Event & Series Banner -->
+            <div class="text-center pt-2">
+                <div class="flex flex-wrap justify-center items-center gap-2 mb-3">
+                    <span class="inline-block bg-gradient-to-r from-rose-600 via-pink-600 to-amber-500 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-md">
+                        You Conquered the Summit!
+                    </span>
+                    <span class="inline-block bg-slate-900 text-amber-300 border border-amber-400/40 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                        winter-glamour-2026
+                    </span>
+                    <span class="inline-block bg-slate-900 text-pink-300 border border-pink-400/40 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                        Trophy Edition
+                    </span>
+                </div>
+                
+                <h1 class="font-serif text-3xl sm:text-5xl font-bold bg-gradient-to-r from-white via-rose-200 to-amber-200 bg-clip-text text-transparent drop-shadow-md">
+                    Unstoppable Champion & Victory
+                </h1>
+                <p class="font-header text-sm sm:text-base text-rose-300/90 font-medium tracking-wide mt-1">
+                    The Pinnacle of Triumph &bull; <span class="text-amber-200/90 italic">Electric Cobalt, Golden Laurels & Victory Anthem</span>
+                </p>
+                <p class="text-xs sm:text-sm text-slate-400 italic max-w-xl mx-auto mt-2">
+                    &ldquo;Huge congratulations on your phenomenal victory! The world is taking notice of what you can do.&rdquo;
+                </p>
             </div>
 
-            <!-- Main Layout: Dynamic Video Player + Details -->
+            <!-- Main Layout: Video Player Column + Interactive Experience Column -->
             <div class="grid grid-cols-1 lg:grid-cols-1 gap-8 items-start">
                 
-                <!-- Video Player Container (Supports 16:9 Landscape or 9:16 Portrait) -->
-                <div class="flex flex-col items-center justify-center bg-black rounded-3xl p-3 border-4 border-brand-500 ring-4 ring-brand-500/20 shadow-2xl relative overflow-hidden group">
-                    <video autoplay loop muted playsinline controls poster="../public/cards/08_front.svg" class="aspect-[16/9] w-full max-h-[60vh] object-contain rounded-2xl shadow-inner bg-black">
-                        <source src="https://tapgreetings.com/media/08_champion.mp4" type="video/mp4">
+                <!-- Left: 4K Video Player with Tap Indicator -->
+                <div class="flex flex-col items-center justify-center bg-black rounded-2xl p-2.5 border-[1.5pt] border-rose-400/60 ring-2 ring-pink-500/20 shadow-2xl relative overflow-hidden group">
+                    <video autoplay loop muted playsinline controls poster="../public/cards/08_front.svg" class="aspect-[16/9] w-full max-h-[60vh] object-contain rounded-xl shadow-inner bg-black">
+                        <source src="../media/08_champion.mp4" type="video/mp4">
                         Your browser does not support HTML5 video.
                     </video>
-                    <div class="mt-2 text-xs font-bold text-slate-400 flex items-center gap-2">
-                        <span>⚡ Mobile NFC Tap-to-Video Experience</span>
-                        <span class="px-2 py-0.5 rounded-md bg-cyan-500/20 text-cyan-300 font-mono">16:9 Landscape</span>
-                    </div>
-                </div>
-
-                <!-- Features, Specs & Narrative Column -->
-                <div class="flex flex-col gap-5 max-w-3xl mx-auto w-full">
-                    <div class="flex flex-wrap items-center gap-2">
-                        <span class="inline-block bg-gradient-to-r from-brand-600 to-indigo-600 text-white text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider shadow">
-                            Trophy Edition
+                    <div class="mt-3 w-full flex items-center justify-between px-2 text-xs font-semibold text-slate-300">
+                        <span class="flex items-center gap-1.5 text-pink-300">
+                            <i class="fa-solid fa-bolt text-amber-400 animate-pulse"></i> NFC Tap-to-Video
                         </span>
-                        <span class="inline-block bg-slate-800 text-brand-300 text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider border border-brand-500/30">
-                            CARD 08 OF 12
-                        </span>
-                        <span class="inline-block bg-cyan-500/10 text-cyan-300 border-cyan-500/30 text-xs font-bold px-3 py-1 rounded-full border">
-                            ↔ Horizontal Format
+                        <span class="px-2.5 py-0.5 rounded-full bg-slate-900 border border-rose-400/40 text-[11px] font-mono text-amber-300">
+                            16:9 &bull; 12s
                         </span>
                     </div>
 
-                    <h1 class="font-serif text-3xl sm:text-4xl font-bold text-white leading-tight">
-                        Unstoppable Champion & Victory
-                    </h1>
-                    <p class="text-sm sm:text-base text-slate-300 italic -mt-2">
-                        The Pinnacle of Triumph
-                    </p>
-
-                    <!-- Specs Grid -->
-                    <div class="grid grid-cols-2 gap-3 bg-slate-950/80 p-4 rounded-2xl border border-brand-500/20 shadow-inner">
-                        <div class="spec-item">
-                            <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Card Format</span>
-                            <span class="text-sm font-semibold text-white">CR80 30mil Horizontal PVC</span>
+                    <!-- Audio Dialogue Speech Bubble -->
+                    
+                    <div class="mt-4 w-full bg-slate-900/95 border border-pink-400/40 rounded-2xl p-4 shadow-lg flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-pink-500 to-amber-400 flex-shrink-0 flex items-center justify-center text-slate-950 font-black text-sm shadow">
+                            <i class="fa-solid fa-volume-high"></i>
                         </div>
-                        <div class="spec-item">
-                            <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">NFC Chip Standard</span>
-                            <span class="text-sm font-semibold text-cyanAccent-400">NTAG215 (504 Bytes Rewritable)</span>
+                        <div class="flex-grow">
+                            <span class="text-[10px] uppercase font-bold text-amber-300 tracking-wider block">Dialogue & Voiceover</span>
+                            <p class="text-xs sm:text-sm text-slate-100 italic leading-relaxed mt-0.5">
+                                &ldquo;Huge congratulations on your phenomenal victory! The world is taking notice of what you can do.&rdquo;
+                            </p>
                         </div>
-                        <div class="spec-item">
-                            <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Orientation</span>
-                            <span class="text-sm font-semibold text-white">Horizontal (Landscape 3:2)</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Warmth Rating</span>
-                            <span class="text-sm font-semibold text-brand-300">96 / 100</span>
-                        </div>
-                    </div>
-
-                    <!-- Card Back Lore / Message Box -->
-                    <div class="bg-slate-950/90 p-5 rounded-2xl border-l-4 border-brand-500 shadow-sm">
-                        <h3 class="font-serif text-lg font-bold text-brand-400 mb-1">Card Message & Lore</h3>
-                        <p class="text-sm text-slate-200 leading-relaxed mb-3">Late nights, tireless discipline, and unyielding ambition have brought you to this crowning victory. Stand tall on the podium of your achievements—the future is wide open for your next great triumph.</p>
-                        <blockquote class="text-xs italic text-cyanAccent-300 border-t border-slate-800 pt-2">
-                            "Huge congratulations on your phenomenal victory! The world is taking notice of what you can do."
-                        </blockquote>
-                    </div>
-
-                    <!-- Buy Physical Card CTA & Share -->
-                    <div class="flex flex-col sm:flex-row gap-3 pt-2">
-                        <a href="https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card" target="_blank" class="flex-1 bg-gradient-to-r from-brand-600 via-pink-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold px-6 py-3.5 rounded-2xl flex items-center justify-center gap-2 shadow-xl shadow-brand-600/30 transition-transform hover:scale-[1.02]">
-                            <i class="fa-solid fa-cart-shopping"></i> Order Physical NFC Card • $29.99
-                        </a>
-                        <button onclick="shareCard()" class="bg-slate-800 hover:bg-slate-700 text-white text-sm font-bold px-6 py-3.5 rounded-2xl flex items-center justify-center gap-2 border border-slate-700 shadow-lg transition-transform hover:scale-[1.02]">
-                            <i class="fa-solid fa-share-nodes"></i> Share
+                        <button onclick="speakDialogue()" class="bg-pink-600 hover:bg-pink-500 text-white text-xs font-bold px-3 py-1.5 rounded-xl flex items-center gap-1.5 shadow transition-transform hover:scale-105" title="Listen Aloud">
+                            <i class="fa-solid fa-play"></i> Listen
                         </button>
                     </div>
                     <script>
-                        function shareCard() {
-                            if (navigator.share) {
-                                navigator.share({
-                                    title: 'Unstoppable Champion & Victory',
-                                    text: 'Tap to view Unstoppable Champion & Victory on TapGreetings!',
-                                    url: window.location.href
-                                }).catch(console.error);
+                        function speakDialogue() {
+                            if ('speechSynthesis' in window) {
+                                window.speechSynthesis.cancel();
+                                const u = new SpeechSynthesisUtterance("Huge congratulations on your phenomenal victory! The world is taking notice of what you can do.");
+                                u.rate = 0.95;
+                                u.pitch = 1.05;
+                                window.speechSynthesis.speak(u);
                             } else {
-                                navigator.clipboard.writeText(window.location.href);
-                                alert('Link copied to clipboard!');
+                                alert("Huge congratulations on your phenomenal victory! The world is taking notice of what you can do.");
                             }
                         }
                     </script>
+                    
+                </div>
+
+                <!-- Right: Lore, Indicators, Physical Card 3D Flip, & Utility Action -->
+                <div class="flex flex-col gap-6 max-w-3xl mx-auto w-full">
+                    
+                    <!-- Micro Lore Box -->
+                    <div class="bg-slate-950/90 p-5 rounded-2xl border-[1.5pt] border-rose-400/40 shadow-sm relative">
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300 block mb-1">
+                            <i class="fa-solid fa-feather-pointed"></i> Story &amp; Micro-Lore
+                        </span>
+                        <p class="text-sm text-slate-200 leading-relaxed font-body">
+                            Late nights, tireless discipline, and unyielding ambition have brought you to this crowning victory. Stand tall on the podium of your achievements—the future is wide open for your next great triumph.
+                        </p>
+                    </div>
+
+                    <!-- Indicators / Collector Metrics -->
+                    <div class="bg-slate-950/90 p-5 rounded-2xl border border-rose-400/30 shadow-inner">
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-pink-300 block mb-3">
+                            <i class="fa-solid fa-chart-simple"></i> Character Indicators &amp; Attributes
+                        </span>
+                        <div class="grid grid-cols-3 gap-3 text-center">
+                            
+                                <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-800">
+                                    <div class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">warmth</div>
+                                    <div class="font-serif text-base sm:text-lg font-bold text-amber-300 mt-0.5">96 / 100</div>
+                                </div>
+                            
+                                <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-800">
+                                    <div class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">keepsake</div>
+                                    <div class="font-serif text-base sm:text-lg font-bold text-amber-300 mt-0.5">98 / 100</div>
+                                </div>
+                            
+                                <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-800">
+                                    <div class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">rarity</div>
+                                    <div class="font-serif text-base sm:text-lg font-bold text-amber-300 mt-0.5">Trophy Edition</div>
+                                </div>
+                            
+                        </div>
+                    </div>
+
+                    <!-- Interactive Flippable 3D Physical Keepsake Card -->
+                    <div class="bg-slate-950/90 p-5 rounded-2xl border border-rose-400/30 shadow-inner flex flex-col items-center">
+                        <div class="w-full flex justify-between items-center mb-4">
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300">
+                                <i class="fa-solid fa-id-card"></i> Physical CR80 PVC Smart Card
+                            </span>
+                            <button onclick="toggleCardFlip()" class="bg-slate-900 hover:bg-slate-800 text-pink-300 text-xs font-bold px-3 py-1 rounded-xl border border-pink-400/40 flex items-center gap-1.5 transition-all">
+                                <i class="fa-solid fa-arrows-rotate"></i> Flip Card (Front/Back)
+                            </button>
+                        </div>
+
+                        <!-- 3D Card Container -->
+                        <div id="card3dContainer" class="perspective-1000 aspect-[3/2] w-64 sm:w-80 cursor-pointer group" onclick="toggleCardFlip()">
+                            <div class="flip-card-inner relative w-full h-full transform-style-3d shadow-2xl rounded-2xl border-[1.5pt] border-rose-400/70 overflow-hidden bg-slate-900">
+                                <!-- Front Face -->
+                                <div class="absolute inset-0 backface-hidden">
+                                    <img src="../public/cards/08_front.svg" alt="Unstoppable Champion & Victory Front" class="w-full h-full object-contain bg-slate-950">
+                                    <div class="absolute bottom-2 left-2 right-2 bg-black/75 backdrop-blur-sm text-center py-1 text-[10px] font-bold text-amber-300 uppercase tracking-widest rounded-lg">
+                                        Card Front &bull; Tap to Flip ↻
+                                    </div>
+                                </div>
+                                <!-- Back Face with NFC Target Star -->
+                                <div class="absolute inset-0 backface-hidden rotate-y-180 bg-slate-950 flex flex-col justify-between p-3" style="transform: rotateY(180deg);">
+                                    <img src="../public/cards/08_back.svg" alt="Unstoppable Champion & Victory Back" class="w-full h-full object-contain">
+                                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none">
+                                        <div class="w-16 h-16 rounded-full border-2 border-dashed border-amber-300/80 bg-pink-500/20 backdrop-blur-sm flex items-center justify-center text-amber-300 text-xl font-bold shadow-lg animate-pulse">
+                                            ★
+                                        </div>
+                                        <span class="text-[10px] font-bold text-amber-200 mt-1 drop-shadow bg-black/60 px-2 py-0.5 rounded-full">⟡ TAP HERE ⟡</span>
+                                        <span class="text-[8px] text-slate-300 drop-shadow">Tap with NFC enabled phone or device</span>
+                                    </div>
+                                    <div class="absolute bottom-2 left-2 right-2 bg-black/75 backdrop-blur-sm text-center py-1 text-[10px] font-bold text-pink-300 uppercase tracking-widest rounded-lg">
+                                        Card Back &bull; Tap to Flip ↺
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-2 italic text-center">Click card to flip between front artwork and back NFC target</p>
+                    </div>
+
+                    <!-- Hidden Collector Items Easter Egg -->
+                    
+                    <div class="bg-slate-950/80 p-4 rounded-2xl border border-amber-400/30 flex flex-col gap-2">
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
+                            <i class="fa-solid fa-magnifying-glass"></i> Hidden Collector Hunt (On Physical Card)
+                        </span>
+                        <div class="grid grid-cols-2 gap-3 text-xs">
+                            
+                                <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 flex justify-between items-center">
+                                    <span class="capitalize text-slate-300 font-medium">sparkles:</span>
+                                    <span class="font-bold text-amber-300 bg-amber-400/10 px-2 py-0.5 rounded-lg border border-amber-400/30">8 Hidden</span>
+                                </div>
+                            
+                                <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 flex justify-between items-center">
+                                    <span class="capitalize text-slate-300 font-medium">stars:</span>
+                                    <span class="font-bold text-amber-300 bg-amber-400/10 px-2 py-0.5 rounded-lg border border-amber-400/30">12 Hidden</span>
+                                </div>
+                            
+                        </div>
+                    </div>
+                    
+
+                    <!-- Utility Action & Order Buttons -->
+                    <div class="flex flex-col gap-3 pt-2">
+                        
+                        <a href="https://TapGreetings.com/08" target="_blank" class="w-full bg-gradient-to-r from-pink-600 via-rose-500 to-amber-500 hover:from-pink-500 hover:to-amber-400 text-white font-bold py-3.5 px-6 rounded-2xl shadow-xl shadow-pink-600/30 text-center flex items-center justify-center gap-2 transition-transform hover:scale-[1.02]">
+                            <i class="fa-solid fa-champagne-glasses"></i> Explore Graduation, Promotion & Big Wins &rarr;
+                        </a>
+                        
+
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <a href="https://shop.tapthingy.com/collections/tapgreetings" target="_blank" class="flex-1 bg-slate-900 hover:bg-slate-800 text-amber-300 font-bold py-3.5 px-6 rounded-2xl border border-amber-400/40 shadow-lg text-center flex items-center justify-center gap-2 transition-transform hover:scale-[1.02]">
+                                <i class="fa-solid fa-cart-shopping"></i> Order Keepsake Card &bull; $29.99
+                            </a>
+                            <button onclick="shareGreeting()" class="bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 px-6 rounded-2xl border border-slate-700 shadow-lg flex items-center justify-center gap-2 transition-transform hover:scale-[1.02]">
+                                <i class="fa-solid fa-share-nodes text-pink-400"></i> Share
+                            </button>
+                        </div>
+                    </div>
 
                     <!-- Navigation Footer -->
                     <div class="flex justify-between items-center pt-6 mt-2 border-t border-slate-800">
-                        <a href="../07/index.html" class="bg-slate-800 hover:bg-brand-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 transition-colors shadow">
-                            <i class="fa-solid fa-arrow-left"></i> Prev (#07)
+                        <a href="../07/index.html" class="bg-slate-900 hover:bg-pink-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 transition-colors shadow border border-slate-800">
+                            <i class="fa-solid fa-arrow-left"></i> Prev Card
                         </a>
-                        <a href="../index.html" class="bg-slate-800 hover:bg-brand-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 transition-colors shadow">
+                        <a href="../index.html" class="bg-slate-900 hover:bg-pink-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 transition-colors shadow border border-slate-800">
                             <i class="fa-solid fa-home"></i> All Cards
                         </a>
-                        <a href="../09/index.html" class="bg-slate-800 hover:bg-brand-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 transition-colors shadow">
-                            Next (#09) <i class="fa-solid fa-arrow-right"></i>
+                        <a href="../09/index.html" class="bg-slate-900 hover:bg-pink-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 transition-colors shadow border border-slate-800">
+                            Next Card <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
 
-                </div>
-            </div>
-
-            <!-- Swipeable & Scrollable Card Artwork Gallery (Front & Back) -->
-            <div class="mt-4 pt-8 border-t border-brand-500/30">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="font-serif text-xl font-bold text-brand-300 flex items-center gap-2">
-                        <i class="fa-solid fa-id-card"></i> Physical CR80 PVC Card Artwork (Front & Back)
-                    </h3>
-                    <span class="text-xs text-slate-400 italic">Click to view high-res &rarr;</span>
-                </div>
-
-                <div class="flex overflow-x-auto gap-5 pb-4 pt-2 snap-x snap-mandatory">
-                    <!-- Front View -->
-                    <div class="flex-shrink-0 aspect-[3/2] w-56 sm:w-64 snap-center rounded-2xl overflow-hidden border-2 border-brand-500/60 shadow-xl bg-slate-950 cursor-pointer transition-transform hover:scale-105" onclick="openLightbox('../public/cards/08_front.svg')">
-                        <img src="../public/cards/08_front.svg" alt="Unstoppable Champion & Victory - Front" class="w-full h-full object-contain">
-                        <div class="bg-slate-950/90 text-center py-1.5 text-xs text-brand-300 font-bold uppercase tracking-wider">Card Front</div>
-                    </div>
-
-                    <!-- Back View -->
-                    
-                    <div class="flex-shrink-0 aspect-[3/2] w-56 sm:w-64 snap-center rounded-2xl overflow-hidden border-2 border-brand-500/60 shadow-xl bg-slate-950 cursor-pointer transition-transform hover:scale-105" onclick="openLightbox('../public/cards/08_back.svg')">
-                        <img src="../public/cards/08_back.svg" alt="Unstoppable Champion & Victory - Back" class="w-full h-full object-contain">
-                        <div class="bg-slate-950/90 text-center py-1.5 text-xs text-cyanAccent-400 font-bold uppercase tracking-wider">Card Back</div>
-                    </div>
                 </div>
             </div>
 
         </div>
     </main>
 
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4 cursor-pointer" onclick="closeLightbox()">
-        <button class="absolute top-5 right-8 text-white text-4xl font-bold focus:outline-none">&times;</button>
-        <img id="lightboxImg" src="" alt="Enlarged Artwork" class="max-w-[90vw] max-h-[90vh] rounded-2xl border-2 border-brand-500 shadow-2xl object-contain">
-    </div>
     <script>
-        function openLightbox(src) {
-            const lb = document.getElementById('lightbox');
-            const lbImg = document.getElementById('lightboxImg');
-            lbImg.src = src;
-            lb.classList.remove('hidden');
-            lb.classList.add('flex');
+        function toggleCardFlip() {
+            const container = document.getElementById('card3dContainer');
+            container.classList.toggle('flipped');
         }
-        function closeLightbox() {
-            const lb = document.getElementById('lightbox');
-            lb.classList.remove('flex');
-            lb.classList.add('hidden');
+
+        function shareGreeting() {
+            const shareData = {
+                title: "Unstoppable Champion & Victory - You Conquered the Summit!",
+                text: "Unstoppable Champion & Victory invites you to the Winter Gala! You Conquered the Summit!",
+                url: window.location.href
+            };
+            if (navigator.share) {
+                navigator.share(shareData).catch(console.error);
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Greeting link copied to clipboard!');
+            }
         }
     </script>
 
     <footer class="text-center py-12 px-4 text-xs sm:text-sm text-slate-400 border-t border-slate-800/80 mt-20 flex flex-col items-center gap-6">
-        <div class="flex flex-wrap justify-center gap-6 text-xl text-brand-400">
-            <a href="https://instagram.com/tapgreetings" target="_blank" class="hover:text-cyanAccent-400 transition-transform hover:scale-110" title="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="https://tiktok.com/@tapgreetings" target="_blank" class="hover:text-cyanAccent-400 transition-transform hover:scale-110" title="TikTok"><i class="fa-brands fa-tiktok"></i></a><a href="https://twitter.com/tapgreetings" target="_blank" class="hover:text-cyanAccent-400 transition-transform hover:scale-110" title="Twitter / X"><i class="fa-brands fa-twitter"></i></a><a href="https://youtube.com/@tapthingy" target="_blank" class="hover:text-cyanAccent-400 transition-transform hover:scale-110" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <div class="flex flex-wrap justify-center gap-6 text-xl text-rose-400">
+            <a href="https://instagram.com/tapgreetings" target="_blank" class="hover:text-amber-300 transition-transform hover:scale-110" title="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="https://tiktok.com/@tapgreetings" target="_blank" class="hover:text-amber-300 transition-transform hover:scale-110" title="TikTok"><i class="fa-brands fa-tiktok"></i></a><a href="https://twitter.com/tapgreetings" target="_blank" class="hover:text-amber-300 transition-transform hover:scale-110" title="Twitter / X"><i class="fa-brands fa-twitter"></i></a><a href="https://youtube.com/@tapthingy" target="_blank" class="hover:text-amber-300 transition-transform hover:scale-110" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
         </div>
         <p class="max-w-md leading-relaxed text-slate-400">
-            &copy; 2026 TapGreetings. Powered by <a href="https://tapthingy.com" target="_blank" class="text-brand-400 font-bold hover:underline">TapThingy</a> smart hardware & OTA dynamic cloud routing.
+            &copy; 2026 TapGreetings. Powered by <a href="https://tapthingy.com" target="_blank" class="text-pink-400 font-bold hover:underline">TapThingy</a> smart NFC hardware &amp; OTA dynamic cloud routing.
         </p>
     </footer>
 </body>

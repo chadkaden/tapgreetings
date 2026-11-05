@@ -94,24 +94,29 @@ rows.push([
 
 // 2. Add Pre-Made Flow Greetings
 greetings.forEach((card, idx) => {
-  const cardMessage = card.message || (card.narrative && card.narrative.card_back_lore) || '';
-  const frontImg = card.frontImage || (card.assets && card.assets.front_image) || '';
-  const handle = `tapgreeting-${card.slug}-${card.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+  const char = card.character || {};
+  const media = card.media || {};
+  const cardTitle = char.name ? `${char.name} - ${char.title || 'TapGreeting Card'}` : (card.title || `TapGreeting #${card.slug}`);
+  const cardMessage = char.micro_lore || card.message || (card.narrative && card.narrative.card_back_lore) || '';
+  const frontImg = media.front_image_url || card.frontImage || (card.assets && card.assets.front_image) || '';
+  const handle = `tapgreeting-${card.slug}`;
+  const isLandscape = media.aspect_ratio === '16:9' || media.aspect_ratio === 'landscape' || card.aspect === 'landscape';
+  
   const desc = `
 <div class="tapgreeting-card-desc" style="font-family: -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; color: #1e293b;">
-  <h3>${card.headline || card.title}</h3>
+  <h3>${card.event_greeting || card.headline || cardTitle}</h3>
   <p>${cardMessage}</p>
   <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin-top: 14px;">
-    <strong>⚡ NFC Instant Unlock:</strong> Includes pre-programmed digital interactive video and audio memory card (${card.aspect === 'landscape' ? 'Horizontal 16:9' : 'Vertical 9:16'}).
+    <strong>⚡ NFC Instant Unlock:</strong> Includes pre-programmed digital interactive video and audio memory card (${isLandscape ? 'Horizontal 16:9' : 'Vertical 9:16'}).
   </div>
 </div>
   `.trim();
 
-  const tags = ['TapGreetings', card.category, card.occasion, card.aspect, ...(card.tags || [])].filter(Boolean).join(', ');
+  const tags = ['TapGreetings', card.series_id || 'Winter Glamour', card.event_greeting, isLandscape ? 'Landscape' : 'Portrait', char.rarity_tier].filter(Boolean).join(', ');
 
   rows.push([
     escapeCsvField(handle),
-    escapeCsvField(`${card.title} - TapGreeting Card`),
+    escapeCsvField(`${cardTitle} - NFC Keepsake Card`),
     escapeCsvField(desc),
     escapeCsvField('TapGreetings'),
     escapeCsvField('Office Supplies > Paper Products > Greeting Cards'),
@@ -126,15 +131,15 @@ greetings.forEach((card, idx) => {
     escapeCsvField('100'),
     escapeCsvField('deny'),
     escapeCsvField('manual'),
-    escapeCsvField('19.99'),
-    escapeCsvField('24.99'),
+    escapeCsvField('29.99'),
+    escapeCsvField('39.99'),
     escapeCsvField('TRUE'),
     escapeCsvField('TRUE'),
-    escapeCsvField(`https://tapgreetings.com${frontImg}`),
+    escapeCsvField(frontImg.startsWith('http') ? frontImg : `https://tapgreetings.com${frontImg}`),
     escapeCsvField('1'),
-    escapeCsvField(`${card.title} Front Artwork`),
+    escapeCsvField(`${cardTitle} Front Artwork`),
     escapeCsvField('FALSE'),
-    escapeCsvField(`${card.title} | TapGreetings NFC Card`),
+    escapeCsvField(`${cardTitle} | TapGreetings NFC Card`),
     escapeCsvField(cardMessage),
     escapeCsvField('active')
   ].join(','));

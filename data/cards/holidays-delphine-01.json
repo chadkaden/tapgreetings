@@ -1,0 +1,70 @@
+{
+  "card_id": "holidays-delphine-01",
+  "series_id": "winter-glamour-2026",
+  "slug": "delphine-holidays",
+  "event_greeting": "Happy Holidays!",
+  "web_address": "https://TapGreetings.com/holidays",
+  "character": {
+    "name": "Delphine",
+    "title": "The Ice Starlet",
+    "aliases": ["Delphine", "The Glacial Siren"],
+    "profile_theme": "The High-Fashion Starlet",
+    "motto": "Shine under your own spotlight and make every entrance unforgettable.",
+    "micro_lore": "Stepping onto the frosted red carpet at dusk, Delphine sparkles under flashbulbs, spreading warm cheer and champagne wishes across the winter gala...",
+    "indicators": {
+      "glamour": "100/100",
+      "sparkle": "99/100",
+      "signature": "Champagne-Boba"
+    },
+    "rarity_tier": "Spectrum Common"
+  },
+  "media": {
+    "aspect_ratio": "9:16",
+    "video_url": "https://TapGreetings.com/assets/video/delphine-holidays.mp4",
+    "local_video_path": "/assets/video/delphine-holidays.mp4",
+    "video_duration_seconds": 10,
+    "audio_dialogue": "Champagne in hand, glitz on full display! Delphine here to invite you to the most glamorous party of the season—Happy Holidays!",
+    "front_image_url": "https://TapGreetings.com/assets/img/delphine-front.png",
+    "local_front_image_path": "/assets/img/delphine-front.jpg",
+    "back_image_url": "https://TapGreetings.com/assets/img/delphine-back.png",
+    "local_back_image_path": "/assets/img/delphine-back.jpg"
+  },
+  "style_tokens": {
+    "theme_name": "Magical Midnight Glacial Glamour",
+    "colors": {
+      "bg_obsidian_midnight": "#0A0E1A",
+      "bg_frosted_ice_blue": "#E0F7FA",
+      "accent_blush_pink": "#FFD1DC",
+      "accent_champagne_gold": "#F4E0A5",
+      "border_rose_gold": "#B76E79",
+      "text_charcoal": "#2B2B2B",
+      "text_white": "#FFFFFF",
+      "neon_halo_glow": "#FF69B4"
+    },
+    "typography": {
+      "greeting_bubble_font": "'Cooper Black', 'Recraft', 'Arial Black', display",
+      "card_title_font": "'Playfair Display', 'Cormorant Garamond', serif",
+      "header_sans_font": "'Montserrat', sans-serif",
+      "body_lore_font": "'Poppins', 'Inter', sans-serif"
+    },
+    "borders": {
+      "vector_stroke_width": "1.5pt",
+      "corner_style": "sharp_rectangular",
+      "filigree_accents": "4_point_gold_starbursts"
+    }
+  },
+  "nfc_config": {
+    "target_shape": "star",
+    "tap_label": "⟡ TAP HERE ⟡",
+    "instruction": "Tap with NFC enabled phone or device",
+    "hidden_items_count": {
+      "rose_gold_bows": 10,
+      "boba_pearls": 15
+    }
+  },
+  "utility_action": {
+    "action_type": "GALA_INVITATION_RSVP",
+    "button_text": "RSVP to Winter Gala",
+    "target_url": "https://TapGreetings.com/events/winter-gala-2026"
+  }
+}

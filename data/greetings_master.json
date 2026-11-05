@@ -1,7 +1,7 @@
 {
   "series_metadata": {
-    "series_id": "tg-series-01",
-    "series_name": "TapGreetings Series 1: Holidays & Everyday Keepsakes",
+    "series_id": "winter-glamour-2026",
+    "series_name": "TapGreetings: Winter Glamour & Holiday Keepsakes",
     "total_cards": 12,
     "tagline": "Smart NFC Keepsake Greeting Cards That Come Alive with a Single Tap",
     "publisher": "TapGreetings by TapThingy",
@@ -12,412 +12,906 @@
   },
   "cards": [
     {
-      "id": "01",
-      "slug": "01",
-      "title": "Winter Gala & Holiday Sparkle",
-      "alias": "Seraphina, The Winter Gala Hostess",
-      "header_display": "CARD 01 OF 12",
-      "category": "Holiday",
-      "occasion": "Christmas & Winter Holidays",
-      "theme": "Frosted Sapphire, Crystal Snow & Silver Elegance",
-      "aspect": "portrait",
-      "video_aspect": "9/16",
-      "card_aspect": "vertical",
-      "headline": "Warmest Holiday Wishes",
-      "rarity": "Holiday Premier",
-      "specs": {
-        "card_format": "CR80 30mil Waterproof PVC",
-        "nfc_chip": "NTAG215 (504 Bytes Rewritable)",
-        "orientation": "Vertical (Portrait 2:3)",
-        "video_format": "4K Motion & Spatial Audio (9:16)",
-        "keepsake_rating": "100 / 100",
-        "warmth_index": "98 / 100"
+      "card_id": "holidays-delphine-01",
+      "series_id": "winter-glamour-2026",
+      "slug": "delphine-holidays",
+      "aliases_slugs": [
+        "01",
+        "holidays"
+      ],
+      "event_greeting": "Happy Holidays!",
+      "web_address": "https://TapGreetings.com/holidays",
+      "character": {
+        "name": "Delphine",
+        "title": "The Ice Starlet",
+        "aliases": [
+          "Delphine",
+          "The Glacial Siren"
+        ],
+        "profile_theme": "The High-Fashion Starlet",
+        "motto": "Shine under your own spotlight and make every entrance unforgettable.",
+        "micro_lore": "Stepping onto the frosted red carpet at dusk, Delphine sparkles under flashbulbs, spreading warm cheer and champagne wishes across the winter gala...",
+        "indicators": {
+          "glamour": "100/100",
+          "sparkle": "99/100",
+          "signature": "Champagne-Boba"
+        },
+        "rarity_tier": "Spectrum Common"
       },
-      "narrative": {
-        "card_back_lore": "As evening descends upon the snow-dusted estate, Seraphina lights the crystalline ice lanterns, extending an exclusive holiday invitation to an evening of champagne, joyful laughter, and timeless winter wonder.",
-        "quote": "May your holidays sparkle with moments of pure joy, peace, and warmth among the ones you cherish."
+      "media": {
+        "aspect_ratio": "9:16",
+        "video_url": "https://TapGreetings.com/assets/video/delphine-holidays.mp4",
+        "local_video_path": "/assets/video/delphine-holidays.mp4",
+        "video_duration_seconds": 10,
+        "audio_dialogue": "Champagne in hand, glitz on full display! Delphine here to invite you to the most glamorous party of the season—Happy Holidays!",
+        "front_image_url": "https://TapGreetings.com/assets/img/delphine-front.png",
+        "local_front_image_path": "/assets/img/delphine-front.jpg",
+        "back_image_url": "https://TapGreetings.com/assets/img/delphine-back.png",
+        "local_back_image_path": "/assets/img/delphine-back.jpg"
       },
-      "assets": {
-        "front_image": "/public/cards/01_front.jpg",
-        "back_image": "/public/cards/01_back.jpg",
-        "video_url": "https://tapgreetings.com/media/01_winter_gala.mp4",
-        "audio_url": "https://tapgreetings.com/media/01_winter_audio.mp3"
+      "style_tokens": {
+        "theme_name": "Magical Midnight Glacial Glamour",
+        "colors": {
+          "bg_obsidian_midnight": "#0A0E1A",
+          "bg_frosted_ice_blue": "#E0F7FA",
+          "accent_blush_pink": "#FFD1DC",
+          "accent_champagne_gold": "#F4E0A5",
+          "border_rose_gold": "#B76E79",
+          "text_charcoal": "#2B2B2B",
+          "text_white": "#FFFFFF",
+          "neon_halo_glow": "#FF69B4"
+        },
+        "typography": {
+          "greeting_bubble_font": "'Cooper Black', 'Recraft', 'Arial Black', display",
+          "card_title_font": "'Playfair Display', 'Cormorant Garamond', serif",
+          "header_sans_font": "'Montserrat', sans-serif",
+          "body_lore_font": "'Poppins', 'Inter', sans-serif"
+        },
+        "borders": {
+          "vector_stroke_width": "1.5pt",
+          "corner_style": "sharp_rectangular",
+          "filigree_accents": "4_point_gold_starbursts"
+        }
       },
-      "shopify_product_url": "https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card"
+      "nfc_config": {
+        "target_shape": "star",
+        "tap_label": "⟡ TAP HERE ⟡",
+        "instruction": "Tap with NFC enabled phone or device",
+        "hidden_items_count": {
+          "rose_gold_bows": 10,
+          "boba_pearls": 15
+        }
+      },
+      "utility_action": {
+        "action_type": "GALA_INVITATION_RSVP",
+        "button_text": "RSVP to Winter Gala",
+        "target_url": "https://TapGreetings.com/events/winter-gala-2026"
+      }
     },
     {
-      "id": "02",
+      "card_id": "card-02",
+      "series_id": "winter-glamour-2026",
       "slug": "02",
-      "title": "Black Friday VIP Spree",
-      "alias": "Briar, The Midnight Shopper",
-      "header_display": "CARD 02 OF 12",
-      "category": "Black Friday",
-      "occasion": "Black Friday & Cyber Shopping",
-      "theme": "Gold Foil, Noir Glamour & Holiday Shopping",
-      "aspect": "portrait",
-      "video_aspect": "9/16",
-      "card_aspect": "vertical",
-      "headline": "VIP Shopping Pass & Holiday Treats",
-      "rarity": "Limited Collector Edition",
-      "specs": {
-        "card_format": "CR80 30mil Waterproof PVC",
-        "nfc_chip": "NTAG215 (504 Bytes Rewritable)",
-        "orientation": "Vertical (Portrait 2:3)",
-        "video_format": "4K Motion & Upbeat Cyber Beat (9:16)",
-        "keepsake_rating": "96 / 100",
-        "warmth_index": "94 / 100"
+      "aliases_slugs": [
+        "02"
+      ],
+      "event_greeting": "VIP Shopping Pass & Holiday Treats",
+      "web_address": "https://TapGreetings.com/02",
+      "character": {
+        "name": "Black Friday VIP Spree",
+        "title": "Briar, The Midnight Shopper",
+        "aliases": [
+          "Black Friday VIP Spree"
+        ],
+        "profile_theme": "Gold Foil, Noir Glamour & Holiday Shopping",
+        "motto": "Treat yourself to everything you love this holiday season—you've earned every single moment.",
+        "micro_lore": "With shopping bags in hand and a stylish faux-fur collar against the chill, Briar unlocks the ultimate holiday deals pass. Tap to reveal exclusive doorbusters, discount codes, or surprise holiday gift balances.",
+        "indicators": {
+          "warmth": "94 / 100",
+          "keepsake": "96 / 100",
+          "rarity": "Limited Collector Edition"
+        },
+        "rarity_tier": "Limited Collector Edition"
       },
-      "narrative": {
-        "card_back_lore": "With shopping bags in hand and a stylish faux-fur collar against the chill, Briar unlocks the ultimate holiday deals pass. Tap to reveal exclusive doorbusters, discount codes, or surprise holiday gift balances.",
-        "quote": "Treat yourself to everything you love this holiday season—you've earned every single moment."
-      },
-      "assets": {
-        "front_image": "/public/cards/02_front.jpg",
-        "back_image": "/public/cards/02_back.jpg",
+      "media": {
+        "aspect_ratio": "9:16",
         "video_url": "https://tapgreetings.com/media/02_black_friday.mp4",
-        "audio_url": "https://tapgreetings.com/media/02_holiday_beat.mp3"
+        "local_video_path": "https://tapgreetings.com/media/02_black_friday.mp4",
+        "video_duration_seconds": 12,
+        "audio_dialogue": "Treat yourself to everything you love this holiday season—you've earned every single moment.",
+        "front_image_url": "https://TapGreetings.com/public/cards/02_front.jpg",
+        "local_front_image_path": "/public/cards/02_front.jpg",
+        "back_image_url": "https://TapGreetings.com/public/cards/02_back.jpg",
+        "local_back_image_path": "/public/cards/02_back.jpg"
       },
-      "shopify_product_url": "https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card"
+      "style_tokens": {
+        "theme_name": "Gold Foil, Noir Glamour & Holiday Shopping",
+        "colors": {
+          "bg_obsidian_midnight": "#0A0E1A",
+          "bg_frosted_ice_blue": "#FDF4FF",
+          "accent_blush_pink": "#F5D0FE",
+          "accent_champagne_gold": "#F4E0A5",
+          "border_rose_gold": "#D946EF",
+          "text_charcoal": "#2B2B2B",
+          "text_white": "#FFFFFF",
+          "neon_halo_glow": "#E879F9"
+        },
+        "typography": {
+          "greeting_bubble_font": "'Cooper Black', 'Arial Black', display",
+          "card_title_font": "'Playfair Display', serif",
+          "header_sans_font": "'Montserrat', sans-serif",
+          "body_lore_font": "'Poppins', sans-serif"
+        },
+        "borders": {
+          "vector_stroke_width": "1.5pt",
+          "corner_style": "sharp_rectangular",
+          "filigree_accents": "4_point_gold_starbursts"
+        }
+      },
+      "nfc_config": {
+        "target_shape": "star",
+        "tap_label": "⟡ TAP HERE ⟡",
+        "instruction": "Tap with NFC enabled phone or device",
+        "hidden_items_count": {
+          "sparkles": 8,
+          "stars": 12
+        }
+      },
+      "utility_action": {
+        "action_type": "VIEW_COLLECTION",
+        "button_text": "Explore Black Friday & Cyber Shopping",
+        "target_url": "https://TapGreetings.com/02"
+      }
     },
     {
-      "id": "03",
+      "card_id": "card-03",
+      "series_id": "winter-glamour-2026",
       "slug": "03",
-      "title": "Cozy Fireside & Christmas Hearth",
-      "alias": "The Hearthside Sanctuary",
-      "header_display": "CARD 03 OF 12",
-      "category": "Holiday",
-      "occasion": "Christmas & Winter Holidays",
-      "theme": "Crackling Fireplace, Warm Cocoa & Pine Glow",
-      "aspect": "landscape",
-      "video_aspect": "16/9",
-      "card_aspect": "horizontal",
-      "headline": "Merry Christmas & Peaceful Nights",
-      "rarity": "Holiday Classic",
-      "specs": {
-        "card_format": "CR80 30mil Horizontal PVC",
-        "nfc_chip": "NTAG215 (504 Bytes Rewritable)",
-        "orientation": "Horizontal (Landscape 3:2)",
-        "video_format": "4K Cinematic Horizontal Video (16:9)",
-        "keepsake_rating": "99 / 100",
-        "warmth_index": "100 / 100"
+      "aliases_slugs": [
+        "03"
+      ],
+      "event_greeting": "Merry Christmas & Peaceful Nights",
+      "web_address": "https://TapGreetings.com/03",
+      "character": {
+        "name": "Cozy Fireside & Christmas Hearth",
+        "title": "The Hearthside Sanctuary",
+        "aliases": [
+          "Cozy Fireside & Christmas Hearth"
+        ],
+        "profile_theme": "Crackling Fireplace, Warm Cocoa & Pine Glow",
+        "motto": "Wishing you the coziest Christmas filled with deep peace, warm fires, and the comfort of home.",
+        "micro_lore": "Snow falls gently beyond the frost-framed window while pine logs crackle on the hearth. A steaming mug of cocoa sits beside handwritten letters, filling the home with cinnamon and holiday serenity.",
+        "indicators": {
+          "warmth": "100 / 100",
+          "keepsake": "99 / 100",
+          "rarity": "Holiday Classic"
+        },
+        "rarity_tier": "Holiday Classic"
       },
-      "narrative": {
-        "card_back_lore": "Snow falls gently beyond the frost-framed window while pine logs crackle on the hearth. A steaming mug of cocoa sits beside handwritten letters, filling the home with cinnamon and holiday serenity.",
-        "quote": "Wishing you the coziest Christmas filled with deep peace, warm fires, and the comfort of home."
-      },
-      "assets": {
-        "front_image": "/public/cards/03_front.svg",
-        "back_image": "/public/cards/03_back.svg",
+      "media": {
+        "aspect_ratio": "16:9",
         "video_url": "https://tapgreetings.com/media/03_cozy_hearth.mp4",
-        "audio_url": "https://tapgreetings.com/media/03_hearth_chimes.mp3"
+        "local_video_path": "https://tapgreetings.com/media/03_cozy_hearth.mp4",
+        "video_duration_seconds": 12,
+        "audio_dialogue": "Wishing you the coziest Christmas filled with deep peace, warm fires, and the comfort of home.",
+        "front_image_url": "https://TapGreetings.com/public/cards/03_front.svg",
+        "local_front_image_path": "/public/cards/03_front.svg",
+        "back_image_url": "https://TapGreetings.com/public/cards/03_back.svg",
+        "local_back_image_path": "/public/cards/03_back.svg"
       },
-      "shopify_product_url": "https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card"
+      "style_tokens": {
+        "theme_name": "Crackling Fireplace, Warm Cocoa & Pine Glow",
+        "colors": {
+          "bg_obsidian_midnight": "#0A0E1A",
+          "bg_frosted_ice_blue": "#E0F2FE",
+          "accent_blush_pink": "#38BDF8",
+          "accent_champagne_gold": "#F4E0A5",
+          "border_rose_gold": "#0284C7",
+          "text_charcoal": "#2B2B2B",
+          "text_white": "#FFFFFF",
+          "neon_halo_glow": "#00E5FF"
+        },
+        "typography": {
+          "greeting_bubble_font": "'Cooper Black', 'Arial Black', display",
+          "card_title_font": "'Playfair Display', serif",
+          "header_sans_font": "'Montserrat', sans-serif",
+          "body_lore_font": "'Poppins', sans-serif"
+        },
+        "borders": {
+          "vector_stroke_width": "1.5pt",
+          "corner_style": "sharp_rectangular",
+          "filigree_accents": "4_point_gold_starbursts"
+        }
+      },
+      "nfc_config": {
+        "target_shape": "star",
+        "tap_label": "⟡ TAP HERE ⟡",
+        "instruction": "Tap with NFC enabled phone or device",
+        "hidden_items_count": {
+          "sparkles": 8,
+          "stars": 12
+        }
+      },
+      "utility_action": {
+        "action_type": "VIEW_COLLECTION",
+        "button_text": "Explore Christmas & Winter Holidays",
+        "target_url": "https://TapGreetings.com/03"
+      }
     },
     {
-      "id": "04",
+      "card_id": "card-04",
+      "series_id": "winter-glamour-2026",
       "slug": "04",
-      "title": "Midnight Champagne & Fireworks",
-      "alias": "The New Year Sovereign",
-      "header_display": "CARD 04 OF 12",
-      "category": "Holiday",
-      "occasion": "New Year's Eve & New Beginnings",
-      "theme": "Starlight Gold, Confetti Rain & Rooftop City Lights",
-      "aspect": "landscape",
-      "video_aspect": "16/9",
-      "card_aspect": "horizontal",
-      "headline": "Happy New Year!",
-      "rarity": "Holiday Celebration",
-      "specs": {
-        "card_format": "CR80 30mil Horizontal PVC",
-        "nfc_chip": "NTAG215 (504 Bytes Rewritable)",
-        "orientation": "Horizontal (Landscape 3:2)",
-        "video_format": "4K Cinematic Horizontal Video (16:9)",
-        "keepsake_rating": "97 / 100",
-        "warmth_index": "95 / 100"
+      "aliases_slugs": [
+        "04"
+      ],
+      "event_greeting": "Happy New Year!",
+      "web_address": "https://TapGreetings.com/04",
+      "character": {
+        "name": "Midnight Champagne & Fireworks",
+        "title": "The New Year Sovereign",
+        "aliases": [
+          "Midnight Champagne & Fireworks"
+        ],
+        "profile_theme": "Starlight Gold, Confetti Rain & Rooftop City Lights",
+        "motto": "Cheers to new adventures, bold dreams, and the happiest, most prosperous year yet!",
+        "micro_lore": "As the clock strikes midnight, crystal glasses clink beneath an illuminated skyline of burst gold and emerald fireworks. Here's to leaving behind old doubts and welcoming 365 fresh chapters of boundless triumph.",
+        "indicators": {
+          "warmth": "95 / 100",
+          "keepsake": "97 / 100",
+          "rarity": "Holiday Celebration"
+        },
+        "rarity_tier": "Holiday Celebration"
       },
-      "narrative": {
-        "card_back_lore": "As the clock strikes midnight, crystal glasses clink beneath an illuminated skyline of burst gold and emerald fireworks. Here's to leaving behind old doubts and welcoming 365 fresh chapters of boundless triumph.",
-        "quote": "Cheers to new adventures, bold dreams, and the happiest, most prosperous year yet!"
-      },
-      "assets": {
-        "front_image": "/public/cards/04_front.svg",
-        "back_image": "/public/cards/04_back.svg",
+      "media": {
+        "aspect_ratio": "16:9",
         "video_url": "https://tapgreetings.com/media/04_new_year.mp4",
-        "audio_url": "https://tapgreetings.com/media/04_fireworks_audio.mp3"
+        "local_video_path": "https://tapgreetings.com/media/04_new_year.mp4",
+        "video_duration_seconds": 12,
+        "audio_dialogue": "Cheers to new adventures, bold dreams, and the happiest, most prosperous year yet!",
+        "front_image_url": "https://TapGreetings.com/public/cards/04_front.svg",
+        "local_front_image_path": "/public/cards/04_front.svg",
+        "back_image_url": "https://TapGreetings.com/public/cards/04_back.svg",
+        "local_back_image_path": "/public/cards/04_back.svg"
       },
-      "shopify_product_url": "https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card"
+      "style_tokens": {
+        "theme_name": "Starlight Gold, Confetti Rain & Rooftop City Lights",
+        "colors": {
+          "bg_obsidian_midnight": "#0A0E1A",
+          "bg_frosted_ice_blue": "#E0F2FE",
+          "accent_blush_pink": "#38BDF8",
+          "accent_champagne_gold": "#F4E0A5",
+          "border_rose_gold": "#0284C7",
+          "text_charcoal": "#2B2B2B",
+          "text_white": "#FFFFFF",
+          "neon_halo_glow": "#00E5FF"
+        },
+        "typography": {
+          "greeting_bubble_font": "'Cooper Black', 'Arial Black', display",
+          "card_title_font": "'Playfair Display', serif",
+          "header_sans_font": "'Montserrat', sans-serif",
+          "body_lore_font": "'Poppins', sans-serif"
+        },
+        "borders": {
+          "vector_stroke_width": "1.5pt",
+          "corner_style": "sharp_rectangular",
+          "filigree_accents": "4_point_gold_starbursts"
+        }
+      },
+      "nfc_config": {
+        "target_shape": "star",
+        "tap_label": "⟡ TAP HERE ⟡",
+        "instruction": "Tap with NFC enabled phone or device",
+        "hidden_items_count": {
+          "sparkles": 8,
+          "stars": 12
+        }
+      },
+      "utility_action": {
+        "action_type": "VIEW_COLLECTION",
+        "button_text": "Explore New Year's Eve & New Beginnings",
+        "target_url": "https://TapGreetings.com/04"
+      }
     },
     {
-      "id": "05",
+      "card_id": "card-05",
+      "series_id": "winter-glamour-2026",
       "slug": "05",
-      "title": "Neon Birthday Glow Bash",
-      "alias": "The Electric Celebrator",
-      "header_display": "CARD 05 OF 12",
-      "category": "Birthday",
-      "occasion": "Birthday",
-      "theme": "Vibrant Magenta, Neon Confetti & Birthday Anthem",
-      "aspect": "portrait",
-      "video_aspect": "9/16",
-      "card_aspect": "vertical",
-      "headline": "Happy Birthday!",
-      "rarity": "Celebration Essential",
-      "specs": {
-        "card_format": "CR80 30mil Waterproof PVC",
-        "nfc_chip": "NTAG215 (504 Bytes Rewritable)",
-        "orientation": "Vertical (Portrait 2:3)",
-        "video_format": "4K Vertical Motion & Birthday Track (9:16)",
-        "keepsake_rating": "98 / 100",
-        "warmth_index": "97 / 100"
+      "aliases_slugs": [
+        "05"
+      ],
+      "event_greeting": "Happy Birthday!",
+      "web_address": "https://TapGreetings.com/05",
+      "character": {
+        "name": "Neon Birthday Glow Bash",
+        "title": "The Electric Celebrator",
+        "aliases": [
+          "Neon Birthday Glow Bash"
+        ],
+        "profile_theme": "Vibrant Magenta, Neon Confetti & Birthday Anthem",
+        "motto": "Wishing you another incredible trip around the sun packed with laughter, love, and wild success!",
+        "micro_lore": "Lighting up the night with pulsating neon glow and multi-colored holographic balloons! Tap to start your personalized video birthday greeting featuring unforgettable memories and celebratory beats.",
+        "indicators": {
+          "warmth": "97 / 100",
+          "keepsake": "98 / 100",
+          "rarity": "Celebration Essential"
+        },
+        "rarity_tier": "Celebration Essential"
       },
-      "narrative": {
-        "card_back_lore": "Lighting up the night with pulsating neon glow and multi-colored holographic balloons! Tap to start your personalized video birthday greeting featuring unforgettable memories and celebratory beats.",
-        "quote": "Wishing you another incredible trip around the sun packed with laughter, love, and wild success!"
-      },
-      "assets": {
-        "front_image": "/public/cards/05_front.svg",
-        "back_image": "/public/cards/05_back.svg",
+      "media": {
+        "aspect_ratio": "9:16",
         "video_url": "https://tapgreetings.com/media/05_birthday_bash.mp4",
-        "audio_url": "https://tapgreetings.com/media/05_birthday_audio.mp3"
+        "local_video_path": "https://tapgreetings.com/media/05_birthday_bash.mp4",
+        "video_duration_seconds": 12,
+        "audio_dialogue": "Wishing you another incredible trip around the sun packed with laughter, love, and wild success!",
+        "front_image_url": "https://TapGreetings.com/public/cards/05_front.svg",
+        "local_front_image_path": "/public/cards/05_front.svg",
+        "back_image_url": "https://TapGreetings.com/public/cards/05_back.svg",
+        "local_back_image_path": "/public/cards/05_back.svg"
       },
-      "shopify_product_url": "https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card"
+      "style_tokens": {
+        "theme_name": "Vibrant Magenta, Neon Confetti & Birthday Anthem",
+        "colors": {
+          "bg_obsidian_midnight": "#0A0E1A",
+          "bg_frosted_ice_blue": "#FDF4FF",
+          "accent_blush_pink": "#F5D0FE",
+          "accent_champagne_gold": "#F4E0A5",
+          "border_rose_gold": "#D946EF",
+          "text_charcoal": "#2B2B2B",
+          "text_white": "#FFFFFF",
+          "neon_halo_glow": "#E879F9"
+        },
+        "typography": {
+          "greeting_bubble_font": "'Cooper Black', 'Arial Black', display",
+          "card_title_font": "'Playfair Display', serif",
+          "header_sans_font": "'Montserrat', sans-serif",
+          "body_lore_font": "'Poppins', sans-serif"
+        },
+        "borders": {
+          "vector_stroke_width": "1.5pt",
+          "corner_style": "sharp_rectangular",
+          "filigree_accents": "4_point_gold_starbursts"
+        }
+      },
+      "nfc_config": {
+        "target_shape": "star",
+        "tap_label": "⟡ TAP HERE ⟡",
+        "instruction": "Tap with NFC enabled phone or device",
+        "hidden_items_count": {
+          "sparkles": 8,
+          "stars": 12
+        }
+      },
+      "utility_action": {
+        "action_type": "VIEW_COLLECTION",
+        "button_text": "Explore Birthday",
+        "target_url": "https://TapGreetings.com/05"
+      }
     },
     {
-      "id": "06",
+      "card_id": "card-06",
+      "series_id": "winter-glamour-2026",
       "slug": "06",
-      "title": "Golden Milestone Anniversary",
-      "alias": "The Eternal Bond",
-      "header_display": "CARD 06 OF 12",
-      "category": "Anniversary",
-      "occasion": "Anniversary & Romance",
-      "theme": "Embossed Gold Foil, Satin Ivory & Champagne",
-      "aspect": "portrait",
-      "video_aspect": "9/16",
-      "card_aspect": "vertical",
-      "headline": "Forever & Always",
-      "rarity": "Timeless Elegance",
-      "specs": {
-        "card_format": "CR80 30mil Waterproof PVC",
-        "nfc_chip": "NTAG215 (504 Bytes Rewritable)",
-        "orientation": "Vertical (Portrait 2:3)",
-        "video_format": "4K Vertical Motion & Romantic Strings (9:16)",
-        "keepsake_rating": "100 / 100",
-        "warmth_index": "99 / 100"
+      "aliases_slugs": [
+        "06"
+      ],
+      "event_greeting": "Forever & Always",
+      "web_address": "https://TapGreetings.com/06",
+      "character": {
+        "name": "Golden Milestone Anniversary",
+        "title": "The Eternal Bond",
+        "aliases": [
+          "Golden Milestone Anniversary"
+        ],
+        "profile_theme": "Embossed Gold Foil, Satin Ivory & Champagne",
+        "motto": "Through every season, your love remains our greatest inspiration. Happy Anniversary!",
+        "micro_lore": "Two souls whose journey grows richer with every passing year. A tribute to shared laughter, weathered storms, and the steadfast love that turns ordinary days into golden masterpieces.",
+        "indicators": {
+          "warmth": "99 / 100",
+          "keepsake": "100 / 100",
+          "rarity": "Timeless Elegance"
+        },
+        "rarity_tier": "Timeless Elegance"
       },
-      "narrative": {
-        "card_back_lore": "Two souls whose journey grows richer with every passing year. A tribute to shared laughter, weathered storms, and the steadfast love that turns ordinary days into golden masterpieces.",
-        "quote": "Through every season, your love remains our greatest inspiration. Happy Anniversary!"
-      },
-      "assets": {
-        "front_image": "/public/cards/06_front.svg",
-        "back_image": "/public/cards/06_back.svg",
+      "media": {
+        "aspect_ratio": "9:16",
         "video_url": "https://tapgreetings.com/media/06_anniversary.mp4",
-        "audio_url": "https://tapgreetings.com/media/06_strings_audio.mp3"
+        "local_video_path": "https://tapgreetings.com/media/06_anniversary.mp4",
+        "video_duration_seconds": 12,
+        "audio_dialogue": "Through every season, your love remains our greatest inspiration. Happy Anniversary!",
+        "front_image_url": "https://TapGreetings.com/public/cards/06_front.svg",
+        "local_front_image_path": "/public/cards/06_front.svg",
+        "back_image_url": "https://TapGreetings.com/public/cards/06_back.svg",
+        "local_back_image_path": "/public/cards/06_back.svg"
       },
-      "shopify_product_url": "https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card"
+      "style_tokens": {
+        "theme_name": "Embossed Gold Foil, Satin Ivory & Champagne",
+        "colors": {
+          "bg_obsidian_midnight": "#0A0E1A",
+          "bg_frosted_ice_blue": "#FDF4FF",
+          "accent_blush_pink": "#F5D0FE",
+          "accent_champagne_gold": "#F4E0A5",
+          "border_rose_gold": "#D946EF",
+          "text_charcoal": "#2B2B2B",
+          "text_white": "#FFFFFF",
+          "neon_halo_glow": "#E879F9"
+        },
+        "typography": {
+          "greeting_bubble_font": "'Cooper Black', 'Arial Black', display",
+          "card_title_font": "'Playfair Display', serif",
+          "header_sans_font": "'Montserrat', sans-serif",
+          "body_lore_font": "'Poppins', sans-serif"
+        },
+        "borders": {
+          "vector_stroke_width": "1.5pt",
+          "corner_style": "sharp_rectangular",
+          "filigree_accents": "4_point_gold_starbursts"
+        }
+      },
+      "nfc_config": {
+        "target_shape": "star",
+        "tap_label": "⟡ TAP HERE ⟡",
+        "instruction": "Tap with NFC enabled phone or device",
+        "hidden_items_count": {
+          "sparkles": 8,
+          "stars": 12
+        }
+      },
+      "utility_action": {
+        "action_type": "VIEW_COLLECTION",
+        "button_text": "Explore Anniversary & Romance",
+        "target_url": "https://TapGreetings.com/06"
+      }
     },
     {
-      "id": "07",
+      "card_id": "card-07",
+      "series_id": "winter-glamour-2026",
       "slug": "07",
-      "title": "Heartfelt Botanical Gratitude",
-      "alias": "The Meadow of Thanks",
-      "header_display": "CARD 07 OF 12",
-      "category": "Thank You",
-      "occasion": "Appreciation & Thank You",
-      "theme": "Eucalyptus Green, Rose Gold Foil & Watercolor Blooms",
-      "aspect": "portrait",
-      "video_aspect": "9/16",
-      "card_aspect": "vertical",
-      "headline": "With Sincerest Thanks",
-      "rarity": "Signature Keepsake",
-      "specs": {
-        "card_format": "CR80 30mil Waterproof PVC",
-        "nfc_chip": "NTAG215 (504 Bytes Rewritable)",
-        "orientation": "Vertical (Portrait 2:3)",
-        "video_format": "4K Vertical Motion & Acoustic Harmony (9:16)",
-        "keepsake_rating": "97 / 100",
-        "warmth_index": "100 / 100"
+      "aliases_slugs": [
+        "07"
+      ],
+      "event_greeting": "With Sincerest Thanks",
+      "web_address": "https://TapGreetings.com/07",
+      "character": {
+        "name": "Heartfelt Botanical Gratitude",
+        "title": "The Meadow of Thanks",
+        "aliases": [
+          "Heartfelt Botanical Gratitude"
+        ],
+        "profile_theme": "Eucalyptus Green, Rose Gold Foil & Watercolor Blooms",
+        "motto": "Words cannot fully capture how much your kindness has meant. Thank you from the bottom of my heart.",
+        "micro_lore": "Some gestures make an indelible mark on our hearts. This card expresses profound gratitude for your selfless generosity, gentle guidance, and unwavering presence when it mattered most.",
+        "indicators": {
+          "warmth": "100 / 100",
+          "keepsake": "97 / 100",
+          "rarity": "Signature Keepsake"
+        },
+        "rarity_tier": "Signature Keepsake"
       },
-      "narrative": {
-        "card_back_lore": "Some gestures make an indelible mark on our hearts. This card expresses profound gratitude for your selfless generosity, gentle guidance, and unwavering presence when it mattered most.",
-        "quote": "Words cannot fully capture how much your kindness has meant. Thank you from the bottom of my heart."
-      },
-      "assets": {
-        "front_image": "/public/cards/07_front.svg",
-        "back_image": "/public/cards/07_back.svg",
+      "media": {
+        "aspect_ratio": "9:16",
         "video_url": "https://tapgreetings.com/media/07_gratitude.mp4",
-        "audio_url": "https://tapgreetings.com/media/07_acoustic_audio.mp3"
+        "local_video_path": "https://tapgreetings.com/media/07_gratitude.mp4",
+        "video_duration_seconds": 12,
+        "audio_dialogue": "Words cannot fully capture how much your kindness has meant. Thank you from the bottom of my heart.",
+        "front_image_url": "https://TapGreetings.com/public/cards/07_front.svg",
+        "local_front_image_path": "/public/cards/07_front.svg",
+        "back_image_url": "https://TapGreetings.com/public/cards/07_back.svg",
+        "local_back_image_path": "/public/cards/07_back.svg"
       },
-      "shopify_product_url": "https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card"
+      "style_tokens": {
+        "theme_name": "Eucalyptus Green, Rose Gold Foil & Watercolor Blooms",
+        "colors": {
+          "bg_obsidian_midnight": "#0A0E1A",
+          "bg_frosted_ice_blue": "#FDF4FF",
+          "accent_blush_pink": "#F5D0FE",
+          "accent_champagne_gold": "#F4E0A5",
+          "border_rose_gold": "#D946EF",
+          "text_charcoal": "#2B2B2B",
+          "text_white": "#FFFFFF",
+          "neon_halo_glow": "#E879F9"
+        },
+        "typography": {
+          "greeting_bubble_font": "'Cooper Black', 'Arial Black', display",
+          "card_title_font": "'Playfair Display', serif",
+          "header_sans_font": "'Montserrat', sans-serif",
+          "body_lore_font": "'Poppins', sans-serif"
+        },
+        "borders": {
+          "vector_stroke_width": "1.5pt",
+          "corner_style": "sharp_rectangular",
+          "filigree_accents": "4_point_gold_starbursts"
+        }
+      },
+      "nfc_config": {
+        "target_shape": "star",
+        "tap_label": "⟡ TAP HERE ⟡",
+        "instruction": "Tap with NFC enabled phone or device",
+        "hidden_items_count": {
+          "sparkles": 8,
+          "stars": 12
+        }
+      },
+      "utility_action": {
+        "action_type": "VIEW_COLLECTION",
+        "button_text": "Explore Appreciation & Thank You",
+        "target_url": "https://TapGreetings.com/07"
+      }
     },
     {
-      "id": "08",
+      "card_id": "card-08",
+      "series_id": "winter-glamour-2026",
       "slug": "08",
-      "title": "Unstoppable Champion & Victory",
-      "alias": "The Pinnacle of Triumph",
-      "header_display": "CARD 08 OF 12",
-      "category": "Congratulations",
-      "occasion": "Graduation, Promotion & Big Wins",
-      "theme": "Electric Cobalt, Golden Laurels & Victory Anthem",
-      "aspect": "landscape",
-      "video_aspect": "16/9",
-      "card_aspect": "horizontal",
-      "headline": "You Conquered the Summit!",
-      "rarity": "Trophy Edition",
-      "specs": {
-        "card_format": "CR80 30mil Horizontal PVC",
-        "nfc_chip": "NTAG215 (504 Bytes Rewritable)",
-        "orientation": "Horizontal (Landscape 3:2)",
-        "video_format": "4K Cinematic Horizontal Video (16:9)",
-        "keepsake_rating": "98 / 100",
-        "warmth_index": "96 / 100"
+      "aliases_slugs": [
+        "08"
+      ],
+      "event_greeting": "You Conquered the Summit!",
+      "web_address": "https://TapGreetings.com/08",
+      "character": {
+        "name": "Unstoppable Champion & Victory",
+        "title": "The Pinnacle of Triumph",
+        "aliases": [
+          "Unstoppable Champion & Victory"
+        ],
+        "profile_theme": "Electric Cobalt, Golden Laurels & Victory Anthem",
+        "motto": "Huge congratulations on your phenomenal victory! The world is taking notice of what you can do.",
+        "micro_lore": "Late nights, tireless discipline, and unyielding ambition have brought you to this crowning victory. Stand tall on the podium of your achievements—the future is wide open for your next great triumph.",
+        "indicators": {
+          "warmth": "96 / 100",
+          "keepsake": "98 / 100",
+          "rarity": "Trophy Edition"
+        },
+        "rarity_tier": "Trophy Edition"
       },
-      "narrative": {
-        "card_back_lore": "Late nights, tireless discipline, and unyielding ambition have brought you to this crowning victory. Stand tall on the podium of your achievements—the future is wide open for your next great triumph.",
-        "quote": "Huge congratulations on your phenomenal victory! The world is taking notice of what you can do."
-      },
-      "assets": {
-        "front_image": "/public/cards/08_front.svg",
-        "back_image": "/public/cards/08_back.svg",
+      "media": {
+        "aspect_ratio": "16:9",
         "video_url": "https://tapgreetings.com/media/08_champion.mp4",
-        "audio_url": "https://tapgreetings.com/media/08_fanfare_audio.mp3"
+        "local_video_path": "https://tapgreetings.com/media/08_champion.mp4",
+        "video_duration_seconds": 12,
+        "audio_dialogue": "Huge congratulations on your phenomenal victory! The world is taking notice of what you can do.",
+        "front_image_url": "https://TapGreetings.com/public/cards/08_front.svg",
+        "local_front_image_path": "/public/cards/08_front.svg",
+        "back_image_url": "https://TapGreetings.com/public/cards/08_back.svg",
+        "local_back_image_path": "/public/cards/08_back.svg"
       },
-      "shopify_product_url": "https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card"
+      "style_tokens": {
+        "theme_name": "Electric Cobalt, Golden Laurels & Victory Anthem",
+        "colors": {
+          "bg_obsidian_midnight": "#0A0E1A",
+          "bg_frosted_ice_blue": "#E0F2FE",
+          "accent_blush_pink": "#38BDF8",
+          "accent_champagne_gold": "#F4E0A5",
+          "border_rose_gold": "#0284C7",
+          "text_charcoal": "#2B2B2B",
+          "text_white": "#FFFFFF",
+          "neon_halo_glow": "#00E5FF"
+        },
+        "typography": {
+          "greeting_bubble_font": "'Cooper Black', 'Arial Black', display",
+          "card_title_font": "'Playfair Display', serif",
+          "header_sans_font": "'Montserrat', sans-serif",
+          "body_lore_font": "'Poppins', sans-serif"
+        },
+        "borders": {
+          "vector_stroke_width": "1.5pt",
+          "corner_style": "sharp_rectangular",
+          "filigree_accents": "4_point_gold_starbursts"
+        }
+      },
+      "nfc_config": {
+        "target_shape": "star",
+        "tap_label": "⟡ TAP HERE ⟡",
+        "instruction": "Tap with NFC enabled phone or device",
+        "hidden_items_count": {
+          "sparkles": 8,
+          "stars": 12
+        }
+      },
+      "utility_action": {
+        "action_type": "VIEW_COLLECTION",
+        "button_text": "Explore Graduation, Promotion & Big Wins",
+        "target_url": "https://TapGreetings.com/08"
+      }
     },
     {
-      "id": "09",
+      "card_id": "card-09",
+      "series_id": "winter-glamour-2026",
       "slug": "09",
-      "title": "Thinking of You & Warm Hugs",
-      "alias": "A Pocket Hug Across the Miles",
-      "header_display": "CARD 09 OF 12",
-      "category": "Everyday",
-      "occasion": "Thinking of You & Encouragement",
-      "theme": "Lavender Sunset, Soft Cloud Mist & Warm Chai",
-      "aspect": "portrait",
-      "video_aspect": "9/16",
-      "card_aspect": "vertical",
-      "headline": "Sending You So Much Love",
-      "rarity": "Heartfelt Classic",
-      "specs": {
-        "card_format": "CR80 30mil Waterproof PVC",
-        "nfc_chip": "NTAG215 (504 Bytes Rewritable)",
-        "orientation": "Vertical (Portrait 2:3)",
-        "video_format": "4K Vertical Motion & Gentle Melody (9:16)",
-        "keepsake_rating": "96 / 100",
-        "warmth_index": "99 / 100"
+      "aliases_slugs": [
+        "09"
+      ],
+      "event_greeting": "Sending You So Much Love",
+      "web_address": "https://TapGreetings.com/09",
+      "character": {
+        "name": "Thinking of You & Warm Hugs",
+        "title": "A Pocket Hug Across the Miles",
+        "aliases": [
+          "Thinking of You & Warm Hugs"
+        ],
+        "profile_theme": "Lavender Sunset, Soft Cloud Mist & Warm Chai",
+        "motto": "Just a little reminder that you are loved, you are appreciated, and you are never alone.",
+        "micro_lore": "Miles may stretch between us, but you are never far from my thoughts. Keep this card in your wallet or on your nightstand as a physical reminder that someone is always cheering for you and sending you warm love.",
+        "indicators": {
+          "warmth": "99 / 100",
+          "keepsake": "96 / 100",
+          "rarity": "Heartfelt Classic"
+        },
+        "rarity_tier": "Heartfelt Classic"
       },
-      "narrative": {
-        "card_back_lore": "Miles may stretch between us, but you are never far from my thoughts. Keep this card in your wallet or on your nightstand as a physical reminder that someone is always cheering for you and sending you warm love.",
-        "quote": "Just a little reminder that you are loved, you are appreciated, and you are never alone."
-      },
-      "assets": {
-        "front_image": "/public/cards/09_front.svg",
-        "back_image": "/public/cards/09_back.svg",
+      "media": {
+        "aspect_ratio": "9:16",
         "video_url": "https://tapgreetings.com/media/09_thinking_of_you.mp4",
-        "audio_url": "https://tapgreetings.com/media/09_gentle_piano.mp3"
+        "local_video_path": "https://tapgreetings.com/media/09_thinking_of_you.mp4",
+        "video_duration_seconds": 12,
+        "audio_dialogue": "Just a little reminder that you are loved, you are appreciated, and you are never alone.",
+        "front_image_url": "https://TapGreetings.com/public/cards/09_front.svg",
+        "local_front_image_path": "/public/cards/09_front.svg",
+        "back_image_url": "https://TapGreetings.com/public/cards/09_back.svg",
+        "local_back_image_path": "/public/cards/09_back.svg"
       },
-      "shopify_product_url": "https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card"
+      "style_tokens": {
+        "theme_name": "Lavender Sunset, Soft Cloud Mist & Warm Chai",
+        "colors": {
+          "bg_obsidian_midnight": "#0A0E1A",
+          "bg_frosted_ice_blue": "#FDF4FF",
+          "accent_blush_pink": "#F5D0FE",
+          "accent_champagne_gold": "#F4E0A5",
+          "border_rose_gold": "#D946EF",
+          "text_charcoal": "#2B2B2B",
+          "text_white": "#FFFFFF",
+          "neon_halo_glow": "#E879F9"
+        },
+        "typography": {
+          "greeting_bubble_font": "'Cooper Black', 'Arial Black', display",
+          "card_title_font": "'Playfair Display', serif",
+          "header_sans_font": "'Montserrat', sans-serif",
+          "body_lore_font": "'Poppins', sans-serif"
+        },
+        "borders": {
+          "vector_stroke_width": "1.5pt",
+          "corner_style": "sharp_rectangular",
+          "filigree_accents": "4_point_gold_starbursts"
+        }
+      },
+      "nfc_config": {
+        "target_shape": "star",
+        "tap_label": "⟡ TAP HERE ⟡",
+        "instruction": "Tap with NFC enabled phone or device",
+        "hidden_items_count": {
+          "sparkles": 8,
+          "stars": 12
+        }
+      },
+      "utility_action": {
+        "action_type": "VIEW_COLLECTION",
+        "button_text": "Explore Thinking of You & Encouragement",
+        "target_url": "https://TapGreetings.com/09"
+      }
     },
     {
-      "id": "10",
+      "card_id": "card-10",
+      "series_id": "winter-glamour-2026",
       "slug": "10",
-      "title": "Sweet Baby Arrival & Starlight",
-      "alias": "The Celestial Welcome",
-      "header_display": "CARD 10 OF 12",
-      "category": "Everyday",
-      "occasion": "Baby Shower & New Arrival",
-      "theme": "Moonlight Pearl, Pastel Mint & Starlight Glow",
-      "aspect": "landscape",
-      "video_aspect": "16/9",
-      "card_aspect": "horizontal",
-      "headline": "Welcome to the World, Little Miracle!",
-      "rarity": "Milestone Edition",
-      "specs": {
-        "card_format": "CR80 30mil Horizontal PVC",
-        "nfc_chip": "NTAG215 (504 Bytes Rewritable)",
-        "orientation": "Horizontal (Landscape 3:2)",
-        "video_format": "4K Cinematic Horizontal Video (16:9)",
-        "keepsake_rating": "100 / 100",
-        "warmth_index": "100 / 100"
+      "aliases_slugs": [
+        "10"
+      ],
+      "event_greeting": "Welcome to the World, Little Miracle!",
+      "web_address": "https://TapGreetings.com/10",
+      "character": {
+        "name": "Sweet Baby Arrival & Starlight",
+        "title": "The Celestial Welcome",
+        "aliases": [
+          "Sweet Baby Arrival & Starlight"
+        ],
+        "profile_theme": "Moonlight Pearl, Pastel Mint & Starlight Glow",
+        "motto": "Congratulations to the proud parents! Wishing your family a lifetime of laughter and sweet cuddles.",
+        "micro_lore": "Ten little fingers, ten little toes, and a love that knows no bounds. Welcome to the precious new bundle of joy whose arrival fills the entire universe with starlight and wonder.",
+        "indicators": {
+          "warmth": "100 / 100",
+          "keepsake": "100 / 100",
+          "rarity": "Milestone Edition"
+        },
+        "rarity_tier": "Milestone Edition"
       },
-      "narrative": {
-        "card_back_lore": "Ten little fingers, ten little toes, and a love that knows no bounds. Welcome to the precious new bundle of joy whose arrival fills the entire universe with starlight and wonder.",
-        "quote": "Congratulations to the proud parents! Wishing your family a lifetime of laughter and sweet cuddles."
-      },
-      "assets": {
-        "front_image": "/public/cards/10_front.svg",
-        "back_image": "/public/cards/10_back.svg",
+      "media": {
+        "aspect_ratio": "16:9",
         "video_url": "https://tapgreetings.com/media/10_baby_arrival.mp4",
-        "audio_url": "https://tapgreetings.com/media/10_lullaby_audio.mp3"
+        "local_video_path": "https://tapgreetings.com/media/10_baby_arrival.mp4",
+        "video_duration_seconds": 12,
+        "audio_dialogue": "Congratulations to the proud parents! Wishing your family a lifetime of laughter and sweet cuddles.",
+        "front_image_url": "https://TapGreetings.com/public/cards/10_front.svg",
+        "local_front_image_path": "/public/cards/10_front.svg",
+        "back_image_url": "https://TapGreetings.com/public/cards/10_back.svg",
+        "local_back_image_path": "/public/cards/10_back.svg"
       },
-      "shopify_product_url": "https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card"
+      "style_tokens": {
+        "theme_name": "Moonlight Pearl, Pastel Mint & Starlight Glow",
+        "colors": {
+          "bg_obsidian_midnight": "#0A0E1A",
+          "bg_frosted_ice_blue": "#E0F2FE",
+          "accent_blush_pink": "#38BDF8",
+          "accent_champagne_gold": "#F4E0A5",
+          "border_rose_gold": "#0284C7",
+          "text_charcoal": "#2B2B2B",
+          "text_white": "#FFFFFF",
+          "neon_halo_glow": "#00E5FF"
+        },
+        "typography": {
+          "greeting_bubble_font": "'Cooper Black', 'Arial Black', display",
+          "card_title_font": "'Playfair Display', serif",
+          "header_sans_font": "'Montserrat', sans-serif",
+          "body_lore_font": "'Poppins', sans-serif"
+        },
+        "borders": {
+          "vector_stroke_width": "1.5pt",
+          "corner_style": "sharp_rectangular",
+          "filigree_accents": "4_point_gold_starbursts"
+        }
+      },
+      "nfc_config": {
+        "target_shape": "star",
+        "tap_label": "⟡ TAP HERE ⟡",
+        "instruction": "Tap with NFC enabled phone or device",
+        "hidden_items_count": {
+          "sparkles": 8,
+          "stars": 12
+        }
+      },
+      "utility_action": {
+        "action_type": "VIEW_COLLECTION",
+        "button_text": "Explore Baby Shower & New Arrival",
+        "target_url": "https://TapGreetings.com/10"
+      }
     },
     {
-      "id": "11",
+      "card_id": "card-11",
+      "series_id": "winter-glamour-2026",
       "slug": "11",
-      "title": "Forever Vows & Wedding Elegance",
-      "alias": "The Sacred Union",
-      "header_display": "CARD 11 OF 12",
-      "category": "Wedding",
-      "occasion": "Wedding Day & Nuptials",
-      "theme": "Champagne Silk, White Peonies & Gilded Calligraphy",
-      "aspect": "portrait",
-      "video_aspect": "9/16",
-      "card_aspect": "vertical",
-      "headline": "Congratulations on Your Wedding Day",
-      "rarity": "Couture Keepsake",
-      "specs": {
-        "card_format": "CR80 30mil Waterproof PVC",
-        "nfc_chip": "NTAG215 (504 Bytes Rewritable)",
-        "orientation": "Vertical (Portrait 2:3)",
-        "video_format": "4K Vertical Motion & Bridal Symphony (9:16)",
-        "keepsake_rating": "100 / 100",
-        "warmth_index": "98 / 100"
+      "aliases_slugs": [
+        "11"
+      ],
+      "event_greeting": "Congratulations on Your Wedding Day",
+      "web_address": "https://TapGreetings.com/11",
+      "character": {
+        "name": "Forever Vows & Wedding Elegance",
+        "title": "The Sacred Union",
+        "aliases": [
+          "Forever Vows & Wedding Elegance"
+        ],
+        "profile_theme": "Champagne Silk, White Peonies & Gilded Calligraphy",
+        "motto": "Here's to love, laughter, and your happily ever after. Congratulations on tying the knot!",
+        "micro_lore": "Hand in hand, heart to heart, beginning a journey of shared dreams and everlasting devotion. May your marriage be filled with endless grace, gentle understanding, and abiding joy.",
+        "indicators": {
+          "warmth": "98 / 100",
+          "keepsake": "100 / 100",
+          "rarity": "Couture Keepsake"
+        },
+        "rarity_tier": "Couture Keepsake"
       },
-      "narrative": {
-        "card_back_lore": "Hand in hand, heart to heart, beginning a journey of shared dreams and everlasting devotion. May your marriage be filled with endless grace, gentle understanding, and abiding joy.",
-        "quote": "Here's to love, laughter, and your happily ever after. Congratulations on tying the knot!"
-      },
-      "assets": {
-        "front_image": "/public/cards/11_front.svg",
-        "back_image": "/public/cards/11_back.svg",
+      "media": {
+        "aspect_ratio": "9:16",
         "video_url": "https://tapgreetings.com/media/11_wedding.mp4",
-        "audio_url": "https://tapgreetings.com/media/11_orchestral_audio.mp3"
+        "local_video_path": "https://tapgreetings.com/media/11_wedding.mp4",
+        "video_duration_seconds": 12,
+        "audio_dialogue": "Here's to love, laughter, and your happily ever after. Congratulations on tying the knot!",
+        "front_image_url": "https://TapGreetings.com/public/cards/11_front.svg",
+        "local_front_image_path": "/public/cards/11_front.svg",
+        "back_image_url": "https://TapGreetings.com/public/cards/11_back.svg",
+        "local_back_image_path": "/public/cards/11_back.svg"
       },
-      "shopify_product_url": "https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card"
+      "style_tokens": {
+        "theme_name": "Champagne Silk, White Peonies & Gilded Calligraphy",
+        "colors": {
+          "bg_obsidian_midnight": "#0A0E1A",
+          "bg_frosted_ice_blue": "#FDF4FF",
+          "accent_blush_pink": "#F5D0FE",
+          "accent_champagne_gold": "#F4E0A5",
+          "border_rose_gold": "#D946EF",
+          "text_charcoal": "#2B2B2B",
+          "text_white": "#FFFFFF",
+          "neon_halo_glow": "#E879F9"
+        },
+        "typography": {
+          "greeting_bubble_font": "'Cooper Black', 'Arial Black', display",
+          "card_title_font": "'Playfair Display', serif",
+          "header_sans_font": "'Montserrat', sans-serif",
+          "body_lore_font": "'Poppins', sans-serif"
+        },
+        "borders": {
+          "vector_stroke_width": "1.5pt",
+          "corner_style": "sharp_rectangular",
+          "filigree_accents": "4_point_gold_starbursts"
+        }
+      },
+      "nfc_config": {
+        "target_shape": "star",
+        "tap_label": "⟡ TAP HERE ⟡",
+        "instruction": "Tap with NFC enabled phone or device",
+        "hidden_items_count": {
+          "sparkles": 8,
+          "stars": 12
+        }
+      },
+      "utility_action": {
+        "action_type": "VIEW_COLLECTION",
+        "button_text": "Explore Wedding Day & Nuptials",
+        "target_url": "https://TapGreetings.com/11"
+      }
     },
     {
-      "id": "12",
+      "card_id": "card-12",
+      "series_id": "winter-glamour-2026",
       "slug": "custom",
-      "title": "Custom NFC Video TapGreeting Card",
-      "alias": "Personalized Studio Edition",
-      "header_display": "FEATURED STUDIO",
-      "category": "Custom",
-      "occasion": "Any Occasion & Personalized Gift",
-      "theme": "Your Photos, Artwork, Video & Personal Links",
-      "aspect": "portrait",
-      "video_aspect": "9/16",
-      "card_aspect": "vertical",
-      "headline": "Design Your Custom Keepsake Card",
-      "rarity": "One-of-a-Kind Custom",
-      "specs": {
-        "card_format": "CR80 30mil Waterproof PVC (Dual-Sided)",
-        "nfc_chip": "NTAG215 (504 Bytes Rewritable)",
-        "orientation": "Supports Both Portrait & Landscape",
-        "video_format": "Upload Any Video, Greeting or Link",
-        "keepsake_rating": "100 / 100",
-        "warmth_index": "100 / 100"
+      "aliases_slugs": [
+        "12"
+      ],
+      "event_greeting": "Design Your Custom Keepsake Card",
+      "web_address": "https://TapGreetings.com/custom",
+      "character": {
+        "name": "Custom NFC Video TapGreeting Card",
+        "title": "Personalized Studio Edition",
+        "aliases": [
+          "Custom NFC Video TapGreeting Card"
+        ],
+        "profile_theme": "Your Photos, Artwork, Video & Personal Links",
+        "motto": "Turn your cherished video memories and greeting into an unforgettable physical keepsake.",
+        "micro_lore": "Upload your own photos or custom artwork for the front and back. Encode any personal video message, photo album, voice note, or link directly into the rewritable NFC chip. Crafted in waterproof credit card-grade PVC.",
+        "indicators": {
+          "warmth": "100 / 100",
+          "keepsake": "100 / 100",
+          "rarity": "One-of-a-Kind Custom"
+        },
+        "rarity_tier": "One-of-a-Kind Custom"
       },
-      "narrative": {
-        "card_back_lore": "Upload your own photos or custom artwork for the front and back. Encode any personal video message, photo album, voice note, or link directly into the rewritable NFC chip. Crafted in waterproof credit card-grade PVC.",
-        "quote": "Turn your cherished video memories and greeting into an unforgettable physical keepsake."
-      },
-      "assets": {
-        "front_image": "/public/cards/01_front.jpg",
-        "back_image": "/public/cards/01_back.jpg",
+      "media": {
+        "aspect_ratio": "9:16",
         "video_url": "https://tapgreetings.com/media/custom_card_demo.mp4",
-        "audio_url": ""
+        "local_video_path": "https://tapgreetings.com/media/custom_card_demo.mp4",
+        "video_duration_seconds": 12,
+        "audio_dialogue": "Turn your cherished video memories and greeting into an unforgettable physical keepsake.",
+        "front_image_url": "https://TapGreetings.com/public/cards/01_front.jpg",
+        "local_front_image_path": "/public/cards/01_front.jpg",
+        "back_image_url": "https://TapGreetings.com/public/cards/01_back.jpg",
+        "local_back_image_path": "/public/cards/01_back.jpg"
       },
-      "shopify_product_url": "https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card"
+      "style_tokens": {
+        "theme_name": "Your Photos, Artwork, Video & Personal Links",
+        "colors": {
+          "bg_obsidian_midnight": "#0A0E1A",
+          "bg_frosted_ice_blue": "#FDF4FF",
+          "accent_blush_pink": "#F5D0FE",
+          "accent_champagne_gold": "#F4E0A5",
+          "border_rose_gold": "#D946EF",
+          "text_charcoal": "#2B2B2B",
+          "text_white": "#FFFFFF",
+          "neon_halo_glow": "#E879F9"
+        },
+        "typography": {
+          "greeting_bubble_font": "'Cooper Black', 'Arial Black', display",
+          "card_title_font": "'Playfair Display', serif",
+          "header_sans_font": "'Montserrat', sans-serif",
+          "body_lore_font": "'Poppins', sans-serif"
+        },
+        "borders": {
+          "vector_stroke_width": "1.5pt",
+          "corner_style": "sharp_rectangular",
+          "filigree_accents": "4_point_gold_starbursts"
+        }
+      },
+      "nfc_config": {
+        "target_shape": "star",
+        "tap_label": "⟡ TAP HERE ⟡",
+        "instruction": "Tap with NFC enabled phone or device",
+        "hidden_items_count": {
+          "sparkles": 8,
+          "stars": 12
+        }
+      },
+      "utility_action": {
+        "action_type": "VIEW_COLLECTION",
+        "button_text": "Explore Any Occasion & Personalized Gift",
+        "target_url": "https://TapGreetings.com/custom"
+      }
     }
   ]
 }

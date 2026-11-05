@@ -21,9 +21,39 @@ function safe(val, fallback = '') {
   return val;
 }
 
+function resolveAssetPath(filePath, isSubdir = false) {
+  if (!filePath) return '';
+  if (filePath.startsWith('http://') || filePath.startsWith('https://')) {
+    // If it's a tapgreetings domain url, convert to relative asset path
+    const match = filePath.match(/https?:\/\/(?:www\.)?tapgreetings\.com(\/.*)/i);
+    if (match) {
+      const rel = match[1];
+      return isSubdir ? '..' + rel : '.' + rel;
+    }
+    return filePath;
+  }
+  if (filePath.startsWith('/')) {
+    return isSubdir ? '..' + filePath : '.' + filePath;
+  }
+  return isSubdir ? '../' + filePath : './' + filePath;
+}
+
 // Common HTML Head template
-function getHeadHtml(title, isSubdir = false) {
+function getHeadHtml(title, cardStyle = null, isSubdir = false) {
   const relPath = isSubdir ? '../' : './';
+  
+  // Custom theme colors from card style tokens if provided
+  const colors = cardStyle?.colors || {
+    bg_obsidian_midnight: '#0A0E1A',
+    bg_frosted_ice_blue: '#E0F7FA',
+    accent_blush_pink: '#FFD1DC',
+    accent_champagne_gold: '#F4E0A5',
+    border_rose_gold: '#B76E79',
+    text_charcoal: '#2B2B2B',
+    text_white: '#FFFFFF',
+    neon_halo_glow: '#FF69B4'
+  };
+
   return `<!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
@@ -38,6 +68,12 @@ function getHeadHtml(title, isSubdir = false) {
             theme: {
                 extend: {
                     colors: {
+                        midnight: '${colors.bg_obsidian_midnight}',
+                        iceBlue: '${colors.bg_frosted_ice_blue}',
+                        blushPink: '${colors.accent_blush_pink}',
+                        champagneGold: '${colors.accent_champagne_gold}',
+                        roseGold: '${colors.border_rose_gold}',
+                        neonGlow: '${colors.neon_halo_glow}',
                         brand: {
                             50: '#fdf4ff',
                             100: '#fae8ff',
@@ -56,9 +92,12 @@ function getHeadHtml(title, isSubdir = false) {
                         }
                     },
                     fontFamily: {
+                        bubble: [${cardStyle?.typography?.greeting_bubble_font || "'Cooper Black', 'Arial Black', display"}],
+                        title: [${cardStyle?.typography?.card_title_font || "'Playfair Display', serif"}],
+                        header: [${cardStyle?.typography?.header_sans_font || "'Montserrat', sans-serif"}],
+                        body: [${cardStyle?.typography?.body_lore_font || "'Poppins', 'Inter', sans-serif"}],
                         serif: ['"Playfair Display"', 'Georgia', 'serif'],
-                        sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
-                        display: ['"Space Grotesk"', 'sans-serif']
+                        sans: ['"Montserrat"', '"Plus Jakarta Sans"', 'sans-serif']
                     }
                 }
             }
@@ -66,14 +105,33 @@ function getHeadHtml(title, isSubdir = false) {
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400&family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        .glow-card {
-            box-shadow: 0 10px 40px -10px rgba(217, 70, 239, 0.35);
+        :root {
+            --card-midnight: ${colors.bg_obsidian_midnight};
+            --card-ice: ${colors.bg_frosted_ice_blue};
+            --card-pink: ${colors.accent_blush_pink};
+            --card-gold: ${colors.accent_champagne_gold};
+            --card-rose-gold: ${colors.border_rose_gold};
+            --card-neon: ${colors.neon_halo_glow};
         }
-        .glow-cyan {
-            box-shadow: 0 10px 40px -10px rgba(6, 182, 212, 0.4);
+        .glow-neon {
+            box-shadow: 0 0 35px -5px ${colors.neon_halo_glow}55;
+        }
+        .glow-gold {
+            box-shadow: 0 0 25px -5px ${colors.accent_champagne_gold}55;
+        }
+        .starburst-corner {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            color: ${colors.accent_champagne_gold};
+            font-size: 16px;
+            line-height: 1;
+            user-select: none;
+            pointer-events: none;
+            filter: drop-shadow(0 0 4px ${colors.accent_champagne_gold});
         }
         .perspective-1000 {
             perspective: 1000px;
@@ -85,23 +143,29 @@ function getHeadHtml(title, isSubdir = false) {
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
         }
+        .flip-card-inner {
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
     </style>
 </head>
-<body class="font-sans bg-slate-950 text-slate-100 min-h-screen transition-colors duration-300 selection:bg-brand-500 selection:text-white">
+<body class="font-sans bg-[#0A0E1A] text-slate-100 min-h-screen transition-colors duration-300 selection:bg-pink-500 selection:text-white">
     <!-- Header -->
-    <header class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-brand-500/30 px-4 sm:px-8 py-3.5 flex justify-between items-center shadow-lg">
-        <a href="${relPath}index.html" class="font-display text-xl sm:text-2xl font-bold text-white flex items-center gap-2.5 drop-shadow-[0_0_15px_rgba(217,70,239,0.5)]">
-            <span class="w-8 h-8 rounded-xl bg-gradient-to-tr from-brand-600 to-cyan-500 flex items-center justify-center text-sm font-black text-white shadow-md">TG</span>
+    <header class="sticky top-0 z-50 bg-[#0A0E1A]/95 backdrop-blur-md border-b border-rose-400/30 px-4 sm:px-8 py-3.5 flex justify-between items-center shadow-lg">
+        <a href="${relPath}index.html" class="font-header text-xl sm:text-2xl font-bold text-white flex items-center gap-2.5 drop-shadow-[0_0_15px_rgba(255,105,180,0.5)]">
+            <span class="w-8 h-8 rounded-xl bg-gradient-to-tr from-pink-600 via-rose-500 to-amber-300 flex items-center justify-center text-sm font-black text-white shadow-md">TG</span>
             <span>TapGreetings</span>
         </a>
         <div class="flex items-center gap-5">
             <nav class="hidden sm:flex gap-6 text-sm font-semibold text-slate-300">
-                <a href="${relPath}index.html" class="hover:text-brand-400 transition-colors">Home</a>
-                <a href="${relPath}index.html#collection" class="hover:text-brand-400 transition-colors">All Cards</a>
-                <a href="${meta.custom_designer_url}" target="_blank" class="hover:text-cyanAccent-400 transition-colors">Custom Studio</a>
-                <a href="${meta.tools_url}" target="_blank" class="hover:text-brand-400 transition-colors">NFC Tools</a>
+                <a href="${relPath}index.html" class="hover:text-pink-300 transition-colors">Home</a>
+                <a href="${relPath}index.html#collection" class="hover:text-pink-300 transition-colors">All Cards</a>
+                <a href="${meta.custom_designer_url}" target="_blank" class="hover:text-amber-300 transition-colors">Custom Studio</a>
+                <a href="${meta.tools_url}" target="_blank" class="hover:text-pink-300 transition-colors">NFC Tools</a>
             </nav>
-            <button onclick="toggleTheme()" class="w-9 h-9 rounded-full bg-gradient-to-r from-brand-600 to-indigo-600 text-white flex items-center justify-center shadow-md hover:scale-105 transition-transform" title="Toggle Light/Dark Mode">
+            <button onclick="toggleTheme()" class="w-9 h-9 rounded-full bg-gradient-to-r from-rose-600 to-amber-500 text-white flex items-center justify-center shadow-md hover:scale-105 transition-transform" title="Toggle Light/Dark Mode">
                 <i class="fa-solid fa-moon" id="themeIcon"></i>
             </button>
         </div>
@@ -139,11 +203,11 @@ function getHeadHtml(title, isSubdir = false) {
 function getFooterHtml() {
   return `
     <footer class="text-center py-12 px-4 text-xs sm:text-sm text-slate-400 border-t border-slate-800/80 mt-20 flex flex-col items-center gap-6">
-        <div class="flex flex-wrap justify-center gap-6 text-xl text-brand-400">
-            ${socialChannels.map(s => `<a href="${s.url}" target="_blank" class="hover:text-cyanAccent-400 transition-transform hover:scale-110" title="${s.name}"><i class="${s.icon}"></i></a>`).join('')}
+        <div class="flex flex-wrap justify-center gap-6 text-xl text-rose-400">
+            ${socialChannels.map(s => `<a href="${s.url}" target="_blank" class="hover:text-amber-300 transition-transform hover:scale-110" title="${s.name}"><i class="${s.icon}"></i></a>`).join('')}
         </div>
         <p class="max-w-md leading-relaxed text-slate-400">
-            &copy; 2026 TapGreetings. Powered by <a href="https://tapthingy.com" target="_blank" class="text-brand-400 font-bold hover:underline">TapThingy</a> smart hardware & OTA dynamic cloud routing.
+            &copy; 2026 TapGreetings. Powered by <a href="https://tapthingy.com" target="_blank" class="text-pink-400 font-bold hover:underline">TapThingy</a> smart NFC hardware &amp; OTA dynamic cloud routing.
         </p>
     </footer>
 </body>
@@ -154,259 +218,373 @@ function getFooterHtml() {
 // 1. Generate Individual Card Pages
 console.log('Generating individual card pages...');
 cards.forEach((card, index) => {
-  const isLandscape = card.aspect === 'landscape';
+  const isLandscape = card.media?.aspect_ratio === '16:9' || card.media?.aspect_ratio === 'landscape';
   const prevCard = index > 0 ? cards[index - 1] : cards[cards.length - 1];
   const nextCard = index < cards.length - 1 ? cards[index + 1] : cards[0];
 
-  const cardDir = path.join(projectRoot, card.slug);
-  if (!fs.existsSync(cardDir)) {
-    fs.mkdirSync(cardDir, { recursive: true });
-  }
+  const colors = card.style_tokens?.colors || {};
+  const char = card.character || {};
+  const media = card.media || {};
+  const nfc = card.nfc_config || {};
+  const utility = card.utility_action || {};
 
-  // Determine image paths
-  let frontImg = card.assets.front_image.startsWith('/') ? '..' + card.assets.front_image : '../' + card.assets.front_image;
-  let backImg = card.assets.back_image ? (card.assets.back_image.startsWith('/') ? '..' + card.assets.back_image : '../' + card.assets.back_image) : '';
+  // Resolve assets
+  const frontImg = resolveAssetPath(media.local_front_image_path || media.front_image_url, true);
+  const backImg = resolveAssetPath(media.local_back_image_path || media.back_image_url, true);
+  const videoSrc = resolveAssetPath(media.local_video_path || media.video_url, true);
 
-  // Video container styling depending on aspect ratio
+  // Video container aspect classes
   const videoAspectClass = isLandscape ? 'aspect-[16/9] w-full max-h-[60vh]' : 'aspect-[9/16] w-full max-h-[75vh]';
-  const cardPreviewAspectClass = isLandscape ? 'aspect-[3/2] w-56 sm:w-64' : 'aspect-[2/3] w-48 sm:w-56';
+  const cardPreviewAspectClass = isLandscape ? 'aspect-[3/2] w-64 sm:w-80' : 'aspect-[9/16] w-52 sm:w-64';
 
-  const cardPageHtml = `${getHeadHtml(card.title, true)}
+  const cardPageHtml = `${getHeadHtml(`${char.name || card.slug} - ${card.event_greeting}`, card.style_tokens, true)}
     <main class="max-w-6xl mx-auto px-4 py-8 sm:py-12">
-        <div class="bg-slate-900/95 dark:bg-slate-900/95 rounded-3xl p-6 sm:p-10 shadow-2xl border-2 border-brand-500/40 backdrop-blur-md flex flex-col gap-8 glow-card">
+        <!-- Main Card Container with Sharp Rectangular Borders and Rose Gold Stroke -->
+        <div class="relative bg-[#0A0E1A]/95 rounded-2xl p-6 sm:p-10 shadow-2xl border-[1.5pt] border-rose-400/40 backdrop-blur-md flex flex-col gap-8 glow-neon">
             
-            <!-- Banner / Headline -->
-            <div class="text-center">
-                <span class="inline-block bg-gradient-to-r from-brand-600 to-cyanAccent-600 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-md mb-2">
-                    ${card.occasion}
-                </span>
-                <h2 class="font-serif text-2xl sm:text-4xl font-bold bg-gradient-to-r from-brand-400 via-pink-300 to-cyan-300 bg-clip-text text-transparent drop-shadow">
-                    ${card.headline}
-                </h2>
+            <!-- 4-Point Gold Starburst Filigree Accents in Corners -->
+            <span class="starburst-corner top-3 left-3">⟡</span>
+            <span class="starburst-corner top-3 right-3">⟡</span>
+            <span class="starburst-corner bottom-3 left-3">⟡</span>
+            <span class="starburst-corner bottom-3 right-3">⟡</span>
+
+            <!-- Top Event & Series Banner -->
+            <div class="text-center pt-2">
+                <div class="flex flex-wrap justify-center items-center gap-2 mb-3">
+                    <span class="inline-block bg-gradient-to-r from-rose-600 via-pink-600 to-amber-500 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-md">
+                        ${card.event_greeting || 'Happy Holidays!'}
+                    </span>
+                    <span class="inline-block bg-slate-900 text-amber-300 border border-amber-400/40 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                        ${card.series_id || 'Winter Glamour 2026'}
+                    </span>
+                    <span class="inline-block bg-slate-900 text-pink-300 border border-pink-400/40 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                        ${char.rarity_tier || 'Spectrum Common'}
+                    </span>
+                </div>
+                
+                <h1 class="font-serif text-3xl sm:text-5xl font-bold bg-gradient-to-r from-white via-rose-200 to-amber-200 bg-clip-text text-transparent drop-shadow-md">
+                    ${char.name}
+                </h1>
+                <p class="font-header text-sm sm:text-base text-rose-300/90 font-medium tracking-wide mt-1">
+                    ${char.title} &bull; <span class="text-amber-200/90 italic">${char.profile_theme}</span>
+                </p>
+                <p class="text-xs sm:text-sm text-slate-400 italic max-w-xl mx-auto mt-2">
+                    &ldquo;${char.motto}&rdquo;
+                </p>
             </div>
 
-            <!-- Main Layout: Dynamic Video Player + Details -->
+            <!-- Main Layout: Video Player Column + Interactive Experience Column -->
             <div class="grid grid-cols-1 ${isLandscape ? 'lg:grid-cols-1' : 'lg:grid-cols-2'} gap-8 items-start">
                 
-                <!-- Video Player Container (Supports 16:9 Landscape or 9:16 Portrait) -->
-                <div class="flex flex-col items-center justify-center bg-black rounded-3xl p-3 border-4 border-brand-500 ring-4 ring-brand-500/20 shadow-2xl relative overflow-hidden group">
-                    <video autoplay loop muted playsinline controls poster="${frontImg}" class="${videoAspectClass} object-contain rounded-2xl shadow-inner bg-black">
-                        <source src="${card.assets.video_url}" type="video/mp4">
+                <!-- Left: 4K Video Player with Tap Indicator -->
+                <div class="flex flex-col items-center justify-center bg-black rounded-2xl p-2.5 border-[1.5pt] border-rose-400/60 ring-2 ring-pink-500/20 shadow-2xl relative overflow-hidden group">
+                    <video autoplay loop muted playsinline controls poster="${frontImg}" class="${videoAspectClass} object-contain rounded-xl shadow-inner bg-black">
+                        <source src="${videoSrc}" type="video/mp4">
                         Your browser does not support HTML5 video.
                     </video>
-                    <div class="mt-2 text-xs font-bold text-slate-400 flex items-center gap-2">
-                        <span>⚡ Mobile NFC Tap-to-Video Experience</span>
-                        <span class="px-2 py-0.5 rounded-md ${isLandscape ? 'bg-cyan-500/20 text-cyan-300' : 'bg-brand-500/20 text-brand-300'} font-mono">${isLandscape ? '16:9 Landscape' : '9:16 Portrait'}</span>
-                    </div>
-                </div>
-
-                <!-- Features, Specs & Narrative Column -->
-                <div class="flex flex-col gap-5 ${isLandscape ? 'max-w-3xl mx-auto w-full' : ''}">
-                    <div class="flex flex-wrap items-center gap-2">
-                        <span class="inline-block bg-gradient-to-r from-brand-600 to-indigo-600 text-white text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider shadow">
-                            ${card.rarity}
+                    <div class="mt-3 w-full flex items-center justify-between px-2 text-xs font-semibold text-slate-300">
+                        <span class="flex items-center gap-1.5 text-pink-300">
+                            <i class="fa-solid fa-bolt text-amber-400 animate-pulse"></i> NFC Tap-to-Video
                         </span>
-                        <span class="inline-block bg-slate-800 text-brand-300 text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider border border-brand-500/30">
-                            ${card.header_display}
-                        </span>
-                        <span class="inline-block ${isLandscape ? 'bg-cyan-500/10 text-cyan-300 border-cyan-500/30' : 'bg-purple-500/10 text-purple-300 border-purple-500/30'} text-xs font-bold px-3 py-1 rounded-full border">
-                            ${isLandscape ? '↔ Horizontal Format' : '↕ Vertical Format'}
+                        <span class="px-2.5 py-0.5 rounded-full bg-slate-900 border border-rose-400/40 text-[11px] font-mono text-amber-300">
+                            ${media.aspect_ratio || '9:16'} &bull; ${media.video_duration_seconds || 10}s
                         </span>
                     </div>
 
-                    <h1 class="font-serif text-3xl sm:text-4xl font-bold text-white leading-tight">
-                        ${card.title}
-                    </h1>
-                    <p class="text-sm sm:text-base text-slate-300 italic -mt-2">
-                        ${card.alias}
-                    </p>
-
-                    <!-- Specs Grid -->
-                    <div class="grid grid-cols-2 gap-3 bg-slate-950/80 p-4 rounded-2xl border border-brand-500/20 shadow-inner">
-                        <div class="spec-item">
-                            <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Card Format</span>
-                            <span class="text-sm font-semibold text-white">${safe(card.specs.card_format, 'CR80 30mil PVC')}</span>
+                    <!-- Audio Dialogue Speech Bubble -->
+                    ${media.audio_dialogue ? `
+                    <div class="mt-4 w-full bg-slate-900/95 border border-pink-400/40 rounded-2xl p-4 shadow-lg flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-pink-500 to-amber-400 flex-shrink-0 flex items-center justify-center text-slate-950 font-black text-sm shadow">
+                            <i class="fa-solid fa-volume-high"></i>
                         </div>
-                        <div class="spec-item">
-                            <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">NFC Chip Standard</span>
-                            <span class="text-sm font-semibold text-cyanAccent-400">${safe(card.specs.nfc_chip, 'NTAG215 (504B)')}</span>
+                        <div class="flex-grow">
+                            <span class="text-[10px] uppercase font-bold text-amber-300 tracking-wider block">Dialogue & Voiceover</span>
+                            <p class="text-xs sm:text-sm text-slate-100 italic leading-relaxed mt-0.5">
+                                &ldquo;${media.audio_dialogue}&rdquo;
+                            </p>
                         </div>
-                        <div class="spec-item">
-                            <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Orientation</span>
-                            <span class="text-sm font-semibold text-white">${safe(card.specs.orientation, isLandscape ? 'Landscape' : 'Portrait')}</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Warmth Rating</span>
-                            <span class="text-sm font-semibold text-brand-300">${safe(card.specs.warmth_index, '98 / 100')}</span>
-                        </div>
-                    </div>
-
-                    <!-- Card Back Lore / Message Box -->
-                    <div class="bg-slate-950/90 p-5 rounded-2xl border-l-4 border-brand-500 shadow-sm">
-                        <h3 class="font-serif text-lg font-bold text-brand-400 mb-1">Card Message & Lore</h3>
-                        <p class="text-sm text-slate-200 leading-relaxed mb-3">${card.narrative.card_back_lore}</p>
-                        <blockquote class="text-xs italic text-cyanAccent-300 border-t border-slate-800 pt-2">
-                            "${card.narrative.quote}"
-                        </blockquote>
-                    </div>
-
-                    <!-- Buy Physical Card CTA & Share -->
-                    <div class="flex flex-col sm:flex-row gap-3 pt-2">
-                        <a href="${card.shopify_product_url}" target="_blank" class="flex-1 bg-gradient-to-r from-brand-600 via-pink-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold px-6 py-3.5 rounded-2xl flex items-center justify-center gap-2 shadow-xl shadow-brand-600/30 transition-transform hover:scale-[1.02]">
-                            <i class="fa-solid fa-cart-shopping"></i> Order Physical NFC Card • $29.99
-                        </a>
-                        <button onclick="shareCard()" class="bg-slate-800 hover:bg-slate-700 text-white text-sm font-bold px-6 py-3.5 rounded-2xl flex items-center justify-center gap-2 border border-slate-700 shadow-lg transition-transform hover:scale-[1.02]">
-                            <i class="fa-solid fa-share-nodes"></i> Share
+                        <button onclick="speakDialogue()" class="bg-pink-600 hover:bg-pink-500 text-white text-xs font-bold px-3 py-1.5 rounded-xl flex items-center gap-1.5 shadow transition-transform hover:scale-105" title="Listen Aloud">
+                            <i class="fa-solid fa-play"></i> Listen
                         </button>
                     </div>
                     <script>
-                        function shareCard() {
-                            if (navigator.share) {
-                                navigator.share({
-                                    title: '${card.title}',
-                                    text: 'Tap to view ${card.title} on TapGreetings!',
-                                    url: window.location.href
-                                }).catch(console.error);
+                        function speakDialogue() {
+                            if ('speechSynthesis' in window) {
+                                window.speechSynthesis.cancel();
+                                const u = new SpeechSynthesisUtterance(${JSON.stringify(media.audio_dialogue)});
+                                u.rate = 0.95;
+                                u.pitch = 1.05;
+                                window.speechSynthesis.speak(u);
                             } else {
-                                navigator.clipboard.writeText(window.location.href);
-                                alert('Link copied to clipboard!');
+                                alert(${JSON.stringify(media.audio_dialogue)});
                             }
                         }
                     </script>
+                    ` : ''}
+                </div>
+
+                <!-- Right: Lore, Indicators, Physical Card 3D Flip, & Utility Action -->
+                <div class="flex flex-col gap-6 ${isLandscape ? 'max-w-3xl mx-auto w-full' : ''}">
+                    
+                    <!-- Micro Lore Box -->
+                    <div class="bg-slate-950/90 p-5 rounded-2xl border-[1.5pt] border-rose-400/40 shadow-sm relative">
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300 block mb-1">
+                            <i class="fa-solid fa-feather-pointed"></i> Story &amp; Micro-Lore
+                        </span>
+                        <p class="text-sm text-slate-200 leading-relaxed font-body">
+                            ${char.micro_lore}
+                        </p>
+                    </div>
+
+                    <!-- Indicators / Collector Metrics -->
+                    <div class="bg-slate-950/90 p-5 rounded-2xl border border-rose-400/30 shadow-inner">
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-pink-300 block mb-3">
+                            <i class="fa-solid fa-chart-simple"></i> Character Indicators &amp; Attributes
+                        </span>
+                        <div class="grid grid-cols-3 gap-3 text-center">
+                            ${char.indicators ? Object.entries(char.indicators).map(([key, val]) => `
+                                <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-800">
+                                    <div class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">${key}</div>
+                                    <div class="font-serif text-base sm:text-lg font-bold text-amber-300 mt-0.5">${val}</div>
+                                </div>
+                            `).join('') : ''}
+                        </div>
+                    </div>
+
+                    <!-- Interactive Flippable 3D Physical Keepsake Card -->
+                    <div class="bg-slate-950/90 p-5 rounded-2xl border border-rose-400/30 shadow-inner flex flex-col items-center">
+                        <div class="w-full flex justify-between items-center mb-4">
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300">
+                                <i class="fa-solid fa-id-card"></i> Physical CR80 PVC Smart Card
+                            </span>
+                            <button onclick="toggleCardFlip()" class="bg-slate-900 hover:bg-slate-800 text-pink-300 text-xs font-bold px-3 py-1 rounded-xl border border-pink-400/40 flex items-center gap-1.5 transition-all">
+                                <i class="fa-solid fa-arrows-rotate"></i> Flip Card (Front/Back)
+                            </button>
+                        </div>
+
+                        <!-- 3D Card Container -->
+                        <div id="card3dContainer" class="perspective-1000 ${cardPreviewAspectClass} cursor-pointer group" onclick="toggleCardFlip()">
+                            <div class="flip-card-inner relative w-full h-full transform-style-3d shadow-2xl rounded-2xl border-[1.5pt] border-rose-400/70 overflow-hidden bg-slate-900">
+                                <!-- Front Face -->
+                                <div class="absolute inset-0 backface-hidden">
+                                    <img src="${frontImg}" alt="${char.name} Front" class="w-full h-full object-contain bg-slate-950">
+                                    <div class="absolute bottom-2 left-2 right-2 bg-black/75 backdrop-blur-sm text-center py-1 text-[10px] font-bold text-amber-300 uppercase tracking-widest rounded-lg">
+                                        Card Front &bull; Tap to Flip ↻
+                                    </div>
+                                </div>
+                                <!-- Back Face with NFC Target Star -->
+                                <div class="absolute inset-0 backface-hidden rotate-y-180 bg-slate-950 flex flex-col justify-between p-3" style="transform: rotateY(180deg);">
+                                    <img src="${backImg}" alt="${char.name} Back" class="w-full h-full object-contain">
+                                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none">
+                                        <div class="w-16 h-16 rounded-full border-2 border-dashed border-amber-300/80 bg-pink-500/20 backdrop-blur-sm flex items-center justify-center text-amber-300 text-xl font-bold shadow-lg animate-pulse">
+                                            ★
+                                        </div>
+                                        <span class="text-[10px] font-bold text-amber-200 mt-1 drop-shadow bg-black/60 px-2 py-0.5 rounded-full">${nfc.tap_label || '⟡ TAP HERE ⟡'}</span>
+                                        <span class="text-[8px] text-slate-300 drop-shadow">${nfc.instruction || 'Tap with NFC enabled phone'}</span>
+                                    </div>
+                                    <div class="absolute bottom-2 left-2 right-2 bg-black/75 backdrop-blur-sm text-center py-1 text-[10px] font-bold text-pink-300 uppercase tracking-widest rounded-lg">
+                                        Card Back &bull; Tap to Flip ↺
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-2 italic text-center">Click card to flip between front artwork and back NFC target</p>
+                    </div>
+
+                    <!-- Hidden Collector Items Easter Egg -->
+                    ${nfc.hidden_items_count ? `
+                    <div class="bg-slate-950/80 p-4 rounded-2xl border border-amber-400/30 flex flex-col gap-2">
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
+                            <i class="fa-solid fa-magnifying-glass"></i> Hidden Collector Hunt (On Physical Card)
+                        </span>
+                        <div class="grid grid-cols-2 gap-3 text-xs">
+                            ${Object.entries(nfc.hidden_items_count).map(([item, count]) => `
+                                <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 flex justify-between items-center">
+                                    <span class="capitalize text-slate-300 font-medium">${item.replace(/_/g, ' ')}:</span>
+                                    <span class="font-bold text-amber-300 bg-amber-400/10 px-2 py-0.5 rounded-lg border border-amber-400/30">${count} Hidden</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    ` : ''}
+
+                    <!-- Utility Action & Order Buttons -->
+                    <div class="flex flex-col gap-3 pt-2">
+                        ${utility.button_text ? `
+                        <a href="${utility.target_url || '#'}" target="_blank" class="w-full bg-gradient-to-r from-pink-600 via-rose-500 to-amber-500 hover:from-pink-500 hover:to-amber-400 text-white font-bold py-3.5 px-6 rounded-2xl shadow-xl shadow-pink-600/30 text-center flex items-center justify-center gap-2 transition-transform hover:scale-[1.02]">
+                            <i class="fa-solid fa-champagne-glasses"></i> ${utility.button_text} &rarr;
+                        </a>
+                        ` : ''}
+
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <a href="${meta.shop_url}" target="_blank" class="flex-1 bg-slate-900 hover:bg-slate-800 text-amber-300 font-bold py-3.5 px-6 rounded-2xl border border-amber-400/40 shadow-lg text-center flex items-center justify-center gap-2 transition-transform hover:scale-[1.02]">
+                                <i class="fa-solid fa-cart-shopping"></i> Order Keepsake Card &bull; $29.99
+                            </a>
+                            <button onclick="shareGreeting()" class="bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 px-6 rounded-2xl border border-slate-700 shadow-lg flex items-center justify-center gap-2 transition-transform hover:scale-[1.02]">
+                                <i class="fa-solid fa-share-nodes text-pink-400"></i> Share
+                            </button>
+                        </div>
+                    </div>
 
                     <!-- Navigation Footer -->
                     <div class="flex justify-between items-center pt-6 mt-2 border-t border-slate-800">
-                        <a href="../${prevCard.slug}/index.html" class="bg-slate-800 hover:bg-brand-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 transition-colors shadow">
-                            <i class="fa-solid fa-arrow-left"></i> Prev (#${prevCard.id})
+                        <a href="../${prevCard.slug}/index.html" class="bg-slate-900 hover:bg-pink-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 transition-colors shadow border border-slate-800">
+                            <i class="fa-solid fa-arrow-left"></i> Prev Card
                         </a>
-                        <a href="../index.html" class="bg-slate-800 hover:bg-brand-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 transition-colors shadow">
+                        <a href="../index.html" class="bg-slate-900 hover:bg-pink-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 transition-colors shadow border border-slate-800">
                             <i class="fa-solid fa-home"></i> All Cards
                         </a>
-                        <a href="../${nextCard.slug}/index.html" class="bg-slate-800 hover:bg-brand-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 transition-colors shadow">
-                            Next (#${nextCard.id}) <i class="fa-solid fa-arrow-right"></i>
+                        <a href="../${nextCard.slug}/index.html" class="bg-slate-900 hover:bg-pink-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 transition-colors shadow border border-slate-800">
+                            Next Card <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
 
-                </div>
-            </div>
-
-            <!-- Swipeable & Scrollable Card Artwork Gallery (Front & Back) -->
-            <div class="mt-4 pt-8 border-t border-brand-500/30">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="font-serif text-xl font-bold text-brand-300 flex items-center gap-2">
-                        <i class="fa-solid fa-id-card"></i> Physical CR80 PVC Card Artwork (Front & Back)
-                    </h3>
-                    <span class="text-xs text-slate-400 italic">Click to view high-res &rarr;</span>
-                </div>
-
-                <div class="flex overflow-x-auto gap-5 pb-4 pt-2 snap-x snap-mandatory">
-                    <!-- Front View -->
-                    <div class="flex-shrink-0 ${cardPreviewAspectClass} snap-center rounded-2xl overflow-hidden border-2 border-brand-500/60 shadow-xl bg-slate-950 cursor-pointer transition-transform hover:scale-105" onclick="openLightbox('${frontImg}')">
-                        <img src="${frontImg}" alt="${card.title} - Front" class="w-full h-full object-contain">
-                        <div class="bg-slate-950/90 text-center py-1.5 text-xs text-brand-300 font-bold uppercase tracking-wider">Card Front</div>
-                    </div>
-
-                    <!-- Back View -->
-                    ${backImg ? `
-                    <div class="flex-shrink-0 ${cardPreviewAspectClass} snap-center rounded-2xl overflow-hidden border-2 border-brand-500/60 shadow-xl bg-slate-950 cursor-pointer transition-transform hover:scale-105" onclick="openLightbox('${backImg}')">
-                        <img src="${backImg}" alt="${card.title} - Back" class="w-full h-full object-contain">
-                        <div class="bg-slate-950/90 text-center py-1.5 text-xs text-cyanAccent-400 font-bold uppercase tracking-wider">Card Back</div>
-                    </div>` : ''}
                 </div>
             </div>
 
         </div>
     </main>
 
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4 cursor-pointer" onclick="closeLightbox()">
-        <button class="absolute top-5 right-8 text-white text-4xl font-bold focus:outline-none">&times;</button>
-        <img id="lightboxImg" src="" alt="Enlarged Artwork" class="max-w-[90vw] max-h-[90vh] rounded-2xl border-2 border-brand-500 shadow-2xl object-contain">
-    </div>
     <script>
-        function openLightbox(src) {
-            const lb = document.getElementById('lightbox');
-            const lbImg = document.getElementById('lightboxImg');
-            lbImg.src = src;
-            lb.classList.remove('hidden');
-            lb.classList.add('flex');
+        function toggleCardFlip() {
+            const container = document.getElementById('card3dContainer');
+            container.classList.toggle('flipped');
         }
-        function closeLightbox() {
-            const lb = document.getElementById('lightbox');
-            lb.classList.remove('flex');
-            lb.classList.add('hidden');
+
+        function shareGreeting() {
+            const shareData = {
+                title: ${JSON.stringify(char.name + ' - ' + card.event_greeting)},
+                text: ${JSON.stringify(char.name + ' invites you to the Winter Gala! ' + card.event_greeting)},
+                url: window.location.href
+            };
+            if (navigator.share) {
+                navigator.share(shareData).catch(console.error);
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Greeting link copied to clipboard!');
+            }
         }
     </script>
 ${getFooterHtml()}
 `;
 
-  fs.writeFileSync(path.join(cardDir, 'index.html'), cardPageHtml, 'utf8');
-  console.log(`Generated Card Page: ${card.slug}/index.html (${card.aspect})`);
+  // Write to primary slug directory
+  const primaryDir = path.join(projectRoot, card.slug);
+  if (!fs.existsSync(primaryDir)) fs.mkdirSync(primaryDir, { recursive: true });
+  fs.writeFileSync(path.join(primaryDir, 'index.html'), cardPageHtml, 'utf8');
+  console.log(`Generated Card Page: ${card.slug}/index.html`);
+
+  // Also write to any alias directories (e.g. '01', 'holidays')
+  if (card.aliases_slugs && Array.isArray(card.aliases_slugs)) {
+    card.aliases_slugs.forEach(alias => {
+      const aliasDir = path.join(projectRoot, alias);
+      if (!fs.existsSync(aliasDir)) fs.mkdirSync(aliasDir, { recursive: true });
+      fs.writeFileSync(path.join(aliasDir, 'index.html'), cardPageHtml, 'utf8');
+      console.log(`Generated Alias Page: ${alias}/index.html`);
+    });
+  }
 });
 
 // 2. Generate Main Gallery index.html
 console.log('Generating main gallery index.html...');
 
-const mainIndexHtml = `${getHeadHtml('TapGreetings - Smart NFC Keepsake Greeting Cards', false)}
+const featuredCard = cards[0]; // Delphine
+const featuredChar = featuredCard.character || {};
+const featuredMedia = featuredCard.media || {};
+const featuredFront = resolveAssetPath(featuredMedia.local_front_image_path || featuredMedia.front_image_url, false);
+const featuredVideo = resolveAssetPath(featuredMedia.local_video_path || featuredMedia.video_url, false);
+
+const mainIndexHtml = `${getHeadHtml('TapGreetings - Smart NFC Keepsake Greeting Cards', featuredCard.style_tokens, false)}
     <main class="max-w-7xl mx-auto px-4 py-12">
         
-        <!-- Hero Section -->
-        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-950 via-slate-900 to-brand-950/60 p-8 sm:p-16 mb-12 shadow-2xl border-2 border-brand-500/40 text-center backdrop-blur-md glow-card">
-            <div class="absolute -right-8 -bottom-8 opacity-15 pointer-events-none text-9xl">💌</div>
-            <div class="absolute -left-8 -top-8 opacity-15 pointer-events-none text-9xl">⚡</div>
-            
-            <span class="inline-block bg-brand-500/20 text-brand-300 border border-brand-400/40 text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-4 shadow">
-                ❄️ Holiday Season &amp; All Occasions &bull; Series 1
-            </span>
-            
-            <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-extrabold bg-gradient-to-r from-white via-pink-200 to-cyan-300 bg-clip-text text-transparent mb-6 drop-shadow-[0_0_30px_rgba(217,70,239,0.7)]">
-                TapGreetings
-            </h1>
-            
-            <p class="text-base sm:text-xl text-slate-300 max-w-3xl mx-auto mb-8 leading-relaxed">
-                Smart credit card-sized NFC keepsake greeting cards that come alive with a single smartphone tap. Immersive 4K video greetings, customizable artwork, and rewritable NTAG215 microchips.
-            </p>
+        <!-- Hero Spotlight Section Featuring Delphine (Card 01) -->
+        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#0A0E1A] via-slate-900 to-rose-950/60 p-8 sm:p-14 mb-12 shadow-2xl border-[1.5pt] border-rose-400/40 backdrop-blur-md glow-neon">
+            <span class="starburst-corner top-4 left-4">⟡</span>
+            <span class="starburst-corner top-4 right-4">⟡</span>
+            <span class="starburst-corner bottom-4 left-4">⟡</span>
+            <span class="starburst-corner bottom-4 right-4">⟡</span>
 
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#collection" class="bg-gradient-to-r from-brand-600 via-pink-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold px-8 py-3.5 rounded-full shadow-lg transition-transform hover:scale-105 flex items-center gap-2">
-                    <i class="fa-solid fa-gift"></i> Explore All Greeting Cards
-                </a>
-                <a href="${meta.custom_designer_url}" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-cyanAccent-300 border border-cyan-400/50 font-bold px-8 py-3.5 rounded-full shadow-lg transition-transform hover:scale-105 flex items-center gap-2">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i> Create Custom Card Studio
-                </a>
-                <a href="${meta.tools_url}" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-brand-300 border border-brand-500/40 font-bold px-6 py-3.5 rounded-full shadow-lg transition-transform hover:scale-105 flex items-center gap-2">
-                    <i class="fa-solid fa-bolt"></i> NFC Reprogrammer (/tools)
-                </a>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Hero Left: Text & CTA -->
+                <div class="lg:col-span-7 flex flex-col items-start text-left">
+                    <div class="flex flex-wrap items-center gap-2 mb-4">
+                        <span class="bg-gradient-to-r from-rose-600 via-pink-600 to-amber-500 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow">
+                            ❄️ HOLIDAY PREMIER &bull; SERIES 1
+                        </span>
+                        <span class="bg-slate-900 text-amber-300 border border-amber-400/40 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                            ${featuredCard.event_greeting}
+                        </span>
+                    </div>
+
+                    <h1 class="font-serif text-4xl sm:text-6xl font-extrabold bg-gradient-to-r from-white via-rose-200 to-amber-200 bg-clip-text text-transparent mb-4 drop-shadow-[0_0_30px_rgba(255,105,180,0.5)]">
+                        TapGreetings
+                    </h1>
+                    
+                    <h2 class="font-header text-xl sm:text-2xl font-bold text-rose-300 mb-3">
+                        ${featuredChar.name} — <span class="text-amber-200 font-serif italic">${featuredChar.title}</span>
+                    </h2>
+
+                    <p class="text-sm sm:text-base text-slate-300 max-w-xl mb-6 leading-relaxed">
+                        ${featuredChar.micro_lore}
+                    </p>
+
+                    <blockquote class="text-xs sm:text-sm italic text-amber-200/90 border-l-2 border-amber-400 pl-3 mb-6">
+                        &ldquo;${featuredChar.motto}&rdquo;
+                    </blockquote>
+
+                    <div class="flex flex-wrap gap-4">
+                        <a href="./${featuredCard.slug}/index.html" class="bg-gradient-to-r from-pink-600 via-rose-500 to-amber-500 hover:from-pink-500 hover:to-amber-400 text-white font-bold px-8 py-3.5 rounded-2xl shadow-xl shadow-pink-600/30 transition-transform hover:scale-105 flex items-center gap-2">
+                            <i class="fa-solid fa-play"></i> Experience ${featuredChar.name} TapGreeting
+                        </a>
+                        <a href="#collection" class="bg-slate-900 hover:bg-slate-800 text-white border border-rose-400/40 font-bold px-6 py-3.5 rounded-2xl shadow-lg transition-transform hover:scale-105 flex items-center gap-2">
+                            <i class="fa-solid fa-boxes-stacked"></i> Explore All Cards (${cards.length})
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Right: Live Video Tap Preview -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <a href="./${featuredCard.slug}/index.html" class="relative group block w-64 sm:w-72 aspect-[9/16] rounded-2xl overflow-hidden border-[1.5pt] border-rose-400/70 shadow-2xl bg-black glow-gold transition-transform hover:scale-105">
+                        <video autoplay loop muted playsinline poster="${featuredFront}" class="w-full h-full object-cover">
+                            <source src="${featuredVideo}" type="video/mp4">
+                        </video>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-4">
+                            <span class="text-[10px] uppercase font-bold text-amber-300 tracking-wider">Tap to View Card &rarr;</span>
+                            <span class="font-serif text-lg font-bold text-white">${featuredChar.name}</span>
+                            <span class="text-xs text-rose-300">${featuredCard.event_greeting}</span>
+                        </div>
+                    </a>
+                </div>
             </div>
 
             <!-- Stats Bar -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12 pt-8 border-t border-brand-500/30 max-w-3xl mx-auto text-center">
-                <div class="bg-slate-950/70 p-3.5 rounded-2xl border border-brand-500/20">
-                    <div class="font-serif text-2xl sm:text-3xl font-bold text-brand-300">${cards.length}</div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12 pt-8 border-t border-rose-400/30 max-w-4xl mx-auto text-center">
+                <div class="bg-slate-950/70 p-3.5 rounded-2xl border border-rose-400/20">
+                    <div class="font-serif text-2xl sm:text-3xl font-bold text-rose-300">${cards.length}</div>
                     <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Keepsake Cards</div>
                 </div>
-                <div class="bg-slate-950/70 p-3.5 rounded-2xl border border-brand-500/20">
-                    <div class="font-serif text-2xl sm:text-3xl font-bold text-cyanAccent-400">4K</div>
-                    <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Motion Video &amp; Sound</div>
+                <div class="bg-slate-950/70 p-3.5 rounded-2xl border border-rose-400/20">
+                    <div class="font-serif text-2xl sm:text-3xl font-bold text-amber-300">4K Motion</div>
+                    <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Video &amp; Audio</div>
                 </div>
-                <div class="bg-slate-950/70 p-3.5 rounded-2xl border border-brand-500/20">
+                <div class="bg-slate-950/70 p-3.5 rounded-2xl border border-rose-400/20">
                     <div class="font-serif text-2xl sm:text-3xl font-bold text-white">NTAG215</div>
-                    <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">100% Rewritable Chip</div>
+                    <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Rewritable PVC</div>
                 </div>
-                <div class="bg-slate-950/70 p-3.5 rounded-2xl border border-brand-500/20">
-                    <div class="font-serif text-2xl sm:text-3xl font-bold text-brand-300">Dual Aspect</div>
-                    <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Vertical &amp; Horizontal</div>
+                <div class="bg-slate-950/70 p-3.5 rounded-2xl border border-rose-400/20">
+                    <div class="font-serif text-2xl sm:text-3xl font-bold text-rose-300">Dual Aspect</div>
+                    <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">9:16 &amp; 16:9</div>
                 </div>
             </div>
         </div>
 
-        <!-- Controls Section: Search, Filters, Orientation Toggle, Sort -->
-        <div id="collection" class="bg-slate-900/90 rounded-2xl p-6 mb-8 shadow-xl border border-brand-500/30 backdrop-blur-md flex flex-col md:flex-row gap-4 items-center justify-between">
+        <!-- Collection Controls: Search, Front/Back, Aspect, Sort -->
+        <div id="collection" class="bg-slate-900/90 rounded-2xl p-6 mb-8 shadow-xl border border-rose-400/30 backdrop-blur-md flex flex-col md:flex-row gap-4 items-center justify-between">
             <div class="flex items-center gap-3 w-full md:w-auto">
                 <h2 class="font-serif text-2xl font-bold text-white whitespace-nowrap flex items-center gap-2">
-                    <i class="fa-solid fa-boxes-stacked text-brand-400"></i> Collection
+                    <i class="fa-solid fa-boxes-stacked text-rose-400"></i> Cards Gallery
                 </h2>
-                <span id="cardCountBadge" class="bg-slate-800 text-brand-300 text-xs font-bold px-3 py-1 rounded-full border border-brand-500/30">
+                <span id="cardCountBadge" class="bg-slate-800 text-amber-300 text-xs font-bold px-3 py-1 rounded-full border border-rose-400/30">
                     ${cards.length} Cards
                 </span>
             </div>
@@ -414,40 +592,26 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings - Smart NFC Keepsake Greeting
             <div class="flex flex-wrap gap-3 w-full md:w-auto items-center justify-end">
                 <!-- Search Input -->
                 <div class="relative flex-grow sm:flex-grow-0">
-                    <input type="text" id="searchInput" placeholder="Search cards, occasions..." oninput="filterCards()" class="w-full sm:w-52 bg-slate-950 text-white placeholder-slate-400 text-sm px-4 py-2 rounded-xl border border-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    <input type="text" id="searchInput" placeholder="Search cards, characters, lore..." oninput="filterCards()" class="w-full sm:w-56 bg-slate-950 text-white placeholder-slate-400 text-sm px-4 py-2 rounded-xl border border-slate-700 focus:outline-none focus:ring-2 focus:ring-pink-500">
                 </div>
 
                 <!-- Front / Back Toggle -->
                 <div class="flex bg-slate-950 p-1 rounded-xl border border-slate-700">
-                    <button onclick="setSide('front')" id="btnFront" class="px-3 py-1 text-xs font-bold rounded-lg bg-brand-600 text-white shadow transition-all">Front</button>
+                    <button onclick="setSide('front')" id="btnFront" class="px-3 py-1 text-xs font-bold rounded-lg bg-pink-600 text-white shadow transition-all">Front</button>
                     <button onclick="setSide('back')" id="btnBack" class="px-3 py-1 text-xs font-bold rounded-lg text-slate-400 transition-all">Back</button>
                 </div>
 
                 <!-- Orientation / Aspect Filter -->
-                <select id="aspectFilter" onchange="filterCards()" class="bg-slate-950 text-white text-sm px-3.5 py-2 rounded-xl border border-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                <select id="aspectFilter" onchange="filterCards()" class="bg-slate-950 text-white text-sm px-3.5 py-2 rounded-xl border border-slate-700 focus:outline-none focus:ring-2 focus:ring-pink-500">
                     <option value="">All Orientations</option>
-                    <option value="portrait">↕ Vertical (Portrait)</option>
-                    <option value="landscape">↔ Horizontal (Landscape)</option>
-                </select>
-
-                <!-- Occasion Filter -->
-                <select id="categoryFilter" onchange="filterCards()" class="bg-slate-950 text-white text-sm px-3.5 py-2 rounded-xl border border-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500">
-                    <option value="">All Occasions</option>
-                    <option value="Holiday">🎄 Holiday &amp; Winter</option>
-                    <option value="Black Friday">🛍️ Black Friday</option>
-                    <option value="Birthday">🎂 Birthday</option>
-                    <option value="Anniversary">💍 Anniversary</option>
-                    <option value="Thank You">🙏 Thank You</option>
-                    <option value="Congratulations">🎉 Congratulations</option>
-                    <option value="Wedding">👰 Wedding</option>
-                    <option value="Everyday">💜 Thinking of You / Baby</option>
+                    <option value="portrait">↕ Vertical (9:16)</option>
+                    <option value="landscape">↔ Horizontal (16:9)</option>
                 </select>
 
                 <!-- Sort Order -->
-                <select id="sortSelect" onchange="filterCards()" class="bg-slate-950 text-white text-sm px-3.5 py-2 rounded-xl border border-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500">
-                    <option value="id-asc" selected>Card # (01 &rarr; 12)</option>
-                    <option value="id-desc">Card # (12 &rarr; 01)</option>
-                    <option value="title-asc">Title (A &rarr; Z)</option>
+                <select id="sortSelect" onchange="filterCards()" class="bg-slate-950 text-white text-sm px-3.5 py-2 rounded-xl border border-slate-700 focus:outline-none focus:ring-2 focus:ring-pink-500">
+                    <option value="featured" selected>Featured (Delphine First)</option>
+                    <option value="title-asc">Name (A &rarr; Z)</option>
                 </select>
             </div>
         </div>
@@ -457,9 +621,9 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings - Smart NFC Keepsake Greeting
             <!-- Dynamically populated via JS -->
         </div>
 
-        <!-- Dedicated Web NFC Reprogrammer Feature Box -->
-        <div class="mt-16 bg-slate-900/90 rounded-3xl p-8 sm:p-12 border-2 border-cyan-500/40 glow-cyan text-center max-w-4xl mx-auto">
-            <span class="inline-block bg-cyan-500/20 text-cyan-300 text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider mb-4 border border-cyan-500/30">
+        <!-- Web NFC Reprogrammer Tool Feature -->
+        <div class="mt-16 bg-slate-900/90 rounded-3xl p-8 sm:p-12 border-[1.5pt] border-rose-400/40 glow-neon text-center max-w-4xl mx-auto">
+            <span class="inline-block bg-pink-500/20 text-pink-300 text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider mb-4 border border-pink-500/30">
                 ⚡ TapThingy NFC Web Reprogrammer Tool
             </span>
             <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white mb-3">
@@ -469,7 +633,7 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings - Smart NFC Keepsake Greeting
                 Want to change where your card links? Open our Web NFC Tool directly in your browser on Android Chrome, or use free NFC Tools on iPhone.
             </p>
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="${meta.tools_url}" target="_blank" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-8 py-3.5 rounded-2xl shadow-lg shadow-cyan-500/30 transition-transform hover:scale-105 inline-flex items-center gap-2">
+                <a href="${meta.tools_url}" target="_blank" class="bg-gradient-to-r from-pink-600 to-amber-500 hover:from-pink-500 hover:to-amber-400 text-white font-bold px-8 py-3.5 rounded-2xl shadow-lg transition-transform hover:scale-105 inline-flex items-center gap-2">
                     <i class="fa-solid fa-bolt"></i> Open Reprogrammer Webtool (/tools) ↗
                 </a>
             </div>
@@ -478,19 +642,26 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings - Smart NFC Keepsake Greeting
     </main>
 
     <script>
-        const cardsData = ${JSON.stringify(cards.map(c => ({
-          id: c.id,
-          slug: c.slug,
-          title: c.title,
-          alias: c.alias,
-          header: c.header_display,
-          category: c.category,
-          occasion: c.occasion,
-          aspect: c.aspect,
-          frontImg: c.assets.front_image.startsWith('/') ? '.' + c.assets.front_image : c.assets.front_image,
-          backImg: c.assets.back_image ? (c.assets.back_image.startsWith('/') ? '.' + c.assets.back_image : c.assets.back_image) : '',
-          shopifyUrl: c.shopify_product_url
-        })))};
+        const cardsData = ${JSON.stringify(cards.map((c, idx) => {
+          const char = c.character || {};
+          const media = c.media || {};
+          const isLand = media.aspect_ratio === '16:9' || media.aspect_ratio === 'landscape';
+          const front = resolveAssetPath(media.local_front_image_path || media.front_image_url, false);
+          const back = resolveAssetPath(media.local_back_image_path || media.back_image_url, false);
+          return {
+            index: idx,
+            id: c.card_id || ('card-' + idx),
+            slug: c.slug,
+            name: char.name || c.slug,
+            title: char.title || '',
+            greeting: c.event_greeting || 'Happy Holidays!',
+            aspect: isLand ? 'landscape' : 'portrait',
+            frontImg: front,
+            backImg: back,
+            lore: char.micro_lore || '',
+            motto: char.motto || ''
+          };
+        }))};
 
         let currentSide = 'front';
 
@@ -499,10 +670,10 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings - Smart NFC Keepsake Greeting
             const btnF = document.getElementById('btnFront');
             const btnB = document.getElementById('btnBack');
             if (side === 'front') {
-                btnF.className = 'px-3 py-1 text-xs font-bold rounded-lg bg-brand-600 text-white shadow transition-all';
+                btnF.className = 'px-3 py-1 text-xs font-bold rounded-lg bg-pink-600 text-white shadow transition-all';
                 btnB.className = 'px-3 py-1 text-xs font-bold rounded-lg text-slate-400 transition-all';
             } else {
-                btnB.className = 'px-3 py-1 text-xs font-bold rounded-lg bg-brand-600 text-white shadow transition-all';
+                btnB.className = 'px-3 py-1 text-xs font-bold rounded-lg bg-pink-600 text-white shadow transition-all';
                 btnF.className = 'px-3 py-1 text-xs font-bold rounded-lg text-slate-400 transition-all';
             }
             filterCards();
@@ -522,28 +693,27 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings - Smart NFC Keepsake Greeting
             data.forEach(c => {
                 const isLand = c.aspect === 'landscape';
                 const imgSrc = currentSide === 'back' && c.backImg ? c.backImg : c.frontImg;
-                const aspectClass = isLand ? 'aspect-[3/2]' : 'aspect-[2/3]';
+                const aspectClass = isLand ? 'aspect-[3/2]' : 'aspect-[9/16]';
 
                 html += \`
-                    <a href="./\${c.slug}/index.html" class="group bg-slate-900 rounded-2xl overflow-hidden shadow-xl border border-slate-800 hover:border-brand-500 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between glow-card">
+                    <a href="./\${c.slug}/index.html" class="group bg-slate-900 rounded-2xl overflow-hidden shadow-xl border border-slate-800 hover:border-rose-400/60 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between glow-neon">
                         <div class="relative w-full \${aspectClass} bg-slate-950 overflow-hidden">
-                            <img src="\${imgSrc}" alt="\${c.title}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500">
-                            <div class="absolute top-2.5 right-2.5 bg-slate-950/80 backdrop-blur-sm text-[10px] font-bold px-2 py-0.5 rounded-md border border-slate-700 \${isLand ? 'text-cyanAccent-300' : 'text-brand-300'}">
+                            <img src="\${imgSrc}" alt="\${c.name}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-2.5 right-2.5 bg-slate-950/80 backdrop-blur-sm text-[10px] font-bold px-2 py-0.5 rounded-md border border-slate-700 \${isLand ? 'text-cyanAccent-300' : 'text-pink-300'}">
                                 \${isLand ? '↔ Horizontal' : '↕ Vertical'}
                             </div>
                         </div>
                         <div class="p-4 flex flex-col gap-1.5 flex-grow justify-between">
                             <div>
                                 <div class="flex justify-between items-center mb-1">
-                                    <span class="text-[10px] font-bold text-brand-400 tracking-wider uppercase">\${c.header}</span>
-                                    <span class="text-[9px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded-full font-semibold border border-slate-700">\${c.category}</span>
+                                    <span class="text-[10px] font-bold text-amber-300 tracking-wider uppercase">\${c.greeting}</span>
                                 </div>
-                                <div class="font-serif text-lg font-bold text-white group-hover:text-brand-300 transition-colors leading-snug">\${c.title}</div>
-                                <div class="text-xs text-slate-400 italic line-clamp-1">\${c.alias}</div>
+                                <div class="font-serif text-lg font-bold text-white group-hover:text-rose-300 transition-colors leading-snug">\${c.name}</div>
+                                <div class="text-xs text-slate-400 italic line-clamp-1">\${c.title}</div>
                             </div>
-                            <div class="mt-3 pt-2.5 border-t border-slate-800 flex justify-between items-center text-xs font-bold text-cyanAccent-400">
+                            <div class="mt-3 pt-2.5 border-t border-slate-800 flex justify-between items-center text-xs font-bold text-rose-300">
                                 <span>View TapGreeting &rarr;</span>
-                                <span class="text-white bg-brand-600/30 px-2 py-0.5 rounded-md text-[11px]">$29.99</span>
+                                <span class="text-white bg-pink-600/30 px-2 py-0.5 rounded-md text-[11px] border border-pink-500/30">$29.99</span>
                             </div>
                         </div>
                     </a>
@@ -555,22 +725,18 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings - Smart NFC Keepsake Greeting
         function filterCards() {
             const query = document.getElementById('searchInput').value.toLowerCase();
             const aspect = document.getElementById('aspectFilter').value;
-            const category = document.getElementById('categoryFilter').value;
             const sort = document.getElementById('sortSelect').value;
 
             let filtered = cardsData.filter(c => {
-                const matchesQuery = c.title.toLowerCase().includes(query) || c.alias.toLowerCase().includes(query) || c.category.toLowerCase().includes(query) || c.occasion.toLowerCase().includes(query);
+                const matchesQuery = c.name.toLowerCase().includes(query) || c.title.toLowerCase().includes(query) || c.greeting.toLowerCase().includes(query) || c.lore.toLowerCase().includes(query);
                 const matchesAspect = aspect === '' || c.aspect === aspect;
-                const matchesCategory = category === '' || c.category === category || c.occasion.includes(category);
-                return matchesQuery && matchesAspect && matchesCategory;
+                return matchesQuery && matchesAspect;
             });
 
-            if (sort === 'id-asc') {
-                filtered.sort((a, b) => parseInt(a.id || 0) - parseInt(b.id || 0));
-            } else if (sort === 'id-desc') {
-                filtered.sort((a, b) => parseInt(b.id || 0) - parseInt(a.id || 0));
+            if (sort === 'featured') {
+                filtered.sort((a, b) => a.index - b.index);
             } else if (sort === 'title-asc') {
-                filtered.sort((a, b) => a.title.localeCompare(b.title));
+                filtered.sort((a, b) => a.name.localeCompare(b.name));
             }
 
             renderCards(filtered);
