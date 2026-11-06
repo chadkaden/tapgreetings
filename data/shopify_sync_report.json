@@ -1,0 +1,119 @@
+{
+  "synced_at": "2026-11-06T15:58:23.927Z",
+  "store": "tapthingy.myshopify.com",
+  "total_products": 16,
+  "products": [
+    {
+      "card_code": "001",
+      "name": "Santa",
+      "subcollection": "Classic Icons",
+      "product_id": 15504664363330,
+      "url": "https://tapthingy.myshopify.com/products/tapgreeting-series1-001-001"
+    },
+    {
+      "card_code": "002",
+      "name": "Frosty",
+      "subcollection": "Classic Icons",
+      "product_id": 15504664559938,
+      "url": "https://tapthingy.myshopify.com/products/tapgreeting-series1-002-002"
+    },
+    {
+      "card_code": "003",
+      "name": "Rudolph",
+      "subcollection": "Classic Icons",
+      "product_id": 15504664887618,
+      "url": "https://tapthingy.myshopify.com/products/tapgreeting-series1-003-003"
+    },
+    {
+      "card_code": "004",
+      "name": "Jack Frost",
+      "subcollection": "Winter Magic",
+      "product_id": 15504665182530,
+      "url": "https://tapthingy.myshopify.com/products/tapgreeting-series1-004-004"
+    },
+    {
+      "card_code": "005",
+      "name": "Nutcracker",
+      "subcollection": "Hearth & Holiday",
+      "product_id": 15504665510210,
+      "url": "https://tapthingy.myshopify.com/products/tapgreeting-series1-005-005"
+    },
+    {
+      "card_code": "006",
+      "name": "The Tree",
+      "subcollection": "Hearth & Holiday",
+      "product_id": 15504665739586,
+      "url": "https://tapthingy.myshopify.com/products/tapgreeting-series1-006-006"
+    },
+    {
+      "card_code": "007",
+      "name": "Snowflake",
+      "subcollection": "Winter Magic",
+      "product_id": 15504666001730,
+      "url": "https://tapthingy.myshopify.com/products/tapgreeting-series1-007-007"
+    },
+    {
+      "card_code": "008",
+      "name": "Gift",
+      "subcollection": "Hearth & Holiday",
+      "product_id": 15504666362178,
+      "url": "https://tapthingy.myshopify.com/products/tapgreeting-series1-008-008"
+    },
+    {
+      "card_code": "009",
+      "name": "Gingerbread Man",
+      "subcollection": "Hearth & Holiday",
+      "product_id": 15504666689858,
+      "url": "https://tapthingy.myshopify.com/products/tapgreeting-series1-009-009"
+    },
+    {
+      "card_code": "010",
+      "name": "Mrs. Claus",
+      "subcollection": "Classic Icons",
+      "product_id": 15504666919234,
+      "url": "https://tapthingy.myshopify.com/products/tapgreeting-series1-010-010"
+    },
+    {
+      "card_code": "011",
+      "name": "Workshop Elf",
+      "subcollection": "Festive Friends",
+      "product_id": 15504667148610,
+      "url": "https://tapthingy.myshopify.com/products/tapgreeting-series1-011-011"
+    },
+    {
+      "card_code": "012",
+      "name": "Polar Bear",
+      "subcollection": "Festive Friends",
+      "product_id": 15504667410754,
+      "url": "https://tapthingy.myshopify.com/products/tapgreeting-series1-012-012"
+    },
+    {
+      "card_code": "013",
+      "name": "Penguin",
+      "subcollection": "Festive Friends",
+      "product_id": 15504667771202,
+      "url": "https://tapthingy.myshopify.com/products/tapgreeting-series1-013-013"
+    },
+    {
+      "card_code": "014",
+      "name": "Sugar Plum Fairy",
+      "subcollection": "Winter Magic",
+      "product_id": 15504668197186,
+      "url": "https://tapthingy.myshopify.com/products/tapgreeting-series1-014-014"
+    },
+    {
+      "card_code": "015",
+      "name": "Snow Monster",
+      "subcollection": "Winter Magic",
+      "product_id": 15504668426562,
+      "url": "https://tapthingy.myshopify.com/products/tapgreeting-series1-015-015"
+    },
+    {
+      "card_code": "016",
+      "name": "Stocking Puppy",
+      "subcollection": "Festive Friends",
+      "product_id": 15504668819778,
+      "url": "https://tapthingy.myshopify.com/products/tapgreeting-series1-016-016"
+    }
+  ]
+}
