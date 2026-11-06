@@ -424,6 +424,14 @@
 
         {% assign web_portal_url = 'https://tapgreetings.com/' | append: card_code | append: '/' %}
 
+        {% assign is_master_box = false %}
+        {% if product.tags contains 'Master Collection' or product.tags contains 'Box Set' or product.handle contains 'master-collection' %}
+          {% assign is_master_box = true %}
+          {% assign char_name = 'Master Collector Box Set' %}
+          {% assign char_role = '16 Card Selection & Complete Box Set' %}
+          {% assign web_portal_url = 'https://tapgreetings.com/#collection' %}
+        {% endif %}
+
         <div class="tg-card-item">
           <div>
             <!-- Flipped Artwork Container (Exact CR80 Credit Card Ratio) -->
@@ -433,7 +441,11 @@
             </a>
 
             <!-- Card Meta -->
-            <div class="tg-card-badge">Card #{{ card_code }} &bull; Series 1</div>
+            {% if is_master_box %}
+              <div class="tg-card-badge" style="background: linear-gradient(90deg, #B45309, #D97706); color: #FFF; font-weight: 800;">✦ COMPLETE 16-CARD BOX SET ✦</div>
+            {% else %}
+              <div class="tg-card-badge">Card #{{ card_code }} &bull; Series 1</div>
+            {% endif %}
             <h3 class="tg-card-title">
               <a href="{{ product.url }}" style="color: inherit; text-decoration: none;" title="{{ char_name }}">
                 {{ char_name }}
@@ -453,12 +465,21 @@
 
           <!-- Buttons Perfectly Fitted to Card Box -->
           <div class="tg-actions-wrap">
-            <a href="{{ product.url }}" class="tg-card-btn-primary">
-              🛒 Order Keepsake &bull; {{ product.price | money }}
-            </a>
-            <a href="{{ web_portal_url }}" target="_blank" class="tg-card-btn-secondary">
-              🎬 Watch Video Portal ↗
-            </a>
+            {% if is_master_box %}
+              <a href="{{ product.url }}" class="tg-card-btn-primary" style="background: linear-gradient(90deg, #9E1B32, #D62839);">
+                🎁 Choose Box Set or Card &bull; {{ product.price | money }}
+              </a>
+              <a href="https://tapgreetings.com/#collection" target="_blank" class="tg-card-btn-secondary">
+                🎬 Stream All 16 Cards ↗
+              </a>
+            {% else %}
+              <a href="{{ product.url }}" class="tg-card-btn-primary">
+                🛒 Order Keepsake &bull; {{ product.price | money }}
+              </a>
+              <a href="{{ web_portal_url }}" target="_blank" class="tg-card-btn-secondary">
+                🎬 Watch Video Portal ↗
+              </a>
+            {% endif %}
           </div>
         </div>
       {% endfor %}
