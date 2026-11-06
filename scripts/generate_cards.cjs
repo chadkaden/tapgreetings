@@ -617,8 +617,8 @@ cards.forEach((card, index) => {
                             </div>
                         </div>
 
-                        <!-- 3D Card Container (Clean, zero text overlays on the artwork) -->
-                        <div class="perspective-container w-full max-w-[280px] sm:max-w-[320px] aspect-[9/16] cursor-pointer group my-1" onclick="toggleCardFlip()">
+                        <!-- 3D Card Container (Clean, zero text overlays on the artwork - CR80 ratio) -->
+                        <div class="perspective-container w-full max-w-[280px] sm:max-w-[320px] aspect-[54/86] cursor-pointer group my-1" onclick="toggleCardFlip()">
                             <div id="physicalCard3d" class="card-3d shadow-2xl border-[2px] border-amber-600/70 rounded-2xl bg-[#140D08]">
                                 <!-- Front Face (Pure Art, No Overlays) -->
                                 <div class="card-face card-face-front bg-[#120C08]">
@@ -884,8 +884,19 @@ cards.forEach((card, index) => {
             }
         }
 
+        // Auto-scroll to video on page load for instant top view
+        function autoScrollToVideo() {
+            var vid = document.getElementById('cardVideo');
+            if (vid) {
+                setTimeout(function() {
+                    vid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 200);
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             initVideoPlayback();
+            autoScrollToVideo();
         });
     </script>
 ${getFooterHtml()}`;
@@ -926,8 +937,8 @@ const renderedCardsHtml = cards.map((c, idx) => {
 
   return `
     <a href="/${c.card_code}/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-index="${idx}" data-code="${c.card_code}" data-name="${(ch.name || '').toLowerCase()}" data-greeting="${(c.event_greeting || '').toLowerCase()}" data-keywords="${keywords}" data-lore="${(ch.micro_lore || '').toLowerCase()}" data-category="${category}" data-front="${front}" data-back="${back}">
-        <!-- Clean Image Box - 100% Unobstructed Art -->
-        <div class="relative w-full aspect-[9/16] bg-[#120C08] overflow-hidden flex items-center justify-center">
+        <!-- Clean Image Box - 100% Unobstructed Art (CR80 Credit Card Ratio) -->
+        <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
             <img src="${front}" alt="${ch.name}" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
             <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">
                 #${c.card_code}
@@ -1436,7 +1447,7 @@ collectionsData.forEach(col => {
 
     return `
       <a href="/${c.card_code}/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-index="${idx}" data-code="${c.card_code}" data-name="${(ch.name || '').toLowerCase()}" data-greeting="${(c.event_greeting || '').toLowerCase()}" data-keywords="${keywords}" data-lore="${(ch.micro_lore || '').toLowerCase()}" data-category="${category}" data-front="${front}" data-back="${back}">
-          <div class="relative w-full aspect-[9/16] bg-[#120C08] overflow-hidden flex items-center justify-center">
+          <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
               <img src="${front}" alt="${ch.name}" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
               <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">
                   #${c.card_code}

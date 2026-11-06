@@ -9,7 +9,7 @@
   Access-Control-Allow-Origin: *
 
 /assets/img/*
-  Cache-Control: public, max-age=2592000, immutable
+  Cache-Control: public, max-age=600, must-revalidate
   Access-Control-Allow-Origin: *
 
 /public/*

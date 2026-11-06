@@ -33,7 +33,7 @@
     <meta property="og:url" content="https://TapGreetings.com/010">
     <meta property="og:title" content="Mrs. Claus (The Hearth Matron) | Series 1 NFC Holiday Card | TapGreetings Series 1">
     <meta property="og:description" content="Experience Mrs. Claus, sculpted in warm clay and needle-felted crimson wool. Tap this smart NFC card for instant warm holiday motion video greeting.">
-    <meta property="og:image" content="/assets/img/010-front.jpg">
+    <meta property="og:image" content="/assets/img/cr80/010-front.jpg?v=cr80">
     <meta property="og:video" content="/assets/video/010-video.mp4">
 
     <!-- Twitter -->
@@ -41,7 +41,7 @@
     <meta property="twitter:url" content="https://TapGreetings.com/010">
     <meta property="twitter:title" content="Mrs. Claus (The Hearth Matron) | Series 1 NFC Holiday Card | TapGreetings Series 1">
     <meta property="twitter:description" content="Experience Mrs. Claus, sculpted in warm clay and needle-felted crimson wool. Tap this smart NFC card for instant warm holiday motion video greeting.">
-    <meta property="twitter:image" content="/assets/img/010-front.jpg">
+    <meta property="twitter:image" content="/assets/img/cr80/010-front.jpg?v=cr80">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -381,7 +381,7 @@
 
                     <!-- Video Frame - Larger, Edge-to-Edge Without Enclosing Container or Unmute Overlay -->
                     <div class="relative w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[500px] aspect-[9/16] rounded-3xl overflow-hidden bg-black shadow-2xl ring-1 ring-amber-500/30 flex justify-center items-center cursor-pointer group" onclick="toggleMute()">
-                        <video id="cardVideo" autoplay loop playsinline poster="/assets/img/010-front.jpg" class="w-full h-full object-cover">
+                        <video id="cardVideo" autoplay loop playsinline poster="/assets/img/cr80/010-front.jpg?v=cr80" class="w-full h-full object-cover">
                             <source src="/assets/video/010-video.mp4" type="video/mp4">
                             Your browser does not support HTML5 video.
                         </video>
@@ -449,16 +449,16 @@
                             </div>
                         </div>
 
-                        <!-- 3D Card Container (Clean, zero text overlays on the artwork) -->
+                        <!-- 3D Card Container (Clean, zero text overlays on the artwork - CR80 ratio) -->
                         <div class="perspective-container w-full max-w-[280px] sm:max-w-[320px] aspect-[54/86] cursor-pointer group my-1" onclick="toggleCardFlip()">
                             <div id="physicalCard3d" class="card-3d shadow-2xl border-[2px] border-amber-600/70 rounded-2xl bg-[#140D08]">
                                 <!-- Front Face (Pure Art, No Overlays) -->
                                 <div class="card-face card-face-front bg-[#120C08]">
-                                    <img src="/assets/img/010-front.jpg" alt="Mrs. Claus Front Artwork" class="w-full h-full object-cover">
+                                    <img src="/assets/img/cr80/010-front.jpg?v=cr80" alt="Mrs. Claus Front Artwork" class="w-full h-full object-cover">
                                 </div>
                                 <!-- Back Face (Pure Art, No Overlays) -->
                                 <div class="card-face card-face-back bg-[#120C08]">
-                                    <img src="/assets/img/010-back.jpg" alt="Mrs. Claus Collector Back" class="w-full h-full object-cover">
+                                    <img src="/assets/img/cr80/010-back.jpg?v=cr80" alt="Mrs. Claus Collector Back" class="w-full h-full object-cover">
                                 </div>
                             </div>
                         </div>
@@ -566,7 +566,7 @@
 
         <!-- Lightbox Image Stage with Magnify Toggle -->
         <div class="relative flex-grow flex items-center justify-center my-2 sm:my-4 overflow-hidden cursor-zoom-in" onclick="toggleZoomMagnify()">
-            <img id="zoomImage" src="/assets/img/010-front.jpg" alt="Mrs. Claus Fullscreen" class="max-h-[76vh] sm:max-h-[82vh] max-w-[92vw] object-contain rounded-2xl shadow-2xl transition-transform duration-300 border-[2px] border-amber-600/40">
+            <img id="zoomImage" src="/assets/img/cr80/010-front.jpg?v=cr80" alt="Mrs. Claus Fullscreen" class="max-h-[76vh] sm:max-h-[82vh] max-w-[92vw] object-contain rounded-2xl shadow-2xl transition-transform duration-300 border-[2px] border-amber-600/40">
         </div>
 
         <!-- Lightbox Bottom Toolbar -->
@@ -586,8 +586,8 @@
     <script>
         var currentCardSide = 'front';
         var isZoomMagnified = false;
-        var frontImgUrl = "/assets/img/010-front.jpg";
-        var backImgUrl = "/assets/img/010-back.jpg";
+        var frontImgUrl = "/assets/img/cr80/010-front.jpg?v=cr80";
+        var backImgUrl = "/assets/img/cr80/010-back.jpg?v=cr80";
 
         function toggleCardFlip() {
             var card = document.getElementById('physicalCard3d');
@@ -763,8 +763,19 @@
             }
         }
 
+        // Auto-scroll to video on page load for instant top view
+        function autoScrollToVideo() {
+            var vid = document.getElementById('cardVideo');
+            if (vid) {
+                setTimeout(function() {
+                    vid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 200);
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             initVideoPlayback();
+            autoScrollToVideo();
         });
     </script>
 

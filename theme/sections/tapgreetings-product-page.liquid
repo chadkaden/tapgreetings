@@ -205,18 +205,29 @@
     margin-bottom: 16px;
   }
 
-  /* Media Showcase Card (Physical CR80 Credit Card Proportions) */
+  /* Dynamic Media Showcase Container: Expands for 9:16 Video, Shrinks for CR80 Card Art */
   .tg-media-box {
     position: relative;
     width: 100%;
-    max-width: 440px;
     margin: 0 auto 16px;
     border-radius: 20px;
     overflow: hidden;
-    aspect-ratio: 53.98 / 85.60;
     background: #000000;
     border: 2.5px solid var(--tg-border-active);
     box-shadow: 0 10px 35px var(--tg-shadow);
+    transition: max-width 0.35s cubic-bezier(0.4, 0, 0.2, 1), aspect-ratio 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* When Video is active (Slide 1 or Slide 4): Enlarge container to fit 9:16 portrait video */
+  .tg-media-box.is-video {
+    max-width: 460px;
+    aspect-ratio: 9 / 16;
+  }
+
+  /* When Card Image is active (Slide 2 or Slide 3): Shrink container to exact CR80 physical credit card size */
+  .tg-media-box.is-card {
+    max-width: 380px;
+    aspect-ratio: 53.98 / 85.60;
   }
 
   .tg-slide {
@@ -228,12 +239,18 @@
   .tg-slide.active-slide {
     display: block;
   }
-  .tg-slide video,
+  .tg-slide video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
   .tg-slide img {
     width: 100%;
     height: 100%;
     object-fit: contain;
     display: block;
+    background: #140C08;
   }
 
   .tg-sound-toggle-btn {
@@ -457,8 +474,8 @@
       </div>
     </div>
 
-    <!-- Media Showcase (9:16 Aspect Ratio) -->
-    <div class="tg-media-box">
+    <!-- Media Showcase (Dynamic Container: Enlarges for 9:16 Video, Shrinks for CR80 Card Art) -->
+    <div id="tg-media-box" class="tg-media-box is-video">
       <!-- Slide 1: 1080p Stop-Motion Video -->
       <div id="tg-slide-1" class="tg-slide active-slide">
         <video id="tg-hero-video" loop muted playsinline autoplay poster="{{ front_img_url }}">
@@ -506,6 +523,17 @@
         <span style="font-size: 1.4rem;">📱</span>
         <span class="tg-thumb-label">Tap Demo</span>
       </button>
+    </div>
+
+    <!-- Secondary Direct Add to Cart Form (Immediately Below Multimedia) -->
+    <div class="tg-quick-atc-wrap" style="text-align: center; margin: 0 auto 28px; max-width: 440px;">
+      {% form 'product', product, id: 'tg-buy-form-top' %}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        <input type="hidden" name="quantity" value="1">
+        <button type="submit" name="add" class="tg-add-to-cart-btn" style="margin-top: 0; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
+          <span>🛒 Add to Cart &bull; {{ product.selected_or_first_available_variant.price | money }}</span>
+        </button>
+      {% endform %}
     </div>
 
     <!-- 1. Lore & Description Accordion -->
@@ -633,10 +661,21 @@
 </div>
 
 <script>
-  // Slide Switcher
+  // Dynamic Slide Switcher (Enlarges container for Video, Shrinks for CR80 Card Art)
   function switchTgSlide(index) {
+    var mediaBox = document.getElementById('tg-media-box');
     var slides = document.querySelectorAll('.tg-slide');
     var thumbs = document.querySelectorAll('.tg-thumb-btn');
+
+    if (mediaBox) {
+      if (index === 1 || index === 4) {
+        mediaBox.classList.remove('is-card');
+        mediaBox.classList.add('is-video');
+      } else {
+        mediaBox.classList.remove('is-video');
+        mediaBox.classList.add('is-card');
+      }
+    }
 
     slides.forEach(function(s, i) {
       if (i === (index - 1)) {

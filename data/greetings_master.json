@@ -78,15 +78,15 @@
         "seo_meta_desc": "Experience Santa, crafted in polymer clay & needle felt. Tap this smart NFC card for instant 1080p stop-motion workshop video and voice greeting."
       },
       "media": {
-        "aspect_ratio": "9:16",
+        "aspect_ratio": "CR80 (53.98:85.60)",
         "video_url": "https://TapGreetings.com/assets/video/001-video.mp4",
         "local_video_path": "/assets/video/001-video.mp4",
         "video_duration_seconds": 8,
         "audio_dialogue": "Ho ho ho! Every heart has a spark of magic—share yours generously this season. Happy Holidays!",
-        "front_image_url": "https://TapGreetings.com/assets/img/001-front.jpg",
-        "local_front_image_path": "/assets/img/001-front.jpg",
-        "back_image_url": "https://TapGreetings.com/assets/img/001-back.jpg",
-        "local_back_image_path": "/assets/img/001-back.jpg"
+        "front_image_url": "https://TapGreetings.com/assets/img/cr80/001-front.jpg?v=cr80",
+        "local_front_image_path": "/assets/img/cr80/001-front.jpg?v=cr80",
+        "back_image_url": "https://TapGreetings.com/assets/img/cr80/001-back.jpg?v=cr80",
+        "local_back_image_path": "/assets/img/cr80/001-back.jpg?v=cr80"
       },
       "style_tokens": {
         "theme_name": "Cranberry & Mocha Artisan",
@@ -194,15 +194,15 @@
         "seo_meta_desc": "Meet Frosty in granulated sugar clay and knitted wool. Tap this smart NFC card for instant stop-motion snowfall video and wholesome voice blessing."
       },
       "media": {
-        "aspect_ratio": "9:16",
+        "aspect_ratio": "CR80 (53.98:85.60)",
         "video_url": "https://TapGreetings.com/assets/video/002-video.mp4",
         "local_video_path": "/assets/video/002-video.mp4",
         "video_duration_seconds": 8,
         "audio_dialogue": "Stay cool, melt barriers, and always bring the sunshine with you! Warmest holiday wishes from my snowy yard to your home!",
-        "front_image_url": "https://TapGreetings.com/assets/img/002-front.jpg",
-        "local_front_image_path": "/assets/img/002-front.jpg",
-        "back_image_url": "https://TapGreetings.com/assets/img/002-back.jpg",
-        "local_back_image_path": "/assets/img/002-back.jpg"
+        "front_image_url": "https://TapGreetings.com/assets/img/cr80/002-front.jpg?v=cr80",
+        "local_front_image_path": "/assets/img/cr80/002-front.jpg?v=cr80",
+        "back_image_url": "https://TapGreetings.com/assets/img/cr80/002-back.jpg?v=cr80",
+        "local_back_image_path": "/assets/img/cr80/002-back.jpg?v=cr80"
       },
       "style_tokens": {
         "theme_name": "Sugar White & Mustard Knit",
@@ -310,15 +310,15 @@
         "seo_meta_desc": "Meet Rudolph in flocked felt and glowing ruby resin. Tap this smart NFC card for instant atmospheric video and heartfelt voice message."
       },
       "media": {
-        "aspect_ratio": "9:16",
+        "aspect_ratio": "CR80 (53.98:85.60)",
         "video_url": "https://TapGreetings.com/assets/video/003-video.mp4",
         "local_video_path": "/assets/video/003-video.mp4",
         "video_duration_seconds": 8,
         "audio_dialogue": "Never dim your light—it is the very compass someone needs to find their way! Happy Holidays!",
-        "front_image_url": "https://TapGreetings.com/assets/img/003-front.jpg",
-        "local_front_image_path": "/assets/img/003-front.jpg",
-        "back_image_url": "https://TapGreetings.com/assets/img/003-back.jpg",
-        "local_back_image_path": "/assets/img/003-back.jpg"
+        "front_image_url": "https://TapGreetings.com/assets/img/cr80/003-front.jpg?v=cr80",
+        "local_front_image_path": "/assets/img/cr80/003-front.jpg?v=cr80",
+        "back_image_url": "https://TapGreetings.com/assets/img/cr80/003-back.jpg?v=cr80",
+        "local_back_image_path": "/assets/img/cr80/003-back.jpg?v=cr80"
       },
       "style_tokens": {
         "theme_name": "Caramel & Forest Pine",
@@ -426,15 +426,15 @@
         "seo_meta_desc": "Meet Jack Frost in periwinkle clay and translucent glass. Tap this smart NFC card for instant fractal frost motion video and magical voiceover."
       },
       "media": {
-        "aspect_ratio": "9:16",
+        "aspect_ratio": "CR80 (53.98:85.60)",
         "video_url": "https://TapGreetings.com/assets/video/004-video.mp4",
         "local_video_path": "/assets/video/004-video.mp4",
         "video_duration_seconds": 8,
         "audio_dialogue": "Winter's chill only makes the fireside laughter that much sweeter! Wishing you pure frosty magic this season!",
-        "front_image_url": "https://TapGreetings.com/assets/img/004-front.jpg",
-        "local_front_image_path": "/assets/img/004-front.jpg",
-        "back_image_url": "https://TapGreetings.com/assets/img/004-back.jpg",
-        "local_back_image_path": "/assets/img/004-back.jpg"
+        "front_image_url": "https://TapGreetings.com/assets/img/cr80/004-front.jpg?v=cr80",
+        "local_front_image_path": "/assets/img/cr80/004-front.jpg?v=cr80",
+        "back_image_url": "https://TapGreetings.com/assets/img/cr80/004-back.jpg?v=cr80",
+        "local_back_image_path": "/assets/img/cr80/004-back.jpg?v=cr80"
       },
       "style_tokens": {
         "theme_name": "Glacial Blue & Indigo",
@@ -542,15 +542,15 @@
         "seo_meta_desc": "Meet the Nutcracker in lacquer wood and porcelain clay. Tap this smart NFC card for instant drum-roll motion video and noble holiday voice blessing."
       },
       "media": {
-        "aspect_ratio": "9:16",
+        "aspect_ratio": "CR80 (53.98:85.60)",
         "video_url": "https://TapGreetings.com/assets/video/005-video.mp4",
         "local_video_path": "/assets/video/005-video.mp4",
         "video_duration_seconds": 8,
         "audio_dialogue": "Stand tall in purpose, guard what you cherish, and march boldly toward joy! Happy Holidays!",
-        "front_image_url": "https://TapGreetings.com/assets/img/005-front.jpg",
-        "local_front_image_path": "/assets/img/005-front.jpg",
-        "back_image_url": "https://TapGreetings.com/assets/img/005-back.jpg",
-        "local_back_image_path": "/assets/img/005-back.jpg"
+        "front_image_url": "https://TapGreetings.com/assets/img/cr80/005-front.jpg?v=cr80",
+        "local_front_image_path": "/assets/img/cr80/005-front.jpg?v=cr80",
+        "back_image_url": "https://TapGreetings.com/assets/img/cr80/005-back.jpg?v=cr80",
+        "local_back_image_path": "/assets/img/cr80/005-back.jpg?v=cr80"
       },
       "style_tokens": {
         "theme_name": "Imperial Navy & Gold",
@@ -658,15 +658,15 @@
         "seo_meta_desc": "Experience The Tree in tiered Scandinavian wool felt. Tap this smart NFC card for instant hearth glow motion video and peaceful holiday blessing."
       },
       "media": {
-        "aspect_ratio": "9:16",
+        "aspect_ratio": "CR80 (53.98:85.60)",
         "video_url": "https://TapGreetings.com/assets/video/006-video.mp4",
         "local_video_path": "/assets/video/006-video.mp4",
         "video_duration_seconds": 8,
         "audio_dialogue": "Deeply rooted in love, reaching endlessly toward the light. May peace and comfort fill your home this season!",
-        "front_image_url": "https://TapGreetings.com/assets/img/006-front.jpg",
-        "local_front_image_path": "/assets/img/006-front.jpg",
-        "back_image_url": "https://TapGreetings.com/assets/img/006-back.jpg",
-        "local_back_image_path": "/assets/img/006-back.jpg"
+        "front_image_url": "https://TapGreetings.com/assets/img/cr80/006-front.jpg?v=cr80",
+        "local_front_image_path": "/assets/img/cr80/006-front.jpg?v=cr80",
+        "back_image_url": "https://TapGreetings.com/assets/img/cr80/006-back.jpg?v=cr80",
+        "local_back_image_path": "/assets/img/cr80/006-back.jpg?v=cr80"
       },
       "style_tokens": {
         "theme_name": "Spruce Green & Buttercream",
@@ -774,15 +774,15 @@
         "seo_meta_desc": "Discover Snowflake in opalescent resin and pearl clay. Tap this smart NFC card for instant bioluminescent crystal video and peaceful holiday whisper."
       },
       "media": {
-        "aspect_ratio": "9:16",
+        "aspect_ratio": "CR80 (53.98:85.60)",
         "video_url": "https://TapGreetings.com/assets/video/007-video.mp4",
         "local_video_path": "/assets/video/007-video.mp4",
         "video_duration_seconds": 8,
         "audio_dialogue": "Unique in every angle, fleeting in time, infinite in beauty. Wishing you a season of peaceful wonder!",
-        "front_image_url": "https://TapGreetings.com/assets/img/007-front.jpg",
-        "local_front_image_path": "/assets/img/007-front.jpg",
-        "back_image_url": "https://TapGreetings.com/assets/img/007-back.jpg",
-        "local_back_image_path": "/assets/img/007-back.jpg"
+        "front_image_url": "https://TapGreetings.com/assets/img/cr80/007-front.jpg?v=cr80",
+        "local_front_image_path": "/assets/img/cr80/007-front.jpg?v=cr80",
+        "back_image_url": "https://TapGreetings.com/assets/img/cr80/007-back.jpg?v=cr80",
+        "local_back_image_path": "/assets/img/cr80/007-back.jpg?v=cr80"
       },
       "style_tokens": {
         "theme_name": "Cyan & Twilight Slate",
@@ -890,15 +890,15 @@
         "seo_meta_desc": "Discover Gift, wrapped in sage craft paper with a bouncy red bow. Tap this smart NFC card for instant starlight burst motion video and joyful voice toast."
       },
       "media": {
-        "aspect_ratio": "9:16",
+        "aspect_ratio": "CR80 (53.98:85.60)",
         "video_url": "https://TapGreetings.com/assets/video/008-video.mp4",
         "local_video_path": "/assets/video/008-video.mp4",
         "video_duration_seconds": 8,
         "audio_dialogue": "The sweetest presents aren't tied in ribbons, but wrapped in presence! Open your heart to the season—Happy Holidays!",
-        "front_image_url": "https://TapGreetings.com/assets/img/008-front.jpg",
-        "local_front_image_path": "/assets/img/008-front.jpg",
-        "back_image_url": "https://TapGreetings.com/assets/img/008-back.jpg",
-        "local_back_image_path": "/assets/img/008-back.jpg"
+        "front_image_url": "https://TapGreetings.com/assets/img/cr80/008-front.jpg?v=cr80",
+        "local_front_image_path": "/assets/img/cr80/008-front.jpg?v=cr80",
+        "back_image_url": "https://TapGreetings.com/assets/img/cr80/008-back.jpg?v=cr80",
+        "local_back_image_path": "/assets/img/cr80/008-back.jpg?v=cr80"
       },
       "style_tokens": {
         "theme_name": "Sage & Cherry Red",
@@ -1006,15 +1006,15 @@
         "seo_meta_desc": "Discover Gingerbread Man, crafted in cinnamon clay and royal icing. Tap this smart NFC card for instant holiday stop-motion video greeting."
       },
       "media": {
-        "aspect_ratio": "9:16",
+        "aspect_ratio": "CR80 (53.98:85.60)",
         "video_url": "https://TapGreetings.com/assets/video/009-video.mp4",
         "local_video_path": "/assets/video/009-video.mp4",
         "video_duration_seconds": 8,
         "audio_dialogue": "Catch me if you can—bringing all the sweet holiday cheer your way! Happy Holidays!",
-        "front_image_url": "https://TapGreetings.com/assets/img/009-front.jpg",
-        "local_front_image_path": "/assets/img/009-front.jpg",
-        "back_image_url": "https://TapGreetings.com/assets/img/009-back.jpg",
-        "local_back_image_path": "/assets/img/009-back.jpg"
+        "front_image_url": "https://TapGreetings.com/assets/img/cr80/009-front.jpg?v=cr80",
+        "local_front_image_path": "/assets/img/cr80/009-front.jpg?v=cr80",
+        "back_image_url": "https://TapGreetings.com/assets/img/cr80/009-back.jpg?v=cr80",
+        "local_back_image_path": "/assets/img/cr80/009-back.jpg?v=cr80"
       },
       "style_tokens": {
         "theme_name": "Cinnamon & Royal Icing",
@@ -1108,15 +1108,15 @@
         "seo_meta_desc": "Experience Mrs. Claus, sculpted in warm clay and needle-felted crimson wool. Tap this smart NFC card for instant warm holiday motion video greeting."
       },
       "media": {
-        "aspect_ratio": "9:16",
+        "aspect_ratio": "CR80 (53.98:85.60)",
         "video_url": "https://TapGreetings.com/assets/video/010-video.mp4",
         "local_video_path": "/assets/video/010-video.mp4",
         "video_duration_seconds": 8,
         "audio_dialogue": "From our warm hearth to yours, may your holidays be filled with joy and sweetness. Happy Holidays, dear!",
-        "front_image_url": "https://TapGreetings.com/assets/img/010-front.jpg",
-        "local_front_image_path": "/assets/img/010-front.jpg",
-        "back_image_url": "https://TapGreetings.com/assets/img/010-back.jpg",
-        "local_back_image_path": "/assets/img/010-back.jpg"
+        "front_image_url": "https://TapGreetings.com/assets/img/cr80/010-front.jpg?v=cr80",
+        "local_front_image_path": "/assets/img/cr80/010-front.jpg?v=cr80",
+        "back_image_url": "https://TapGreetings.com/assets/img/cr80/010-back.jpg?v=cr80",
+        "local_back_image_path": "/assets/img/cr80/010-back.jpg?v=cr80"
       },
       "style_tokens": {
         "theme_name": "Warm Oven & Crimson Wool",
@@ -1211,15 +1211,15 @@
         "seo_meta_desc": "Experience the Workshop Elf, sculpted in painted clay and green felt. Tap this smart NFC card for instant 1080p stop-motion workshop video greeting."
       },
       "media": {
-        "aspect_ratio": "9:16",
+        "aspect_ratio": "CR80 (53.98:85.60)",
         "video_url": "https://TapGreetings.com/assets/video/011-video.mp4",
         "local_video_path": "/assets/video/011-video.mp4",
         "video_duration_seconds": 8,
         "audio_dialogue": "Every toy has a spark of holiday magic! Wishing you endless wonder and happy crafting this season!",
-        "front_image_url": "https://TapGreetings.com/assets/img/011-front.jpg",
-        "local_front_image_path": "/assets/img/011-front.jpg",
-        "back_image_url": "https://TapGreetings.com/assets/img/011-back.jpg",
-        "local_back_image_path": "/assets/img/011-back.jpg"
+        "front_image_url": "https://TapGreetings.com/assets/img/cr80/011-front.jpg?v=cr80",
+        "local_front_image_path": "/assets/img/cr80/011-front.jpg?v=cr80",
+        "back_image_url": "https://TapGreetings.com/assets/img/cr80/011-back.jpg?v=cr80",
+        "local_back_image_path": "/assets/img/cr80/011-back.jpg?v=cr80"
       },
       "style_tokens": {
         "theme_name": "Forest Pine & Toymaker Cedar",
@@ -1313,15 +1313,15 @@
         "seo_meta_desc": "Discover Polar Bear, sculpted in flocked white wool and teal knit scarf. Tap this smart NFC card for instant arctic stop-motion video greeting."
       },
       "media": {
-        "aspect_ratio": "9:16",
+        "aspect_ratio": "CR80 (53.98:85.60)",
         "video_url": "https://TapGreetings.com/assets/video/012-video.mp4",
         "local_video_path": "/assets/video/012-video.mp4",
         "video_duration_seconds": 8,
         "audio_dialogue": "May your winter nights be warm and your journey brightly lit. Peace to you and yours!",
-        "front_image_url": "https://TapGreetings.com/assets/img/012-front.jpg",
-        "local_front_image_path": "/assets/img/012-front.jpg",
-        "back_image_url": "https://TapGreetings.com/assets/img/012-back.jpg",
-        "local_back_image_path": "/assets/img/012-back.jpg"
+        "front_image_url": "https://TapGreetings.com/assets/img/cr80/012-front.jpg?v=cr80",
+        "local_front_image_path": "/assets/img/cr80/012-front.jpg?v=cr80",
+        "back_image_url": "https://TapGreetings.com/assets/img/cr80/012-back.jpg?v=cr80",
+        "local_back_image_path": "/assets/img/cr80/012-back.jpg?v=cr80"
       },
       "style_tokens": {
         "theme_name": "Arctic Twilight & Amber Glow",
@@ -1415,15 +1415,15 @@
         "seo_meta_desc": "Experience Penguin, sculpted in smooth clay on brass skates. Tap this smart NFC card for instant holiday stop-motion ice skating video greeting."
       },
       "media": {
-        "aspect_ratio": "9:16",
+        "aspect_ratio": "CR80 (53.98:85.60)",
         "video_url": "https://TapGreetings.com/assets/video/013-video.mp4",
         "local_video_path": "/assets/video/013-video.mp4",
         "video_duration_seconds": 8,
         "audio_dialogue": "Whoosh! Glide into the holidays with a giant leap of joy! Happy Holidays from the ice!",
-        "front_image_url": "https://TapGreetings.com/assets/img/013-front.jpg",
-        "local_front_image_path": "/assets/img/013-front.jpg",
-        "back_image_url": "https://TapGreetings.com/assets/img/013-back.jpg",
-        "local_back_image_path": "/assets/img/013-back.jpg"
+        "front_image_url": "https://TapGreetings.com/assets/img/cr80/013-front.jpg?v=cr80",
+        "local_front_image_path": "/assets/img/cr80/013-front.jpg?v=cr80",
+        "back_image_url": "https://TapGreetings.com/assets/img/cr80/013-back.jpg?v=cr80",
+        "local_back_image_path": "/assets/img/cr80/013-back.jpg?v=cr80"
       },
       "style_tokens": {
         "theme_name": "Mirrored Ice & Cranberry Knit",
@@ -1518,15 +1518,15 @@
         "seo_meta_desc": "Discover Sugar Plum Fairy, sculpted in lavender clay with spun-sugar wings. Tap this smart NFC card for instant holiday stop-motion video greeting."
       },
       "media": {
-        "aspect_ratio": "9:16",
+        "aspect_ratio": "CR80 (53.98:85.60)",
         "video_url": "https://TapGreetings.com/assets/video/014-video.mp4",
         "local_video_path": "/assets/video/014-video.mp4",
         "video_duration_seconds": 8,
         "audio_dialogue": "Close your eyes and make a wish—magic is all around you tonight. Happy Holidays!",
-        "front_image_url": "https://TapGreetings.com/assets/img/014-front.jpg",
-        "local_front_image_path": "/assets/img/014-front.jpg",
-        "back_image_url": "https://TapGreetings.com/assets/img/014-back.jpg",
-        "local_back_image_path": "/assets/img/014-back.jpg"
+        "front_image_url": "https://TapGreetings.com/assets/img/cr80/014-front.jpg?v=cr80",
+        "local_front_image_path": "/assets/img/cr80/014-front.jpg?v=cr80",
+        "back_image_url": "https://TapGreetings.com/assets/img/cr80/014-back.jpg?v=cr80",
+        "local_back_image_path": "/assets/img/cr80/014-back.jpg?v=cr80"
       },
       "style_tokens": {
         "theme_name": "Twilight Violet & Spun Sugar",
@@ -1621,15 +1621,15 @@
         "seo_meta_desc": "Meet Snow Monster, crafted in fluffy needle-felt wool and clay. Tap this smart NFC card for instant gentle yeti stop-motion video greeting."
       },
       "media": {
-        "aspect_ratio": "9:16",
+        "aspect_ratio": "CR80 (53.98:85.60)",
         "video_url": "https://TapGreetings.com/assets/video/015-video.mp4",
         "local_video_path": "/assets/video/015-video.mp4",
         "video_duration_seconds": 8,
         "audio_dialogue": "Roar-y warmth to your hearth! Sending giant fluffy monster hugs this holiday!",
-        "front_image_url": "https://TapGreetings.com/assets/img/015-front.jpg",
-        "local_front_image_path": "/assets/img/015-front.jpg",
-        "back_image_url": "https://TapGreetings.com/assets/img/015-back.jpg",
-        "local_back_image_path": "/assets/img/015-back.jpg"
+        "front_image_url": "https://TapGreetings.com/assets/img/cr80/015-front.jpg?v=cr80",
+        "local_front_image_path": "/assets/img/cr80/015-front.jpg?v=cr80",
+        "back_image_url": "https://TapGreetings.com/assets/img/cr80/015-back.jpg?v=cr80",
+        "local_back_image_path": "/assets/img/cr80/015-back.jpg?v=cr80"
       },
       "style_tokens": {
         "theme_name": "Glacier Slate & Fluffy Wool",
@@ -1724,15 +1724,15 @@
         "seo_meta_desc": "Discover Stocking Puppy, sculpted in clay peeking from a knit stocking. Tap this smart NFC card for instant cozy puppy stop-motion video greeting."
       },
       "media": {
-        "aspect_ratio": "9:16",
+        "aspect_ratio": "CR80 (53.98:85.60)",
         "video_url": "https://TapGreetings.com/assets/video/016-video.mp4",
         "local_video_path": "/assets/video/016-video.mp4",
         "video_duration_seconds": 8,
         "audio_dialogue": "Yip yip! Wags and kisses coming your way! Have the happiest, warmest holidays ever!",
-        "front_image_url": "https://TapGreetings.com/assets/img/016-front.jpg",
-        "local_front_image_path": "/assets/img/016-front.jpg",
-        "back_image_url": "https://TapGreetings.com/assets/img/016-back.jpg",
-        "local_back_image_path": "/assets/img/016-back.jpg"
+        "front_image_url": "https://TapGreetings.com/assets/img/cr80/016-front.jpg?v=cr80",
+        "local_front_image_path": "/assets/img/cr80/016-front.jpg?v=cr80",
+        "back_image_url": "https://TapGreetings.com/assets/img/cr80/016-back.jpg?v=cr80",
+        "local_back_image_path": "/assets/img/cr80/016-back.jpg?v=cr80"
       },
       "style_tokens": {
         "theme_name": "Fireside Crimson & Knit Wool",
