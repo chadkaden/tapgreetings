@@ -1,0 +1,239 @@
+{% comment %}
+  TapGreetings Homepage Spotlight Section (Series 1 Holiday Collection)
+  Features Series 1 Holiday Hero, Subcollection Cards, Mobile Tap-to-Video Demo, and Direct Links
+{% endcomment %}
+
+<style>
+  #tg-spotlight-wrapper {
+    background: linear-gradient(135deg, #1E130D 0%, #2A1A12 50%, #3B191D 100%) !important;
+    color: #FFF8E7 !important;
+    padding: 44px 24px;
+    border-radius: 28px;
+    margin: 32px auto;
+    max-width: 1200px;
+    border: 2px solid rgba(251, 191, 36, 0.4);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    box-sizing: border-box;
+  }
+
+  body.tt-light-mode #tg-spotlight-wrapper {
+    background: linear-gradient(135deg, #FFFDF9 0%, #FFF5EB 50%, #FFF0F0 100%) !important;
+    color: #2D1A10 !important;
+    border-color: #E8D5C4 !important;
+    box-shadow: 0 10px 30px rgba(61, 35, 20, 0.08) !important;
+  }
+
+  #tg-spotlight-wrapper * {
+    box-sizing: border-box;
+  }
+
+  .tg-spot-badge {
+    display: inline-block;
+    background: linear-gradient(90deg, #9E1B32, #D62839) !important;
+    color: #FFFFFF !important;
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 6px 20px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 15px rgba(214, 40, 57, 0.35);
+  }
+
+  .tg-spot-title {
+    font-size: 2.6rem;
+    font-weight: 900;
+    margin: 0 0 14px 0;
+    color: #FFF8E7 !important;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+  }
+  body.tt-light-mode .tg-spot-title {
+    color: #9E1B32 !important;
+  }
+
+  .tg-spot-sub {
+    font-size: 1.12rem;
+    max-width: 740px;
+    margin: 0 auto 28px auto;
+    color: #FEE2E2 !important;
+    line-height: 1.6;
+  }
+  body.tt-light-mode .tg-spot-sub {
+    color: #5C3214 !important;
+  }
+
+  .tg-spot-btn-primary {
+    background: linear-gradient(90deg, #D62839, #E65100) !important;
+    color: #FFFFFF !important;
+    font-weight: 800;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 16px;
+    font-size: 1rem;
+    box-shadow: 0 4px 18px rgba(214, 40, 57, 0.4);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .tg-spot-btn-primary:hover {
+    transform: translateY(-2px);
+    opacity: 0.94;
+  }
+
+  .tg-spot-btn-secondary {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #FBBF24 !important;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 16px;
+    font-size: 1rem;
+    border: 1.5px solid rgba(251, 191, 36, 0.5);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s;
+  }
+  body.tt-light-mode .tg-spot-btn-secondary {
+    color: #9E1B32 !important;
+    border-color: #9E1B32 !important;
+    background: #FFFFFF !important;
+  }
+
+  .tg-spot-subcols {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+  @media (max-width: 900px) {
+    .tg-spot-subcols {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 480px) {
+    .tg-spot-subcols {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .tg-subcol-card {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1.5px solid rgba(251, 191, 36, 0.3) !important;
+    border-radius: 18px;
+    padding: 20px;
+    text-align: left;
+    text-decoration: none;
+    color: inherit !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s, border-color 0.2s, background 0.2s;
+  }
+  body.tt-light-mode .tg-subcol-card {
+    background: #FFFFFF !important;
+    border-color: #E8D5C4 !important;
+    box-shadow: 0 4px 14px rgba(61, 35, 20, 0.06);
+  }
+  .tg-subcol-card:hover {
+    transform: translateY(-4px);
+    border-color: #FBBF24 !important;
+    background: rgba(255, 255, 255, 0.09) !important;
+  }
+
+  .tg-subcol-card h4 {
+    margin: 8px 0 6px 0;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #FFF8E7 !important;
+  }
+  body.tt-light-mode .tg-subcol-card h4 {
+    color: #9E1B32 !important;
+  }
+
+  .tg-subcol-card p {
+    font-size: 0.86rem;
+    color: #D1BDB0 !important;
+    line-height: 1.45;
+    margin: 0 0 12px 0;
+  }
+  body.tt-light-mode .tg-subcol-card p {
+    color: #5C3214 !important;
+  }
+
+  .tg-subcol-card span {
+    font-size: 0.84rem;
+    font-weight: 800;
+    color: #FBBF24 !important;
+  }
+  body.tt-light-mode .tg-subcol-card span {
+    color: #9E1B32 !important;
+  }
+</style>
+
+<div id="tg-spotlight-wrapper">
+  <div style="text-align: center;">
+    <span class="tg-spot-badge">✦ Official TapGreetings Series 1 Launch ✦</span>
+    <h2 class="tg-spot-title">
+      Handcrafted Clay &amp; Needle-Felt Holiday Keepsakes
+    </h2>
+    <p class="tg-spot-sub">
+      16 collectible miniature stop-motion trading cards sculpted in tactile polymer clay with needle-felted accents. Tap with any smartphone to stream 1080p video animations and voice greetings!
+    </p>
+
+    <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 30px;">
+      <a href="/collections/tapgreetings-series-1" class="tg-spot-btn-primary">
+        Shop All 16 Cards ($14.99) &rarr;
+      </a>
+      <a href="/pages/how-tapgreetings-nfc-works" class="tg-spot-btn-secondary">
+        How NFC Cards Work &rarr;
+      </a>
+      <a href="https://tapgreetings.com" target="_blank" class="tg-spot-btn-secondary">
+        Explore Live Video Portal ↗
+      </a>
+    </div>
+  </div>
+
+  <!-- 4 Subcollection Feature Cards -->
+  <div class="tg-spot-subcols">
+    <a href="/collections/series-1-classic-icons" class="tg-subcol-card">
+      <div>
+        <div style="font-size: 1.8rem;">🎅</div>
+        <h4>Classic Icons</h4>
+        <p>Santa (#001), Frosty (#002), Rudolph (#003), and Mrs. Claus (#010). Warm cranberry clay and fleece cuffs.</p>
+      </div>
+      <span>View 4 Cards &rarr;</span>
+    </a>
+
+    <a href="/collections/series-1-winter-magic" class="tg-subcol-card">
+      <div>
+        <div style="font-size: 1.8rem;">❄️</div>
+        <h4>Winter Magic</h4>
+        <p>Jack Frost (#004), Snowflake (#007), Sugar Plum Fairy (#014), Snow Monster (#015). Translucent ice glass.</p>
+      </div>
+      <span>View 4 Cards &rarr;</span>
+    </a>
+
+    <a href="/collections/series-1-hearth-holiday" class="tg-subcol-card">
+      <div>
+        <div style="font-size: 1.8rem;">🔥</div>
+        <h4>Hearth &amp; Holiday</h4>
+        <p>Nutcracker (#005), The Tree (#006), Surprise Gift (#008), Gingerbread (#009). Cozy fireside traditions.</p>
+      </div>
+      <span>View 4 Cards &rarr;</span>
+    </a>
+
+    <a href="/collections/series-1-festive-friends" class="tg-subcol-card">
+      <div>
+        <div style="font-size: 1.8rem;">🐾</div>
+        <h4>Festive Friends</h4>
+        <p>Workshop Elf (#011), Polar Bear (#012), Penguin (#013), Stocking Puppy (#016). Playful arctic companions.</p>
+      </div>
+      <span>View 4 Cards &rarr;</span>
+    </a>
+  </div>
+</div>
