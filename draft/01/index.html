@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Delphine (The Ice Starlet) | TapGreetings</title>
+    
+    <!-- Instant Theme Detection Before Render -->
+    <script>
+        (function() {
+            try {
+                var saved = localStorage.getItem('tg_theme');
+                if (saved === 'light') {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.classList.add('light');
+                } else {
+                    document.documentElement.classList.remove('light');
+                    document.documentElement.classList.add('dark');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- Primary SEO Meta Tags -->
+    <meta name="title" content="Delphine (The Ice Starlet) | TapGreetings">
+    <meta name="description" content="TapGreetings: Handcrafted smart NFC living keepsake greeting cards.">
+    <meta name="keywords" content="delphine, ice starlet, draft series, winter glamour, champagne, gala">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tapgreetings.com/draft/01/">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tapgreetings.com/draft/01/">
+    <meta property="og:title" content="Delphine (The Ice Starlet) | TapGreetings">
+    <meta property="og:description" content="TapGreetings: Handcrafted smart NFC living keepsake greeting cards.">
+    <meta property="og:image" content="/assets/img/cr80/draft-01-front.jpg?v=cr80">
+    <meta property="og:video" content="/assets/video/draft-01-video.mp4">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tapgreetings.com/draft/01/">
+    <meta property="twitter:title" content="Delphine (The Ice Starlet) | TapGreetings">
+    <meta property="twitter:description" content="TapGreetings: Handcrafted smart NFC living keepsake greeting cards.">
+    <meta property="twitter:image" content="/assets/img/cr80/draft-01-front.jpg?v=cr80">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        mocha: '#241711',
+                        cranberry: '#9E1B32',
+                        forest: '#23412B',
+                        buttercream: '#FFF8E7',
+                        cherry: '#D62839',
+                        mint: '#A8DADC',
+                        goldFoil: '#FBBF24'
+                    },
+                    fontFamily: {
+                        clayTitle: ['"Cooper Black"', '"Recraft"', '"Playfair Display"', 'serif'],
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        sans: ['"Outfit"', '"Montserrat"', 'system-ui', 'sans-serif'],
+                        header: ['"Cinzel"', '"Playfair Display"', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Pro Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+    <style>
+        /* 3D Flip Card Styles - Exact CR80 Credit Card Ratio (53.98 x 85.60 mm -> 54/86) */
+        .perspective-container {
+            perspective: 1200px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+        .flip-card-inner.flipped {
+            transform: rotateY(180deg);
+        }
+        .flip-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 1.25rem;
+            overflow: hidden;
+        }
+        .flip-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Gold Starburst Corner Filigree Accents */
+        .clay-corner {
+            position: absolute;
+            font-size: 14px;
+            color: #FBBF24;
+            opacity: 0.85;
+            text-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* Subtle Holiday Glows */
+        .glow-amber {
+            box-shadow: 0 0 35px -5px rgba(245, 158, 11, 0.25);
+        }
+        .glow-gold {
+            box-shadow: 0 0 30px -5px rgba(251, 191, 36, 0.3);
+        }
+
+        /* Fullscreen Lightbox Zoom Styles */
+        .zoomed-magnify {
+            transform: scale(1.85);
+            cursor: zoom-out !important;
+        }
+
+        /* LIGHT MODE HIGH-CONTRAST PALETTE OVERRIDES */
+        html.light {
+            background-color: #FDFBF7 !important;
+            color: #1F150F !important;
+        }
+        html.light body {
+            background-color: #FDFBF7 !important;
+            color: #1F150F !important;
+        }
+        html.light header {
+            background-color: rgba(255, 252, 248, 0.95) !important;
+            border-color: #E2D5C7 !important;
+        }
+        html.light header a,
+        html.light header nav a {
+            color: #24140B !important;
+        }
+        html.light header nav a:hover {
+            color: #9E1B32 !important;
+        }
+        html.light .bg-[#120C08] {
+            background-color: #FDFBF7 !important;
+        }
+        html.light .bg-[#1A110C]/95,
+        html.light .bg-[#1C120C]/90,
+        html.light .bg-[#150D09]/95,
+        html.light .bg-[#1E130D],
+        html.light .bg-[#140D08] {
+            background-color: #FFFFFF !important;
+            color: #24140B !important;
+        }
+        html.light .bg-[#1F140E],
+        html.light .bg-[#20140D],
+        html.light .bg-[#241710],
+        html.light .bg-[#180E09] {
+            background-color: #F4ECE4 !important;
+            color: #24140B !important;
+        }
+        html.light .bg-[#1A100B] {
+            background-color: #F5EFEB !important;
+            color: #1E130D !important;
+        }
+        html.light h1, html.light h2, html.light h3, html.light .font-clayTitle {
+            color: #24140B !important;
+        }
+        html.light .text-white {
+            color: #1F140E !important;
+        }
+        html.light .text-amber-100,
+        html.light .text-amber-100/90 {
+            color: #382315 !important;
+        }
+        html.light .text-amber-200,
+        html.light .text-amber-200/95,
+        html.light .text-amber-200/90,
+        html.light .text-amber-200/80,
+        html.light .text-amber-200/70 {
+            color: #5C3214 !important;
+        }
+        html.light .text-amber-300 {
+            color: #8C430B !important;
+        }
+        html.light .text-amber-400 {
+            color: #A34E0E !important;
+        }
+        html.light .border-amber-600/40,
+        html.light .border-amber-600/50,
+        html.light .border-amber-600/70,
+        html.light .border-amber-700/30,
+        html.light .border-amber-700/40,
+        html.light .border-amber-800/30,
+        html.light .border-amber-800/40,
+        html.light .border-amber-900/40 {
+            border-color: #E2D2C0 !important;
+        }
+        html.light .glow-amber {
+            box-shadow: 0 0 25px 0 rgba(217, 119, 6, 0.12) !important;
+        }
+        html.light footer {
+            background-color: #F5EFEB !important;
+            border-color: #E5D6C8 !important;
+        }
+        html.light footer .text-slate-200 {
+            color: #24140B !important;
+        }
+        html.light footer .text-slate-400,
+        html.light footer .text-slate-500 {
+            color: #6C5240 !important;
+        }
+        html.light #searchInput {
+            background-color: #FFFFFF !important;
+            color: #24140B !important;
+            border-color: #DAC7B5 !important;
+        }
+        html.light #searchInput::placeholder {
+            color: #9C7D68 !important;
+        }
+    </style>
+</head>
+<body class="font-sans bg-[#120C08] text-amber-50 min-h-screen transition-colors duration-300 selection:bg-rose-600 selection:text-white flex flex-col justify-between overflow-x-hidden">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-[#160E09]/95 backdrop-blur-md border-b border-amber-900/40 px-4 sm:px-8 py-3.5 flex justify-between items-center shadow-xl w-full">
+        <a href="/" class="font-header text-lg sm:text-2xl font-bold text-white flex items-center gap-2 sm:gap-2.5 drop-shadow-[0_0_15px_rgba(251,191,36,0.35)] flex-shrink-0">
+            <span class="w-8 h-8 rounded-xl bg-gradient-to-tr from-rose-700 via-amber-600 to-amber-300 flex items-center justify-center text-xs sm:text-sm font-black text-white shadow-md">TG</span>
+            <div class="flex flex-col">
+                <span class="tracking-tight leading-none">TapGreetings</span>
+                <span class="text-[9px] text-amber-300 uppercase tracking-widest font-semibold mt-0.5">Smart NFC Keepsakes &bull; 21 Cards</span>
+            </div>
+        </a>
+        <div class="flex items-center gap-3 sm:gap-6">
+            <nav class="hidden md:flex gap-6 text-sm font-semibold text-amber-200/90">
+                <a href="/" class="hover:text-amber-300 transition-colors">Home</a>
+                <a href="/#collection" class="hover:text-amber-300 transition-colors">All 21 Cards</a>
+                <a href="/series-1/" class="hover:text-amber-300 transition-colors">Series 1 (16)</a>
+                <a href="/draft/" class="hover:text-purple-300 transition-colors">Draft Series (5)</a>
+                <a href="https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card" target="_blank" class="hover:text-amber-300 transition-colors">Custom Studio</a>
+            </nav>
+            <a href="https://shop.tapthingy.com/products/happy-holidays-series-1" target="_blank" class="bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white text-xs font-bold px-3 sm:px-4 py-2 rounded-xl shadow transition-transform hover:scale-105 flex items-center gap-1.5">
+                <i class="fa-solid fa-cart-shopping"></i> <span class="hidden sm:inline">Shop</span> Box Set
+            </a>
+            <button onclick="toggleTheme()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#20140D] border border-amber-800/40 text-amber-300 flex items-center justify-center shadow hover:scale-105 transition-transform" title="Toggle Light/Dark Mode">
+                <i class="fa-solid fa-moon" id="themeIcon"></i>
+            </button>
+        </div>
+    </header>
+    <script>
+        function toggleTheme() {
+            var html = document.documentElement;
+            var icon = document.getElementById('themeIcon');
+            if (html.classList.contains('light')) {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                try { localStorage.setItem('tg_theme', 'dark'); } catch (e) {}
+                if (icon) icon.className = 'fa-solid fa-moon';
+            } else {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                try { localStorage.setItem('tg_theme', 'light'); } catch (e) {}
+                if (icon) icon.className = 'fa-solid fa-sun';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            var isLight = document.documentElement.classList.contains('light');
+            var icon = document.getElementById('themeIcon');
+            if (icon) icon.className = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+        });
+    </script>
+
+    <main class="w-full max-w-5xl mx-auto px-3 sm:px-6 py-4 sm:py-8 flex-grow">
+        <!-- Main Card Container with Purple/Amber Glow -->
+        <div class="relative bg-[#1A111C]/95 rounded-3xl p-3 sm:p-8 shadow-2xl border-[2px] border-purple-600/40 backdrop-blur-md flex flex-col gap-4 sm:gap-6 glow-amber w-full overflow-hidden">
+            
+            <!-- 4-Point Gold Starburst Filigree Accents in Corners -->
+            <span class="clay-corner top-3 left-3">✦</span>
+            <span class="clay-corner top-3 right-3">✦</span>
+            <span class="clay-corner bottom-3 left-3">✦</span>
+            <span class="clay-corner bottom-3 right-3">✦</span>
+
+            <!-- DESKTOP TOP BANNER -->
+            <div class="hidden lg:block text-center pt-1 w-full max-w-full">
+                <div class="flex flex-wrap justify-center items-center gap-2 mb-2">
+                    <span class="inline-block bg-gradient-to-r from-purple-700 via-indigo-600 to-amber-600 text-white text-[11px] sm:text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-widest shadow-md">
+                        Happy Holidays!
+                    </span>
+                    <span class="inline-block bg-[#24132B] text-purple-200 border border-purple-500/40 text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                        DRAFT CONCEPT #01 OF 05
+                    </span>
+                    <span class="inline-block bg-[#24132B] text-amber-300 border border-amber-600/40 text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                        Original Pre-Clay Glamour Edition
+                    </span>
+                </div>
+                
+                <h1 class="font-clayTitle text-2xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-purple-100 via-amber-200 to-rose-200 bg-clip-text text-transparent drop-shadow-md break-words">
+                    Delphine
+                </h1>
+                <p class="font-sans text-xs sm:text-sm text-purple-300 font-semibold tracking-wide mt-1 break-words">
+                    The Ice Starlet &bull; <span class="text-amber-300 italic font-serif">Draft Series (Winter Glamour)</span>
+                </p>
+                <p class="text-xs sm:text-sm text-amber-100/90 italic max-w-xl mx-auto mt-2 px-2 leading-relaxed break-words">
+                    &ldquo;Shine under your own spotlight and make every entrance unforgettable.&rdquo;
+                </p>
+
+                <div class="flex flex-wrap justify-center gap-1.5 mt-2.5 max-w-2xl mx-auto"><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#delphine</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#ice starlet</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#draft series</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#winter glamour</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#champagne</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#gala</span></div>
+            </div>
+
+            <!-- MAIN CONTENT: On Mobile, Video is at the very top! -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start w-full min-w-0">
+                
+                <!-- COLUMN 1: VIDEO FIRST, CONTROLS, PREV/NEXT, AND SHARE BUTTON -->
+                <div class="order-1 flex flex-col items-center w-full min-w-0">
+                    
+                    <!-- Compact Mobile Header directly above video -->
+                    <div class="lg:hidden w-full flex justify-between items-center mb-2 px-1">
+                        <span class="text-xs font-bold uppercase tracking-wider text-purple-300 bg-[#1F122B] px-3 py-1 rounded-full border border-purple-700/40">
+                            Draft #01 &bull; Delphine
+                        </span>
+                        <span class="text-xs font-bold text-amber-300 uppercase tracking-wider">
+                            Happy Holidays!
+                        </span>
+                    </div>
+
+                    <!-- Video Frame -->
+                    <div class="relative w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[500px] aspect-[9/16] rounded-3xl overflow-hidden bg-black shadow-2xl ring-1 ring-purple-500/30 flex justify-center items-center cursor-pointer group" onclick="toggleMute()">
+                        <video id="cardVideo" autoplay loop playsinline poster="/assets/img/cr80/draft-01-front.jpg?v=cr80" class="w-full h-full object-cover">
+                            <source src="/assets/video/draft-01-video.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+
+                    <!-- Video Controls Row -->
+                    <div class="mt-3 w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[500px] flex items-center justify-between px-2 text-xs font-semibold text-purple-200">
+                        <button onclick="restartVideo()" class="flex items-center gap-1.5 text-purple-300 hover:text-white transition-colors bg-[#1A111C] px-3 py-1.5 rounded-xl border border-purple-900/40">
+                            <i class="fa-solid fa-rotate-left"></i> <span>Replay</span>
+                        </button>
+                        <button onclick="toggleMute()" id="soundToggleBtn" class="flex items-center gap-1.5 text-purple-300 hover:text-white transition-colors bg-[#1A111C] px-3 py-1.5 rounded-xl border border-purple-900/40">
+                            <i id="muteIcon" class="fa-solid fa-volume-high text-amber-400"></i> <span id="muteStatusLabel">Sound: Unmuted</span>
+                        </button>
+                    </div>
+
+                    <!-- PREV / NEXT NAVIGATION (Draft Series Loop) -->
+                    <div class="mt-4 w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[500px] flex items-center justify-between gap-2 text-xs font-bold">
+                        <a href="/draft/05/" class="flex-1 bg-[#1F122B] hover:bg-purple-800 text-purple-200 hover:text-white px-3 py-2.5 rounded-2xl flex items-center justify-center gap-1.5 transition-all shadow border border-purple-800/40 truncate">
+                            <i class="fa-solid fa-arrow-left"></i> <span class="truncate">#05 Midnight Toast</span>
+                        </a>
+                        <a href="/draft/" class="bg-[#180E24] hover:bg-[#28153A] text-purple-300 px-3.5 py-2.5 rounded-2xl flex items-center justify-center gap-1.5 transition-all shadow border border-purple-700/40 whitespace-nowrap">
+                            <i class="fa-solid fa-palette"></i> <span class="hidden sm:inline">Draft</span> 5
+                        </a>
+                        <a href="/draft/02/" class="flex-1 bg-[#1F122B] hover:bg-purple-800 text-purple-200 hover:text-white px-3 py-2.5 rounded-2xl flex items-center justify-center gap-1.5 transition-all shadow border border-purple-800/40 truncate">
+                            <span class="truncate">#02 Autumn Gratitude</span> <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- SHARE BUTTON -->
+                    <button onclick="shareGreeting()" class="w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[500px] mt-2.5 bg-[#20122D] hover:bg-[#2D1A40] text-purple-200 hover:text-white font-bold py-3 px-4 rounded-2xl border border-purple-800/40 shadow-lg flex items-center justify-center gap-2 transition-transform hover:scale-[1.01] text-xs sm:text-sm">
+                        <i class="fa-solid fa-share-nodes text-purple-400"></i> <span>Share This Concept Card ✦</span>
+                    </button>
+                </div>
+
+                <!-- COLUMN 2: Details + 3D Physical Card Flip + Fullscreen Zoom -->
+                <div class="order-2 flex flex-col gap-4 sm:gap-6 w-full min-w-0">
+                    
+                    <!-- MOBILE TITLE & MOTTO -->
+                    <div class="lg:hidden text-center bg-[#150B1C]/95 p-3.5 rounded-2xl border border-purple-700/30">
+                        <h1 class="font-clayTitle text-2xl font-extrabold bg-gradient-to-r from-purple-100 via-amber-200 to-rose-200 bg-clip-text text-transparent break-words">
+                            Delphine
+                        </h1>
+                        <p class="font-sans text-xs text-purple-300 font-semibold tracking-wide mt-0.5">
+                            The Ice Starlet &bull; <span class="text-amber-300 italic font-serif">Draft Concept</span>
+                        </p>
+                        <p class="text-xs text-amber-100/90 italic mt-1.5 px-1 leading-relaxed break-words">
+                            &ldquo;Shine under your own spotlight and make every entrance unforgettable.&rdquo;
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-1.5 mt-2.5 max-w-2xl mx-auto"><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#delphine</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#ice starlet</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#draft series</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#winter glamour</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#champagne</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#gala</span></div>
+                    </div>
+
+                    <!-- Interactive Flippable 3D Physical Keepsake Card -->
+                    <div class="bg-[#150B1C]/95 p-4 sm:p-5 rounded-3xl border border-purple-700/30 shadow-xl flex flex-col items-center min-w-0">
+                        <div class="w-full flex justify-between items-center mb-3">
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-purple-300 flex items-center gap-1.5">
+                                <i class="fa-solid fa-id-card text-purple-400"></i> Physical CR80 Smart Card
+                            </span>
+                            <div class="flex items-center gap-2">
+                                <button onclick="openCardZoom()" class="bg-[#24132B] hover:bg-[#341B3E] text-purple-300 text-xs font-bold px-3 py-1.5 rounded-xl border border-purple-600/40 flex items-center gap-1.5 transition-all shadow" title="Open Fullscreen Zoom Lightbox">
+                                    <i class="fa-solid fa-expand text-purple-400"></i> Zoom
+                                </button>
+                                <button onclick="toggleCardFlip()" class="bg-[#24132B] hover:bg-[#341B3E] text-purple-300 text-xs font-bold px-3 py-1.5 rounded-xl border border-purple-600/40 flex items-center gap-1.5 transition-all shadow">
+                                    <i class="fa-solid fa-arrows-rotate"></i> Flip
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 3D Card Container -->
+                        <div class="perspective-container w-full max-w-[280px] sm:max-w-[320px] aspect-[54/86] cursor-pointer group my-1" onclick="toggleCardFlip()">
+                            <div id="physicalCard3d" class="flip-card-inner relative w-full h-full shadow-2xl rounded-2xl">
+                                <div class="flip-face bg-[#120719] border-[2px] border-purple-600/40 flex items-center justify-center overflow-hidden">
+                                    <img src="/assets/img/cr80/draft-01-front.jpg?v=cr80" alt="Delphine Front Artwork" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flip-face flip-back bg-[#120719] border-[2px] border-purple-600/40 flex items-center justify-center overflow-hidden">
+                                    <img src="/assets/img/cr80/draft-01-back.jpg?v=cr80" alt="Delphine Back Design" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3 text-center flex items-center gap-2 text-[11px] text-purple-200/70">
+                            <span class="flex items-center gap-1"><i class="fa-solid fa-hand-pointer text-purple-400"></i> Tap card to flip</span>
+                            <span>&bull;</span>
+                            <span class="flex items-center gap-1 cursor-pointer hover:text-purple-300" onclick="openCardZoom()"><i class="fa-solid fa-magnifying-glass-plus text-amber-400"></i> Zoom fullscreen</span>
+                        </div>
+                    </div>
+
+                    <!-- Concept Lore Box -->
+                    <div class="bg-[#150B1C]/95 p-4 sm:p-5 rounded-3xl border border-purple-700/30 shadow-xl relative min-w-0">
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-purple-300 block mb-1.5 flex items-center gap-1.5">
+                            <i class="fa-solid fa-palette text-purple-400"></i> Original Draft Series Lore &amp; Concept
+                        </span>
+                        <p class="text-xs sm:text-sm text-amber-100/90 leading-relaxed font-body break-words">
+                            Stepping onto the frosted red carpet at dusk outside a luxury gala, Delphine sparkles under flashbulbs, spreading warm cheer and champagne wishes across the winter gala.
+                        </p>
+                    </div>
+
+                    <!-- Character Indicators / Stats -->
+                    
+    <div class="bg-[#150D09]/95 p-4 sm:p-5 rounded-3xl border border-amber-700/30 shadow-xl min-w-0">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300 block mb-3 flex items-center gap-1.5">
+            <i class="fa-solid fa-star text-amber-400"></i> Festive Indicators &amp; Character Stats
+        </span>
+        <div class="grid grid-cols-3 gap-2 text-center min-w-0">
+            
+    <div class="bg-[#1C120C]/90 p-2.5 rounded-2xl border border-amber-800/30 min-w-0 overflow-hidden shadow-inner">
+        <div class="text-[9px] uppercase font-bold text-amber-200/80 tracking-wider truncate">glamour</div>
+        <div class="font-sans text-xs sm:text-sm font-bold text-amber-300 mt-1 tracking-wider truncate">100/100</div>
+    </div>
+  
+    <div class="bg-[#1C120C]/90 p-2.5 rounded-2xl border border-amber-800/30 min-w-0 overflow-hidden shadow-inner">
+        <div class="text-[9px] uppercase font-bold text-amber-200/80 tracking-wider truncate">sparkle</div>
+        <div class="font-sans text-xs sm:text-sm font-bold text-amber-300 mt-1 tracking-wider truncate">99/100</div>
+    </div>
+  
+    <div class="bg-[#1C120C]/90 p-2.5 rounded-2xl border border-amber-800/30 min-w-0 overflow-hidden shadow-inner">
+        <div class="text-[9px] uppercase font-bold text-amber-200/80 tracking-wider truncate">signature</div>
+        <div class="font-sans text-xs sm:text-sm font-bold text-amber-300 mt-1 tracking-wider truncate">Champagne-Boba</div>
+    </div>
+  
+        </div>
+    </div>
+  
+
+                    <!-- Action Buttons -->
+                    <div class="pt-2 min-w-0 flex flex-col gap-2.5">
+                        <a href="https://shop.tapthingy.com/products/happy-holidays-series-1" target="_blank" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-3.5 sm:py-4 px-6 rounded-2xl shadow-xl shadow-rose-900/40 text-center flex items-center justify-center gap-2.5 transition-transform hover:scale-[1.01] text-sm sm:text-base">
+                            <i class="fa-solid fa-boxes-stacked"></i> <span>Order Series 1 Master Box Set (All 16 Clay Cards) &bull; $199.00</span>
+                        </a>
+                        <a href="/#collection" class="w-full bg-[#180E24] hover:bg-[#28153A] text-purple-200 font-bold py-2.5 px-4 rounded-xl border border-purple-700/40 text-center flex items-center justify-center gap-2 transition-all text-xs sm:text-sm">
+                            <i class="fa-solid fa-layer-group text-purple-400"></i> <span>Browse All 21 Keepsake Cards in Gallery</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FULLSCREEN CARD ART ZOOM LIGHTBOX MODAL -->
+    <div id="cardZoomModal" class="hidden fixed inset-0 z-[100] bg-black/95 backdrop-blur-md flex flex-col justify-between p-3 sm:p-6 transition-opacity duration-300 select-none" onclick="if(event.target === this) closeCardZoom()">
+        <div class="w-full max-w-4xl mx-auto flex items-center justify-between gap-3 text-white">
+            <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+                <span class="bg-[#24132B] text-purple-300 text-xs font-bold px-2.5 py-1 rounded-lg border border-purple-700/40">Draft #01</span>
+                <h2 class="font-clayTitle text-base sm:text-xl font-bold truncate">Delphine</h2>
+                <span id="zoomSideBadge" class="text-[10px] sm:text-xs bg-purple-900/50 text-purple-300 border border-purple-800/40 px-2 py-0.5 rounded-full uppercase tracking-wider font-semibold">Front Art</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="toggleZoomFlip()" class="bg-[#20122D] hover:bg-[#341B3E] text-purple-300 text-xs font-bold px-3 py-1.5 rounded-xl border border-purple-600/40 flex items-center gap-1.5 transition-all shadow">
+                    <i class="fa-solid fa-arrows-rotate"></i> <span class="hidden sm:inline">Flip Front/Back</span><span class="sm:hidden">Flip</span>
+                </button>
+                <button onclick="closeCardZoom()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-purple-900/70 hover:bg-purple-700 text-white flex items-center justify-center text-sm font-bold shadow transition-all" title="Close (Esc)">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="relative flex-grow flex items-center justify-center my-2 sm:my-4 overflow-hidden cursor-zoom-in" onclick="toggleZoomMagnify()">
+            <img id="zoomImage" src="/assets/img/cr80/draft-01-front.jpg?v=cr80" alt="Delphine Fullscreen" class="max-h-[76vh] sm:max-h-[82vh] max-w-[92vw] object-contain rounded-2xl shadow-2xl transition-transform duration-300 border-[2px] border-purple-600/40">
+        </div>
+
+        <div class="w-full max-w-md mx-auto flex items-center justify-center gap-2.5 text-xs font-bold text-purple-200">
+            <button onclick="toggleZoomFlip()" class="flex-1 bg-[#20122D] hover:bg-purple-700 text-white py-2 px-3 rounded-xl border border-purple-800/40 flex items-center justify-center gap-1.5 shadow transition-all">
+                <i class="fa-solid fa-arrows-rotate"></i> Flip to <span id="zoomFlipTargetText">Back</span>
+            </button>
+            <button onclick="toggleZoomMagnify()" id="zoomMagnifyBtn" class="flex-1 bg-[#20122D] hover:bg-[#341B3E] text-purple-300 py-2 px-3 rounded-xl border border-purple-800/40 flex items-center justify-center gap-1.5 shadow transition-all">
+                <i class="fa-solid fa-magnifying-glass-plus"></i> <span id="zoomMagnifyText">2x Zoom</span>
+            </button>
+            <button onclick="closeCardZoom()" class="bg-[#14071C] hover:bg-[#20122D] text-purple-200/80 py-2 px-3 rounded-xl border border-purple-900/40 shadow transition-all">
+                Close (Esc)
+            </button>
+        </div>
+    </div>
+
+    <script>
+        var currentCardSide = 'front';
+        var isZoomMagnified = false;
+        var frontImgUrl = "/assets/img/cr80/draft-01-front.jpg?v=cr80";
+        var backImgUrl = "/assets/img/cr80/draft-01-back.jpg?v=cr80";
+
+        function toggleCardFlip() {
+            var card = document.getElementById('physicalCard3d');
+            if (card) {
+                card.classList.toggle('flipped');
+                triggerConfetti();
+            }
+        }
+
+        function openCardZoom() {
+            var modal = document.getElementById('cardZoomModal');
+            var img = document.getElementById('zoomImage');
+            var card3d = document.getElementById('physicalCard3d');
+            var isFlipped = card3d && card3d.classList.contains('flipped');
+            currentCardSide = isFlipped ? 'back' : 'front';
+            updateZoomImage();
+            if (modal) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeCardZoom() {
+            var modal = document.getElementById('cardZoomModal');
+            if (modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+            if (isZoomMagnified) toggleZoomMagnify();
+        }
+
+        function toggleZoomFlip() {
+            currentCardSide = (currentCardSide === 'front') ? 'back' : 'front';
+            updateZoomImage();
+            triggerConfetti();
+        }
+
+        function updateZoomImage() {
+            var img = document.getElementById('zoomImage');
+            var sideBadge = document.getElementById('zoomSideBadge');
+            var flipTarget = document.getElementById('zoomFlipTargetText');
+            if (!img) return;
+            if (currentCardSide === 'front') {
+                img.src = frontImgUrl;
+                if (sideBadge) sideBadge.innerText = 'Front Artwork';
+                if (flipTarget) flipTarget.innerText = 'Back Design';
+            } else {
+                img.src = backImgUrl;
+                if (sideBadge) sideBadge.innerText = 'Back Collector Design';
+                if (flipTarget) flipTarget.innerText = 'Front Artwork';
+            }
+        }
+
+        function toggleZoomMagnify() {
+            var img = document.getElementById('zoomImage');
+            var btnText = document.getElementById('zoomMagnifyText');
+            if (!img) return;
+            isZoomMagnified = !isZoomMagnified;
+            if (isZoomMagnified) {
+                img.classList.add('zoomed-magnify');
+                if (btnText) btnText.innerText = 'Fit Screen';
+            } else {
+                img.classList.remove('zoomed-magnify');
+                if (btnText) btnText.innerText = '2x Zoom';
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            var modal = document.getElementById('cardZoomModal');
+            if (modal && !modal.classList.contains('hidden')) {
+                if (e.key === 'Escape') closeCardZoom();
+                if (e.key === ' ' || e.key === 'f' || e.key === 'F') {
+                    e.preventDefault();
+                    toggleZoomFlip();
+                }
+                if (e.key === 'z' || e.key === 'Z') {
+                    toggleZoomMagnify();
+                }
+            }
+        });
+
+        function initVideoPlayback() {
+            var vid = document.getElementById('cardVideo');
+            if (!vid) return;
+            var soundPref = null;
+            try { soundPref = localStorage.getItem('tg_sound'); } catch (e) {}
+            if (soundPref === 'muted') {
+                vid.muted = true;
+                updateSoundUI(true);
+            } else {
+                vid.muted = false;
+                var promise = vid.play();
+                if (promise !== undefined) {
+                    promise.catch(function(err) {
+                        vid.muted = true;
+                        vid.play();
+                        updateSoundUI(true);
+                    }).then(function() {
+                        updateSoundUI(vid.muted);
+                    });
+                }
+            }
+        }
+
+        function toggleMute() {
+            var vid = document.getElementById('cardVideo');
+            if (!vid) return;
+            vid.muted = !vid.muted;
+            try { localStorage.setItem('tg_sound', vid.muted ? 'muted' : 'unmuted'); } catch (e) {}
+            updateSoundUI(vid.muted);
+        }
+
+        function updateSoundUI(isMuted) {
+            var icon = document.getElementById('muteIcon');
+            var label = document.getElementById('muteStatusLabel');
+            if (isMuted) {
+                if (icon) icon.className = 'fa-solid fa-volume-xmark text-purple-300';
+                if (label) label.innerText = 'Sound: Muted';
+            } else {
+                if (icon) icon.className = 'fa-solid fa-volume-high text-amber-400';
+                if (label) label.innerText = 'Sound: Playing 🔊';
+            }
+        }
+
+        function restartVideo() {
+            var vid = document.getElementById('cardVideo');
+            if (vid) {
+                vid.currentTime = 0;
+                vid.play();
+            }
+        }
+
+        function autoScrollToVideo() {
+            if (window.innerWidth < 1024) {
+                var vid = document.getElementById('cardVideo');
+                if (vid) {
+                    setTimeout(function() {
+                        vid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 350);
+                }
+            }
+        }
+
+        function triggerConfetti() {
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 28,
+                    spread: 60,
+                    origin: { y: 0.65 },
+                    colors: ['#A855F7', '#EC4899', '#F59E0B', '#E9D5FF']
+                });
+            }
+        }
+
+        function shareGreeting() {
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    text: "Delphine (The Ice Starlet) - TapGreetings Draft Concept",
+                    url: window.location.href
+                }).catch(function() {});
+            } else {
+                navigator.clipboard.writeText(window.location.href).then(function() {
+                    alert('Concept Card link copied to clipboard!');
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initVideoPlayback();
+            autoScrollToVideo();
+        });
+    </script>
+
+    <footer class="w-full text-center py-10 px-4 text-xs sm:text-sm text-slate-400 border-t border-slate-800/80 mt-14 sm:mt-20 flex flex-col items-center gap-5 bg-[#0E0704]">
+        <div class="flex flex-wrap justify-center gap-6 text-xl text-rose-400">
+            <a href="https://tiktok.com/@tapthingy" target="_blank" class="hover:text-amber-300 transition-transform hover:scale-110" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://instagram.com/tapthingy" target="_blank" class="hover:text-amber-300 transition-transform hover:scale-110" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://youtube.com/@tapthingy" target="_blank" class="hover:text-amber-300 transition-transform hover:scale-110" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://x.com/tapthingy" target="_blank" class="hover:text-amber-300 transition-transform hover:scale-110" title="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+        <div class="max-w-xl text-center space-y-1.5 px-2">
+            <p class="font-bold text-slate-200">
+                TapGreetings &bull; Smart NFC Living Keepsake Greeting Cards
+            </p>
+            <p class="leading-relaxed text-slate-400 text-xs">
+                Powered by <a href="https://tapthingy.com" target="_blank" class="text-rose-400 font-bold hover:underline">TapThingy</a>.
+            </p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-4 text-xs text-slate-400">
+            <a href="https://shop.tapthingy.com/collections/all" target="_blank" class="hover:text-amber-300">Shop Collection</a>
+            <span>&bull;</span>
+            <a href="https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card" target="_blank" class="hover:text-amber-300">Custom Video Studio</a>
+            <span>&bull;</span>
+            <a href="https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" target="_blank" class="hover:text-rose-300">NFC Tools Guide</a>
+        </div>
+        <p class="text-[11px] text-slate-500">
+            &copy; 2026 TapGreetings &bull; TapThingy. All rights reserved.
+        </p>
+    </footer>
+</body>
+</html>

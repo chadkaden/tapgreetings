@@ -1,0 +1,575 @@
+{% comment %}
+  TapGreetings Happy Holidays Series 1: Master Collection & Box Set Product Page
+  Supports:
+    - Complete 16-Card Master Box Set ($199.00)
+    - All 16 Individual Card Variants ($14.99 each)
+    - Interactive Variant Selector & Visual Card Grid
+    - Dynamic Image Switching based on variant selection
+    - Full Dark Mode & Light Mode
+{% endcomment %}
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+  .tg-set-wrapper {
+    --tg-bg: #140C08;
+    --tg-surface: #1E130D;
+    --tg-surface-card: rgba(255, 255, 255, 0.05);
+    --tg-border: rgba(251, 191, 36, 0.28);
+    --tg-border-active: #FBBF24;
+    --tg-text: #F5EBE1;
+    --tg-text-muted: #D1BDB0;
+    --tg-heading: #FFF8E7;
+    --tg-gold: #FBBF24;
+    --tg-gold-glow: rgba(251, 191, 36, 0.45);
+    --tg-red: #D62839;
+    --tg-red-dark: #9E1B32;
+    --tg-shadow: rgba(0, 0, 0, 0.5);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    padding: 24px 16px 60px;
+    background: var(--tg-bg) !important;
+    color: var(--tg-text) !important;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-sizing: border-box;
+  }
+
+  body.tt-light-mode .tg-set-wrapper {
+    --tg-bg: #FFFDF7;
+    --tg-surface: #FDF6EE;
+    --tg-surface-card: #FFFFFF;
+    --tg-border: #E8D5C4;
+    --tg-border-active: #9E1B32;
+    --tg-text: #2D1A10;
+    --tg-text-muted: #6B4226;
+    --tg-heading: #9E1B32;
+    --tg-gold: #B45309;
+    --tg-gold-glow: rgba(180, 83, 9, 0.2);
+    --tg-red: #D62839;
+    --tg-red-dark: #9E1B32;
+    --tg-shadow: rgba(61, 35, 20, 0.08);
+    background: var(--tg-bg) !important;
+    color: var(--tg-text) !important;
+  }
+
+  .tg-set-wrapper * {
+    box-sizing: border-box;
+  }
+
+  .tg-set-container {
+    max-width: 1050px;
+    margin: 0 auto;
+  }
+
+  /* Navigation Bar */
+  .tg-set-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .tg-set-nav a {
+    color: var(--tg-gold) !important;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.92rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: opacity 0.2s;
+  }
+  .tg-set-nav a:hover {
+    opacity: 0.85;
+  }
+
+  /* Header Badges */
+  .tg-set-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, #9E1B32, #D62839) !important;
+    color: #FFFFFF !important;
+    padding: 6px 20px;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 0.82rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(214, 40, 57, 0.35);
+    margin-bottom: 12px;
+  }
+
+  .tg-set-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--tg-heading) !important;
+    margin: 0 0 10px 0;
+    line-height: 1.25;
+  }
+
+  .tg-set-subtitle {
+    font-size: 1.05rem;
+    color: var(--tg-gold);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  /* Layout Columns */
+  .tg-set-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-bottom: 36px;
+  }
+  @media (min-width: 900px) {
+    .tg-set-grid {
+      grid-template-columns: 1.05fr 1fr;
+      align-items: start;
+    }
+  }
+
+  /* Featured Image Stage */
+  .tg-set-stage {
+    background: #000000;
+    border: 2.5px solid var(--tg-border-active);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px var(--tg-shadow);
+    position: relative;
+    width: 100%;
+    aspect-ratio: 53.98 / 85.60;
+    max-width: 440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: aspect-ratio 0.3s ease, max-width 0.3s ease;
+  }
+  .tg-set-stage.is-box {
+    aspect-ratio: 1740 / 2956;
+    max-width: 480px;
+  }
+  .tg-set-stage img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    background: #120C08;
+  }
+
+  /* Visual Variant Selector Cards */
+  .tg-var-card {
+    background: var(--tg-surface-card);
+    border: 2px solid var(--tg-border);
+    border-radius: 18px;
+    padding: 16px 20px;
+    margin-bottom: 14px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+  .tg-var-card:hover {
+    border-color: var(--tg-gold);
+    transform: translateY(-2px);
+  }
+  .tg-var-card.active {
+    border-color: var(--tg-border-active) !important;
+    background: rgba(251, 191, 36, 0.08) !important;
+    box-shadow: 0 0 20px var(--tg-gold-glow) !important;
+  }
+
+  /* Price Badge */
+  .tg-price-box {
+    margin: 20px 0;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .tg-current-price {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.3rem;
+    font-weight: 900;
+    color: var(--tg-gold);
+  }
+  .tg-compare-price {
+    font-size: 1.3rem;
+    text-decoration: line-through;
+    color: var(--tg-text-muted);
+  }
+  .tg-savings-pill {
+    background: linear-gradient(90deg, #9E1B32, #D62839);
+    color: #FFF;
+    font-weight: 800;
+    font-size: 0.8rem;
+    padding: 4px 12px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* Add to Cart Button */
+  .tg-atc-btn {
+    width: 100%;
+    background: linear-gradient(90deg, #9E1B32, #D62839);
+    color: #FFFFFF !important;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    padding: 18px 24px;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    box-shadow: 0 6px 25px rgba(214, 40, 57, 0.45);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .tg-atc-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(214, 40, 57, 0.6);
+  }
+
+  /* Thumbnails Horizontal Scroll */
+  .tg-set-thumbs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 10px 4px;
+    margin-top: 16px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--tg-gold) transparent;
+  }
+  .tg-set-thumb-item {
+    flex: 0 0 64px;
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    border: 2px solid var(--tg-border);
+    background: #000;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: 0;
+  }
+  .tg-set-thumb-item.active {
+    border-color: var(--tg-gold);
+    box-shadow: 0 0 12px var(--tg-gold-glow);
+    transform: scale(1.05);
+  }
+  .tg-set-thumb-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Details Accordion */
+  .tg-set-details {
+    background: var(--tg-surface-card) !important;
+    border: 1.5px solid var(--tg-border) !important;
+    border-radius: 20px;
+    padding: 18px 22px;
+    margin-top: 24px;
+    box-shadow: 0 4px 16px var(--tg-shadow);
+  }
+  .tg-set-details summary {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--tg-heading) !important;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+  }
+</style>
+
+<div class="tg-set-wrapper">
+  <div class="tg-set-container">
+
+    <!-- Top Navigation -->
+    <div class="tg-set-nav">
+      <a href="/collections/tapgreetings-series-1">
+        &larr; Back to Series 1 Collection
+      </a>
+      <a href="https://tapgreetings.com/#collection" target="_blank">
+        🎬 View All 16 Card Videos ↗
+      </a>
+    </div>
+
+    <!-- Header Section -->
+    <div style="text-align: center; margin-bottom: 24px;">
+      <div class="tg-set-badge">
+        ✦ HAPPY HOLIDAYS SERIES 1 &bull; MASTER COLLECTION ✦
+      </div>
+      <h1 class="tg-set-title">
+        Happy Holidays Series 1: Master Collector Box Set
+      </h1>
+      <div class="tg-set-subtitle">
+        Choose the Complete 16-Card Box Set or Select Any Individual Card Keepsake
+      </div>
+    </div>
+
+    <!-- Main Grid: Media Left, Purchase Controls Right -->
+    <div class="tg-set-grid">
+
+      <!-- COLUMN 1: Featured Media Stage -->
+      <div>
+        <div id="tg-set-stage" class="tg-set-stage is-box">
+          {% if product.images.size > 0 %}
+            <img id="tg-set-main-img" src="{{ product.images[0] | image_url: width: 1000 }}" alt="{{ product.title }}">
+          {% endif %}
+        </div>
+
+        <!-- Thumbnails Strip -->
+        <div class="tg-set-thumbs" id="tg-set-thumbs">
+          {% for img in product.images %}
+            <button type="button" class="tg-set-thumb-item {% if forloop.first %}active{% endif %}" onclick="selectThumbImage({{ forloop.index0 }}, '{{ img | image_url: width: 1000 }}')">
+              <img src="{{ img | image_url: width: 150 }}" alt="Thumbnail {{ forloop.index }}">
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- COLUMN 2: Variant Selector & Direct Add to Cart -->
+      <div>
+        {% form 'product', product, id: 'tg-set-form' %}
+          
+          <!-- Hidden Variant Input that Shopify Form Submits -->
+          <input type="hidden" name="id" id="tg-selected-variant-id" value="{{ product.selected_or_first_available_variant.id }}">
+
+          <label style="font-weight: 800; font-size: 0.95rem; color: var(--tg-gold); display: block; margin-bottom: 8px;">
+            🎁 Select Card Option:
+          </label>
+
+          <!-- Native Dropdown for Accessible Selection -->
+          <div style="margin-bottom: 18px;">
+            <select id="tg-variant-select" onchange="onVariantChange(this.value)" style="width: 100%; background: var(--tg-surface); color: var(--tg-text); border: 2px solid var(--tg-border); border-radius: 14px; padding: 14px 16px; font-size: 1rem; font-weight: 700; cursor: pointer; outline: none;">
+              {% for v in product.variants %}
+                <option value="{{ v.id }}" data-price="{{ v.price | money }}" data-compare="{{ v.compare_at_price | money }}" data-raw-price="{{ v.price }}" data-raw-compare="{{ v.compare_at_price }}" data-sku="{{ v.sku }}" data-index="{{ forloop.index0 }}" {% if v.id == product.selected_or_first_available_variant.id %}selected{% endif %}>
+                  {{ v.title }} &bull; {{ v.price | money }}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <!-- Live Price Display -->
+          <div class="tg-price-box">
+            <span id="tg-live-price" class="tg-current-price">
+              {{ product.selected_or_first_available_variant.price | money }}
+            </span>
+            <span id="tg-live-compare" class="tg-compare-price" style="{% unless product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}display:none;{% endunless %}">
+              {{ product.selected_or_first_available_variant.compare_at_price | money }}
+            </span>
+            <span id="tg-savings-badge" class="tg-savings-pill" style="{% unless product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}display:none;{% endunless %}">
+              Save $40.84 (17% OFF)
+            </span>
+          </div>
+
+          <!-- Quantity & Primary Add to Cart -->
+          <div style="display: flex; gap: 12px; margin-bottom: 24px; align-items: center;">
+            <div style="background: var(--tg-surface-card); border: 2px solid var(--tg-border); border-radius: 14px; padding: 0 12px; display: flex; align-items: center; height: 56px;">
+              <label for="Quantity" style="font-size: 0.8rem; font-weight: 700; color: var(--tg-text-muted); margin-right: 8px;">QTY:</label>
+              <input type="number" id="Quantity" name="quantity" value="1" min="1" style="width: 44px; background: transparent; border: none; color: var(--tg-text); font-size: 1.1rem; font-weight: 800; text-align: center; outline: none;">
+            </div>
+
+            <button type="submit" name="add" class="tg-atc-btn" style="flex: 1;">
+              <span>🛒 Add to Cart</span>
+              <span>&bull;</span>
+              <span id="tg-btn-price">{{ product.selected_or_first_available_variant.price | money }}</span>
+            </button>
+          </div>
+
+        {% endform %}
+
+        <!-- Quick Perks Banner -->
+        <div style="background: var(--tg-surface-card); border: 1.5px solid var(--tg-border); border-radius: 16px; padding: 14px 18px; margin-bottom: 20px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.86rem;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span>⚡</span> <strong>Instant NFC Tap</strong> (No app needed)
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span>🎬</span> <strong>1080p Claymation</strong> Video Experience
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span>💳</span> <strong>CR80 30mil PVC</strong> Physical Keepsake
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span>🎁</span> <strong>Presentation Box</strong> on Full Set
+            </div>
+          </div>
+        </div>
+
+        <!-- Description Accordion -->
+        <details open class="tg-set-details">
+          <summary>
+            <span>✨ Collector Set Details</span>
+            <span>&#9660;</span>
+          </summary>
+          <div style="padding-top: 14px; font-size: 0.92rem; line-height: 1.6; color: var(--tg-text-muted);">
+            {{ product.description }}
+          </div>
+        </details>
+
+        <!-- Technical Specs Accordion -->
+        <details open class="tg-set-details">
+          <summary>
+            <span>🛡️ Hardware &amp; NFC Specifications</span>
+            <span>&#9660;</span>
+          </summary>
+          <div style="padding-top: 14px; font-size: 0.92rem; line-height: 1.6;">
+            <table style="width: 100%; border-collapse: collapse;">
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--tg-border);">
+                  <td style="padding: 8px 0; font-weight: 700; color: var(--tg-gold);">Card Dimensions:</td>
+                  <td style="padding: 8px 0; color: var(--tg-text);">85.60mm &times; 53.98mm &times; 0.76mm (CR80 Standard / 30 mil).</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--tg-border);">
+                  <td style="padding: 8px 0; font-weight: 700; color: var(--tg-gold);">NFC Chipset:</td>
+                  <td style="padding: 8px 0; color: var(--tg-text);">Embedded High-Speed NTAG215 (Rewritable via /tools).</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--tg-border);">
+                  <td style="padding: 8px 0; font-weight: 700; color: var(--tg-gold);">Smartphone Support:</td>
+                  <td style="padding: 8px 0; color: var(--tg-text);">100% Compatible with iPhone (XS through 16 Pro) and all NFC Android devices.</td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 0; font-weight: 700; color: var(--tg-gold);">Digital Media:</td>
+                  <td style="padding: 8px 0; color: var(--tg-text);">1080p 60fps stop-motion character animation with synchronized voice greeting.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Image URLs array from liquid
+  var tgImages = [
+    {% for img in product.images %}
+      "{{ img | image_url: width: 1000 }}"{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
+
+  function onVariantChange(variantId) {
+    var select = document.getElementById('tg-variant-select');
+    var opt = select.querySelector('option[value="' + variantId + '"]');
+    if (!opt) return;
+
+    // Update hidden form input
+    document.getElementById('tg-selected-variant-id').value = variantId;
+
+    // Update Price
+    var price = opt.getAttribute('data-price');
+    var compare = opt.getAttribute('data-compare');
+    var rawPrice = parseFloat(opt.getAttribute('data-raw-price'));
+    var rawCompare = parseFloat(opt.getAttribute('data-raw-compare'));
+
+    document.getElementById('tg-live-price').textContent = price;
+    document.getElementById('tg-btn-price').textContent = price;
+
+    var compareEl = document.getElementById('tg-live-compare');
+    var badgeEl = document.getElementById('tg-savings-badge');
+
+    if (rawCompare && rawCompare > rawPrice) {
+      compareEl.textContent = compare;
+      compareEl.style.display = 'inline';
+      badgeEl.style.display = 'inline';
+    } else {
+      compareEl.style.display = 'none';
+      badgeEl.style.display = 'none';
+    }
+
+    // Update Featured Image based on variant index
+    var idx = parseInt(opt.getAttribute('data-index'), 10);
+    // Variant 0 corresponds to box set hero image (image 0)
+    // Variant 1 (#001 Santa) corresponds to image 1, etc.
+    if (idx < tgImages.length) {
+      selectThumbImage(idx, tgImages[idx]);
+    }
+
+    // Update URL query parameter without reloading
+    if (window.history && window.history.replaceState) {
+      var newUrl = window.location.pathname + '?variant=' + variantId;
+      window.history.replaceState({ path: newUrl }, '', newUrl);
+    }
+  }
+
+  function selectThumbImage(index, url) {
+    var mainImg = document.getElementById('tg-set-main-img');
+    var stage = document.getElementById('tg-set-stage');
+    if (mainImg) mainImg.src = url;
+
+    // Toggle box aspect ratio vs individual CR80 ratio
+    if (stage) {
+      if (index === 0) {
+        stage.classList.add('is-box');
+      } else {
+        stage.classList.remove('is-box');
+      }
+    }
+
+    // Update active thumb
+    var thumbs = document.querySelectorAll('.tg-set-thumb-item');
+    thumbs.forEach(function(t, i) {
+      if (i === index) {
+        t.classList.add('active');
+      } else {
+        t.classList.remove('active');
+      }
+    });
+
+    // If clicked on thumbnail, optionally sync dropdown if matching
+    var select = document.getElementById('tg-variant-select');
+    if (select && select.options[index]) {
+      select.selectedIndex = index;
+      var vId = select.options[index].value;
+      document.getElementById('tg-selected-variant-id').value = vId;
+      var price = select.options[index].getAttribute('data-price');
+      document.getElementById('tg-live-price').textContent = price;
+      document.getElementById('tg-btn-price').textContent = price;
+
+      var rawPrice = parseFloat(select.options[index].getAttribute('data-raw-price'));
+      var rawCompare = parseFloat(select.options[index].getAttribute('data-raw-compare'));
+      var compareEl = document.getElementById('tg-live-compare');
+      var badgeEl = document.getElementById('tg-savings-badge');
+
+      if (rawCompare && rawCompare > rawPrice) {
+        compareEl.textContent = select.options[index].getAttribute('data-compare');
+        compareEl.style.display = 'inline';
+        badgeEl.style.display = 'inline';
+      } else {
+        compareEl.style.display = 'none';
+        badgeEl.style.display = 'none';
+      }
+    }
+  }
+
+  // Pre-select variant from URL query (?variant=...)
+  (function initVariantFromUrl() {
+    var params = new URLSearchParams(window.location.search);
+    var vParam = params.get('variant');
+    if (vParam) {
+      var select = document.getElementById('tg-variant-select');
+      if (select) {
+        var opt = select.querySelector('option[value="' + vParam + '"]');
+        if (opt) {
+          select.value = vParam;
+          onVariantChange(vParam);
+        }
+      }
+    }
+  })();
+</script>

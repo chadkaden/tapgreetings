@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>TapGreetings Series 1: The Clay & Needle-Felt Holiday Collection | TapGreetings Series 1</title>
+    <title>TapGreetings: Living Keepsake Smart Greeting Cards (21 Cards) | TapGreetings</title>
     
     <!-- Instant Theme Detection Before Render -->
     <script>
@@ -22,7 +22,7 @@
     </script>
 
     <!-- Primary SEO Meta Tags -->
-    <meta name="title" content="TapGreetings Series 1: The Clay & Needle-Felt Holiday Collection | TapGreetings Series 1">
+    <meta name="title" content="TapGreetings: Living Keepsake Smart Greeting Cards (21 Cards) | TapGreetings">
     <meta name="description" content="Experience Santa, crafted in polymer clay & needle felt. Tap this smart NFC card for instant 1080p stop-motion workshop video and voice greeting.">
     <meta name="keywords" content="santa card, clay santa, polymer clay, needle felt, nfc holiday card, master artisan, happy holidays, smart card">
     <meta name="robots" content="index, follow">
@@ -31,7 +31,7 @@
     <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tapgreetings.com">
-    <meta property="og:title" content="TapGreetings Series 1: The Clay & Needle-Felt Holiday Collection | TapGreetings Series 1">
+    <meta property="og:title" content="TapGreetings: Living Keepsake Smart Greeting Cards (21 Cards) | TapGreetings">
     <meta property="og:description" content="Experience Santa, crafted in polymer clay & needle felt. Tap this smart NFC card for instant 1080p stop-motion workshop video and voice greeting.">
     <meta property="og:image" content="/assets/img/cr80/001-front.jpg?v=cr80">
     <meta property="og:video" content="/assets/video/001-video.mp4">
@@ -39,7 +39,7 @@
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://tapgreetings.com">
-    <meta property="twitter:title" content="TapGreetings Series 1: The Clay & Needle-Felt Holiday Collection | TapGreetings Series 1">
+    <meta property="twitter:title" content="TapGreetings: Living Keepsake Smart Greeting Cards (21 Cards) | TapGreetings">
     <meta property="twitter:description" content="Experience Santa, crafted in polymer clay & needle felt. Tap this smart NFC card for instant 1080p stop-motion workshop video and voice greeting.">
     <meta property="twitter:image" content="/assets/img/cr80/001-front.jpg?v=cr80">
 
@@ -62,173 +62,129 @@
                     fontFamily: {
                         clayTitle: ['"Cooper Black"', '"Recraft"', '"Playfair Display"', 'serif'],
                         serif: ['"Playfair Display"', 'Georgia', 'serif'],
-                        sans: ['"Montserrat"', '"Plus Jakarta Sans"', 'sans-serif'],
-                        body: ['"Poppins"', 'Inter', 'sans-serif']
+                        sans: ['"Outfit"', '"Montserrat"', 'system-ui', 'sans-serif'],
+                        header: ['"Cinzel"', '"Playfair Display"', 'serif']
                     }
                 }
             }
         }
     </script>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Pro Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <!-- Canvas Confetti Library -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
-        html, body {
-            overflow-x: hidden;
-            width: 100%;
-            max-width: 100vw;
-            background-color: #120C08;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        .break-anywhere {
-            overflow-wrap: anywhere;
-            word-break: break-word;
-        }
-        .glow-amber {
-            box-shadow: 0 0 35px -5px rgba(251, 191, 36, 0.25);
-        }
-        .glow-rose {
-            box-shadow: 0 0 35px -5px rgba(244, 63, 94, 0.35);
-        }
-        .clay-corner {
-            position: absolute;
-            width: 18px;
-            height: 18px;
-            color: #FBBF24;
-            font-size: 15px;
-            line-height: 1;
-            user-select: none;
-            pointer-events: none;
-            filter: drop-shadow(0 0 4px #F59E0B);
-        }
-        /* Bulletproof 3D Perspective Flip */
+        /* 3D Flip Card Styles - Exact CR80 Credit Card Ratio (53.98 x 85.60 mm -> 54/86) */
         .perspective-container {
             perspective: 1200px;
-            -webkit-perspective: 1200px;
         }
-        .card-3d {
+        .flip-card-inner {
             position: relative;
             width: 100%;
             height: 100%;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transform-style: preserve-3d;
-            -webkit-transform-style: preserve-3d;
-            transition: transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);
         }
-        .card-3d.flipped {
+        .flip-card-inner.flipped {
             transform: rotateY(180deg);
-            -webkit-transform: rotateY(180deg);
         }
-        .card-face {
+        .flip-face {
             position: absolute;
-            inset: 0;
             width: 100%;
             height: 100%;
-            backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
             border-radius: 1.25rem;
             overflow: hidden;
         }
-        .card-face-front {
-            transform: rotateY(0deg);
-            -webkit-transform: rotateY(0deg);
-        }
-        .card-face-back {
+        .flip-back {
             transform: rotateY(180deg);
-            -webkit-transform: rotateY(180deg);
         }
 
-        /* Custom scrollbar for horizontal card slider */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+        /* Gold Starburst Corner Filigree Accents */
+        .clay-corner {
+            position: absolute;
+            font-size: 14px;
+            color: #FBBF24;
+            opacity: 0.85;
+            text-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
+            pointer-events: none;
+            z-index: 10;
         }
 
-        /* Zoom modal magnification */
+        /* Subtle Holiday Glows */
+        .glow-amber {
+            box-shadow: 0 0 35px -5px rgba(245, 158, 11, 0.25);
+        }
+        .glow-gold {
+            box-shadow: 0 0 30px -5px rgba(251, 191, 36, 0.3);
+        }
+
+        /* Fullscreen Lightbox Zoom Styles */
         .zoomed-magnify {
             transform: scale(1.85);
             cursor: zoom-out !important;
         }
 
-        /* COMPREHENSIVE LIGHT MODE THEME OVERRIDES */
+        /* LIGHT MODE HIGH-CONTRAST PALETTE OVERRIDES */
         html.light {
-            color-scheme: light;
+            background-color: #FDFBF7 !important;
+            color: #1F150F !important;
         }
         html.light body {
-            background-color: #FAF6F0 !important;
-            color: #26160F !important;
+            background-color: #FDFBF7 !important;
+            color: #1F150F !important;
         }
         html.light header {
-            background-color: rgba(255, 253, 249, 0.96) !important;
-            border-color: #E6D7C8 !important;
+            background-color: rgba(255, 252, 248, 0.95) !important;
+            border-color: #E2D5C7 !important;
         }
         html.light header a,
         html.light header nav a {
-            color: #3D2214 !important;
+            color: #24140B !important;
         }
         html.light header nav a:hover {
-            color: #B91C1C !important;
+            color: #9E1B32 !important;
         }
-        html.light .bg-[#120C08],
-        html.light .bg-[#140D08] {
-            background-color: #FAF4EB !important;
-            border-color: #E2D2C0 !important;
-        }
-        html.light .bg-[#160E09]/95,
-        html.light .bg-[#160E09] {
-            background-color: #FFFDF9 !important;
-            border-color: #E2D2C0 !important;
+        html.light .bg-[#120C08] {
+            background-color: #FDFBF7 !important;
         }
         html.light .bg-[#1A110C]/95,
-        html.light .bg-[#1A110C] {
-            background-color: #FFFFFF !important;
-            border-color: #E8DACB !important;
-            box-shadow: 0 10px 25px -5px rgba(60, 30, 10, 0.08) !important;
-        }
-        html.light .bg-[#150D09]/95,
-        html.light .bg-[#150D09],
-        html.light .bg-[#150D09]/70 {
-            background-color: #F8F2E8 !important;
-            border-color: #E5D5C4 !important;
-        }
         html.light .bg-[#1C120C]/90,
-        html.light .bg-[#1C120C] {
-            background-color: #F3ECE0 !important;
-            border-color: #E0CFC0 !important;
+        html.light .bg-[#150D09]/95,
+        html.light .bg-[#1E130D],
+        html.light .bg-[#140D08] {
+            background-color: #FFFFFF !important;
+            color: #24140B !important;
         }
-        html.light .bg-[#241710] {
-            background-color: #EFE4D6 !important;
-            border-color: #D8C3B0 !important;
+        html.light .bg-[#1F140E],
+        html.light .bg-[#20140D],
+        html.light .bg-[#241710],
+        html.light .bg-[#180E09] {
+            background-color: #F4ECE4 !important;
+            color: #24140B !important;
         }
-        html.light .bg-[#20140D] {
-            background-color: #EFE5D8 !important;
-            border-color: #D8C3B0 !important;
-        }
-        html.light .bg-[#1F140E] {
-            background-color: #F3ECE0 !important;
-            border-color: #E0CFC0 !important;
-        }
-        html.light .bg-[#0E0704] {
+        html.light .bg-[#1A100B] {
             background-color: #F5EFEB !important;
-            border-color: #E2D2C0 !important;
+            color: #1E130D !important;
+        }
+        html.light h1, html.light h2, html.light h3, html.light .font-clayTitle {
+            color: #24140B !important;
         }
         html.light .text-white {
-            color: #1F1108 !important;
+            color: #1F140E !important;
         }
-        html.light .text-amber-50,
         html.light .text-amber-100,
-        html.light .text-amber-100/90,
-        html.light .text-amber-100/80 {
-            color: #382012 !important;
+        html.light .text-amber-100/90 {
+            color: #382315 !important;
         }
         html.light .text-amber-200,
         html.light .text-amber-200/95,
@@ -284,18 +240,19 @@
             <span class="w-8 h-8 rounded-xl bg-gradient-to-tr from-rose-700 via-amber-600 to-amber-300 flex items-center justify-center text-xs sm:text-sm font-black text-white shadow-md">TG</span>
             <div class="flex flex-col">
                 <span class="tracking-tight leading-none">TapGreetings</span>
-                <span class="text-[9px] text-amber-300 uppercase tracking-widest font-semibold mt-0.5">Series 1 &bull; Clay &amp; Needle Felt</span>
+                <span class="text-[9px] text-amber-300 uppercase tracking-widest font-semibold mt-0.5">Smart NFC Keepsakes &bull; 21 Cards</span>
             </div>
         </a>
         <div class="flex items-center gap-3 sm:gap-6">
             <nav class="hidden md:flex gap-6 text-sm font-semibold text-amber-200/90">
                 <a href="/" class="hover:text-amber-300 transition-colors">Home</a>
-                <a href="/#collection" class="hover:text-amber-300 transition-colors">Series 1 (001–016)</a>
-                <a href="https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card" target="_blank" class="hover:text-amber-300 transition-colors">Custom Keepsake</a>
-                <a href="https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" target="_blank" class="hover:text-amber-300 transition-colors">NFC Webtool</a>
+                <a href="/#collection" class="hover:text-amber-300 transition-colors">All 21 Cards</a>
+                <a href="/series-1/" class="hover:text-amber-300 transition-colors">Series 1 (16)</a>
+                <a href="/draft/" class="hover:text-purple-300 transition-colors">Draft Series (5)</a>
+                <a href="https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card" target="_blank" class="hover:text-amber-300 transition-colors">Custom Studio</a>
             </nav>
-            <a href="https://shop.tapthingy.com/collections/all" target="_blank" class="bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white text-xs font-bold px-3 sm:px-4 py-2 rounded-xl shadow transition-transform hover:scale-105 flex items-center gap-1.5">
-                <i class="fa-solid fa-cart-shopping"></i> <span class="hidden sm:inline">Shop</span> Series 1
+            <a href="https://shop.tapthingy.com/products/happy-holidays-series-1" target="_blank" class="bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white text-xs font-bold px-3 sm:px-4 py-2 rounded-xl shadow transition-transform hover:scale-105 flex items-center gap-1.5">
+                <i class="fa-solid fa-cart-shopping"></i> <span class="hidden sm:inline">Shop</span> Box Set
             </a>
             <button onclick="toggleTheme()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#20140D] border border-amber-800/40 text-amber-300 flex items-center justify-center shadow hover:scale-105 transition-transform" title="Toggle Light/Dark Mode">
                 <i class="fa-solid fa-moon" id="themeIcon"></i>
@@ -358,10 +315,10 @@
                 <div class="lg:col-span-7 flex flex-col items-start text-left min-w-0 order-2 lg:order-1">
                     <div class="flex flex-wrap items-center gap-2 mb-2 sm:mb-3">
                         <span class="bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 text-white text-[10px] sm:text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-widest shadow">
-                            🎅 SERIES 1 &bull; CLAY &amp; NEEDLE-FELT
+                            🎅 LIVING SMART KEEPSAKES
                         </span>
                         <span class="bg-[#1C120B] text-amber-300 border border-amber-600/40 text-[10px] sm:text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
-                            16 Handcrafted Characters
+                            21 Handcrafted Characters &bull; Series 1 + Draft
                         </span>
                     </div>
 
@@ -386,7 +343,7 @@
                             <i class="fa-solid fa-play"></i> Experience Santa (001)
                         </a>
                         <a href="#collection" class="bg-[#20140D] hover:bg-[#2C1C13] text-amber-200 border border-amber-600/40 font-bold px-4 sm:px-6 py-2.5 sm:py-3 rounded-2xl shadow-lg transition-transform hover:scale-105 flex items-center justify-center gap-2 text-xs sm:text-sm flex-1 sm:flex-initial">
-                            <i class="fa-solid fa-boxes-stacked"></i> Explore All 16 Cards
+                            <i class="fa-solid fa-boxes-stacked"></i> Explore All 21 Cards
                         </a>
                     </div>
                 </div>
@@ -394,20 +351,41 @@
             </div>
         </div>
 
-        <!-- Collection Section: Filters, Sorts, Slider & Responsive Grid (3-column mobile enabled, display rows removed) -->
+        <!-- Collection Section: Filters, Sorts, Slider & Responsive Grid (3-column mobile enabled) -->
         <section id="collection" class="mb-14">
             
             <!-- Filter & Sort Control Hub -->
             <div class="bg-[#1C120C]/90 rounded-3xl p-4 sm:p-6 mb-6 shadow-xl border border-amber-700/40 backdrop-blur-md flex flex-col gap-4 w-full">
                 
-                <!-- Row 1: Header, Search, and Front/Back Toggle -->
+                <!-- Row 1: Series Selector Pills & Master Set Quick-Order -->
+                <div class="flex flex-col md:flex-row gap-3 items-center justify-between w-full pb-3 border-b border-amber-900/30">
+                    <div class="flex flex-wrap items-center gap-2 w-full md:w-auto">
+                        <span class="text-xs font-bold text-amber-300 flex items-center gap-1.5 mr-1">
+                            <i class="fa-solid fa-layer-group text-amber-400"></i> Series:
+                        </span>
+                        <button onclick="setSeriesFilter('all')" class="series-pill active px-3.5 py-1.5 text-xs font-bold rounded-xl bg-amber-500 text-[#120C08] border border-amber-400 shadow transition-all" data-series="all">
+                            🌟 All Cards (21)
+                        </button>
+                        <button onclick="setSeriesFilter('series-1')" class="series-pill px-3.5 py-1.5 text-xs font-bold rounded-xl bg-[#140D08] text-amber-200 hover:text-white border border-amber-800/40 transition-all" data-series="series-1">
+                            🎅 Happy Holidays Series 1 (16)
+                        </button>
+                        <button onclick="setSeriesFilter('draft')" class="series-pill px-3.5 py-1.5 text-xs font-bold rounded-xl bg-[#140D08] text-purple-200 hover:text-white border border-purple-800/40 transition-all" data-series="draft">
+                            🎨 Draft Series (5)
+                        </button>
+                    </div>
+                    <a href="https://shop.tapthingy.com/products/happy-holidays-series-1" target="_blank" class="w-full md:w-auto bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white text-xs font-bold px-4 py-2 rounded-xl shadow-lg transition-transform hover:scale-105 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-boxes-stacked"></i> <span>Order Series 1 Master Box Set ($199)</span> &rarr;
+                    </a>
+                </div>
+
+                <!-- Row 2: Search, Sort, and Front/Back View Toggle -->
                 <div class="flex flex-col lg:flex-row gap-4 items-center justify-between w-full">
                     <div class="flex items-center gap-3 w-full lg:w-auto justify-between lg:justify-start">
                         <h2 class="font-clayTitle text-xl sm:text-2xl font-bold text-white whitespace-nowrap flex items-center gap-2">
-                            <i class="fa-solid fa-boxes-stacked text-amber-400"></i> Series 1 Gallery
+                            <i class="fa-solid fa-boxes-stacked text-amber-400"></i> Keepsake Gallery
                         </h2>
                         <span id="cardCountBadge" class="bg-[#140D08] text-amber-300 text-xs font-bold px-3 py-1 rounded-full border border-amber-700/40">
-                            16 Cards (001&ndash;016)
+                            21 Cards (Series 1 &amp; Drafts)
                         </span>
                     </div>
 
@@ -415,16 +393,18 @@
                         <!-- Search Input -->
                         <div class="relative flex-grow sm:flex-grow-0 w-full sm:w-64">
                             <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-amber-300/50 text-xs"></i>
-                            <input type="text" id="searchInput" placeholder="Search characters, mottos, stats..." oninput="filterCards()" class="w-full bg-[#140D08] text-amber-100 placeholder-amber-200/50 text-xs sm:text-sm pl-9 pr-3.5 py-2 rounded-xl border border-amber-800/40 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <input type="text" id="searchInput" placeholder="Search characters, lore, series..." oninput="filterCards()" class="w-full bg-[#140D08] text-amber-100 placeholder-amber-200/50 text-xs sm:text-sm pl-9 pr-3.5 py-2 rounded-xl border border-amber-800/40 focus:outline-none focus:ring-2 focus:ring-amber-500">
                         </div>
 
                         <!-- Sort Dropdown -->
                         <div class="relative flex-grow sm:flex-grow-0">
                             <select id="sortSelect" onchange="sortCards()" class="w-full sm:w-auto bg-[#140D08] text-amber-200 text-xs font-bold px-3 py-2 rounded-xl border border-amber-800/40 focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer">
-                                <option value="num-asc">Sort: Card # (001 &rarr; 016)</option>
-                                <option value="num-desc">Sort: Card # (016 &rarr; 001)</option>
+                                <option value="num-asc">Sort: Card # (001 &rarr; 016, Drafts)</option>
+                                <option value="num-desc">Sort: Card # (Reverse)</option>
                                 <option value="name-asc">Sort: Name (A &rarr; Z)</option>
                                 <option value="name-desc">Sort: Name (Z &rarr; A)</option>
+                                <option value="series-1-first">Sort: Series 1 First (16 Cards)</option>
+                                <option value="draft-first">Sort: Draft Series First (5 Cards)</option>
                             </select>
                         </div>
 
@@ -436,21 +416,21 @@
                     </div>
                 </div>
 
-                <!-- Row 2: Category Filter Pills -->
+                <!-- Row 3: Category Filter Pills -->
                 <div class="flex flex-wrap gap-2 items-center pt-2 border-t border-amber-900/30">
                     <span class="text-xs font-bold text-amber-300/80 mr-1 flex items-center gap-1.5">
-                        <i class="fa-solid fa-filter text-rose-400"></i> Categories:
+                        <i class="fa-solid fa-filter text-rose-400"></i> Themes:
                     </span>
-                    <button onclick="setCategoryFilter('all')" class="cat-pill active px-3 py-1 text-xs font-bold rounded-xl bg-amber-500 text-[#120C08] border border-amber-400 shadow transition-all" data-cat="all">All 16</button>
-                    <button onclick="setCategoryFilter('classic')" class="cat-pill px-3 py-1 text-xs font-bold rounded-xl bg-[#140D08] text-amber-200 hover:text-white border border-amber-800/40 transition-all" data-cat="classic">Classic Icons</button>
-                    <button onclick="setCategoryFilter('magic')" class="cat-pill px-3 py-1 text-xs font-bold rounded-xl bg-[#140D08] text-amber-200 hover:text-white border border-amber-800/40 transition-all" data-cat="magic">Winter Magic</button>
-                    <button onclick="setCategoryFilter('hearth')" class="cat-pill px-3 py-1 text-xs font-bold rounded-xl bg-[#140D08] text-amber-200 hover:text-white border border-amber-800/40 transition-all" data-cat="hearth">Hearth &amp; Holiday</button>
-                    <button onclick="setCategoryFilter('friends')" class="cat-pill px-3 py-1 text-xs font-bold rounded-xl bg-[#140D08] text-amber-200 hover:text-white border border-amber-800/40 transition-all" data-cat="friends">Festive Friends</button>
+                    <button onclick="setCategoryFilter('all')" class="cat-pill active px-3 py-1 text-xs font-bold rounded-xl bg-amber-500 text-[#120C08] border border-amber-400 shadow transition-all" data-cat="all">All (21)</button>
+                    <button onclick="setCategoryFilter('classic')" class="cat-pill px-3 py-1 text-xs font-bold rounded-xl bg-[#140D08] text-amber-200 hover:text-white border border-amber-800/40 transition-all" data-cat="classic">Classic Icons (4)</button>
+                    <button onclick="setCategoryFilter('magic')" class="cat-pill px-3 py-1 text-xs font-bold rounded-xl bg-[#140D08] text-amber-200 hover:text-white border border-amber-800/40 transition-all" data-cat="magic">Winter Magic (4)</button>
+                    <button onclick="setCategoryFilter('hearth')" class="cat-pill px-3 py-1 text-xs font-bold rounded-xl bg-[#140D08] text-amber-200 hover:text-white border border-amber-800/40 transition-all" data-cat="hearth">Hearth &amp; Holiday (4)</button>
+                    <button onclick="setCategoryFilter('friends')" class="cat-pill px-3 py-1 text-xs font-bold rounded-xl bg-[#140D08] text-amber-200 hover:text-white border border-amber-800/40 transition-all" data-cat="friends">Festive Friends (4)</button>
+                    <button onclick="setCategoryFilter('occasions')" class="cat-pill px-3 py-1 text-xs font-bold rounded-xl bg-[#140D08] text-purple-200 hover:text-white border border-purple-800/40 transition-all" data-cat="occasions">Draft Occasions (5)</button>
                 </div>
 
-                <!-- Row 3: Columns Selector (1 to 4 cols with Mobile 3-Column Support; Display Rows Filter Removed) -->
+                <!-- Row 4: Columns Selector (1 to 4 cols with Mobile 3-Column Support; Display Rows Filter Removed) -->
                 <div class="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-amber-900/30 text-xs font-bold text-amber-200">
-                    
                     <!-- Columns Selector & Slider (Supports Mobile 3-Columns Wide!) -->
                     <div class="flex flex-wrap items-center gap-2.5">
                         <span class="text-amber-300 flex items-center gap-1">
@@ -471,432 +451,666 @@
                             <i class="fa-solid fa-arrows-left-right text-rose-400"></i> <span id="sliderModeLabel">Carousel Mode</span>
                         </button>
                     </div>
-
                 </div>
             </div>
 
-            <!-- Pre-rendered Static Cards Grid Container (Clean All 16 Cards Displayed Without Row Limiters) -->
+            <!-- Pre-rendered Static Cards Grid Container (All 21 Cards Displayed Without Row Limiters) -->
             <div id="gridWrapper" class="w-full relative transition-all duration-300">
                 <div id="cardsGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 w-full transition-all duration-300">
                     
-    <a href="/001/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-index="0" data-code="001" data-name="santa" data-greeting="happy holidays!" data-keywords="santa card clay santa polymer clay needle felt nfc holiday card master artisan happy holidays smart card" data-lore="a round, plump clay santa with soft thumbprint textures, sporting a matte cranberry coat with needle-felted wool collar and cuffs. he cradles a glowing gold-leaf key while winking from his cozy workshop shelf surrounded by wooden toys and fairy lights." data-category="classic" data-front="/assets/img/cr80/001-front.jpg?v=cr80" data-back="/assets/img/cr80/001-back.jpg?v=cr80">
+    <a href="/001/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 glow-amber transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="0" data-num="1" data-series="series-1" data-code="001" data-name="santa" data-greeting="happy holidays!" data-keywords="santa card clay santa polymer clay needle felt nfc holiday card master artisan happy holidays smart card" data-lore="a round, plump clay santa with soft thumbprint textures, sporting a matte cranberry coat with needle-felted wool collar and cuffs. he cradles a glowing gold-leaf key while winking from his cozy workshop shelf surrounded by wooden toys and fairy lights." data-category="classic" data-front="/assets/img/cr80/001-front.jpg?v=cr80" data-back="/assets/img/cr80/001-back.jpg?v=cr80">
         <!-- Clean Image Box - 100% Unobstructed Art (CR80 Credit Card Ratio) -->
         <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
             <img src="/assets/img/cr80/001-front.jpg?v=cr80" alt="Santa" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
-            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">
-                #001
-            </div>
+            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">#001</div>
         </div>
         <!-- Card Details Footer -->
         <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
             <div class="min-w-0">
                 <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
                     <span class="text-[9px] sm:text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">Happy Holidays!</span>
-                    <span class="text-[8px] sm:text-[9px] bg-[#140D08] text-amber-200/90 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">Classic Icons</span>
+                    <span class="text-[8px] sm:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-full border bg-[#140D08] text-amber-200/90 border-amber-800/40 flex-shrink-0">Classic Icons</span>
                 </div>
                 <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Santa</div>
                 <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Master Artisan</div>
             </div>
-            <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
-                <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
-                <span class="group-hover:translate-x-1 transition-transform">View &rarr;</span>
-            </div>
+            
+      <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex flex-col gap-1.5">
+          <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
+              <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
+              <span class="group-hover:translate-x-1 transition-transform text-amber-300">View &rarr;</span>
+          </div>
+          <a href="https://shop.tapthingy.com/products/happy-holidays-series-1?variant=68065709031746" target="_blank" onclick="event.stopPropagation()" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-1.5 px-2 rounded-xl text-center text-[10px] sm:text-[11px] flex items-center justify-center gap-1.5 shadow-md hover:scale-[1.02] transition-transform">
+              <i class="fa-solid fa-cart-shopping"></i> <span>Buy in Set &bull; $14.99</span>
+          </a>
+      </div>
+    
         </div>
     </a>
   
 
-    <a href="/002/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-index="1" data-code="002" data-name="frosty" data-greeting="happy holidays!" data-keywords="frosty card clay snowman snowbound joy cable knit scarf nfc holiday card smart card tapgreetings" data-lore="a pear-shaped, granulated-sugar clay snowman wearing an oversized cable-knit mustard-yellow scarf with real yarn texture and a rustic charcoal top hat. he balances a tiny red-breasted clay robin on his twig hand under a gentle swirl of soft felt snowflakes." data-category="classic" data-front="/assets/img/cr80/002-front.jpg?v=cr80" data-back="/assets/img/cr80/002-back.jpg?v=cr80">
+    <a href="/002/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 glow-amber transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="1" data-num="2" data-series="series-1" data-code="002" data-name="frosty" data-greeting="happy holidays!" data-keywords="frosty card clay snowman snowbound joy cable knit scarf nfc holiday card smart card tapgreetings" data-lore="a pear-shaped, granulated-sugar clay snowman wearing an oversized cable-knit mustard-yellow scarf with real yarn texture and a rustic charcoal top hat. he balances a tiny red-breasted clay robin on his twig hand under a gentle swirl of soft felt snowflakes." data-category="classic" data-front="/assets/img/cr80/002-front.jpg?v=cr80" data-back="/assets/img/cr80/002-back.jpg?v=cr80">
         <!-- Clean Image Box - 100% Unobstructed Art (CR80 Credit Card Ratio) -->
         <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
             <img src="/assets/img/cr80/002-front.jpg?v=cr80" alt="Frosty" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
-            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">
-                #002
-            </div>
+            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">#002</div>
         </div>
         <!-- Card Details Footer -->
         <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
             <div class="min-w-0">
                 <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
                     <span class="text-[9px] sm:text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">Happy Holidays!</span>
-                    <span class="text-[8px] sm:text-[9px] bg-[#140D08] text-amber-200/90 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">Classic Icons</span>
+                    <span class="text-[8px] sm:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-full border bg-[#140D08] text-amber-200/90 border-amber-800/40 flex-shrink-0">Classic Icons</span>
                 </div>
                 <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Frosty</div>
                 <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Snowbound Joy</div>
             </div>
-            <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
-                <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
-                <span class="group-hover:translate-x-1 transition-transform">View &rarr;</span>
-            </div>
+            
+      <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex flex-col gap-1.5">
+          <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
+              <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
+              <span class="group-hover:translate-x-1 transition-transform text-amber-300">View &rarr;</span>
+          </div>
+          <a href="https://shop.tapthingy.com/products/happy-holidays-series-1?variant=68065709064514" target="_blank" onclick="event.stopPropagation()" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-1.5 px-2 rounded-xl text-center text-[10px] sm:text-[11px] flex items-center justify-center gap-1.5 shadow-md hover:scale-[1.02] transition-transform">
+              <i class="fa-solid fa-cart-shopping"></i> <span>Buy in Set &bull; $14.99</span>
+          </a>
+      </div>
+    
         </div>
     </a>
   
 
-    <a href="/003/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-index="2" data-code="003" data-name="rudolph" data-greeting="happy holidays!" data-keywords="rudolph card flocked reindeer beacon of light red nose nfc holiday card smart card tapgreetings" data-lore="a velvety caramel-brown flocked reindeer sitting cozy in a snowbank, wearing a moss-green knitted collar with tiny brass bells. his nose is a translucent ruby-red resin sphere emitting an amber, atmospheric glow illuminating his face and the snow around him." data-category="classic" data-front="/assets/img/cr80/003-front.jpg?v=cr80" data-back="/assets/img/cr80/003-back.jpg?v=cr80">
+    <a href="/003/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 glow-amber transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="2" data-num="3" data-series="series-1" data-code="003" data-name="rudolph" data-greeting="happy holidays!" data-keywords="rudolph card flocked reindeer beacon of light red nose nfc holiday card smart card tapgreetings" data-lore="a velvety caramel-brown flocked reindeer sitting cozy in a snowbank, wearing a moss-green knitted collar with tiny brass bells. his nose is a translucent ruby-red resin sphere emitting an amber, atmospheric glow illuminating his face and the snow around him." data-category="classic" data-front="/assets/img/cr80/003-front.jpg?v=cr80" data-back="/assets/img/cr80/003-back.jpg?v=cr80">
         <!-- Clean Image Box - 100% Unobstructed Art (CR80 Credit Card Ratio) -->
         <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
             <img src="/assets/img/cr80/003-front.jpg?v=cr80" alt="Rudolph" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
-            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">
-                #003
-            </div>
+            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">#003</div>
         </div>
         <!-- Card Details Footer -->
         <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
             <div class="min-w-0">
                 <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
                     <span class="text-[9px] sm:text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">Happy Holidays!</span>
-                    <span class="text-[8px] sm:text-[9px] bg-[#140D08] text-amber-200/90 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">Classic Icons</span>
+                    <span class="text-[8px] sm:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-full border bg-[#140D08] text-amber-200/90 border-amber-800/40 flex-shrink-0">Classic Icons</span>
                 </div>
                 <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Rudolph</div>
                 <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Beacon of Light</div>
             </div>
-            <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
-                <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
-                <span class="group-hover:translate-x-1 transition-transform">View &rarr;</span>
-            </div>
+            
+      <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex flex-col gap-1.5">
+          <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
+              <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
+              <span class="group-hover:translate-x-1 transition-transform text-amber-300">View &rarr;</span>
+          </div>
+          <a href="https://shop.tapthingy.com/products/happy-holidays-series-1?variant=68065709097282" target="_blank" onclick="event.stopPropagation()" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-1.5 px-2 rounded-xl text-center text-[10px] sm:text-[11px] flex items-center justify-center gap-1.5 shadow-md hover:scale-[1.02] transition-transform">
+              <i class="fa-solid fa-cart-shopping"></i> <span>Buy in Set &bull; $14.99</span>
+          </a>
+      </div>
+    
         </div>
     </a>
   
 
-    <a href="/004/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-index="3" data-code="004" data-name="jack frost" data-greeting="happy holidays!" data-keywords="jack frost card frost sprite frosted glass resin periwinkle clay nfc holiday card smart card tapgreetings" data-lore="a sleek, mischievous elfin sprite sculpted in periwinkle clay with crystalline translucent frosted-glass hair and spiky frost wings. he holds a slender clay wand, blowing miniature glowing fractal frost plumes toward the viewer across an icy gradient slate." data-category="magic" data-front="/assets/img/cr80/004-front.jpg?v=cr80" data-back="/assets/img/cr80/004-back.jpg?v=cr80">
+    <a href="/004/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 glow-amber transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="3" data-num="4" data-series="series-1" data-code="004" data-name="jack frost" data-greeting="happy holidays!" data-keywords="jack frost card frost sprite frosted glass resin periwinkle clay nfc holiday card smart card tapgreetings" data-lore="a sleek, mischievous elfin sprite sculpted in periwinkle clay with crystalline translucent frosted-glass hair and spiky frost wings. he holds a slender clay wand, blowing miniature glowing fractal frost plumes toward the viewer across an icy gradient slate." data-category="magic" data-front="/assets/img/cr80/004-front.jpg?v=cr80" data-back="/assets/img/cr80/004-back.jpg?v=cr80">
         <!-- Clean Image Box - 100% Unobstructed Art (CR80 Credit Card Ratio) -->
         <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
             <img src="/assets/img/cr80/004-front.jpg?v=cr80" alt="Jack Frost" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
-            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">
-                #004
-            </div>
+            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">#004</div>
         </div>
         <!-- Card Details Footer -->
         <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
             <div class="min-w-0">
                 <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
                     <span class="text-[9px] sm:text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">Happy Holidays!</span>
-                    <span class="text-[8px] sm:text-[9px] bg-[#140D08] text-amber-200/90 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">Winter Magic</span>
+                    <span class="text-[8px] sm:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-full border bg-[#140D08] text-amber-200/90 border-amber-800/40 flex-shrink-0">Winter Magic</span>
                 </div>
                 <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Jack Frost</div>
                 <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Frost Sprite</div>
             </div>
-            <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
-                <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
-                <span class="group-hover:translate-x-1 transition-transform">View &rarr;</span>
-            </div>
+            
+      <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex flex-col gap-1.5">
+          <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
+              <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
+              <span class="group-hover:translate-x-1 transition-transform text-amber-300">View &rarr;</span>
+          </div>
+          <a href="https://shop.tapthingy.com/products/happy-holidays-series-1?variant=68065709130050" target="_blank" onclick="event.stopPropagation()" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-1.5 px-2 rounded-xl text-center text-[10px] sm:text-[11px] flex items-center justify-center gap-1.5 shadow-md hover:scale-[1.02] transition-transform">
+              <i class="fa-solid fa-cart-shopping"></i> <span>Buy in Set &bull; $14.99</span>
+          </a>
+      </div>
+    
         </div>
     </a>
   
 
-    <a href="/005/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-index="4" data-code="005" data-name="nutcracker" data-greeting="happy holidays!" data-keywords="nutcracker card hearth sentry toy soldier porcelain clay nfc holiday card smart card tapgreetings" data-lore="a regal toy soldier crafted in polished lacquer wood and porcelain-finish clay. he wears an imperial navy and gold-trimmed ceremonial coat with tiny brass buttons and a velvet shako hat, standing at attention next to a miniature wrapped drum." data-category="hearth" data-front="/assets/img/cr80/005-front.jpg?v=cr80" data-back="/assets/img/cr80/005-back.jpg?v=cr80">
+    <a href="/005/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 glow-amber transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="4" data-num="5" data-series="series-1" data-code="005" data-name="nutcracker" data-greeting="happy holidays!" data-keywords="nutcracker card hearth sentry toy soldier porcelain clay nfc holiday card smart card tapgreetings" data-lore="a regal toy soldier crafted in polished lacquer wood and porcelain-finish clay. he wears an imperial navy and gold-trimmed ceremonial coat with tiny brass buttons and a velvet shako hat, standing at attention next to a miniature wrapped drum." data-category="hearth" data-front="/assets/img/cr80/005-front.jpg?v=cr80" data-back="/assets/img/cr80/005-back.jpg?v=cr80">
         <!-- Clean Image Box - 100% Unobstructed Art (CR80 Credit Card Ratio) -->
         <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
             <img src="/assets/img/cr80/005-front.jpg?v=cr80" alt="Nutcracker" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
-            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">
-                #005
-            </div>
+            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">#005</div>
         </div>
         <!-- Card Details Footer -->
         <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
             <div class="min-w-0">
                 <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
                     <span class="text-[9px] sm:text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">Happy Holidays!</span>
-                    <span class="text-[8px] sm:text-[9px] bg-[#140D08] text-amber-200/90 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">Hearth & Holiday</span>
+                    <span class="text-[8px] sm:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-full border bg-[#140D08] text-amber-200/90 border-amber-800/40 flex-shrink-0">Hearth & Holiday</span>
                 </div>
                 <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Nutcracker</div>
                 <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Hearth Sentry</div>
             </div>
-            <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
-                <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
-                <span class="group-hover:translate-x-1 transition-transform">View &rarr;</span>
-            </div>
+            
+      <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex flex-col gap-1.5">
+          <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
+              <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
+              <span class="group-hover:translate-x-1 transition-transform text-amber-300">View &rarr;</span>
+          </div>
+          <a href="https://shop.tapthingy.com/products/happy-holidays-series-1?variant=68065709162818" target="_blank" onclick="event.stopPropagation()" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-1.5 px-2 rounded-xl text-center text-[10px] sm:text-[11px] flex items-center justify-center gap-1.5 shadow-md hover:scale-[1.02] transition-transform">
+              <i class="fa-solid fa-cart-shopping"></i> <span>Buy in Set &bull; $14.99</span>
+          </a>
+      </div>
+    
         </div>
     </a>
   
 
-    <a href="/006/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-index="5" data-code="006" data-name="the tree" data-greeting="happy holidays!" data-keywords="holiday tree card evergreen hearth scandinavian felt tree wool felt nfc holiday card smart card tapgreetings" data-lore="a tiered, rounded scandinavian folk tree composed of overlapping scalloped forest-green felt leaves. decorated with tiny wooden baubles, clay popcorn garlands, and topped with an internal-glowing buttercream star that casts volumetric light downward." data-category="hearth" data-front="/assets/img/cr80/006-front.jpg?v=cr80" data-back="/assets/img/cr80/006-back.jpg?v=cr80">
+    <a href="/006/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 glow-amber transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="5" data-num="6" data-series="series-1" data-code="006" data-name="the tree" data-greeting="happy holidays!" data-keywords="holiday tree card evergreen hearth scandinavian felt tree wool felt nfc holiday card smart card tapgreetings" data-lore="a tiered, rounded scandinavian folk tree composed of overlapping scalloped forest-green felt leaves. decorated with tiny wooden baubles, clay popcorn garlands, and topped with an internal-glowing buttercream star that casts volumetric light downward." data-category="hearth" data-front="/assets/img/cr80/006-front.jpg?v=cr80" data-back="/assets/img/cr80/006-back.jpg?v=cr80">
         <!-- Clean Image Box - 100% Unobstructed Art (CR80 Credit Card Ratio) -->
         <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
             <img src="/assets/img/cr80/006-front.jpg?v=cr80" alt="The Tree" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
-            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">
-                #006
-            </div>
+            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">#006</div>
         </div>
         <!-- Card Details Footer -->
         <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
             <div class="min-w-0">
                 <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
                     <span class="text-[9px] sm:text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">Happy Holidays!</span>
-                    <span class="text-[8px] sm:text-[9px] bg-[#140D08] text-amber-200/90 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">Hearth & Holiday</span>
+                    <span class="text-[8px] sm:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-full border bg-[#140D08] text-amber-200/90 border-amber-800/40 flex-shrink-0">Hearth & Holiday</span>
                 </div>
                 <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">The Tree</div>
                 <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Evergreen Hearth</div>
             </div>
-            <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
-                <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
-                <span class="group-hover:translate-x-1 transition-transform">View &rarr;</span>
-            </div>
+            
+      <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex flex-col gap-1.5">
+          <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
+              <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
+              <span class="group-hover:translate-x-1 transition-transform text-amber-300">View &rarr;</span>
+          </div>
+          <a href="https://shop.tapthingy.com/products/happy-holidays-series-1?variant=68065709195586" target="_blank" onclick="event.stopPropagation()" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-1.5 px-2 rounded-xl text-center text-[10px] sm:text-[11px] flex items-center justify-center gap-1.5 shadow-md hover:scale-[1.02] transition-transform">
+              <i class="fa-solid fa-cart-shopping"></i> <span>Buy in Set &bull; $14.99</span>
+          </a>
+      </div>
+    
         </div>
     </a>
   
 
-    <a href="/007/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-index="6" data-code="007" data-name="snowflake" data-greeting="happy holidays!" data-keywords="snowflake card celestial crystal opalescent resin pearl clay nfc holiday card smart card tapgreetings" data-lore="a macro focal characterization of a living crystalline snowflake: sculpted layered opalescent resin and pearl clay, floating weightlessly against a deep indigo twilight sky. its core glows with soft cyan bioluminescence, surrounded by micro-particles of frost dust." data-category="magic" data-front="/assets/img/cr80/007-front.jpg?v=cr80" data-back="/assets/img/cr80/007-back.jpg?v=cr80">
+    <a href="/007/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 glow-amber transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="6" data-num="7" data-series="series-1" data-code="007" data-name="snowflake" data-greeting="happy holidays!" data-keywords="snowflake card celestial crystal opalescent resin pearl clay nfc holiday card smart card tapgreetings" data-lore="a macro focal characterization of a living crystalline snowflake: sculpted layered opalescent resin and pearl clay, floating weightlessly against a deep indigo twilight sky. its core glows with soft cyan bioluminescence, surrounded by micro-particles of frost dust." data-category="magic" data-front="/assets/img/cr80/007-front.jpg?v=cr80" data-back="/assets/img/cr80/007-back.jpg?v=cr80">
         <!-- Clean Image Box - 100% Unobstructed Art (CR80 Credit Card Ratio) -->
         <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
             <img src="/assets/img/cr80/007-front.jpg?v=cr80" alt="Snowflake" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
-            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">
-                #007
-            </div>
+            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">#007</div>
         </div>
         <!-- Card Details Footer -->
         <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
             <div class="min-w-0">
                 <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
                     <span class="text-[9px] sm:text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">Happy Holidays!</span>
-                    <span class="text-[8px] sm:text-[9px] bg-[#140D08] text-amber-200/90 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">Winter Magic</span>
+                    <span class="text-[8px] sm:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-full border bg-[#140D08] text-amber-200/90 border-amber-800/40 flex-shrink-0">Winter Magic</span>
                 </div>
                 <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Snowflake</div>
                 <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Celestial Crystal</div>
             </div>
-            <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
-                <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
-                <span class="group-hover:translate-x-1 transition-transform">View &rarr;</span>
-            </div>
+            
+      <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex flex-col gap-1.5">
+          <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
+              <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
+              <span class="group-hover:translate-x-1 transition-transform text-amber-300">View &rarr;</span>
+          </div>
+          <a href="https://shop.tapthingy.com/products/happy-holidays-series-1?variant=68065709228354" target="_blank" onclick="event.stopPropagation()" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-1.5 px-2 rounded-xl text-center text-[10px] sm:text-[11px] flex items-center justify-center gap-1.5 shadow-md hover:scale-[1.02] transition-transform">
+              <i class="fa-solid fa-cart-shopping"></i> <span>Buy in Set &bull; $14.99</span>
+          </a>
+      </div>
+    
         </div>
     </a>
   
 
-    <a href="/008/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-index="7" data-code="008" data-name="gift" data-greeting="happy holidays!" data-keywords="gift box card surprise box sage craft paper satin felt bow nfc holiday card smart card tapgreetings" data-lore="an expressive, living gift box wrapped in ribbed sage-green craft paper, cinched with an oversized, bouncy cherry-red satin felt bow. the lid is cracked open just enough to allow a beam of warm golden light, magical ribbons, and star dust to burst out into the foreground." data-category="hearth" data-front="/assets/img/cr80/008-front.jpg?v=cr80" data-back="/assets/img/cr80/008-back.jpg?v=cr80">
+    <a href="/008/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 glow-amber transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="7" data-num="8" data-series="series-1" data-code="008" data-name="gift" data-greeting="happy holidays!" data-keywords="gift box card surprise box sage craft paper satin felt bow nfc holiday card smart card tapgreetings" data-lore="an expressive, living gift box wrapped in ribbed sage-green craft paper, cinched with an oversized, bouncy cherry-red satin felt bow. the lid is cracked open just enough to allow a beam of warm golden light, magical ribbons, and star dust to burst out into the foreground." data-category="hearth" data-front="/assets/img/cr80/008-front.jpg?v=cr80" data-back="/assets/img/cr80/008-back.jpg?v=cr80">
         <!-- Clean Image Box - 100% Unobstructed Art (CR80 Credit Card Ratio) -->
         <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
             <img src="/assets/img/cr80/008-front.jpg?v=cr80" alt="Gift" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
-            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">
-                #008
-            </div>
+            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">#008</div>
         </div>
         <!-- Card Details Footer -->
         <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
             <div class="min-w-0">
                 <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
                     <span class="text-[9px] sm:text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">Happy Holidays!</span>
-                    <span class="text-[8px] sm:text-[9px] bg-[#140D08] text-amber-200/90 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">Hearth & Holiday</span>
+                    <span class="text-[8px] sm:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-full border bg-[#140D08] text-amber-200/90 border-amber-800/40 flex-shrink-0">Hearth & Holiday</span>
                 </div>
                 <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Gift</div>
                 <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Surprise Box</div>
             </div>
-            <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
-                <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
-                <span class="group-hover:translate-x-1 transition-transform">View &rarr;</span>
-            </div>
+            
+      <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex flex-col gap-1.5">
+          <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
+              <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
+              <span class="group-hover:translate-x-1 transition-transform text-amber-300">View &rarr;</span>
+          </div>
+          <a href="https://shop.tapthingy.com/products/happy-holidays-series-1?variant=68065709261122" target="_blank" onclick="event.stopPropagation()" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-1.5 px-2 rounded-xl text-center text-[10px] sm:text-[11px] flex items-center justify-center gap-1.5 shadow-md hover:scale-[1.02] transition-transform">
+              <i class="fa-solid fa-cart-shopping"></i> <span>Buy in Set &bull; $14.99</span>
+          </a>
+      </div>
+    
         </div>
     </a>
   
 
-    <a href="/009/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-index="8" data-code="009" data-name="gingerbread man" data-greeting="happy holidays!" data-keywords="gingerbread card gingerbread man clay gingerbread royal icing nfc holiday card smart card tapgreetings" data-lore="a cheerful, baked gingerbread man sculpted in warm cinnamon-spiced polymer clay with dimensional white royal icing piping and gumdrop buttons, waving happily from a flour-dusted holiday kitchen table." data-category="hearth" data-front="/assets/img/cr80/009-front.jpg?v=cr80" data-back="/assets/img/cr80/009-back.jpg?v=cr80">
+    <a href="/009/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 glow-amber transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="8" data-num="9" data-series="series-1" data-code="009" data-name="gingerbread man" data-greeting="happy holidays!" data-keywords="gingerbread card gingerbread man clay gingerbread royal icing nfc holiday card smart card tapgreetings" data-lore="a cheerful, baked gingerbread man sculpted in warm cinnamon-spiced polymer clay with dimensional white royal icing piping and gumdrop buttons, waving happily from a flour-dusted holiday kitchen table." data-category="hearth" data-front="/assets/img/cr80/009-front.jpg?v=cr80" data-back="/assets/img/cr80/009-back.jpg?v=cr80">
         <!-- Clean Image Box - 100% Unobstructed Art (CR80 Credit Card Ratio) -->
         <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
             <img src="/assets/img/cr80/009-front.jpg?v=cr80" alt="Gingerbread Man" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
-            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">
-                #009
-            </div>
+            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">#009</div>
         </div>
         <!-- Card Details Footer -->
         <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
             <div class="min-w-0">
                 <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
                     <span class="text-[9px] sm:text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">Happy Holidays!</span>
-                    <span class="text-[8px] sm:text-[9px] bg-[#140D08] text-amber-200/90 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">Hearth & Holiday</span>
+                    <span class="text-[8px] sm:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-full border bg-[#140D08] text-amber-200/90 border-amber-800/40 flex-shrink-0">Hearth & Holiday</span>
                 </div>
                 <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Gingerbread Man</div>
                 <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Sweet Reveler</div>
             </div>
-            <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
-                <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
-                <span class="group-hover:translate-x-1 transition-transform">View &rarr;</span>
-            </div>
+            
+      <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex flex-col gap-1.5">
+          <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
+              <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
+              <span class="group-hover:translate-x-1 transition-transform text-amber-300">View &rarr;</span>
+          </div>
+          <a href="https://shop.tapthingy.com/products/happy-holidays-series-1?variant=68065709293890" target="_blank" onclick="event.stopPropagation()" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-1.5 px-2 rounded-xl text-center text-[10px] sm:text-[11px] flex items-center justify-center gap-1.5 shadow-md hover:scale-[1.02] transition-transform">
+              <i class="fa-solid fa-cart-shopping"></i> <span>Buy in Set &bull; $14.99</span>
+          </a>
+      </div>
+    
         </div>
     </a>
   
 
-    <a href="/010/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-index="9" data-code="010" data-name="mrs. claus" data-greeting="happy holidays!" data-keywords="mrs claus card mrs claus clay mrs claus needle felt nfc holiday card smart card tapgreetings" data-lore="a warm, grandmotherly mrs. claus in cozy crimson wool and a lace-trimmed apron, presenting a steaming tray of golden star cookies straight from the north pole oven with a loving smile." data-category="classic" data-front="/assets/img/cr80/010-front.jpg?v=cr80" data-back="/assets/img/cr80/010-back.jpg?v=cr80">
+    <a href="/010/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 glow-amber transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="9" data-num="10" data-series="series-1" data-code="010" data-name="mrs. claus" data-greeting="happy holidays!" data-keywords="mrs claus card mrs claus clay mrs claus needle felt nfc holiday card smart card tapgreetings" data-lore="a warm, grandmotherly mrs. claus in cozy crimson wool and a lace-trimmed apron, presenting a steaming tray of golden star cookies straight from the north pole oven with a loving smile." data-category="classic" data-front="/assets/img/cr80/010-front.jpg?v=cr80" data-back="/assets/img/cr80/010-back.jpg?v=cr80">
         <!-- Clean Image Box - 100% Unobstructed Art (CR80 Credit Card Ratio) -->
         <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
             <img src="/assets/img/cr80/010-front.jpg?v=cr80" alt="Mrs. Claus" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
-            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">
-                #010
-            </div>
+            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">#010</div>
         </div>
         <!-- Card Details Footer -->
         <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
             <div class="min-w-0">
                 <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
                     <span class="text-[9px] sm:text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">Happy Holidays!</span>
-                    <span class="text-[8px] sm:text-[9px] bg-[#140D08] text-amber-200/90 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">Classic Icons</span>
+                    <span class="text-[8px] sm:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-full border bg-[#140D08] text-amber-200/90 border-amber-800/40 flex-shrink-0">Classic Icons</span>
                 </div>
                 <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Mrs. Claus</div>
                 <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Hearth Matron</div>
             </div>
-            <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
-                <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
-                <span class="group-hover:translate-x-1 transition-transform">View &rarr;</span>
-            </div>
+            
+      <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex flex-col gap-1.5">
+          <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
+              <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
+              <span class="group-hover:translate-x-1 transition-transform text-amber-300">View &rarr;</span>
+          </div>
+          <a href="https://shop.tapthingy.com/products/happy-holidays-series-1?variant=68065709326658" target="_blank" onclick="event.stopPropagation()" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-1.5 px-2 rounded-xl text-center text-[10px] sm:text-[11px] flex items-center justify-center gap-1.5 shadow-md hover:scale-[1.02] transition-transform">
+              <i class="fa-solid fa-cart-shopping"></i> <span>Buy in Set &bull; $14.99</span>
+          </a>
+      </div>
+    
         </div>
     </a>
   
 
-    <a href="/011/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-index="10" data-code="011" data-name="workshop elf" data-greeting="happy holidays!" data-keywords="elf card workshop elf clay elf toymaker nfc holiday card smart card tapgreetings" data-lore="a nimble artisan elf crafted in hand-painted clay with pointy ears and felt cap, meticulously detailing a miniature wooden rocking horse with a gold-leaf brush amid cedar shavings." data-category="friends" data-front="/assets/img/cr80/011-front.jpg?v=cr80" data-back="/assets/img/cr80/011-back.jpg?v=cr80">
+    <a href="/011/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 glow-amber transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="10" data-num="11" data-series="series-1" data-code="011" data-name="workshop elf" data-greeting="happy holidays!" data-keywords="elf card workshop elf clay elf toymaker nfc holiday card smart card tapgreetings" data-lore="a nimble artisan elf crafted in hand-painted clay with pointy ears and felt cap, meticulously detailing a miniature wooden rocking horse with a gold-leaf brush amid cedar shavings." data-category="friends" data-front="/assets/img/cr80/011-front.jpg?v=cr80" data-back="/assets/img/cr80/011-back.jpg?v=cr80">
         <!-- Clean Image Box - 100% Unobstructed Art (CR80 Credit Card Ratio) -->
         <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
             <img src="/assets/img/cr80/011-front.jpg?v=cr80" alt="Workshop Elf" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
-            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">
-                #011
-            </div>
+            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">#011</div>
         </div>
         <!-- Card Details Footer -->
         <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
             <div class="min-w-0">
                 <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
                     <span class="text-[9px] sm:text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">Happy Holidays!</span>
-                    <span class="text-[8px] sm:text-[9px] bg-[#140D08] text-amber-200/90 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">Festive Friends</span>
+                    <span class="text-[8px] sm:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-full border bg-[#140D08] text-amber-200/90 border-amber-800/40 flex-shrink-0">Festive Friends</span>
                 </div>
                 <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Workshop Elf</div>
                 <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Toymaker</div>
             </div>
-            <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
-                <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
-                <span class="group-hover:translate-x-1 transition-transform">View &rarr;</span>
-            </div>
+            
+      <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex flex-col gap-1.5">
+          <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
+              <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
+              <span class="group-hover:translate-x-1 transition-transform text-amber-300">View &rarr;</span>
+          </div>
+          <a href="https://shop.tapthingy.com/products/happy-holidays-series-1?variant=68065709359426" target="_blank" onclick="event.stopPropagation()" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-1.5 px-2 rounded-xl text-center text-[10px] sm:text-[11px] flex items-center justify-center gap-1.5 shadow-md hover:scale-[1.02] transition-transform">
+              <i class="fa-solid fa-cart-shopping"></i> <span>Buy in Set &bull; $14.99</span>
+          </a>
+      </div>
+    
         </div>
     </a>
   
 
-    <a href="/012/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-index="11" data-code="012" data-name="polar bear" data-greeting="happy holidays!" data-keywords="polar bear card polar bear flocked bear arctic lantern nfc holiday card smart card tapgreetings" data-lore="a majestic, cozy polar bear in soft white flocked wool wearing a thick teal knit scarf, cradling an amber glass lantern that casts a reassuring warm glow across glacial snowbanks." data-category="friends" data-front="/assets/img/cr80/012-front.jpg?v=cr80" data-back="/assets/img/cr80/012-back.jpg?v=cr80">
+    <a href="/012/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 glow-amber transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="11" data-num="12" data-series="series-1" data-code="012" data-name="polar bear" data-greeting="happy holidays!" data-keywords="polar bear card polar bear flocked bear arctic lantern nfc holiday card smart card tapgreetings" data-lore="a majestic, cozy polar bear in soft white flocked wool wearing a thick teal knit scarf, cradling an amber glass lantern that casts a reassuring warm glow across glacial snowbanks." data-category="friends" data-front="/assets/img/cr80/012-front.jpg?v=cr80" data-back="/assets/img/cr80/012-back.jpg?v=cr80">
         <!-- Clean Image Box - 100% Unobstructed Art (CR80 Credit Card Ratio) -->
         <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
             <img src="/assets/img/cr80/012-front.jpg?v=cr80" alt="Polar Bear" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
-            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">
-                #012
-            </div>
+            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">#012</div>
         </div>
         <!-- Card Details Footer -->
         <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
             <div class="min-w-0">
                 <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
                     <span class="text-[9px] sm:text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">Happy Holidays!</span>
-                    <span class="text-[8px] sm:text-[9px] bg-[#140D08] text-amber-200/90 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">Festive Friends</span>
+                    <span class="text-[8px] sm:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-full border bg-[#140D08] text-amber-200/90 border-amber-800/40 flex-shrink-0">Festive Friends</span>
                 </div>
                 <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Polar Bear</div>
                 <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Gentle Giant</div>
             </div>
-            <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
-                <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
-                <span class="group-hover:translate-x-1 transition-transform">View &rarr;</span>
-            </div>
+            
+      <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex flex-col gap-1.5">
+          <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
+              <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
+              <span class="group-hover:translate-x-1 transition-transform text-amber-300">View &rarr;</span>
+          </div>
+          <a href="https://shop.tapthingy.com/products/happy-holidays-series-1?variant=68065709392194" target="_blank" onclick="event.stopPropagation()" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-1.5 px-2 rounded-xl text-center text-[10px] sm:text-[11px] flex items-center justify-center gap-1.5 shadow-md hover:scale-[1.02] transition-transform">
+              <i class="fa-solid fa-cart-shopping"></i> <span>Buy in Set &bull; $14.99</span>
+          </a>
+      </div>
+    
         </div>
     </a>
   
 
-    <a href="/013/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-index="12" data-code="013" data-name="penguin" data-greeting="happy holidays!" data-keywords="penguin card skating penguin clay penguin ice dancer nfc holiday card smart card tapgreetings" data-lore="an adorable, chubby clay penguin wearing a ruby knit pom-pom beanie and tiny brass-bladed ice skates, performing a joyous pirouette across a mirror-finish frozen pond under festive fairy lights." data-category="friends" data-front="/assets/img/cr80/013-front.jpg?v=cr80" data-back="/assets/img/cr80/013-back.jpg?v=cr80">
+    <a href="/013/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 glow-amber transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="12" data-num="13" data-series="series-1" data-code="013" data-name="penguin" data-greeting="happy holidays!" data-keywords="penguin card skating penguin clay penguin ice dancer nfc holiday card smart card tapgreetings" data-lore="an adorable, chubby clay penguin wearing a ruby knit pom-pom beanie and tiny brass-bladed ice skates, performing a joyous pirouette across a mirror-finish frozen pond under festive fairy lights." data-category="friends" data-front="/assets/img/cr80/013-front.jpg?v=cr80" data-back="/assets/img/cr80/013-back.jpg?v=cr80">
         <!-- Clean Image Box - 100% Unobstructed Art (CR80 Credit Card Ratio) -->
         <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
             <img src="/assets/img/cr80/013-front.jpg?v=cr80" alt="Penguin" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
-            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">
-                #013
-            </div>
+            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">#013</div>
         </div>
         <!-- Card Details Footer -->
         <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
             <div class="min-w-0">
                 <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
                     <span class="text-[9px] sm:text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">Happy Holidays!</span>
-                    <span class="text-[8px] sm:text-[9px] bg-[#140D08] text-amber-200/90 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">Festive Friends</span>
+                    <span class="text-[8px] sm:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-full border bg-[#140D08] text-amber-200/90 border-amber-800/40 flex-shrink-0">Festive Friends</span>
                 </div>
                 <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Penguin</div>
                 <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Ice Dancer</div>
             </div>
-            <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
-                <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
-                <span class="group-hover:translate-x-1 transition-transform">View &rarr;</span>
-            </div>
+            
+      <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex flex-col gap-1.5">
+          <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
+              <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
+              <span class="group-hover:translate-x-1 transition-transform text-amber-300">View &rarr;</span>
+          </div>
+          <a href="https://shop.tapthingy.com/products/happy-holidays-series-1?variant=68065709424962" target="_blank" onclick="event.stopPropagation()" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-1.5 px-2 rounded-xl text-center text-[10px] sm:text-[11px] flex items-center justify-center gap-1.5 shadow-md hover:scale-[1.02] transition-transform">
+              <i class="fa-solid fa-cart-shopping"></i> <span>Buy in Set &bull; $14.99</span>
+          </a>
+      </div>
+    
         </div>
     </a>
   
 
-    <a href="/014/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-index="13" data-code="014" data-name="sugar plum fairy" data-greeting="happy holidays!" data-keywords="fairy card sugar plum fairy clay fairy twilight sprite nfc holiday card smart card tapgreetings" data-lore="a graceful miniature fairy sculpted in delicate lavender-pearl clay with iridescent spun-sugar wings, floating over a snow-covered scandinavian village as she touches a golden star wand to a frosted rooftop." data-category="magic" data-front="/assets/img/cr80/014-front.jpg?v=cr80" data-back="/assets/img/cr80/014-back.jpg?v=cr80">
+    <a href="/014/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 glow-amber transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="13" data-num="14" data-series="series-1" data-code="014" data-name="sugar plum fairy" data-greeting="happy holidays!" data-keywords="fairy card sugar plum fairy clay fairy twilight sprite nfc holiday card smart card tapgreetings" data-lore="a graceful miniature fairy sculpted in delicate lavender-pearl clay with iridescent spun-sugar wings, floating over a snow-covered scandinavian village as she touches a golden star wand to a frosted rooftop." data-category="magic" data-front="/assets/img/cr80/014-front.jpg?v=cr80" data-back="/assets/img/cr80/014-back.jpg?v=cr80">
         <!-- Clean Image Box - 100% Unobstructed Art (CR80 Credit Card Ratio) -->
         <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
             <img src="/assets/img/cr80/014-front.jpg?v=cr80" alt="Sugar Plum Fairy" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
-            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">
-                #014
-            </div>
+            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">#014</div>
         </div>
         <!-- Card Details Footer -->
         <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
             <div class="min-w-0">
                 <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
                     <span class="text-[9px] sm:text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">Happy Holidays!</span>
-                    <span class="text-[8px] sm:text-[9px] bg-[#140D08] text-amber-200/90 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">Winter Magic</span>
+                    <span class="text-[8px] sm:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-full border bg-[#140D08] text-amber-200/90 border-amber-800/40 flex-shrink-0">Winter Magic</span>
                 </div>
                 <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Sugar Plum Fairy</div>
                 <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Twilight Sprite</div>
             </div>
-            <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
-                <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
-                <span class="group-hover:translate-x-1 transition-transform">View &rarr;</span>
-            </div>
+            
+      <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex flex-col gap-1.5">
+          <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
+              <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
+              <span class="group-hover:translate-x-1 transition-transform text-amber-300">View &rarr;</span>
+          </div>
+          <a href="https://shop.tapthingy.com/products/happy-holidays-series-1?variant=68065709457730" target="_blank" onclick="event.stopPropagation()" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-1.5 px-2 rounded-xl text-center text-[10px] sm:text-[11px] flex items-center justify-center gap-1.5 shadow-md hover:scale-[1.02] transition-transform">
+              <i class="fa-solid fa-cart-shopping"></i> <span>Buy in Set &bull; $14.99</span>
+          </a>
+      </div>
+    
         </div>
     </a>
   
 
-    <a href="/015/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-index="14" data-code="015" data-name="snow monster" data-greeting="happy holidays!" data-keywords="snow monster card yeti frost guardian needle felt yeti nfc holiday card smart card tapgreetings" data-lore="a giant, gentle snow yeti crafted in shaggy needle-felted white wool with cute periwinkle clay horns and rosy cheeks, gently rocking and offering big fuzzy hugs in a serene snowy forest." data-category="magic" data-front="/assets/img/cr80/015-front.jpg?v=cr80" data-back="/assets/img/cr80/015-back.jpg?v=cr80">
+    <a href="/015/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 glow-amber transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="14" data-num="15" data-series="series-1" data-code="015" data-name="snow monster" data-greeting="happy holidays!" data-keywords="snow monster card yeti frost guardian needle felt yeti nfc holiday card smart card tapgreetings" data-lore="a giant, gentle snow yeti crafted in shaggy needle-felted white wool with cute periwinkle clay horns and rosy cheeks, gently rocking and offering big fuzzy hugs in a serene snowy forest." data-category="magic" data-front="/assets/img/cr80/015-front.jpg?v=cr80" data-back="/assets/img/cr80/015-back.jpg?v=cr80">
         <!-- Clean Image Box - 100% Unobstructed Art (CR80 Credit Card Ratio) -->
         <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
             <img src="/assets/img/cr80/015-front.jpg?v=cr80" alt="Snow Monster" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
-            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">
-                #015
-            </div>
+            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">#015</div>
         </div>
         <!-- Card Details Footer -->
         <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
             <div class="min-w-0">
                 <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
                     <span class="text-[9px] sm:text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">Happy Holidays!</span>
-                    <span class="text-[8px] sm:text-[9px] bg-[#140D08] text-amber-200/90 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">Winter Magic</span>
+                    <span class="text-[8px] sm:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-full border bg-[#140D08] text-amber-200/90 border-amber-800/40 flex-shrink-0">Winter Magic</span>
                 </div>
                 <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Snow Monster</div>
                 <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Frost Guardian</div>
             </div>
-            <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
-                <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
-                <span class="group-hover:translate-x-1 transition-transform">View &rarr;</span>
-            </div>
+            
+      <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex flex-col gap-1.5">
+          <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
+              <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
+              <span class="group-hover:translate-x-1 transition-transform text-amber-300">View &rarr;</span>
+          </div>
+          <a href="https://shop.tapthingy.com/products/happy-holidays-series-1?variant=68065709490498" target="_blank" onclick="event.stopPropagation()" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-1.5 px-2 rounded-xl text-center text-[10px] sm:text-[11px] flex items-center justify-center gap-1.5 shadow-md hover:scale-[1.02] transition-transform">
+              <i class="fa-solid fa-cart-shopping"></i> <span>Buy in Set &bull; $14.99</span>
+          </a>
+      </div>
+    
         </div>
     </a>
   
 
-    <a href="/016/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-index="15" data-code="016" data-name="stocking puppy" data-greeting="happy holidays!" data-keywords="puppy card stocking puppy clay puppy holiday pup nfc holiday card smart card tapgreetings" data-lore="an utterly precious clay puppy with velvety brown floppy ears peeking eagerly out of a chunky red cable-knit holiday stocking hanging by the fireside mantle, barking a joyous holiday greeting." data-category="friends" data-front="/assets/img/cr80/016-front.jpg?v=cr80" data-back="/assets/img/cr80/016-back.jpg?v=cr80">
+    <a href="/016/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 glow-amber transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="15" data-num="16" data-series="series-1" data-code="016" data-name="stocking puppy" data-greeting="happy holidays!" data-keywords="puppy card stocking puppy clay puppy holiday pup nfc holiday card smart card tapgreetings" data-lore="an utterly precious clay puppy with velvety brown floppy ears peeking eagerly out of a chunky red cable-knit holiday stocking hanging by the fireside mantle, barking a joyous holiday greeting." data-category="friends" data-front="/assets/img/cr80/016-front.jpg?v=cr80" data-back="/assets/img/cr80/016-back.jpg?v=cr80">
         <!-- Clean Image Box - 100% Unobstructed Art (CR80 Credit Card Ratio) -->
         <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
             <img src="/assets/img/cr80/016-front.jpg?v=cr80" alt="Stocking Puppy" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
-            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">
-                #016
-            </div>
+            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">#016</div>
         </div>
         <!-- Card Details Footer -->
         <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
             <div class="min-w-0">
                 <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
                     <span class="text-[9px] sm:text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">Happy Holidays!</span>
-                    <span class="text-[8px] sm:text-[9px] bg-[#140D08] text-amber-200/90 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">Festive Friends</span>
+                    <span class="text-[8px] sm:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-full border bg-[#140D08] text-amber-200/90 border-amber-800/40 flex-shrink-0">Festive Friends</span>
                 </div>
                 <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Stocking Puppy</div>
                 <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Little Surprise</div>
             </div>
-            <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
-                <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
-                <span class="group-hover:translate-x-1 transition-transform">View &rarr;</span>
+            
+      <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex flex-col gap-1.5">
+          <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
+              <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
+              <span class="group-hover:translate-x-1 transition-transform text-amber-300">View &rarr;</span>
+          </div>
+          <a href="https://shop.tapthingy.com/products/happy-holidays-series-1?variant=68065709523266" target="_blank" onclick="event.stopPropagation()" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-1.5 px-2 rounded-xl text-center text-[10px] sm:text-[11px] flex items-center justify-center gap-1.5 shadow-md hover:scale-[1.02] transition-transform">
+              <i class="fa-solid fa-cart-shopping"></i> <span>Buy in Set &bull; $14.99</span>
+          </a>
+      </div>
+    
+        </div>
+    </a>
+  
+
+    <a href="/draft/01/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-purple-800/40 hover:border-purple-400/70 shadow-purple-900/20 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="16" data-num="17" data-series="draft" data-code="draft-01" data-name="delphine" data-greeting="happy holidays!" data-keywords="delphine ice starlet draft series winter glamour champagne gala" data-lore="stepping onto the frosted red carpet at dusk outside a luxury gala, delphine sparkles under flashbulbs, spreading warm cheer and champagne wishes across the winter gala." data-category="occasions" data-front="/assets/img/cr80/draft-01-front.jpg?v=cr80" data-back="/assets/img/cr80/draft-01-back.jpg?v=cr80">
+        <!-- Clean Image Box - 100% Unobstructed Art (CR80 Credit Card Ratio) -->
+        <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
+            <img src="/assets/img/cr80/draft-01-front.jpg?v=cr80" alt="Delphine" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+            <div class="absolute top-2 right-2 bg-gradient-to-r from-purple-900 to-indigo-900 text-purple-200 border border-purple-400/50 text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg shadow flex items-center gap-1"><i class="fa-solid fa-wand-magic-sparkles text-purple-300"></i> Draft #01</div>
+        </div>
+        <!-- Card Details Footer -->
+        <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
+            <div class="min-w-0">
+                <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
+                    <span class="text-[9px] sm:text-[10px] font-bold text-purple-300 tracking-wider uppercase truncate">Happy Holidays!</span>
+                    <span class="text-[8px] sm:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-full border bg-[#180E24] text-purple-200/90 border-purple-800/40 flex-shrink-0">Seasonal Occasions</span>
+                </div>
+                <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Delphine</div>
+                <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Ice Starlet</div>
             </div>
+            
+      <div class="mt-2 pt-1.5 sm:pt-2 border-t border-purple-900/40 flex flex-col gap-1.5">
+          <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-purple-300">
+              <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-purple-300"><i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i> Concept Art</span>
+              <span class="group-hover:translate-x-1 transition-transform text-purple-300">Explore &rarr;</span>
+          </div>
+          <div class="w-full bg-[#1F122B] text-purple-200 border border-purple-700/40 font-semibold py-1 px-2 rounded-xl text-center text-[10px] flex items-center justify-center gap-1">
+              <i class="fa-solid fa-palette text-purple-400"></i> Pre-Clay Edition
+          </div>
+      </div>
+    
+        </div>
+    </a>
+  
+
+    <a href="/draft/02/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-purple-800/40 hover:border-purple-400/70 shadow-purple-900/20 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="17" data-num="18" data-series="draft" data-code="draft-02" data-name="autumn gratitude" data-greeting="happy thanksgiving!" data-keywords="autumn gratitude thanksgiving draft series hearth gatherer warm brew" data-lore="surrounded by crisp november foliage, she raises a warm seasonal brew in celebration of family, abundance, and heartfelt togetherness." data-category="occasions" data-front="/assets/img/cr80/draft-02-front.jpg?v=cr80" data-back="/assets/img/cr80/draft-02-back.jpg?v=cr80">
+        <!-- Clean Image Box - 100% Unobstructed Art (CR80 Credit Card Ratio) -->
+        <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
+            <img src="/assets/img/cr80/draft-02-front.jpg?v=cr80" alt="Autumn Gratitude" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+            <div class="absolute top-2 right-2 bg-gradient-to-r from-purple-900 to-indigo-900 text-purple-200 border border-purple-400/50 text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg shadow flex items-center gap-1"><i class="fa-solid fa-wand-magic-sparkles text-purple-300"></i> Draft #02</div>
+        </div>
+        <!-- Card Details Footer -->
+        <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
+            <div class="min-w-0">
+                <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
+                    <span class="text-[9px] sm:text-[10px] font-bold text-purple-300 tracking-wider uppercase truncate">Happy Thanksgiving!</span>
+                    <span class="text-[8px] sm:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-full border bg-[#180E24] text-purple-200/90 border-purple-800/40 flex-shrink-0">Seasonal Occasions</span>
+                </div>
+                <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Autumn Gratitude</div>
+                <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Hearth Gatherer</div>
+            </div>
+            
+      <div class="mt-2 pt-1.5 sm:pt-2 border-t border-purple-900/40 flex flex-col gap-1.5">
+          <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-purple-300">
+              <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-purple-300"><i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i> Concept Art</span>
+              <span class="group-hover:translate-x-1 transition-transform text-purple-300">Explore &rarr;</span>
+          </div>
+          <div class="w-full bg-[#1F122B] text-purple-200 border border-purple-700/40 font-semibold py-1 px-2 rounded-xl text-center text-[10px] flex items-center justify-center gap-1">
+              <i class="fa-solid fa-palette text-purple-400"></i> Pre-Clay Edition
+          </div>
+      </div>
+    
+        </div>
+    </a>
+  
+
+    <a href="/draft/03/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-purple-800/40 hover:border-purple-400/70 shadow-purple-900/20 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="18" data-num="19" data-series="draft" data-code="draft-03" data-name="aria" data-greeting="warm winter wishes" data-keywords="aria village lantern draft series winter wishes snow village" data-lore="holding an ornate brass lantern in a snow-cloaked alpine village, aria guides travelers home with a soft, steady amber glow." data-category="occasions" data-front="/assets/img/cr80/draft-03-front.jpg?v=cr80" data-back="/assets/img/cr80/draft-03-back.jpg?v=cr80">
+        <!-- Clean Image Box - 100% Unobstructed Art (CR80 Credit Card Ratio) -->
+        <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
+            <img src="/assets/img/cr80/draft-03-front.jpg?v=cr80" alt="Aria" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+            <div class="absolute top-2 right-2 bg-gradient-to-r from-purple-900 to-indigo-900 text-purple-200 border border-purple-400/50 text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg shadow flex items-center gap-1"><i class="fa-solid fa-wand-magic-sparkles text-purple-300"></i> Draft #03</div>
+        </div>
+        <!-- Card Details Footer -->
+        <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
+            <div class="min-w-0">
+                <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
+                    <span class="text-[9px] sm:text-[10px] font-bold text-purple-300 tracking-wider uppercase truncate">Warm Winter Wishes</span>
+                    <span class="text-[8px] sm:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-full border bg-[#180E24] text-purple-200/90 border-purple-800/40 flex-shrink-0">Seasonal Occasions</span>
+                </div>
+                <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Aria</div>
+                <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Village Lantern</div>
+            </div>
+            
+      <div class="mt-2 pt-1.5 sm:pt-2 border-t border-purple-900/40 flex flex-col gap-1.5">
+          <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-purple-300">
+              <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-purple-300"><i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i> Concept Art</span>
+              <span class="group-hover:translate-x-1 transition-transform text-purple-300">Explore &rarr;</span>
+          </div>
+          <div class="w-full bg-[#1F122B] text-purple-200 border border-purple-700/40 font-semibold py-1 px-2 rounded-xl text-center text-[10px] flex items-center justify-center gap-1">
+              <i class="fa-solid fa-palette text-purple-400"></i> Pre-Clay Edition
+          </div>
+      </div>
+    
+        </div>
+    </a>
+  
+
+    <a href="/draft/04/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-purple-800/40 hover:border-purple-400/70 shadow-purple-900/20 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="19" data-num="20" data-series="draft" data-code="draft-04" data-name="cyber starlet" data-greeting="black friday spree!" data-keywords="cyber starlet black friday draft series neon shopper deals" data-lore="under shimmering neon holograms, she strides through the futuristic holiday shopping district with metallic totes and glowing deals." data-category="occasions" data-front="/assets/img/cr80/draft-04-front.jpg?v=cr80" data-back="/assets/img/cr80/draft-04-back.jpg?v=cr80">
+        <!-- Clean Image Box - 100% Unobstructed Art (CR80 Credit Card Ratio) -->
+        <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
+            <img src="/assets/img/cr80/draft-04-front.jpg?v=cr80" alt="Cyber Starlet" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+            <div class="absolute top-2 right-2 bg-gradient-to-r from-purple-900 to-indigo-900 text-purple-200 border border-purple-400/50 text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg shadow flex items-center gap-1"><i class="fa-solid fa-wand-magic-sparkles text-purple-300"></i> Draft #04</div>
+        </div>
+        <!-- Card Details Footer -->
+        <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
+            <div class="min-w-0">
+                <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
+                    <span class="text-[9px] sm:text-[10px] font-bold text-purple-300 tracking-wider uppercase truncate">Black Friday Spree!</span>
+                    <span class="text-[8px] sm:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-full border bg-[#180E24] text-purple-200/90 border-purple-800/40 flex-shrink-0">Seasonal Occasions</span>
+                </div>
+                <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Cyber Starlet</div>
+                <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Neon Shopper</div>
+            </div>
+            
+      <div class="mt-2 pt-1.5 sm:pt-2 border-t border-purple-900/40 flex flex-col gap-1.5">
+          <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-purple-300">
+              <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-purple-300"><i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i> Concept Art</span>
+              <span class="group-hover:translate-x-1 transition-transform text-purple-300">Explore &rarr;</span>
+          </div>
+          <div class="w-full bg-[#1F122B] text-purple-200 border border-purple-700/40 font-semibold py-1 px-2 rounded-xl text-center text-[10px] flex items-center justify-center gap-1">
+              <i class="fa-solid fa-palette text-purple-400"></i> Pre-Clay Edition
+          </div>
+      </div>
+    
+        </div>
+    </a>
+  
+
+    <a href="/draft/05/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-purple-800/40 hover:border-purple-400/70 shadow-purple-900/20 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="20" data-num="21" data-series="draft" data-code="draft-05" data-name="midnight toast" data-greeting="happy new year 2026!" data-keywords="midnight toast new year 2026 draft series fireworks celebration" data-lore="as the clock strikes midnight and golden fireworks cascade across the skyline, she raises a crystal flute to toast the promise of 2026." data-category="occasions" data-front="/assets/img/cr80/draft-05-front.jpg?v=cr80" data-back="/assets/img/cr80/draft-05-back.jpg?v=cr80">
+        <!-- Clean Image Box - 100% Unobstructed Art (CR80 Credit Card Ratio) -->
+        <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
+            <img src="/assets/img/cr80/draft-05-front.jpg?v=cr80" alt="Midnight Toast" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+            <div class="absolute top-2 right-2 bg-gradient-to-r from-purple-900 to-indigo-900 text-purple-200 border border-purple-400/50 text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg shadow flex items-center gap-1"><i class="fa-solid fa-wand-magic-sparkles text-purple-300"></i> Draft #05</div>
+        </div>
+        <!-- Card Details Footer -->
+        <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
+            <div class="min-w-0">
+                <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
+                    <span class="text-[9px] sm:text-[10px] font-bold text-purple-300 tracking-wider uppercase truncate">Happy New Year 2026!</span>
+                    <span class="text-[8px] sm:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-full border bg-[#180E24] text-purple-200/90 border-purple-800/40 flex-shrink-0">Seasonal Occasions</span>
+                </div>
+                <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Midnight Toast</div>
+                <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The New Year Sovereign</div>
+            </div>
+            
+      <div class="mt-2 pt-1.5 sm:pt-2 border-t border-purple-900/40 flex flex-col gap-1.5">
+          <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-purple-300">
+              <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-purple-300"><i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i> Concept Art</span>
+              <span class="group-hover:translate-x-1 transition-transform text-purple-300">Explore &rarr;</span>
+          </div>
+          <div class="w-full bg-[#1F122B] text-purple-200 border border-purple-700/40 font-semibold py-1 px-2 rounded-xl text-center text-[10px] flex items-center justify-center gap-1">
+              <i class="fa-solid fa-palette text-purple-400"></i> Pre-Clay Edition
+          </div>
+      </div>
+    
         </div>
     </a>
   
                 </div>
 
-                <!-- Carousel Navigation Arrows (Shown when in Carousel Slider Mode) -->
+                <!-- Carousel Navigation Arrows -->
                 <button id="sliderPrevBtn" onclick="slideCards(-1)" class="hidden absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 w-10 h-10 rounded-full bg-black/90 text-amber-300 border border-amber-600/50 shadow-2xl items-center justify-center hover:scale-110 active:scale-95 transition-all z-20">
                     <i class="fa-solid fa-chevron-left"></i>
                 </button>
@@ -906,7 +1120,7 @@
             </div>
             
             <div id="noResults" class="hidden text-center py-16 text-amber-200/60 font-clayTitle text-base sm:text-lg">
-                No matching Series 1 characters found ✦
+                No matching keepsake characters found ✦
             </div>
         </section>
 
@@ -916,10 +1130,10 @@
                 ✦ TapThingy NFC Web Reprogrammer Tool ✦
             </span>
             <h3 class="font-clayTitle text-xl sm:text-3xl font-bold text-white mb-2">
-                Reprogram or Update Any Series 1 Card Anytime
+                Reprogram or Update Any TapGreetings Smart Card Anytime
             </h3>
             <p class="text-amber-100/90 text-xs sm:text-sm max-w-xl mx-auto mb-6 leading-relaxed">
-                Every physical Series 1 card contains an embedded high-speed NTAG215 microchip. Want to customize where your card links? Open our free Web NFC Tool directly in Chrome on Android or using NFC Tools on iPhone.
+                Every physical keepsake card contains an embedded high-speed NTAG215 microchip. Want to customize where your card links? Open our free Web NFC Tool directly in Chrome on Android or using NFC Tools on iPhone.
             </p>
             <div class="flex flex-wrap justify-center gap-3">
                 <a href="https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" target="_blank" class="bg-gradient-to-r from-rose-700 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold px-6 py-3 rounded-2xl shadow-lg transition-transform hover:scale-105 inline-flex items-center gap-2 text-xs sm:text-sm">
@@ -983,11 +1197,11 @@
         }
 
         var currentGridSide = 'front';
+        var currentSeries = 'all';
         var currentCategory = 'all';
         var currentColumns = 4;
         var isCarouselMode = false;
 
-        // Responsive initial defaults (Desktop = 4 cols, Mobile = 2 cols)
         function initGridDefaults() {
             var isMobile = window.innerWidth < 768;
             currentColumns = isMobile ? 2 : 4;
@@ -995,14 +1209,12 @@
             initHeroVideo();
         }
 
-        // ALLOWS MOBILE TO GO 3 COLUMNS WIDE!
         function setColumns(cols) {
             currentColumns = Math.max(1, Math.min(4, cols));
             var grid = document.getElementById('cardsGrid');
             var slider = document.getElementById('colSlider');
             if (slider) slider.value = currentColumns;
 
-            // Update button styles
             for (var i = 1; i <= 4; i++) {
                 var btn = document.getElementById('colBtn' + i);
                 if (btn) {
@@ -1020,7 +1232,6 @@
                 } else if (currentColumns === 2) {
                     grid.className = 'grid grid-cols-2 gap-3 sm:gap-6 w-full transition-all duration-300';
                 } else if (currentColumns === 3) {
-                    // Mobile 3 Columns Wide with tight, comfortable spacing!
                     grid.className = 'grid grid-cols-3 gap-2 sm:gap-4 lg:gap-6 w-full transition-all duration-300';
                 } else {
                     grid.className = 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 w-full transition-all duration-300';
@@ -1085,13 +1296,27 @@
             });
         }
 
+        function setSeriesFilter(series) {
+            currentSeries = series;
+            document.querySelectorAll('.series-pill').forEach(function(btn) {
+                if (btn.getAttribute('data-series') === series) {
+                    btn.className = 'series-pill active px-3.5 py-1.5 text-xs font-bold rounded-xl bg-amber-500 text-[#120C08] border border-amber-400 shadow transition-all';
+                } else {
+                    var isDraftBtn = btn.getAttribute('data-series') === 'draft';
+                    btn.className = 'series-pill px-3.5 py-1.5 text-xs font-bold rounded-xl bg-[#140D08] ' + (isDraftBtn ? 'text-purple-200 border-purple-800/40' : 'text-amber-200 border-amber-800/40') + ' hover:text-white transition-all';
+                }
+            });
+            filterCards();
+        }
+
         function setCategoryFilter(cat) {
             currentCategory = cat;
             document.querySelectorAll('.cat-pill').forEach(function(btn) {
                 if (btn.getAttribute('data-cat') === cat) {
                     btn.className = 'cat-pill active px-3 py-1 text-xs font-bold rounded-xl bg-amber-500 text-[#120C08] border border-amber-400 shadow transition-all';
                 } else {
-                    btn.className = 'cat-pill px-3 py-1 text-xs font-bold rounded-xl bg-[#140D08] text-amber-200 hover:text-white border border-amber-800/40 transition-all';
+                    var isOcc = btn.getAttribute('data-cat') === 'occasions';
+                    btn.className = 'cat-pill px-3 py-1 text-xs font-bold rounded-xl bg-[#140D08] ' + (isOcc ? 'text-purple-200 border-purple-800/40' : 'text-amber-200 border-amber-800/40') + ' hover:text-white transition-all';
                 }
             });
             filterCards();
@@ -1103,15 +1328,25 @@
             var cards = Array.from(document.querySelectorAll('.card-item'));
 
             cards.sort(function(a, b) {
-                var codeA = parseInt(a.getAttribute('data-code') || '0', 10);
-                var codeB = parseInt(b.getAttribute('data-code') || '0', 10);
+                var seriesA = a.getAttribute('data-series') || 'series-1';
+                var seriesB = b.getAttribute('data-series') || 'series-1';
+                var numA = parseInt(a.getAttribute('data-num') || '0', 10);
+                var numB = parseInt(b.getAttribute('data-num') || '0', 10);
                 var nameA = (a.getAttribute('data-name') || '').toLowerCase();
                 var nameB = (b.getAttribute('data-name') || '').toLowerCase();
 
-                if (sortMode === 'num-asc') return codeA - codeB;
-                if (sortMode === 'num-desc') return codeB - codeA;
+                if (sortMode === 'num-asc') return numA - numB;
+                if (sortMode === 'num-desc') return numB - numA;
                 if (sortMode === 'name-asc') return nameA.localeCompare(nameB);
                 if (sortMode === 'name-desc') return nameB.localeCompare(nameA);
+                if (sortMode === 'series-1-first') {
+                    if (seriesA !== seriesB) return seriesA === 'series-1' ? -1 : 1;
+                    return numA - numB;
+                }
+                if (sortMode === 'draft-first') {
+                    if (seriesA !== seriesB) return seriesA === 'draft' ? -1 : 1;
+                    return numA - numB;
+                }
                 return 0;
             });
 
@@ -1128,16 +1363,18 @@
             var visibleCount = 0;
 
             cards.forEach(function(card) {
+                var series = card.getAttribute('data-series') || 'series-1';
                 var name = card.getAttribute('data-name') || '';
                 var greeting = card.getAttribute('data-greeting') || '';
                 var keywords = card.getAttribute('data-keywords') || '';
                 var lore = card.getAttribute('data-lore') || '';
                 var category = card.getAttribute('data-category') || '';
 
+                var matchesSeries = currentSeries === 'all' || series === currentSeries;
                 var matchesCat = currentCategory === 'all' || category === currentCategory;
-                var matchesSearch = !query || name.includes(query) || greeting.includes(query) || keywords.includes(query) || lore.includes(query);
+                var matchesSearch = !query || name.includes(query) || greeting.includes(query) || keywords.includes(query) || lore.includes(query) || series.includes(query);
 
-                if (matchesCat && matchesSearch) {
+                if (matchesSeries && matchesCat && matchesSearch) {
                     card.style.display = 'flex';
                     visibleCount++;
                 } else {
@@ -1145,13 +1382,15 @@
                 }
             });
 
-            if (badge) badge.innerText = visibleCount + ' Cards';
+            if (badge) {
+                var label = currentSeries === 'draft' ? 'Draft Cards' : (currentSeries === 'series-1' ? 'Series 1 Cards' : 'Cards');
+                badge.innerText = visibleCount + ' ' + label;
+            }
             if (noResults) {
                 noResults.className = visibleCount === 0 ? 'text-center py-16 text-amber-200/60 font-clayTitle text-base sm:text-lg block' : 'hidden';
             }
         }
 
-        // Initialize on load
         document.addEventListener('DOMContentLoaded', function() {
             initGridDefaults();
         });
