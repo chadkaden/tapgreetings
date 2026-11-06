@@ -4,6 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TapGreetings - Smart NFC Keepsake Greeting Cards | TapGreetings by TapThingy</title>
+    
+    <!-- Primary SEO Meta Tags -->
+    <meta name="title" content="TapGreetings - Smart NFC Keepsake Greeting Cards | TapGreetings by TapThingy">
+    <meta name="description" content="Step onto the frosted red carpet with Delphine. Tap this smart NFC keepsake card to experience an exclusive 4K holiday video, audio toast, and winter gala RSVP.">
+    <meta name="keywords" content="winter gala, holiday greeting card, nfc card, delphine, ice starlet, champagne, high fashion, christmas, smart card, tapthingy">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tapgreetings.com">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tapgreetings.com">
+    <meta property="og:title" content="TapGreetings - Smart NFC Keepsake Greeting Cards | TapGreetings by TapThingy">
+    <meta property="og:description" content="Step onto the frosted red carpet with Delphine. Tap this smart NFC keepsake card to experience an exclusive 4K holiday video, audio toast, and winter gala RSVP.">
+    <meta property="og:image" content="https://TapGreetings.com/assets/img/delphine-front.png">
+    <meta property="og:video" content="https://TapGreetings.com/assets/video/delphine-holidays.mp4">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tapgreetings.com">
+    <meta property="twitter:title" content="TapGreetings - Smart NFC Keepsake Greeting Cards | TapGreetings by TapThingy">
+    <meta property="twitter:description" content="Step onto the frosted red carpet with Delphine. Tap this smart NFC keepsake card to experience an exclusive 4K holiday video, audio toast, and winter gala RSVP.">
+    <meta property="twitter:image" content="https://TapGreetings.com/assets/img/delphine-front.png">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -171,7 +194,7 @@
                     </h2>
 
                     <p class="text-sm sm:text-base text-slate-300 max-w-xl mb-6 leading-relaxed">
-                        Stepping onto the frosted red carpet at dusk, Delphine sparkles under flashbulbs, spreading warm cheer and champagne wishes across the winter gala...
+                        Stepping onto the frosted red carpet at dusk, Delphine sparkles under flashbulbs, spreading warm cheer and champagne wishes across the winter gala. Her signature champagne-boba in hand, she invites guests into an evening of high-fashion holiday enchantment.
                     </p>
 
                     <blockquote class="text-xs sm:text-sm italic text-amber-200/90 border-l-2 border-amber-400 pl-3 mb-6">
@@ -224,7 +247,7 @@
             </div>
         </div>
 
-        <!-- Collection Controls: Search, Front/Back, Aspect, Sort -->
+        <!-- Collection Controls: Search, Front/Back, Aspect, Occasions, Sort -->
         <div id="collection" class="bg-slate-900/90 rounded-2xl p-6 mb-8 shadow-xl border border-rose-400/30 backdrop-blur-md flex flex-col md:flex-row gap-4 items-center justify-between">
             <div class="flex items-center gap-3 w-full md:w-auto">
                 <h2 class="font-serif text-2xl font-bold text-white whitespace-nowrap flex items-center gap-2">
@@ -236,9 +259,9 @@
             </div>
 
             <div class="flex flex-wrap gap-3 w-full md:w-auto items-center justify-end">
-                <!-- Search Input -->
+                <!-- Keyword & Character Search Input -->
                 <div class="relative flex-grow sm:flex-grow-0">
-                    <input type="text" id="searchInput" placeholder="Search cards, characters, lore..." oninput="filterCards()" class="w-full sm:w-56 bg-slate-950 text-white placeholder-slate-400 text-sm px-4 py-2 rounded-xl border border-slate-700 focus:outline-none focus:ring-2 focus:ring-pink-500">
+                    <input type="text" id="searchInput" placeholder="Search keywords, prompts, lore..." oninput="filterCards()" class="w-full sm:w-64 bg-slate-950 text-white placeholder-slate-400 text-sm px-4 py-2 rounded-xl border border-slate-700 focus:outline-none focus:ring-2 focus:ring-pink-500">
                 </div>
 
                 <!-- Front / Back Toggle -->
@@ -252,6 +275,21 @@
                     <option value="">All Orientations</option>
                     <option value="portrait">↕ Vertical (9:16)</option>
                     <option value="landscape">↔ Horizontal (16:9)</option>
+                </select>
+
+                <!-- Occasions Filter -->
+                <select id="occasionFilter" onchange="filterCards()" class="bg-slate-950 text-white text-sm px-3.5 py-2 rounded-xl border border-slate-700 focus:outline-none focus:ring-2 focus:ring-pink-500">
+                    <option value="">All Occasions</option>
+                    <option value="Holiday">🎄 Holiday &amp; Winter</option>
+                    <option value="Black Friday">🛍️ Black Friday</option>
+                    <option value="New Year">🎆 New Year 2026</option>
+                    <option value="Birthday">🎂 Birthday</option>
+                    <option value="Anniversary">💍 Anniversary</option>
+                    <option value="Thank You">🙏 Thank You</option>
+                    <option value="Congratulations">🏆 Congratulations</option>
+                    <option value="Wedding">👰 Wedding</option>
+                    <option value="Everyday">💜 Thinking of You &amp; Baby</option>
+                    <option value="Custom">⚡ Custom Studio</option>
                 </select>
 
                 <!-- Sort Order -->
@@ -288,7 +326,7 @@
     </main>
 
     <script>
-        const cardsData = [{"index":0,"id":"holidays-delphine-01","slug":"delphine-holidays","name":"Delphine","title":"The Ice Starlet","greeting":"Happy Holidays!","aspect":"portrait","frontImg":"./assets/img/delphine-front.jpg","backImg":"./assets/img/delphine-back.jpg","lore":"Stepping onto the frosted red carpet at dusk, Delphine sparkles under flashbulbs, spreading warm cheer and champagne wishes across the winter gala...","motto":"Shine under your own spotlight and make every entrance unforgettable."},{"index":1,"id":"card-02","slug":"02","name":"Black Friday VIP Spree","title":"Briar, The Midnight Shopper","greeting":"VIP Shopping Pass & Holiday Treats","aspect":"portrait","frontImg":"./public/cards/02_front.jpg","backImg":"./public/cards/02_back.jpg","lore":"With shopping bags in hand and a stylish faux-fur collar against the chill, Briar unlocks the ultimate holiday deals pass. Tap to reveal exclusive doorbusters, discount codes, or surprise holiday gift balances.","motto":"Treat yourself to everything you love this holiday season—you've earned every single moment."},{"index":2,"id":"card-03","slug":"03","name":"Cozy Fireside & Christmas Hearth","title":"The Hearthside Sanctuary","greeting":"Merry Christmas & Peaceful Nights","aspect":"landscape","frontImg":"./public/cards/03_front.svg","backImg":"./public/cards/03_back.svg","lore":"Snow falls gently beyond the frost-framed window while pine logs crackle on the hearth. A steaming mug of cocoa sits beside handwritten letters, filling the home with cinnamon and holiday serenity.","motto":"Wishing you the coziest Christmas filled with deep peace, warm fires, and the comfort of home."},{"index":3,"id":"card-04","slug":"04","name":"Midnight Champagne & Fireworks","title":"The New Year Sovereign","greeting":"Happy New Year!","aspect":"landscape","frontImg":"./public/cards/04_front.svg","backImg":"./public/cards/04_back.svg","lore":"As the clock strikes midnight, crystal glasses clink beneath an illuminated skyline of burst gold and emerald fireworks. Here's to leaving behind old doubts and welcoming 365 fresh chapters of boundless triumph.","motto":"Cheers to new adventures, bold dreams, and the happiest, most prosperous year yet!"},{"index":4,"id":"card-05","slug":"05","name":"Neon Birthday Glow Bash","title":"The Electric Celebrator","greeting":"Happy Birthday!","aspect":"portrait","frontImg":"./public/cards/05_front.svg","backImg":"./public/cards/05_back.svg","lore":"Lighting up the night with pulsating neon glow and multi-colored holographic balloons! Tap to start your personalized video birthday greeting featuring unforgettable memories and celebratory beats.","motto":"Wishing you another incredible trip around the sun packed with laughter, love, and wild success!"},{"index":5,"id":"card-06","slug":"06","name":"Golden Milestone Anniversary","title":"The Eternal Bond","greeting":"Forever & Always","aspect":"portrait","frontImg":"./public/cards/06_front.svg","backImg":"./public/cards/06_back.svg","lore":"Two souls whose journey grows richer with every passing year. A tribute to shared laughter, weathered storms, and the steadfast love that turns ordinary days into golden masterpieces.","motto":"Through every season, your love remains our greatest inspiration. Happy Anniversary!"},{"index":6,"id":"card-07","slug":"07","name":"Heartfelt Botanical Gratitude","title":"The Meadow of Thanks","greeting":"With Sincerest Thanks","aspect":"portrait","frontImg":"./public/cards/07_front.svg","backImg":"./public/cards/07_back.svg","lore":"Some gestures make an indelible mark on our hearts. This card expresses profound gratitude for your selfless generosity, gentle guidance, and unwavering presence when it mattered most.","motto":"Words cannot fully capture how much your kindness has meant. Thank you from the bottom of my heart."},{"index":7,"id":"card-08","slug":"08","name":"Unstoppable Champion & Victory","title":"The Pinnacle of Triumph","greeting":"You Conquered the Summit!","aspect":"landscape","frontImg":"./public/cards/08_front.svg","backImg":"./public/cards/08_back.svg","lore":"Late nights, tireless discipline, and unyielding ambition have brought you to this crowning victory. Stand tall on the podium of your achievements—the future is wide open for your next great triumph.","motto":"Huge congratulations on your phenomenal victory! The world is taking notice of what you can do."},{"index":8,"id":"card-09","slug":"09","name":"Thinking of You & Warm Hugs","title":"A Pocket Hug Across the Miles","greeting":"Sending You So Much Love","aspect":"portrait","frontImg":"./public/cards/09_front.svg","backImg":"./public/cards/09_back.svg","lore":"Miles may stretch between us, but you are never far from my thoughts. Keep this card in your wallet or on your nightstand as a physical reminder that someone is always cheering for you and sending you warm love.","motto":"Just a little reminder that you are loved, you are appreciated, and you are never alone."},{"index":9,"id":"card-10","slug":"10","name":"Sweet Baby Arrival & Starlight","title":"The Celestial Welcome","greeting":"Welcome to the World, Little Miracle!","aspect":"landscape","frontImg":"./public/cards/10_front.svg","backImg":"./public/cards/10_back.svg","lore":"Ten little fingers, ten little toes, and a love that knows no bounds. Welcome to the precious new bundle of joy whose arrival fills the entire universe with starlight and wonder.","motto":"Congratulations to the proud parents! Wishing your family a lifetime of laughter and sweet cuddles."},{"index":10,"id":"card-11","slug":"11","name":"Forever Vows & Wedding Elegance","title":"The Sacred Union","greeting":"Congratulations on Your Wedding Day","aspect":"portrait","frontImg":"./public/cards/11_front.svg","backImg":"./public/cards/11_back.svg","lore":"Hand in hand, heart to heart, beginning a journey of shared dreams and everlasting devotion. May your marriage be filled with endless grace, gentle understanding, and abiding joy.","motto":"Here's to love, laughter, and your happily ever after. Congratulations on tying the knot!"},{"index":11,"id":"card-12","slug":"custom","name":"Custom NFC Video TapGreeting Card","title":"Personalized Studio Edition","greeting":"Design Your Custom Keepsake Card","aspect":"portrait","frontImg":"./public/cards/01_front.jpg","backImg":"./public/cards/01_back.jpg","lore":"Upload your own photos or custom artwork for the front and back. Encode any personal video message, photo album, voice note, or link directly into the rewritable NFC chip. Crafted in waterproof credit card-grade PVC.","motto":"Turn your cherished video memories and greeting into an unforgettable physical keepsake."}];
+        const cardsData = [{"index":0,"id":"holidays-delphine-01","slug":"delphine-holidays","name":"Delphine","title":"The Ice Starlet","greeting":"Happy Holidays!","aspect":"portrait","frontImg":"./assets/img/delphine-front.jpg","backImg":"./assets/img/delphine-back.jpg","lore":"Stepping onto the frosted red carpet at dusk, Delphine sparkles under flashbulbs, spreading warm cheer and champagne wishes across the winter gala. Her signature champagne-boba in hand, she invites guests into an evening of high-fashion holiday enchantment.","motto":"Shine under your own spotlight and make every entrance unforgettable.","occasion":"Holiday","keywords":"winter gala holiday greeting card nfc card delphine ice starlet champagne high fashion christmas smart card tapthingy"},{"index":1,"id":"shopping-noelle-02","slug":"02","name":"Noelle","title":"The Midnight Shopper","greeting":"VIP Deals & Holiday Joy!","aspect":"portrait","frontImg":"./public/cards/02_front.jpg","backImg":"./public/cards/02_back.jpg","lore":"Dressed in an electric magenta coat amidst neon city storefronts, Noelle holds designer metallic shopping totes. With a sly wink, she taps into an exclusive holiday haul, granting her friends VIP early-bird access to seasonal treasures.","motto":"Life is short—buy the bag, unlock the deal, and celebrate in style.","occasion":"Black Friday","keywords":"black friday holiday shopping vip deals noelle nfc gift card luxury shopping smart card"},{"index":2,"id":"winter-aria-lantern-03","slug":"03","name":"Aria, The Lantern Maiden","title":"Warm Winter Wishes & Starlight","greeting":"Warm Winter Wishes!","aspect":"portrait","frontImg":"./assets/img/03-front.jpg","backImg":"./assets/img/03-back.jpg","lore":"Holding a glowing amber lantern as fresh snow blankets a peaceful mountain village, Aria brings comforting holiday cheer and warm winter wishes across the distance.","motto":"May warmth and gentle light guide your winter nights.","occasion":"Holiday","keywords":"warm winter wishes snow lantern winter village nfc holiday card smart card cozy winter aria"},{"index":3,"id":"newyear-fireworks-04","slug":"04","name":"The Midnight Horizon","title":"Spectacular Midnight Fireworks","greeting":"Happy New Year 2026!","aspect":"landscape","frontImg":"./public/cards/04_front.svg","backImg":"./public/cards/04_back.svg","lore":"As the clock strikes midnight, vibrant cascades of gold and cyan pyrotechnics light up the harbor skyline. Crystal flutes ring out in celebration of fresh beginnings, bold dreams, and triumph in 2026.","motto":"Turn the page, ignite your spark, and welcome 365 brand new possibilities.","occasion":"New Year","keywords":"new year 2026 new year greeting card midnight fireworks nfc smart card celebration card horizontal card"},{"index":4,"id":"birthday-glow-05","slug":"05","name":"The Birthday Luminary","title":"Neon Glow Celebration","greeting":"Happy Birthday!","aspect":"portrait","frontImg":"./public/cards/05_front.svg","backImg":"./public/cards/05_back.svg","lore":"Under vibrant iridescent party spotlights, glowing confetti rains down as candles flicker atop a multi-tiered cake. Today celebrates another fantastic trip around the sun.","motto":"Make a wish, blow out the candles, and let your light fill the room.","occasion":"Birthday","keywords":"birthday card smart birthday card nfc greeting card birthday celebration party keepsakes"},{"index":5,"id":"anniversary-gold-06","slug":"06","name":"The Eternal Flame","title":"Golden Hour Romance","greeting":"Happy Anniversary!","aspect":"portrait","frontImg":"./public/cards/06_front.svg","backImg":"./public/cards/06_back.svg","lore":"A golden sunset bathes rolling vineyards and rose gardens in tender light. Two hands intertwine as champagne flutes clink, marking another year of unconditional devotion.","motto":"Grow old along with me; the best is yet to be.","occasion":"Anniversary","keywords":"anniversary card couples gift romantic greeting card nfc love card smart keepsake"},{"index":6,"id":"thankyou-botanical-07","slug":"07","name":"The Botanical Bloom","title":"Heartfelt Gratitude","greeting":"With Deepest Gratitude","aspect":"portrait","frontImg":"./public/cards/07_front.svg","backImg":"./public/cards/07_back.svg","lore":"Lush eucalyptus and golden olive branches frame words of appreciation. A heartfelt token of gratitude that lasts far longer than flowers.","motto":"Gratitude turns what we have into more than enough.","occasion":"Thank You","keywords":"thank you card gratitude card botanical card nfc thank you smart keepsake"},{"index":7,"id":"congrats-champion-08","slug":"08","name":"The Triumph Laurels","title":"Victory & Milestone","greeting":"Congratulations Champion!","aspect":"landscape","frontImg":"./public/cards/08_front.svg","backImg":"./public/cards/08_back.svg","lore":"A golden trophy gleams beneath stadium floodlights. Golden confetti drifts through the arena as victorious cheers echo for milestones achieved through tireless dedication.","motto":"Dedication, grit, and perseverance always lead to greatness.","occasion":"Congratulations","keywords":"congratulations card champion card milestone keepsake graduation gift nfc trophy card horizontal card"},{"index":8,"id":"everyday-lavender-09","slug":"09","name":"The Serene Horizon","title":"Gentle Lavender Skies","greeting":"Thinking of You Always","aspect":"portrait","frontImg":"./public/cards/09_front.svg","backImg":"./public/cards/09_back.svg","lore":"A gentle breeze ripples through purple lavender fields under pastel violet dusk. A quiet reminder that someone cares deeply, holding you in their fondest thoughts.","motto":"No matter the distance, you are always close in heart and thought.","occasion":"Everyday","keywords":"thinking of you sympathy card get well card comfort card nfc greeting card smart keepsake"},{"index":9,"id":"baby-starlight-10","slug":"10","name":"The Starlight Cradle","title":"Clouds & Sweet Dreams","greeting":"Welcome Little Wonder!","aspect":"landscape","frontImg":"./public/cards/10_front.svg","backImg":"./public/cards/10_back.svg","lore":"A golden crescent moon cradles fluffy pastel clouds as silver stars twinkle softly. A precious new life begins, wrapped in endless love, wonder, and lullabies.","motto":"A tiny hand to hold, a whole new world to discover, and love beyond measure.","occasion":"Everyday","keywords":"baby card baby shower gift new baby arrival nfc baby keepsake lullaby video card horizontal card"},{"index":10,"id":"wedding-forever-11","slug":"11","name":"The Eternal Arch","title":"Eucalyptus & Gilded Vows","greeting":"Two Hearts, One Journey","aspect":"portrait","frontImg":"./public/cards/11_front.svg","backImg":"./public/cards/11_back.svg","lore":"Beneath a majestic floral arch draped in cream chiffon and gold leaf, promises of forever are exchanged. A sacred milestone etched in love, shared with all who bear witness.","motto":"Today two lives become one grand adventure.","occasion":"Wedding","keywords":"wedding card wedding gift bridal keepsake nfc wedding card smart guestbook"},{"index":11,"id":"custom-studio-card-12","slug":"custom","name":"TapGreetings Custom Studio","title":"Bespoke NFC Smart Keepsake","greeting":"Your Story, Your Keepsake","aspect":"portrait","frontImg":"./assets/img/delphine-front.jpg","backImg":"./assets/img/delphine-back.jpg","lore":"Design your own physical smart card in seconds. Upload your personal photos for front and back, connect any YouTube, Vimeo, or personal video link, and receive a commercial-grade PVC card with embedded NTAG215 chip.","motto":"Turn any memory, video, or celebration into a permanent high-tech keepsake.","occasion":"Custom","keywords":"custom nfc card personalized video card custom greeting card nfc gift tapthingy studio"}];
 
         let currentSide = 'front';
 
@@ -334,6 +372,7 @@
                             <div>
                                 <div class="flex justify-between items-center mb-1">
                                     <span class="text-[10px] font-bold text-amber-300 tracking-wider uppercase">${c.greeting}</span>
+                                    <span class="text-[9px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full border border-slate-750">${c.occasion}</span>
                                 </div>
                                 <div class="font-serif text-lg font-bold text-white group-hover:text-rose-300 transition-colors leading-snug">${c.name}</div>
                                 <div class="text-xs text-slate-400 italic line-clamp-1">${c.title}</div>
@@ -352,12 +391,18 @@
         function filterCards() {
             const query = document.getElementById('searchInput').value.toLowerCase();
             const aspect = document.getElementById('aspectFilter').value;
+            const occasion = document.getElementById('occasionFilter').value;
             const sort = document.getElementById('sortSelect').value;
 
             let filtered = cardsData.filter(c => {
-                const matchesQuery = c.name.toLowerCase().includes(query) || c.title.toLowerCase().includes(query) || c.greeting.toLowerCase().includes(query) || c.lore.toLowerCase().includes(query);
+                const matchesQuery = c.name.toLowerCase().includes(query) || 
+                                     c.title.toLowerCase().includes(query) || 
+                                     c.greeting.toLowerCase().includes(query) || 
+                                     c.lore.toLowerCase().includes(query) || 
+                                     c.keywords.includes(query);
                 const matchesAspect = aspect === '' || c.aspect === aspect;
-                return matchesQuery && matchesAspect;
+                const matchesOccasion = occasion === '' || c.occasion === occasion;
+                return matchesQuery && matchesAspect && matchesOccasion;
             });
 
             if (sort === 'featured') {

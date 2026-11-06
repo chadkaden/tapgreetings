@@ -7,8 +7,12 @@
   "scripts": {
     "start": "docker compose up -d",
     "stop": "docker compose down",
+    "build": "npm run build:all",
+    "build:all": "node scripts/generate_cards.cjs && node scripts/generate_shopify_products_csv.cjs && node scripts/sync_master.cjs",
     "build:cards": "node scripts/generate_cards.cjs",
     "build:csv": "node scripts/generate_shopify_products_csv.cjs",
+    "sync:export": "node scripts/sync_master.cjs",
+    "sync:import": "node scripts/sync_master.cjs --import",
     "deploy:cf": "wrangler deploy",
     "deploy:dry": "wrangler deploy --dry-run"
   },

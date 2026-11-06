@@ -1,0 +1,3151 @@
+Ok tap greetings I want to do like pinkoween except not acts and story lines.. I want to do basic greetings , such as
+
+Happy holidays
+
+Merry Christmas
+
+Happy birthday
+
+Happy thanksgiving...
+
+Get well soon.
+
+Etc.
+
+Each greeting will need setup.
+
+And some type of video must be made of it too..
+
+I am thinking that the backs of the cards will be instructional
+
+I suggest we work on the main data sheet first.... 
+
+A centralized master data sheet for Tap Greetings establishes a single source of truth that drives physical InDesign Data Merge printing, After Effects / AI video production pipelines, and NFC dynamic edge routing.
+
+Master Data Sheet Schema Definition
+Each record in the master sheet controls four distinct operational domains:
+
+Field Name	Type	Purpose	Example Value
+card_id	String	Unique product SKU / identifier	TG-01
+occasion	String	Primary greeting category	Happy Birthday
+theme_style	String	Visual art aesthetic	Pastel Confetti & Champagne
+front_header	String	Top card plaque header	A CELEBRATION FOR YOU
+front_title	String	Main card display text	HAPPY BIRTHDAY
+front_subtext	String	Bottom border subtext	
+TAP GREETINGS • SERIES 1
+
+@FrontArt	File Path	
+300 DPI composite artwork path
+
+./assets/art/TG01_Birthday.png
+back_header	String	Instruction header on card reverse	HOW TO VIEW YOUR SMART GREETING
+step_1_text	String	NFC physical tap instruction	
+Unlock your phone and tap top edge to the circle below
+
+step_2_text	String	Digital engagement instruction	
+Tap the banner on your screen to watch the video greeting
+
+step_3_text	String	Keepsake / repurpose instruction	
+Save video to camera roll or reprogram your card anytime
+
+tap_target_label	String	Label inside NFC antenna ring	
+✦ HOLD PHONE HERE TO TAP ✦
+
+video_duration	Number	Animation length in seconds	
+8.0
+
+video_motion_prompt	Text	Prompt for video AI / AE motion	
+Balloons drift up, candle sparkles pulse, pastel confetti bursts
+
+spoken_dialogue	Text	Audio voiceover line	Wishing you the happiest birthday filled with joy and magic!
+text_pop_time	Number	Kinetic text popup timestamp	
+5.8
+
+text_pop_copy	String	Synchronized animated text	
+HAPPY BIRTHDAY!
+
+audio_sfx	String	Key sound cues	
+Party blower flutter, warm bell chime, ambient laughter
+
+nfc_target_url	URL	
+Dynamic edge redirect slug
+
+[https://tapgreetings.com/c/birthday-01](https://tapgreetings.com/c/birthday-01)
+
+qr_fallback_url	URL	
+Printable fallback QR link
+
+[https://tapgreetings.com/c/birthday-01?src=qr](https://tapgreetings.com/c/birthday-01?src=qr)
+
+Core Lineup: Master Data Sheet
+Code snippet
+card_id,occasion,theme_style,front_header,front_title,front_subtext,@FrontArt,back_header,step_1_text,step_2_text,step_3_text,tap_target_label,video_duration,video_motion_prompt,spoken_dialogue,text_pop_time,text_pop_copy,audio_sfx,nfc_target_url,qr_fallback_url
+TG-01,Happy Birthday,Pastel Confetti & Gold,A CELEBRATION FOR YOU,HAPPY BIRTHDAY,TAP GREETINGS • SERIES 1,./assets/art/TG01_Birthday.png,HOW TO VIEW YOUR SMART GREETING,Unlock your phone and tap the top edge to the circle below,Tap the screen banner to watch your living video greeting,Save video to camera roll or reprogram your card anytime,✦ HOLD PHONE HERE TO TAP ✦,8.0,Birthday cupcake candle flickers warmly as pastel balloon bundle gently sways. Rose-gold confetti cascades in a gentle 2D loop.,Wishing you the happiest birthday filled with love, laughter, and everything sweet!,5.8,HAPPY BIRTHDAY!,Party horn pop with golden chime glissando,https://tapgreetings.com/c/birthday-01,https://tapgreetings.com/c/birthday-01?src=qr
+TG-02,Merry Christmas,Warm Velvet Hearth,PEACE & WARM WISHES,MERRY CHRISTMAS,TAP GREETINGS • SERIES 1,./assets/art/TG02_Christmas.png,HOW TO VIEW YOUR SMART GREETING,Unlock your phone and tap the top edge to the circle below,Tap the screen banner to watch your living video greeting,Save video to camera roll or reprogram your card anytime,✦ HOLD PHONE HERE TO TAP ✦,8.0,Ornate evergreen wreath with red velvet ribbon shimmers with soft fairy lights. Gentle snow flurries drift downward.,Sending you the coziest holiday wishes from our home to yours. Merry Christmas!,5.8,MERRY CHRISTMAS!,Sleigh bell shimmer with crackling fireplace ambiance,https://tapgreetings.com/c/christmas-01,https://tapgreetings.com/c/christmas-01?src=qr
+TG-03,Happy Holidays,Frost & Champagne Sparkle,WARMEST SEASONAL WISHES,HAPPY HOLIDAYS,TAP GREETINGS • SERIES 1,./assets/art/TG03_Holidays.png,HOW TO VIEW YOUR SMART GREETING,Unlock your phone and tap the top edge to the circle below,Tap the screen banner to watch your living video greeting,Save video to camera roll or reprogram your card anytime,✦ HOLD PHONE HERE TO TAP ✦,8.0,Champagne glasses clink with effervescent bubbles rising into golden 4-point starlight. Frost filigree borders pulse.,May your season be bright, joyful, and surrounded by the ones you love!,5.8,HAPPY HOLIDAYS!,Sparkling glass clink with soft ambient harp swell,https://tapgreetings.com/c/holidays-01,https://tapgreetings.com/c/holidays-01?src=qr
+TG-04,Happy Thanksgiving,Autumn Harvest & Wheat,GATHER WITH GRATITUDE,HAPPY THANKSGIVING,TAP GREETINGS • SERIES 1,./assets/art/TG04_Thanksgiving.png,HOW TO VIEW YOUR SMART GREETING,Unlock your phone and tap the top edge to the circle below,Tap the screen banner to watch your living video greeting,Save video to camera roll or reprogram your card anytime,✦ HOLD PHONE HERE TO TAP ✦,8.0,Steaming freshly baked pumpkin pie on rustic wood surrounded by drifting amber and crimson maple leaves.,So grateful for you today and every day. Wishing you a wonderful Thanksgiving feast!,5.8,HAPPY THANKSGIVING!,Crisp wind rustling leaves with warm acoustic guitar strum,https://tapgreetings.com/c/thanksgiving-01,https://tapgreetings.com/c/thanksgiving-01?src=qr
+TG-05,Get Well Soon,Soft Botanical Tea,SENDING HEALING COMFORT,GET WELL SOON,TAP GREETINGS • SERIES 1,./assets/art/TG05_GetWell.png,HOW TO VIEW YOUR SMART GREETING,Unlock your phone and tap the top edge to the circle below,Tap the screen banner to watch your living video greeting,Save video to camera roll or reprogram your card anytime,✦ HOLD PHONE HERE TO TAP ✦,8.0,Porcelain teacup releasing soft heart-shaped herbal steam wisps while fresh eucalyptus and lavender sprigs bloom gently.,Take all the time you need to rest and recharge. Sending you healing thoughts and warm hugs!,5.8,GET WELL SOON!,Soft porcelain saucer clink with gentle rain ambiance,https://tapgreetings.com/c/getwell-01,https://tapgreetings.com/c/getwell-01?src=qr
+TG-06,Thank You,Gilded Blossom Spray,WITH DEEPEST APPRECIATION,THANK YOU,TAP GREETINGS • SERIES 1,./assets/art/TG06_ThankYou.png,HOW TO VIEW YOUR SMART GREETING,Unlock your phone and tap the top edge to the circle below,Tap the screen banner to watch your living video greeting,Save video to camera roll or reprogram your card anytime,✦ HOLD PHONE HERE TO TAP ✦,8.0,Hand-tied bouquet of blush peonies unfolds as iridescent dew drops glisten and drift upward into soft bokeh.,Words cannot express how grateful I am. Thank you so much for your incredible kindness!,5.8,THANK YOU SO MUCH!,Gentle chime chime with delicate wind chime flutter,https://tapgreetings.com/c/thankyou-01,https://tapgreetings.com/c/thankyou-01?src=qr
+TG-07,Congratulations,Celebration Confetti Cannon,A TOAST TO YOUR SUCCESS,CONGRATULATIONS!,TAP GREETINGS • SERIES 1,./assets/art/TG07_Congrats.png,HOW TO VIEW YOUR SMART GREETING,Unlock your phone and tap the top edge to the circle below,Tap the screen banner to watch your living video greeting,Save video to camera roll or reprogram your card anytime,✦ HOLD PHONE HERE TO TAP ✦,8.0,Gold celebration ribbons unfurl dynamically across frame as metallic starbursts and confetti radiate from center.,You worked so hard for this moment and you truly earned it. Congratulations on your big win!,5.8,CONGRATULATIONS!,Party popper sub-kick with triumphant brass fanfare,https://tapgreetings.com/c/congrats-01,https://tapgreetings.com/c/congrats-01?src=qr
+TG-08,Thinking of You,Warm Amber Sunset,ACROSS THE DISTANCE,THINKING OF YOU,TAP GREETINGS • SERIES 1,./assets/art/TG08_Thinking.png,HOW TO VIEW YOUR SMART GREETING,Unlock your phone and tap the top edge to the circle below,Tap the screen banner to watch your living video greeting,Save video to camera roll or reprogram your card anytime,✦ HOLD PHONE HERE TO TAP ✦,8.0,Glowing paper lantern floats gently across quiet water at twilight, surrounded by softly shimmering starlight.,Just wanted to send a little love your way and remind you how much you mean to me.,5.8,THINKING OF YOU!,Night crickets with soothing warm cello tone,https://tapgreetings.com/c/thinking-01,https://tapgreetings.com/c/thinking-01?src=qr
+TG-09,Happy New Year,Midnight Constellation & Gold,CHEERS TO NEW BEGINNINGS,HAPPY NEW YEAR,TAP GREETINGS • SERIES 1,./assets/art/TG09_NewYear.png,HOW TO VIEW YOUR SMART GREETING,Unlock your phone and tap the top edge to the circle below,Tap the screen banner to watch your living video greeting,Save video to camera roll or reprogram your card anytime,✦ HOLD PHONE HERE TO TAP ✦,8.0,Vintage pocket watch strikes midnight as shimmering gold fireworks burst outward in a brilliant 360-degree radial ring.,3, 2, 1... Here is to 365 new opportunities to shine. Wishing you a magnificent New Year!,5.5,HAPPY NEW YEAR!,Clock chime countdown, followed by stadium firework boom,https://tapgreetings.com/c/newyear-01,https://tapgreetings.com/c/newyear-01?src=qr
+TG-10,Happy Mother's Day,Rose Garden & Ribbon,HONORING AN AMAZING MOM,HAPPY MOTHER'S DAY,TAP GREETINGS • SERIES 1,./assets/art/TG10_MothersDay.png,HOW TO VIEW YOUR SMART GREETING,Unlock your phone and tap the top edge to the circle below,Tap the screen banner to watch your living video greeting,Save video to camera roll or reprogram your card anytime,✦ HOLD PHONE HERE TO TAP ✦,8.0,Blush tea roses bloom in sequence, intertwined with delicate gold filigree and fluttering pastel satin ribbons.,Thank you for your endless love, patience, and warmth. Wishing you the happiest Mother's Day!,5.8,HAPPY MOTHER'S DAY!,Sweet music box melody with soft bell accents,https://tapgreetings.com/c/mothersday-01,https://tapgreetings.com/c/mothersday-01?src=qr
+Instructional Card Back Architecture
+Replacing narrative lore with practical user instructions requires a 4-tiered layout built to fit standard CR80 physical cards ( 
+2.125"×3.375" ):
+
+Plaintext
+┌──────────────────────────────────────────────────────────┐
+│  ✦ TAP GREETINGS ✦                         SERIES 1      │ ◄── Tier 1: Brand & Category Header
+├──────────────────────────────────────────────────────────┤
+│             HOW TO VIEW YOUR SMART GREETING              │
+│                                                          │
+│  1. UNLOCK & TAP                                         │ ◄── Tier 2: 3-Step Numbered Guide
+│     Hold the top edge of your smartphone directly        │     (Clean, legible sans-serif)
+│     against the tap target below.                        │
+│                                                          │
+│  2. WATCH & LISTEN                                       │
+│     Tap the notification link on your screen to open     │
+│     your animated video & custom voice message.          │
+│                                                          │
+│  3. SAVE & REPURPOSE                                     │
+│     Save greeting to photos, or reprogram this card      │
+│     to your own links at tapgreetings.com/repurpose.     │
+├──────────────────────────────────────────────────────────┤
+│                                                          │
+│                     ╭──────────────╮                     │ ◄── Tier 3: High-Contrast Target
+│                     │  (( ⟡ ))     │                     │     • NFC Chip Antenna Focal Zone[cite: 2, 3]
+│                     │   HOLD TOP   │                     │     • Secondary QR Code to the side
+│                     │   OF PHONE   │                     │       for older non-NFC phones[cite: 2]
+│                     │  HERE TO TAP │                     │
+│                     ╰──────────────╯                     │
+│                                                          │
+├──────────────────────────────────────────────────────────┤
+│  No App Required • tapgreetings.com/c/birthday-01        │ ◄── Tier 4: Zero-Friction URL & Engine
+│  POWERED BY TAP THINGY                                   │    [cite: 1, 2, 3]
+└──────────────────────────────────────────────────────────┘
+Universal 8.0-Second Video Greeting Structure
+To maintain visual impact across all greetings while automating batch rendering in After Effects or AI video generators, every video utilizes this timing sequence:
+
+Plaintext
+[ 0:00 - 0:02.5 ] ──────► [ 0:02.5 - 0:05.5 ] ─────► [ 0:05.5 - 0:07.0 ] ─────► [ 0:07.0 - 0:08.0 ]
+ Ambient Awakening         Focal Action & Audio       Climax & Kinetic Pop      Linger & Loop Hold
+ (Scene breathes, props    (Spoken greeting line;     (Spoken punchline; bold   (Particles shimmer,
+  float, steam/snow moves)  pie steams, ribbons sway)  text pops at 115% scale)  loop settles)
+Ambient Awakening (0:00–0:02.5s): The high-resolution 2D card art begins subtle movement (sine-wave float on props, soft particle shimmer, lighting flares).
+
+Focal Action & Spoken Greeting (0:02.5–0:05.5s): The core seasonal motif performs its primary movement (cupcakes sparkle, wreaths glow, tea steams), while warm voiceover audio delivers the opening personal line.
+
+Climax & Kinetic Text Pop (0:05.5–0:07.0s): Directly in sync with the spoken sign-off line, bold kinetic typography (HAPPY BIRTHDAY!, MERRY CHRISTMAS!) springs onto the screen with an elastic bounce (0% to 115% to 100%) accompanied by a chime/sparkle sound effect.
+
+Linger & Loop Hold (0:07.0–0:08.0s): Floating accents settle into a loop-ready resting pose, displaying the clean URL slug on the bottom frame.
+
+Would you like to expand this data sheet to include additional specific occasions (such as Father's Day, Valentine's, or Anniversaries), or begin drafting the physical card back artwork layout in Illustrator?
+
+Want to stick with the current season so far in November December... With the best sellings right now... I will be using flow so if you can give me some instructionals for the agent there as well... These will need categories and tags!! And I will eventually need instructionals for the other agent that's going to create
+
+The November–December holiday corridor generates peak annual greeting volume. Focusing the Tap Greetings catalog on proven Q4 seasonal anchors captures high-intent Thanksgiving hosts, early holiday gifters, Black Friday shoppers, and last-minute stocking-stuffer buyers.
+
+Part 1: Top-Selling November & December Catalog Architecture
+To prevent shopper confusion and streamline manufacturing, the collection is structured into 4 Core Seasonal Categories, each equipped with verified Etsy/Shopify search tags, front titles, and production IDs:
+
+Product ID	Card Occasion & Front Title	Primary Category	Sub-Category	Audience & Buyer Intent	Core Search Tags (Etsy / Shopify / Social)
+TG-NOV-01	HAPPY THANKSGIVING	Seasonal Harvest	Family & Host Gifting	Thanksgiving dinner hosts, distant family members	thanksgiving card, smart thanksgiving tag, hostess gift idea, autumn keepsake, dinner table favor
+TG-NOV-02	SO GRATEFUL FOR YOU	Seasonal Harvest	Friendsgiving & Gratitude	Best friends, teachers, coworkers, support system	friendsgiving card, gratitude gift, thankful for you, coworker holiday thank you, fall friendship gift
+TG-DEC-01	MERRY CHRISTMAS	Winter Holidays	Traditional Festive	
+Family, kids, stocking stuffers, Secret Santa
+
+smart christmas card, nfc holiday card, stocking stuffer 2026, interactive santa greeting, keepsake xmas gift
+
+TG-DEC-02	HAPPY HOLIDAYS	Winter Holidays	Universal Seasonal	Corporate clients, neighbors, diverse friend groups	happy holidays card, inclusive winter greeting, corporate holiday gift tag, modern festive card, winter solstice
+TG-DEC-03	WARM WINTER WISHES	Winter Holidays	Cozy Cocoa & Comfort	Extended season (sells through Jan/Feb), pen pals	cozy winter card, hot cocoa gift tag, winter aesthetic stationery, warm wishes card, hygge gift idea
+TG-DEC-04	HAPPY NEW YEAR!	New Year & Countdown	Toast & Celebration	
+Party hosts, friends, midnight countdown gifts
+
+new years eve card, happy new year 2027, champagne toast greeting, party favor tag, midnight countdown keepsake
+
+TG-Q4-01	WINTER BIRTHDAY	Evergreen Q4 Staples	Birthday Milestones	November/December birthdays overshadowed by holidays	november birthday card, december birthday gift, winter birthday keepsake, snowflake birthday tag, smart birthday card
+TG-Q4-02	WARM HUGS / THINKING OF YOU	Evergreen Q4 Staples	Comfort & Empathy	Distant relatives, seasonal loneliness, grief support	thinking of you winter, sending warm hugs, holiday grief card, long distance seasonal gift, cozy care package tag
+TG-Q4-03	GET WELL SOON	Evergreen Q4 Staples	Care & Recovery	Flu season recovery, hospital care packages	winter get well card, cozy recovery gift tag, comfort care package, healing tea gift, feel better soon
+TG-Q4-04	THANK YOU SO MUCH	Evergreen Q4 Staples	Appreciation & Year-End	Holiday tips, service workers, teachers, bosses	holiday thank you card, year end teacher gift, client appreciation tag, generous host thank you, smart thank you card
+Part 2: Directive & Instructions for Agent 1 (The Flow Image Agent)
+Paste this directive into your Flow image generation workspace to lock in style consistency, aspect ratios, clean composition, and automated tag generation:
+
+Plaintext
+You are the Lead Art Director and Vector Illustrator for the "Tap Greetings: November & December Holiday Collection."
+
+PROJECT OBJECTIVE:
+Generate clean, isolated, high-resolution spot character and focal asset illustrations for physical NFC smart cards (CR80 standard 2.125" x 3.375" with 0.125" bleed margins). Artwork must be completely clean for 1-click background removal or vector compositing in Adobe Illustrator.
+
+CRITICAL VISUAL CONSTRAINTS:
+1. NO EMBEDDED TEXT OR BORDERS: Never generate letters, words, greeting titles, numbers, card frames, cut-off borders, or UI elements. All text is overlaid live in InDesign/Illustrator.
+2. FRAMING & BREATHING ROOM: Center the focal subject with generous outer margins. Never clip hats, steam wisps, ribbon tails, or held props against the canvas boundaries.
+3. ART STYLE: Flat 2D vector graphic design with soft dimensional highlights, bold clean charcoal outlines (#2B2B2B), and cozy storybook-meets-editorial charm. No dark horror, no 3D photorealism, no fuzzy hyper-textures.
+4. ASPECT RATIO: Always lock output to "--ar 1:1" (for modular center spot art) or "--ar 2:3" (for vertical framed card placement).
+
+SEASONAL PALETTES & COLOR TOKENS:
+- Thanksgiving / Gratitude: Warm Buttercream (#FFFDD0), Spiced Pumpkin (#D35400), Amber Maple (#C0392B), Forest Olive (#4A5D4E), Antique Gold (#E0B042).
+- Winter / Christmas: Candy Cane Red (#C0392B), Frosted Sage (#A8C3A0), Warm Cream (#FFFDD0), Metallic Champagne (#E0B042), Powder Ice Blue (#D4F1F4).
+- New Year's Eve: Midnight Obsidian (#1A1A1A), Rose Gold (#B76E79), Metallic Gold (#E0B042), Star White (#FFFFFF).
+- Cozy / Evergreen: Blush Pink (#FFD1DC), Cashmere Gray (#BDC3C7), Soft Lilac (#E6E6FA), Warm Honey (#E67E22).
+
+MANDATORY NEGATIVE PROMPT BLOCK (--no):
+--no text, typography, letters, fonts, words, signature, watermark, frames, card borders, banners, plastic edges, 3D CGI render, photorealism, hyper-realistic fur, dark horror, muddy shadows, cluttered backgrounds
+
+OUTPUT FORMAT PER PROMPT RUN:
+For each card requested, provide:
+1. Card ID & Front Display Title
+2. Primary Category & Sub-Category
+3. Target Audience & Intent
+4. Standard E-Commerce Tags (Comma-separated list of 10-12 tags)
+5. Midjourney / Flow Image Prompt (Including exact token anchors and aspect ratio)
+6. Suggested Hex Color Accent (For the physical border plaque in Illustrator)
+Example Output from Agent 1 (For TG-DEC-01):
+Card ID: TG-DEC-01
+
+Front Title: MERRY CHRISTMAS
+
+Category: Winter Holidays | Sub-Category: Traditional Festive
+
+Audience: Family, kids, stocking-stuffer buyers, Secret Santa
+
+Tags: smart christmas card, nfc holiday card, stocking stuffer 2026, interactive xmas gift, reusable holiday card, santa greeting card, kids christmas keepsake, cozy holiday stationery
+
+Accent Hex: #C0392B (Candy Cane Red)
+
+Flow Image Prompt:
+
+Vector holiday spot illustration, cheerful chibi gingerbread baker with frosted icing scarf and warm smiling eyes, holding an oversized mug of hot cocoa topped with marshmallows and a peppermint swirl stick, background soft cream with subtle floating gold starbursts and pine needle accents, flat 2D graphic design, clean bold charcoal line work, soft editorial shading, centered composition, generous negative space around margins --ar 1:1 --no text, words, typography, letters, card frame, borders, 3d render, photorealism, clutter
+
+Part 3: Directive & Instructions for Agent 2 (The Motion & Video Agent)
+Paste this directive into your video generation or motion automation agent (After Effects, Runway, Luma, Veo, or ComfyUI pipeline) to create the mobile greeting video that plays when the card is tapped:
+
+Plaintext
+You are the Motion Director and Interactive Scriptwriter for the "Tap Greetings: November & December Video Greeting Engine."
+
+PROJECT OBJECTIVE:
+Transform the approved 2D card illustration and greeting metadata into a mobile-first 9:16 vertical video animation (1080x1920, 30fps, exactly 8.0 seconds) that plays instantly when an NFC card is tapped against a smartphone.
+
+STANDARD 3-BEAT MOTION FORMULA (8.0 SECONDS TOTAL):
+- Beat 1: Ambient Awakening (0:00 - 0:02.5s)
+  The static card art smoothly comes to life. Gentle 2D vector breathing, subtle sine-wave hovering, warm lighting glow, steam curls rising, or soft snow flurries drifting.
+- Beat 2: Focal Action & Voice Greeting (0:02.5 - 0:05.5s)
+  The character or main object performs its signature action (raises mug for a toast, winks, unwraps a bow, pie steams). High-fidelity voiceover delivers the primary conversational greeting line.
+- Beat 3: Climax, Kinetic Text Pop & Loop Settle (0:05.5 - 0:08.0s)
+  Bold kinetic 2D typography pops onto screen with an elastic bounce (e.g., "MERRY CHRISTMAS!" or "HAPPY THANKSGIVING!"), timed to a sparkling chime or celebratory sound effect. Ambient particles loop seamlessly.
+
+VIDEO TECHNICAL CONSTRAINTS:
+- Format: 1080 x 1920 (9:16 vertical mobile portrait).
+- Length: 8.0 seconds (locked for batch web optimization and sub-second buffering)[cite: 2, 3].
+- Quality: Crisp 2D animation matching the vector card art. Zero morphing, zero body warping, zero facial distortion[cite: 3].
+- Audio Track: Mastered stereo mix containing (1) Background seasonal music bed (ducked under voice), (2) Warm, clear voiceover line, and (3) Climax sound effect at 5.5s.
+
+OUTPUT FORMAT PER VIDEO RUN:
+For each card requested, provide:
+1. Video Asset Slug (e.g., `TG_DEC_01_MerryChristmas.mp4`)
+2. Motion Prompt (For AI video generators or After Effects script expressions)
+3. Spoken Voiceover Script (Exact words and vocal tone direction)
+4. Audio FX Cues (Specific sound design markers with timestamps)
+5. Kinetic Screen Text & Pop Timestamp (Timestamp, text content, color hex)
+6. Dynamic Destination URL (e.g., `https://tapgreetings.com/c/christmas-01`)
+Example Output from Agent 2 (For TG-DEC-01):
+Video Asset Slug: TG_DEC_01_MerryChristmas.mp4
+
+Motion Prompt:
+
+Animate this 2D holiday vector illustration. The chibi gingerbread baker gently sways and blinks with smiling eyes. The mug of hot cocoa releases soft swirling steam puffs while marshmallows bob gently. At 0:03, the character raises the mug forward in a celebratory toast as gold fairy-light sparkles flutter across the screen. At 0:05.5, confetti burst and snow sparkles drift downward. Maintain crisp 2D line work with zero warping or morphing. 9:16 vertical, 8.0 seconds seamless loop.[cite: 2, 3]
+
+Voiceover Script:
+
+"May your holidays be warm, cozy, and filled with sweet memories. Merry Christmas to you and yours!" (Warm, cheerful, friendly tone)
+
+Audio FX Cues:
+
+0:00 - 0:08: Soft acoustic holiday guitar with gentle sleigh-bell shaker.
+
+0:03.0: Gentle ceramic cup clink sound.
+
+0:05.5: Magic glockenspiel sparkle chime.
+
+Kinetic Screen Text:
+
+Time: 0:05.5s
+
+Copy: MERRY CHRISTMAS!
+
+Styling: Bold cream serif text with candy-cane red drop shadow, bouncing from 0% to 110% to 100% scale.
+
+Dynamic Redirect URL: [https://tapgreetings.com/c/christmas-01](https://tapgreetings.com/c/christmas-01)
+
+Part 4: Production Workflow & Next Steps
+┌────────────────────────────────────────────────────────┐
+│ 1. DATA SHEET & METADATA LOCK                          │
+│    Assign product IDs, titles, categories, and tags.   │
+└───────────────────────────┬────────────────────────────┘
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│ 2. AGENT 1 (FLOW IMAGE GENERATION)                     │
+│    Run image prompts to batch-generate clean 1:1 spot  │
+│    art PNGs with zero embedded text[cite: 3].                │
+└───────────────────────────┬────────────────────────────┘
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│ 3. AGENT 2 (VIDEO & MOTION CREATION)                   │
+│    Ingest 2D spot art + voiceover scripts into 8-sec   │
+│    vertical MP4s (Wake ➔ Toast ➔ Text Pop)[cite: 2, 3].       │
+└───────────────────────────┬────────────────────────────┘
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│ 4. INDESIGN MERGE & HARDWARE ENCODING                  │
+│    Auto-merge art into CR80 cards with instructional   │
+│    backs; encode chips to dynamic slugs[cite: 2, 5, 13].         │
+└────────────────────────────────────────────────────────┘
+Would you like to generate the complete batch prompt sheet for the first 5 November cards (Thanksgiving, Friendsgiving, and early Winter) so you can run Agent 1 in Flow immediately?
+
+Somewhat like that but I need the titles of what the card says and what the top content leads to says and what it is accompanied by the video
+
+This master data sheet defines the complete three-tier interaction loop for each greeting: what the physical card says, what the digital landing page displays when tapped, and what plays in the accompanied video.
+
+Master Data Sheet: The Complete Greeting Matrix
+Card ID & Occasion	
+Physical Card Front & Back Copy (What the Card Says)
+
+Digital Landing Page ("What the Tap Content Says")
+
+Accompanied Video Greeting (What Plays with It)
+
+TG-01
+
+
+Happy Thanksgiving
+
+Front Header: GATHER WITH GRATITUDE
+
+
+Main Title: HAPPY THANKSGIVING
+
+
+Front Subtext: TAP GREETINGS • SMART EDITION
+
+
+Back Header: HOW TO PLAY YOUR GREETING
+
+
+Back Copy: 1. Unlock phone & tap here
+
+
+2. Watch your living video message
+
+
+3. Save or reprogram card anytime
+
+Page Slug: /c/thanksgiving
+
+
+Top Banner: A Thanksgiving Greeting Just for You
+
+
+Hero Heading: Warmest Wishes From Our Table to Yours
+
+
+Message Body: "May your day be filled with warm hearths, full plates, and grateful hearts."
+
+
+Action Buttons: [ ▶ Play Greeting ] • [ Save Video ] • [ Reprogram Card ]
+
+Visual Motion: A freshly baked pumpkin pie steams softly on a rustic wood board as amber maple leaves swirl in a gentle 2D loop.
+
+
+Voiceover: "Wishing you a bountiful feast, full hearts, and a wonderful Thanksgiving surrounded by love."
+
+
+Kinetic Screen Pop (5.8s): HAPPY THANKSGIVING!
+
+
+Audio SFX: Crackling wood fire, leaf rustle, warm acoustic guitar.
+
+TG-02
+
+
+So Grateful For You
+
+Front Header: FROM THE HEART
+
+
+Main Title: SO GRATEFUL FOR YOU
+
+
+Front Subtext: TAP GREETINGS • SMART EDITION
+
+
+Back Header: HOW TO PLAY YOUR GREETING
+
+
+Back Copy: 1. Unlock phone & tap here
+
+
+2. Watch your living video message
+
+
+3. Save or reprogram card anytime
+
+Page Slug: /c/grateful
+
+
+Top Banner: A Special Note of Appreciation
+
+
+Hero Heading: Thankful for Everything You Are
+
+
+Message Body: "Taking a moment this season to celebrate the positive difference you make in my life."
+
+
+Action Buttons: [ ▶ Play Greeting ] • [ Save Video ] • [ Reprogram Card ]
+
+Visual Motion: A blooming bundle of autumn eucalyptus and golden wheat ties itself with a velvet ribbon, releasing golden star dust.
+
+
+Voiceover: "I just wanted to take a moment to say how truly thankful I am to have you in my life. Thank you for being you."
+
+
+Kinetic Screen Pop (5.8s): SO GRATEFUL FOR YOU!
+
+
+Audio SFX: Gentle wind chime flutter, soft harp arpeggio.
+
+TG-03
+
+
+Merry Christmas
+
+Front Header: PEACE & WARMTH
+
+
+Main Title: MERRY CHRISTMAS
+
+
+Front Subtext: TAP GREETINGS • SMART EDITION
+
+
+Back Header: HOW TO PLAY YOUR GREETING
+
+
+Back Copy: 1. Unlock phone & tap here
+
+
+2. Watch your living video message
+
+
+3. Save or reprogram card anytime
+
+Page Slug: /c/christmas
+
+
+Top Banner: You’ve Received a Christmas Greeting!
+
+
+Hero Heading: Wishing You a Magical Christmas
+
+
+Message Body: "May the magic and peace of the Christmas season wrap your home in joy and light."
+
+
+Action Buttons: [ ▶ Play Greeting ] • [ Save Video ] • [ Reprogram Card ]
+
+Visual Motion: An ornate evergreen wreath tied with a red velvet bow illuminates with blinking fairy lights while gentle snow flurries drift down.
+
+
+Voiceover: "May your holidays be warm, peaceful, and filled with sweet memories. Merry Christmas to you and yours!"
+
+
+Kinetic Screen Pop (5.8s): MERRY CHRISTMAS!
+
+
+Audio SFX: Distant sleigh bells, warm acoustic holiday melody, sparkling chime.
+
+TG-04
+
+
+Happy Holidays
+
+Front Header: SEASON’S GREETINGS
+
+
+Main Title: HAPPY HOLIDAYS
+
+
+Front Subtext: TAP GREETINGS • SMART EDITION
+
+
+Back Header: HOW TO PLAY YOUR GREETING
+
+
+Back Copy: 1. Unlock phone & tap here
+
+
+2. Watch your living video message
+
+
+3. Save or reprogram card anytime
+
+Page Slug: /c/holidays
+
+
+Top Banner: Warm Seasonal Wishes Inside
+
+
+Hero Heading: Bright & Joyful Season’s Greetings
+
+
+Message Body: "Sending you brightest wishes for a peaceful, cozy, and happy holiday season."
+
+
+Action Buttons: [ ▶ Play Greeting ] • [ Save Video ] • [ Reprogram Card ]
+
+Visual Motion: Champagne flutes clink together as effervescent gold bubbles rise and burst into sparkling holiday stars against frosted glass.
+
+
+Voiceover: "Wishing you joy, comfort, and good cheer this season and into the new year. Happy Holidays!"
+
+
+Kinetic Screen Pop (5.8s): HAPPY HOLIDAYS!
+
+
+Audio SFX: Crystal glass clink, orchestral string swell, soft chime.
+
+TG-05
+
+
+Warm Winter Wishes
+
+Front Header: STAY WARM & COZY
+
+
+Main Title: WARM WINTER WISHES
+
+
+Front Subtext: TAP GREETINGS • SMART EDITION
+
+
+Back Header: HOW TO PLAY YOUR GREETING
+
+
+Back Copy: 1. Unlock phone & tap here
+
+
+2. Watch your living video message
+
+
+3. Save or reprogram card anytime
+
+Page Slug: /c/winter-wishes
+
+
+Top Banner: Cozy Winter Greeting Delivered
+
+
+Hero Heading: Sending You Warmth from Afar
+
+
+Message Body: "Grab a blanket and a warm drink. Sending cozy thoughts to brighten these cold winter days."
+
+
+Action Buttons: [ ▶ Play Greeting ] • [ Save Video ] • [ Reprogram Card ]
+
+Visual Motion: An oversized ceramic mug of hot cocoa topped with marshmallows and a cinnamon stick emits swirling steam curls that form soft heart silhouettes.
+
+
+Voiceover: "Sending you the warmest winter hugs, cozy fireside vibes, and sweet comfort today!"
+
+
+Kinetic Screen Pop (5.8s): WARM WINTER WISHES!
+
+
+Audio SFX: Soft ceramic saucer clink, crackling fireplace, lo-fi warm synth chords.
+
+TG-06
+
+
+Happy New Year
+
+Front Header: A NEW CHAPTER BEGINS
+
+
+Main Title: HAPPY NEW YEAR!
+
+
+Front Subtext: TAP GREETINGS • SMART EDITION
+
+
+Back Header: HOW TO PLAY YOUR GREETING
+
+
+Back Copy: 1. Unlock phone & tap here
+
+
+2. Watch your living video message
+
+
+3. Save or reprogram card anytime
+
+Page Slug: /c/new-year
+
+
+Top Banner: Cheers to a Brand New Year!
+
+
+Hero Heading: 365 New Days of Magic & Possibility
+
+
+Message Body: "Raise a glass to new beginnings, unforgettable adventures, and every dream ahead."
+
+
+Action Buttons: [ ▶ Play Greeting ] • [ Save Video ] • [ Reprogram Card ]
+
+Visual Motion: An antique pocket watch strikes midnight as shimmering gold and rose-gold fireworks burst outward across the screen in dynamic radial arcs.
+
+
+Voiceover: "Three, two, one... Cheers to a brand new chapter filled with success, laughter, and endless adventure!"
+
+
+Kinetic Screen Pop (5.5s): HAPPY NEW YEAR!
+
+
+Audio SFX: Clock tick, deep midnight gong, celebration firework boom.
+
+TG-07
+
+
+Happy Birthday
+
+Front Header: A CELEBRATION FOR YOU
+
+
+Main Title: HAPPY BIRTHDAY
+
+
+Front Subtext: TAP GREETINGS • SMART EDITION
+
+
+Back Header: HOW TO PLAY YOUR GREETING
+
+
+Back Copy: 1. Unlock phone & tap here
+
+
+2. Watch your living video message
+
+
+3. Save or reprogram card anytime
+
+Page Slug: /c/birthday
+
+
+Top Banner: It’s Your Special Day!
+
+
+Hero Heading: Celebrating You Today
+
+
+Message Body: "Blow out the candles and make the biggest wish. May this year be your most extraordinary yet!"
+
+
+Action Buttons: [ ▶ Play Greeting ] • [ Save Video ] • [ Reprogram Card ]
+
+Visual Motion: A celebration cupcake with a glowing golden candle flickers as a bundle of pastel party balloons sways and colorful confetti showers down.
+
+
+Voiceover: "Wishing you the happiest birthday filled with big smiles, sweet treats, and everything you love!"
+
+
+Kinetic Screen Pop (5.8s): HAPPY BIRTHDAY!
+
+
+Audio SFX: Party blower flutter, glockenspiel celebration chime, joyful brass horn.
+
+TG-08
+
+
+Get Well Soon
+
+Front Header: SENDING HEALING COMFORT
+
+
+Main Title: GET WELL SOON
+
+
+Front Subtext: TAP GREETINGS • SMART EDITION
+
+
+Back Header: HOW TO PLAY YOUR GREETING
+
+
+Back Copy: 1. Unlock phone & tap here
+
+
+2. Watch your living video message
+
+
+3. Save or reprogram card anytime
+
+Page Slug: /c/get-well
+
+
+Top Banner: Healing Thoughts & Comfort for You
+
+
+Hero Heading: Rest, Recharge, and Feel Better
+
+
+Message Body: "Take all the time you need to rest and mend. Sending you strength and comfort every step of the way."
+
+
+Action Buttons: [ ▶ Play Greeting ] • [ Save Video ] • [ Reprogram Card ]
+
+Visual Motion: A delicate porcelain teacup of herbal chamomile releases soothing steam clouds while fresh lavender and mint sprigs slowly unfurl.
+
+
+Voiceover: "Take it easy, get lots of rest, and know that you are in my thoughts. Wishing you a speedy recovery!"
+
+
+Kinetic Screen Pop (5.8s): FEEL BETTER SOON!
+
+
+Audio SFX: Gentle rain on window, calming acoustic cello drone, soft bell tap.
+
+TG-09
+
+
+Thinking of You
+
+Front Header: ACROSS THE DISTANCE
+
+
+Main Title: THINKING OF YOU
+
+
+Front Subtext: TAP GREETINGS • SMART EDITION
+
+
+Back Header: HOW TO PLAY YOUR GREETING
+
+
+Back Copy: 1. Unlock phone & tap here
+
+
+2. Watch your living video message
+
+
+3. Save or reprogram card anytime
+
+Page Slug: /c/thinking-of-you
+
+
+Top Banner: Just a Little Reminder
+
+
+Hero Heading: You Are on My Mind Today
+
+
+Message Body: "No matter the distance or busy days, you are always close to my heart. Sending love your way."
+
+
+Action Buttons: [ ▶ Play Greeting ] • [ Save Video ] • [ Reprogram Card ]
+
+Visual Motion: A glowing paper lantern floats gently over calm dusk water while warm stars twinkle and soft evening fireflies pulse.
+
+
+Voiceover: "Just wanted to send a little sunshine your way and remind you how much you mean to me. Thinking of you today!"
+
+
+Kinetic Screen Pop (5.8s): THINKING OF YOU!
+
+
+Audio SFX: Calm evening water lap, gentle night crickets, soothing piano melody.
+
+TG-10
+
+
+Thank You So Much
+
+Front Header: WITH DEEP APPRECIATION
+
+
+Main Title: THANK YOU SO MUCH
+
+
+Front Subtext: TAP GREETINGS • SMART EDITION
+
+
+Back Header: HOW TO PLAY YOUR GREETING
+
+
+Back Copy: 1. Unlock phone & tap here
+
+
+2. Watch your living video message
+
+
+3. Save or reprogram card anytime
+
+Page Slug: /c/thank-you
+
+
+Top Banner: A Special Thank You Inside
+
+
+Hero Heading: With Sincere Gratitude
+
+
+Message Body: "Words cannot express how much your kindness and support mean to me. Thank you for everything."
+
+
+Action Buttons: [ ▶ Play Greeting ] • [ Save Video ] • [ Reprogram Card ]
+
+Visual Motion: A hand-tied bouquet of blush garden peonies unfurls as iridescent dew drops glisten and drift upward into warm bokeh particles.
+
+
+Voiceover: "Words cannot express how grateful I am. Thank you so much for your thoughtfulness and kindness!"
+
+
+Kinetic Screen Pop (5.8s): THANK YOU!
+
+
+Audio SFX: Sparkling bell glissando, ambient warm acoustic guitar strum.
+
+Detailed Breakdown: Card Copy vs. Digital Lead vs. Video
+1. TG-01: Happy Thanksgiving
+What the Card Says:
+
+Front Plaque Top: GATHER WITH GRATITUDE
+
+Front Main Title: HAPPY THANKSGIVING
+
+Front Footer: TAP GREETINGS • SMART EDITION
+
+Back Instruction Header: HOW TO PLAY YOUR GREETING
+
+Back Step 1: Unlock your phone and tap the top edge to the circle below
+
+Back Step 2: Tap the notification link to play the animated greeting video
+
+Back Step 3: Save video or reprogram card to your own link at tapgreetings.com
+
+Back Target Label: ✦ HOLD PHONE HERE TO TAP ✦
+
+What the Digital Landing Page Leads To & Says:
+
+URL: [https://tapgreetings.com/c/thanksgiving](https://tapgreetings.com/c/thanksgiving)
+
+Top Eyebrow Pill: ✦ A THANKSGIVING GREETING FOR YOU ✦
+
+Main Heading: Warmest Wishes From Our Table to Yours
+
+Card Note: "May your home be blessed with health, your table with abundance, and your life with lasting joy."
+
+Action Tray: [ Play Living Video ] • [ Download Video MP4 ] • [ Pass It On / Reprogram Card ]
+
+Accompanied Video Greeting (8.0s Total):
+
+0:00–0:02.5s: Steaming pie sits on wood surface; gentle autumn breeze rustles maple leaves.
+
+0:02.5–0:05.5s: Leaves drift into frame as warm voiceover delivers: "Wishing you a bountiful feast, full hearts, and a wonderful Thanksgiving surrounded by love."
+
+0:05.5–0:07.0s: Kinetic typography springs onto screen: HAPPY THANKSGIVING! with a wood-fire pop and acoustic guitar flourish.
+
+0:07.0–0:08.0s: Warm amber glow settles into a seamless loop.
+
+2. TG-03: Merry Christmas
+What the Card Says:
+
+Front Plaque Top: PEACE & WARMTH
+
+Front Main Title: MERRY CHRISTMAS
+
+Front Footer: TAP GREETINGS • SMART EDITION
+
+Back Instruction Header: HOW TO PLAY YOUR GREETING
+
+Back Step 1: Unlock your phone and tap the top edge to the circle below
+
+Back Step 2: Tap the notification link to play the animated greeting video
+
+Back Step 3: Save video or reprogram card to your own link at tapgreetings.com
+
+Back Target Label: ✦ HOLD PHONE HERE TO TAP ✦
+
+What the Digital Landing Page Leads To & Says:
+
+URL: [https://tapgreetings.com/c/christmas](https://tapgreetings.com/c/christmas)
+
+Top Eyebrow Pill: ✦ A CHRISTMAS GREETING FOR YOU ✦
+
+Main Heading: May Your Days Be Merry & Bright
+
+Card Note: "Sending you heartfelt wishes for peace, laughter, and cozy moments by the tree this holiday season."
+
+Action Tray: [ Play Living Video ] • [ Download Video MP4 ] • [ Pass It On / Reprogram Card ]
+
+Accompanied Video Greeting (8.0s Total):
+
+0:00–0:02.5s: Evergreen wreath sways; soft snow flurries fall across the frame.
+
+0:02.5–0:05.5s: Fairy lights sparkle as voiceover delivers: "May your holidays be warm, peaceful, and filled with sweet memories. Merry Christmas to you and yours!"
+
+0:05.5–0:07.0s: Kinetic typography pops with elastic bounce: MERRY CHRISTMAS! synchronized to sleigh bell chimes.
+
+0:07.0–0:08.0s: Golden bokeh flakes twinkle into a resting loop.
+
+3. TG-07: Happy Birthday
+What the Card Says:
+
+Front Plaque Top: A CELEBRATION FOR YOU
+
+Front Main Title: HAPPY BIRTHDAY
+
+Front Footer: TAP GREETINGS • SMART EDITION
+
+Back Instruction Header: HOW TO PLAY YOUR GREETING
+
+Back Step 1: Unlock your phone and tap the top edge to the circle below
+
+Back Step 2: Tap the notification link to play the animated greeting video
+
+Back Step 3: Save video or reprogram card to your own link at tapgreetings.com
+
+Back Target Label: ✦ HOLD PHONE HERE TO TAP ✦
+
+What the Digital Landing Page Leads To & Says:
+
+URL: [https://tapgreetings.com/c/birthday](https://tapgreetings.com/c/birthday)
+
+Top Eyebrow Pill: ✦ IT’S TIME TO CELEBRATE! ✦
+
+Main Heading: Happy Birthday to an Amazing Person!
+
+Card Note: "Here’s to another year of great memories, exciting adventures, and big dreams coming true!"
+
+Action Tray: [ Play Living Video ] • [ Download Video MP4 ] • [ Pass It On / Reprogram Card ]
+
+Accompanied Video Greeting (8.0s Total):
+
+0:00–0:02.5s: Celebration cupcake candle flame dances warmly; party balloons bob.
+
+0:02.5–0:05.5s: Voiceover speaks: "Wishing you the happiest birthday filled with big smiles, sweet treats, and everything you love!"
+
+0:05.5–0:07.0s: Multi-colored confetti burst explodes; kinetic typography scales up: HAPPY BIRTHDAY! with a party horn and bright bell chime.
+
+0:07.0–0:08.0s: Confetti gently settles into place.
+
+4. TG-08: Get Well Soon
+What the Card Says:
+
+Front Plaque Top: SENDING HEALING COMFORT
+
+Front Main Title: GET WELL SOON
+
+Front Footer: TAP GREETINGS • SMART EDITION
+
+Back Instruction Header: HOW TO PLAY YOUR GREETING
+
+Back Step 1: Unlock your phone and tap the top edge to the circle below
+
+Back Step 2: Tap the notification link to play the animated greeting video
+
+Back Step 3: Save video or reprogram card to your own link at tapgreetings.com
+
+Back Target Label: ✦ HOLD PHONE HERE TO TAP ✦
+
+What the Digital Landing Page Leads To & Says:
+
+URL: [https://tapgreetings.com/c/get-well](https://tapgreetings.com/c/get-well)
+
+Top Eyebrow Pill: ✦ COMFORT & HEALING WISHES ✦
+
+Main Heading: Take Good Care of Yourself
+
+Card Note: "Rest your mind and body. We are all sending you healing energy and looking forward to seeing you back on your feet."
+
+Action Tray: [ Play Living Video ] • [ Download Video MP4 ] • [ Pass It On / Reprogram Card ]
+
+Accompanied Video Greeting (8.0s Total):
+
+0:00–0:02.5s: Herbal teacup releases delicate heart-shaped steam wisps; soft rain taps in background.
+
+0:02.5–0:05.5s: Voiceover delivers gently: "Take it easy, get lots of rest, and know that you are in my thoughts. Wishing you a speedy recovery!"
+
+0:05.5–0:07.0s: Soothing gold typography fades up softly: FEEL BETTER SOON! paired with a warm chime tone.
+
+0:07.0–0:08.0s: Steam curls drift upward into a quiet loop.
+
+CSV Format for InDesign & Flow Automation
+Code snippet
+card_id,card_front_header,card_front_title,card_front_subtext,card_back_header,card_back_step1,card_back_step2,card_back_step3,page_slug,page_top_banner,page_hero_heading,page_message_body,video_motion_summary,video_voiceover_script,video_kinetic_pop_text,video_pop_timestamp
+TG-01,GATHER WITH GRATITUDE,HAPPY THANKSGIVING,TAP GREETINGS • SMART EDITION,HOW TO PLAY YOUR GREETING,Unlock phone & tap here,Watch living video message,Save or reprogram card anytime,/c/thanksgiving,A Thanksgiving Greeting Just for You,Warmest Wishes From Our Table to Yours,"May your day be filled with warm hearths, full plates, and grateful hearts.","Steaming pumpkin pie on wood board with swirling amber leaves.","Wishing you a bountiful feast, full hearts, and a wonderful Thanksgiving surrounded by love.",HAPPY THANKSGIVING!,5.8
+TG-02,FROM THE HEART,SO GRATEFUL FOR YOU,TAP GREETINGS • SMART EDITION,HOW TO PLAY YOUR GREETING,Unlock phone & tap here,Watch living video message,Save or reprogram card anytime,/c/grateful,A Special Note of Appreciation,Thankful for Everything You Are,"Taking a moment this season to celebrate the positive difference you make in my life.","Bouquet of autumn wheat and eucalyptus ties with velvet ribbon.","I just wanted to take a moment to say how truly thankful I am to have you in my life. Thank you for being you.",SO GRATEFUL FOR YOU!,5.8
+TG-03,PEACE & WARMTH,MERRY CHRISTMAS,TAP GREETINGS • SMART EDITION,HOW TO PLAY YOUR GREETING,Unlock phone & tap here,Watch living video message,Save or reprogram card anytime,/c/christmas,You’ve Received a Christmas Greeting!,Wishing You a Magical Christmas,"May the magic and peace of the Christmas season wrap your home in joy and light.","Evergreen wreath with red bow illuminates fairy lights amid snowfall.","May your holidays be warm, peaceful, and filled with sweet memories. Merry Christmas to you and yours!",MERRY CHRISTMAS!,5.8
+TG-04,SEASON’S GREETINGS,HAPPY HOLIDAYS,TAP GREETINGS • SMART EDITION,HOW TO PLAY YOUR GREETING,Unlock phone & tap here,Watch living video message,Save or reprogram card anytime,/c/holidays,Warm Seasonal Wishes Inside,Bright & Joyful Season’s Greetings,"Sending you brightest wishes for a peaceful, cozy, and happy holiday season.","Champagne flutes clink with effervescent gold bubbles turning into stars.","Wishing you joy, comfort, and good cheer this season and into the new year. Happy Holidays!",HAPPY HOLIDAYS!,5.8
+TG-05,STAY WARM & COZY,WARM WINTER WISHES,TAP GREETINGS • SMART EDITION,HOW TO PLAY YOUR GREETING,Unlock phone & tap here,Watch living video message,Save or reprogram card anytime,/c/winter-wishes,Cozy Winter Greeting Delivered,Sending You Warmth from Afar,"Grab a blanket and a warm drink. Sending cozy thoughts to brighten these cold winter days.","Ceramic mug of cocoa with marshmallows emits steam in heart shapes.","Sending you the warmest winter hugs, cozy fireside vibes, and sweet comfort today!",WARM WINTER WISHES!,5.8
+TG-06,A NEW CHAPTER BEGINS,HAPPY NEW YEAR!,TAP GREETINGS • SMART EDITION,HOW TO PLAY YOUR GREETING,Unlock phone & tap here,Watch living video message,Save or reprogram card anytime,/c/new-year,Cheers to a Brand New Year!,365 New Days of Magic & Possibility,"Raise a glass to new beginnings, unforgettable adventures, and every dream ahead.","Pocket watch strikes midnight as gold fireworks burst in radial arcs.","Three, two, one... Cheers to a brand new chapter filled with success, laughter, and endless adventure!",HAPPY NEW YEAR!,5.5
+TG-07,A CELEBRATION FOR YOU,HAPPY BIRTHDAY,TAP GREETINGS • SMART EDITION,HOW TO PLAY YOUR GREETING,Unlock phone & tap here,Watch living video message,Save or reprogram card anytime,/c/birthday,It’s Your Special Day!,Happy Birthday to an Amazing Person!,"Blow out the candles and make the biggest wish. May this year be your most extraordinary yet!","Cupcake candle flickers warmly as pastel balloons sway and confetti bursts.","Wishing you the happiest birthday filled with big smiles, sweet treats, and everything you love!",HAPPY BIRTHDAY!,5.8
+TG-08,SENDING HEALING COMFORT,GET WELL SOON,TAP GREETINGS • SMART EDITION,HOW TO PLAY YOUR GREETING,Unlock phone & tap here,Watch living video message,Save or reprogram card anytime,/c/get-well,Healing Thoughts & Comfort for You,Take Good Care of Yourself,"Take all the time you need to rest and mend. Sending you strength and comfort every step of the way.","Porcelain teacup emits soothing chamomile steam while lavender sprigs bloom.","Take it easy, get lots of rest, and know that you are in my thoughts. Wishing you a speedy recovery!",FEEL BETTER SOON!,5.8
+TG-09,ACROSS THE DISTANCE,THINKING OF YOU,TAP GREETINGS • SMART EDITION,HOW TO PLAY YOUR GREETING,Unlock phone & tap here,Watch living video message,Save or reprogram card anytime,/c/thinking-of-you,Just a Little Reminder,You Are on My Mind Today,"No matter the distance or busy days, you are always close to my heart. Sending love your way.","Glowing paper lantern floats over calm water under twinkling stars.","Just wanted to send a little sunshine your way and remind you how much you mean to me. Thinking of you today!",THINKING OF YOU!,5.8
+TG-10,WITH DEEP APPRECIATION,THANK YOU SO MUCH,TAP GREETINGS • SMART EDITION,HOW TO PLAY YOUR GREETING,Unlock phone & tap here,Watch living video message,Save or reprogram card anytime,/c/thank-you,A Special Thank You Inside,With Sincere Gratitude,"Words cannot express how much your kindness and support mean to me. Thank you for everything.","Bouquet of blush peonies blooms with glistening morning dew bokeh.","Words cannot express how grateful I am. Thank you so much for your thoughtfulness and kindness!",THANK YOU!,5.8
+Would you like to export this CSV directly into a Google Sheet or begin generating the exact Flow prompts for the first batch of visual assets?
+
+That's good I'm wondering about the CSS of the web page contacts that's generated and if it matches
+
+The existing Pink-O-Ween CSS layout provides the foundation for the mobile 9:16 video stage and 3D gyroscope tilt, but the content chassis, theme tokens, and metadata classes currently do not match the Tap Greetings data structure.
+
+Pink-O-Ween was styled for a 31-day gamified card collection with stats, creature classes, and digital binder slots, whereas Tap Greetings requires a warm, personal greeting card presentation with a message body, video playback controls, and card-reprogramming actions.
+
+Audit: Existing CSS vs. Tap Greetings Requirements
+Element	
+Existing Pink-O-Ween CSS
+
+Tap Greetings Requirement
+
+Status
+Stage & Aspect Ratio	
+.viewport-chassis with aspect-ratio: 9 / 16 and 3D perspective
+
+Same 9:16 vertical video container for mobile screens
+
+Direct Match
+Motion & Audio Sync	
+@keyframes elasticPop for text pop at specified video timestamp
+
+Same kinetic pop for phrases like HAPPY BIRTHDAY! and MERRY CHRISTMAS!
+
+Direct Match
+Theme Tokens (:root)	
+Coquette pastel pinks (#FF85A2, #FFD1DC) and obsidian dark mode
+
+Seasonal palettes (Thanksgiving harvest, Christmas red/gold, festive neutrals)
+
+Mismatch
+Header Plaque	
+OCTOBER XX OF 31 with PINK-O-WEEN.COM
+
+Top banner pill (e.g., ✦ A CHRISTMAS GREETING FOR YOU ✦)
+
+Mismatch
+Content Card Chassis	
+.spec-matrix with 4 boxes (Spook, Sweet, Class, Origin)
+
+Clean reading layout: Hero Heading, Warm Message Body, Gifter Note
+
+Mismatch
+Clue / Mystery Box	
+.manor-clue-box for hidden eye riddles
+
+Replaced by card keepsake/reprogramming instructions
+
+Mismatch
+Bottom Grid	
+31-slot collectible gaming binder
+
+Replaced by action tray: Play Video, Save Video, Reprogram Card
+
+Mismatch
+Modern Tap Greetings CSS Architecture
+This updated CSS stylesheet strips out gaming/lore styles and replaces them with an occasion-based theming engine and reading chassis:
+
+CSS
+/* ==========================================================================
+   1. MASTER TOKENS & SEASONAL THEME CLASSES
+   ========================================================================== */
+:root {
+  /* Default Neutral / Gold Luxury Baseline */
+  --bg-main: #FAF8F5;
+  --card-surface: #FFFFFF;
+  --card-subtle: #F4EFEB;
+  --border-trim: #E8DFD8;
+  --border-gold: #C5A059;
+  --accent-primary: #8C2D19;
+  --accent-secondary: #E0B042;
+  --text-main: #2A2523;
+  --text-muted: #736B66;
+  --card-shadow: 0 16px 40px rgba(42, 37, 35, 0.08);
+  --holo-gradient: linear-gradient(
+    135deg,
+    rgba(224, 176, 66, 0.3) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(197, 160, 89, 0.3) 100%
+  );
+}
+
+/* Occasion Theme: Thanksgiving & Autumn Harvest */
+.theme-thanksgiving {
+  --bg-main: #FAF5F0;
+  --border-gold: #C07D3E;
+  --border-trim: #EADBC8;
+  --accent-primary: #A44A28;
+  --card-subtle: #F5EBE1;
+}
+
+/* Occasion Theme: Christmas & Holiday Festive */
+.theme-christmas {
+  --bg-main: #F6F8F6;
+  --border-gold: #D4AF37;
+  --border-trim: #DCE5DC;
+  --accent-primary: #9E2A2B;
+  --card-subtle: #EBF0EB;
+}
+
+/* Occasion Theme: Birthday & Celebration */
+.theme-birthday {
+  --bg-main: #FFFBF5;
+  --border-gold: #E5A93C;
+  --border-trim: #FDEED9;
+  --accent-primary: #E76F51;
+  --card-subtle: #FFF4E6;
+}
+
+/* Occasion Theme: Get Well Soon & Care */
+.theme-getwell {
+  --bg-main: #F5F9F8;
+  --border-gold: #76A093;
+  --border-trim: #DCEBE6;
+  --accent-primary: #3B6E60;
+  --card-subtle: #EAF3F0;
+}
+
+/* ==========================================================================
+   2. 3D GYRO VIDEO STAGE (Matches Pink-O-Ween Mechanics)
+   ========================================================================== */
+.viewport-chassis {
+  perspective: 1100px;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.card-3d-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border-radius: 24px;
+  background: #000000;
+  border: 2px solid var(--border-gold);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+  cursor: pointer;
+}
+
+.card-3d-stage::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid var(--border-gold);
+  border-radius: 18px;
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0.75;
+}
+
+.holo-foil-sheen {
+  position: absolute;
+  inset: 0;
+  background: var(--holo-gradient);
+  mix-blend-mode: overlay;
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.stage-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Sound Indicator Pill */
+.sound-pill {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(0, 0, 0, 0.65);
+  color: #FFFFFF;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 5;
+  backdrop-filter: blur(4px);
+}
+
+/* Audio-Synced Kinetic Text Pop */
+.kinetic-text-popup {
+  position: absolute;
+  bottom: 28px;
+  left: 12px;
+  right: 12px;
+  margin: auto;
+  text-align: center;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: #FFFDF8;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.85);
+  z-index: 6;
+  opacity: 0;
+  transform: scale(0.4) rotate(-3deg);
+  pointer-events: none;
+}
+
+.kinetic-text-popup.active {
+  animation: elasticPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes elasticPop {
+  0% { transform: scale(0.4) rotate(-3deg); opacity: 0; }
+  70% { transform: scale(1.12) rotate(1deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* ==========================================================================
+   3. GREETING CONTENT CHASSIS (Replaces Game Lore & Stats)
+   ========================================================================== */
+.greeting-chassis {
+  width: 100%;
+  max-width: 360px;
+  margin-top: 18px;
+  background: var(--card-surface);
+  border: 1px solid var(--border-trim);
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Eyebrow Pill */
+.eyebrow-pill {
+  align-self: flex-start;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  background: var(--card-subtle);
+  border: 1px solid var(--border-trim);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+/* Hero Heading */
+.hero-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.45rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--text-main);
+}
+
+/* Warm Card Message Body */
+.message-body {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  border-left: 2px solid var(--border-gold);
+  padding-left: 14px;
+  margin: 4px 0 8px;
+}
+
+/* ==========================================================================
+   4. INTERACTIVE ACTION TRAY & REPURPOSE CALLOUT
+   ========================================================================== */
+.action-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-primary {
+  width: 100%;
+  background: var(--accent-primary);
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: transform 0.15s ease, opacity 0.2s;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-dual-row {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-secondary {
+  flex: 1;
+  background: var(--card-subtle);
+  border: 1px solid var(--border-trim);
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-decoration: none;
+}
+
+/* Card Repurpose & Keepsake Box */
+.repurpose-card-box {
+  background: var(--card-subtle);
+  border: 1px dashed var(--border-gold);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.repurpose-card-box strong {
+  display: block;
+  color: var(--text-main);
+  font-size: 0.82rem;
+  margin-bottom: 2px;
+}
+
+.repurpose-card-box a {
+  color: var(--accent-primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+Clean HTML Structure for Tap Greetings
+This template renders the exact fields from your master data sheet:
+
+HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Merry Christmas • Tap Greetings</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,700&family=Playfair+Display:ital,wght@0,700;0,900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="theme-christmas">
+
+  <!-- Top Simple Brand Header -->
+  <header style="width: 100%; max-width: 360px; text-align: center; padding: 12px 0 16px;">
+    <span style="font-family: 'Playfair Display', serif; font-weight: 900; letter-spacing: 0.1em; font-size: 0.95rem; color: var(--text-main);">
+      ✦ TAP GREETINGS ✦
+    </span>
+  </header>
+
+  <!-- 3D Gyro Video Stage (Carried over from Pink-O-Ween) -->
+  <main class="viewport-chassis">
+    <div class="card-3d-stage" id="tiltStage">
+      <div class="holo-foil-sheen"></div>
+
+      <div class="sound-pill" id="soundPill">
+        <i class="fa-solid fa-volume-xmark" id="soundIcon"></i>
+        <span id="soundText">Tap to Unmute</span>
+      </div>
+
+      <video id="cardVideo" class="stage-video" autoplay loop muted playsinline preload="auto">
+        <source id="videoSource" src="https://cdn.tapgreetings.com/videos/christmas-01.mp4" type="video/mp4" />
+      </video>
+
+      <!-- Kinetic Pop Synchronized to Audio -->
+      <div class="kinetic-text-popup" id="kineticPopup">
+        MERRY CHRISTMAS!
+      </div>
+    </div>
+  </main>
+
+  <!-- Greeting Content Chassis (Matches Your Master Data Sheet) -->
+  <section class="greeting-chassis">
+    <!-- Top Content Banner Pill -->
+    <span class="eyebrow-pill" id="pageTopBanner">✦ A Christmas Greeting For You ✦</span>
+
+    <!-- Hero Heading -->
+    <h1 class="hero-heading" id="pageHeroHeading">Wishing You a Magical Christmas</h1>
+
+    <!-- Message Body -->
+    <p class="message-body" id="pageMessageBody">
+      "May the magic and peace of the Christmas season wrap your home in joy, laughter, and light."
+    </p>
+
+    <!-- Action Buttons -->
+    <div class="action-stack">
+      <button class="btn-primary" id="replayBtn">
+        <i class="fa-solid fa-play"></i> Replay Video Greeting
+      </button>
+
+      <div class="btn-dual-row">
+        <button class="btn-secondary" id="shareBtn">
+          <i class="fa-solid fa-share-nodes"></i> Share
+        </button>
+        <button class="btn-secondary" id="saveVideoBtn">
+          <i class="fa-solid fa-download"></i> Save Video
+        </button>
+      </div>
+
+      <!-- Reprogramming & Keepsake Explainer -->
+      <div class="repurpose-card-box">
+        <strong>✦ Keep This Smart Card Forever ✦</strong>
+        This physical card can be reprogrammed anytime to share your own photos, link-in-bio, or socials at <a href="https://tapgreetings.com/repurpose">tapgreetings.com/repurpose</a>.
+      </div>
+    </div>
+  </section>
+
+  <!-- Physical Card Hardware Callout -->
+  <footer style="margin: 22px 0 12px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; color: var(--text-muted); text-transform: uppercase; text-align: center;">
+    [ ⟡ TAP WITH PHONE HERE ⟡ ] • Powered by Tap Thingy
+  </footer>
+
+  <script>
+    // Unmute on Stage Tap
+    const video = document.getElementById('cardVideo');
+    const soundPill = document.getElementById('soundPill');
+    const soundIcon = document.getElementById('soundIcon');
+    const soundText = document.getElementById('soundText');
+    const popup = document.getElementById('kineticPopup');
+    let triggered = false;
+
+    // Pop timing (e.g. 5.8s from the data sheet)
+    const POP_TIME_SEC = 5.8;
+
+    video.addEventListener('timeupdate', () => {
+      if (video.currentTime >= POP_TIME_SEC && !triggered) {
+        popup.classList.add('active');
+        triggered = true;
+      }
+      if (video.currentTime < 1.0) {
+        popup.classList.remove('active');
+        triggered = false;
+      }
+    });
+
+    document.getElementById('tiltStage').addEventListener('click', () => {
+      if (video.muted) {
+        video.muted = false;
+        video.currentTime = 0;
+        video.play();
+        soundIcon.className = "fa-solid fa-volume-high";
+        soundText.textContent = "Audio Playing";
+        setTimeout(() => { soundPill.style.display = 'none'; }, 2000);
+      }
+    });
+
+    // Replay Button Action
+    document.getElementById('replayBtn').addEventListener('click', () => {
+      video.muted = false;
+      video.currentTime = 0;
+      video.play();
+      popup.classList.remove('active');
+      triggered = false;
+    });
+
+    // Gyroscope & Mouse Tilt
+    const stage = document.getElementById('tiltStage');
+    const chassis = stage.parentElement;
+    chassis.addEventListener('mousemove', (e) => {
+      const rect = stage.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      stage.style.transform = `rotateY(${x / 14}deg) rotateX(${-y / 14}deg)`;
+    });
+    chassis.addEventListener('mouseleave', () => {
+      stage.style.transform = 'rotateY(0deg) rotateX(0deg)';
+    });
+    if (window.DeviceOrientationEvent) {
+      window.addEventListener('deviceorientation', (e) => {
+        if (!e.gamma || !e.beta) return;
+        const tiltX = Math.min(Math.max(e.gamma / 2, -15), 15);
+        const tiltY = Math.min(Math.max((e.beta - 45) / 2, -15), 15);
+        stage.style.transform = `rotateY(${tiltX}deg) rotateX(${-tiltY}deg)`;
+      });
+    }
+
+    // Save Video Trigger
+    document.getElementById('saveVideoBtn').addEventListener('click', () => {
+      const a = document.createElement('a');
+      a.href = document.getElementById('videoSource').src;
+      a.download = 'TapGreetings_Christmas.mp4';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
+
+    // Native Web Share
+    document.getElementById('shareBtn').addEventListener('click', async () => {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: 'A Christmas Greeting For You',
+            text: 'Watch your living greeting card come to life!',
+            url: window.location.href
+          });
+        } catch (e) {}
+      } else {
+        await navigator.clipboard.writeText(window.location.href);
+        alert('Greeting link copied to clipboard!');
+      }
+    });
+  </script>
+</body>
+</html>
+What I really meant was can a color palette be generated with the cards and greetings generated that have a matching CSS
+
+Every card in the Tap Greetings catalog can be assigned an exact 6-token hex palette that coordinates the physical printed card border/plaque with the mobile digital landing page CSS.
+
+Part 1: Master Color Palette & Swatch Matrix
+Each greeting uses six unified color roles:
+
+Background Ground (--bg-page): The ambient screen backdrop behind the card chassis.
+
+Card Surface (--card-surface): The crisp container surface for text and buttons.
+
+Subtle Tint (--card-tint): Soft contrast background for badge pills and spec containers.
+
+Metallic / Trim (--border-gold): The foil filigree on physical card borders and digital 3D stages.
+
+Primary Accent (--accent-primary): Primary CTAs, active buttons, and kinetic screen text.
+
+Ink / Typography (--text-main): High-legibility deep ink tone for headings and card copy.
+
+Card ID & Occasion	CSS Theme Class	Background Ground (--bg-page)	Surface (--card-surface)	Subtle Tint (--card-tint)	Metallic / Gold (--border-gold)	Primary Accent (--accent-primary)	Text Ink (--text-main)
+TG-01
+
+
+Happy Thanksgiving
+
+.theme-thanksgiving	#FAF5F0 (Warm Porch)	#FFFFFF	#F5EBE1 (Pie Crust)	#C07D3E (Spiced Amber)	#A44A28 (Roast Pumpkin)	#2B231D (Dark Cacao)
+TG-02
+
+
+So Grateful For You
+
+.theme-grateful	#FCF9F2 (Oat Milk)	#FFFFFF	#F6EFE2 (Harvest Wheat)	
+#D4AF37 (Gilded Gold)
+
+#B86B35 (Warm Honey)	#2E2721 (Espresso)
+TG-03
+
+
+Merry Christmas
+
+.theme-christmas	#F7F9F7 (Frosted Pine)	#FFFFFF	#EBF2EB (Winter Sage)	
+#D4AF37 (Gilded Brass)
+
+#9E2A2B (Holly Berry)	#1E2820 (Evergreen Ink)
+TG-04
+
+
+Happy Holidays
+
+.theme-holidays	#F4F8FA (Powder Ice)	#FFFFFF	#E5EFF4 (Glacier Mist)	#C5A059 (Champagne Foil)	#2B6E7F (Deep Solstice)	#1A252C (Midnight Navy)
+TG-05
+
+
+Warm Winter Wishes
+
+.theme-winter-wishes	#FBF7F5 (Steamed Milk)	#FFFFFF	#F4ECE8 (Cashmere)	
+#B76E79 (Rose Gold)
+
+#8C4A32 (Spiced Mocha)	#2C201C (Dark Truffle)
+TG-06
+
+
+Happy New Year
+
+.theme-new-year	
+#16161A (Midnight Obsidian)
+
+#222228 (Dark Slate)
+
+#2C2B35 (Plum Charcoal)	
+#E0B042 (Sparkler Gold)
+
+#FF1493 (Neon Midnight)
+
+#FFF8FA (Starlight White)
+
+TG-07
+
+
+Happy Birthday
+
+.theme-birthday	
+#FFF8FA (Blush Cream)
+
+#FFFFFF	
+#FDEEF2 (Cake Frosting)
+
+#E5A93C (Confetti Gold)	#D84A75 (Party Berry)	
+#2B2B2B (Charcoal Ink)
+
+TG-08
+
+
+Get Well Soon
+
+.theme-get-well	#F5FAF8 (Herbal Mist)	#FFFFFF	#E7F3F0 (Chamomile Tea)	#76A093 (Eucalyptus Green)	#3B7A66 (Restorative Jade)	#1E2B27 (Forest Charcoal)
+TG-09
+
+
+Thinking of You
+
+.theme-thinking-of-you	#F7F6FA (Twilight Dawn)	#FFFFFF	#EFEBF6 (Lavender Dusk)	
+#B76E79 (Rose Gold)
+
+#6D597A (Moody Amethyst)	#241E2B (Night Plum)
+TG-10
+
+
+Thank You So Much
+
+.theme-thank-you	#FAF8F5 (Linen Parchment)	#FFFFFF	#F4EFEA (Silk Cream)	#C5A059 (Gilded Filigree)	#9A5865 (Peony Petal)	#2A2426 (Black Walnut)
+Part 2: Matching CSS Implementation
+This CSS defines the shared stage geometry, interactive 3D gyroscope tilt, and dynamic holiday theme bindings:
+
+CSS
+/* ==========================================================================
+   1. MASTER THEME RULES & OCCASION CLASSES
+   ========================================================================== */
+
+/* 1. Happy Thanksgiving */
+.theme-thanksgiving {
+  --bg-page: #FAF5F0;
+  --card-surface: #FFFFFF;
+  --card-tint: #F5EBE1;
+  --border-gold: #C07D3E;
+  --border-trim: #E8D6C5;
+  --accent-primary: #A44A28;
+  --text-main: #2B231D;
+  --text-muted: #7A6355;
+  --holo-gradient: linear-gradient(135deg, rgba(192, 125, 62, 0.35) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(164, 74, 40, 0.35) 100%);
+}
+
+/* 2. So Grateful For You */
+.theme-grateful {
+  --bg-page: #FCF9F2;
+  --card-surface: #FFFFFF;
+  --card-tint: #F6EFE2;
+  --border-gold: #D4AF37;
+  --border-trim: #EAE0CC;
+  --accent-primary: #B86B35;
+  --text-main: #2E2721;
+  --text-muted: #7A695B;
+  --holo-gradient: linear-gradient(135deg, rgba(212, 175, 55, 0.35) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(184, 107, 53, 0.35) 100%);
+}
+
+/* 3. Merry Christmas */
+.theme-christmas {
+  --bg-page: #F7F9F7;
+  --card-surface: #FFFFFF;
+  --card-tint: #EBF2EB;
+  --border-gold: #D4AF37;
+  --border-trim: #D8E5D8;
+  --accent-primary: #9E2A2B;
+  --text-main: #1E2820;
+  --text-muted: #5F7363;
+  --holo-gradient: linear-gradient(135deg, rgba(158, 42, 43, 0.3) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(212, 175, 55, 0.35) 100%);
+}
+
+/* 4. Happy Holidays */
+.theme-holidays {
+  --bg-page: #F4F8FA;
+  --card-surface: #FFFFFF;
+  --card-tint: #E5EFF4;
+  --border-gold: #C5A059;
+  --border-trim: #D2E3EB;
+  --accent-primary: #2B6E7F;
+  --text-main: #1A252C;
+  --text-muted: #5D727D;
+  --holo-gradient: linear-gradient(135deg, rgba(43, 110, 127, 0.3) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(197, 160, 89, 0.35) 100%);
+}
+
+/* 5. Warm Winter Wishes */
+.theme-winter-wishes {
+  --bg-page: #FBF7F5;
+  --card-surface: #FFFFFF;
+  --card-tint: #F4ECE8;
+  --border-gold: #B76E79;
+  --border-trim: #E7D8D3;
+  --accent-primary: #8C4A32;
+  --text-main: #2C201C;
+  --text-muted: #7A615B;
+  --holo-gradient: linear-gradient(135deg, rgba(183, 110, 121, 0.35) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(140, 74, 50, 0.35) 100%);
+}
+
+/* 6. Happy New Year (Midnight Mode) */
+.theme-new-year {
+  --bg-page: #16161A;
+  --card-surface: #222228;
+  --card-tint: #2C2B35;
+  --border-gold: #E0B042;
+  --border-trim: #444252;
+  --accent-primary: #FF1493;
+  --text-main: #FFF8FA;
+  --text-muted: #B8B3C4;
+  --holo-gradient: linear-gradient(135deg, rgba(255, 20, 147, 0.4) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(224, 176, 66, 0.4) 100%);
+}
+
+/* 7. Happy Birthday */
+.theme-birthday {
+  --bg-page: #FFF8FA;
+  --card-surface: #FFFFFF;
+  --card-tint: #FDEEF2;
+  --border-gold: #E5A93C;
+  --border-trim: #F6D6DE;
+  --accent-primary: #D84A75;
+  --text-main: #2B2B2B;
+  --text-muted: #7A5B66;
+  --holo-gradient: linear-gradient(135deg, rgba(216, 74, 117, 0.3) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(229, 169, 60, 0.35) 100%);
+}
+
+/* 8. Get Well Soon */
+.theme-get-well {
+  --bg-page: #F5FAF8;
+  --card-surface: #FFFFFF;
+  --card-tint: #E7F3F0;
+  --border-gold: #76A093;
+  --border-trim: #CEE4DE;
+  --accent-primary: #3B7A66;
+  --text-main: #1E2B27;
+  --text-muted: #56736A;
+  --holo-gradient: linear-gradient(135deg, rgba(118, 160, 147, 0.35) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(59, 122, 102, 0.35) 100%);
+}
+
+/* 9. Thinking of You */
+.theme-thinking-of-you {
+  --bg-page: #F7F6FA;
+  --card-surface: #FFFFFF;
+  --card-tint: #EFEBF6;
+  --border-gold: #B76E79;
+  --border-trim: #DFD7EB;
+  --accent-primary: #6D597A;
+  --text-main: #241E2B;
+  --text-muted: #6B6275;
+  --holo-gradient: linear-gradient(135deg, rgba(109, 89, 122, 0.35) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(183, 110, 121, 0.35) 100%);
+}
+
+/* 10. Thank You So Much */
+.theme-thank-you {
+  --bg-page: #FAF8F5;
+  --card-surface: #FFFFFF;
+  --card-tint: #F4EFEA;
+  --border-gold: #C5A059;
+  --border-trim: #E7DDD4;
+  --accent-primary: #9A5865;
+  --text-main: #2A2426;
+  --text-muted: #756267;
+  --holo-gradient: linear-gradient(135deg, rgba(154, 88, 101, 0.35) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(197, 160, 89, 0.35) 100%);
+}
+
+/* ==========================================================================
+   2. STRUCTURAL STYLES BOUND TO THE PALETTE TOKENS
+   ========================================================================== */
+body {
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+/* 3D Gyro Stage Container */
+.viewport-chassis {
+  perspective: 1100px;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.card-3d-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border-radius: 24px;
+  background: #000000;
+  border: 2px solid var(--border-gold);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+  cursor: pointer;
+}
+
+/* Inset Gilded Filigree Ring */
+.card-3d-stage::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid var(--border-gold);
+  border-radius: 18px;
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0.8;
+}
+
+/* Dynamic Foil Sheen Overlay */
+.holo-foil-sheen {
+  position: absolute;
+  inset: 0;
+  background: var(--holo-gradient);
+  mix-blend-mode: overlay;
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.stage-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Kinetic Screen Text Pop */
+.kinetic-text-popup {
+  position: absolute;
+  bottom: 28px;
+  left: 12px;
+  right: 12px;
+  text-align: center;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: #FFFDF8;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.85), 0 0 12px var(--accent-primary);
+  z-index: 6;
+  opacity: 0;
+  transform: scale(0.4) rotate(-3deg);
+  pointer-events: none;
+}
+
+.kinetic-text-popup.active {
+  animation: elasticPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes elasticPop {
+  0% { transform: scale(0.4) rotate(-3deg); opacity: 0; }
+  70% { transform: scale(1.12) rotate(1deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* Greeting Content Chassis */
+.greeting-chassis {
+  width: 100%;
+  max-width: 360px;
+  margin-top: 18px;
+  background: var(--card-surface);
+  border: 1px solid var(--border-trim);
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.eyebrow-pill {
+  align-self: flex-start;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  background: var(--card-tint);
+  border: 1px solid var(--border-trim);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.hero-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.message-body {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  border-left: 2px solid var(--border-gold);
+  padding-left: 14px;
+  margin: 2px 0 6px;
+}
+
+/* Action Stack & Reprogramming Card Box */
+.btn-primary {
+  width: 100%;
+  background: var(--accent-primary);
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.btn-dual-row {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-secondary {
+  flex: 1;
+  background: var(--card-tint);
+  border: 1px solid var(--border-trim);
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.repurpose-card-box {
+  background: var(--card-tint);
+  border: 1px dashed var(--border-gold);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.repurpose-card-box strong {
+  display: block;
+  color: var(--text-main);
+  font-size: 0.82rem;
+  margin-bottom: 2px;
+}
+
+.repurpose-card-box a {
+  color: var(--accent-primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+Part 3: Automated Data Sheet Integration
+Add these palette columns to the master CSV or JSON. The automated InDesign Data Merge pulls the print CMYK hexes for the physical cards, while the web router applies the matching CSS class automatically when tapped:
+
+Code snippet
+card_id,occasion,css_theme_class,hex_bg_page,hex_card_tint,hex_border_gold,hex_accent_primary,hex_text_main
+TG-01,Happy Thanksgiving,theme-thanksgiving,#FAF5F0,#F5EBE1,#C07D3E,#A44A28,#2B231D
+TG-02,So Grateful For You,theme-grateful,#FCF9F2,#F6EFE2,#D4AF37,#B86B35,#2E2721
+TG-03,Merry Christmas,theme-christmas,#F7F9F7,#EBF2EB,#D4AF37,#9E2A2B,#1E2820
+TG-04,Happy Holidays,theme-holidays,#F4F8FA,#E5EFF4,#C5A059,#2B6E7F,#1A252C
+TG-05,Warm Winter Wishes,theme-winter-wishes,#FBF7F5,#F4ECE8,#B76E79,#8C4A32,#2C201C
+TG-06,Happy New Year,theme-new-year,#16161A,#2C2B35,#E0B042,#FF1493,#FFF8FA
+TG-07,Happy Birthday,theme-birthday,#FFF8FA,#FDEEF2,#E5A93C,#D84A75,#2B2B2B
+TG-08,Get Well Soon,theme-get-well,#F5FAF8,#E7F3F0,#76A093,#3B7A66,#1E2B27
+TG-09,Thinking of You,theme-thinking-of-you,#F7F6FA,#EFEBF6,#B76E79,#6D597A,#241E2B
+TG-10,Thank You So Much,theme-thank-you,#FAF8F5,#F4EFEA,#C5A059,#9A5865,#2A2426
+When an NFC card is tapped, the single HTML shell reads the card's ID from the URL (e.g., /c/thanksgiving), assigns the corresponding class (<body class="theme-thanksgiving">), and immediately coordinates the physical card's foil and colors with the digital screen.
+
+Let's skip the color palette stuff right now and get back onto the context of the master data sheet with the details of what is generated in the categories and styles that it's generated in maybe to tag it with is what I meant.
+
+Master Data Sheet Taxonomy: Categories, Styles, and Tag Architecture
+To keep the generative pipeline organized across Flow (image generation), motion video generation, InDesign physical card printing, and the digital landing page, each card entry in the master data sheet is indexed with four distinct tag groups:
+
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│                                 MASTER TAXONOMY MATRIX                                 │
+├─────────────────────────┬──────────────────────────────────────────────────────────────┤
+│ 1. Classification       │ Primary Category & Sub-Category (Catalog grouping)           │
+│ 2. Art Style Archetype  │ Visual identity & design aesthetic (Prompt token lock)       │
+│ 3. Generative Tags      │ Style tokens, rendering parameters, and negative prompts     │
+│ 4. Motif & Visual Tags  │ Key scene props, character spot elements, and physical cues  │
+│ 5. Marketplace Tags     │ SEO, search keywords, and e-commerce listing tags            │
+└─────────────────────────┴──────────────────────────────────────────────────────────────┘
+The November & December Master Data Matrix
+Field	TG-NOV-01 (Happy Thanksgiving)	TG-NOV-02 (So Grateful For You)	TG-DEC-01 (Merry Christmas)	TG-DEC-02 (Happy Holidays)
+Occasion	Happy Thanksgiving	Gratitude / Friendsgiving	Merry Christmas	Happy Holidays / Universal
+Primary Category	Seasonal Harvest	Seasonal Harvest	Winter Holidays	Winter Holidays
+Sub-Category	Family & Host Dining	Friendsgiving & Appreciation	Traditional Festive	Modern Seasonal & Corporate
+Art Style Archetype	Rustic Storybook Warmth (Earthy, textured, cozy gouache feel)	Botanical Folk Heritage (Linocut-inspired clean vector florals)	Classic Velvet Nostalgia (Gilded, warm lighting, storybook charm)	Nordic Frost & Sparkle (Crisp vector lines, starlight, champagne tones)
+Generative Style Tags	flat-2d-vector, warm-ambient-glow, bold-charcoal-outlines, editorial-storybook, soft-gouache-shading, centered-spot-art, no-text, no-borders	folk-botanical-vector, clean-contour-lines, flat-matte-color, delicate-line-art, centered-isolated-prop, no-text, no-borders	storybook-classic, soft-volumetric-lighting, bold-vector-lines, clean-spot-illustration, cozy-holiday-aesthetic, no-text, no-borders	minimalist-nordic-vector, geometric-starlight, clean-flat-vector, sharp-charcoal-accents, isolated-composition, no-text, no-borders
+Visual Motif Tags	steaming-pumpkin-pie, amber-maple-leaves, cinnamon-quills, rustic-oak-plank, acorn-accents	wheat-sheaf-bundle, eucalyptus-sprigs, velvet-ribbon-tie, golden-starbursts, dried-orange-slice	evergreen-pine-wreath, red-velvet-bow, blinking-fairy-lights, peppermint-candy, snow-flurries	champagne-flutes, effervescent-bubbles, golden-sparkler-stars, frosted-pine-boughs, metallic-streamers
+Marketplace Tags	thanksgiving card, smart thanksgiving tag, hostess gift idea, autumn keepsake card, dinner table favor, nfc holiday card	friendsgiving card, gratitude gift, thankful for you card, fall friendship gift, teacher holiday thank you, smart gift tag	
+smart christmas card, nfc holiday card, stocking stuffer 2026, interactive santa greeting, keepsake xmas gift, reusable holiday card
+
+happy holidays card, inclusive winter greeting, corporate holiday gift tag, modern festive card, winter solstice card, smart business card
+Card Front Title	HAPPY THANKSGIVING	SO GRATEFUL FOR YOU	MERRY CHRISTMAS	HAPPY HOLIDAYS
+Card Front Header	GATHER WITH GRATITUDE	FROM THE HEART	PEACE & WARMTH	SEASON’S GREETINGS
+Card Front Subtext	TAP GREETINGS • SMART CARD	TAP GREETINGS • SMART CARD	TAP GREETINGS • SMART CARD	TAP GREETINGS • SMART CARD
+Card Back Steps	
+1: Unlock phone & tap top edge to circle
+
+
+2: Tap link to watch video greeting
+
+
+3: Save video or reprogram anytime
+
+1: Unlock phone & tap top edge to circle
+
+
+2: Tap link to watch video greeting
+
+
+3: Save video or reprogram anytime
+
+1: Unlock phone & tap top edge to circle
+
+
+2: Tap link to watch video greeting
+
+
+3: Save video or reprogram anytime
+
+1: Unlock phone & tap top edge to circle
+
+
+2: Tap link to watch video greeting
+
+
+3: Save video or reprogram anytime
+
+Tap Page Header Pill	✦ A THANKSGIVING GREETING ✦	✦ WITH HEARTFELT GRATITUDE ✦	✦ A CHRISTMAS GREETING ✦	✦ WARMEST HOLIDAY WISHES ✦
+Tap Page Heading	Warmest Wishes From Our Table to Yours	Thankful for Everything You Are	May Your Days Be Merry & Bright	Bright & Joyful Season’s Greetings
+Tap Page Message	"May your home be blessed with health, your table with abundance, and your heart with lasting peace."	"Taking a moment to celebrate the joy, comfort, and positive difference you bring into my life every day."	"Sending you warm wishes for peace, laughter, and cozy fireside moments with family this Christmas."	"Wishing you joy, comfort, and good cheer throughout this holiday season and all through the coming year."
+Video Motion Spec	
+0:00–2.5s: Pie steams on wood; leaves drift in.
+
+
+2.5–5.5s: Warm voiceover greeting delivers.
+
+
+5.5–7.0s: HAPPY THANKSGIVING! kinetic pop.
+
+
+7.0–8.0s: Amber glow settles to resting loop.
+
+0:00–2.5s: Ribbon flutters; golden starbursts expand.
+
+
+2.5–5.5s: Gratitude voiceover line delivers.
+
+
+5.5–7.0s: SO GRATEFUL FOR YOU! kinetic pop.
+
+
+7.0–8.0s: Starlight gently pulses into loop.
+
+0:00–2.5s: Wreath sways; fairy lights illuminate.
+
+
+2.5–5.5s: Cheerful holiday voiceover delivers.
+
+
+5.5–7.0s: MERRY CHRISTMAS! kinetic pop.
+
+
+7.0–8.0s: Snow flurries drift into resting loop.
+
+0:00–2.5s: Champagne flutes clink; bubbles rise.
+
+
+2.5–5.5s: Inclusive holiday voiceover delivers.
+
+
+5.5–7.0s: HAPPY HOLIDAYS! kinetic pop.
+
+
+7.0–8.0s: Golden frost particles settle into loop.
+
+Field	TG-DEC-03 (Warm Winter Wishes)	TG-DEC-04 (Happy New Year)	TG-Q4-01 (Winter Birthday)	TG-Q4-02 (Get Well Soon)
+Occasion	Warm Winter Wishes / Hygge	Happy New Year	Q4 / Winter Birthday	Get Well Soon / Care
+Primary Category	Winter Holidays	New Year & Countdown	Evergreen Q4 Staples	Evergreen Q4 Staples
+Sub-Category	Cozy Comfort & Hearth	Midnight Toast & Gala	Milestone Celebration	Comfort, Healing & Care
+Art Style Archetype	Hygge Cabin Cozy (Soft knitted textures, steam curves, warm cocoa tones)	Midnight Art Deco Pop (High contrast, gold geometry, metallic starbursts)	Pastel Celebration Pop (Joyful, confetti-accented, clean bakery aesthetic)	Gentle Herbal Botanical (Calming pastels, watercolor-washed lines, soft tea steam)
+Generative Style Tags	cozy-hygge-vector, soft-rounded-lines, warm-wood-tones, editorial-vector-art, flat-minimal-shading, centered-spot-art, no-text, no-borders	art-deco-vector, high-contrast-midnight, metallic-gold-accents, geometric-bursts, sharp-silhouette-lines, no-text, no-borders	playful-celebration-vector, clean-bold-charcoal-lines, pastel-candy-palette, editorial-spot-illustration, centered-composition, no-text, no-borders	botanical-wellness-vector, soft-organic-curves, gentle-tea-aesthetic, calming-muted-tones, delicate-contour-lines, no-text, no-borders
+Visual Motif Tags	steaming-ceramic-mug, marshmallow-toppers, cinnamon-stick-stirrer, knit-blanket-fold, pinecone-accents	vintage-pocket-watch, midnight-hands-12, champagne-cork-pop, gold-firework-rings, confetti-shower	single-birthday-cupcake, golden-flame-candle, floating-pastel-balloons, multi-colored-confetti, party-blower	porcelain-teacup, heart-shaped-steam-wisps, lavender-blossom-sprigs, fresh-mint-leaves, honey-dipper
+Marketplace Tags	cozy winter card, hot cocoa gift tag, hygge stationery, winter care package card, warm wishes gift tag, nfc winter card	new years eve card, happy new year 2027, midnight toast greeting, party favor smart tag, new year countdown keepsake, nye celebration card	winter birthday card, december birthday card, smart birthday card, interactive birthday keepsake, november birthday gift, kids birthday smart card	winter get well card, cozy recovery gift tag, feel better soon card, comfort care package tag, healing tea gift, smart get well keepsake
+Card Front Title	WARM WINTER WISHES	HAPPY NEW YEAR!	HAPPY BIRTHDAY	GET WELL SOON
+Card Front Header	STAY WARM & COZY	A NEW CHAPTER BEGINS	A CELEBRATION FOR YOU	SENDING HEALING COMFORT
+Card Front Subtext	TAP GREETINGS • SMART CARD	TAP GREETINGS • SMART CARD	TAP GREETINGS • SMART CARD	TAP GREETINGS • SMART CARD
+Card Back Steps	
+1: Unlock phone & tap top edge to circle
+
+
+2: Tap link to watch video greeting
+
+
+3: Save video or reprogram anytime
+
+1: Unlock phone & tap top edge to circle
+
+
+2: Tap link to watch video greeting
+
+
+3: Save video or reprogram anytime
+
+1: Unlock phone & tap top edge to circle
+
+
+2: Tap link to watch video greeting
+
+
+3: Save video or reprogram anytime
+
+1: Unlock phone & tap top edge to circle
+
+
+2: Tap link to watch video greeting
+
+
+3: Save video or reprogram anytime
+
+Tap Page Header Pill	✦ COZY WINTER GREETING ✦	✦ CHEERS TO A NEW YEAR ✦	✦ IT’S TIME TO CELEBRATE ✦	✦ COMFORT & HEALING WISHES ✦
+Tap Page Heading	Sending You Warmth from Afar	365 Days of Magic & Possibility	Celebrating You Today	Take Good Care of Yourself
+Tap Page Message	"Grab a warm blanket and a hot cup of cheer. Sending cozy thoughts to brighten your winter days."	"Here is to fresh starts, new adventures, and celebrating every great thing the coming year has in store."	"Blow out the candles and make a huge wish! May this coming year bring everything you've been working toward."	"Rest up, take all the time you need, and know that you are wrapped in warm thoughts and care."
+Video Motion Spec	
+0:00–2.5s: Cocoa steams softly; marshmallows bob.
+
+
+2.5–5.5s: Cozy vocal greeting delivers.
+
+
+5.5–7.0s: WARM WINTER WISHES! kinetic pop.
+
+
+7.0–8.0s: Steam curls drift into resting loop.
+
+0:00–2.5s: Clock ticks; fireworks illuminate.
+
+
+2.5–5.5s: Midnight countdown vocal delivers.
+
+
+5.5–7.0s: HAPPY NEW YEAR! kinetic pop.
+
+
+7.0–8.0s: Gold sparks loop across frame.
+
+0:00–2.5s: Cupcake candle flickers; balloons sway.
+
+
+2.5–5.5s: Cheerful birthday vocal delivers.
+
+
+5.5–7.0s: HAPPY BIRTHDAY! kinetic pop.
+
+
+7.0–8.0s: Confetti showers gently into loop.
+
+0:00–2.5s: Teacup releases herbal steam; leaves unfold.
+
+
+2.5–5.5s: Gentle soothing vocal delivers.
+
+
+5.5–7.0s: FEEL BETTER SOON! kinetic pop.
+
+
+7.0–8.0s: Raindrops gently tap into resting loop.
+
+Master JSON Schema (Single Source of Truth)
+This schema combines the card print variables (for InDesign / Illustrator data merge), the taxonomy tags (for search and catalog indexing), the prompt tokens (for Flow image creation), and the video specs (for the motion engine):
+
+JSON
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "project_meta": {
+    "collection": "Tap Greetings Q4 Holiday & Seasonal Series",
+    "domain": "tapgreetings.com",
+    "physical_specs": {
+      "card_format": "CR80 (3.375\" x 2.125\")",
+      "bleed_in": "0.125\"",
+      "pixel_dimensions_300dpi": "638 x 1013 px"
+    }
+  },
+  "cards": [
+    {
+      "card_id": "TG-NOV-01",
+      "occasion": "Happy Thanksgiving",
+      "taxonomy": {
+        "primary_category": "Seasonal Harvest",
+        "sub_category": "Family & Host Dining",
+        "art_style_archetype": "Rustic Storybook Warmth",
+        "style_tags": [
+          "flat-2d-vector",
+          "warm-ambient-glow",
+          "bold-charcoal-outlines",
+          "editorial-storybook",
+          "soft-gouache-shading",
+          "centered-spot-art"
+        ],
+        "motif_tags": [
+          "steaming-pumpkin-pie",
+          "amber-maple-leaves",
+          "cinnamon-quills",
+          "rustic-oak-plank",
+          "acorn-accents"
+        ],
+        "marketplace_tags": [
+          "thanksgiving card",
+          "smart thanksgiving tag",
+          "hostess gift idea",
+          "autumn keepsake card",
+          "dinner table favor",
+          "nfc holiday card"
+        ]
+      },
+      "card_print": {
+        "front_header": "GATHER WITH GRATITUDE",
+        "front_title": "HAPPY THANKSGIVING",
+        "front_subtext": "TAP GREETINGS • SMART CARD",
+        "back_header": "HOW TO PLAY YOUR GREETING",
+        "back_step_1": "Unlock phone and tap top edge to circle below",
+        "back_step_2": "Tap screen notification to open living video greeting",
+        "back_step_3": "Save video to phone or reprogram card anytime",
+        "tap_target_label": "✦ HOLD PHONE HERE TO TAP ✦",
+        "front_art_path": "./assets/art/TG_NOV_01_Thanksgiving.png"
+      },
+      "digital_page": {
+        "slug": "/c/thanksgiving",
+        "top_banner_pill": "✦ A THANKSGIVING GREETING ✦",
+        "hero_heading": "Warmest Wishes From Our Table to Yours",
+        "message_body": "May your home be blessed with health, your table with abundance, and your heart with lasting peace."
+      },
+      "flow_agent_prompt": {
+        "positive": "Clean 2D vector spot illustration, freshly baked homemade pumpkin pie on a rustic wooden cutting board, gentle steam wisps curling upward, surrounded by loose amber maple leaves, cinnamon sticks, and acorns, warm autumn glow, bold charcoal vector outlines, soft editorial gouache shading, isolated on solid warm cream background, centered composition with generous margins --ar 1:1",
+        "negative": "--no text, words, typography, letters, card frame, borders, banners, photorealism, 3D CGI, horror, dark shadows, messy clutter"
+      },
+      "video_motion_spec": {
+        "duration_sec": 8.0,
+        "motion_prompt": "Animate this 2D Thanksgiving spot illustration. The pumpkin pie steams with soft curling vapor puffs. Amber maple leaves gently drift and tumble downward in a subtle 2D sine-wave loop. Warm golden particle shimmer across the scene. 9:16 vertical, smooth 8.0s seamless loop.",
+        "spoken_dialogue": "Wishing you a bountiful feast, full hearts, and a wonderful Thanksgiving surrounded by love.",
+        "kinetic_text_pop": "HAPPY THANKSGIVING!",
+        "pop_timestamp_sec": 5.8,
+        "audio_sfx_cues": "Crackling fireplace ambiance, soft wind rustling dry leaves, warm acoustic guitar arpeggio"
+      }
+    },
+    {
+      "card_id": "TG-DEC-01",
+      "occasion": "Merry Christmas",
+      "taxonomy": {
+        "primary_category": "Winter Holidays",
+        "sub_category": "Traditional Festive",
+        "art_style_archetype": "Classic Velvet Nostalgia",
+        "style_tags": [
+          "storybook-classic",
+          "soft-volumetric-lighting",
+          "bold-vector-lines",
+          "clean-spot-illustration",
+          "cozy-holiday-aesthetic"
+        ],
+        "motif_tags": [
+          "evergreen-pine-wreath",
+          "red-velvet-bow",
+          "blinking-fairy-lights",
+          "peppermint-candy",
+          "snow-flurries"
+        ],
+        "marketplace_tags": [
+          "smart christmas card",
+          "nfc holiday card",
+          "stocking stuffer 2026",
+          "interactive santa greeting",
+          "keepsake xmas gift",
+          "reusable holiday card"
+        ]
+      },
+      "card_print": {
+        "front_header": "PEACE & WARMTH",
+        "front_title": "MERRY CHRISTMAS",
+        "front_subtext": "TAP GREETINGS • SMART CARD",
+        "back_header": "HOW TO PLAY YOUR GREETING",
+        "back_step_1": "Unlock phone and tap top edge to circle below",
+        "back_step_2": "Tap screen notification to open living video greeting",
+        "back_step_3": "Save video to phone or reprogram card anytime",
+        "tap_target_label": "✦ HOLD PHONE HERE TO TAP ✦",
+        "front_art_path": "./assets/art/TG_DEC_01_Christmas.png"
+      },
+      "digital_page": {
+        "slug": "/c/christmas",
+        "top_banner_pill": "✦ A CHRISTMAS GREETING ✦",
+        "hero_heading": "May Your Days Be Merry & Bright",
+        "message_body": "Sending you warm wishes for peace, laughter, and cozy fireside moments with family this Christmas."
+      },
+      "flow_agent_prompt": {
+        "positive": "Clean 2D vector spot illustration, lush evergreen holiday pine wreath decorated with bright red berries, tied with a luxurious crimson velvet ribbon bow at the top, intertwined with glowing warm fairy lights, soft snow flurries and gold starbursts, flat 2D graphic design, bold clean charcoal contours, isolated on solid soft cream backdrop, centered composition --ar 1:1",
+        "negative": "--no text, typography, fonts, words, greeting cards, borders, plastic frames, photorealism, 3D CGI render, dark horror, muddy colors"
+      },
+      "video_motion_spec": {
+        "duration_sec": 8.0,
+        "motion_prompt": "Animate this 2D holiday vector illustration. The evergreen pine wreath sways slightly while the warm fairy lights pulse and twinkle with gentle glowing flares. Soft powder snow flurries drift downward in a continuous peaceful loop. Crisp 2D animation with zero character warping. 9:16 vertical, smooth 8.0s loop.",
+        "spoken_dialogue": "May your holidays be warm, peaceful, and filled with sweet memories. Merry Christmas to you and yours!",
+        "kinetic_text_pop": "MERRY CHRISTMAS!",
+        "pop_timestamp_sec": 5.8,
+        "audio_sfx_cues": "Gentle distant sleigh-bell shimmer, soft acoustic guitar holiday melody, bright sparkling glockenspiel chime"
+      }
+    }
+  ]
+}
+InDesign Data Merge CSV Export
+Exporting these fields into CSV allows the Adobe InDesign Data Merge tool to read every text box, image path (prefixed with @), and tag directly without manual layout entry:
+
+Code snippet
+card_id,primary_category,sub_category,art_style_archetype,style_tags,motif_tags,marketplace_tags,card_front_header,card_front_title,card_front_subtext,card_back_header,card_back_step_1,card_back_step_2,card_back_step_3,tap_target_label,@FrontArtPath,page_slug,page_top_pill,page_hero_heading,page_message_body,video_voiceover,video_kinetic_pop,video_pop_time
+TG-NOV-01,Seasonal Harvest,Family & Host Dining,Rustic Storybook Warmth,"flat-2d-vector, warm-ambient-glow, bold-charcoal-outlines, editorial-storybook","steaming-pumpkin-pie, amber-maple-leaves, cinnamon-quills, rustic-oak-plank","thanksgiving card, smart thanksgiving tag, hostess gift idea, dinner table favor",GATHER WITH GRATITUDE,HAPPY THANKSGIVING,TAP GREETINGS • SMART CARD,HOW TO PLAY YOUR GREETING,Unlock phone and tap top edge to circle below,Tap screen notification to open living video greeting,Save video to phone or reprogram card anytime,✦ HOLD PHONE HERE TO TAP ✦,./assets/art/TG_NOV_01_Thanksgiving.png,/c/thanksgiving,✦ A THANKSGIVING GREETING ✦,Warmest Wishes From Our Table to Yours,"May your home be blessed with health, your table with abundance, and your heart with lasting peace.","Wishing you a bountiful feast, full hearts, and a wonderful Thanksgiving surrounded by love.",HAPPY THANKSGIVING!,5.8
+TG-NOV-02,Seasonal Harvest,Friendsgiving & Appreciation,Botanical Folk Heritage,"folk-botanical-vector, clean-contour-lines, flat-matte-color, delicate-line-art","wheat-sheaf-bundle, eucalyptus-sprigs, velvet-ribbon-tie, golden-starbursts","friendsgiving card, gratitude gift, thankful for you card, teacher holiday thank you",FROM THE HEART,SO GRATEFUL FOR YOU,TAP GREETINGS • SMART CARD,HOW TO PLAY YOUR GREETING,Unlock phone and tap top edge to circle below,Tap screen notification to open living video greeting,Save video to phone or reprogram card anytime,✦ HOLD PHONE HERE TO TAP ✦,./assets/art/TG_NOV_02_Grateful.png,/c/grateful,✦ WITH HEARTFELT GRATITUDE ✦,Thankful for Everything You Are,"Taking a moment to celebrate the joy, comfort, and positive difference you bring into my life every day.","Taking a moment to celebrate the joy, comfort, and positive difference you bring into my life every day.",SO GRATEFUL FOR YOU!,5.8
+TG-DEC-01,Winter Holidays,Traditional Festive,Classic Velvet Nostalgia,"storybook-classic, soft-volumetric-lighting, bold-vector-lines, clean-spot-illustration","evergreen-pine-wreath, red-velvet-bow, blinking-fairy-lights, peppermint-candy","smart christmas card, nfc holiday card, stocking stuffer 2026, interactive santa greeting",PEACE & WARMTH,MERRY CHRISTMAS,TAP GREETINGS • SMART CARD,HOW TO PLAY YOUR GREETING,Unlock phone and tap top edge to circle below,Tap screen notification to open living video greeting,Save video to phone or reprogram card anytime,✦ HOLD PHONE HERE TO TAP ✦,./assets/art/TG_DEC_01_Christmas.png,/c/christmas,✦ A CHRISTMAS GREETING ✦,May Your Days Be Merry & Bright,"Sending you warm wishes for peace, laughter, and cozy fireside moments with family this Christmas.","May your holidays be warm, peaceful, and filled with sweet memories. Merry Christmas to you and yours!",MERRY CHRISTMAS!,5.8
+TG-DEC-02,Winter Holidays,Modern Seasonal & Corporate,Nordic Frost & Sparkle,"minimalist-nordic-vector, geometric-starlight, clean-flat-vector, sharp-charcoal-accents","champagne-flutes, effervescent-bubbles, golden-sparkler-stars, frosted-pine-boughs","happy holidays card, inclusive winter greeting, corporate holiday gift tag, winter solstice card",SEASON’S GREETINGS,HAPPY HOLIDAYS,TAP GREETINGS • SMART CARD,HOW TO PLAY YOUR GREETING,Unlock phone and tap top edge to circle below,Tap screen notification to open living video greeting,Save video to phone or reprogram card anytime,✦ HOLD PHONE HERE TO TAP ✦,./assets/art/TG_DEC_02_Holidays.png,/c/holidays,✦ WARMEST HOLIDAY WISHES ✦,Bright & Joyful Season’s Greetings,"Wishing you joy, comfort, and good cheer throughout this holiday season and all through the coming year.","Wishing you joy, comfort, and good cheer throughout this holiday season and all through the coming year.",HAPPY HOLIDAYS!,5.8
+TG-DEC-03,Winter Holidays,Cozy Comfort & Hearth,Hygge Cabin Cozy,"cozy-hygge-vector, soft-rounded-lines, warm-wood-tones, editorial-vector-art","steaming-ceramic-mug, marshmallow-toppers, cinnamon-stick-stirrer, knit-blanket-fold","cozy winter card, hot cocoa gift tag, hygge stationery, winter care package card",STAY WARM & COZY,WARM WINTER WISHES,TAP GREETINGS • SMART CARD,HOW TO PLAY YOUR GREETING,Unlock phone and tap top edge to circle below,Tap screen notification to open living video greeting,Save video to phone or reprogram card anytime,✦ HOLD PHONE HERE TO TAP ✦,./assets/art/TG_DEC_03_WinterWishes.png,/c/winter-wishes,✦ COZY WINTER GREETING ✦,Sending You Warmth from Afar,"Grab a warm blanket and a hot cup of cheer. Sending cozy thoughts to brighten your winter days.","Sending you the warmest winter hugs, cozy fireside vibes, and sweet comfort today!",WARM WINTER WISHES!,5.8
+TG-DEC-04,New Year & Countdown,Midnight Toast & Gala,Midnight Art Deco Pop,"art-deco-vector, high-contrast-midnight, metallic-gold-accents, geometric-bursts","vintage-pocket-watch, midnight-hands-12, champagne-cork-pop, gold-firework-rings","new years eve card, happy new year 2027, midnight toast greeting, nye celebration card",A NEW CHAPTER BEGINS,HAPPY NEW YEAR!,TAP GREETINGS • SMART CARD,HOW TO PLAY YOUR GREETING,Unlock phone and tap top edge to circle below,Tap screen notification to open living video greeting,Save video to phone or reprogram card anytime,✦ HOLD PHONE HERE TO TAP ✦,./assets/art/TG_DEC_04_NewYear.png,/c/new-year,✦ CHEERS TO A NEW YEAR ✦,365 Days of Magic & Possibility,"Here is to fresh starts, new adventures, and celebrating every great thing the coming year has in store.","Three, two, one... Cheers to a brand new chapter filled with success, laughter, and endless adventure!",HAPPY NEW YEAR!,5.5
+TG-Q4-01,Evergreen Q4 Staples,Milestone Celebration,Pastel Celebration Pop,"playful-celebration-vector, clean-bold-charcoal-lines, pastel-candy-palette, editorial-spot-illustration","single-birthday-cupcake, golden-flame-candle, floating-pastel-balloons, multi-colored-confetti","winter birthday card, december birthday card, smart birthday card, interactive birthday keepsake",A CELEBRATION FOR YOU,HAPPY BIRTHDAY,TAP GREETINGS • SMART CARD,HOW TO PLAY YOUR GREETING,Unlock phone and tap top edge to circle below,Tap screen notification to open living video greeting,Save video to phone or reprogram card anytime,✦ HOLD PHONE HERE TO TAP ✦,./assets/art/TG_Q4_01_Birthday.png,/c/birthday,✦ IT’S TIME TO CELEBRATE ✦,Celebrating You Today,"Blow out the candles and make a huge wish! May this coming year bring everything you've been working toward.","Wishing you the happiest birthday filled with big smiles, sweet treats, and everything you love!",HAPPY BIRTHDAY!,5.8
+TG-Q4-02,Evergreen Q4 Staples,Comfort, Healing & Care,Gentle Herbal Botanical,"botanical-wellness-vector, soft-organic-curves, gentle-tea-aesthetic, calming-muted-tones","porcelain-teacup, heart-shaped-steam-wisps, lavender-blossom-sprigs, fresh-mint-leaves","winter get well card, cozy recovery gift tag, feel better soon card, healing tea gift",SENDING HEALING COMFORT,GET WELL SOON,TAP GREETINGS • SMART CARD,HOW TO PLAY YOUR GREETING,Unlock phone and tap top edge to circle below,Tap screen notification to open living video greeting,Save video to phone or reprogram card anytime,✦ HOLD PHONE HERE TO TAP ✦,./assets/art/TG_Q4_02_GetWell.png,/c/get-well,✦ COMFORT & HEALING WISHES ✦,Take Good Care of Yourself,"Rest up, take all the time you need, and know that you are wrapped in warm thoughts and care.","Take it easy, get lots of rest, and know that you are in my thoughts. Wishing you a speedy recovery!",FEEL BETTER SOON!,5.8
+The process will be a generate in flow the images and the video. In either 9x16 or 16x9 format. I will download these to the folder... The website will generate the HTML pages and upload the images and videos but format the image to fit the credit card aspect ratio view. Same with the Shopify listing in fact if I could just get a cropped version before....
+
+The tapgreetings pages will be generated and so will the product on Shopify both having themes that somewhat match.
+
+An automated pre-cropping and generation pipeline prevents visual stretching by converting raw 9:16 Flow renders into CR80 credit card dimensions before feeding both the TapGreetings landing page and the Shopify storefront.
+
+┌────────────────────────────────────────────────────────────────────────┐
+│                        1. RAW FLOW ASSETS FOLDER                       │
+│  • Raw Image: 9:16 (1080 × 1920 px) or 1:1                             │
+│  • Raw Video: 9:16 (1080 × 1920 px MP4)                      │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    │ Local Node.js / Sharp Pipeline
+                                    ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│                      2. PRE-CROP & ASSET ENGINES                       │
+│  • Master CR80 Card Crop: 1080 × 1715 px (2.125" × 3.375" ratio)       │
+│  • Print-Ready File: 638 × 1013 px @ 300 DPI with 0.125" bleed│
+│  • Untouched 9:16 Video: Stays 1080 × 1920 px for mobile stage│
+└───────────────────┬────────────────────────────────┬───────────────────┘
+                    │                                │
+                    ▼                                ▼
+┌──────────────────────────────────────┐ ┌───────────────────────────────┐
+│     3. TAPGREETINGS WEB GENERATOR    │ │  4. SHOPIFY PRODUCT GENERATOR │
+│  • Generates static HTML per slug    │ │  • Uploads CR80 cropped image │
+│  • Sets 9:16 video in 3D gyro stage  │ │  • Formats matching HTML desc │
+│  • Injects occasion color tokens     │ │  • Syncs taxonomy tags & meta │
+└──────────────────────────────────────┘ └───────────────────────────────┘
+1. Aspect Ratio & Crop Mathematics
+A 9:16 vertical render (
+1080×1920 px) has an aspect ratio of 
+0.5625. Standard CR80 credit cards require:
+
+Physical Trimmed Ratio (
+2.125"×3.375"): 
+0.6296 (approx. 
+1:1.588).
+
+Physical Bleed Ratio (
+2.250"×3.500" or 
+2.375"×3.625"): 
+0.6428 to 
+0.6551 (
+638×1013 px @ 300 DPI).
+
+Web-Ready CR80 Ratio (
+1080 px base): Height must be trimmed from 
+1920 px down to 
+1715 px (
+1080× 
+2.125
+3.375
+​
+ ).
+
+By center-cropping 
+102 px from the top and 
+103 px from the bottom, the 9:16 image converts to a credit card ratio with zero side compression or face distortion.
+
+2. Automated Image Pre-Cropper (process_assets.js)
+This script processes your raw downloads folder, crops the images to CR80 format using sharp, and prepares clean exports for both Shopify and TapGreetings:
+
+JavaScript
+// npm install sharp
+const fs = require('fs');
+const path = require('path');
+const sharp = require('sharp');
+
+const DIRS = {
+  raw: path.join(__dirname, 'raw_downloads'),
+  cardsWeb: path.join(__dirname, 'dist', 'cards_cr80_web'),
+  cardsPrint: path.join(__dirname, 'dist', 'cards_cr80_print'),
+  videos: path.join(__dirname, 'dist', 'videos_9x16')
+};
+
+// Ensure directories exist
+Object.values(DIRS).forEach(dir => fs.mkdirSync(dir, { recursive: true }));
+
+async function processCardAsset(cardId, rawImageFilename, rawVideoFilename) {
+  const rawImagePath = path.join(DIRS.raw, rawImageFilename);
+  const rawVideoPath = path.join(DIRS.raw, rawVideoFilename);
+
+  // 1. Move/Organize Video (Leaves 9:16 untouched for mobile playback)
+  if (fs.existsSync(rawVideoPath)) {
+    const videoDest = path.join(DIRS.videos, `${cardId}.mp4`);
+    fs.copyFileSync(rawVideoPath, videoDest);
+    console.log(`✓ Video staged: ${videoDest}`);
+  }
+
+  if (!fs.existsSync(rawImagePath)) {
+    console.error(`✗ Image not found: ${rawImagePath}`);
+    return;
+  }
+
+  // 2. Web-Ready CR80 Crop (1080 x 1715 px - exact 2.125" x 3.375" ratio)
+  const webCardPath = path.join(DIRS.cardsWeb, `${cardId}_card_web.png`);
+  await sharp(rawImagePath)
+    .resize({
+      width: 1080,
+      height: 1715,
+      fit: 'cover',
+      position: 'center'
+    })
+    .png({ quality: 95 })
+    .toFile(webCardPath);
+
+  // 3. Print-Ready 300 DPI CR80 with Bleed (638 x 1013 px)
+  const printCardPath = path.join(DIRS.cardsPrint, `${cardId}_print_cr80.png`);
+  await sharp(rawImagePath)
+    .resize({
+      width: 638,
+      height: 1013,
+      fit: 'cover',
+      position: 'center'
+    })
+    .withMetadata({ density: 300 })
+    .png()
+    .toFile(printCardPath);
+
+  console.log(`✓ CR80 Card Cropped: ${webCardPath}`);
+  console.log(`✓ 300 DPI Print Ready: ${printCardPath}`);
+}
+
+// Example execution for Thanksgiving & Christmas
+(async () => {
+  await processCardAsset('TG-01', 'TG01_flow_raw.png', 'TG01_flow_raw.mp4');
+  await processCardAsset('TG-03', 'TG03_flow_raw.png', 'TG03_flow_raw.mp4');
+})();
+3. Unified Generator: TapGreetings HTML & Matching Shopify Product (sync_catalog.js)
+This script combines the master data record, cropped CR80 image, and theme tokens to write the static landing page and create the matching Shopify listing:
+
+JavaScript
+const fs = require('fs');
+const path = require('path');
+
+// Single source of truth record
+const cardEntry = {
+  card_id: "TG-03",
+  occasion: "Merry Christmas",
+  taxonomy: {
+    primary_category: "Winter Holidays",
+    sub_category: "Traditional Festive",
+    marketplace_tags: ["smart christmas card", "nfc holiday card", "stocking stuffer", "interactive greeting"][cite: 1]
+  },
+  theme: {
+    css_class: "theme-christmas",
+    bg_color: "#F7F9F7",
+    card_tint: "#EBF2EB",
+    border_gold: "#D4AF37",
+    accent_primary: "#9E2A2B",
+    text_main: "#1E2820"
+  },
+  card_print: {
+    front_header: "PEACE & WARMTH",
+    front_title: "MERRY CHRISTMAS",
+    subtext: "TAP GREETINGS • SMART EDITION"
+  },
+  digital_page: {
+    slug: "christmas",
+    top_pill: "✦ A CHRISTMAS GREETING FOR YOU ✦",
+    heading: "Wishing You a Magical Christmas",
+    message: "May the magic and peace of the Christmas season wrap your home in joy, laughter, and light."
+  },
+  assets: {
+    web_card_image: "https://cdn.tapgreetings.com/cards/TG-03_card_web.png",
+    video_url: "https://cdn.tapgreetings.com/videos/TG-03.mp4",
+    video_pop_text: "MERRY CHRISTMAS!",
+    video_pop_time: 5.8
+  },
+  pricing: {
+    retail_price: "12.00",
+    sku: "TG-CARD-DEC01"
+  }
+};
+
+// 1. Generate Static TapGreetings HTML
+function generateTapGreetingsHTML(data) {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${data.digital_page.heading} • Tap Greetings</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    :root {
+      --bg-page: ${data.theme.bg_color};
+      --card-tint: ${data.theme.card_tint};
+      --border-gold: ${data.theme.border_gold};
+      --accent-primary: ${data.theme.accent_primary};
+      --text-main: ${data.theme.text_main};
+    }
+  </style>
+</head>
+<body class="${data.theme.css_class}">
+  <header class="site-header"><span>✦ TAP GREETINGS ✦</span></header>
+  
+  <main class="viewport-chassis">
+    <!-- 3D Gyro Card Frame showing 9:16 Video -->
+    <div class="card-3d-stage" id="tiltStage">
+      <video id="cardVideo" class="stage-video" autoplay loop muted playsinline poster="${data.assets.web_card_image}">
+        <source src="${data.assets.video_url}" type="video/mp4" />
+      </video>
+      <div class="kinetic-text-popup" id="kineticPopup">${data.assets.video_pop_text}</div>
+    </div>
+  </main>
+
+  <section class="greeting-chassis">
+    <span class="eyebrow-pill">${data.digital_page.top_pill}</span>
+    <h1 class="hero-heading">${data.digital_page.heading}</h1>
+    <p class="message-body">"${data.digital_page.message}"</p>
+    <div class="action-stack">
+      <button class="btn-primary" onclick="replayGreeting()">▶ Replay Video Greeting</button>
+      <div class="repurpose-card-box">
+        <strong>✦ Permanent Smart Card ✦</strong>
+        Reprogram this card anytime at <a href="https://tapgreetings.com/repurpose">tapgreetings.com/repurpose</a>.
+      </div>
+    </div>
+  </section>
+</body>
+</html>`;
+}
+
+// 2. Generate Shopify Product Payload with Matching Design & Crop
+function generateShopifyPayload(data) {
+  const descriptionHtml = `
+<div style="font-family: sans-serif; color: ${data.theme.text_main};">
+  <div style="background-color: ${data.theme.card_tint}; border-left: 4px solid ${data.theme.accent_primary}; padding: 12px 16px; border-radius: 8px; margin-bottom: 16px;">
+    <strong style="color: ${data.theme.accent_primary}; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.05em;">Interactive Living Card</strong>
+    <h3 style="margin: 4px 0 0; color: ${data.theme.text_main};">${data.card_print.front_title}</h3>
+  </div>
+
+  <p><strong>Tap with your phone to bring this greeting to life.</strong> No app required[cite: 1]. An embedded NFC chip instantly launches an 8-second animated video greeting and spoken audio on the recipient's phone.</p>
+
+  <h4 style="margin-top: 20px;">What's Included:</h4>
+  <ul>
+    <li>Physical CR80 PVC Smart Card (${data.card_print.front_title})[cite: 1, 6]</li>
+    <li>Embedded NTAG NFC Chip pre-linked to dynamic greeting[cite: 1, 6]</li>
+    <li>Instructional keepsake back with tap-target[cite: 1]</li>
+    <li>Full reusability: Reprogram to your own link after the holidays[cite: 1, 6]</li>
+  </ul>
+</div>`.trim();
+
+  return {
+    title: `Tap Greetings: ${data.card_print.front_title} (Smart NFC Card)`,
+    product_type: data.taxonomy.primary_category,
+    vendor: "Tap Greetings",
+    tags: [
+      ...data.taxonomy.marketplace_tags,
+      `Occasion:${data.occasion}`,
+      `Category:${data.taxonomy.primary_category}`,
+      `Theme:${data.theme.css_class}`
+    ].join(', '),
+    variants: [
+      {
+        price: data.pricing.retail_price,
+        sku: data.pricing.sku,
+        inventory_management: "shopify"
+      }
+    ],
+    images: [
+      {
+        src: data.assets.web_card_image,
+        alt: `${data.card_print.front_title} - Physical Smart Card View`
+      }
+    ],
+    body_html: descriptionHtml
+  };
+}
+
+// Save HTML and prepare Shopify payload
+const htmlOutput = generateTapGreetingsHTML(cardEntry);
+fs.writeFileSync(path.join(__dirname, 'dist', `${cardEntry.digital_page.slug}.html`), htmlOutput);
+
+const shopifyData = generateShopifyPayload(cardEntry);
+fs.writeFileSync(path.join(__dirname, 'dist', `${cardEntry.card_id}_shopify.json`), JSON.stringify(shopifyData, null, 2));
+
+console.log("✓ TapGreetings Webpage & Shopify Payload generated with matched theme styling.");
+4. Output Comparison Across Touchpoints
+Channel	Display Asset	Exact Ratio / Resolution	Visual Styling Elements
+Physical Card Print	Front Art Overlay	
+638×1013 px (300 DPI CR80 with 
+0.125" bleed)
+
+Gilded border, plaque header, no floating UI[cite: 6].
+
+Shopify Collection Listing	[id]_card_web.png	
+1080×1715 px (Trimmed CR80 Card View)[cite: 1, 6]
+
+Matches card shape on white storefront grid.
+Shopify Description Block	HTML Component	Responsive embed	Styled with matching --card-tint and --accent-primary.
+TapGreetings Landing Page	[id].mp4 Video + Poster	
+1080×1920 px (9:16 Video inside 3D stage)[cite: 1]
+
+Gyro tilt, kinetic audio pop, matching theme palette[cite: 1].
+
+Would you like to connect the local Shopify payload directly to the store via the Admin API to create the draft products automatically?
+
+I will need all the previous in markdown for my building agents... So I will need a datasheet example and I will need the correct urls... Perhaps broken down into subfolders or numbers... /holiday/087645....
+
+But I am beginning with the same structure startbas Pink -o-ween
+
+Tap Greetings: Master System Specification & Agent Blueprint
+This blueprint translates the proven multi-layer architecture of the 31-day card collection into an automated production pipeline for Tap Greetings. It establishes the complete directory hierarchy, data schema, URL routing architecture, print specifications, and downstream agent execution directives.
+
+1. Project Directory Structure
+Plaintext
+tapgreetings_project/
+├── config/
+│   ├── tapgreetings_master.json          # Master single source of truth
+│   └── indesign_data_merge.csv           # Flat CSV export for InDesign Data Merge[cite: 1, 3]
+├── scripts/
+│   ├── process_assets.js                 # Sharp image pre-cropper (Flow 9:16 -> CR80)[cite: 1, 6]
+│   ├── build_indesign_csv.js             # JSON-to-CSV parser with @ headers[cite: 1, 6]
+│   ├── generate_web_pages.js             # Static HTML & route generator
+│   └── sync_shopify_catalog.js           # Shopify Admin API product syncer
+├── assets/
+│   ├── raw_downloads/                    # Ingestion folder for raw Flow images & MP4s
+│   ├── art_full/                         # Composite card art (300 DPI, CR80 + bleed)
+│   ├── art_web/                          # Cropped web preview images (1080 x 1715 px)
+│   ├── videos/                           # 9:16 mobile-first video greetings (1080 x 1920 px)[cite: 1, 3]
+│   └── audio/                            # Mastered VO tracks and sound FX[cite: 1, 3]
+├── dist/
+│   ├── print_pdfs/                       # 300 DPI double-sided print PDF sheets[cite: 1, 3]
+│   └── web_deploy/                       # Static web output for Cloudflare / Next.js
+└── templates/
+    ├── indesign_cr80_master.indt         # Master CR80 InDesign template
+    └── web_stage_template.html           # 3D gyro video viewer shell
+2. Master JSON Schema (tapgreetings_master.json)
+Following the five-layer dataset architecture, this master JSON governs the physical print engine, prompt generation, motion cues, and subfolder URL routing:
+
+JSON
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "project_meta": {
+    "collection_name": "Tap Greetings: Holiday & Seasonal Collection (2026 Edition)",
+    "brand_domain": "tapgreetings.com",
+    "total_cards": 10,
+    "physical_specs": {
+      "card_format": "CR80 (3.375\" x 2.125\")",
+      "bleed_margin": "0.125\"",
+      "print_dimensions": "3.500\" x 2.250\"",
+      "canvas_px_300dpi": {
+        "width": 638,
+        "height": 1013
+      }
+    },
+    "routing_structure": {
+      "base_url": "https://tapgreetings.com",
+      "routing_pattern": "/{category_folder}/{numeric_id}",
+      "fallback_param": "?src=qr"
+    }
+  },
+  "cards": {
+    "087645": {
+      "id": "087645",
+      "sku": "TG-DEC-087645",
+      "header_display": "DECEMBER • SERIES 1",
+      "title": "MERRY CHRISTMAS",
+      "occasion": "Merry Christmas",
+      "taxonomy": {
+        "category_folder": "holiday",
+        "primary_category": "Winter Holidays",
+        "sub_category": "Traditional Festive",
+        "art_style_archetype": "Classic Velvet Nostalgia",
+        "style_tags": [
+          "storybook-classic",
+          "soft-volumetric-lighting",
+          "bold-vector-lines",
+          "clean-spot-illustration",
+          "cozy-holiday-aesthetic"
+        ],
+        "motif_tags": [
+          "evergreen-pine-wreath",
+          "red-velvet-bow",
+          "blinking-fairy-lights",
+          "snow-flurries"
+        ],
+        "marketplace_tags": [
+          "smart christmas card",
+          "nfc holiday card",
+          "stocking stuffer 2026",
+          "interactive xmas gift",
+          "reusable holiday card"
+        ]
+      },
+      "card_print": {
+        "front_header": "PEACE & WARMTH",
+        "front_title": "MERRY CHRISTMAS",
+        "front_subtext": "TAP GREETINGS • SMART CARD",
+        "back_header": "HOW TO PLAY YOUR GREETING",
+        "back_step_1": "Unlock phone and tap top edge to circle below",
+        "back_step_2": "Tap screen notification to open living video greeting",
+        "back_step_3": "Save video to phone or reprogram card anytime",
+        "tap_target_label": "✦ HOLD PHONE HERE TO TAP ✦",
+        "paths": {
+          "front_art_composite": "./assets/art_full/087645_Christmas_300dpi.png",
+          "web_card_preview": "./assets/art_web/087645_Christmas_CR80.png"
+        }
+      },
+      "digital_page": {
+        "url_path": "/holiday/087645",
+        "full_url": "https://tapgreetings.com/holiday/087645",
+        "top_banner_pill": "✦ A CHRISTMAS GREETING FOR YOU ✦",
+        "hero_heading": "Wishing You a Magical Christmas",
+        "message_body": "May the peace and joy of the holiday season fill your home with warmth and light.",
+        "theme_tokens": {
+          "css_class": "theme-christmas",
+          "bg_page": "#F7F9F7",
+          "card_surface": "#FFFFFF",
+          "card_tint": "#EBF2EB",
+          "border_gold": "#D4AF37",
+          "accent_primary": "#9E2A2B",
+          "text_main": "#1E2820"
+        }
+      },
+      "ai_prompts": {
+        "image_generation": "Vector character spot illustration, lush evergreen holiday pine wreath decorated with bright red berries, tied with a luxurious crimson velvet ribbon bow, warm glowing fairy lights, gentle snow flurries, bold clean charcoal contours, soft editorial gouache shading, isolated on solid soft cream backdrop, centered composition with generous margins --ar 1:1 --no text, words, typography, letters, card frame, borders, photorealism, 3d render",
+        "video_generation": "Animate this 2D holiday vector illustration. The evergreen pine wreath sways slightly while warm fairy lights pulse and twinkle with gentle glowing flares. Soft snow flurries drift downward in a continuous peaceful loop. Crisp 2D animation with zero warping. 9:16 vertical portrait, smooth 8.0s loop, 30fps."
+      },
+      "video_greeting": {
+        "duration_sec": 8.0,
+        "visual_action": "Evergreen wreath sways, fairy lights blink on, and golden bokeh particles drift downward.",
+        "spoken_dialogue": "May your holidays be warm, peaceful, and filled with sweet memories. Merry Christmas to you and yours!",
+        "sound_effects": "Gentle sleigh-bell shimmer, soft acoustic holiday guitar, bright sparkling chime at sign-off.",
+        "kinetic_text_pop": "MERRY CHRISTMAS!",
+        "pop_timestamp_sec": 5.8,
+        "cdn_video_url": "https://cdn.tapgreetings.com/videos/holiday/087645.mp4"
+      },
+      "naming_manifest": {
+        "slug": "087645-merry-christmas",
+        "export_base_name": "087645_MerryChristmas",
+        "file_manifest": {
+          "art_print_front": "087645_MerryChristmas_Print_Front_CR80.pdf",
+          "art_print_back": "087645_MerryChristmas_Print_Back_CR80.pdf",
+          "web_card_cr80": "087645_MerryChristmas_Card_Web.png",
+          "web_video_1080p": "087645_MerryChristmas_Video_1080p.mp4"
+        }
+      }
+    },
+    "087646": {
+      "id": "087646",
+      "sku": "TG-NOV-087646",
+      "header_display": "NOVEMBER • SERIES 1",
+      "title": "HAPPY THANKSGIVING",
+      "occasion": "Happy Thanksgiving",
+      "taxonomy": {
+        "category_folder": "holiday",
+        "primary_category": "Seasonal Harvest",
+        "sub_category": "Family & Host Dining",
+        "art_style_archetype": "Rustic Storybook Warmth",
+        "style_tags": [
+          "flat-2d-vector",
+          "warm-ambient-glow",
+          "bold-charcoal-outlines",
+          "editorial-storybook",
+          "soft-gouache-shading"
+        ],
+        "motif_tags": [
+          "steaming-pumpkin-pie",
+          "amber-maple-leaves",
+          "cinnamon-quills",
+          "rustic-oak-plank"
+        ],
+        "marketplace_tags": [
+          "thanksgiving card",
+          "smart thanksgiving tag",
+          "hostess gift idea",
+          "autumn keepsake card",
+          "nfc holiday card"
+        ]
+      },
+      "card_print": {
+        "front_header": "GATHER WITH GRATITUDE",
+        "front_title": "HAPPY THANKSGIVING",
+        "front_subtext": "TAP GREETINGS • SMART CARD",
+        "back_header": "HOW TO PLAY YOUR GREETING",
+        "back_step_1": "Unlock phone and tap top edge to circle below",
+        "back_step_2": "Tap screen notification to open living video greeting",
+        "back_step_3": "Save video to phone or reprogram card anytime",
+        "tap_target_label": "✦ HOLD PHONE HERE TO TAP ✦",
+        "paths": {
+          "front_art_composite": "./assets/art_full/087646_Thanksgiving_300dpi.png",
+          "web_card_preview": "./assets/art_web/087646_Thanksgiving_CR80.png"
+        }
+      },
+      "digital_page": {
+        "url_path": "/holiday/087646",
+        "full_url": "https://tapgreetings.com/holiday/087646",
+        "top_banner_pill": "✦ A THANKSGIVING GREETING ✦",
+        "hero_heading": "Warmest Wishes From Our Table to Yours",
+        "message_body": "May your home be blessed with health, your table with abundance, and your heart with lasting peace.",
+        "theme_tokens": {
+          "css_class": "theme-thanksgiving",
+          "bg_page": "#FAF5F0",
+          "card_surface": "#FFFFFF",
+          "card_tint": "#F5EBE1",
+          "border_gold": "#C07D3E",
+          "accent_primary": "#A44A28",
+          "text_main": "#2B231D"
+        }
+      },
+      "ai_prompts": {
+        "image_generation": "Vector character spot illustration, freshly baked homemade pumpkin pie on a rustic wooden board, gentle steam wisps curling upward, loose amber maple leaves, cinnamon quills, warm hearth lighting, bold charcoal outlines, soft editorial gouache shading, isolated on solid warm cream background, centered composition with generous margins --ar 1:1 --no text, words, typography, letters, card frame, borders, photorealism, 3d render",
+        "video_generation": "Animate this 2D Thanksgiving illustration. The pumpkin pie steams with soft curling vapor puffs. Amber maple leaves gently drift and tumble downward in a subtle 2D sine-wave loop. Warm golden particle shimmer across the scene. 9:16 vertical portrait, smooth 8.0s loop, 30fps."
+      },
+      "video_greeting": {
+        "duration_sec": 8.0,
+        "visual_action": "Pie releases fragrant steam wisps, maple leaves drift across frame, golden stardust pulses.",
+        "spoken_dialogue": "Wishing you a bountiful feast, full hearts, and a wonderful Thanksgiving surrounded by love.",
+        "sound_effects": "Crackling fireplace ambiance, soft wind rustling dry leaves, warm acoustic guitar arpeggio.",
+        "kinetic_text_pop": "HAPPY THANKSGIVING!",
+        "pop_timestamp_sec": 5.8,
+        "cdn_video_url": "https://cdn.tapgreetings.com/videos/holiday/087646.mp4"
+      },
+      "naming_manifest": {
+        "slug": "087646-happy-thanksgiving",
+        "export_base_name": "087646_HappyThanksgiving",
+        "file_manifest": {
+          "art_print_front": "087646_HappyThanksgiving_Print_Front_CR80.pdf",
+          "art_print_back": "087646_HappyThanksgiving_Print_Back_CR80.pdf",
+          "web_card_cr80": "087646_HappyThanksgiving_Card_Web.png",
+          "web_video_1080p": "087646_HappyThanksgiving_Video_1080p.mp4"
+        }
+      }
+    },
+    "087647": {
+      "id": "087647",
+      "sku": "TG-EVG-087647",
+      "header_display": "CELEBRATION • SERIES 1",
+      "title": "HAPPY BIRTHDAY",
+      "occasion": "Happy Birthday",
+      "taxonomy": {
+        "category_folder": "celebration",
+        "primary_category": "Evergreen Q4 Staples",
+        "sub_category": "Milestone Celebration",
+        "art_style_archetype": "Pastel Celebration Pop",
+        "style_tags": [
+          "playful-celebration-vector",
+          "clean-bold-charcoal-lines",
+          "pastel-candy-palette",
+          "editorial-spot-illustration"
+        ],
+        "motif_tags": [
+          "single-birthday-cupcake",
+          "golden-flame-candle",
+          "floating-pastel-balloons",
+          "multi-colored-confetti"
+        ],
+        "marketplace_tags": [
+          "smart birthday card",
+          "nfc birthday card",
+          "interactive birthday keepsake",
+          "winter birthday card",
+          "reusable birthday card"
+        ]
+      },
+      "card_print": {
+        "front_header": "A CELEBRATION FOR YOU",
+        "front_title": "HAPPY BIRTHDAY",
+        "front_subtext": "TAP GREETINGS • SMART CARD",
+        "back_header": "HOW TO PLAY YOUR GREETING",
+        "back_step_1": "Unlock phone and tap top edge to circle below",
+        "back_step_2": "Tap screen notification to open living video greeting",
+        "back_step_3": "Save video to phone or reprogram card anytime",
+        "tap_target_label": "✦ HOLD PHONE HERE TO TAP ✦",
+        "paths": {
+          "front_art_composite": "./assets/art_full/087647_Birthday_300dpi.png",
+          "web_card_preview": "./assets/art_web/087647_Birthday_CR80.png"
+        }
+      },
+      "digital_page": {
+        "url_path": "/celebration/087647",
+        "full_url": "https://tapgreetings.com/celebration/087647",
+        "top_banner_pill": "✦ IT'S TIME TO CELEBRATE ✦",
+        "hero_heading": "Celebrating You Today",
+        "message_body": "Blow out the candles and make the biggest wish. May this coming year bring everything you have been working toward!",
+        "theme_tokens": {
+          "css_class": "theme-birthday",
+          "bg_page": "#FFF8FA",
+          "card_surface": "#FFFFFF",
+          "card_tint": "#FDEEF2",
+          "border_gold": "#E5A93C",
+          "accent_primary": "#D84A75",
+          "text_main": "#2B2B2B"
+        }
+      },
+      "ai_prompts": {
+        "image_generation": "Vector character spot illustration, celebratory pastel frosted cupcake with golden sparkling lit candle, floating pastel balloons and shimmering confetti, bold clean vector lines, flat 2D graphic design with soft shading, isolated on soft blush cream background, centered composition --ar 1:1 --no text, words, typography, letters, card frame, borders, photorealism, 3d render",
+        "video_generation": "Animate this 2D birthday vector illustration. The cupcake candle flame flickers warmly while the pastel balloon bundle sways softly. Confetti bursts outward and floats down gracefully. 9:16 vertical portrait, smooth 8.0s loop, 30fps."
+      },
+      "video_greeting": {
+        "duration_sec": 8.0,
+        "visual_action": "Candle flickers warmly, balloons sway, and colorful confetti showers down.",
+        "spoken_dialogue": "Wishing you the happiest birthday filled with big smiles, sweet treats, and everything you love!",
+        "sound_effects": "Party blower flutter, glockenspiel celebration chime, joyful brass flare.",
+        "kinetic_text_pop": "HAPPY BIRTHDAY!",
+        "pop_timestamp_sec": 5.8,
+        "cdn_video_url": "https://cdn.tapgreetings.com/videos/celebration/087647.mp4"
+      },
+      "naming_manifest": {
+        "slug": "087647-happy-birthday",
+        "export_base_name": "087647_HappyBirthday",
+        "file_manifest": {
+          "art_print_front": "087647_HappyBirthday_Print_Front_CR80.pdf",
+          "art_print_back": "087647_HappyBirthday_Print_Back_CR80.pdf",
+          "web_card_cr80": "087647_HappyBirthday_Card_Web.png",
+          "web_video_1080p": "087647_HappyBirthday_Video_1080p.mp4"
+        }
+      }
+    }
+  }
+}
+3. URL Architecture & Dynamic Routing
+Routing Matrix
+The application structure supports clean subfolder categorization and 6-digit numeric identification:
+
+Card ID	Category Subfolder	Numeric Slug	Dynamic NFC URL (Physical Card)	Fallback QR Code URL	Video CDN URL
+087645	holiday	087645	[https://tapgreetings.com/holiday/087645](https://tapgreetings.com/holiday/087645)	[https://tapgreetings.com/holiday/087645?src=qr](https://tapgreetings.com/holiday/087645?src=qr)	[https://cdn.tapgreetings.com/videos/holiday/087645.mp4](https://cdn.tapgreetings.com/videos/holiday/087645.mp4)
+087646	holiday	087646	[https://tapgreetings.com/holiday/087646](https://tapgreetings.com/holiday/087646)	[https://tapgreetings.com/holiday/087646?src=qr](https://tapgreetings.com/holiday/087646?src=qr)	[https://cdn.tapgreetings.com/videos/holiday/087646.mp4](https://cdn.tapgreetings.com/videos/holiday/087646.mp4)
+087647	celebration	087647	[https://tapgreetings.com/celebration/087647](https://tapgreetings.com/celebration/087647)	[https://tapgreetings.com/celebration/087647?src=qr](https://tapgreetings.com/celebration/087647?src=qr)	[https://cdn.tapgreetings.com/videos/celebration/087647.mp4](https://cdn.tapgreetings.com/videos/celebration/087647.mp4)
+087648	care	087648	[https://tapgreetings.com/care/087648](https://tapgreetings.com/care/087648)	[https://tapgreetings.com/care/087648?src=qr](https://tapgreetings.com/care/087648?src=qr)	[https://cdn.tapgreetings.com/videos/care/087648.mp4](https://cdn.tapgreetings.com/videos/care/087648.mp4)
+087649	countdown	087649	[https://tapgreetings.com/countdown/087649](https://tapgreetings.com/countdown/087649)	[https://tapgreetings.com/countdown/087649?src=qr](https://tapgreetings.com/countdown/087649?src=qr)	[https://cdn.tapgreetings.com/videos/countdown/087649.mp4](https://cdn.tapgreetings.com/videos/countdown/087649.mp4)
+Next.js Dynamic Route Implementation
+Place in src/app/[category]/[id]/page.tsx:
+
+TypeScript
+import masterData from "@/config/tapgreetings_master.json";
+import { notFound } from "next/navigation";
+
+interface PageProps {
+  params: {
+    category: string;
+    id: string;
+  };
+}
+
+export function generateStaticParams() {
+  return Object.values(masterData.cards).map((card) => ({
+    category: card.taxonomy.category_folder,
+    id: card.id,
+  }));
+}
+
+export default function GreetingPage({ params }: PageProps) {
+  const card = masterData.cards[params.id as keyof typeof masterData.cards];
+
+  if (!card || card.taxonomy.category_folder !== params.category) {
+    notFound();
+  }
+
+  return (
+    <main className={`min-h-screen ${card.digital_page.theme_tokens.css_class}`}>
+      {/* 3D Gyro Video Stage */}
+      <section className="viewport-chassis">
+        <div className="card-3d-stage" id="tiltStage">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster={card.card_print.paths.web_card_preview}
+            className="stage-video"
+          >
+            <source src={card.video_greeting.cdn_video_url} type="video/mp4" />
+          </video>
+          <div className="kinetic-text-popup" data-pop-time={card.video_greeting.pop_timestamp_sec}>
+            {card.video_greeting.kinetic_text_pop}
+          </div>
+        </div>
+      </section>
+
+      {/* Greeting Content Chassis */}
+      <section className="greeting-chassis">
+        <span className="eyebrow-pill">{card.digital_page.top_banner_pill}</span>
+        <h1 className="hero-heading">{card.digital_page.hero_heading}</h1>
+        <p className="message-body">"{card.digital_page.message_body}"</p>
+        <button className="btn-primary">▶ Replay Video Greeting</button>
+      </section>
+    </main>
+  );
+}
+4. InDesign Data Merge CSV Specification
+To batch-generate double-sided CR80 cards[cite: 1, 2], InDesign requires a flat CSV format where image file paths are declared with an @ column prefix[cite: 1, 3]:
+
+Code snippet
+id,header_display,title,card_front_header,card_front_title,card_front_subtext,card_back_header,card_back_step_1,card_back_step_2,card_back_step_3,tap_target_label,@FrontArtComposite,@WebCardPreview,nfc_url,qr_url
+087645,DECEMBER • SERIES 1,MERRY CHRISTMAS,PEACE & WARMTH,MERRY CHRISTMAS,TAP GREETINGS • SMART CARD,HOW TO PLAY YOUR GREETING,Unlock phone and tap top edge to circle below,Tap screen notification to open living video greeting,Save video to phone or reprogram card anytime,✦ HOLD PHONE HERE TO TAP ✦,./assets/art_full/087645_Christmas_300dpi.png,./assets/art_web/087645_Christmas_CR80.png,https://tapgreetings.com/holiday/087645,https://tapgreetings.com/holiday/087645?src=qr
+087646,NOVEMBER • SERIES 1,HAPPY THANKSGIVING,GATHER WITH GRATITUDE,HAPPY THANKSGIVING,TAP GREETINGS • SMART CARD,HOW TO PLAY YOUR GREETING,Unlock phone and tap top edge to circle below,Tap screen notification to open living video greeting,Save video to phone or reprogram card anytime,✦ HOLD PHONE HERE TO TAP ✦,./assets/art_full/087646_Thanksgiving_300dpi.png,./assets/art_web/087646_Thanksgiving_CR80.png,https://tapgreetings.com/holiday/087646,https://tapgreetings.com/holiday/087646?src=qr
+087647,CELEBRATION • SERIES 1,HAPPY BIRTHDAY,A CELEBRATION FOR YOU,HAPPY BIRTHDAY,TAP GREETINGS • SMART CARD,HOW TO PLAY YOUR GREETING,Unlock phone and tap top edge to circle below,Tap screen notification to open living video greeting,Save video to phone or reprogram card anytime,✦ HOLD PHONE HERE TO TAP ✦,./assets/art_full/087647_Birthday_300dpi.png,./assets/art_web/087647_Birthday_CR80.png,https://tapgreetings.com/celebration/087647,https://tapgreetings.com/celebration/087647?src=qr
+5. Automated Asset Pre-Cropper (scripts/process_assets.js)
+This Node.js script ingests raw 9:16 or 1:1 Flow renders, applies non-distorting center crops for CR80 card targets, and verifies 300 DPI print metadata[cite: 1, 2]:
+
+JavaScript
+/**
+ * scripts/process_assets.js
+ * Ingests raw Flow visual downloads, crops them to CR80 ratios, and produces:
+ * 1. Print-Ready 300 DPI image (638 x 1013 px with 0.125" bleed)[cite: 1, 2]
+ * 2. Web-Ready CR80 image (1080 x 1715 px)
+ * 3. Stages 9:16 MP4 video untouched for mobile gyro playback[cite: 1]
+ */
+
+const fs = require('fs');
+const path = require('path');
+const sharp = require('sharp');
+const masterData = require('../config/tapgreetings_master.json');
+
+const PATHS = {
+  raw: path.join(__dirname, '../assets/raw_downloads'),
+  artFull: path.join(__dirname, '../assets/art_full'),
+  artWeb: path.join(__dirname, '../assets/art_web'),
+  videos: path.join(__dirname, '../assets/videos')
+};
+
+// Ensure directories exist
+Object.values(PATHS).forEach((dir) => fs.mkdirSync(dir, { recursive: true }));
+
+async function processCard(cardId) {
+  const card = masterData.cards[cardId];
+  if (!card) throw new Error(`Card ID ${cardId} not found in master data`);
+
+  const rawImage = path.join(PATHS.raw, `${cardId}_raw.png`);
+  const rawVideo = path.join(PATHS.raw, `${cardId}_raw.mp4`);
+
+  // 1. Process Video Asset
+  if (fs.existsSync(rawVideo)) {
+    const videoDest = path.join(PATHS.videos, `${card.taxonomy.category_folder}/${cardId}.mp4`);
+    fs.mkdirSync(path.dirname(videoDest), { recursive: true });
+    fs.copyFileSync(rawVideo, videoDest);
+    console.log(`[Video] Staged 9:16 video to: ${videoDest}`);
+  }
+
+  // 2. Process Image Assets
+  if (!fs.existsSync(rawImage)) {
+    console.warn(`[Image] Raw image missing: ${rawImage}`);
+    return;
+  }
+
+  // A. 300 DPI Print File (638 x 1013 px with bleed)[cite: 1, 2]
+  const printDest = path.join(PATHS.artFull, `${cardId}_${card.title.replace(/\s+/g, '')}_300dpi.png`);
+  await sharp(rawImage)
+    .resize({
+      width: 638,
+      height: 1013,
+      fit: 'cover',
+      position: 'center'
+    })
+    .withMetadata({ density: 300 })
+    .png({ quality: 100 })
+    .toFile(printDest);
+  console.log(`[Print] Generated 300 DPI CR80 image: ${printDest}`);
+
+  // B. Web Card Display Crop (1080 x 1715 px)
+  const webDest = path.join(PATHS.artWeb, `${cardId}_${card.title.replace(/\s+/g, '')}_CR80.png`);
+  await sharp(rawImage)
+    .resize({
+      width: 1080,
+      height: 1715,
+      fit: 'cover',
+      position: 'center'
+    })
+    .png({ quality: 95 })
+    .toFile(webDest);
+  console.log(`[Web] Generated CR80 preview image: ${webDest}`);
+}
+
+(async () => {
+  for (const id of Object.keys(masterData.cards)) {
+    await processCard(id);
+  }
+})();
+6. Downstream Agent Directives
+Agent 1 Directive: Flow Image Prompt Engine
+Paste into your image generation agent:
+
+Plaintext
+You are the Lead Visual Asset Creator for "Tap Greetings."
+OBJECTIVE: Produce isolated, centered, textless spot illustrations for physical CR80 cards.
+RULES:
+1. Always output 1:1 square (--ar 1:1) or vertical (--ar 2:3) with centered subjects[cite: 1, 5].
+2. Leave generous padding (at least 20% negative space on all sides) to allow automated 1080x1715 CR80 center cropping without clipping character edges[cite: 1, 5].
+3. ZERO EMBEDDED TEXT OR BORDERS. Never generate greetings, names, numbers, frames, or banners[cite: 1, 2, 5].
+4. Enforce negative prompts: --no text, words, typography, letters, card frame, borders, banners, photorealism, 3D CGI render, dark horror, muddy shadows[cite: 1, 5].
+Agent 2 Directive: Motion & Video Greeting Engine
+Paste into your motion automation agent:
+
+Plaintext
+You are the Motion Director for "Tap Greetings."
+OBJECTIVE: Generate mobile-first vertical animations (1080x1920, 9:16 portrait, exactly 8.0 seconds, 30fps)[cite: 1, 3].
+ANIMATION FORMULA:
+- 0:00 - 0:02.5s: Ambient Awakening (2D gentle breathing, floating particles, lighting flares)[cite: 1, 3].
+- 0:02.5 - 0:05.5s: Focal Greeting (Signature action performed; voiceover delivers greeting line)[cite: 1, 3].
+- 0:05.5 - 0:07.0s: Climax & Pop (Elastic typography bounce at 5.8s, sparkle chime SFX)[cite: 1, 4].
+- 0:07.0 - 0:08.0s: Loop Hold (Particles settle into seamless loop posture)[cite: 1, 3].
+CONSTRAINTS: Deliver locked 9:16 vertical MP4 format. No horizontal letterboxing[cite: 1, 3].
+Agent 3 Directive: Web & Catalog Sync Engine
+Paste into your web build or Shopify automation agent:
+
+Plaintext
+You are the Catalog Sync Engineer for "Tap Greetings."
+OBJECTIVE: Read tapgreetings_master.json and publish synchronized touchpoints[cite: 1, 3].
+TASKS:
+1. Generate static landing pages at /{category_folder}/{numeric_id} (e.g. /holiday/087645).
+2. Wire video player to CDN asset: https://cdn.tapgreetings.com/videos/{category_folder}/{numeric_id}.mp4.
+3. Configure physical NFC payload to target URL: https://tapgreetings.com/{category_folder}/{numeric_id}[cite: 1, 3].
+4. Deploy Shopify product listing with matching theme CSS colors,

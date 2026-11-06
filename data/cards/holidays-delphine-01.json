@@ -1,22 +1,60 @@
 {
   "card_id": "holidays-delphine-01",
   "series_id": "winter-glamour-2026",
+  "card_number": 1,
   "slug": "delphine-holidays",
+  "aliases_slugs": [
+    "01",
+    "holidays"
+  ],
   "event_greeting": "Happy Holidays!",
   "web_address": "https://TapGreetings.com/holidays",
   "character": {
     "name": "Delphine",
     "title": "The Ice Starlet",
-    "aliases": ["Delphine", "The Glacial Siren"],
+    "aliases": [
+      "Delphine",
+      "The Glacial Siren",
+      "Gala Hostess"
+    ],
     "profile_theme": "The High-Fashion Starlet",
     "motto": "Shine under your own spotlight and make every entrance unforgettable.",
-    "micro_lore": "Stepping onto the frosted red carpet at dusk, Delphine sparkles under flashbulbs, spreading warm cheer and champagne wishes across the winter gala...",
+    "micro_lore": "Stepping onto the frosted red carpet at dusk, Delphine sparkles under flashbulbs, spreading warm cheer and champagne wishes across the winter gala. Her signature champagne-boba in hand, she invites guests into an evening of high-fashion holiday enchantment.",
     "indicators": {
       "glamour": "100/100",
       "sparkle": "99/100",
       "signature": "Champagne-Boba"
     },
     "rarity_tier": "Spectrum Common"
+  },
+  "prompts": {
+    "prompt_front_artwork": "High-fashion glamour portrait of Delphine, The Ice Starlet, standing elegantly on a frosted velvet red carpet at dusk outside a snow-dusted luxury palace gala. Holding a crystal stemmed glass filled with sparkling champagne-boba pearls with a rose gold bow. Wearing an haute couture crystalline ice-blue and obsidian silk evening gown embroidered with micro-sequins and 4-point gold starburst filigree. Warm paparazzi camera flashbulbs glowing in background, cinematic depth of field, 8k resolution, photorealistic, elegant rim lighting.",
+    "prompt_back_design": "Collector trading card back layout, deep obsidian midnight background #0A0E1A, sharp rectangular rose gold border #B76E79 with 1.5pt vector stroke. Four-point gold starburst filigrees in each corner. Central shimmering gold star target with ⟡ TAP HERE ⟡ NFC symbol. Elegant typography in Playfair Display and Montserrat.",
+    "prompt_motion_video": "9:16 vertical video. Slow push-in on Delphine on the winter gala red carpet at night. Flashbulbs popping in soft bokeh. She gently tilts her crystal champagne-boba flute toward camera, winks with sparkling ice-blue eyeshadow, and smiles warmly as snow crystals drift gently through golden light. High frame rate, cinematic lighting, luxury party atmosphere.",
+    "prompt_voice_dialogue": "Vocal style: Playful, elegant, warm transatlantic starlet tone. 'Champagne in hand, glitz on full display! Delphine here to invite you to the most glamorous party of the season—Happy Holidays!'",
+    "prompt_negative": "blurry, low resolution, cartoon, distorted fingers, extra limbs, bad anatomy, muddy colors, oversaturated neon, flat lighting"
+  },
+  "descriptions": {
+    "shopify_short_desc": "• High-Definition 9:16 Motion Tap-to-Video\\n• Embedded NTAG215 Rewritable NFC Microchip\\n• Premium CR80 30mil Waterproof PVC with Gold Filigree\\n• Interactive Speech Dialogue & RSVP Utility",
+    "shopify_full_html": "<div class=\"tg-product-desc\"><h3>❄️ Happy Holidays from Delphine, The Ice Starlet</h3><p>Step onto the frosted red carpet with this collector-grade smart NFC greeting card. Tap with any iPhone or Android smartphone to unlock Delphine's exclusive 4K holiday video, champagne toast, and interactive gala RSVP.</p><ul><li><strong>Card Format:</strong> CR80 30mil Waterproof PVC with rose-gold metallic border.</li><li><strong>Embedded NFC:</strong> High-speed NTAG215 microchip programmed for instant tap playback.</li><li><strong>Dual Experience:</strong> Physical collectible card + dynamic digital media layer.</li></ul></div>",
+    "social_share_caption": "Delphine invites you to the Winter Gala! ❄️ Tap to experience this smart NFC holiday greeting card: https://TapGreetings.com/delphine-holidays"
+  },
+  "seo": {
+    "primary_occasion": "Holiday",
+    "keywords": [
+      "winter gala",
+      "holiday greeting card",
+      "nfc card",
+      "delphine",
+      "ice starlet",
+      "champagne",
+      "high fashion",
+      "christmas",
+      "smart card",
+      "tapthingy"
+    ],
+    "seo_title": "Delphine - The Ice Starlet | Winter Gala NFC Video Greeting Card",
+    "seo_meta_desc": "Step onto the frosted red carpet with Delphine. Tap this smart NFC keepsake card to experience an exclusive 4K holiday video, audio toast, and winter gala RSVP."
   },
   "media": {
     "aspect_ratio": "9:16",
@@ -66,5 +104,13 @@
     "action_type": "GALA_INVITATION_RSVP",
     "button_text": "RSVP to Winter Gala",
     "target_url": "https://TapGreetings.com/events/winter-gala-2026"
+  },
+  "commerce": {
+    "price": 29.99,
+    "compare_at_price": 39.99,
+    "sku": "TG-CARD-delphine-holidays",
+    "inventory_qty": 100,
+    "card_format": "CR80 30mil Waterproof PVC",
+    "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
   }
 }

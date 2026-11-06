@@ -24,7 +24,6 @@ function safe(val, fallback = '') {
 function resolveAssetPath(filePath, isSubdir = false) {
   if (!filePath) return '';
   if (filePath.startsWith('http://') || filePath.startsWith('https://')) {
-    // If it's a tapgreetings domain url, convert to relative asset path
     const match = filePath.match(/https?:\/\/(?:www\.)?tapgreetings\.com(\/.*)/i);
     if (match) {
       const rel = match[1];
@@ -38,11 +37,10 @@ function resolveAssetPath(filePath, isSubdir = false) {
   return isSubdir ? '../' + filePath : './' + filePath;
 }
 
-// Common HTML Head template
-function getHeadHtml(title, cardStyle = null, isSubdir = false) {
+// Common HTML Head template with Dynamic SEO & Social Graph Meta Tags
+function getHeadHtml(title, cardStyle = null, isSubdir = false, seoData = null, mediaData = null, cardUrl = '') {
   const relPath = isSubdir ? '../' : './';
   
-  // Custom theme colors from card style tokens if provided
   const colors = cardStyle?.colors || {
     bg_obsidian_midnight: '#0A0E1A',
     bg_frosted_ice_blue: '#E0F7FA',
@@ -54,12 +52,41 @@ function getHeadHtml(title, cardStyle = null, isSubdir = false) {
     neon_halo_glow: '#FF69B4'
   };
 
+  const metaDesc = seoData?.seo_meta_desc || 'TapGreetings smart NFC video greeting cards that come alive with a single smartphone tap.';
+  const metaKeywords = (seoData?.keywords || ['tapgreetings', 'nfc card', 'smart greeting card', 'video card', 'tapthingy']).join(', ');
+  const pageTitle = `${safe(title, 'TapGreetings')} | TapGreetings by TapThingy`;
+  const ogImg = mediaData?.front_image_url || 'https://tapgreetings.com/assets/img/delphine-front.png';
+  const ogVideo = mediaData?.video_url || 'https://tapgreetings.com/assets/video/delphine-holidays.mp4';
+
   return `<!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${safe(title, 'TapGreetings')} | TapGreetings by TapThingy</title>
+    <title>${pageTitle}</title>
+    
+    <!-- Primary SEO Meta Tags -->
+    <meta name="title" content="${pageTitle}">
+    <meta name="description" content="${metaDesc}">
+    <meta name="keywords" content="${metaKeywords}">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="${cardUrl || 'https://tapgreetings.com'}">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="${cardUrl || 'https://tapgreetings.com'}">
+    <meta property="og:title" content="${pageTitle}">
+    <meta property="og:description" content="${metaDesc}">
+    <meta property="og:image" content="${ogImg}">
+    <meta property="og:video" content="${ogVideo}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="${cardUrl || 'https://tapgreetings.com'}">
+    <meta property="twitter:title" content="${pageTitle}">
+    <meta property="twitter:description" content="${metaDesc}">
+    <meta property="twitter:image" content="${ogImg}">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -227,6 +254,9 @@ cards.forEach((card, index) => {
   const media = card.media || {};
   const nfc = card.nfc_config || {};
   const utility = card.utility_action || {};
+  const prompts = card.prompts || {};
+  const seo = card.seo || {};
+  const comm = card.commerce || {};
 
   // Resolve assets
   const frontImg = resolveAssetPath(media.local_front_image_path || media.front_image_url, true);
@@ -237,7 +267,7 @@ cards.forEach((card, index) => {
   const videoAspectClass = isLandscape ? 'aspect-[16/9] w-full max-h-[60vh]' : 'aspect-[9/16] w-full max-h-[75vh]';
   const cardPreviewAspectClass = isLandscape ? 'aspect-[3/2] w-64 sm:w-80' : 'aspect-[9/16] w-52 sm:w-64';
 
-  const cardPageHtml = `${getHeadHtml(`${char.name || card.slug} - ${card.event_greeting}`, card.style_tokens, true)}
+  const cardPageHtml = `${getHeadHtml(seo.seo_title || `${char.name} - ${card.event_greeting}`, card.style_tokens, true, seo, media, card.web_address)}
     <main class="max-w-6xl mx-auto px-4 py-8 sm:py-12">
         <!-- Main Card Container with Sharp Rectangular Borders and Rose Gold Stroke -->
         <div class="relative bg-[#0A0E1A]/95 rounded-2xl p-6 sm:p-10 shadow-2xl border-[1.5pt] border-rose-400/40 backdrop-blur-md flex flex-col gap-8 glow-neon">
@@ -255,7 +285,7 @@ cards.forEach((card, index) => {
                         ${card.event_greeting || 'Happy Holidays!'}
                     </span>
                     <span class="inline-block bg-slate-900 text-amber-300 border border-amber-400/40 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                        ${card.series_id || 'Winter Glamour 2026'}
+                        ${card.series_id || 'Winter Glamour 2026'} &bull; CARD #${card.card_number || (index + 1)}
                     </span>
                     <span class="inline-block bg-slate-900 text-pink-300 border border-pink-400/40 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                         ${char.rarity_tier || 'Spectrum Common'}
@@ -271,6 +301,13 @@ cards.forEach((card, index) => {
                 <p class="text-xs sm:text-sm text-slate-400 italic max-w-xl mx-auto mt-2">
                     &ldquo;${char.motto}&rdquo;
                 </p>
+
+                <!-- Keywords / SEO Tag Pills -->
+                ${seo.keywords && seo.keywords.length > 0 ? `
+                <div class="flex flex-wrap justify-center gap-1.5 mt-3">
+                    ${seo.keywords.map(kw => `<span class="text-[10px] bg-slate-900/80 text-slate-400 border border-slate-800 px-2.5 py-0.5 rounded-full">#${kw}</span>`).join('')}
+                </div>
+                ` : ''}
             </div>
 
             <!-- Main Layout: Video Player Column + Interactive Experience Column -->
@@ -298,7 +335,7 @@ cards.forEach((card, index) => {
                             <i class="fa-solid fa-volume-high"></i>
                         </div>
                         <div class="flex-grow">
-                            <span class="text-[10px] uppercase font-bold text-amber-300 tracking-wider block">Dialogue & Voiceover</span>
+                            <span class="text-[10px] uppercase font-bold text-amber-300 tracking-wider block">Dialogue &amp; Voiceover</span>
                             <p class="text-xs sm:text-sm text-slate-100 italic leading-relaxed mt-0.5">
                                 &ldquo;${media.audio_dialogue}&rdquo;
                             </p>
@@ -377,10 +414,10 @@ cards.forEach((card, index) => {
                                     <img src="${backImg}" alt="${char.name} Back" class="w-full h-full object-contain">
                                     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none">
                                         <div class="w-16 h-16 rounded-full border-2 border-dashed border-amber-300/80 bg-pink-500/20 backdrop-blur-sm flex items-center justify-center text-amber-300 text-xl font-bold shadow-lg animate-pulse">
-                                            ★
+                                            ${nfc.target_shape === 'heart' ? '♥' : (nfc.target_shape === 'shield' ? '🛡' : '★')}
                                         </div>
                                         <span class="text-[10px] font-bold text-amber-200 mt-1 drop-shadow bg-black/60 px-2 py-0.5 rounded-full">${nfc.tap_label || '⟡ TAP HERE ⟡'}</span>
-                                        <span class="text-[8px] text-slate-300 drop-shadow">${nfc.instruction || 'Tap with NFC enabled phone'}</span>
+                                        <span class="text-[8px] text-slate-300 drop-shadow">${nfc.instruction || 'Tap with NFC enabled phone or device'}</span>
                                     </div>
                                     <div class="absolute bottom-2 left-2 right-2 bg-black/75 backdrop-blur-sm text-center py-1 text-[10px] font-bold text-pink-300 uppercase tracking-widest rounded-lg">
                                         Card Back &bull; Tap to Flip ↺
@@ -408,17 +445,47 @@ cards.forEach((card, index) => {
                     </div>
                     ` : ''}
 
+                    <!-- Creator AI Prompts & Specs Drawer -->
+                    ${prompts.prompt_front_artwork ? `
+                    <details class="bg-slate-950/80 rounded-2xl border border-amber-400/30 p-4 group transition-all">
+                        <summary class="font-header text-xs font-bold text-amber-300 cursor-pointer flex justify-between items-center uppercase tracking-wider select-none">
+                            <span><i class="fa-solid fa-wand-magic-sparkles text-pink-400 mr-1.5"></i> Creative AI Prompts &amp; Specs</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">&darr;</span>
+                        </summary>
+                        <div class="mt-4 flex flex-col gap-3 text-xs border-t border-slate-800 pt-3">
+                            <div>
+                                <span class="font-bold text-slate-400 block mb-1">🎨 Front Artwork Prompt:</span>
+                                <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 text-slate-300 font-mono text-[11px] leading-relaxed relative group/btn">
+                                    ${prompts.prompt_front_artwork}
+                                </div>
+                            </div>
+                            <div>
+                                <span class="font-bold text-slate-400 block mb-1">🎬 Motion Video Prompt:</span>
+                                <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 text-slate-300 font-mono text-[11px] leading-relaxed">
+                                    ${prompts.prompt_motion_video}
+                                </div>
+                            </div>
+                            <div>
+                                <span class="font-bold text-slate-400 block mb-1">🎙️ Dialogue &amp; Vocal Prompt:</span>
+                                <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 text-slate-300 font-mono text-[11px] leading-relaxed">
+                                    ${prompts.prompt_voice_dialogue}
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                    ` : ''}
+
                     <!-- Utility Action & Order Buttons -->
                     <div class="flex flex-col gap-3 pt-2">
                         ${utility.button_text ? `
                         <a href="${utility.target_url || '#'}" target="_blank" class="w-full bg-gradient-to-r from-pink-600 via-rose-500 to-amber-500 hover:from-pink-500 hover:to-amber-400 text-white font-bold py-3.5 px-6 rounded-2xl shadow-xl shadow-pink-600/30 text-center flex items-center justify-center gap-2 transition-transform hover:scale-[1.02]">
-                            <i class="fa-solid fa-champagne-glasses"></i> ${utility.button_text} &rarr;
+                            <i class="fa-solid fa-sparkles"></i> ${utility.button_text} &rarr;
                         </a>
                         ` : ''}
 
                         <div class="flex flex-col sm:flex-row gap-3">
                             <a href="${meta.shop_url}" target="_blank" class="flex-1 bg-slate-900 hover:bg-slate-800 text-amber-300 font-bold py-3.5 px-6 rounded-2xl border border-amber-400/40 shadow-lg text-center flex items-center justify-center gap-2 transition-transform hover:scale-[1.02]">
-                                <i class="fa-solid fa-cart-shopping"></i> Order Keepsake Card &bull; $29.99
+                                <i class="fa-solid fa-cart-shopping"></i> Order Keepsake Card &bull; $${comm.price ? comm.price.toFixed(2) : '29.99'}
                             </a>
                             <button onclick="shareGreeting()" class="bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 px-6 rounded-2xl border border-slate-700 shadow-lg flex items-center justify-center gap-2 transition-transform hover:scale-[1.02]">
                                 <i class="fa-solid fa-share-nodes text-pink-400"></i> Share
@@ -454,7 +521,7 @@ cards.forEach((card, index) => {
         function shareGreeting() {
             const shareData = {
                 title: ${JSON.stringify(char.name + ' - ' + card.event_greeting)},
-                text: ${JSON.stringify(char.name + ' invites you to the Winter Gala! ' + card.event_greeting)},
+                text: ${JSON.stringify(card.descriptions?.social_share_caption || (char.name + ' - ' + card.event_greeting))},
                 url: window.location.href
             };
             if (navigator.share) {
@@ -494,7 +561,7 @@ const featuredMedia = featuredCard.media || {};
 const featuredFront = resolveAssetPath(featuredMedia.local_front_image_path || featuredMedia.front_image_url, false);
 const featuredVideo = resolveAssetPath(featuredMedia.local_video_path || featuredMedia.video_url, false);
 
-const mainIndexHtml = `${getHeadHtml('TapGreetings - Smart NFC Keepsake Greeting Cards', featuredCard.style_tokens, false)}
+const mainIndexHtml = `${getHeadHtml('TapGreetings - Smart NFC Keepsake Greeting Cards', featuredCard.style_tokens, false, featuredCard.seo, featuredCard.media, 'https://tapgreetings.com')}
     <main class="max-w-7xl mx-auto px-4 py-12">
         
         <!-- Hero Spotlight Section Featuring Delphine (Card 01) -->
@@ -578,7 +645,7 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings - Smart NFC Keepsake Greeting
             </div>
         </div>
 
-        <!-- Collection Controls: Search, Front/Back, Aspect, Sort -->
+        <!-- Collection Controls: Search, Front/Back, Aspect, Occasions, Sort -->
         <div id="collection" class="bg-slate-900/90 rounded-2xl p-6 mb-8 shadow-xl border border-rose-400/30 backdrop-blur-md flex flex-col md:flex-row gap-4 items-center justify-between">
             <div class="flex items-center gap-3 w-full md:w-auto">
                 <h2 class="font-serif text-2xl font-bold text-white whitespace-nowrap flex items-center gap-2">
@@ -590,9 +657,9 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings - Smart NFC Keepsake Greeting
             </div>
 
             <div class="flex flex-wrap gap-3 w-full md:w-auto items-center justify-end">
-                <!-- Search Input -->
+                <!-- Keyword & Character Search Input -->
                 <div class="relative flex-grow sm:flex-grow-0">
-                    <input type="text" id="searchInput" placeholder="Search cards, characters, lore..." oninput="filterCards()" class="w-full sm:w-56 bg-slate-950 text-white placeholder-slate-400 text-sm px-4 py-2 rounded-xl border border-slate-700 focus:outline-none focus:ring-2 focus:ring-pink-500">
+                    <input type="text" id="searchInput" placeholder="Search keywords, prompts, lore..." oninput="filterCards()" class="w-full sm:w-64 bg-slate-950 text-white placeholder-slate-400 text-sm px-4 py-2 rounded-xl border border-slate-700 focus:outline-none focus:ring-2 focus:ring-pink-500">
                 </div>
 
                 <!-- Front / Back Toggle -->
@@ -606,6 +673,21 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings - Smart NFC Keepsake Greeting
                     <option value="">All Orientations</option>
                     <option value="portrait">↕ Vertical (9:16)</option>
                     <option value="landscape">↔ Horizontal (16:9)</option>
+                </select>
+
+                <!-- Occasions Filter -->
+                <select id="occasionFilter" onchange="filterCards()" class="bg-slate-950 text-white text-sm px-3.5 py-2 rounded-xl border border-slate-700 focus:outline-none focus:ring-2 focus:ring-pink-500">
+                    <option value="">All Occasions</option>
+                    <option value="Holiday">🎄 Holiday &amp; Winter</option>
+                    <option value="Black Friday">🛍️ Black Friday</option>
+                    <option value="New Year">🎆 New Year 2026</option>
+                    <option value="Birthday">🎂 Birthday</option>
+                    <option value="Anniversary">💍 Anniversary</option>
+                    <option value="Thank You">🙏 Thank You</option>
+                    <option value="Congratulations">🏆 Congratulations</option>
+                    <option value="Wedding">👰 Wedding</option>
+                    <option value="Everyday">💜 Thinking of You &amp; Baby</option>
+                    <option value="Custom">⚡ Custom Studio</option>
                 </select>
 
                 <!-- Sort Order -->
@@ -645,6 +727,7 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings - Smart NFC Keepsake Greeting
         const cardsData = ${JSON.stringify(cards.map((c, idx) => {
           const char = c.character || {};
           const media = c.media || {};
+          const seo = c.seo || {};
           const isLand = media.aspect_ratio === '16:9' || media.aspect_ratio === 'landscape';
           const front = resolveAssetPath(media.local_front_image_path || media.front_image_url, false);
           const back = resolveAssetPath(media.local_back_image_path || media.back_image_url, false);
@@ -659,7 +742,9 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings - Smart NFC Keepsake Greeting
             frontImg: front,
             backImg: back,
             lore: char.micro_lore || '',
-            motto: char.motto || ''
+            motto: char.motto || '',
+            occasion: seo.primary_occasion || 'Holiday',
+            keywords: (seo.keywords || []).join(' ').toLowerCase()
           };
         }))};
 
@@ -707,6 +792,7 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings - Smart NFC Keepsake Greeting
                             <div>
                                 <div class="flex justify-between items-center mb-1">
                                     <span class="text-[10px] font-bold text-amber-300 tracking-wider uppercase">\${c.greeting}</span>
+                                    <span class="text-[9px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full border border-slate-750">\${c.occasion}</span>
                                 </div>
                                 <div class="font-serif text-lg font-bold text-white group-hover:text-rose-300 transition-colors leading-snug">\${c.name}</div>
                                 <div class="text-xs text-slate-400 italic line-clamp-1">\${c.title}</div>
@@ -725,12 +811,18 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings - Smart NFC Keepsake Greeting
         function filterCards() {
             const query = document.getElementById('searchInput').value.toLowerCase();
             const aspect = document.getElementById('aspectFilter').value;
+            const occasion = document.getElementById('occasionFilter').value;
             const sort = document.getElementById('sortSelect').value;
 
             let filtered = cardsData.filter(c => {
-                const matchesQuery = c.name.toLowerCase().includes(query) || c.title.toLowerCase().includes(query) || c.greeting.toLowerCase().includes(query) || c.lore.toLowerCase().includes(query);
+                const matchesQuery = c.name.toLowerCase().includes(query) || 
+                                     c.title.toLowerCase().includes(query) || 
+                                     c.greeting.toLowerCase().includes(query) || 
+                                     c.lore.toLowerCase().includes(query) || 
+                                     c.keywords.includes(query);
                 const matchesAspect = aspect === '' || c.aspect === aspect;
-                return matchesQuery && matchesAspect;
+                const matchesOccasion = occasion === '' || c.occasion === occasion;
+                return matchesQuery && matchesAspect && matchesOccasion;
             });
 
             if (sort === 'featured') {
@@ -749,4 +841,4 @@ ${getFooterHtml()}
 `;
 
 fs.writeFileSync(path.join(projectRoot, 'index.html'), mainIndexHtml, 'utf8');
-console.log('Successfully generated tapgreetings.com index.html and all card pages!');
+console.log('Successfully generated tapgreetings.com index.html and all card pages with SEO & Creative Prompts!');
