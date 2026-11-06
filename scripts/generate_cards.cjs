@@ -1373,3 +1373,223 @@ ${getFooterHtml()}`;
 
 fs.writeFileSync(path.join(projectRoot, 'index.html'), mainIndexHtml, 'utf8');
 console.log(`Successfully generated Series 1 main gallery index.html with ${cards.length} characters pre-rendered!`);
+
+// 3. Generate Dedicated Collection & Subcollection Pages
+console.log('Generating Dedicated Collection and Subcollection Pages...');
+
+const collectionsData = [
+  {
+    slug: 'series-1',
+    category: 'all',
+    title: 'TapGreetings Series 1: The Clay & Needle-Felt Holiday Collection',
+    heading: 'Series 1 Collection Hub',
+    subtitle: 'The Complete 16-Card Handcrafted Holiday Anthology',
+    description: 'Explore the complete 16-character Series 1 anthology. Every keepsake card features miniature tactile clay textures, needle-felted wool accents, and an embedded NTAG215 microchip streaming 1080p stop-motion animations with a single smartphone tap.',
+    filter: () => true
+  },
+  {
+    slug: 'classic-icons',
+    category: 'classic',
+    title: 'Series 1: Classic Icons | TapGreetings',
+    heading: 'Classic Icons (Subcollection)',
+    subtitle: 'Santa, Frosty, Rudolph & Mrs. Claus',
+    description: 'Timeless holiday legends lovingly sculpted in warm polymer clay with needle-felted collars, glowing lanterns, and spun-sugar snow. Featuring Santa (#001), Frosty (#002), Rudolph (#003), and Mrs. Claus (#010).',
+    filter: c => [1, 2, 3, 10].includes(parseInt(c.card_code, 10))
+  },
+  {
+    slug: 'winter-magic',
+    category: 'magic',
+    title: 'Series 1: Winter Magic | TapGreetings',
+    heading: 'Winter Magic (Subcollection)',
+    subtitle: 'Jack Frost, Snowflake, Sugar Plum Fairy & Yeti',
+    description: 'Ethereal frost sprites and celestial crystalline wonders sculpted in cast resin, frosted glass clay, and opalescent dust. Featuring Jack Frost (#004), Snowflake (#007), Sugar Plum Fairy (#014), and Snow Monster / Yeti (#015).',
+    filter: c => [4, 7, 14, 15].includes(parseInt(c.card_code, 10))
+  },
+  {
+    slug: 'hearth-holiday',
+    category: 'hearth',
+    title: 'Series 1: Hearth & Holiday | TapGreetings',
+    heading: 'Hearth & Holiday (Subcollection)',
+    subtitle: 'Nutcracker, The Tree, Surprise Gift & Gingerbread Man',
+    description: 'Warm fireside traditions, cinnamon-sugar confectionery, and regal sentinel toys celebrating holiday joy. Featuring Nutcracker (#005), The Tree (#006), Surprise Gift (#008), and Gingerbread Man (#009).',
+    filter: c => [5, 6, 8, 9].includes(parseInt(c.card_code, 10))
+  },
+  {
+    slug: 'festive-friends',
+    category: 'friends',
+    title: 'Series 1: Festive Friends | TapGreetings',
+    heading: 'Festive Friends (Subcollection)',
+    subtitle: 'Workshop Elf, Polar Bear, Penguin & Stocking Puppy',
+    description: 'Adorable holiday companions and playful creatures sharing cozy warmth across snowy wonderlands. Featuring Workshop Elf (#011), Polar Bear (#012), Penguin (#013), and Stocking Puppy (#016).',
+    filter: c => [11, 12, 13, 16].includes(parseInt(c.card_code, 10))
+  }
+];
+
+collectionsData.forEach(col => {
+  const filteredCards = cards.filter(col.filter);
+  const colCardsHtml = filteredCards.map((c, idx) => {
+    const ch = c.character || {};
+    const front = resolveAssetPath(c.media?.local_front_image_path || c.media?.front_image_url);
+    const back = resolveAssetPath(c.media?.local_back_image_path || c.media?.back_image_url);
+    const keywords = (c.seo?.keywords || []).join(' ').toLowerCase();
+    const category = getCardCategory(c.card_code);
+
+    return `
+      <a href="/${c.card_code}/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-index="${idx}" data-code="${c.card_code}" data-name="${(ch.name || '').toLowerCase()}" data-greeting="${(c.event_greeting || '').toLowerCase()}" data-keywords="${keywords}" data-lore="${(ch.micro_lore || '').toLowerCase()}" data-category="${category}" data-front="${front}" data-back="${back}">
+          <div class="relative w-full aspect-[9/16] bg-[#120C08] overflow-hidden flex items-center justify-center">
+              <img src="${front}" alt="${ch.name}" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">
+                  #${c.card_code}
+              </div>
+          </div>
+          <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
+              <div class="min-w-0">
+                  <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
+                      <span class="text-[9px] sm:text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">${c.event_greeting || 'Happy Holidays!'}</span>
+                      <span class="text-[8px] sm:text-[9px] bg-[#140D08] text-amber-200/90 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">${getCategoryName(category)}</span>
+                  </div>
+                  <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">${ch.name}</div>
+                  <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">${ch.title}</div>
+              </div>
+              <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
+                  <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
+                  <span class="group-hover:translate-x-1 transition-transform">View &rarr;</span>
+              </div>
+          </div>
+      </a>
+    `;
+  }).join('\n');
+
+  const pageHtml = `${getHeadHtml(col.title, null, null, null, `https://tapgreetings.com/${col.slug}/`)}
+    <main class="w-full max-w-7xl mx-auto px-3 sm:px-6 py-4 sm:py-10 flex-grow overflow-hidden">
+        
+        <!-- Collection Spotlight Hero -->
+        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#1E130D] via-[#2A1A12] to-[#3B191D] p-5 sm:p-10 mb-8 shadow-2xl border-[2px] border-amber-600/50 backdrop-blur-md glow-amber text-center max-w-5xl mx-auto w-full">
+            <span class="clay-corner top-4 left-4">✦</span>
+            <span class="clay-corner top-4 right-4">✦</span>
+            <span class="clay-corner bottom-4 left-4">✦</span>
+            <span class="clay-corner bottom-4 right-4">✦</span>
+
+            <div class="flex flex-wrap justify-center items-center gap-2 mb-2 sm:mb-3">
+                <span class="bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 text-white text-[10px] sm:text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-widest shadow">
+                    🎅 SERIES 1 &bull; CLAY &amp; NEEDLE-FELT
+                </span>
+                <span class="bg-[#1C120B] text-amber-300 border border-amber-600/40 text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                    ${filteredCards.length} ${filteredCards.length === 1 ? 'Card' : 'Cards'}
+                </span>
+            </div>
+
+            <h1 class="font-clayTitle text-2xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-amber-100 via-amber-200 to-rose-200 bg-clip-text text-transparent mb-2 drop-shadow-md break-words">
+                ${col.heading}
+            </h1>
+            
+            <h2 class="font-sans text-xs sm:text-base font-bold text-amber-200 mb-3 break-words">
+                ${col.subtitle}
+            </h2>
+
+            <p class="text-xs sm:text-sm text-amber-100/90 max-w-2xl mx-auto mb-6 leading-relaxed break-words">
+                ${col.description}
+            </p>
+
+            <!-- Subcollection Navigation Switcher Pills -->
+            <div class="flex flex-wrap justify-center gap-2 pt-2 border-t border-amber-900/30">
+                <a href="/series-1/" class="px-3 py-1 text-xs font-bold rounded-xl transition-all ${col.slug === 'series-1' ? 'bg-amber-500 text-[#120C08] border border-amber-400 shadow' : 'bg-[#140D08] text-amber-200 hover:text-white border border-amber-800/40'}">All Series 1 (16)</a>
+                <a href="/classic-icons/" class="px-3 py-1 text-xs font-bold rounded-xl transition-all ${col.slug === 'classic-icons' ? 'bg-amber-500 text-[#120C08] border border-amber-400 shadow' : 'bg-[#140D08] text-amber-200 hover:text-white border border-amber-800/40'}">Classic Icons (4)</a>
+                <a href="/winter-magic/" class="px-3 py-1 text-xs font-bold rounded-xl transition-all ${col.slug === 'winter-magic' ? 'bg-amber-500 text-[#120C08] border border-amber-400 shadow' : 'bg-[#140D08] text-amber-200 hover:text-white border border-amber-800/40'}">Winter Magic (4)</a>
+                <a href="/hearth-holiday/" class="px-3 py-1 text-xs font-bold rounded-xl transition-all ${col.slug === 'hearth-holiday' ? 'bg-amber-500 text-[#120C08] border border-amber-400 shadow' : 'bg-[#140D08] text-amber-200 hover:text-white border border-amber-800/40'}">Hearth &amp; Holiday (4)</a>
+                <a href="/festive-friends/" class="px-3 py-1 text-xs font-bold rounded-xl transition-all ${col.slug === 'festive-friends' ? 'bg-amber-500 text-[#120C08] border border-amber-400 shadow' : 'bg-[#140D08] text-amber-200 hover:text-white border border-amber-800/40'}">Festive Friends (4)</a>
+            </div>
+        </div>
+
+        <!-- Cards Showcase Grid -->
+        <section class="mb-14">
+            <!-- Controls Bar -->
+            <div class="bg-[#1C120C]/90 rounded-3xl p-4 sm:p-5 mb-6 shadow-xl border border-amber-700/40 backdrop-blur-md flex flex-wrap gap-4 items-center justify-between w-full">
+                <div class="flex items-center gap-3">
+                    <span class="text-xs sm:text-sm font-bold text-amber-300">
+                        Showing ${filteredCards.length} ${filteredCards.length === 1 ? 'Keepsake Card' : 'Keepsake Cards'}
+                    </span>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-3">
+                    <!-- Columns Selector (Supports Mobile 3 Columns Wide) -->
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-amber-200">
+                        <span class="text-amber-300">Cols:</span>
+                        <div class="flex items-center gap-1 bg-[#140D08] p-1 rounded-xl border border-amber-800/40">
+                            <button onclick="setColView(1)" id="colV1" class="px-2 py-0.5 rounded-lg text-amber-200/80 hover:text-white">1</button>
+                            <button onclick="setColView(2)" id="colV2" class="px-2 py-0.5 rounded-lg text-amber-200/80 hover:text-white">2</button>
+                            <button onclick="setColView(3)" id="colV3" class="px-2 py-0.5 rounded-lg text-amber-200/80 hover:text-white">3</button>
+                            <button onclick="setColView(4)" id="colV4" class="px-2 py-0.5 rounded-lg text-amber-200/80 hover:text-white">4</button>
+                        </div>
+                    </div>
+
+                    <!-- Front / Back Toggle -->
+                    <div class="flex bg-[#140D08] p-1 rounded-xl border border-amber-800/40 text-xs font-bold">
+                        <button onclick="toggleSide('front')" id="sideF" class="px-3 py-1 rounded-lg bg-rose-700 text-white shadow">Front</button>
+                        <button onclick="toggleSide('back')" id="sideB" class="px-3 py-1 rounded-lg text-amber-200/70">Back</button>
+                    </div>
+
+                    <!-- Shop on Shopify CTA -->
+                    <a href="${meta.shop_url}" target="_blank" class="bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white text-xs font-bold px-3.5 py-1.5 rounded-xl shadow transition-transform hover:scale-105 flex items-center gap-1.5">
+                        <i class="fa-solid fa-cart-shopping"></i> Order on Shopify &bull; $14.99
+                    </a>
+                </div>
+            </div>
+
+            <!-- Pre-rendered Cards Grid -->
+            <div id="colGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 w-full">
+                ${colCardsHtml}
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        var currentCols = window.innerWidth < 768 ? 2 : 4;
+        function setColView(n) {
+            currentCols = n;
+            var grid = document.getElementById('colGrid');
+            for (var i = 1; i <= 4; i++) {
+                var btn = document.getElementById('colV' + i);
+                if (btn) {
+                    btn.className = (i === n) ? 'px-2 py-0.5 rounded-lg bg-amber-500 text-[#120C08] font-bold shadow' : 'px-2 py-0.5 rounded-lg text-amber-200/80 hover:text-white';
+                }
+            }
+            if (grid) {
+                if (n === 1) grid.className = 'grid grid-cols-1 max-w-md mx-auto gap-4 sm:gap-6 w-full';
+                else if (n === 2) grid.className = 'grid grid-cols-2 gap-3 sm:gap-6 w-full';
+                else if (n === 3) grid.className = 'grid grid-cols-3 gap-2 sm:gap-4 lg:gap-6 w-full';
+                else grid.className = 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 w-full';
+            }
+        }
+
+        function toggleSide(side) {
+            var btnF = document.getElementById('sideF');
+            var btnB = document.getElementById('sideB');
+            if (side === 'front') {
+                btnF.className = 'px-3 py-1 rounded-lg bg-rose-700 text-white shadow';
+                btnB.className = 'px-3 py-1 rounded-lg text-amber-200/70';
+            } else {
+                btnB.className = 'px-3 py-1 rounded-lg bg-rose-700 text-white shadow';
+                btnF.className = 'px-3 py-1 rounded-lg text-amber-200/70';
+            }
+            document.querySelectorAll('#colGrid .card-item').forEach(function(card) {
+                var img = card.querySelector('.card-img');
+                if (img) {
+                    img.src = side === 'back' ? card.getAttribute('data-back') : card.getAttribute('data-front');
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            setColView(currentCols);
+        });
+    </script>
+${getFooterHtml()}`;
+
+  const colDir = path.join(projectRoot, col.slug);
+  if (!fs.existsSync(colDir)) fs.mkdirSync(colDir, { recursive: true });
+  fs.writeFileSync(path.join(colDir, 'index.html'), pageHtml, 'utf8');
+  console.log(`Generated Collection Page: ${col.slug}/index.html`);
+});
+
