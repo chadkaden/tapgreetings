@@ -235,11 +235,6 @@
     margin-top: 2px;
   }
 
-  /* Top Quick Add-to-Cart Button Directly Below Multimedia */
-  .tg-atc-top-box {
-    max-width: 420px;
-    margin: 0 auto 20px;
-  }
   .tg-btn-atc {
     width: 100%;
     background: linear-gradient(90deg, #9E1B32, #D62839);
@@ -268,22 +263,6 @@
     margin-top: 20px;
     padding-top: 18px;
     border-top: 1.5px solid var(--tg-border);
-  }
-  .tg-var-banner {
-    text-align: center;
-    margin-bottom: 12px;
-  }
-  .tg-var-banner-badge {
-    display: inline-block;
-    background: rgba(251, 191, 36, 0.12);
-    border: 1.5px solid var(--tg-border-active);
-    color: var(--tg-gold);
-    padding: 8px 18px;
-    border-radius: 20px;
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.88rem;
-    font-weight: 800;
-    box-shadow: 0 0 14px var(--tg-gold-glow);
   }
   .tg-var-scroll {
     display: flex;
@@ -430,7 +409,7 @@
       <!-- Main Media Viewport -->
       <div class="tg-media-viewport" id="tg-media-box">
         
-        <!-- Slide 1: 1080p Stop-Motion Video -->
+        <!-- Slide 1: Video -->
         <div id="tg-slide-1" class="tg-slide active-slide">
           <video id="tg-card-video" loop muted playsinline autoplay poster="{{ product.images[1] | image_url: width: 800 }}">
             <source id="tg-video-source" src="{{ 'tapgreeting_001.mp4' | asset_url }}" type="video/mp4">
@@ -487,22 +466,11 @@
         </button>
       </div>
 
-      <!-- Quick Add to Cart Button Directly Below Multimedia -->
-      <div class="tg-atc-top-box">
-        <button type="button" onclick="submitActiveForm()" class="tg-btn-atc">
-          <span>🛒 Add to Cart</span>
-          <span>&bull;</span>
-          <span id="tg-btn-price-top">{{ product.selected_or_first_available_variant.price | money }}</span>
-        </button>
-      </div>
+      
 
       <!-- Variant Selection Thumbnail Reel (Pink-O-Ween Style) -->
       <div class="tg-var-section">
-        <div class="tg-var-banner">
-          <span class="tg-var-banner-badge">
-            🎴 Click Card Variant Below to Preview Artwork, Video &amp; Tap Demo
-          </span>
-        </div>
+        
 
         <div class="tg-var-scroll" id="tg-var-scroll">
           {% for v in product.variants %}
@@ -597,7 +565,7 @@
               📱 Tap to Play Video &bull; Reprogram to Your Own Message Anytime!
             </h4>
             <p style="margin: 0 0 10px 0; font-size: 0.92rem; line-height: 1.6; color: var(--tg-text);">
-              <strong>Tap this card</strong> against the top edge of your iPhone or Android to instantly launch the exclusive 1080p stop-motion holiday video and voice greeting—zero app download required.
+              <strong>Tap this card</strong> against the top edge of your iPhone or Android to instantly launch the exclusive holiday video and voice greeting—zero app download required.
             </p>
             <p style="margin: 0; font-size: 0.88rem; line-height: 1.5; color: var(--tg-text-muted);">
               <strong>⚡ Rewritable NTAG215 Microchip:</strong> Want to personalize this card? It can easily be reprogrammed to link to your own custom family holiday video, voice note, photos, or personalized greeting anytime using our free Web NFC Tool at <a href="https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" target="_blank" style="color: var(--tg-gold); font-weight: 700; text-decoration: underline;">shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide</a> (or the NFC Tools app on iPhone &amp; Android).
@@ -627,14 +595,7 @@
                 <td style="padding: 10px 0; font-weight: 700; color: var(--tg-gold);">Card Format &amp; Specs:</td>
                 <td style="padding: 10px 0; color: var(--tg-text);">Standard CR80 Credit Card Proportions (85.6mm &times; 53.98mm &times; 0.76mm / 30 mil).</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--tg-border);">
-                <td style="padding: 10px 0; font-weight: 700; color: var(--tg-gold);">Materials &amp; Finish:</td>
-                <td style="padding: 10px 0; color: var(--tg-text);">Solid waterproof PVC core, scratch-resistant matte tactile finish, and gold-foil stamping.</td>
-              </tr>
-              <tr style="border-bottom: 1px solid var(--tg-border);">
-                <td style="padding: 10px 0; font-weight: 700; color: var(--tg-gold);">Embedded Microchip:</td>
-                <td style="padding: 10px 0; color: var(--tg-text);">NXP NTAG215 High-Speed NFC Chip (504 Bytes rewritable memory, 10+ year data retention).</td>
-              </tr>
+              
               <tr>
                 <td style="padding: 10px 0; font-weight: 700; color: var(--tg-gold);">Web Video Portal:</td>
                 <td style="padding: 10px 0; color: var(--tg-text);">

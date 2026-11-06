@@ -1,0 +1,968 @@
+{% comment %}
+  TapGreetings Official Storefront Homepage Section
+  - Heading: "TAPGREETINGS - PVC NFC TAP to greetings video"
+  - Custom Card Feature ($35.00)
+  - Left-to-Right (L2R) Scroll: Happy Holidays Series 1 (Master Box Set listed first, then #001 to #016) [Holiday Gold/Mocha Skin]
+  - Left-to-Right (L2R) Scroll: Draft Concept Series (#01 to #05) [Cyber Purple/Neon Skin]
+  - Left-to-Right (L2R) Scroll: Pink-O-Ween Collection (Full Box Set listed first, then #01 to #31) [Spooky Hot-Pink Skin]
+{% endcomment %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+{% assign holiday_col = collections['tapgreetings-series-1'] %}
+{% assign draft_col = collections['draft-series'] %}
+{% assign pink_col = collections['pink-o-ween-collection'] %}
+{% assign custom_prod = all_products['tap-thingy-nfc-custom-pvc-card'] %}
+{% assign tap_demo_url = 'card_01_tap.mp4' | asset_url %}
+
+<style>
+  .tg-home-wrap {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: #FFF8E7;
+    background-color: #0D0704;
+    padding: 0 0 60px 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  .tg-home-wrap * {
+    box-sizing: border-box;
+  }
+
+  /* 1. TOP HERO SECTION */
+  .tg-hero-banner {
+    position: relative;
+    max-width: 1200px;
+    margin: 20px auto 44px;
+    padding: 36px 20px;
+    border-radius: 28px;
+    background: linear-gradient(135deg, #1C100A 0%, #29170E 45%, #3B161B 100%);
+    border: 2px solid rgba(251, 191, 36, 0.45);
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .tg-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, #9E1B32, #D97706);
+    color: #FFFFFF;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 6px 18px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 15px rgba(214, 40, 57, 0.4);
+  }
+
+  .tg-hero-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    line-height: 1.15;
+    margin: 0 0 12px 0;
+    background: linear-gradient(135deg, #FFF8E7 0%, #FDE68A 50%, #F43F5E 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+  }
+
+  @media (min-width: 768px) {
+    .tg-hero-title {
+      font-size: 3.4rem;
+    }
+  }
+
+  .tg-hero-sub {
+    font-size: 1.05rem;
+    color: #FEE2E2;
+    max-width: 780px;
+    margin: 0 auto 24px auto;
+    line-height: 1.6;
+    font-weight: 500;
+  }
+
+  /* Hero Multimedia Demo Frame */
+  .tg-hero-demo-box {
+    max-width: 320px;
+    margin: 0 auto 24px auto;
+    aspect-ratio: 9/16;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #000;
+    border: 2px solid rgba(251, 191, 36, 0.5);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+    position: relative;
+  }
+
+  .tg-hero-demo-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Quick Navigation Jump Pills */
+  .tg-jump-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .tg-jump-pill {
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s, background-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .tg-jump-pill:hover {
+    transform: translateY(-2px);
+  }
+
+  .tg-jump-custom {
+    background: #2A173B;
+    color: #F3E8FF;
+    border: 1px solid #A855F7;
+  }
+  .tg-jump-holiday {
+    background: #2C180E;
+    color: #FDE68A;
+    border: 1px solid #D97706;
+  }
+  .tg-jump-draft {
+    background: #1C122C;
+    color: #E9D5FF;
+    border: 1px solid #9333EA;
+  }
+  .tg-jump-pink {
+    background: #250C1B;
+    color: #FCE7F3;
+    border: 1px solid #EC4899;
+  }
+
+  /* 2. CUSTOM CARD FEATURE SECTION */
+  .tg-custom-feature {
+    max-width: 1200px;
+    margin: 0 auto 48px auto;
+    padding: 32px 24px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #180D25 0%, #241238 50%, #150921 100%);
+    border: 2px solid rgba(168, 85, 247, 0.5);
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.5);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: center;
+  }
+
+  @media (min-width: 860px) {
+    .tg-custom-feature {
+      grid-template-columns: 1.1fr 1fr;
+      padding: 40px 36px;
+    }
+  }
+
+  .tg-custom-badge {
+    display: inline-block;
+    background: linear-gradient(90deg, #9333EA, #EC4899);
+    color: #FFFFFF;
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 5px 14px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+  }
+
+  .tg-custom-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin: 0 0 10px 0;
+    line-height: 1.25;
+  }
+
+  .tg-custom-desc {
+    font-size: 0.95rem;
+    color: #E9D5FF;
+    line-height: 1.6;
+    margin: 0 0 20px 0;
+  }
+
+  .tg-custom-specs {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: #DDD6FE;
+  }
+
+  @media (min-width: 500px) {
+    .tg-custom-specs {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .tg-custom-specs li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .tg-custom-specs i {
+    color: #C084FC;
+  }
+
+  .tg-custom-btn {
+    background: linear-gradient(90deg, #9333EA 0%, #E11D48 100%);
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 800;
+    padding: 14px 28px;
+    border-radius: 14px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 6px 20px rgba(147, 51, 234, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .tg-custom-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(147, 51, 234, 0.6);
+  }
+
+  .tg-custom-art-preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tg-custom-card-frame {
+    width: 260px;
+    aspect-ratio: 54/86;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 2px solid rgba(192, 132, 252, 0.6);
+    box-shadow: 0 16px 35px rgba(0, 0, 0, 0.7);
+    background: #000;
+    transform: rotate(-3deg);
+    transition: transform 0.3s;
+  }
+  .tg-custom-card-frame:hover {
+    transform: rotate(0deg) scale(1.03);
+  }
+  .tg-custom-card-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* 3. L2R SCROLL SECTIONS */
+  .tg-rail-section {
+    max-width: 1200px;
+    margin: 0 auto 52px auto;
+    padding: 0 16px;
+  }
+
+  .tg-rail-header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 18px;
+  }
+
+  @media (min-width: 768px) {
+    .tg-rail-header {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+  }
+
+  .tg-rail-badge {
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    width: fit-content;
+    margin-bottom: 4px;
+  }
+
+  .tg-rail-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .tg-rail-sub {
+    font-size: 0.88rem;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* Horizontal Scroll Track */
+  .tg-rail-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .tg-scroll-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .tg-scroll-btn:hover {
+    transform: scale(1.1);
+  }
+
+  .tg-rail-track-wrap {
+    position: relative;
+    width: 100%;
+  }
+
+  .tg-rail-track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 12px 4px 20px 4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .tg-rail-track::-webkit-scrollbar {
+    height: 6px;
+  }
+  .tg-rail-track::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+  }
+
+  /* Individual Card Item in Rail (CR80 Aspect Ratio) */
+  .tg-card-item {
+    flex: 0 0 210px;
+    scroll-snap-align: start;
+    border-radius: 20px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.25s, box-shadow 0.25s;
+    position: relative;
+    border-width: 1.5px;
+    border-style: solid;
+  }
+
+  @media (min-width: 768px) {
+    .tg-card-item {
+      flex: 0 0 230px;
+    }
+  }
+
+  .tg-card-item:hover {
+    transform: translateY(-6px);
+  }
+
+  /* Card Art Frame - Strict 54/86 Ratio */
+  .tg-card-art-box {
+    width: 100%;
+    aspect-ratio: 54/86;
+    overflow: hidden;
+    position: relative;
+    background: #000;
+  }
+
+  .tg-card-art-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .tg-card-item:hover .tg-card-art-box img {
+    transform: scale(1.05);
+  }
+
+  .tg-card-badge-top {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Card Meta Box */
+  .tg-card-info {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex-grow: 1;
+    justify-content: space-between;
+  }
+
+  .tg-card-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 800;
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .tg-card-sub {
+    font-size: 0.75rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    opacity: 0.85;
+  }
+
+  .tg-card-action {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .tg-card-price {
+    font-size: 0.9rem;
+    font-weight: 800;
+  }
+
+  .tg-card-btn-view {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 8px;
+  }
+
+  /* =====================================================================
+     SKINS PER COLLECTION
+     ===================================================================== */
+  
+  /* 1. HOLIDAY SERIES 1 SKIN */
+  .tg-skin-holiday .tg-rail-badge {
+    background: #451A03;
+    color: #FDE68A;
+    border: 1px solid #D97706;
+  }
+  .tg-skin-holiday .tg-rail-title {
+    color: #FFFBEB;
+  }
+  .tg-skin-holiday .tg-rail-sub {
+    color: #FEF3C7;
+  }
+  .tg-skin-holiday .tg-rail-track::-webkit-scrollbar-thumb {
+    background: #D97706;
+  }
+  .tg-skin-holiday .tg-card-item {
+    background: #180F0A;
+    border-color: rgba(217, 119, 6, 0.35);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+  .tg-skin-holiday .tg-card-item:hover {
+    border-color: #F59E0B;
+    box-shadow: 0 12px 30px rgba(217, 119, 6, 0.25);
+  }
+  .tg-skin-holiday .tg-card-title {
+    color: #FFFFFF;
+  }
+  .tg-skin-holiday .tg-card-sub {
+    color: #FDE68A;
+  }
+  .tg-skin-holiday .tg-card-price {
+    color: #FBBF24;
+  }
+  .tg-skin-holiday .tg-card-btn-view {
+    background: linear-gradient(90deg, #9E1B32, #D97706);
+    color: #FFFFFF;
+  }
+
+  /* Box Set Card in Holiday Rail */
+  .tg-box-set-holiday {
+    border-color: #F59E0B !important;
+    background: linear-gradient(180deg, #2D1409 0%, #170A04 100%) !important;
+    box-shadow: 0 8px 30px rgba(245, 158, 11, 0.35) !important;
+  }
+
+  /* 2. DRAFT CONCEPT SERIES SKIN */
+  .tg-skin-draft .tg-rail-badge {
+    background: #2E1065;
+    color: #E9D5FF;
+    border: 1px solid #A855F7;
+  }
+  .tg-skin-draft .tg-rail-title {
+    color: #FAF5FF;
+  }
+  .tg-skin-draft .tg-rail-sub {
+    color: #E9D5FF;
+  }
+  .tg-skin-draft .tg-rail-track::-webkit-scrollbar-thumb {
+    background: #A855F7;
+  }
+  .tg-skin-draft .tg-card-item {
+    background: #150B1C;
+    border-color: rgba(168, 85, 247, 0.35);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+  .tg-skin-draft .tg-card-item:hover {
+    border-color: #C084FC;
+    box-shadow: 0 12px 30px rgba(168, 85, 247, 0.25);
+  }
+  .tg-skin-draft .tg-card-title {
+    color: #FFFFFF;
+  }
+  .tg-skin-draft .tg-card-sub {
+    color: #D8B4FE;
+  }
+  .tg-skin-draft .tg-card-price {
+    color: #E9D5FF;
+  }
+  .tg-skin-draft .tg-card-btn-view {
+    background: linear-gradient(90deg, #7E22CE, #EC4899);
+    color: #FFFFFF;
+  }
+
+  /* 3. PINK-O-WEEN SERIES SKIN */
+  .tg-skin-pink .tg-rail-badge {
+    background: #3B0720;
+    color: #FCE7F3;
+    border: 1px solid #EC4899;
+  }
+  .tg-skin-pink .tg-rail-title {
+    color: #FFF1F2;
+  }
+  .tg-skin-pink .tg-rail-sub {
+    color: #FCE7F3;
+  }
+  .tg-skin-pink .tg-rail-track::-webkit-scrollbar-thumb {
+    background: #EC4899;
+  }
+  .tg-skin-pink .tg-card-item {
+    background: #140816;
+    border-color: rgba(236, 72, 153, 0.35);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+  .tg-skin-pink .tg-card-item:hover {
+    border-color: #F472B6;
+    box-shadow: 0 12px 30px rgba(236, 72, 153, 0.25);
+  }
+  .tg-skin-pink .tg-card-title {
+    color: #FFFFFF;
+  }
+  .tg-skin-pink .tg-card-sub {
+    color: #FBCFE8;
+  }
+  .tg-skin-pink .tg-card-price {
+    color: #F472B6;
+  }
+  .tg-skin-pink .tg-card-btn-view {
+    background: linear-gradient(90deg, #DB2777, #7C3AED);
+    color: #FFFFFF;
+  }
+
+  .tg-box-set-pink {
+    border-color: #EC4899 !important;
+    background: linear-gradient(180deg, #2D0820 0%, #12040E 100%) !important;
+    box-shadow: 0 8px 30px rgba(236, 72, 153, 0.35) !important;
+  }
+</style>
+
+<div class="tg-home-wrap">
+
+  <!-- 1. TOP HERO SECTION -->
+  <section class="tg-hero-banner">
+    <div class="tg-hero-badge">
+      <i class="fa-solid fa-microchip"></i> PVC NFC Video Keepsakes
+    </div>
+    
+    <h1 class="tg-hero-title">
+      TAPGREETINGS - PVC NFC TAP to greetings video
+    </h1>
+
+    <p class="tg-hero-sub">
+      Handcrafted physical smart NFC keepsake cards. Tap any smartphone (iPhone or Android) against the card to instantly stream exclusive character video and voice greetings—zero app download required. Fully rewritable with our free NFC web tool!
+    </p>
+
+    <!-- Tap-to-Video Ghost Tap Demo Reel -->
+    <div class="tg-hero-demo-box">
+      <video loop muted playsinline autoplay poster="{{ '001-front.jpg' | asset_url }}">
+        <source src="{{ tap_demo_url }}" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- Quick Navigation Jump Pills -->
+    <div class="tg-jump-bar">
+      <a href="#custom-section" class="tg-jump-pill tg-jump-custom">
+        <i class="fa-solid fa-wand-magic-sparkles"></i> Custom Card Studio
+      </a>
+      <a href="#holiday-section" class="tg-jump-pill tg-jump-holiday">
+        <i class="fa-solid fa-snowflake"></i> Happy Holidays Series 1 (16)
+      </a>
+      <a href="#draft-section" class="tg-jump-pill tg-jump-draft">
+        <i class="fa-solid fa-palette"></i> Draft Concept Series (5)
+      </a>
+      <a href="#pink-section" class="tg-jump-pill tg-jump-pink">
+        <i class="fa-solid fa-ghost"></i> Pink-O-Ween (31)
+      </a>
+    </div>
+  </section>
+
+  <!-- 2. CUSTOM CARD FEATURE SECTION -->
+  <section id="custom-section" class="tg-custom-feature">
+    <div>
+      <span class="tg-custom-badge">
+        <i class="fa-solid fa-star"></i> Featured Personalization
+      </span>
+      <h2 class="tg-custom-title">
+        Design Your Custom TapGreeting PVC Card
+      </h2>
+      <p class="tg-custom-desc">
+        Turn your family holiday photo, wedding video, baby announcement, or company greeting into a permanent living keepsake. We print your custom artwork directly onto solid CR80 waterproof PVC and encode an embedded rewritable NFC chip with your personal video or message link.
+      </p>
+
+      <ul class="tg-custom-specs">
+        <li><i class="fa-solid fa-check"></i> Standard CR80 Credit Card Size</li>
+        <li><i class="fa-solid fa-check"></i> iPhone &amp; Android Compatible</li>
+        <li><i class="fa-solid fa-check"></i> Rewritable NTAG215 Microchip</li>
+        <li><i class="fa-solid fa-check"></i> Zero App Download Required</li>
+      </ul>
+
+      <a href="/products/tap-thingy-nfc-custom-pvc-card" class="tg-custom-btn">
+        <i class="fa-solid fa-palette"></i> <span>Customize &amp; Order &bull; $35.00</span> &rarr;
+      </a>
+    </div>
+
+    <div class="tg-custom-art-preview">
+      <div class="tg-custom-card-frame">
+        {% if custom_prod.images.size > 0 %}
+          <img src="{{ custom_prod.images[0] | image_url: width: 600 }}" alt="Custom PVC Card Preview">
+        {% else %}
+          <img src="{{ '001-front.jpg' | asset_url }}" alt="Custom Card Preview">
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. HAPPY HOLIDAYS SERIES 1 (L2R SCROLL - BOX SET LISTED FIRST) -->
+  <section id="holiday-section" class="tg-rail-section tg-skin-holiday">
+    <div class="tg-rail-header">
+      <div>
+        <span class="tg-rail-badge">
+          <i class="fa-solid fa-snowflake"></i> Series 1 &bull; The Clay Anthology
+        </span>
+        <h2 class="tg-rail-title">
+          Happy Holidays Series 1
+        </h2>
+        <p class="tg-rail-sub">
+          Complete 16-card handcrafted polymer clay &amp; needle-felt collection &bull; Master Box Set listed first
+        </p>
+      </div>
+
+      <div class="tg-rail-controls">
+        <button onclick="scrollRail('holiday-track', -300)" class="tg-scroll-btn" aria-label="Scroll left">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button onclick="scrollRail('holiday-track', 300)" class="tg-scroll-btn" aria-label="Scroll right">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <a href="/products/happy-holidays-series-1" style="font-size: 0.82rem; font-weight: 700; color: #FBBF24; text-decoration: underline; margin-left: 8px;">
+          View Master Set
+        </a>
+      </div>
+    </div>
+
+    <div class="tg-rail-track-wrap">
+      <div id="holiday-track" class="tg-rail-track">
+        
+        <!-- FIRST ITEM: MASTER BOX SET -->
+        {% for prod in holiday_col.products %}
+          {% if prod.handle == 'happy-holidays-series-1' or prod.tags contains 'Box Set' or prod.tags contains 'Full Set' %}
+            <a href="{{ prod.url }}" class="tg-card-item tg-box-set-holiday">
+              <div class="tg-card-art-box">
+                {% if prod.images.size > 0 %}
+                  <img src="{{ prod.images[0] | image_url: width: 500 }}" alt="{{ prod.title }}" loading="lazy">
+                {% endif %}
+                <span class="tg-card-badge-top" style="color: #FDE68A; border-color: #F59E0B;">
+                  <i class="fa-solid fa-crown text-amber-400"></i> MASTER BOX SET
+                </span>
+              </div>
+              <div class="tg-card-info">
+                <div>
+                  <div class="tg-card-title">{{ prod.title | split: ':' | first }}</div>
+                  <div class="tg-card-sub" style="color: #FBBF24;">All 16 Cards Included</div>
+                </div>
+                <div class="tg-card-action">
+                  <span class="tg-card-price">{{ prod.price | money }}</span>
+                  <span class="tg-card-btn-view" style="background: linear-gradient(90deg, #F59E0B, #D97706); color: #000; font-weight: 900;">
+                    Order Set &rarr;
+                  </span>
+                </div>
+              </div>
+            </a>
+          {% endif %}
+        {% endfor %}
+
+        <!-- SUBSEQUENT ITEMS: CARDS #001 TO #016 IN ORDER -->
+        {% for prod in holiday_col.products %}
+          {% unless prod.handle == 'happy-holidays-series-1' or prod.tags contains 'Box Set' or prod.tags contains 'Full Set' %}
+            {% assign card_code = '' %}
+            {% if prod.title contains '#' %}
+              {% assign parts = prod.title | split: '#' %}
+              {% assign subparts = parts[1] | split: ' ' %}
+              {% assign card_code = subparts[0] %}
+            {% endif %}
+
+            <a href="{{ prod.url }}" class="tg-card-item">
+              <div class="tg-card-art-box">
+                {% if prod.images.size > 0 %}
+                  <img src="{{ prod.images[0] | image_url: width: 500 }}" alt="{{ prod.title }}" loading="lazy">
+                {% endif %}
+                <span class="tg-card-badge-top" style="color: #FDE68A;">
+                  #{{ card_code }}
+                </span>
+              </div>
+              <div class="tg-card-info">
+                <div>
+                  <div class="tg-card-title">{{ prod.title | split: ' - ' | first | remove: '#' | remove: card_code | strip }}</div>
+                  <div class="tg-card-sub">{{ prod.title | split: '(' | last | split: ')' | first }}</div>
+                </div>
+                <div class="tg-card-action">
+                  <span class="tg-card-price">{{ prod.price | money }}</span>
+                  <span class="tg-card-btn-view">View &bull; $14.99</span>
+                </div>
+              </div>
+            </a>
+          {% endunless %}
+        {% endfor %}
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. DRAFT CONCEPT SERIES (L2R SCROLL - PURPLE / NEON SKIN) -->
+  <section id="draft-section" class="tg-rail-section tg-skin-draft">
+    <div class="tg-rail-header">
+      <div>
+        <span class="tg-rail-badge">
+          <i class="fa-solid fa-palette"></i> Pre-Clay Glamour Edition
+        </span>
+        <h2 class="tg-rail-title">
+          Draft Concept Series
+        </h2>
+        <p class="tg-rail-sub">
+          5 Original glamour keepsakes celebrating special seasonal occasions with exclusive video
+        </p>
+      </div>
+
+      <div class="tg-rail-controls">
+        <button onclick="scrollRail('draft-track', -300)" class="tg-scroll-btn" aria-label="Scroll left">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button onclick="scrollRail('draft-track', 300)" class="tg-scroll-btn" aria-label="Scroll right">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="tg-rail-track-wrap">
+      <div id="draft-track" class="tg-rail-track">
+        {% for prod in draft_col.products %}
+          <a href="{{ prod.url }}" class="tg-card-item">
+            <div class="tg-card-art-box">
+              {% if prod.images.size > 0 %}
+                <img src="{{ prod.images[0] | image_url: width: 500 }}" alt="{{ prod.title }}" loading="lazy">
+              {% endif %}
+              <span class="tg-card-badge-top" style="color: #E9D5FF; border-color: #A855F7;">
+                <i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i> DRAFT
+              </span>
+            </div>
+            <div class="tg-card-info">
+              <div>
+                <div class="tg-card-title">{{ prod.title | split: ' (' | first }}</div>
+                <div class="tg-card-sub">{{ prod.title | split: '(' | last | split: ')' | first }}</div>
+              </div>
+              <div class="tg-card-action">
+                <span class="tg-card-price">{{ prod.price | money }}</span>
+                <span class="tg-card-btn-view">Explore &bull; $14.99</span>
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. PINK-O-WEEN SERIES (L2R SCROLL - SPOOKY HOT-PINK SKIN) -->
+  <section id="pink-section" class="tg-rail-section tg-skin-pink">
+    <div class="tg-rail-header">
+      <div>
+        <span class="tg-rail-badge">
+          <i class="fa-solid fa-ghost"></i> The Haunted Pastel Collection
+        </span>
+        <h2 class="tg-rail-title">
+          Pink-O-Ween Series
+        </h2>
+        <p class="tg-rail-sub">
+          31 Days of spooky pastel glamour &bull; Full Box Set listed first, then Cards 01 to 31
+        </p>
+      </div>
+
+      <div class="tg-rail-controls">
+        <button onclick="scrollRail('pink-track', -300)" class="tg-scroll-btn" aria-label="Scroll left">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button onclick="scrollRail('pink-track', 300)" class="tg-scroll-btn" aria-label="Scroll right">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <a href="https://shop.tapthingy.com/collections/pink-o-ween-collection" style="font-size: 0.82rem; font-weight: 700; color: #F472B6; text-decoration: underline; margin-left: 8px;">
+          View All 31
+        </a>
+      </div>
+    </div>
+
+    <div class="tg-rail-track-wrap">
+      <div id="pink-track" class="tg-rail-track">
+        
+        <!-- FIRST ITEM: PINK-O-WEEN FULL BOX SET -->
+        {% for prod in pink_col.products %}
+          {% if prod.handle contains 'master-collection' or prod.tags contains 'Full Set' %}
+            <a href="{{ prod.url }}" class="tg-card-item tg-box-set-pink">
+              <div class="tg-card-art-box">
+                {% if prod.images.size > 0 %}
+                  <img src="{{ prod.images[0] | image_url: width: 500 }}" alt="{{ prod.title }}" loading="lazy">
+                {% endif %}
+                <span class="tg-card-badge-top" style="color: #FCE7F3; border-color: #EC4899;">
+                  <i class="fa-solid fa-box-open text-pink-400"></i> FULL 31-CARD SET
+                </span>
+              </div>
+              <div class="tg-card-info">
+                <div>
+                  <div class="tg-card-title">Pink-O-Ween Box Set</div>
+                  <div class="tg-card-sub" style="color: #F472B6;">Complete 31-Card Master Set</div>
+                </div>
+                <div class="tg-card-action">
+                  <span class="tg-card-price">{{ prod.price | money }}</span>
+                  <span class="tg-card-btn-view" style="background: linear-gradient(90deg, #EC4899, #DB2777); color: #fff;">
+                    Order Box Set &rarr;
+                  </span>
+                </div>
+              </div>
+            </a>
+          {% endif %}
+        {% endfor %}
+
+        <!-- SUBSEQUENT ITEMS: CARDS 01 TO 31 -->
+        {% for prod in pink_col.products %}
+          {% unless prod.handle contains 'master-collection' or prod.tags contains 'Full Set' %}
+            {% assign card_code = '' %}
+            {% if prod.title contains 'OCTOBER' %}
+              {% assign parts = prod.title | split: 'OCTOBER ' %}
+              {% assign subparts = parts[1] | split: ' OF' %}
+              {% assign card_code = subparts[0] %}
+            {% endif %}
+
+            <a href="{{ prod.url }}" class="tg-card-item">
+              <div class="tg-card-art-box">
+                {% if prod.images.size > 0 %}
+                  <img src="{{ prod.images[0] | image_url: width: 500 }}" alt="{{ prod.title }}" loading="lazy">
+                {% endif %}
+                <span class="tg-card-badge-top" style="color: #FCE7F3;">
+                  {% if card_code != '' %}Oct {{ card_code }}{% else %}Card{% endif %}
+                </span>
+              </div>
+              <div class="tg-card-info">
+                <div>
+                  <div class="tg-card-title">
+                    {{ prod.title | remove: 'Tap Greeting Card NFC Video Pinkoween ' | split: ' (' | first }}
+                  </div>
+                  <div class="tg-card-sub">
+                    {% if card_code != '' %}October {{ card_code }} of 31{% else %}Pink-O-Ween Card{% endif %}
+                  </div>
+                </div>
+                <div class="tg-card-action">
+                  <span class="tg-card-price">{{ prod.price | money }}</span>
+                  <span class="tg-card-btn-view">View &bull; $14.99</span>
+                </div>
+              </div>
+            </a>
+          {% endunless %}
+        {% endfor %}
+
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  function scrollRail(id, distance) {
+    var el = document.getElementById(id);
+    if (el) {
+      el.scrollBy({ left: distance, behavior: 'smooth' });
+    }
+  }
+</script>
+
+{% schema %}
+{
+  "name": "TapGreetings Homepage",
+  "settings": [],
+  "presets": [
+    {
+      "name": "TapGreetings Homepage"
+    }
+  ]
+}
+{% endschema %}

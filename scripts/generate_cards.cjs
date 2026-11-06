@@ -432,13 +432,16 @@ function getHeadHtml(title, cardStyle = null, seoData = null, mediaData = null, 
         </div>
 
         <!-- Center Desktop Nav Links -->
-        <nav class="hidden md:flex items-center gap-5 lg:gap-7 text-xs sm:text-sm font-bold text-amber-200/90">
+        <nav class="hidden md:flex items-center gap-4 lg:gap-6 text-xs sm:text-sm font-bold text-amber-200/90">
             <a href="/" class="hover:text-amber-300 transition-colors">Home</a>
             <a href="/#collection" class="hover:text-amber-300 transition-colors">All 21 Cards</a>
             <a href="/series-1/" class="hover:text-amber-300 transition-colors">Series 1 (16)</a>
             <a href="/draft/" class="hover:text-purple-300 transition-colors">Draft Series (5)</a>
+            <a href="https://shop.tapthingy.com/collections/pink-o-ween-collection" target="_blank" class="hover:text-pink-300 transition-colors text-pink-400 flex items-center gap-1">
+                <i class="fa-solid fa-ghost text-xs"></i> <span>Pink-O-Ween (31)</span>
+            </a>
             <button onclick="toggleNavDrawer()" class="text-amber-300 hover:text-white flex items-center gap-1 cursor-pointer">
-                <i class="fa-solid fa-layer-group text-xs text-amber-400"></i> <span>All Series ▾</span>
+                <i class="fa-solid fa-layer-group text-xs text-amber-400"></i> <span>Menu ▾</span>
             </button>
         </nav>
 
@@ -527,7 +530,25 @@ function getHeadHtml(title, cardStyle = null, seoData = null, mediaData = null, 
                     </div>
                 </div>
 
-                <!-- 3. All Cards & Purchase Shortcuts -->
+                <!-- 3. Pink-O-Ween Collection -->
+                <div>
+                    <div class="text-[11px] font-bold text-pink-400 uppercase tracking-widest mb-2 flex items-center gap-1.5">
+                        <i class="fa-solid fa-ghost text-pink-400"></i> Pink-O-Ween Series (31 Cards)
+                    </div>
+                    <div class="space-y-1 pl-2 border-l-2 border-pink-700/40">
+                        <a href="https://shop.tapthingy.com/collections/pink-o-ween-collection" target="_blank" class="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold text-pink-100 hover:bg-pink-950/60 transition-colors">
+                            <span>🎃 Pink-O-Ween Collection Hub</span> <span class="text-[10px] bg-pink-500/20 text-pink-300 px-2 py-0.5 rounded-full font-semibold">31 Cards</span>
+                        </a>
+                        <a href="https://shop.tapthingy.com/products/nfc-tap-to-video-pvc-greeting-card-pink-o-ween-master-collection" target="_blank" class="flex items-center justify-between px-3 py-1.5 rounded-xl text-xs text-pink-200/90 hover:bg-pink-950/60 hover:text-white transition-colors">
+                            <span>🎀 Master Box Set (31 Cards)</span> <span class="text-[10px] text-pink-400 font-bold">$199.00</span>
+                        </a>
+                        <a href="https://shop.tapthingy.com/pages/pink-o-ween" target="_blank" class="flex items-center justify-between px-3 py-1.5 rounded-xl text-xs text-pink-200/80 hover:bg-pink-950/60 hover:text-white transition-colors">
+                            <span>🦇 Halloween Archive Showcase</span> <span class="text-[10px] text-pink-400">&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 4. All Cards & Purchase Shortcuts -->
                 <div>
                     <div class="text-[11px] font-bold text-amber-400 uppercase tracking-widest mb-2 flex items-center gap-1.5">
                         <i class="fa-solid fa-compass text-amber-400"></i> Gallery &amp; Store
