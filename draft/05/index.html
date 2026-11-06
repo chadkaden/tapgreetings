@@ -169,6 +169,264 @@
             box-shadow: 0 0 30px -5px rgba(251, 191, 36, 0.3);
         }
 
+        
+        /* L2R Rails & Skin Styles (Matching Shop Homepage) */
+        .tg-rail-section {
+            max-width: 1280px;
+            margin: 0 auto 44px auto;
+            padding: 0 12px;
+        }
+        .tg-rail-header {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+        @media (min-width: 768px) {
+            .tg-rail-header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-end;
+            }
+        }
+        .tg-rail-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 4px 12px;
+            border-radius: 999px;
+            margin-bottom: 8px;
+        }
+        .tg-rail-title {
+            font-family: 'Outfit', 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin: 0;
+            line-height: 1.2;
+        }
+        .tg-rail-sub {
+            font-size: 0.88rem;
+            margin: 4px 0 0 0;
+            line-height: 1.4;
+        }
+        .tg-rail-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tg-scroll-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #1C120C;
+            border: 1.5px solid rgba(251, 191, 36, 0.4);
+            color: #FDE68A;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+        .tg-scroll-btn:hover {
+            transform: scale(1.1);
+            background: #2D1A10;
+            border-color: #F59E0B;
+        }
+        .tg-rail-track-wrap {
+            position: relative;
+            width: 100%;
+        }
+        .tg-rail-track {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 12px 4px 20px 4px;
+            scrollbar-width: thin;
+            -webkit-overflow-scrolling: touch;
+        }
+        .tg-card-item-rail {
+            flex: 0 0 190px;
+            width: 190px;
+            scroll-snap-align: start;
+            border-radius: 20px;
+            border: 2px solid;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+        }
+        @media (min-width: 640px) {
+            .tg-card-item-rail {
+                flex: 0 0 215px;
+                width: 215px;
+            }
+        }
+        .tg-card-item-rail:hover {
+            transform: translateY(-4px);
+        }
+        .tg-card-art-box {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 54/86;
+            background: #000;
+            overflow: hidden;
+        }
+        .tg-card-art-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .tg-card-item-rail:hover .tg-card-art-box img {
+            transform: scale(1.04);
+        }
+        .tg-card-badge-top {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.78);
+            border: 1px solid;
+            backdrop-filter: blur(4px);
+            font-size: 0.68rem;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 8px;
+            letter-spacing: 0.5px;
+        }
+        .tg-card-info {
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+            gap: 8px;
+        }
+        .tg-card-title-rail {
+            font-size: 0.92rem;
+            font-weight: 800;
+            line-height: 1.25;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .tg-card-sub-rail {
+            font-size: 0.75rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-top: 2px;
+        }
+        .tg-card-action-rail {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 6px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .tg-card-price-rail {
+            font-size: 0.95rem;
+            font-weight: 800;
+        }
+        .tg-card-btn-view-rail {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 8px;
+        }
+
+        /* Holiday Series Skin */
+        .tg-skin-holiday .tg-rail-badge {
+            background: #451A03;
+            color: #FDE68A;
+            border: 1px solid #D97706;
+        }
+        .tg-skin-holiday .tg-rail-title { color: #FFFBEB; }
+        .tg-skin-holiday .tg-rail-sub { color: #FEF3C7; }
+        .tg-skin-holiday .tg-card-item-rail {
+            background: #180F0A;
+            border-color: rgba(217, 119, 6, 0.35);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+        .tg-skin-holiday .tg-card-item-rail:hover {
+            border-color: #F59E0B;
+            box-shadow: 0 12px 30px rgba(217, 119, 6, 0.25);
+        }
+        .tg-skin-holiday .tg-card-title-rail { color: #FFFFFF; }
+        .tg-skin-holiday .tg-card-sub-rail { color: #FDE68A; }
+        .tg-skin-holiday .tg-card-price-rail { color: #FBBF24; }
+        .tg-skin-holiday .tg-card-btn-view-rail {
+            background: linear-gradient(90deg, #9E1B32, #D97706);
+            color: #FFFFFF;
+        }
+        .tg-box-set-holiday {
+            border-color: #F59E0B !important;
+            background: linear-gradient(180deg, #2D1409 0%, #170A04 100%) !important;
+            box-shadow: 0 8px 30px rgba(245, 158, 11, 0.35) !important;
+        }
+
+        /* Draft Concept Series Skin */
+        .tg-skin-draft .tg-rail-badge {
+            background: #2E1065;
+            color: #E9D5FF;
+            border: 1px solid #A855F7;
+        }
+        .tg-skin-draft .tg-rail-title { color: #FAF5FF; }
+        .tg-skin-draft .tg-rail-sub { color: #E9D5FF; }
+        .tg-skin-draft .tg-card-item-rail {
+            background: #150B1C;
+            border-color: rgba(168, 85, 247, 0.35);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+        .tg-skin-draft .tg-card-item-rail:hover {
+            border-color: #C084FC;
+            box-shadow: 0 12px 30px rgba(168, 85, 247, 0.25);
+        }
+        .tg-skin-draft .tg-card-title-rail { color: #FFFFFF; }
+        .tg-skin-draft .tg-card-sub-rail { color: #D8B4FE; }
+        .tg-skin-draft .tg-card-price-rail { color: #E9D5FF; }
+        .tg-skin-draft .tg-card-btn-view-rail {
+            background: linear-gradient(90deg, #7E22CE, #EC4899);
+            color: #FFFFFF;
+        }
+
+        /* Pink-O-Ween Skin */
+        .tg-skin-pink .tg-rail-badge {
+            background: #3B0720;
+            color: #FCE7F3;
+            border: 1px solid #EC4899;
+        }
+        .tg-skin-pink .tg-rail-title { color: #FFF1F2; }
+        .tg-skin-pink .tg-rail-sub { color: #FCE7F3; }
+        .tg-skin-pink .tg-card-item-rail {
+            background: #140816;
+            border-color: rgba(236, 72, 153, 0.35);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+        .tg-skin-pink .tg-card-item-rail:hover {
+            border-color: #F472B6;
+            box-shadow: 0 12px 30px rgba(236, 72, 153, 0.25);
+        }
+        .tg-skin-pink .tg-card-title-rail { color: #FFFFFF; }
+        .tg-skin-pink .tg-card-sub-rail { color: #FBCFE8; }
+        .tg-skin-pink .tg-card-price-rail { color: #F472B6; }
+        .tg-skin-pink .tg-card-btn-view-rail {
+            background: linear-gradient(90deg, #DB2777, #7C3AED);
+            color: #FFFFFF;
+        }
+        .tg-box-set-pink {
+            border-color: #EC4899 !important;
+            background: linear-gradient(180deg, #2D0820 0%, #12040E 100%) !important;
+            box-shadow: 0 8px 30px rgba(236, 72, 153, 0.35) !important;
+        }
+
         /* Fullscreen Lightbox Zoom Styles */
         .zoomed-magnify {
             transform: scale(1.85);
@@ -277,20 +535,19 @@
 <body class="font-sans bg-[#120C08] text-amber-50 min-h-screen transition-colors duration-300 selection:bg-rose-600 selection:text-white flex flex-col justify-between overflow-x-hidden">
     <!-- Header -->
     <header id="siteHeader" class="fixed top-0 left-0 right-0 z-50 header-hidden bg-[#160E09]/95 backdrop-blur-md border-b border-amber-900/40 px-3 sm:px-8 py-2.5 sm:py-3.5 flex justify-between items-center shadow-xl w-full transition-all duration-300">
-        <!-- Brand / TapThingy Logo Button that triggers Menu -->
+        <!-- Brand / TapThingy Logo linking to Home -->
         <div class="flex items-center gap-2 sm:gap-3">
-            <button onclick="toggleNavDrawer()" class="flex items-center gap-2 group text-left focus:outline-none cursor-pointer" title="Open Series &amp; Collections Menu" aria-label="Open Navigation Menu">
+            <a href="/" class="flex items-center gap-2 group text-left focus:outline-none" title="TapGreetings Home" aria-label="TapGreetings Home">
                 <div class="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden shadow-md flex items-center justify-center p-0.5 bg-black border border-amber-600/40 group-hover:scale-105 transition-transform flex-shrink-0">
                     <img src="/assets/img/tapthingy-logo-white.png" alt="TapThingy" class="w-full h-full object-contain dark-logo">
                     <img src="/assets/img/tapthingy-logo-black.png" alt="TapThingy" class="w-full h-full object-contain light-logo hidden">
                 </div>
-                <div class="flex flex-col">
-                    <div class="flex items-center gap-1.5">
-                        <span class="font-header text-base sm:text-xl font-black text-white group-hover:text-amber-300 transition-colors tracking-tight">TapGreetings</span>
-                        <i class="fa-solid fa-chevron-down text-[10px] sm:text-xs text-amber-400 group-hover:text-amber-200 transition-colors"></i>
-                    </div>
-                    <span class="text-[9px] text-amber-300 uppercase tracking-widest font-semibold hidden sm:inline leading-none">Collections Menu</span>
-                </div>
+                <span class="font-header text-base sm:text-xl font-black text-white group-hover:text-amber-300 transition-colors tracking-tight">TapGreetings</span>
+            </a>
+            <!-- Dedicated Collections Menu Button -->
+            <button onclick="toggleNavDrawer()" class="flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl bg-[#20140D] hover:bg-[#2C1910] text-amber-300 hover:text-white border border-amber-800/40 text-xs font-bold transition-all cursor-pointer" title="Browse Collections &amp; Series">
+                <i class="fa-solid fa-bars text-[11px] sm:text-xs text-amber-400"></i>
+                <span class="text-[11px] sm:text-xs font-semibold">Menu</span>
             </button>
         </div>
 
@@ -690,18 +947,18 @@
         <div class="grid grid-cols-3 gap-2 text-center min-w-0">
             
     <div class="bg-[#1C120C]/90 p-2.5 rounded-2xl border border-amber-800/30 min-w-0 overflow-hidden shadow-inner">
-        <div class="text-[9px] uppercase font-bold text-amber-200/80 tracking-wider truncate">celebration</div>
-        <div class="font-sans text-xs sm:text-sm font-bold text-amber-300 mt-1 tracking-wider truncate">100/100</div>
+        <div class="text-[11px] uppercase font-bold text-amber-200/80 tracking-wider truncate">celebration</div>
+        <div class="font-sans text-sm sm:text-base font-bold text-amber-300 mt-1 tracking-wider truncate">100/100</div>
     </div>
   
     <div class="bg-[#1C120C]/90 p-2.5 rounded-2xl border border-amber-800/30 min-w-0 overflow-hidden shadow-inner">
-        <div class="text-[9px] uppercase font-bold text-amber-200/80 tracking-wider truncate">elegance</div>
-        <div class="font-sans text-xs sm:text-sm font-bold text-amber-300 mt-1 tracking-wider truncate">98/100</div>
+        <div class="text-[11px] uppercase font-bold text-amber-200/80 tracking-wider truncate">elegance</div>
+        <div class="font-sans text-sm sm:text-base font-bold text-amber-300 mt-1 tracking-wider truncate">98/100</div>
     </div>
   
     <div class="bg-[#1C120C]/90 p-2.5 rounded-2xl border border-amber-800/30 min-w-0 overflow-hidden shadow-inner">
-        <div class="text-[9px] uppercase font-bold text-amber-200/80 tracking-wider truncate">signature</div>
-        <div class="font-sans text-xs sm:text-sm font-bold text-amber-300 mt-1 tracking-wider truncate">Midnight Flute</div>
+        <div class="text-[11px] uppercase font-bold text-amber-200/80 tracking-wider truncate">signature</div>
+        <div class="font-sans text-sm sm:text-base font-bold text-amber-300 mt-1 tracking-wider truncate">Midnight Flute</div>
     </div>
   
         </div>
@@ -924,17 +1181,80 @@
         }
 
         function shareGreeting() {
-            if (navigator.share) {
-                navigator.share({
-                    title: document.title,
-                    text: "Midnight Toast (The New Year Sovereign) - TapGreetings Draft Concept",
-                    url: window.location.href
-                }).catch(function() {});
-            } else {
-                navigator.clipboard.writeText(window.location.href).then(function() {
-                    alert('Concept Card link copied to clipboard!');
+            var shareData = {
+                title: document.title,
+                text: "Midnight Toast (The New Year Sovereign) - TapGreetings Draft Concept",
+                url: window.location.href
+            };
+            if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+                navigator.share(shareData).catch(function(err) {
+                    if (err && err.name !== 'AbortError') {
+                        copyUrlToClipboard();
+                    }
                 });
+            } else {
+                copyUrlToClipboard();
             }
+        }
+
+        function copyUrlToClipboard() {
+            var url = window.location.href;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url).then(function() {
+                    showShareToast('Keepsake link copied to clipboard! ✨');
+                }).catch(function() {
+                    fallbackCopyText(url);
+                });
+            } else {
+                fallbackCopyText(url);
+            }
+        }
+
+        function fallbackCopyText(text) {
+            var textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.opacity = "0";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showShareToast('Keepsake link copied to clipboard! ✨');
+            } catch (err) {
+                prompt('Copy this keepsake link:', text);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        function showShareToast(msg) {
+            var existing = document.getElementById('tg-share-toast');
+            if (existing) existing.remove();
+            var toast = document.createElement('div');
+            toast.id = 'tg-share-toast';
+            toast.innerText = msg;
+            toast.style.position = 'fixed';
+            toast.style.bottom = '24px';
+            toast.style.left = '50%';
+            toast.style.transform = 'translateX(-50%)';
+            toast.style.backgroundColor = '#180E09';
+            toast.style.color = '#FDE68A';
+            toast.style.border = '2px solid #F59E0B';
+            toast.style.padding = '12px 24px';
+            toast.style.borderRadius = '999px';
+            toast.style.boxShadow = '0 10px 30px rgba(0,0,0,0.8), 0 0 15px rgba(245,158,11,0.4)';
+            toast.style.zIndex = '9999';
+            toast.style.fontWeight = 'bold';
+            toast.style.fontSize = '0.9rem';
+            toast.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            document.body.appendChild(toast);
+            setTimeout(function() {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(-50%) translateY(10px)';
+                setTimeout(function() { toast.remove(); }, 300);
+            }, 3000);
         }
 
         // MULTIMEDIA TOUCH SWIPE (Left for Next Draft Card, Right for Previous Draft Card)
