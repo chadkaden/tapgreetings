@@ -2,30 +2,30 @@
 <html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noelle - Black Friday VIP Spree | NFC Smart Greeting Card | TapGreetings by TapThingy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Autumn Warmth & Gratitude | Happy Thanksgiving NFC Video Card | TapGreetings by TapThingy</title>
     
     <!-- Primary SEO Meta Tags -->
-    <meta name="title" content="Noelle - Black Friday VIP Spree | NFC Smart Greeting Card | TapGreetings by TapThingy">
-    <meta name="description" content="Unlock VIP holiday door-busters with Noelle. Tap this smart NFC card for instant shopping motion reels, exclusive deals, and digital gift unlock.">
-    <meta name="keywords" content="black friday, holiday shopping, vip deals, noelle, nfc gift card, luxury shopping, smart card">
+    <meta name="title" content="Autumn Warmth & Gratitude | Happy Thanksgiving NFC Video Card | TapGreetings by TapThingy">
+    <meta name="description" content="Send Thanksgiving warmth with this smart NFC greeting card. Features motion video toast, heartfelt voice message, and rewritable NTAG215 chip.">
+    <meta name="keywords" content="happy thanksgiving, harvest gratitude, autumn greeting, thanksgiving card, friendsgiving, hostess gift, spiced cider, smart card, nfc keepsake">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://TapGreetings.com/02">
 
     <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://TapGreetings.com/02">
-    <meta property="og:title" content="Noelle - Black Friday VIP Spree | NFC Smart Greeting Card | TapGreetings by TapThingy">
-    <meta property="og:description" content="Unlock VIP holiday door-busters with Noelle. Tap this smart NFC card for instant shopping motion reels, exclusive deals, and digital gift unlock.">
-    <meta property="og:image" content="https://TapGreetings.com/public/cards/02_front.jpg">
-    <meta property="og:video" content="https://TapGreetings.com/assets/video/02_black_friday.mp4">
+    <meta property="og:title" content="Autumn Warmth & Gratitude | Happy Thanksgiving NFC Video Card | TapGreetings by TapThingy">
+    <meta property="og:description" content="Send Thanksgiving warmth with this smart NFC greeting card. Features motion video toast, heartfelt voice message, and rewritable NTAG215 chip.">
+    <meta property="og:image" content="https://TapGreetings.com/assets/img/02-front.jpg">
+    <meta property="og:video" content="https://TapGreetings.com/assets/video/02-video.mp4">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://TapGreetings.com/02">
-    <meta property="twitter:title" content="Noelle - Black Friday VIP Spree | NFC Smart Greeting Card | TapGreetings by TapThingy">
-    <meta property="twitter:description" content="Unlock VIP holiday door-busters with Noelle. Tap this smart NFC card for instant shopping motion reels, exclusive deals, and digital gift unlock.">
-    <meta property="twitter:image" content="https://TapGreetings.com/public/cards/02_front.jpg">
+    <meta property="twitter:title" content="Autumn Warmth & Gratitude | Happy Thanksgiving NFC Video Card | TapGreetings by TapThingy">
+    <meta property="twitter:description" content="Send Thanksgiving warmth with this smart NFC greeting card. Features motion video toast, heartfelt voice message, and rewritable NTAG215 chip.">
+    <meta property="twitter:image" content="https://TapGreetings.com/assets/img/02-front.jpg">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -35,12 +35,12 @@
             theme: {
                 extend: {
                     colors: {
-                        midnight: '#0A0E1A',
-                        iceBlue: '#FCE7F3',
-                        blushPink: '#F472B6',
-                        champagneGold: '#FDE047',
-                        roseGold: '#D946EF',
-                        neonGlow: '#E879F9',
+                        midnight: '#150D08',
+                        iceBlue: '#FEF3C7',
+                        blushPink: '#FDBA74',
+                        champagneGold: '#F59E0B',
+                        roseGold: '#D97706',
+                        neonGlow: '#EA580C',
                         brand: {
                             50: '#fdf4ff',
                             100: '#fae8ff',
@@ -51,20 +51,12 @@
                             700: '#a21caf',
                             900: '#4a044e',
                             950: '#1b051f'
-                        },
-                        cyanAccent: {
-                            400: '#22d3ee',
-                            500: '#06b6d4',
-                            600: '#0891b2'
                         }
                     },
                     fontFamily: {
-                        bubble: ['Cooper Black', 'Arial Black', display],
-                        title: ['Playfair Display', serif],
-                        header: ['Montserrat', sans-serif],
-                        body: ['Poppins', sans-serif],
                         serif: ['"Playfair Display"', 'Georgia', 'serif'],
-                        sans: ['"Montserrat"', '"Plus Jakarta Sans"', 'sans-serif']
+                        sans: ['"Montserrat"', '"Plus Jakarta Sans"', 'sans-serif'],
+                        body: ['"Poppins"', 'Inter', 'sans-serif']
                     }
                 }
             }
@@ -74,31 +66,46 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400&family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Canvas Confetti Library for Celebratory Micro-interactions -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
     <style>
         :root {
-            --card-midnight: #0A0E1A;
-            --card-ice: #FCE7F3;
-            --card-pink: #F472B6;
-            --card-gold: #FDE047;
-            --card-rose-gold: #D946EF;
-            --card-neon: #E879F9;
+            --card-midnight: #150D08;
+            --card-ice: #FEF3C7;
+            --card-pink: #FDBA74;
+            --card-gold: #F59E0B;
+            --card-rose-gold: #D97706;
+            --card-neon: #EA580C;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
+        }
+        .break-anywhere {
+            overflow-wrap: anywhere;
+            word-break: break-word;
         }
         .glow-neon {
-            box-shadow: 0 0 35px -5px #E879F955;
+            box-shadow: 0 0 35px -5px #EA580C40;
         }
         .glow-gold {
-            box-shadow: 0 0 25px -5px #FDE04755;
+            box-shadow: 0 0 30px -5px #F59E0B45;
         }
         .starburst-corner {
             position: absolute;
             width: 18px;
             height: 18px;
-            color: #FDE047;
-            font-size: 16px;
+            color: #F59E0B;
+            font-size: 15px;
             line-height: 1;
             user-select: none;
             pointer-events: none;
-            filter: drop-shadow(0 0 4px #FDE047);
+            filter: drop-shadow(0 0 5px #F59E0B);
         }
         .perspective-1000 {
             perspective: 1000px;
@@ -111,28 +118,47 @@
             -webkit-backface-visibility: hidden;
         }
         .flip-card-inner {
-            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .flipped .flip-card-inner {
             transform: rotateY(180deg);
         }
+        /* Sound wave bar animations */
+        @keyframes soundWave {
+            0%, 100% { height: 4px; }
+            50% { height: 18px; }
+        }
+        .wave-bar {
+            width: 3px;
+            border-radius: 9999px;
+            background-color: #F4E0A5;
+            animation: soundWave 0.8s ease-in-out infinite;
+        }
+        .wave-bar:nth-child(1) { animation-delay: 0.1s; }
+        .wave-bar:nth-child(2) { animation-delay: 0.3s; }
+        .wave-bar:nth-child(3) { animation-delay: 0.2s; }
+        .wave-bar:nth-child(4) { animation-delay: 0.4s; }
+        .wave-bar:nth-child(5) { animation-delay: 0.15s; }
     </style>
 </head>
-<body class="font-sans bg-[#0A0E1A] text-slate-100 min-h-screen transition-colors duration-300 selection:bg-pink-500 selection:text-white">
+<body class="font-sans bg-[#070A14] text-slate-100 min-h-screen transition-colors duration-300 selection:bg-pink-500 selection:text-white flex flex-col justify-between overflow-x-hidden">
     <!-- Header -->
-    <header class="sticky top-0 z-50 bg-[#0A0E1A]/95 backdrop-blur-md border-b border-rose-400/30 px-4 sm:px-8 py-3.5 flex justify-between items-center shadow-lg">
-        <a href="../index.html" class="font-header text-xl sm:text-2xl font-bold text-white flex items-center gap-2.5 drop-shadow-[0_0_15px_rgba(255,105,180,0.5)]">
-            <span class="w-8 h-8 rounded-xl bg-gradient-to-tr from-pink-600 via-rose-500 to-amber-300 flex items-center justify-center text-sm font-black text-white shadow-md">TG</span>
-            <span>TapGreetings</span>
+    <header class="sticky top-0 z-50 bg-[#070A14]/95 backdrop-blur-md border-b border-rose-400/25 px-4 sm:px-8 py-3.5 flex justify-between items-center shadow-xl w-full">
+        <a href="../index.html" class="font-header text-lg sm:text-2xl font-bold text-white flex items-center gap-2 sm:gap-2.5 drop-shadow-[0_0_15px_rgba(255,105,180,0.5)] flex-shrink-0">
+            <span class="w-8 h-8 rounded-xl bg-gradient-to-tr from-pink-600 via-rose-500 to-amber-300 flex items-center justify-center text-xs sm:text-sm font-black text-white shadow-md">TG</span>
+            <span class="tracking-tight">TapGreetings</span>
         </a>
-        <div class="flex items-center gap-5">
-            <nav class="hidden sm:flex gap-6 text-sm font-semibold text-slate-300">
+        <div class="flex items-center gap-3 sm:gap-6">
+            <nav class="hidden md:flex gap-6 text-sm font-semibold text-slate-300">
                 <a href="../index.html" class="hover:text-pink-300 transition-colors">Home</a>
-                <a href="../index.html#collection" class="hover:text-pink-300 transition-colors">All Cards</a>
+                <a href="../index.html#collection" class="hover:text-pink-300 transition-colors">Cards Gallery</a>
                 <a href="https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card" target="_blank" class="hover:text-amber-300 transition-colors">Custom Studio</a>
                 <a href="https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" target="_blank" class="hover:text-pink-300 transition-colors">NFC Tools</a>
             </nav>
-            <button onclick="toggleTheme()" class="w-9 h-9 rounded-full bg-gradient-to-r from-rose-600 to-amber-500 text-white flex items-center justify-center shadow-md hover:scale-105 transition-transform" title="Toggle Light/Dark Mode">
+            <a href="https://shop.tapthingy.com/collections/tapgreetings" target="_blank" class="bg-gradient-to-r from-pink-600 to-amber-500 hover:from-pink-500 hover:to-amber-400 text-white text-xs font-bold px-3 sm:px-4 py-2 rounded-xl shadow transition-transform hover:scale-105 flex items-center gap-1.5">
+                <i class="fa-solid fa-cart-shopping"></i> <span class="hidden sm:inline">Shop</span> Cards
+            </a>
+            <button onclick="toggleTheme()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-900 border border-rose-400/30 text-amber-300 flex items-center justify-center shadow hover:scale-105 transition-transform" title="Toggle Light/Dark Mode">
                 <i class="fa-solid fa-moon" id="themeIcon"></i>
             </button>
         </div>
@@ -162,257 +188,285 @@
                 if (icon) icon.className = 'fa-solid fa-sun';
             });
         }
+        function triggerConfetti() {
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 70,
+                    spread: 60,
+                    origin: { y: 0.7 },
+                    colors: ['#FF69B4', '#F4E0A5', '#E0F7FA', '#B76E79']
+                });
+            }
+        }
     </script>
 
-    <main class="max-w-6xl mx-auto px-4 py-8 sm:py-12">
-        <!-- Main Card Container with Sharp Rectangular Borders and Rose Gold Stroke -->
-        <div class="relative bg-[#0A0E1A]/95 rounded-2xl p-6 sm:p-10 shadow-2xl border-[1.5pt] border-rose-400/40 backdrop-blur-md flex flex-col gap-8 glow-neon">
+    <main class="w-full max-w-5xl mx-auto px-3 sm:px-6 py-6 sm:py-10 flex-grow">
+        <!-- Main Card Container with Sharp Rectangular Borders and Filigree Stroke -->
+        <div class="relative bg-[#0A0E1A]/95 rounded-2xl p-4 sm:p-8 shadow-2xl border-[1.5pt] border-rose-400/40 backdrop-blur-md flex flex-col gap-6 sm:gap-8 glow-neon w-full overflow-hidden">
             
             <!-- 4-Point Gold Starburst Filigree Accents in Corners -->
-            <span class="starburst-corner top-3 left-3">⟡</span>
-            <span class="starburst-corner top-3 right-3">⟡</span>
-            <span class="starburst-corner bottom-3 left-3">⟡</span>
-            <span class="starburst-corner bottom-3 right-3">⟡</span>
+            <span class="starburst-corner top-3 left-3">✦</span>
+            <span class="starburst-corner top-3 right-3">✦</span>
+            <span class="starburst-corner bottom-3 left-3">✦</span>
+            <span class="starburst-corner bottom-3 right-3">✦</span>
 
             <!-- Top Event & Series Banner -->
-            <div class="text-center pt-2">
+            <div class="text-center pt-1 w-full max-w-full">
                 <div class="flex flex-wrap justify-center items-center gap-2 mb-3">
-                    <span class="inline-block bg-gradient-to-r from-rose-600 via-pink-600 to-amber-500 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-md">
-                        VIP Deals & Holiday Joy!
+                    <span class="inline-block bg-gradient-to-r from-rose-600 via-pink-600 to-amber-500 text-white text-[11px] sm:text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-widest shadow-md">
+                        Happy Thanksgiving!
                     </span>
-                    <span class="inline-block bg-slate-900 text-amber-300 border border-amber-400/40 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                        winter-glamour-2026 &bull; CARD #2
+                    <span class="inline-block bg-slate-900 text-amber-300 border border-amber-400/40 text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                        CARD #2 OF 6
                     </span>
-                    <span class="inline-block bg-slate-900 text-pink-300 border border-pink-400/40 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                    <span class="inline-block bg-slate-900 text-pink-300 border border-pink-400/40 text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                         Holiday Premier
                     </span>
                 </div>
                 
-                <h1 class="font-serif text-3xl sm:text-5xl font-bold bg-gradient-to-r from-white via-rose-200 to-amber-200 bg-clip-text text-transparent drop-shadow-md">
-                    Noelle
+                <h1 class="font-serif text-2xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-white via-rose-200 to-amber-200 bg-clip-text text-transparent drop-shadow-md break-words">
+                    Autumn Warmth & Gratitude
                 </h1>
-                <p class="font-header text-sm sm:text-base text-rose-300/90 font-medium tracking-wide mt-1">
-                    The Midnight Shopper &bull; <span class="text-amber-200/90 italic">The Chic Trendsetter</span>
+                <p class="font-sans text-xs sm:text-sm text-rose-300 font-semibold tracking-wide mt-1.5 break-words">
+                    The Harvest Hostess &bull; <span class="text-amber-200 italic font-serif">Harvest Celebration & Thanks</span>
                 </p>
-                <p class="text-xs sm:text-sm text-slate-400 italic max-w-xl mx-auto mt-2">
-                    &ldquo;Life is short—buy the bag, unlock the deal, and celebrate in style.&rdquo;
+                <p class="text-xs sm:text-sm text-slate-300 italic max-w-xl mx-auto mt-2 px-2 leading-relaxed break-words">
+                    &ldquo;Gather with gratitude, cherish every moment, and warm your heart with those you love.&rdquo;
                 </p>
 
                 <!-- Keywords / SEO Tag Pills -->
-                
-                <div class="flex flex-wrap justify-center gap-1.5 mt-3">
-                    <span class="text-[10px] bg-slate-900/80 text-slate-400 border border-slate-800 px-2.5 py-0.5 rounded-full">#black friday</span><span class="text-[10px] bg-slate-900/80 text-slate-400 border border-slate-800 px-2.5 py-0.5 rounded-full">#holiday shopping</span><span class="text-[10px] bg-slate-900/80 text-slate-400 border border-slate-800 px-2.5 py-0.5 rounded-full">#vip deals</span><span class="text-[10px] bg-slate-900/80 text-slate-400 border border-slate-800 px-2.5 py-0.5 rounded-full">#noelle</span><span class="text-[10px] bg-slate-900/80 text-slate-400 border border-slate-800 px-2.5 py-0.5 rounded-full">#nfc gift card</span><span class="text-[10px] bg-slate-900/80 text-slate-400 border border-slate-800 px-2.5 py-0.5 rounded-full">#luxury shopping</span><span class="text-[10px] bg-slate-900/80 text-slate-400 border border-slate-800 px-2.5 py-0.5 rounded-full">#smart card</span>
-                </div>
-                
+                <div class="flex flex-wrap justify-center gap-1.5 mt-3 max-w-2xl mx-auto"><span class="text-[10px] bg-slate-900/90 text-slate-300 border border-slate-800 px-2.5 py-0.5 rounded-full">#happy thanksgiving</span><span class="text-[10px] bg-slate-900/90 text-slate-300 border border-slate-800 px-2.5 py-0.5 rounded-full">#harvest gratitude</span><span class="text-[10px] bg-slate-900/90 text-slate-300 border border-slate-800 px-2.5 py-0.5 rounded-full">#autumn greeting</span><span class="text-[10px] bg-slate-900/90 text-slate-300 border border-slate-800 px-2.5 py-0.5 rounded-full">#thanksgiving card</span><span class="text-[10px] bg-slate-900/90 text-slate-300 border border-slate-800 px-2.5 py-0.5 rounded-full">#friendsgiving</span><span class="text-[10px] bg-slate-900/90 text-slate-300 border border-slate-800 px-2.5 py-0.5 rounded-full">#hostess gift</span><span class="text-[10px] bg-slate-900/90 text-slate-300 border border-slate-800 px-2.5 py-0.5 rounded-full">#spiced cider</span><span class="text-[10px] bg-slate-900/90 text-slate-300 border border-slate-800 px-2.5 py-0.5 rounded-full">#smart card</span><span class="text-[10px] bg-slate-900/90 text-slate-300 border border-slate-800 px-2.5 py-0.5 rounded-full">#nfc keepsake</span></div>
             </div>
 
             <!-- Main Layout: Video Player Column + Interactive Experience Column -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start w-full min-w-0">
                 
-                <!-- Left: 4K Video Player with Tap Indicator -->
-                <div class="flex flex-col items-center justify-center bg-black rounded-2xl p-2.5 border-[1.5pt] border-rose-400/60 ring-2 ring-pink-500/20 shadow-2xl relative overflow-hidden group">
-                    <video autoplay loop muted playsinline controls poster="../public/cards/02_front.jpg" class="aspect-[9/16] w-full max-h-[75vh] object-contain rounded-xl shadow-inner bg-black">
-                        <source src="../assets/video/delphine-holidays.mp4" type="video/mp4">
-                        Your browser does not support HTML5 video.
-                    </video>
+                <!-- Left: 4K Motion Video Player with Interactive Tap -->
+                <div class="flex flex-col items-center justify-center bg-black/90 rounded-2xl p-2 sm:p-3 border-[1.5pt] border-rose-400/50 ring-2 ring-pink-500/20 shadow-2xl relative overflow-hidden group w-full min-w-0">
+                    <div class="relative w-full max-w-[340px] sm:max-w-[400px] mx-auto rounded-xl overflow-hidden bg-black flex justify-center">
+                        <video id="cardVideo" autoplay loop muted playsinline controls poster="../assets/img/02-front.jpg" class="aspect-[9/16] w-full max-h-[68vh] sm:max-h-[72vh] object-contain rounded-xl shadow-inner bg-black">
+                            <source src="../assets/video/02-video.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+
                     <div class="mt-3 w-full flex items-center justify-between px-2 text-xs font-semibold text-slate-300">
-                        <span class="flex items-center gap-1.5 text-pink-300">
-                            <i class="fa-solid fa-bolt text-amber-400 animate-pulse"></i> NFC Tap-to-Video
-                        </span>
+                        <button onclick="simulateNfcTap()" class="flex items-center gap-1.5 text-pink-300 hover:text-amber-300 transition-colors">
+                            <i class="fa-solid fa-bolt text-amber-400 animate-pulse"></i> <span>NFC Tap-to-Video</span>
+                        </button>
                         <span class="px-2.5 py-0.5 rounded-full bg-slate-900 border border-rose-400/40 text-[11px] font-mono text-amber-300">
-                            9:16 &bull; 10s
+                            9:16 &bull; 8s HD
                         </span>
                     </div>
 
-                    <!-- Audio Dialogue Speech Bubble -->
+                    <!-- Audio Dialogue Speech & Voiceover Box -->
                     
-                    <div class="mt-4 w-full bg-slate-900/95 border border-pink-400/40 rounded-2xl p-4 shadow-lg flex items-start gap-3">
-                        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-pink-500 to-amber-400 flex-shrink-0 flex items-center justify-center text-slate-950 font-black text-sm shadow">
-                            <i class="fa-solid fa-volume-high"></i>
-                        </div>
-                        <div class="flex-grow">
-                            <span class="text-[10px] uppercase font-bold text-amber-300 tracking-wider block">Dialogue &amp; Voiceover</span>
-                            <p class="text-xs sm:text-sm text-slate-100 italic leading-relaxed mt-0.5">
-                                &ldquo;Ready to unlock the best deals of the year? Noelle's got the VIP list—tap in and let's shop!&rdquo;
-                            </p>
-                        </div>
-                        <button onclick="speakDialogue()" class="bg-pink-600 hover:bg-pink-500 text-white text-xs font-bold px-3 py-1.5 rounded-xl flex items-center gap-1.5 shadow transition-transform hover:scale-105" title="Listen Aloud">
-                            <i class="fa-solid fa-play"></i> Listen
-                        </button>
+    <div class="mt-3.5 w-full bg-slate-900/95 border border-pink-400/40 rounded-2xl p-3.5 sm:p-4 shadow-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 min-w-0">
+        <div class="flex items-start gap-3 min-w-0 flex-1">
+            <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-pink-500 to-amber-400 flex-shrink-0 flex items-center justify-center text-slate-950 font-black text-xs shadow">
+                <i class="fa-solid fa-volume-high"></i>
+            </div>
+            <div class="min-w-0 flex-1">
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] uppercase font-bold text-amber-300 tracking-wider">Voice Dialogue</span>
+                    <div id="audioWave" class="hidden items-center gap-1 h-4">
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
                     </div>
-                    <script>
-                        function speakDialogue() {
-                            if ('speechSynthesis' in window) {
-                                window.speechSynthesis.cancel();
-                                const u = new SpeechSynthesisUtterance("Ready to unlock the best deals of the year? Noelle's got the VIP list—tap in and let's shop!");
-                                u.rate = 0.95;
-                                u.pitch = 1.05;
-                                window.speechSynthesis.speak(u);
-                            } else {
-                                alert("Ready to unlock the best deals of the year? Noelle's got the VIP list—tap in and let's shop!");
-                            }
-                        }
-                    </script>
-                    
+                </div>
+                <p class="text-xs sm:text-sm text-slate-100 italic leading-snug mt-1 break-words">
+                    &ldquo;So grateful for you today and every day. May your home be filled with laughter, love, and a wonderful harvest feast—Happy Thanksgiving!&rdquo;
+                </p>
+            </div>
+        </div>
+        <button onclick="speakDialogue()" class="bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-500 hover:to-rose-400 text-white text-xs font-bold px-3.5 py-2 rounded-xl flex items-center gap-1.5 shadow flex-shrink-0 transition-transform hover:scale-105" title="Listen Aloud">
+            <i class="fa-solid fa-play"></i> Listen Voice
+        </button>
+    </div>
+    <script>
+        function speakDialogue() {
+            triggerConfetti();
+            const wave = document.getElementById('audioWave');
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const u = new SpeechSynthesisUtterance("So grateful for you today and every day. May your home be filled with laughter, love, and a wonderful harvest feast—Happy Thanksgiving!");
+                u.rate = 0.95;
+                u.pitch = 1.05;
+                if (wave) {
+                    wave.classList.remove('hidden');
+                    wave.classList.add('flex');
+                }
+                u.onend = () => {
+                    if (wave) {
+                        wave.classList.add('hidden');
+                        wave.classList.remove('flex');
+                    }
+                };
+                window.speechSynthesis.speak(u);
+            } else {
+                alert("So grateful for you today and every day. May your home be filled with laughter, love, and a wonderful harvest feast—Happy Thanksgiving!");
+            }
+        }
+    </script>
+  
                 </div>
 
                 <!-- Right: Lore, Indicators, Physical Card 3D Flip, & Utility Action -->
-                <div class="flex flex-col gap-6 ">
+                <div class="flex flex-col gap-5 sm:gap-6 w-full min-w-0">
                     
                     <!-- Micro Lore Box -->
-                    <div class="bg-slate-950/90 p-5 rounded-2xl border-[1.5pt] border-rose-400/40 shadow-sm relative">
-                        <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300 block mb-1">
+                    <div class="bg-slate-950/90 p-4 sm:p-5 rounded-2xl border-[1.5pt] border-rose-400/40 shadow-sm relative min-w-0">
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300 block mb-1.5 flex items-center gap-1.5">
                             <i class="fa-solid fa-feather-pointed"></i> Story &amp; Micro-Lore
                         </span>
-                        <p class="text-sm text-slate-200 leading-relaxed font-body">
-                            Dressed in an electric magenta coat amidst neon city storefronts, Noelle holds designer metallic shopping totes. With a sly wink, she taps into an exclusive holiday haul, granting her friends VIP early-bird access to seasonal treasures.
+                        <p class="text-xs sm:text-sm text-slate-200 leading-relaxed font-body break-words">
+                            Surrounded by rich amber foliage, rustic harvest table settings, and crisp autumn breezes, she raises a steaming spiced cup in celebration of family, bountiful feasts, and heartfelt gratitude.
                         </p>
                     </div>
 
                     <!-- Indicators / Collector Metrics -->
-                    <div class="bg-slate-950/90 p-5 rounded-2xl border border-rose-400/30 shadow-inner">
-                        <span class="text-[11px] font-bold uppercase tracking-wider text-pink-300 block mb-3">
-                            <i class="fa-solid fa-chart-simple"></i> Character Indicators &amp; Attributes
-                        </span>
-                        <div class="grid grid-cols-3 gap-3 text-center">
-                            
-                                <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-800">
-                                    <div class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">style</div>
-                                    <div class="font-serif text-base sm:text-lg font-bold text-amber-300 mt-0.5">100/100</div>
-                                </div>
-                            
-                                <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-800">
-                                    <div class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">savings</div>
-                                    <div class="font-serif text-base sm:text-lg font-bold text-amber-300 mt-0.5">98/100</div>
-                                </div>
-                            
-                                <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-800">
-                                    <div class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">signature</div>
-                                    <div class="font-serif text-base sm:text-lg font-bold text-amber-300 mt-0.5">Gold-Stitched Tote</div>
-                                </div>
-                            
-                        </div>
-                    </div>
+                    
+    <div class="bg-slate-950/90 p-4 sm:p-5 rounded-2xl border border-rose-400/30 shadow-inner min-w-0">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-pink-300 block mb-3 flex items-center gap-1.5">
+            <i class="fa-solid fa-chart-simple"></i> Character Indicators &amp; Attributes
+        </span>
+        <div class="grid grid-cols-3 gap-2 text-center min-w-0">
+            
+    <div class="bg-slate-900/90 p-2.5 rounded-xl border border-slate-800 min-w-0 overflow-hidden">
+        <div class="text-[9px] uppercase font-bold text-slate-400 tracking-wider truncate">warmth</div>
+        <div class="font-serif text-xs sm:text-base font-bold text-amber-300 mt-0.5 truncate">100/100</div>
+    </div>
+  
+    <div class="bg-slate-900/90 p-2.5 rounded-xl border border-slate-800 min-w-0 overflow-hidden">
+        <div class="text-[9px] uppercase font-bold text-slate-400 tracking-wider truncate">gratitude</div>
+        <div class="font-serif text-xs sm:text-base font-bold text-amber-300 mt-0.5 truncate">100/100</div>
+    </div>
+  
+    <div class="bg-slate-900/90 p-2.5 rounded-xl border border-slate-800 min-w-0 overflow-hidden">
+        <div class="text-[9px] uppercase font-bold text-slate-400 tracking-wider truncate">signature</div>
+        <div class="font-serif text-xs sm:text-base font-bold text-amber-300 mt-0.5 truncate">Warm Spiced Cider</div>
+    </div>
+  
+        </div>
+    </div>
+  
 
                     <!-- Interactive Flippable 3D Physical Keepsake Card -->
-                    <div class="bg-slate-950/90 p-5 rounded-2xl border border-rose-400/30 shadow-inner flex flex-col items-center">
-                        <div class="w-full flex justify-between items-center mb-4">
+                    <div class="bg-slate-950/90 p-4 sm:p-5 rounded-2xl border border-rose-400/30 shadow-inner flex flex-col items-center min-w-0">
+                        <div class="w-full flex justify-between items-center mb-3">
                             <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300">
-                                <i class="fa-solid fa-id-card"></i> Physical CR80 PVC Smart Card
+                                <i class="fa-solid fa-id-card"></i> Physical CR80 PVC Card
                             </span>
-                            <button onclick="toggleCardFlip()" class="bg-slate-900 hover:bg-slate-800 text-pink-300 text-xs font-bold px-3 py-1 rounded-xl border border-pink-400/40 flex items-center gap-1.5 transition-all">
-                                <i class="fa-solid fa-arrows-rotate"></i> Flip Card (Front/Back)
+                            <button onclick="toggleCardFlip()" class="bg-slate-900 hover:bg-slate-800 text-pink-300 text-xs font-bold px-3 py-1.5 rounded-xl border border-pink-400/40 flex items-center gap-1.5 transition-all">
+                                <i class="fa-solid fa-arrows-rotate"></i> Flip (Front/Back)
                             </button>
                         </div>
 
                         <!-- 3D Card Container -->
-                        <div id="card3dContainer" class="perspective-1000 aspect-[9/16] w-52 sm:w-64 cursor-pointer group" onclick="toggleCardFlip()">
+                        <div id="card3dContainer" class="perspective-1000 w-full max-w-[260px] sm:max-w-[300px] aspect-[9/16] cursor-pointer group my-1" onclick="toggleCardFlip()">
                             <div class="flip-card-inner relative w-full h-full transform-style-3d shadow-2xl rounded-2xl border-[1.5pt] border-rose-400/70 overflow-hidden bg-slate-900">
                                 <!-- Front Face -->
                                 <div class="absolute inset-0 backface-hidden">
-                                    <img src="../public/cards/02_front.jpg" alt="Noelle Front" class="w-full h-full object-contain bg-slate-950">
-                                    <div class="absolute bottom-2 left-2 right-2 bg-black/75 backdrop-blur-sm text-center py-1 text-[10px] font-bold text-amber-300 uppercase tracking-widest rounded-lg">
-                                        Card Front &bull; Tap to Flip ↻
+                                    <img src="../assets/img/02-front.jpg" alt="Autumn Warmth & Gratitude Front" class="w-full h-full object-contain bg-slate-950">
+                                    <div class="absolute bottom-2 left-2 right-2 bg-black/80 backdrop-blur-sm text-center py-1 text-[10px] font-bold text-amber-300 uppercase tracking-widest rounded-lg">
+                                        Front Artwork &bull; Tap to Flip ↻
                                     </div>
                                 </div>
                                 <!-- Back Face with NFC Target Star -->
                                 <div class="absolute inset-0 backface-hidden rotate-y-180 bg-slate-950 flex flex-col justify-between p-3" style="transform: rotateY(180deg);">
-                                    <img src="../public/cards/02_back.jpg" alt="Noelle Back" class="w-full h-full object-contain">
-                                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none">
-                                        <div class="w-16 h-16 rounded-full border-2 border-dashed border-amber-300/80 bg-pink-500/20 backdrop-blur-sm flex items-center justify-center text-amber-300 text-xl font-bold shadow-lg animate-pulse">
-                                            ★
+                                    <img src="../assets/img/02-back.jpg" alt="Autumn Warmth & Gratitude Back" class="w-full h-full object-contain">
+                                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none w-11/12 text-center">
+                                        <div class="w-14 h-14 rounded-full border-2 border-dashed border-amber-300/80 bg-pink-500/25 backdrop-blur-sm flex items-center justify-center text-amber-300 text-lg font-bold shadow-lg animate-pulse">
+                                            ⟡
                                         </div>
-                                        <span class="text-[10px] font-bold text-amber-200 mt-1 drop-shadow bg-black/60 px-2 py-0.5 rounded-full">⟡ TAP FOR DEALS ⟡</span>
-                                        <span class="text-[8px] text-slate-300 drop-shadow">Tap with NFC phone to unlock VIP deals</span>
+                                        <span class="text-[9px] font-bold text-amber-200 mt-1 drop-shadow bg-black/75 px-2 py-0.5 rounded-full">⟡ TAP FOR THANKS ⟡</span>
+                                        <span class="text-[8px] text-slate-300 drop-shadow mt-0.5 bg-black/60 px-1.5 py-0.5 rounded">Tap with NFC phone for Thanksgiving video toast</span>
                                     </div>
-                                    <div class="absolute bottom-2 left-2 right-2 bg-black/75 backdrop-blur-sm text-center py-1 text-[10px] font-bold text-pink-300 uppercase tracking-widest rounded-lg">
-                                        Card Back &bull; Tap to Flip ↺
+                                    <div class="absolute bottom-2 left-2 right-2 bg-black/80 backdrop-blur-sm text-center py-1 text-[10px] font-bold text-pink-300 uppercase tracking-widest rounded-lg">
+                                        Back Antenna Target &bull; Tap to Flip ↻
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <p class="text-[11px] text-slate-400 mt-2 italic text-center">Click card to flip between front artwork and back NFC target</p>
+                        <p class="text-[11px] text-slate-400 mt-2 italic text-center">Click or tap card to flip between front artwork and back NFC chip layout</p>
                     </div>
 
                     <!-- Hidden Collector Items Easter Egg -->
                     
-                    <div class="bg-slate-950/80 p-4 rounded-2xl border border-amber-400/30 flex flex-col gap-2">
-                        <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
-                            <i class="fa-solid fa-magnifying-glass"></i> Hidden Collector Hunt (On Physical Card)
-                        </span>
-                        <div class="grid grid-cols-2 gap-3 text-xs">
-                            
-                                <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 flex justify-between items-center">
-                                    <span class="capitalize text-slate-300 font-medium">shopping bags:</span>
-                                    <span class="font-bold text-amber-300 bg-amber-400/10 px-2 py-0.5 rounded-lg border border-amber-400/30">12 Hidden</span>
-                                </div>
-                            
-                                <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 flex justify-between items-center">
-                                    <span class="capitalize text-slate-300 font-medium">gift tags:</span>
-                                    <span class="font-bold text-amber-300 bg-amber-400/10 px-2 py-0.5 rounded-lg border border-amber-400/30">8 Hidden</span>
-                                </div>
-                            
-                        </div>
-                    </div>
-                    
+    <div class="bg-slate-950/80 p-3.5 sm:p-4 rounded-2xl border border-amber-400/30 flex flex-col gap-2 min-w-0">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
+            <i class="fa-solid fa-magnifying-glass"></i> Hidden Collector Hunt (On Physical Card)
+        </span>
+        <div class="grid grid-cols-2 gap-2 text-xs">
+            
+    <div class="bg-slate-900 p-2 rounded-xl border border-slate-800 flex justify-between items-center min-w-0">
+        <span class="capitalize text-slate-300 font-medium truncate mr-1">cinnamon sticks:</span>
+        <span class="text-amber-300 font-bold">8 Hidden</span>
+    </div>
+  
+    <div class="bg-slate-900 p-2 rounded-xl border border-slate-800 flex justify-between items-center min-w-0">
+        <span class="capitalize text-slate-300 font-medium truncate mr-1">maple leaves:</span>
+        <span class="text-amber-300 font-bold">14 Hidden</span>
+    </div>
+  
+        </div>
+    </div>
+  
 
-                    <!-- Creator AI Prompts & Specs Drawer -->
+                    <!-- AI Creative Prompts Accordion (Container-safe with break-all) -->
                     
-                    <details class="bg-slate-950/80 rounded-2xl border border-amber-400/30 p-4 group transition-all">
-                        <summary class="font-header text-xs font-bold text-amber-300 cursor-pointer flex justify-between items-center uppercase tracking-wider select-none">
-                            <span><i class="fa-solid fa-wand-magic-sparkles text-pink-400 mr-1.5"></i> Creative AI Prompts &amp; Specs</span>
-                            <span class="text-slate-400 group-open:rotate-180 transition-transform">&darr;</span>
-                        </summary>
-                        <div class="mt-4 flex flex-col gap-3 text-xs border-t border-slate-800 pt-3">
-                            <div>
-                                <span class="font-bold text-slate-400 block mb-1">🎨 Front Artwork Prompt:</span>
-                                <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 text-slate-300 font-mono text-[11px] leading-relaxed relative group/btn">
-                                    Fashion editorial portrait of Noelle, stylish girl in glossy magenta winter trench coat and black velvet beret holding metallic gold and rose-gold shopping gift bags on a bustling neon-lit luxury shopping street at midnight. Holiday lights and glowing storefronts reflecting on wet cobblestones, bokeh sparkles, vibrant modern aesthetic, 8k resolution.
-                                </div>
-                            </div>
-                            <div>
-                                <span class="font-bold text-slate-400 block mb-1">🎬 Motion Video Prompt:</span>
-                                <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 text-slate-300 font-mono text-[11px] leading-relaxed">
-                                    9:16 vertical video. Dynamic fashion walk through luxury storefronts at night. Noelle twirls holding ribbon-tied shopping totes, smiles at camera, and reveals a gold VIP card with a wink. Confetti and neon light flares float across the screen.
-                                </div>
-                            </div>
-                            <div>
-                                <span class="font-bold text-slate-400 block mb-1">🎙️ Dialogue &amp; Vocal Prompt:</span>
-                                <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 text-slate-300 font-mono text-[11px] leading-relaxed">
-                                    Vocal style: Upbeat, energetic, confident best-friend vibe. 'Ready to unlock the best deals of the year? Noelle's got the VIP list—tap in and let's shop!'
-                                </div>
-                            </div>
-                        </div>
-                    </details>
-                    
+    <details class="bg-slate-950/70 p-4 rounded-2xl border border-slate-800 group min-w-0">
+        <summary class="cursor-pointer text-xs font-bold text-slate-300 flex justify-between items-center select-none">
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-wand-magic-sparkles text-pink-400"></i> Generative Prompts &amp; Specs</span>
+            <span class="text-slate-400 group-open:rotate-180 transition-transform">&darr;</span>
+        </summary>
+        <div class="mt-3 flex flex-col gap-2.5 text-xs border-t border-slate-800/80 pt-3 min-w-0">
+            <div>
+                <span class="font-bold text-slate-400 block mb-1">Front Artwork Prompt:</span>
+                <div class="bg-slate-900/90 p-2.5 rounded-xl border border-slate-800 text-slate-300 font-mono text-[11px] leading-relaxed break-words whitespace-pre-wrap">
+                    Warm, heartwarming portrait illustration of a beautiful young woman in a cozy autumnal cable-knit sweater holding a steaming ceramic mug of spiced cider with cinnamon stick, surrounded by glowing golden maple leaves and rustic holiday feast decor, soft cinematic lighting, 8k resolution, 9:16 portrait.
+                </div>
+            </div>
+            <div>
+                <span class="font-bold text-slate-400 block mb-1">Motion Video Prompt:</span>
+                <div class="bg-slate-900/90 p-2.5 rounded-xl border border-slate-800 text-slate-300 font-mono text-[11px] leading-relaxed break-words whitespace-pre-wrap">
+                    9:16 vertical motion video. Woman smiling warmly raises her steaming warm spiced drink toward camera in a celebratory Thanksgiving toast as golden autumn leaves drift through warm sunbeams. Cozy Thanksgiving gathering atmosphere.
+                </div>
+            </div>
+        </div>
+    </details>
+  
 
                     <!-- Utility Action & Order Buttons -->
-                    <div class="flex flex-col gap-3 pt-2">
+                    <div class="flex flex-col gap-3 pt-1 min-w-0">
                         
-                        <a href="https://shop.tapthingy.com/collections/all" target="_blank" class="w-full bg-gradient-to-r from-pink-600 via-rose-500 to-amber-500 hover:from-pink-500 hover:to-amber-400 text-white font-bold py-3.5 px-6 rounded-2xl shadow-xl shadow-pink-600/30 text-center flex items-center justify-center gap-2 transition-transform hover:scale-[1.02]">
-                            <i class="fa-solid fa-sparkles"></i> Unlock VIP Holiday Deals &rarr;
+                        <a href="https://TapGreetings.com/02" target="_blank" onclick="triggerConfetti()" class="w-full bg-gradient-to-r from-pink-600 via-rose-500 to-amber-500 hover:from-pink-500 hover:to-amber-400 text-white font-bold py-3.5 px-4 rounded-2xl shadow-xl shadow-pink-600/30 text-center flex items-center justify-center gap-2 transition-transform hover:scale-[1.01] text-sm">
+                            <i class="fa-solid fa-sparkles"></i> <span>Share Thanksgiving Gratitude</span> &rarr;
                         </a>
                         
 
-                        <div class="flex flex-col sm:flex-row gap-3">
-                            <a href="https://shop.tapthingy.com/collections/tapgreetings" target="_blank" class="flex-1 bg-slate-900 hover:bg-slate-800 text-amber-300 font-bold py-3.5 px-6 rounded-2xl border border-amber-400/40 shadow-lg text-center flex items-center justify-center gap-2 transition-transform hover:scale-[1.02]">
+                        <div class="flex flex-col sm:flex-row gap-2.5">
+                            <a href="https://shop.tapthingy.com/collections/tapgreetings" target="_blank" class="flex-1 bg-slate-900 hover:bg-slate-800 text-amber-300 font-bold py-3 px-4 rounded-2xl border border-amber-400/40 shadow-lg text-center flex items-center justify-center gap-2 transition-transform hover:scale-[1.01] text-xs sm:text-sm">
                                 <i class="fa-solid fa-cart-shopping"></i> Order Keepsake Card &bull; $29.99
                             </a>
-                            <button onclick="shareGreeting()" class="bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 px-6 rounded-2xl border border-slate-700 shadow-lg flex items-center justify-center gap-2 transition-transform hover:scale-[1.02]">
+                            <button onclick="shareGreeting()" class="bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-2xl border border-slate-700 shadow-lg flex items-center justify-center gap-2 transition-transform hover:scale-[1.01] text-xs sm:text-sm">
                                 <i class="fa-solid fa-share-nodes text-pink-400"></i> Share
                             </button>
                         </div>
                     </div>
 
                     <!-- Navigation Footer -->
-                    <div class="flex justify-between items-center pt-6 mt-2 border-t border-slate-800">
-                        <a href="../delphine-holidays/index.html" class="bg-slate-900 hover:bg-pink-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 transition-colors shadow border border-slate-800">
+                    <div class="flex justify-between items-center pt-4 border-t border-slate-800 text-xs">
+                        <a href="../01/index.html" class="bg-slate-900 hover:bg-pink-600 text-white font-bold px-3 py-2 rounded-xl flex items-center gap-1.5 transition-colors shadow border border-slate-800">
                             <i class="fa-solid fa-arrow-left"></i> Prev Card
                         </a>
-                        <a href="../index.html" class="bg-slate-900 hover:bg-pink-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 transition-colors shadow border border-slate-800">
+                        <a href="../index.html" class="bg-slate-900 hover:bg-pink-600 text-white font-bold px-3 py-2 rounded-xl flex items-center gap-1.5 transition-colors shadow border border-slate-800">
                             <i class="fa-solid fa-home"></i> All Cards
                         </a>
-                        <a href="../03/index.html" class="bg-slate-900 hover:bg-pink-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 transition-colors shadow border border-slate-800">
+                        <a href="../03/index.html" class="bg-slate-900 hover:bg-pink-600 text-white font-bold px-3 py-2 rounded-xl flex items-center gap-1.5 transition-colors shadow border border-slate-800">
                             Next Card <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
@@ -429,10 +483,24 @@
             container.classList.toggle('flipped');
         }
 
+        function simulateNfcTap() {
+            triggerConfetti();
+            const vid = document.getElementById('cardVideo');
+            if (vid) {
+                vid.currentTime = 0;
+                vid.muted = false;
+                vid.play().catch(() => {
+                    vid.muted = true;
+                    vid.play();
+                });
+            }
+        }
+
         function shareGreeting() {
+            triggerConfetti();
             const shareData = {
-                title: "Noelle - VIP Deals & Holiday Joy!",
-                text: "Ready for the holiday shopping spree? Tap Noelle's NFC card to unlock VIP holiday deals: https://TapGreetings.com/02",
+                title: "Autumn Warmth & Gratitude - Happy Thanksgiving!",
+                text: "Gather with gratitude! 🍂🦃 Tap to experience this Thanksgiving smart NFC greeting card: https://TapGreetings.com/02",
                 url: window.location.href
             };
             if (navigator.share) {
@@ -444,12 +512,27 @@
         }
     </script>
 
-    <footer class="text-center py-12 px-4 text-xs sm:text-sm text-slate-400 border-t border-slate-800/80 mt-20 flex flex-col items-center gap-6">
+    <footer class="w-full text-center py-12 px-4 text-xs sm:text-sm text-slate-400 border-t border-slate-800/80 mt-16 sm:mt-24 flex flex-col items-center gap-6 bg-[#05070E]">
         <div class="flex flex-wrap justify-center gap-6 text-xl text-rose-400">
-            <a href="https://instagram.com/tapgreetings" target="_blank" class="hover:text-amber-300 transition-transform hover:scale-110" title="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="https://tiktok.com/@tapgreetings" target="_blank" class="hover:text-amber-300 transition-transform hover:scale-110" title="TikTok"><i class="fa-brands fa-tiktok"></i></a><a href="https://twitter.com/tapgreetings" target="_blank" class="hover:text-amber-300 transition-transform hover:scale-110" title="Twitter / X"><i class="fa-brands fa-twitter"></i></a><a href="https://youtube.com/@tapthingy" target="_blank" class="hover:text-amber-300 transition-transform hover:scale-110" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://tiktok.com/@tapthingy" target="_blank" class="hover:text-amber-300 transition-transform hover:scale-110" title="TikTok"><i class="fa-brands fa-tiktok"></i></a><a href="https://instagram.com/tapthingy" target="_blank" class="hover:text-amber-300 transition-transform hover:scale-110" title="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="https://youtube.com/@tapthingy" target="_blank" class="hover:text-amber-300 transition-transform hover:scale-110" title="YouTube"><i class="fa-brands fa-youtube"></i></a><a href="https://x.com/tapthingy" target="_blank" class="hover:text-amber-300 transition-transform hover:scale-110" title="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
         </div>
-        <p class="max-w-md leading-relaxed text-slate-400">
-            &copy; 2026 TapGreetings. Powered by <a href="https://tapthingy.com" target="_blank" class="text-pink-400 font-bold hover:underline">TapThingy</a> smart NFC hardware &amp; OTA dynamic cloud routing.
+        <div class="max-w-xl text-center space-y-2 px-2">
+            <p class="font-bold text-slate-200">
+                TapGreetings &bull; Smart NFC Living Keepsake Greeting Cards
+            </p>
+            <p class="leading-relaxed text-slate-400 text-xs">
+                Featuring rewritable NTAG215 waterproof CR80 PVC hardware, 1080p motion video streaming, and instant over-the-air reprogrammability. Powered by <a href="https://tapthingy.com" target="_blank" class="text-pink-400 font-bold hover:underline">TapThingy</a>.
+            </p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-4 text-xs text-slate-400">
+            <a href="https://shop.tapthingy.com/collections/all" target="_blank" class="hover:text-amber-300">Shop Collection</a>
+            <span>&bull;</span>
+            <a href="https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card" target="_blank" class="hover:text-amber-300">Custom Video Studio</a>
+            <span>&bull;</span>
+            <a href="https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" target="_blank" class="hover:text-pink-300">NFC Tools Guide</a>
+        </div>
+        <p class="text-[11px] text-slate-400">
+            &copy; 2026 TapGreetings &bull; TapThingy LLC. All rights reserved.
         </p>
     </footer>
 </body>

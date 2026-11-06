@@ -1,6 +1,16 @@
 # TapGreetings Cloudflare Edge Redirects
-/holidays /delphine-holidays/ 301
-/01 /delphine-holidays/ 301
+/holidays /01/ 301
+/delphine-holidays /01/ 301
+/thanksgiving /02/ 301
+/autumn-gratitude /02/ 301
+/warm-winter-wishes /03/ 301
+/aria-lantern /03/ 301
+/black-friday /04/ 301
+/cyber-starlet /04/ 301
+/new-year-2026 /05/ 301
+/midnight-toast /05/ 301
+/studio /custom/ 301
+/custom-studio /custom/ 301
 /tools https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide 302
 /reprogram https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide 302
-/shop https://shop.tapthingy.com/collections/tapgreetings 302
+/shop https://shop.tapthingy.com/collections/all 302
