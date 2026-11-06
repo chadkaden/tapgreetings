@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>The Tree (The Evergreen Hearth) | Series 1 NFC Holiday Card | TapGreetings Series 1</title>
+    
+    <!-- Primary SEO Meta Tags -->
+    <meta name="title" content="The Tree (The Evergreen Hearth) | Series 1 NFC Holiday Card | TapGreetings Series 1">
+    <meta name="description" content="Experience The Tree in tiered Scandinavian wool felt. Tap this smart NFC card for instant hearth glow motion video and peaceful holiday blessing.">
+    <meta name="keywords" content="holiday tree card, evergreen hearth, scandinavian felt tree, wool felt, nfc holiday card, smart card, tapgreetings">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://TapGreetings.com/006">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://TapGreetings.com/006">
+    <meta property="og:title" content="The Tree (The Evergreen Hearth) | Series 1 NFC Holiday Card | TapGreetings Series 1">
+    <meta property="og:description" content="Experience The Tree in tiered Scandinavian wool felt. Tap this smart NFC card for instant hearth glow motion video and peaceful holiday blessing.">
+    <meta property="og:image" content="https://TapGreetings.com/assets/img/006-front.jpg">
+    <meta property="og:video" content="https://TapGreetings.com/assets/video/006-video.mp4">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://TapGreetings.com/006">
+    <meta property="twitter:title" content="The Tree (The Evergreen Hearth) | Series 1 NFC Holiday Card | TapGreetings Series 1">
+    <meta property="twitter:description" content="Experience The Tree in tiered Scandinavian wool felt. Tap this smart NFC card for instant hearth glow motion video and peaceful holiday blessing.">
+    <meta property="twitter:image" content="https://TapGreetings.com/assets/img/006-front.jpg">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        mocha: '#241711',
+                        cranberry: '#9E1B32',
+                        forest: '#23412B',
+                        buttercream: '#FFF8E7',
+                        cherry: '#D62839',
+                        mint: '#A8DADC',
+                        goldFoil: '#FBBF24'
+                    },
+                    fontFamily: {
+                        clayTitle: ['"Cooper Black"', '"Recraft"', '"Playfair Display"', 'serif'],
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        sans: ['"Montserrat"', '"Plus Jakarta Sans"', 'sans-serif'],
+                        body: ['"Poppins"', 'Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400&family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+    <style>
+        :root {
+            --mocha-base: #180F0B;
+            --cranberry: #9E1B32;
+            --buttercream: #FFF8E7;
+            --gold-foil: #FBBF24;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
+            background-color: #120C08;
+        }
+        .break-anywhere {
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+        .glow-amber {
+            box-shadow: 0 0 35px -5px rgba(251, 191, 36, 0.25);
+        }
+        .glow-cranberry {
+            box-shadow: 0 0 35px -5px rgba(158, 27, 50, 0.35);
+        }
+        .clay-corner {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            color: #FBBF24;
+            font-size: 15px;
+            line-height: 1;
+            user-select: none;
+            pointer-events: none;
+            filter: drop-shadow(0 0 4px #F59E0B);
+        }
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .flip-card-inner {
+            transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        @keyframes soundWave {
+            0%, 100% { height: 4px; }
+            50% { height: 18px; }
+        }
+        .wave-bar {
+            width: 3px;
+            border-radius: 9999px;
+            background-color: #FBBF24;
+            animation: soundWave 0.8s ease-in-out infinite;
+        }
+        .wave-bar:nth-child(1) { animation-delay: 0.1s; }
+        .wave-bar:nth-child(2) { animation-delay: 0.3s; }
+        .wave-bar:nth-child(3) { animation-delay: 0.2s; }
+        .wave-bar:nth-child(4) { animation-delay: 0.4s; }
+        .wave-bar:nth-child(5) { animation-delay: 0.15s; }
+    </style>
+</head>
+<body class="font-sans bg-[#120C08] text-amber-50 min-h-screen transition-colors duration-300 selection:bg-rose-600 selection:text-white flex flex-col justify-between overflow-x-hidden">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-[#160E09]/95 backdrop-blur-md border-b border-amber-900/40 px-4 sm:px-8 py-3.5 flex justify-between items-center shadow-xl w-full">
+        <a href="../index.html" class="font-header text-lg sm:text-2xl font-bold text-white flex items-center gap-2 sm:gap-2.5 drop-shadow-[0_0_15px_rgba(251,191,36,0.35)] flex-shrink-0">
+            <span class="w-8 h-8 rounded-xl bg-gradient-to-tr from-rose-700 via-amber-600 to-amber-300 flex items-center justify-center text-xs sm:text-sm font-black text-white shadow-md">TG</span>
+            <div class="flex flex-col">
+                <span class="tracking-tight leading-none">TapGreetings</span>
+                <span class="text-[9px] text-amber-300 uppercase tracking-widest font-semibold mt-0.5">Series 1 &bull; Clay &amp; Needle Felt</span>
+            </div>
+        </a>
+        <div class="flex items-center gap-3 sm:gap-6">
+            <nav class="hidden md:flex gap-6 text-sm font-semibold text-amber-200/90">
+                <a href="../index.html" class="hover:text-amber-300 transition-colors">Home</a>
+                <a href="../index.html#collection" class="hover:text-amber-300 transition-colors">Series 1 (001–008)</a>
+                <a href="https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card" target="_blank" class="hover:text-amber-300 transition-colors">Custom Keepsake</a>
+                <a href="https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" target="_blank" class="hover:text-amber-300 transition-colors">NFC Webtool</a>
+            </nav>
+            <a href="https://shop.tapthingy.com/collections/all" target="_blank" class="bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white text-xs font-bold px-3 sm:px-4 py-2 rounded-xl shadow transition-transform hover:scale-105 flex items-center gap-1.5">
+                <i class="fa-solid fa-cart-shopping"></i> <span class="hidden sm:inline">Shop</span> Series 1
+            </a>
+            <button onclick="toggleTheme()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#20140D] border border-amber-800/40 text-amber-300 flex items-center justify-center shadow hover:scale-105 transition-transform" title="Toggle Light/Dark Mode">
+                <i class="fa-solid fa-moon" id="themeIcon"></i>
+            </button>
+        </div>
+    </header>
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                icon.className = 'fa-solid fa-sun';
+                localStorage.setItem('tapgreetings_theme', 'light');
+            } else {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                icon.className = 'fa-solid fa-moon';
+                localStorage.setItem('tapgreetings_theme', 'dark');
+            }
+        }
+        const savedTheme = localStorage.getItem('tapgreetings_theme') || 'dark';
+        if (savedTheme === 'light') {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.classList.add('light');
+            document.addEventListener('DOMContentLoaded', () => {
+                const icon = document.getElementById('themeIcon');
+                if (icon) icon.className = 'fa-solid fa-sun';
+            });
+        }
+        function triggerConfetti() {
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 65,
+                    spread: 60,
+                    origin: { y: 0.7 },
+                    colors: ['#FBBF24', '#9E1B32', '#FFF8E7', '#23412B', '#A8DADC']
+                });
+            }
+        }
+    </script>
+
+    <main class="w-full max-w-5xl mx-auto px-3 sm:px-6 py-6 sm:py-10 flex-grow">
+        <!-- Main Card Container with Clay Embossed Borders and Amber Glow -->
+        <div class="relative bg-[#1A110C]/95 rounded-3xl p-4 sm:p-8 shadow-2xl border-[2px] border-amber-600/40 backdrop-blur-md flex flex-col gap-6 sm:gap-8 glow-amber w-full overflow-hidden">
+            
+            <!-- 4-Point Gold Starburst Filigree Accents in Corners -->
+            <span class="clay-corner top-3 left-3">✦</span>
+            <span class="clay-corner top-3 right-3">✦</span>
+            <span class="clay-corner bottom-3 left-3">✦</span>
+            <span class="clay-corner bottom-3 right-3">✦</span>
+
+            <!-- Top Event & Series Banner -->
+            <div class="text-center pt-1 w-full max-w-full">
+                <div class="flex flex-wrap justify-center items-center gap-2 mb-3">
+                    <span class="inline-block bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 text-white text-[11px] sm:text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-widest shadow-md">
+                        Happy Holidays!
+                    </span>
+                    <span class="inline-block bg-[#241710] text-amber-300 border border-amber-600/40 text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                        SERIES 1 &bull; CARD #006 OF 008
+                    </span>
+                    <span class="inline-block bg-[#241710] text-rose-300 border border-rose-600/40 text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                        Series 1 Premier
+                    </span>
+                </div>
+                
+                <h1 class="font-clayTitle text-2xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-amber-100 via-amber-200 to-rose-200 bg-clip-text text-transparent drop-shadow-md break-words">
+                    The Tree
+                </h1>
+                <p class="font-sans text-xs sm:text-sm text-amber-300 font-semibold tracking-wide mt-1.5 break-words">
+                    The Evergreen Hearth &bull; <span class="text-rose-300 italic font-serif">Scalloped Layered Wool Felt</span>
+                </p>
+                <p class="text-xs sm:text-sm text-amber-100/90 italic max-w-xl mx-auto mt-2 px-2 leading-relaxed break-words">
+                    &ldquo;Deeply rooted in love, reaching endlessly toward the light.&rdquo;
+                </p>
+
+                <!-- Keywords / SEO Tag Pills -->
+                <div class="flex flex-wrap justify-center gap-1.5 mt-3 max-w-2xl mx-auto"><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#holiday tree card</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#evergreen hearth</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#scandinavian felt tree</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#wool felt</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#nfc holiday card</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#smart card</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#tapgreetings</span></div>
+            </div>
+
+            <!-- Main Layout: Video Player Column + Interactive Experience Column -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start w-full min-w-0">
+                
+                <!-- Left: 1080p Stop-Motion Video Player with Interactive Tap -->
+                <div class="flex flex-col items-center justify-center bg-black/95 rounded-3xl p-2 sm:p-3 border-[2px] border-amber-600/50 ring-2 ring-rose-500/20 shadow-2xl relative overflow-hidden group w-full min-w-0">
+                    <div class="relative w-full max-w-[340px] sm:max-w-[400px] mx-auto rounded-2xl overflow-hidden bg-black flex justify-center">
+                        <video id="cardVideo" autoplay loop muted playsinline controls poster="../assets/img/006-front.jpg" class="aspect-[9/16] w-full max-h-[68vh] sm:max-h-[72vh] object-contain rounded-2xl shadow-inner bg-black">
+                            <source src="../assets/video/006-video.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+
+                    <div class="mt-3 w-full flex items-center justify-between px-2 text-xs font-semibold text-amber-200">
+                        <button onclick="simulateNfcTap()" class="flex items-center gap-1.5 text-amber-300 hover:text-white transition-colors">
+                            <i class="fa-solid fa-bolt text-rose-400 animate-pulse"></i> <span>NFC Tap-to-Video</span>
+                        </button>
+                        <span class="px-2.5 py-0.5 rounded-full bg-[#1F140E] border border-amber-700/50 text-[11px] font-mono text-amber-300">
+                            9:16 &bull; 8s HD Claymation
+                        </span>
+                    </div>
+
+                    <!-- Audio Dialogue Speech & Voiceover Box -->
+                    
+    <div class="mt-3.5 w-full bg-[#1B110B]/95 border border-rose-500/40 rounded-2xl p-3.5 sm:p-4 shadow-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 min-w-0">
+        <div class="flex items-start gap-3 min-w-0 flex-1">
+            <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-rose-600 to-amber-400 flex-shrink-0 flex items-center justify-center text-white font-black text-xs shadow-md">
+                <i class="fa-solid fa-volume-high"></i>
+            </div>
+            <div class="min-w-0 flex-1">
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] uppercase font-bold text-amber-300 tracking-wider">Holiday Voiceover Line</span>
+                    <div id="audioWave" class="hidden items-center gap-1 h-4">
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                    </div>
+                </div>
+                <p class="text-xs sm:text-sm text-amber-100 italic leading-snug mt-1 break-words">
+                    &ldquo;Deeply rooted in love, reaching endlessly toward the light. May peace and comfort fill your home this season!&rdquo;
+                </p>
+            </div>
+        </div>
+        <button onclick="speakDialogue()" class="bg-gradient-to-r from-rose-700 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white text-xs font-bold px-3.5 py-2 rounded-xl flex items-center gap-1.5 shadow flex-shrink-0 transition-transform hover:scale-105" title="Listen Aloud">
+            <i class="fa-solid fa-play"></i> Listen Voice
+        </button>
+    </div>
+    <script>
+        function speakDialogue() {
+            triggerConfetti();
+            const wave = document.getElementById('audioWave');
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const u = new SpeechSynthesisUtterance("Deeply rooted in love, reaching endlessly toward the light. May peace and comfort fill your home this season!");
+                u.rate = 0.95;
+                u.pitch = 1.05;
+                if (wave) {
+                    wave.classList.remove('hidden');
+                    wave.classList.add('flex');
+                }
+                u.onend = () => {
+                    if (wave) {
+                        wave.classList.add('hidden');
+                        wave.classList.remove('flex');
+                    }
+                };
+                window.speechSynthesis.speak(u);
+            } else {
+                alert("Deeply rooted in love, reaching endlessly toward the light. May peace and comfort fill your home this season!");
+            }
+        }
+    </script>
+  
+                </div>
+
+                <!-- Right: Lore, Indicators, Physical Card 3D Flip, & Utility Action -->
+                <div class="flex flex-col gap-5 sm:gap-6 w-full min-w-0">
+                    
+                    <!-- Micro Lore Box -->
+                    <div class="bg-[#150D09]/95 p-4 sm:p-5 rounded-3xl border border-amber-700/30 shadow-xl relative min-w-0">
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300 block mb-1.5 flex items-center gap-1.5">
+                            <i class="fa-solid fa-feather-pointed text-rose-400"></i> Clay Artisan Craft &amp; Lore
+                        </span>
+                        <p class="text-xs sm:text-sm text-amber-100/90 leading-relaxed font-body break-words">
+                            A tiered, rounded Scandinavian folk tree composed of overlapping scalloped forest-green felt leaves. Decorated with tiny wooden baubles, clay popcorn garlands, and topped with an internal-glowing buttercream star that casts volumetric light downward.
+                        </p>
+                    </div>
+
+                    <!-- Festive Indicators / Character Stats -->
+                    
+    <div class="bg-[#150D09]/95 p-4 sm:p-5 rounded-3xl border border-amber-700/30 shadow-xl min-w-0">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300 block mb-3 flex items-center gap-1.5">
+            <i class="fa-solid fa-star text-amber-400"></i> Festive Indicators &amp; Character Stats
+        </span>
+        <div class="grid grid-cols-3 gap-2 text-center min-w-0">
+            
+    <div class="bg-[#1C120C]/90 p-2.5 rounded-2xl border border-amber-800/30 min-w-0 overflow-hidden shadow-inner">
+        <div class="text-[9px] uppercase font-bold text-amber-200/80 tracking-wider truncate">hearth glow</div>
+        <div class="font-sans text-xs sm:text-sm font-bold text-amber-300 mt-1 tracking-wider truncate">★★★★★</div>
+    </div>
+  
+    <div class="bg-[#1C120C]/90 p-2.5 rounded-2xl border border-amber-800/30 min-w-0 overflow-hidden shadow-inner">
+        <div class="text-[9px] uppercase font-bold text-amber-200/80 tracking-wider truncate">tradition</div>
+        <div class="font-sans text-xs sm:text-sm font-bold text-amber-300 mt-1 tracking-wider truncate">★★★★★</div>
+    </div>
+  
+    <div class="bg-[#1C120C]/90 p-2.5 rounded-2xl border border-amber-800/30 min-w-0 overflow-hidden shadow-inner">
+        <div class="text-[9px] uppercase font-bold text-amber-200/80 tracking-wider truncate">wonder</div>
+        <div class="font-sans text-xs sm:text-sm font-bold text-amber-300 mt-1 tracking-wider truncate">★★★★★</div>
+    </div>
+  
+        </div>
+    </div>
+  
+
+                    <!-- Interactive Flippable 3D Physical Keepsake Card -->
+                    <div class="bg-[#150D09]/95 p-4 sm:p-5 rounded-3xl border border-amber-700/30 shadow-xl flex flex-col items-center min-w-0">
+                        <div class="w-full flex justify-between items-center mb-3">
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
+                                <i class="fa-solid fa-id-card text-rose-400"></i> Physical CR80 PVC Smart Card
+                            </span>
+                            <button onclick="toggleCardFlip()" class="bg-[#241710] hover:bg-[#301F15] text-amber-300 text-xs font-bold px-3 py-1.5 rounded-xl border border-amber-600/40 flex items-center gap-1.5 transition-all">
+                                <i class="fa-solid fa-arrows-rotate"></i> Flip (Front/Back)
+                            </button>
+                        </div>
+
+                        <!-- 3D Card Container -->
+                        <div id="card3dContainer" class="perspective-1000 w-full max-w-[260px] sm:max-w-[300px] aspect-[9/16] cursor-pointer group my-1" onclick="toggleCardFlip()">
+                            <div class="flip-card-inner relative w-full h-full transform-style-3d shadow-2xl rounded-2xl border-[2px] border-amber-600/70 overflow-hidden bg-[#180F0B]">
+                                <!-- Front Face -->
+                                <div class="absolute inset-0 backface-hidden">
+                                    <img src="../assets/img/006-front.jpg" alt="The Tree Front" class="w-full h-full object-contain bg-[#120C08]">
+                                    <div class="absolute bottom-2 left-2 right-2 bg-black/85 backdrop-blur-sm text-center py-1 text-[10px] font-bold text-amber-300 uppercase tracking-widest rounded-lg">
+                                        Front Artwork &bull; Tap to Flip ↻
+                                    </div>
+                                </div>
+                                <!-- Back Face with NFC Target -->
+                                <div class="absolute inset-0 backface-hidden rotate-y-180 bg-[#120C08] flex flex-col justify-between p-3" style="transform: rotateY(180deg);">
+                                    <img src="../assets/img/006-back.jpg" alt="The Tree Back" class="w-full h-full object-contain">
+                                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none w-11/12 text-center">
+                                        <div class="w-14 h-14 rounded-full border-2 border-dashed border-amber-300/80 bg-rose-600/30 backdrop-blur-sm flex items-center justify-center text-amber-300 text-lg font-bold shadow-lg animate-pulse">
+                                            ⟡
+                                        </div>
+                                        <span class="text-[9px] font-bold text-amber-200 mt-1 drop-shadow bg-black/75 px-2 py-0.5 rounded-full">⟡ TAP HEARTH STAR ⟡</span>
+                                        <span class="text-[8px] text-amber-100 drop-shadow mt-0.5 bg-black/60 px-1.5 py-0.5 rounded">Tap phone to radiant eight-pointed star</span>
+                                    </div>
+                                    <div class="absolute bottom-2 left-2 right-2 bg-black/85 backdrop-blur-sm text-center py-1 text-[10px] font-bold text-amber-300 uppercase tracking-widest rounded-lg">
+                                        Back Antenna Target &bull; Tap to Flip ↻
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-amber-200/70 mt-2 italic text-center">Click or tap card to inspect front sculpture and back NFC antenna layout</p>
+                    </div>
+
+                    <!-- Hidden Collector Items Easter Egg -->
+                    
+    <div class="bg-[#150D09]/85 p-3.5 sm:p-4 rounded-2xl border border-amber-600/30 flex flex-col gap-2 min-w-0">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
+            <i class="fa-solid fa-magnifying-glass text-rose-400"></i> Hidden Clay Collector Hunt (On Physical Card)
+        </span>
+        <div class="grid grid-cols-2 gap-2 text-xs">
+            
+    <div class="bg-[#1C120C] p-2.5 rounded-xl border border-amber-900/40 flex justify-between items-center min-w-0">
+        <span class="capitalize text-slate-300 font-medium truncate mr-1">popcorn strands:</span>
+        <span class="text-amber-300 font-bold">5 Hidden</span>
+    </div>
+  
+    <div class="bg-[#1C120C] p-2.5 rounded-xl border border-amber-900/40 flex justify-between items-center min-w-0">
+        <span class="capitalize text-slate-300 font-medium truncate mr-1">wooden baubles:</span>
+        <span class="text-amber-300 font-bold">14 Hidden</span>
+    </div>
+  
+        </div>
+    </div>
+  
+
+                    <!-- Prompts Accordion -->
+                    
+    <details class="bg-[#150D09]/70 p-4 rounded-2xl border border-amber-900/40 group min-w-0">
+        <summary class="cursor-pointer text-xs font-bold text-amber-200/90 flex justify-between items-center select-none">
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-wand-magic-sparkles text-rose-400"></i> Artisan Clay Prompts &amp; Specs</span>
+            <span class="text-amber-400 group-open:rotate-180 transition-transform">&darr;</span>
+        </summary>
+        <div class="mt-3 flex flex-col gap-2.5 text-xs border-t border-amber-900/40 pt-3 min-w-0">
+            <div>
+                <span class="font-bold text-amber-300 block mb-1">Front Miniature Studio Prompt:</span>
+                <div class="bg-[#1A100B] p-2.5 rounded-xl border border-amber-950 text-slate-300 font-mono text-[11px] leading-relaxed break-words whitespace-pre-wrap">
+                    Cinematic miniature studio photography of a tiered Scandinavian folk Christmas tree sculpted with overlapping scalloped forest-green felt leaves. Decorated with tiny wooden baubles and clay popcorn garlands, topped with an internal-glowing buttercream star casting warm volumetric light downward. Warm cozy holiday ambiance, 8k resolution, 9:16 vertical.
+                </div>
+            </div>
+            <div>
+                <span class="font-bold text-amber-300 block mb-1">Stop-Motion Claymation Video Prompt:</span>
+                <div class="bg-[#1A100B] p-2.5 rounded-xl border border-amber-950 text-slate-300 font-mono text-[11px] leading-relaxed break-words whitespace-pre-wrap">
+                    9:16 vertical video. The Scandinavian felt tree gently sways in a warm breeze as its golden buttercream star glows intensely, showering warm light and floating golden sparks across the baubles.
+                </div>
+            </div>
+        </div>
+    </details>
+  
+
+                    <!-- Utility Action & Order Buttons -->
+                    <div class="flex flex-col gap-3 pt-1 min-w-0">
+                        
+                        <a href="https://TapGreetings.com/006" target="_blank" onclick="triggerConfetti()" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-3.5 px-4 rounded-2xl shadow-xl shadow-rose-900/40 text-center flex items-center justify-center gap-2 transition-transform hover:scale-[1.01] text-sm">
+                            <i class="fa-solid fa-sparkles"></i> <span>Illuminate Hearth Star</span> &rarr;
+                        </a>
+                        
+
+                        <div class="flex flex-col sm:flex-row gap-2.5">
+                            <a href="https://shop.tapthingy.com/collections/all" target="_blank" class="flex-1 bg-[#20140D] hover:bg-[#2C1C13] text-amber-300 font-bold py-3 px-4 rounded-2xl border border-amber-600/40 shadow-lg text-center flex items-center justify-center gap-2 transition-transform hover:scale-[1.01] text-xs sm:text-sm">
+                                <i class="fa-solid fa-cart-shopping"></i> Order Keepsake Card &bull; $29.99
+                            </a>
+                            <button onclick="shareGreeting()" class="bg-[#20140D] hover:bg-[#2C1C13] text-white font-bold py-3 px-4 rounded-2xl border border-amber-800/40 shadow-lg flex items-center justify-center gap-2 transition-transform hover:scale-[1.01] text-xs sm:text-sm">
+                                <i class="fa-solid fa-share-nodes text-rose-400"></i> Share
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Footer -->
+                    <div class="flex justify-between items-center pt-4 border-t border-amber-900/40 text-xs">
+                        <a href="../005/index.html" class="bg-[#20140D] hover:bg-rose-700 text-white font-bold px-3 py-2 rounded-xl flex items-center gap-1.5 transition-colors shadow border border-amber-800/40">
+                            <i class="fa-solid fa-arrow-left"></i> #005
+                        </a>
+                        <a href="../index.html" class="bg-[#20140D] hover:bg-rose-700 text-white font-bold px-3 py-2 rounded-xl flex items-center gap-1.5 transition-colors shadow border border-amber-800/40">
+                            <i class="fa-solid fa-home"></i> Series 1 Gallery
+                        </a>
+                        <a href="../007/index.html" class="bg-[#20140D] hover:bg-rose-700 text-white font-bold px-3 py-2 rounded-xl flex items-center gap-1.5 transition-colors shadow border border-amber-800/40">
+                            #007 <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        function toggleCardFlip() {
+            const container = document.getElementById('card3dContainer');
+            container.classList.toggle('flipped');
+        }
+
+        function simulateNfcTap() {
+            triggerConfetti();
+            const vid = document.getElementById('cardVideo');
+            if (vid) {
+                vid.currentTime = 0;
+                vid.muted = false;
+                vid.play().catch(() => {
+                    vid.muted = true;
+                    vid.play();
+                });
+            }
+        }
+
+        function shareGreeting() {
+            triggerConfetti();
+            const shareData = {
+                title: "The Tree - Happy Holidays!",
+                text: "Deeply rooted in love! 🎄⭐ Tap to experience The Tree (The Evergreen Hearth): https://TapGreetings.com/006",
+                url: window.location.href
+            };
+            if (navigator.share) {
+                navigator.share(shareData).catch(console.error);
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Greeting link copied to clipboard!');
+            }
+        }
+    </script>
+
+    <footer class="w-full text-center py-12 px-4 text-xs sm:text-sm text-amber-200/70 border-t border-amber-900/40 mt-16 sm:mt-24 flex flex-col items-center gap-6 bg-[#0E0704]">
+        <div class="flex flex-wrap justify-center gap-6 text-xl text-amber-400">
+            <a href="https://tiktok.com/@tapthingy" target="_blank" class="hover:text-rose-400 transition-transform hover:scale-110" title="TikTok"><i class="fa-brands fa-tiktok"></i></a><a href="https://instagram.com/tapthingy" target="_blank" class="hover:text-rose-400 transition-transform hover:scale-110" title="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="https://youtube.com/@tapthingy" target="_blank" class="hover:text-rose-400 transition-transform hover:scale-110" title="YouTube"><i class="fa-brands fa-youtube"></i></a><a href="https://x.com/tapthingy" target="_blank" class="hover:text-rose-400 transition-transform hover:scale-110" title="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+        <div class="max-w-xl text-center space-y-2 px-2">
+            <p class="font-bold text-amber-100 text-sm">
+                TapGreetings &bull; Series 1: The Clay &amp; Needle-Felt Holiday Collection
+            </p>
+            <p class="leading-relaxed text-amber-200/80 text-xs">
+                Crafted in textured polymer clay, needle-felted wool, cast translucent resin ice, and stamped gold-foil hardware. Embedded with high-speed rewritable NTAG215 microchips. Powered by <a href="https://tapthingy.com" target="_blank" class="text-amber-300 font-bold hover:underline">TapThingy</a>.
+            </p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-4 text-xs text-amber-200/70">
+            <a href="https://shop.tapthingy.com/collections/all" target="_blank" class="hover:text-amber-300">Shop Collection</a>
+            <span>&bull;</span>
+            <a href="https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card" target="_blank" class="hover:text-amber-300">Custom Keepsake Studio</a>
+            <span>&bull;</span>
+            <a href="https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" target="_blank" class="hover:text-amber-300">NFC Tools Guide</a>
+        </div>
+        <p class="text-[11px] text-amber-200/50">
+            &copy; 2026 TapGreetings &bull; TapThingy LLC. Handcrafted in Polymer Clay &amp; Needle Felt.
+        </p>
+    </footer>
+</body>
+</html>
+

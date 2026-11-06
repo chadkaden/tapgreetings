@@ -1,16 +1,31 @@
-# TapGreetings Cloudflare Edge Redirects
-/holidays /01/ 301
-/delphine-holidays /01/ 301
-/thanksgiving /02/ 301
-/autumn-gratitude /02/ 301
-/warm-winter-wishes /03/ 301
-/aria-lantern /03/ 301
-/black-friday /04/ 301
-/cyber-starlet /04/ 301
-/new-year-2026 /05/ 301
-/midnight-toast /05/ 301
-/studio /custom/ 301
-/custom-studio /custom/ 301
+# TapGreetings Cloudflare Edge Redirects - Series 1 (Clay & Needle-Felt)
+/santa /001/ 301
+/master-artisan /001/ 301
+/frosty /002/ 301
+/snowbound-joy /002/ 301
+/rudolph /003/ 301
+/beacon-of-light /003/ 301
+/jack-frost /004/ 301
+/frost-sprite /004/ 301
+/nutcracker /005/ 301
+/hearth-sentry /005/ 301
+/the-tree /006/ 301
+/evergreen-hearth /006/ 301
+/snowflake /007/ 301
+/celestial-crystal /007/ 301
+/gift /008/ 301
+/surprise-box /008/ 301
+
+# Backward-compatible 2-digit redirects
+/01 /001/ 301
+/02 /002/ 301
+/03 /003/ 301
+/04 /004/ 301
+/05 /005/ 301
+/06 /006/ 301
+/07 /007/ 301
+/08 /008/ 301
+
 /tools https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide 302
 /reprogram https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide 302
 /shop https://shop.tapthingy.com/collections/all 302
