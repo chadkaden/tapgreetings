@@ -127,13 +127,15 @@
         "target_url": "https://TapGreetings.com/001"
       },
       "commerce": {
-        "price": 29.99,
-        "compare_at_price": 39.99,
+        "price": 14.99,
+        "compare_at_price": 24.99,
         "sku": "TG-S1-001",
         "inventory_qty": 100,
         "card_format": "CR80 30mil Waterproof PVC",
         "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
-      }
+      },
+      "subcollection": "Classic Icons",
+      "subcollection_handle": "classic-icons"
     },
     {
       "card_id": "holiday-frosty-002",
@@ -241,13 +243,15 @@
         "target_url": "https://TapGreetings.com/002"
       },
       "commerce": {
-        "price": 29.99,
-        "compare_at_price": 39.99,
+        "price": 14.99,
+        "compare_at_price": 24.99,
         "sku": "TG-S1-002",
         "inventory_qty": 100,
         "card_format": "CR80 30mil Waterproof PVC",
         "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
-      }
+      },
+      "subcollection": "Classic Icons",
+      "subcollection_handle": "classic-icons"
     },
     {
       "card_id": "holiday-rudolph-003",
@@ -355,13 +359,15 @@
         "target_url": "https://TapGreetings.com/003"
       },
       "commerce": {
-        "price": 29.99,
-        "compare_at_price": 39.99,
+        "price": 14.99,
+        "compare_at_price": 24.99,
         "sku": "TG-S1-003",
         "inventory_qty": 100,
         "card_format": "CR80 30mil Waterproof PVC",
         "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
-      }
+      },
+      "subcollection": "Classic Icons",
+      "subcollection_handle": "classic-icons"
     },
     {
       "card_id": "holiday-jackfrost-004",
@@ -469,13 +475,15 @@
         "target_url": "https://TapGreetings.com/004"
       },
       "commerce": {
-        "price": 29.99,
-        "compare_at_price": 39.99,
+        "price": 14.99,
+        "compare_at_price": 24.99,
         "sku": "TG-S1-004",
         "inventory_qty": 100,
         "card_format": "CR80 30mil Waterproof PVC",
         "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
-      }
+      },
+      "subcollection": "Winter Magic",
+      "subcollection_handle": "winter-magic"
     },
     {
       "card_id": "holiday-nutcracker-005",
@@ -583,13 +591,15 @@
         "target_url": "https://TapGreetings.com/005"
       },
       "commerce": {
-        "price": 29.99,
-        "compare_at_price": 39.99,
+        "price": 14.99,
+        "compare_at_price": 24.99,
         "sku": "TG-S1-005",
         "inventory_qty": 100,
         "card_format": "CR80 30mil Waterproof PVC",
         "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
-      }
+      },
+      "subcollection": "Hearth & Holiday",
+      "subcollection_handle": "hearth-holiday"
     },
     {
       "card_id": "holiday-tree-006",
@@ -697,13 +707,15 @@
         "target_url": "https://TapGreetings.com/006"
       },
       "commerce": {
-        "price": 29.99,
-        "compare_at_price": 39.99,
+        "price": 14.99,
+        "compare_at_price": 24.99,
         "sku": "TG-S1-006",
         "inventory_qty": 100,
         "card_format": "CR80 30mil Waterproof PVC",
         "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
-      }
+      },
+      "subcollection": "Hearth & Holiday",
+      "subcollection_handle": "hearth-holiday"
     },
     {
       "card_id": "holiday-snowflake-007",
@@ -811,13 +823,15 @@
         "target_url": "https://TapGreetings.com/007"
       },
       "commerce": {
-        "price": 29.99,
-        "compare_at_price": 39.99,
+        "price": 14.99,
+        "compare_at_price": 24.99,
         "sku": "TG-S1-007",
         "inventory_qty": 100,
         "card_format": "CR80 30mil Waterproof PVC",
         "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
-      }
+      },
+      "subcollection": "Winter Magic",
+      "subcollection_handle": "winter-magic"
     },
     {
       "card_id": "holiday-gift-008",
@@ -931,7 +945,9 @@
         "inventory_qty": 100,
         "card_format": "CR80 30mil Waterproof PVC",
         "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
-      }
+      },
+      "subcollection": "Hearth & Holiday",
+      "subcollection_handle": "hearth-holiday"
     },
     {
       "card_id": "holiday-gingerbread-009",
@@ -1031,7 +1047,9 @@
         "inventory_qty": 100,
         "card_format": "CR80 30mil Waterproof PVC",
         "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
-      }
+      },
+      "subcollection": "Hearth & Holiday",
+      "subcollection_handle": "hearth-holiday"
     },
     {
       "card_id": "holiday-mrsclaus-010",
@@ -1131,7 +1149,9 @@
         "inventory_qty": 100,
         "card_format": "CR80 30mil Waterproof PVC",
         "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
-      }
+      },
+      "subcollection": "Classic Icons",
+      "subcollection_handle": "classic-icons"
     },
     {
       "card_id": "holiday-elf-011",
@@ -1232,7 +1252,9 @@
         "inventory_qty": 100,
         "card_format": "CR80 30mil Waterproof PVC",
         "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
-      }
+      },
+      "subcollection": "Festive Friends",
+      "subcollection_handle": "festive-friends"
     },
     {
       "card_id": "holiday-polarbear-012",
@@ -1332,7 +1354,9 @@
         "inventory_qty": 100,
         "card_format": "CR80 30mil Waterproof PVC",
         "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
-      }
+      },
+      "subcollection": "Festive Friends",
+      "subcollection_handle": "festive-friends"
     },
     {
       "card_id": "holiday-penguin-013",
@@ -1432,7 +1456,9 @@
         "inventory_qty": 100,
         "card_format": "CR80 30mil Waterproof PVC",
         "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
-      }
+      },
+      "subcollection": "Festive Friends",
+      "subcollection_handle": "festive-friends"
     },
     {
       "card_id": "holiday-fairy-014",
@@ -1533,7 +1559,9 @@
         "inventory_qty": 100,
         "card_format": "CR80 30mil Waterproof PVC",
         "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
-      }
+      },
+      "subcollection": "Winter Magic",
+      "subcollection_handle": "winter-magic"
     },
     {
       "card_id": "holiday-snowmonster-015",
@@ -1634,7 +1662,9 @@
         "inventory_qty": 100,
         "card_format": "CR80 30mil Waterproof PVC",
         "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
-      }
+      },
+      "subcollection": "Winter Magic",
+      "subcollection_handle": "winter-magic"
     },
     {
       "card_id": "holiday-puppy-016",
@@ -1735,7 +1765,9 @@
         "inventory_qty": 100,
         "card_format": "CR80 30mil Waterproof PVC",
         "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
-      }
+      },
+      "subcollection": "Festive Friends",
+      "subcollection_handle": "festive-friends"
     }
   ]
 }

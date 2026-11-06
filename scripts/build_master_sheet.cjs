@@ -1521,6 +1521,28 @@ const masterData = {
   ]
 };
 
+// Normalize pricing, compare price, and assign subcollection categories across all cards
+masterData.cards.forEach(card => {
+  const num = parseInt(card.card_code, 10);
+  if (!card.commerce) card.commerce = {};
+  card.commerce.price = 14.99;
+  card.commerce.compare_at_price = 24.99;
+
+  if ([1, 2, 3, 10].includes(num)) {
+    card.subcollection = "Classic Icons";
+    card.subcollection_handle = "classic-icons";
+  } else if ([4, 7, 14, 15].includes(num)) {
+    card.subcollection = "Winter Magic";
+    card.subcollection_handle = "winter-magic";
+  } else if ([5, 6, 8, 9].includes(num)) {
+    card.subcollection = "Hearth & Holiday";
+    card.subcollection_handle = "hearth-holiday";
+  } else if ([11, 12, 13, 16].includes(num)) {
+    card.subcollection = "Festive Friends";
+    card.subcollection_handle = "festive-friends";
+  }
+});
+
 const masterPath = path.join(__dirname, '../data/greetings_master.json');
 fs.writeFileSync(masterPath, JSON.stringify(masterData, null, 2), 'utf8');
 console.log(`Successfully generated master sheet with ${masterData.cards.length} cards at: ${masterPath}`);

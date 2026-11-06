@@ -264,6 +264,12 @@ function getHeadHtml(title, cardStyle = null, seoData = null, mediaData = null, 
             scrollbar-width: none;
         }
 
+        /* Zoom modal magnification */
+        .zoomed-magnify {
+            transform: scale(1.85);
+            cursor: zoom-out !important;
+        }
+
         /* COMPREHENSIVE LIGHT MODE THEME OVERRIDES */
         html.light {
             color-scheme: light;
@@ -528,7 +534,7 @@ cards.forEach((card, index) => {
             <!-- MAIN CONTENT: On Mobile, Video is at the very top! -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start w-full min-w-0">
                 
-                <!-- COLUMN 1: VIDEO FIRST & NAVIGATION DIRECTLY UNDER VIDEO (No bulky outer container) -->
+                <!-- COLUMN 1: VIDEO FIRST, CONTROLS, PREV/NEXT, AND SHARE BUTTON -->
                 <div class="order-1 flex flex-col items-center w-full min-w-0">
                     
                     <!-- Compact Mobile Header directly above video -->
@@ -541,31 +547,25 @@ cards.forEach((card, index) => {
                         </span>
                     </div>
 
-                    <!-- Video Frame - Larger, Edge-to-Edge Without Heavy Enclosing Container -->
+                    <!-- Video Frame - Larger, Edge-to-Edge Without Enclosing Container or Unmute Overlay -->
                     <div class="relative w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[500px] aspect-[9/16] rounded-3xl overflow-hidden bg-black shadow-2xl ring-1 ring-amber-500/30 flex justify-center items-center cursor-pointer group" onclick="toggleMute()">
-                        <video id="cardVideo" autoplay loop muted playsinline poster="${frontImg}" class="w-full h-full object-cover">
+                        <video id="cardVideo" autoplay loop playsinline poster="${frontImg}" class="w-full h-full object-cover">
                             <source src="${videoSrc}" type="video/mp4">
                             Your browser does not support HTML5 video.
                         </video>
-
-                        <!-- Big Prominent Unmute Button -->
-                        <button id="unmuteBtn" onclick="event.stopPropagation(); toggleMute();" class="absolute bottom-5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold px-6 py-3 rounded-full shadow-2xl shadow-rose-950/80 flex items-center gap-2.5 text-xs sm:text-sm tracking-wide transition-all hover:scale-105 active:scale-95 animate-pulse border border-amber-300/40 z-20 whitespace-nowrap">
-                            <i id="muteIcon" class="fa-solid fa-volume-xmark text-amber-200 text-base"></i>
-                            <span id="muteText">Tap to Unmute Video</span>
-                        </button>
                     </div>
 
-                    <!-- Video Controls Row -->
+                    <!-- Video Controls Row: Replay & Sound Toggle -->
                     <div class="mt-3 w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[500px] flex items-center justify-between px-2 text-xs font-semibold text-amber-200">
                         <button onclick="restartVideo()" class="flex items-center gap-1.5 text-amber-300 hover:text-white transition-colors bg-[#1A110C] px-3 py-1.5 rounded-xl border border-amber-900/40">
                             <i class="fa-solid fa-rotate-left"></i> <span>Replay</span>
                         </button>
-                        <button onclick="toggleMute()" class="flex items-center gap-1.5 text-amber-300 hover:text-white transition-colors bg-[#1A110C] px-3 py-1.5 rounded-xl border border-amber-900/40">
-                            <i class="fa-solid fa-volume-high text-rose-400"></i> <span id="muteStatusLabel">Sound: Muted (Tap to Play)</span>
+                        <button onclick="toggleMute()" id="soundToggleBtn" class="flex items-center gap-1.5 text-amber-300 hover:text-white transition-colors bg-[#1A110C] px-3 py-1.5 rounded-xl border border-amber-900/40">
+                            <i id="muteIcon" class="fa-solid fa-volume-high text-rose-400"></i> <span id="muteStatusLabel">Sound: Unmuted</span>
                         </button>
                     </div>
 
-                    <!-- NEXT & PREV DIRECTLY UNDER VIDEO -->
+                    <!-- PREV / NEXT NAVIGATION DIRECTLY UNDER VIDEO -->
                     <div class="mt-4 w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[500px] flex items-center justify-between gap-2 text-xs font-bold">
                         <a href="/${prevCard.card_code}/" class="flex-1 bg-[#1F140E] hover:bg-rose-700 text-amber-200 hover:text-white px-3 py-2.5 rounded-2xl flex items-center justify-center gap-1.5 transition-all shadow border border-amber-800/40 truncate">
                             <i class="fa-solid fa-arrow-left"></i> <span class="truncate">#${prevCard.card_code} ${prevChar.name}</span>
@@ -577,9 +577,14 @@ cards.forEach((card, index) => {
                             <span class="truncate">#${nextCard.card_code} ${nextChar.name}</span> <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
+
+                    <!-- SHARE BUTTON DIRECTLY UNDER PREV / NEXT -->
+                    <button onclick="shareGreeting()" class="w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[500px] mt-2.5 bg-[#20140D] hover:bg-[#2C1C13] text-amber-200 hover:text-white font-bold py-3 px-4 rounded-2xl border border-amber-800/40 shadow-lg flex items-center justify-center gap-2 transition-transform hover:scale-[1.01] text-xs sm:text-sm">
+                        <i class="fa-solid fa-share-nodes text-rose-400"></i> <span>Share This Keepsake Card ✦</span>
+                    </button>
                 </div>
 
-                <!-- COLUMN 2: Details + Physical Smart Card 3D Flip (Front/Back) + Lore & Order Button -->
+                <!-- COLUMN 2: Details + Physical Smart Card 3D Flip (Front/Back) + Fullscreen Zoom + Order Button -->
                 <div class="order-2 flex flex-col gap-4 sm:gap-6 w-full min-w-0">
                     
                     <!-- MOBILE TITLE & MOTTO (Displayed right under video on mobile) -->
@@ -602,9 +607,14 @@ cards.forEach((card, index) => {
                             <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
                                 <i class="fa-solid fa-id-card text-rose-400"></i> Physical CR80 Smart Card
                             </span>
-                            <button onclick="toggleCardFlip()" class="bg-[#241710] hover:bg-[#301F15] text-amber-300 text-xs font-bold px-3 py-1.5 rounded-xl border border-amber-600/40 flex items-center gap-1.5 transition-all shadow">
-                                <i class="fa-solid fa-arrows-rotate"></i> Flip (Front / Back)
-                            </button>
+                            <div class="flex items-center gap-2">
+                                <button onclick="openCardZoom()" class="bg-[#241710] hover:bg-[#301F15] text-amber-300 text-xs font-bold px-3 py-1.5 rounded-xl border border-amber-600/40 flex items-center gap-1.5 transition-all shadow" title="Open Fullscreen Zoom Lightbox">
+                                    <i class="fa-solid fa-expand text-rose-400"></i> Zoom
+                                </button>
+                                <button onclick="toggleCardFlip()" class="bg-[#241710] hover:bg-[#301F15] text-amber-300 text-xs font-bold px-3 py-1.5 rounded-xl border border-amber-600/40 flex items-center gap-1.5 transition-all shadow">
+                                    <i class="fa-solid fa-arrows-rotate"></i> Flip
+                                </button>
+                            </div>
                         </div>
 
                         <!-- 3D Card Container (Clean, zero text overlays on the artwork) -->
@@ -620,7 +630,11 @@ cards.forEach((card, index) => {
                                 </div>
                             </div>
                         </div>
-                        <p class="text-[11px] text-amber-200/70 mt-2 italic text-center">Tap card to flip between front sculpture and back NFC antenna layout</p>
+                        <div class="flex items-center justify-center gap-3 mt-2 text-[11px] text-amber-200/80 italic text-center">
+                            <span>Tap card to flip</span>
+                            <span>&bull;</span>
+                            <button onclick="openCardZoom()" class="text-rose-400 hover:text-amber-300 font-bold not-italic underline decoration-dotted">Fullscreen Zoom 🔍</button>
+                        </div>
                     </div>
 
                     <!-- Micro Lore Box -->
@@ -639,14 +653,11 @@ cards.forEach((card, index) => {
                     <!-- Prompts Accordion -->
                     ${renderPromptsAccordion(prompts)}
 
-                    <!-- Actions: Order Keepsake Card & Share (NO extra button above) -->
-                    <div class="flex flex-col sm:flex-row gap-3 pt-2 min-w-0">
-                        <a href="${meta.shop_url}" target="_blank" class="flex-1 bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-3.5 px-5 rounded-2xl shadow-xl shadow-rose-900/40 text-center flex items-center justify-center gap-2 transition-transform hover:scale-[1.01] text-sm">
-                            <i class="fa-solid fa-cart-shopping"></i> Order Keepsake Card &bull; $${comm.price ? comm.price.toFixed(2) : '14.99'}
+                    <!-- Primary Full-Width Order Keepsake Card Button -->
+                    <div class="pt-2 min-w-0">
+                        <a href="${meta.shop_url}" target="_blank" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-3.5 sm:py-4 px-6 rounded-2xl shadow-xl shadow-rose-900/40 text-center flex items-center justify-center gap-2.5 transition-transform hover:scale-[1.01] text-sm sm:text-base">
+                            <i class="fa-solid fa-cart-shopping"></i> <span>Order Keepsake Card &bull; $${comm.price ? comm.price.toFixed(2) : '14.99'}</span>
                         </a>
-                        <button onclick="shareGreeting()" class="bg-[#20140D] hover:bg-[#2C1C13] text-white font-bold py-3.5 px-5 rounded-2xl border border-amber-800/40 shadow-lg flex items-center justify-center gap-2 transition-transform hover:scale-[1.01] text-sm">
-                            <i class="fa-solid fa-share-nodes text-rose-400"></i> Share
-                        </button>
                     </div>
 
                 </div>
@@ -655,7 +666,50 @@ cards.forEach((card, index) => {
         </div>
     </main>
 
+    <!-- FULLSCREEN CARD ART ZOOM LIGHTBOX MODAL (Front & Back High-Resolution View) -->
+    <div id="cardZoomModal" class="hidden fixed inset-0 z-[100] bg-black/95 backdrop-blur-md flex flex-col justify-between p-3 sm:p-6 transition-opacity duration-300 select-none" onclick="if(event.target === this) closeCardZoom()">
+        <!-- Lightbox Header -->
+        <div class="w-full max-w-4xl mx-auto flex items-center justify-between gap-3 text-white">
+            <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+                <span class="bg-[#241710] text-amber-300 text-xs font-bold px-2.5 py-1 rounded-lg border border-amber-700/40">#${card.card_code}</span>
+                <h2 class="font-clayTitle text-base sm:text-xl font-bold truncate">${char.name}</h2>
+                <span id="zoomSideBadge" class="text-[10px] sm:text-xs bg-rose-900/50 text-rose-300 border border-rose-800/40 px-2 py-0.5 rounded-full uppercase tracking-wider font-semibold">Front Art</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="toggleZoomFlip()" class="bg-[#20140D] hover:bg-[#301F15] text-amber-300 text-xs font-bold px-3 py-1.5 rounded-xl border border-amber-600/40 flex items-center gap-1.5 transition-all shadow">
+                    <i class="fa-solid fa-arrows-rotate"></i> <span class="hidden sm:inline">Flip Front/Back</span><span class="sm:hidden">Flip</span>
+                </button>
+                <button onclick="closeCardZoom()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-rose-900/70 hover:bg-rose-700 text-white flex items-center justify-center text-sm font-bold shadow transition-all" title="Close (Esc)">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Lightbox Image Stage with Magnify Toggle -->
+        <div class="relative flex-grow flex items-center justify-center my-2 sm:my-4 overflow-hidden cursor-zoom-in" onclick="toggleZoomMagnify()">
+            <img id="zoomImage" src="${frontImg}" alt="${char.name} Fullscreen" class="max-h-[76vh] sm:max-h-[82vh] max-w-[92vw] object-contain rounded-2xl shadow-2xl transition-transform duration-300 border-[2px] border-amber-600/40">
+        </div>
+
+        <!-- Lightbox Bottom Toolbar -->
+        <div class="w-full max-w-md mx-auto flex items-center justify-center gap-2.5 text-xs font-bold text-amber-200">
+            <button onclick="toggleZoomFlip()" class="flex-1 bg-[#20140D] hover:bg-rose-700 text-white py-2 px-3 rounded-xl border border-amber-800/40 flex items-center justify-center gap-1.5 shadow transition-all">
+                <i class="fa-solid fa-arrows-rotate"></i> Flip to <span id="zoomFlipTargetText">Back</span>
+            </button>
+            <button onclick="toggleZoomMagnify()" id="zoomMagnifyBtn" class="flex-1 bg-[#20140D] hover:bg-[#301F15] text-amber-300 py-2 px-3 rounded-xl border border-amber-800/40 flex items-center justify-center gap-1.5 shadow transition-all">
+                <i class="fa-solid fa-magnifying-glass-plus"></i> <span id="zoomMagnifyText">2x Zoom</span>
+            </button>
+            <button onclick="closeCardZoom()" class="bg-[#140D08] hover:bg-[#20140D] text-amber-200/80 py-2 px-3 rounded-xl border border-amber-900/40 shadow transition-all">
+                Close (Esc)
+            </button>
+        </div>
+    </div>
+
     <script>
+        var currentCardSide = 'front';
+        var isZoomMagnified = false;
+        var frontImgUrl = "${frontImg}";
+        var backImgUrl = "${backImg}";
+
         function toggleCardFlip() {
             var card = document.getElementById('physicalCard3d');
             if (card) {
@@ -664,28 +718,135 @@ cards.forEach((card, index) => {
             }
         }
 
-        function toggleMute() {
+        // Fullscreen Lightbox Zoom Controls
+        function openCardZoom() {
+            var modal = document.getElementById('cardZoomModal');
+            var img = document.getElementById('zoomImage');
+            var card3d = document.getElementById('physicalCard3d');
+            
+            // Check if 3d card is currently flipped
+            var isFlipped = card3d && card3d.classList.contains('flipped');
+            currentCardSide = isFlipped ? 'back' : 'front';
+            updateZoomImage();
+
+            if (modal) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeCardZoom() {
+            var modal = document.getElementById('cardZoomModal');
+            if (modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+            if (isZoomMagnified) toggleZoomMagnify();
+        }
+
+        function toggleZoomFlip() {
+            currentCardSide = (currentCardSide === 'front') ? 'back' : 'front';
+            updateZoomImage();
+            triggerConfetti();
+        }
+
+        function updateZoomImage() {
+            var img = document.getElementById('zoomImage');
+            var sideBadge = document.getElementById('zoomSideBadge');
+            var flipTarget = document.getElementById('zoomFlipTargetText');
+            if (!img) return;
+
+            if (currentCardSide === 'front') {
+                img.src = frontImgUrl;
+                if (sideBadge) sideBadge.innerText = 'Front Artwork';
+                if (flipTarget) flipTarget.innerText = 'Back Design';
+            } else {
+                img.src = backImgUrl;
+                if (sideBadge) sideBadge.innerText = 'Back Collector Design';
+                if (flipTarget) flipTarget.innerText = 'Front Artwork';
+            }
+        }
+
+        function toggleZoomMagnify() {
+            var img = document.getElementById('zoomImage');
+            var btnText = document.getElementById('zoomMagnifyText');
+            if (!img) return;
+
+            isZoomMagnified = !isZoomMagnified;
+            if (isZoomMagnified) {
+                img.classList.add('zoomed-magnify');
+                if (btnText) btnText.innerText = 'Fit Screen';
+            } else {
+                img.classList.remove('zoomed-magnify');
+                if (btnText) btnText.innerText = '2x Zoom';
+            }
+        }
+
+        // Keyboard navigation for Zoom (Esc to close, F/Space to flip, Z to zoom)
+        document.addEventListener('keydown', function(e) {
+            var modal = document.getElementById('cardZoomModal');
+            if (modal && !modal.classList.contains('hidden')) {
+                if (e.key === 'Escape') closeCardZoom();
+                if (e.key === ' ' || e.key === 'f' || e.key === 'F') {
+                    e.preventDefault();
+                    toggleZoomFlip();
+                }
+                if (e.key === 'z' || e.key === 'Z') {
+                    toggleZoomMagnify();
+                }
+            }
+        });
+
+        // PERSISTENT UNMUTED SOUND & SEAMLESS NAVIGATION
+        function initVideoPlayback() {
             var vid = document.getElementById('cardVideo');
-            var icon = document.getElementById('muteIcon');
-            var text = document.getElementById('muteText');
-            var btn = document.getElementById('unmuteBtn');
-            var statusLabel = document.getElementById('muteStatusLabel');
             if (!vid) return;
 
-            if (vid.muted) {
-                vid.muted = false;
-                vid.play();
-                if (icon) icon.className = 'fa-solid fa-volume-high text-white text-base';
-                if (text) text.innerText = 'Sound Playing (Tap to Mute)';
-                if (btn) btn.classList.remove('animate-pulse');
-                if (statusLabel) statusLabel.innerText = 'Sound: Playing 🔊';
-                triggerConfetti();
-            } else {
+            var soundPref = null;
+            try { soundPref = localStorage.getItem('tg_sound'); } catch (e) {}
+
+            // If user has unmuted anywhere or default on navigation, try unmuted playback
+            if (soundPref === 'muted') {
                 vid.muted = true;
-                if (icon) icon.className = 'fa-solid fa-volume-xmark text-amber-200 text-base';
-                if (text) text.innerText = 'Tap to Unmute Video';
-                if (btn) btn.classList.add('animate-pulse');
+                updateSoundUI(true);
+            } else {
+                vid.muted = false;
+                var promise = vid.play();
+                if (promise !== undefined) {
+                    promise.catch(function(err) {
+                        // Browser policy blocked unmuted autoplay; smoothly fallback to muted without intrusive overlay
+                        vid.muted = true;
+                        vid.play();
+                        updateSoundUI(true);
+                    }).then(function() {
+                        updateSoundUI(vid.muted);
+                    });
+                }
+            }
+        }
+
+        function toggleMute() {
+            var vid = document.getElementById('cardVideo');
+            if (!vid) return;
+
+            vid.muted = !vid.muted;
+            try {
+                localStorage.setItem('tg_sound', vid.muted ? 'muted' : 'unmuted');
+            } catch (e) {}
+
+            updateSoundUI(vid.muted);
+            if (!vid.muted) triggerConfetti();
+        }
+
+        function updateSoundUI(isMuted) {
+            var icon = document.getElementById('muteIcon');
+            var statusLabel = document.getElementById('muteStatusLabel');
+            if (isMuted) {
+                if (icon) icon.className = 'fa-solid fa-volume-xmark text-amber-300';
                 if (statusLabel) statusLabel.innerText = 'Sound: Muted (Tap to Play)';
+            } else {
+                if (icon) icon.className = 'fa-solid fa-volume-high text-rose-400';
+                if (statusLabel) statusLabel.innerText = 'Sound: Playing 🔊';
             }
         }
 
@@ -722,6 +883,10 @@ cards.forEach((card, index) => {
                 });
             }
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initVideoPlayback();
+        });
     </script>
 ${getFooterHtml()}`;
 
@@ -760,26 +925,26 @@ const renderedCardsHtml = cards.map((c, idx) => {
   const category = getCardCategory(c.card_code);
 
   return `
-    <a href="/${c.card_code}/" class="card-item group bg-[#1A110C]/95 rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-index="${idx}" data-code="${c.card_code}" data-name="${(ch.name || '').toLowerCase()}" data-greeting="${(c.event_greeting || '').toLowerCase()}" data-keywords="${keywords}" data-lore="${(ch.micro_lore || '').toLowerCase()}" data-category="${category}" data-front="${front}" data-back="${back}">
+    <a href="/${c.card_code}/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-index="${idx}" data-code="${c.card_code}" data-name="${(ch.name || '').toLowerCase()}" data-greeting="${(c.event_greeting || '').toLowerCase()}" data-keywords="${keywords}" data-lore="${(ch.micro_lore || '').toLowerCase()}" data-category="${category}" data-front="${front}" data-back="${back}">
         <!-- Clean Image Box - 100% Unobstructed Art -->
         <div class="relative w-full aspect-[9/16] bg-[#120C08] overflow-hidden flex items-center justify-center">
             <img src="${front}" alt="${ch.name}" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
-            <div class="absolute top-2.5 right-2.5 bg-black/85 backdrop-blur-sm text-[10px] font-bold px-2.5 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">
+            <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">
                 #${c.card_code}
             </div>
         </div>
         <!-- Card Details Footer -->
-        <div class="p-3.5 sm:p-4 flex flex-col gap-1.5 flex-grow justify-between min-w-0">
+        <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
             <div class="min-w-0">
-                <div class="flex justify-between items-center mb-1 gap-2">
-                    <span class="text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">${c.event_greeting || 'Happy Holidays!'}</span>
-                    <span class="text-[9px] bg-[#140D08] text-amber-200/90 px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">${getCategoryName(category)}</span>
+                <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
+                    <span class="text-[9px] sm:text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">${c.event_greeting || 'Happy Holidays!'}</span>
+                    <span class="text-[8px] sm:text-[9px] bg-[#140D08] text-amber-200/90 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">${getCategoryName(category)}</span>
                 </div>
-                <div class="font-clayTitle text-base sm:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">${ch.name}</div>
-                <div class="text-xs text-amber-200/80 italic truncate mt-0.5">${ch.title}</div>
+                <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">${ch.name}</div>
+                <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">${ch.title}</div>
             </div>
-            <div class="mt-2.5 pt-2 border-t border-amber-900/40 flex justify-between items-center text-xs font-bold text-amber-300">
-                <span class="flex items-center gap-1 text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
+            <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
+                <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
                 <span class="group-hover:translate-x-1 transition-transform">View &rarr;</span>
             </div>
         </div>
@@ -799,21 +964,20 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings Series 1: The Clay & Needle-F
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center w-full">
                 
-                <!-- MOBILE VIDEO FIRST: Video shows at the very top of hero on mobile -->
+                <!-- MOBILE VIDEO FIRST: Video shows at the very top of hero on mobile (No Unmute Overlay) -->
                 <div class="lg:col-span-5 flex flex-col items-center justify-center w-full min-w-0 order-1 lg:order-2">
                     <div class="relative group block w-60 sm:w-72 aspect-[9/16] rounded-3xl overflow-hidden border-[2px] border-amber-500/70 shadow-2xl bg-black glow-amber transition-transform hover:scale-[1.02] cursor-pointer" onclick="toggleHeroMute()">
-                        <video id="heroVideo" autoplay loop muted playsinline poster="${featuredFront}" class="w-full h-full object-cover">
+                        <video id="heroVideo" autoplay loop playsinline poster="${featuredFront}" class="w-full h-full object-cover">
                             <source src="${featuredVideo}" type="video/mp4">
                         </video>
-                        <!-- Big Prominent Unmute Button -->
-                        <button id="heroUnmuteBtn" onclick="event.stopPropagation(); toggleHeroMute();" class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold px-4 py-2 rounded-full shadow-2xl shadow-rose-950/80 flex items-center gap-2 text-xs tracking-wide transition-all hover:scale-105 animate-pulse border border-amber-300/40 z-20 whitespace-nowrap">
-                            <i id="heroMuteIcon" class="fa-solid fa-volume-xmark text-amber-200"></i>
-                            <span id="heroMuteText">Tap to Unmute</span>
-                        </button>
                     </div>
-                    <div class="mt-2 text-center text-xs text-amber-200/80">
-                        <a href="/001/" class="hover:text-amber-300 font-semibold flex items-center gap-1 justify-center">
-                            <span>Open Santa (001) Page</span> &rarr;
+                    <!-- Clean Hero Sound Toggle Button -->
+                    <div class="mt-2.5 flex items-center justify-center gap-3">
+                        <button onclick="toggleHeroMute()" id="heroSoundBtn" class="bg-[#140D08] hover:bg-[#20140D] text-amber-300 text-xs font-bold px-3 py-1.5 rounded-xl border border-amber-800/40 flex items-center gap-1.5 transition-all shadow">
+                            <i id="heroMuteIcon" class="fa-solid fa-volume-high text-rose-400"></i> <span id="heroMuteText">Sound: Playing</span>
+                        </button>
+                        <a href="/001/" class="text-xs text-amber-200/80 hover:text-amber-300 font-semibold flex items-center gap-1">
+                            <span>Open Santa (001)</span> &rarr;
                         </a>
                     </div>
                 </div>
@@ -858,7 +1022,7 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings Series 1: The Clay & Needle-F
             </div>
         </div>
 
-        <!-- Collection Section: Filters, Sorts, Slider & Responsive Grid -->
+        <!-- Collection Section: Filters, Sorts, Slider & Responsive Grid (3-column mobile enabled, display rows removed) -->
         <section id="collection" class="mb-14">
             
             <!-- Filter & Sort Control Hub -->
@@ -912,10 +1076,10 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings Series 1: The Clay & Needle-F
                     <button onclick="setCategoryFilter('friends')" class="cat-pill px-3 py-1 text-xs font-bold rounded-xl bg-[#140D08] text-amber-200 hover:text-white border border-amber-800/40 transition-all" data-cat="friends">Festive Friends</button>
                 </div>
 
-                <!-- Row 3: Columns & Rows Slider Controls (Up to 4, default 4 desktop, 2 mobile) -->
+                <!-- Row 3: Columns Selector (1 to 4 cols with Mobile 3-Column Support; Display Rows Filter Removed) -->
                 <div class="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-amber-900/30 text-xs font-bold text-amber-200">
                     
-                    <!-- Columns Selector & Slider -->
+                    <!-- Columns Selector & Slider (Supports Mobile 3-Columns Wide!) -->
                     <div class="flex flex-wrap items-center gap-2.5">
                         <span class="text-amber-300 flex items-center gap-1">
                             <i class="fa-solid fa-table-columns text-amber-400"></i> Columns:
@@ -929,21 +1093,6 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings Series 1: The Clay & Needle-F
                         <input type="range" id="colSlider" min="1" max="4" value="4" oninput="setColumns(parseInt(this.value))" class="w-20 accent-amber-500 cursor-pointer hidden sm:inline-block">
                     </div>
 
-                    <!-- Rows Selector & Slider with Overflow-Hidden control -->
-                    <div class="flex flex-wrap items-center gap-2.5">
-                        <span class="text-amber-300 flex items-center gap-1">
-                            <i class="fa-solid fa-bars text-amber-400"></i> Display Rows:
-                        </span>
-                        <div class="flex items-center gap-1 bg-[#140D08] p-1 rounded-xl border border-amber-800/40">
-                            <button onclick="setRows(1)" id="rowBtn1" class="row-btn px-2.5 py-0.5 rounded-lg text-amber-200/80 hover:text-white transition-all">1</button>
-                            <button onclick="setRows(2)" id="rowBtn2" class="row-btn px-2.5 py-0.5 rounded-lg text-amber-200/80 hover:text-white transition-all">2</button>
-                            <button onclick="setRows(3)" id="rowBtn3" class="row-btn px-2.5 py-0.5 rounded-lg text-amber-200/80 hover:text-white transition-all">3</button>
-                            <button onclick="setRows(4)" id="rowBtn4" class="row-btn px-2.5 py-0.5 rounded-lg text-amber-200/80 hover:text-white transition-all">4</button>
-                            <button onclick="setRows(0)" id="rowBtn0" class="row-btn px-2.5 py-0.5 rounded-lg text-amber-200/80 hover:text-white transition-all">All</button>
-                        </div>
-                        <input type="range" id="rowSlider" min="1" max="4" value="4" oninput="setRows(parseInt(this.value))" class="w-20 accent-amber-500 cursor-pointer hidden sm:inline-block">
-                    </div>
-
                     <!-- Horizontal Carousel Slider Mode Toggle -->
                     <div class="flex items-center gap-2">
                         <button onclick="toggleSliderView()" id="btnSliderView" class="px-3 py-1 rounded-xl bg-[#140D08] text-amber-300 hover:text-white border border-amber-800/40 flex items-center gap-1.5 transition-all shadow">
@@ -954,9 +1103,9 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings Series 1: The Clay & Needle-F
                 </div>
             </div>
 
-            <!-- Pre-rendered Static Cards Grid Container (Supports dynamic columns and row limits) -->
+            <!-- Pre-rendered Static Cards Grid Container (Clean All 16 Cards Displayed Without Row Limiters) -->
             <div id="gridWrapper" class="w-full relative transition-all duration-300">
-                <div id="cardsGrid" class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 w-full transition-all duration-300">
+                <div id="cardsGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 w-full transition-all duration-300">
                     ${renderedCardsHtml}
                 </div>
 
@@ -966,13 +1115,6 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings Series 1: The Clay & Needle-F
                 </button>
                 <button id="sliderNextBtn" onclick="slideCards(1)" class="hidden absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 w-10 h-10 rounded-full bg-black/90 text-amber-300 border border-amber-600/50 shadow-2xl items-center justify-center hover:scale-110 active:scale-95 transition-all z-20">
                     <i class="fa-solid fa-chevron-right"></i>
-                </button>
-            </div>
-
-            <!-- Expand / Show All Button (Shown when row limiter is active) -->
-            <div id="expandRowContainer" class="hidden text-center mt-6">
-                <button onclick="setRows(0)" class="bg-[#1C120C] hover:bg-[#281810] text-amber-300 border border-amber-600/40 text-xs sm:text-sm font-bold px-6 py-2.5 rounded-2xl shadow-lg transition-transform hover:scale-105 inline-flex items-center gap-2">
-                    <i class="fa-solid fa-chevron-down"></i> <span id="expandRowText">Show All 16 Cards</span>
                 </button>
             </div>
             
@@ -1005,42 +1147,69 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings Series 1: The Clay & Needle-F
     </main>
 
     <script>
-        function toggleHeroMute() {
+        function initHeroVideo() {
             var vid = document.getElementById('heroVideo');
-            var icon = document.getElementById('heroMuteIcon');
-            var text = document.getElementById('heroMuteText');
-            var btn = document.getElementById('heroUnmuteBtn');
             if (!vid) return;
 
-            if (vid.muted) {
-                vid.muted = false;
-                vid.play();
-                if (icon) icon.className = 'fa-solid fa-volume-high text-white';
-                if (text) text.innerText = 'Sound Playing';
-                if (btn) btn.classList.remove('animate-pulse');
-            } else {
+            var soundPref = null;
+            try { soundPref = localStorage.getItem('tg_sound'); } catch (e) {}
+
+            if (soundPref === 'muted') {
                 vid.muted = true;
-                if (icon) icon.className = 'fa-solid fa-volume-xmark text-amber-200';
-                if (text) text.innerText = 'Tap to Unmute';
-                if (btn) btn.classList.add('animate-pulse');
+                updateHeroSoundUI(true);
+            } else {
+                vid.muted = false;
+                var promise = vid.play();
+                if (promise !== undefined) {
+                    promise.catch(function(e) {
+                        vid.muted = true;
+                        vid.play();
+                        updateHeroSoundUI(true);
+                    }).then(function() {
+                        updateHeroSoundUI(vid.muted);
+                    });
+                }
+            }
+        }
+
+        function toggleHeroMute() {
+            var vid = document.getElementById('heroVideo');
+            if (!vid) return;
+
+            vid.muted = !vid.muted;
+            try {
+                localStorage.setItem('tg_sound', vid.muted ? 'muted' : 'unmuted');
+            } catch (e) {}
+            updateHeroSoundUI(vid.muted);
+        }
+
+        function updateHeroSoundUI(isMuted) {
+            var icon = document.getElementById('heroMuteIcon');
+            var text = document.getElementById('heroMuteText');
+            if (isMuted) {
+                if (icon) icon.className = 'fa-solid fa-volume-xmark text-amber-300';
+                if (text) text.innerText = 'Sound: Muted';
+            } else {
+                if (icon) icon.className = 'fa-solid fa-volume-high text-rose-400';
+                if (text) text.innerText = 'Sound: Playing 🔊';
             }
         }
 
         var currentGridSide = 'front';
         var currentCategory = 'all';
         var currentColumns = 4;
-        var currentRows = 0; // 0 = all rows
         var isCarouselMode = false;
 
         // Responsive initial defaults (Desktop = 4 cols, Mobile = 2 cols)
         function initGridDefaults() {
             var isMobile = window.innerWidth < 768;
             currentColumns = isMobile ? 2 : 4;
-            setColumns(currentColumns, false);
-            setRows(0, false);
+            setColumns(currentColumns);
+            initHeroVideo();
         }
 
-        function setColumns(cols, applyRows = true) {
+        // ALLOWS MOBILE TO GO 3 COLUMNS WIDE!
+        function setColumns(cols) {
             currentColumns = Math.max(1, Math.min(4, cols));
             var grid = document.getElementById('cardsGrid');
             var slider = document.getElementById('colSlider');
@@ -1059,77 +1228,15 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings Series 1: The Clay & Needle-F
             }
 
             if (grid && !isCarouselMode) {
-                grid.className = 'grid gap-4 sm:gap-6 w-full transition-all duration-300 ' +
-                    (currentColumns === 1 ? 'grid-cols-1 max-w-md mx-auto' :
-                     currentColumns === 2 ? 'grid-cols-2' :
-                     currentColumns === 3 ? 'grid-cols-2 md:grid-cols-3' :
-                     'grid-cols-2 md:grid-cols-3 lg:grid-cols-4');
-            }
-
-            if (applyRows) {
-                applyRowLimit();
-            }
-        }
-
-        function setRows(rows, updateUI = true) {
-            currentRows = rows;
-            var slider = document.getElementById('rowSlider');
-            if (slider) slider.value = rows === 0 ? 4 : rows;
-
-            // Update row button states
-            [0, 1, 2, 3, 4].forEach(function(r) {
-                var btn = document.getElementById('rowBtn' + r);
-                if (btn) {
-                    if (r === currentRows) {
-                        btn.className = 'row-btn px-2.5 py-0.5 rounded-lg bg-amber-500 text-[#120C08] font-bold shadow transition-all';
-                    } else {
-                        btn.className = 'row-btn px-2.5 py-0.5 rounded-lg text-amber-200/80 hover:text-white transition-all';
-                    }
-                }
-            });
-
-            applyRowLimit();
-        }
-
-        function applyRowLimit() {
-            var cards = document.querySelectorAll('.card-item');
-            var expandBox = document.getElementById('expandRowContainer');
-            var expandText = document.getElementById('expandRowText');
-
-            if (currentRows === 0 || isCarouselMode) {
-                // Show all matching cards
-                cards.forEach(function(card) {
-                    if (card.dataset.matchesCategory !== 'false' && card.dataset.matchesSearch !== 'false') {
-                        card.style.display = 'flex';
-                    }
-                });
-                if (expandBox) expandBox.className = 'hidden';
-                return;
-            }
-
-            var maxVisible = currentRows * currentColumns;
-            var count = 0;
-            var totalMatching = 0;
-
-            cards.forEach(function(card) {
-                var matches = card.dataset.matchesCategory !== 'false' && card.dataset.matchesSearch !== 'false';
-                if (matches) {
-                    totalMatching++;
-                    if (count < maxVisible) {
-                        card.style.display = 'flex';
-                        count++;
-                    } else {
-                        card.style.display = 'none';
-                    }
-                }
-            });
-
-            if (expandBox) {
-                if (totalMatching > maxVisible) {
-                    expandBox.className = 'block text-center mt-6';
-                    if (expandText) expandText.innerText = 'Show All ' + totalMatching + ' Cards (' + (totalMatching - maxVisible) + ' hidden)';
+                if (currentColumns === 1) {
+                    grid.className = 'grid grid-cols-1 max-w-md mx-auto gap-4 sm:gap-6 w-full transition-all duration-300';
+                } else if (currentColumns === 2) {
+                    grid.className = 'grid grid-cols-2 gap-3 sm:gap-6 w-full transition-all duration-300';
+                } else if (currentColumns === 3) {
+                    // Mobile 3 Columns Wide with tight, comfortable spacing!
+                    grid.className = 'grid grid-cols-3 gap-2 sm:gap-4 lg:gap-6 w-full transition-all duration-300';
                 } else {
-                    expandBox.className = 'hidden';
+                    grid.className = 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 w-full transition-all duration-300';
                 }
             }
         }
@@ -1145,7 +1252,7 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings Series 1: The Clay & Needle-F
             if (isCarouselMode) {
                 grid.className = 'flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 no-scrollbar scroll-smooth w-full';
                 document.querySelectorAll('.card-item').forEach(function(c) {
-                    c.classList.add('flex-shrink-0', 'w-64', 'sm:w-72', 'snap-center');
+                    c.classList.add('flex-shrink-0', 'w-60', 'sm:w-72', 'snap-center');
                 });
                 if (btnPrev) btnPrev.classList.remove('hidden');
                 if (btnNext) btnNext.classList.remove('hidden');
@@ -1153,7 +1260,7 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings Series 1: The Clay & Needle-F
                 if (btn) btn.className = 'px-3 py-1 rounded-xl bg-amber-500 text-[#120C08] font-bold border border-amber-400 flex items-center gap-1.5 transition-all shadow';
             } else {
                 document.querySelectorAll('.card-item').forEach(function(c) {
-                    c.classList.remove('flex-shrink-0', 'w-64', 'sm:w-72', 'snap-center');
+                    c.classList.remove('flex-shrink-0', 'w-60', 'sm:w-72', 'snap-center');
                 });
                 setColumns(currentColumns);
                 if (btnPrev) btnPrev.classList.add('hidden');
@@ -1224,8 +1331,6 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings Series 1: The Clay & Needle-F
             cards.forEach(function(card) {
                 grid.appendChild(card);
             });
-
-            applyRowLimit();
         }
 
         function filterCards() {
@@ -1245,15 +1350,13 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings Series 1: The Clay & Needle-F
                 var matchesCat = currentCategory === 'all' || category === currentCategory;
                 var matchesSearch = !query || name.includes(query) || greeting.includes(query) || keywords.includes(query) || lore.includes(query);
 
-                card.dataset.matchesCategory = matchesCat ? 'true' : 'false';
-                card.dataset.matchesSearch = matchesSearch ? 'true' : 'false';
-
                 if (matchesCat && matchesSearch) {
+                    card.style.display = 'flex';
                     visibleCount++;
+                } else {
+                    card.style.display = 'none';
                 }
             });
-
-            applyRowLimit();
 
             if (badge) badge.innerText = visibleCount + ' Cards';
             if (noResults) {

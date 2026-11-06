@@ -153,6 +153,12 @@
             scrollbar-width: none;
         }
 
+        /* Zoom modal magnification */
+        .zoomed-magnify {
+            transform: scale(1.85);
+            cursor: zoom-out !important;
+        }
+
         /* COMPREHENSIVE LIGHT MODE THEME OVERRIDES */
         html.light {
             color-scheme: light;
@@ -360,7 +366,7 @@
             <!-- MAIN CONTENT: On Mobile, Video is at the very top! -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start w-full min-w-0">
                 
-                <!-- COLUMN 1: VIDEO FIRST & NAVIGATION DIRECTLY UNDER VIDEO (No bulky outer container) -->
+                <!-- COLUMN 1: VIDEO FIRST, CONTROLS, PREV/NEXT, AND SHARE BUTTON -->
                 <div class="order-1 flex flex-col items-center w-full min-w-0">
                     
                     <!-- Compact Mobile Header directly above video -->
@@ -373,31 +379,25 @@
                         </span>
                     </div>
 
-                    <!-- Video Frame - Larger, Edge-to-Edge Without Heavy Enclosing Container -->
+                    <!-- Video Frame - Larger, Edge-to-Edge Without Enclosing Container or Unmute Overlay -->
                     <div class="relative w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[500px] aspect-[9/16] rounded-3xl overflow-hidden bg-black shadow-2xl ring-1 ring-amber-500/30 flex justify-center items-center cursor-pointer group" onclick="toggleMute()">
-                        <video id="cardVideo" autoplay loop muted playsinline poster="/assets/img/004-front.jpg" class="w-full h-full object-cover">
+                        <video id="cardVideo" autoplay loop playsinline poster="/assets/img/004-front.jpg" class="w-full h-full object-cover">
                             <source src="/assets/video/004-video.mp4" type="video/mp4">
                             Your browser does not support HTML5 video.
                         </video>
-
-                        <!-- Big Prominent Unmute Button -->
-                        <button id="unmuteBtn" onclick="event.stopPropagation(); toggleMute();" class="absolute bottom-5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold px-6 py-3 rounded-full shadow-2xl shadow-rose-950/80 flex items-center gap-2.5 text-xs sm:text-sm tracking-wide transition-all hover:scale-105 active:scale-95 animate-pulse border border-amber-300/40 z-20 whitespace-nowrap">
-                            <i id="muteIcon" class="fa-solid fa-volume-xmark text-amber-200 text-base"></i>
-                            <span id="muteText">Tap to Unmute Video</span>
-                        </button>
                     </div>
 
-                    <!-- Video Controls Row -->
+                    <!-- Video Controls Row: Replay & Sound Toggle -->
                     <div class="mt-3 w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[500px] flex items-center justify-between px-2 text-xs font-semibold text-amber-200">
                         <button onclick="restartVideo()" class="flex items-center gap-1.5 text-amber-300 hover:text-white transition-colors bg-[#1A110C] px-3 py-1.5 rounded-xl border border-amber-900/40">
                             <i class="fa-solid fa-rotate-left"></i> <span>Replay</span>
                         </button>
-                        <button onclick="toggleMute()" class="flex items-center gap-1.5 text-amber-300 hover:text-white transition-colors bg-[#1A110C] px-3 py-1.5 rounded-xl border border-amber-900/40">
-                            <i class="fa-solid fa-volume-high text-rose-400"></i> <span id="muteStatusLabel">Sound: Muted (Tap to Play)</span>
+                        <button onclick="toggleMute()" id="soundToggleBtn" class="flex items-center gap-1.5 text-amber-300 hover:text-white transition-colors bg-[#1A110C] px-3 py-1.5 rounded-xl border border-amber-900/40">
+                            <i id="muteIcon" class="fa-solid fa-volume-high text-rose-400"></i> <span id="muteStatusLabel">Sound: Unmuted</span>
                         </button>
                     </div>
 
-                    <!-- NEXT & PREV DIRECTLY UNDER VIDEO -->
+                    <!-- PREV / NEXT NAVIGATION DIRECTLY UNDER VIDEO -->
                     <div class="mt-4 w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[500px] flex items-center justify-between gap-2 text-xs font-bold">
                         <a href="/003/" class="flex-1 bg-[#1F140E] hover:bg-rose-700 text-amber-200 hover:text-white px-3 py-2.5 rounded-2xl flex items-center justify-center gap-1.5 transition-all shadow border border-amber-800/40 truncate">
                             <i class="fa-solid fa-arrow-left"></i> <span class="truncate">#003 Rudolph</span>
@@ -409,9 +409,14 @@
                             <span class="truncate">#005 Nutcracker</span> <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
+
+                    <!-- SHARE BUTTON DIRECTLY UNDER PREV / NEXT -->
+                    <button onclick="shareGreeting()" class="w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[500px] mt-2.5 bg-[#20140D] hover:bg-[#2C1C13] text-amber-200 hover:text-white font-bold py-3 px-4 rounded-2xl border border-amber-800/40 shadow-lg flex items-center justify-center gap-2 transition-transform hover:scale-[1.01] text-xs sm:text-sm">
+                        <i class="fa-solid fa-share-nodes text-rose-400"></i> <span>Share This Keepsake Card ✦</span>
+                    </button>
                 </div>
 
-                <!-- COLUMN 2: Details + Physical Smart Card 3D Flip (Front/Back) + Lore & Order Button -->
+                <!-- COLUMN 2: Details + Physical Smart Card 3D Flip (Front/Back) + Fullscreen Zoom + Order Button -->
                 <div class="order-2 flex flex-col gap-4 sm:gap-6 w-full min-w-0">
                     
                     <!-- MOBILE TITLE & MOTTO (Displayed right under video on mobile) -->
@@ -434,9 +439,14 @@
                             <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
                                 <i class="fa-solid fa-id-card text-rose-400"></i> Physical CR80 Smart Card
                             </span>
-                            <button onclick="toggleCardFlip()" class="bg-[#241710] hover:bg-[#301F15] text-amber-300 text-xs font-bold px-3 py-1.5 rounded-xl border border-amber-600/40 flex items-center gap-1.5 transition-all shadow">
-                                <i class="fa-solid fa-arrows-rotate"></i> Flip (Front / Back)
-                            </button>
+                            <div class="flex items-center gap-2">
+                                <button onclick="openCardZoom()" class="bg-[#241710] hover:bg-[#301F15] text-amber-300 text-xs font-bold px-3 py-1.5 rounded-xl border border-amber-600/40 flex items-center gap-1.5 transition-all shadow" title="Open Fullscreen Zoom Lightbox">
+                                    <i class="fa-solid fa-expand text-rose-400"></i> Zoom
+                                </button>
+                                <button onclick="toggleCardFlip()" class="bg-[#241710] hover:bg-[#301F15] text-amber-300 text-xs font-bold px-3 py-1.5 rounded-xl border border-amber-600/40 flex items-center gap-1.5 transition-all shadow">
+                                    <i class="fa-solid fa-arrows-rotate"></i> Flip
+                                </button>
+                            </div>
                         </div>
 
                         <!-- 3D Card Container (Clean, zero text overlays on the artwork) -->
@@ -452,7 +462,11 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="text-[11px] text-amber-200/70 mt-2 italic text-center">Tap card to flip between front sculpture and back NFC antenna layout</p>
+                        <div class="flex items-center justify-center gap-3 mt-2 text-[11px] text-amber-200/80 italic text-center">
+                            <span>Tap card to flip</span>
+                            <span>&bull;</span>
+                            <button onclick="openCardZoom()" class="text-rose-400 hover:text-amber-300 font-bold not-italic underline decoration-dotted">Fullscreen Zoom 🔍</button>
+                        </div>
                     </div>
 
                     <!-- Micro Lore Box -->
@@ -518,14 +532,11 @@
     </details>
   
 
-                    <!-- Actions: Order Keepsake Card & Share (NO extra button above) -->
-                    <div class="flex flex-col sm:flex-row gap-3 pt-2 min-w-0">
-                        <a href="https://shop.tapthingy.com/collections/all" target="_blank" class="flex-1 bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-3.5 px-5 rounded-2xl shadow-xl shadow-rose-900/40 text-center flex items-center justify-center gap-2 transition-transform hover:scale-[1.01] text-sm">
-                            <i class="fa-solid fa-cart-shopping"></i> Order Keepsake Card &bull; $29.99
+                    <!-- Primary Full-Width Order Keepsake Card Button -->
+                    <div class="pt-2 min-w-0">
+                        <a href="https://shop.tapthingy.com/collections/all" target="_blank" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-3.5 sm:py-4 px-6 rounded-2xl shadow-xl shadow-rose-900/40 text-center flex items-center justify-center gap-2.5 transition-transform hover:scale-[1.01] text-sm sm:text-base">
+                            <i class="fa-solid fa-cart-shopping"></i> <span>Order Keepsake Card &bull; $14.99</span>
                         </a>
-                        <button onclick="shareGreeting()" class="bg-[#20140D] hover:bg-[#2C1C13] text-white font-bold py-3.5 px-5 rounded-2xl border border-amber-800/40 shadow-lg flex items-center justify-center gap-2 transition-transform hover:scale-[1.01] text-sm">
-                            <i class="fa-solid fa-share-nodes text-rose-400"></i> Share
-                        </button>
                     </div>
 
                 </div>
@@ -534,7 +545,50 @@
         </div>
     </main>
 
+    <!-- FULLSCREEN CARD ART ZOOM LIGHTBOX MODAL (Front & Back High-Resolution View) -->
+    <div id="cardZoomModal" class="hidden fixed inset-0 z-[100] bg-black/95 backdrop-blur-md flex flex-col justify-between p-3 sm:p-6 transition-opacity duration-300 select-none" onclick="if(event.target === this) closeCardZoom()">
+        <!-- Lightbox Header -->
+        <div class="w-full max-w-4xl mx-auto flex items-center justify-between gap-3 text-white">
+            <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+                <span class="bg-[#241710] text-amber-300 text-xs font-bold px-2.5 py-1 rounded-lg border border-amber-700/40">#004</span>
+                <h2 class="font-clayTitle text-base sm:text-xl font-bold truncate">Jack Frost</h2>
+                <span id="zoomSideBadge" class="text-[10px] sm:text-xs bg-rose-900/50 text-rose-300 border border-rose-800/40 px-2 py-0.5 rounded-full uppercase tracking-wider font-semibold">Front Art</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="toggleZoomFlip()" class="bg-[#20140D] hover:bg-[#301F15] text-amber-300 text-xs font-bold px-3 py-1.5 rounded-xl border border-amber-600/40 flex items-center gap-1.5 transition-all shadow">
+                    <i class="fa-solid fa-arrows-rotate"></i> <span class="hidden sm:inline">Flip Front/Back</span><span class="sm:hidden">Flip</span>
+                </button>
+                <button onclick="closeCardZoom()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-rose-900/70 hover:bg-rose-700 text-white flex items-center justify-center text-sm font-bold shadow transition-all" title="Close (Esc)">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Lightbox Image Stage with Magnify Toggle -->
+        <div class="relative flex-grow flex items-center justify-center my-2 sm:my-4 overflow-hidden cursor-zoom-in" onclick="toggleZoomMagnify()">
+            <img id="zoomImage" src="/assets/img/004-front.jpg" alt="Jack Frost Fullscreen" class="max-h-[76vh] sm:max-h-[82vh] max-w-[92vw] object-contain rounded-2xl shadow-2xl transition-transform duration-300 border-[2px] border-amber-600/40">
+        </div>
+
+        <!-- Lightbox Bottom Toolbar -->
+        <div class="w-full max-w-md mx-auto flex items-center justify-center gap-2.5 text-xs font-bold text-amber-200">
+            <button onclick="toggleZoomFlip()" class="flex-1 bg-[#20140D] hover:bg-rose-700 text-white py-2 px-3 rounded-xl border border-amber-800/40 flex items-center justify-center gap-1.5 shadow transition-all">
+                <i class="fa-solid fa-arrows-rotate"></i> Flip to <span id="zoomFlipTargetText">Back</span>
+            </button>
+            <button onclick="toggleZoomMagnify()" id="zoomMagnifyBtn" class="flex-1 bg-[#20140D] hover:bg-[#301F15] text-amber-300 py-2 px-3 rounded-xl border border-amber-800/40 flex items-center justify-center gap-1.5 shadow transition-all">
+                <i class="fa-solid fa-magnifying-glass-plus"></i> <span id="zoomMagnifyText">2x Zoom</span>
+            </button>
+            <button onclick="closeCardZoom()" class="bg-[#140D08] hover:bg-[#20140D] text-amber-200/80 py-2 px-3 rounded-xl border border-amber-900/40 shadow transition-all">
+                Close (Esc)
+            </button>
+        </div>
+    </div>
+
     <script>
+        var currentCardSide = 'front';
+        var isZoomMagnified = false;
+        var frontImgUrl = "/assets/img/004-front.jpg";
+        var backImgUrl = "/assets/img/004-back.jpg";
+
         function toggleCardFlip() {
             var card = document.getElementById('physicalCard3d');
             if (card) {
@@ -543,28 +597,135 @@
             }
         }
 
-        function toggleMute() {
+        // Fullscreen Lightbox Zoom Controls
+        function openCardZoom() {
+            var modal = document.getElementById('cardZoomModal');
+            var img = document.getElementById('zoomImage');
+            var card3d = document.getElementById('physicalCard3d');
+            
+            // Check if 3d card is currently flipped
+            var isFlipped = card3d && card3d.classList.contains('flipped');
+            currentCardSide = isFlipped ? 'back' : 'front';
+            updateZoomImage();
+
+            if (modal) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeCardZoom() {
+            var modal = document.getElementById('cardZoomModal');
+            if (modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+            if (isZoomMagnified) toggleZoomMagnify();
+        }
+
+        function toggleZoomFlip() {
+            currentCardSide = (currentCardSide === 'front') ? 'back' : 'front';
+            updateZoomImage();
+            triggerConfetti();
+        }
+
+        function updateZoomImage() {
+            var img = document.getElementById('zoomImage');
+            var sideBadge = document.getElementById('zoomSideBadge');
+            var flipTarget = document.getElementById('zoomFlipTargetText');
+            if (!img) return;
+
+            if (currentCardSide === 'front') {
+                img.src = frontImgUrl;
+                if (sideBadge) sideBadge.innerText = 'Front Artwork';
+                if (flipTarget) flipTarget.innerText = 'Back Design';
+            } else {
+                img.src = backImgUrl;
+                if (sideBadge) sideBadge.innerText = 'Back Collector Design';
+                if (flipTarget) flipTarget.innerText = 'Front Artwork';
+            }
+        }
+
+        function toggleZoomMagnify() {
+            var img = document.getElementById('zoomImage');
+            var btnText = document.getElementById('zoomMagnifyText');
+            if (!img) return;
+
+            isZoomMagnified = !isZoomMagnified;
+            if (isZoomMagnified) {
+                img.classList.add('zoomed-magnify');
+                if (btnText) btnText.innerText = 'Fit Screen';
+            } else {
+                img.classList.remove('zoomed-magnify');
+                if (btnText) btnText.innerText = '2x Zoom';
+            }
+        }
+
+        // Keyboard navigation for Zoom (Esc to close, F/Space to flip, Z to zoom)
+        document.addEventListener('keydown', function(e) {
+            var modal = document.getElementById('cardZoomModal');
+            if (modal && !modal.classList.contains('hidden')) {
+                if (e.key === 'Escape') closeCardZoom();
+                if (e.key === ' ' || e.key === 'f' || e.key === 'F') {
+                    e.preventDefault();
+                    toggleZoomFlip();
+                }
+                if (e.key === 'z' || e.key === 'Z') {
+                    toggleZoomMagnify();
+                }
+            }
+        });
+
+        // PERSISTENT UNMUTED SOUND & SEAMLESS NAVIGATION
+        function initVideoPlayback() {
             var vid = document.getElementById('cardVideo');
-            var icon = document.getElementById('muteIcon');
-            var text = document.getElementById('muteText');
-            var btn = document.getElementById('unmuteBtn');
-            var statusLabel = document.getElementById('muteStatusLabel');
             if (!vid) return;
 
-            if (vid.muted) {
-                vid.muted = false;
-                vid.play();
-                if (icon) icon.className = 'fa-solid fa-volume-high text-white text-base';
-                if (text) text.innerText = 'Sound Playing (Tap to Mute)';
-                if (btn) btn.classList.remove('animate-pulse');
-                if (statusLabel) statusLabel.innerText = 'Sound: Playing 🔊';
-                triggerConfetti();
-            } else {
+            var soundPref = null;
+            try { soundPref = localStorage.getItem('tg_sound'); } catch (e) {}
+
+            // If user has unmuted anywhere or default on navigation, try unmuted playback
+            if (soundPref === 'muted') {
                 vid.muted = true;
-                if (icon) icon.className = 'fa-solid fa-volume-xmark text-amber-200 text-base';
-                if (text) text.innerText = 'Tap to Unmute Video';
-                if (btn) btn.classList.add('animate-pulse');
+                updateSoundUI(true);
+            } else {
+                vid.muted = false;
+                var promise = vid.play();
+                if (promise !== undefined) {
+                    promise.catch(function(err) {
+                        // Browser policy blocked unmuted autoplay; smoothly fallback to muted without intrusive overlay
+                        vid.muted = true;
+                        vid.play();
+                        updateSoundUI(true);
+                    }).then(function() {
+                        updateSoundUI(vid.muted);
+                    });
+                }
+            }
+        }
+
+        function toggleMute() {
+            var vid = document.getElementById('cardVideo');
+            if (!vid) return;
+
+            vid.muted = !vid.muted;
+            try {
+                localStorage.setItem('tg_sound', vid.muted ? 'muted' : 'unmuted');
+            } catch (e) {}
+
+            updateSoundUI(vid.muted);
+            if (!vid.muted) triggerConfetti();
+        }
+
+        function updateSoundUI(isMuted) {
+            var icon = document.getElementById('muteIcon');
+            var statusLabel = document.getElementById('muteStatusLabel');
+            if (isMuted) {
+                if (icon) icon.className = 'fa-solid fa-volume-xmark text-amber-300';
                 if (statusLabel) statusLabel.innerText = 'Sound: Muted (Tap to Play)';
+            } else {
+                if (icon) icon.className = 'fa-solid fa-volume-high text-rose-400';
+                if (statusLabel) statusLabel.innerText = 'Sound: Playing 🔊';
             }
         }
 
@@ -601,6 +762,10 @@
                 });
             }
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initVideoPlayback();
+        });
     </script>
 
     <footer class="w-full text-center py-10 px-4 text-xs sm:text-sm text-slate-400 border-t border-slate-800/80 mt-14 sm:mt-20 flex flex-col items-center gap-5 bg-[#0E0704]">
