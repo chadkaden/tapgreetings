@@ -459,6 +459,11 @@
 
       </div>
 
+      <!-- Touch Swipe Hint -->
+      <div style="text-align: center; font-size: 0.75rem; color: var(--tg-gold); margin-top: -6px; margin-bottom: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 6px;">
+        <span>&#8644;</span> <span>Swipe multimedia left/right for previous/next slide</span>
+      </div>
+
       <!-- 4-Thumbnail Multimedia Selector Bar -->
       <div class="tg-media-thumbs">
         <button type="button" id="tg-media-btn-1" onclick="switchMediaSlide(1)" class="tg-media-thumb-btn active" title="Stop-Motion Video">
@@ -757,6 +762,41 @@
   };
 
   var activeSlide = 1;
+
+  // Touch Swipe for Multimedia (Swipe left for next, swipe right for prev)
+  (function initSetMediaSwipe() {
+    var mediaBox = document.getElementById('tg-media-box');
+    if (!mediaBox) return;
+
+    var startX = 0;
+    var startY = 0;
+    var startTime = 0;
+
+    mediaBox.addEventListener('touchstart', function(e) {
+      if (e.touches.length === 1) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        startTime = Date.now();
+      }
+    }, { passive: true });
+
+    mediaBox.addEventListener('touchend', function(e) {
+      if (e.changedTouches.length === 1) {
+        var deltaX = e.changedTouches[0].clientX - startX;
+        var deltaY = e.changedTouches[0].clientY - startY;
+        var elapsed = Date.now() - startTime;
+        if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY) * 1.3 && elapsed < 600) {
+          if (deltaX < 0) {
+            var next = activeSlide >= 4 ? 1 : activeSlide + 1;
+            switchMediaSlide(next);
+          } else {
+            var prev = activeSlide <= 1 ? 4 : activeSlide - 1;
+            switchMediaSlide(prev);
+          }
+        }
+      }
+    }, { passive: true });
+  })();
 
   function switchMediaSlide(n) {
     activeSlide = n;
