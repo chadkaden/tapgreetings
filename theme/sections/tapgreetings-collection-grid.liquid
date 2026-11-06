@@ -1,0 +1,412 @@
+{% comment %}
+  TapGreetings Series 1: Custom Collection Grid Section
+  Handcrafted Polymer Clay & Needle-Felt Holiday Collection
+  Features:
+    - 4-Column Desktop & 2/3-Column Mobile Responsive Grid
+    - Subcollection Navigation Filter Tabs (All 16, Classic Icons, Winter Magic, Hearth & Holiday, Festive Friends)
+    - 3D Card Flip (Front 2K Artwork & Collector Back NFC Antenna)
+    - Direct links to Product Keepsake Pages & Live 1080p Web Video Portals
+    - High-Contrast Dark & Light Mode Theme Support
+{% endcomment %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  .tg-col-wrapper {
+    --tg-bg: #140C08;
+    --tg-surface: #1E130D;
+    --tg-card-bg: rgba(255, 255, 255, 0.04);
+    --tg-border: rgba(251, 191, 36, 0.28);
+    --tg-border-active: #FBBF24;
+    --tg-text: #F5EBE1;
+    --tg-text-muted: #D1BDB0;
+    --tg-heading: #FFF8E7;
+    --tg-gold: #FBBF24;
+    --tg-gold-glow: rgba(251, 191, 36, 0.4);
+    --tg-red: #D62839;
+    --tg-red-dark: #9E1B32;
+    --tg-shadow: rgba(0, 0, 0, 0.45);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    padding: 24px 16px 48px;
+    background: var(--tg-bg) !important;
+    color: var(--tg-text) !important;
+    transition: background 0.3s ease, color 0.3s ease;
+    box-sizing: border-box;
+  }
+
+  body.tt-light-mode .tg-col-wrapper {
+    --tg-bg: #FFFDF7;
+    --tg-surface: #FDF6EE;
+    --tg-card-bg: #FFFFFF;
+    --tg-border: #E8D5C4;
+    --tg-border-active: #9E1B32;
+    --tg-text: #2D1A10;
+    --tg-text-muted: #6B4226;
+    --tg-heading: #9E1B32;
+    --tg-gold: #B45309;
+    --tg-gold-glow: rgba(180, 83, 9, 0.2);
+    --tg-red: #D62839;
+    --tg-red-dark: #9E1B32;
+    --tg-shadow: rgba(61, 35, 20, 0.08);
+    background: var(--tg-bg) !important;
+    color: var(--tg-text) !important;
+  }
+
+  .tg-col-wrapper * {
+    box-sizing: border-box;
+  }
+
+  .tg-col-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Hero Banner */
+  .tg-col-hero {
+    text-align: center;
+    padding: 28px 16px;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #1E130D 0%, #2A1A12 50%, #3B191D 100%) !important;
+    border-radius: 24px;
+    border: 2px solid rgba(251, 191, 36, 0.35);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  }
+  .tg-col-hero-badge {
+    display: inline-block;
+    background: linear-gradient(90deg, #9E1B32, #D62839) !important;
+    color: #FFFFFF !important;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 6px 18px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+  }
+  .tg-col-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #FFF8E7 !important;
+    margin: 0 0 10px 0;
+    line-height: 1.25;
+  }
+  .tg-col-subtitle {
+    font-size: 1.05rem;
+    color: #FEE2E2 !important;
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  /* Subcollection Navigation Filter Tabs */
+  .tg-filter-bar {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 6px 4px 16px;
+    margin-bottom: 28px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--tg-gold) transparent;
+  }
+  .tg-filter-bar::-webkit-scrollbar {
+    height: 5px;
+  }
+  .tg-filter-bar::-webkit-scrollbar-thumb {
+    background: var(--tg-gold);
+    border-radius: 10px;
+  }
+  .tg-filter-chip {
+    flex-shrink: 0;
+    white-space: nowrap;
+    background: var(--tg-card-bg) !important;
+    color: var(--tg-text) !important;
+    border: 1.5px solid var(--tg-border) !important;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+  }
+  .tg-filter-chip:hover {
+    border-color: var(--tg-gold) !important;
+    transform: translateY(-2px);
+  }
+  .tg-filter-chip.active {
+    background: linear-gradient(90deg, #9E1B32, #D62839) !important;
+    color: #FFFFFF !important;
+    border-color: #FBBF24 !important;
+    box-shadow: 0 4px 15px rgba(214, 40, 57, 0.4);
+  }
+
+  /* Card Grid */
+  .tg-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 1024px) {
+    .tg-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+  }
+  @media (max-width: 640px) {
+    .tg-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+  }
+  @media (max-width: 420px) {
+    .tg-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+  }
+
+  /* Individual Card */
+  .tg-card-item {
+    background: var(--tg-card-bg) !important;
+    border: 1.5px solid var(--tg-border) !important;
+    border-radius: 18px;
+    padding: 12px;
+    box-shadow: 0 4px 16px var(--tg-shadow);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .tg-card-item:hover {
+    transform: translateY(-4px);
+    border-color: var(--tg-border-active) !important;
+    box-shadow: 0 8px 24px var(--tg-gold-glow);
+  }
+
+  /* Card Image Flipper Container */
+  .tg-flip-box {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9/16;
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #000;
+    margin-bottom: 10px;
+  }
+  .tg-flip-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.3s ease;
+  }
+  .tg-flip-box .img-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+  .tg-card-item:hover .img-back {
+    opacity: 1;
+  }
+
+  /* Card Meta */
+  .tg-card-badge {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--tg-gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .tg-card-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--tg-heading) !important;
+    margin: 0 0 6px 0;
+    line-height: 1.3;
+  }
+  .tg-card-price-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .tg-card-price {
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: var(--tg-gold);
+  }
+  .tg-card-compare {
+    font-size: 0.85rem;
+    text-decoration: line-through;
+    color: var(--tg-text-muted);
+  }
+
+  /* Action Buttons */
+  .tg-card-btn-primary {
+    background: linear-gradient(90deg, #D62839, #E65100) !important;
+    color: #FFFFFF !important;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-decoration: none;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(214, 40, 57, 0.3);
+    transition: opacity 0.2s;
+    margin-bottom: 6px;
+  }
+  .tg-card-btn-primary:hover {
+    opacity: 0.92;
+  }
+  .tg-card-btn-secondary {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: var(--tg-text) !important;
+    border: 1px solid var(--tg-border) !important;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.78rem;
+    text-decoration: none;
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+    transition: background 0.2s;
+  }
+  .tg-card-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+  }
+</style>
+
+<div class="tg-col-wrapper">
+  <div class="tg-col-container">
+
+    <!-- Hero Banner -->
+    <div class="tg-col-hero">
+      <span class="tg-col-hero-badge">✦ TapGreetings Holiday Series 1 ✦</span>
+      <h1 class="tg-col-title">
+        {{ collection.title }}
+      </h1>
+      <p class="tg-col-subtitle">
+        16 handcrafted miniature stop-motion clay characters with needle-felted accents and embedded smartphone NFC video streaming.
+      </p>
+    </div>
+
+    <!-- Subcollection Navigation Tabs -->
+    <div class="tg-filter-bar">
+      <a href="/collections/tapgreetings-series-1" class="tg-filter-chip {% if collection.handle == 'tapgreetings-series-1' %}active{% endif %}">
+        🎄 All Series 1 (16)
+      </a>
+      <a href="/collections/series-1-classic-icons" class="tg-filter-chip {% if collection.handle == 'series-1-classic-icons' %}active{% endif %}">
+        🎅 Classic Icons (4)
+      </a>
+      <a href="/collections/series-1-winter-magic" class="tg-filter-chip {% if collection.handle == 'series-1-winter-magic' %}active{% endif %}">
+        ❄️ Winter Magic (4)
+      </a>
+      <a href="/collections/series-1-hearth-holiday" class="tg-filter-chip {% if collection.handle == 'series-1-hearth-holiday' %}active{% endif %}">
+        🔥 Hearth &amp; Holiday (4)
+      </a>
+      <a href="/collections/series-1-festive-friends" class="tg-filter-chip {% if collection.handle == 'series-1-festive-friends' %}active{% endif %}">
+        🐾 Festive Friends (4)
+      </a>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="tg-grid">
+      {% for product in collection.products %}
+        {% assign card_code = '001' %}
+        {% if product.tags contains 'card-001' or product.title contains '#001' %}{% assign card_code = '001' %}
+        {% elsif product.tags contains 'card-002' or product.title contains '#002' %}{% assign card_code = '002' %}
+        {% elsif product.tags contains 'card-003' or product.title contains '#003' %}{% assign card_code = '003' %}
+        {% elsif product.tags contains 'card-004' or product.title contains '#004' %}{% assign card_code = '004' %}
+        {% elsif product.tags contains 'card-005' or product.title contains '#005' %}{% assign card_code = '005' %}
+        {% elsif product.tags contains 'card-006' or product.title contains '#006' %}{% assign card_code = '006' %}
+        {% elsif product.tags contains 'card-007' or product.title contains '#007' %}{% assign card_code = '007' %}
+        {% elsif product.tags contains 'card-008' or product.title contains '#008' %}{% assign card_code = '008' %}
+        {% elsif product.tags contains 'card-009' or product.title contains '#009' %}{% assign card_code = '009' %}
+        {% elsif product.tags contains 'card-010' or product.title contains '#010' %}{% assign card_code = '010' %}
+        {% elsif product.tags contains 'card-011' or product.title contains '#011' %}{% assign card_code = '011' %}
+        {% elsif product.tags contains 'card-012' or product.title contains '#012' %}{% assign card_code = '012' %}
+        {% elsif product.tags contains 'card-013' or product.title contains '#013' %}{% assign card_code = '013' %}
+        {% elsif product.tags contains 'card-014' or product.title contains '#014' %}{% assign card_code = '014' %}
+        {% elsif product.tags contains 'card-015' or product.title contains '#015' %}{% assign card_code = '015' %}
+        {% elsif product.tags contains 'card-016' or product.title contains '#016' %}{% assign card_code = '016' %}
+        {% else %}
+          {% if product.sku contains 'TG-S1-' %}
+            {% assign sku_parts = product.sku | split: 'TG-S1-' %}
+            {% assign card_code = sku_parts.last %}
+          {% elsif product.title contains '#' %}
+            {% assign title_parts = product.title | split: '#' %}
+            {% assign num_part = title_parts[1] | split: ' ' %}
+            {% assign card_code = num_part[0] %}
+          {% endif %}
+        {% endif %}
+
+        {% assign front_img = '' %}
+        {% assign back_img = '' %}
+        {% if product.images.size > 0 %}
+          {% assign front_img = product.images[0] | image_url: width: 700 %}
+          {% if product.images.size > 1 %}
+            {% assign back_img = product.images[1] | image_url: width: 700 %}
+          {% else %}
+            {% assign back_img = front_img %}
+          {% endif %}
+        {% endif %}
+
+        {% assign web_portal_url = 'https://tapgreetings.com/' | append: card_code | append: '/' %}
+
+        <div class="tg-card-item">
+          <div>
+            <!-- Flipped Artwork Container -->
+            <a href="{{ product.url }}" class="tg-flip-box">
+              <img src="{{ front_img }}" alt="{{ product.title }} Front Artwork" class="img-front" loading="lazy">
+              <img src="{{ back_img }}" alt="{{ product.title }} Back Design" class="img-back" loading="lazy">
+            </a>
+
+            <!-- Card Meta -->
+            <div class="tg-card-badge">Card #{{ card_code }} &bull; Series 1</div>
+            <h3 class="tg-card-title">
+              <a href="{{ product.url }}" style="color: inherit; text-decoration: none;">
+                {{ product.title | split: ' - ' | first }}
+              </a>
+            </h3>
+
+            <div class="tg-card-price-row">
+              <span class="tg-card-price">{{ product.price | money }}</span>
+              {% if product.compare_at_price > product.price %}
+                <span class="tg-card-compare">{{ product.compare_at_price | money }}</span>
+              {% endif %}
+            </div>
+          </div>
+
+          <div>
+            <a href="{{ product.url }}" class="tg-card-btn-primary">
+              🛒 View Keepsake &rarr;
+            </a>
+            <a href="{{ web_portal_url }}" target="_blank" class="tg-card-btn-secondary">
+              🎬 Watch Video Portal ↗
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</div>

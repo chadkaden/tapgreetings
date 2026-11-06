@@ -1,0 +1,715 @@
+{% comment %}
+  TapGreetings Series 1: Custom Product Sales Page Section
+  Handcrafted Polymer Clay & Needle-Felt Holiday Collection
+  Features:
+    - 9:16 Uncropped Stop-Motion Video Player with persistent sound toggle
+    - Front & Back 2K Digital Artwork Viewer
+    - Mobile NFC Tap Demonstration Video (Featuring Ghost Tap Demo across all cards)
+    - Full Dark Mode & High-Contrast Light Mode Support (Zero faint text or white-on-white bugs)
+    - Direct Add to Cart Form, Quantity Selector, and Share Modal
+{% endcomment %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+{% assign card_code = '001' %}
+{% if product.tags contains 'card-001' or product.title contains '#001' %}
+  {% assign card_code = '001' %}
+{% elsif product.tags contains 'card-002' or product.title contains '#002' %}
+  {% assign card_code = '002' %}
+{% elsif product.tags contains 'card-003' or product.title contains '#003' %}
+  {% assign card_code = '003' %}
+{% elsif product.tags contains 'card-004' or product.title contains '#004' %}
+  {% assign card_code = '004' %}
+{% elsif product.tags contains 'card-005' or product.title contains '#005' %}
+  {% assign card_code = '005' %}
+{% elsif product.tags contains 'card-006' or product.title contains '#006' %}
+  {% assign card_code = '006' %}
+{% elsif product.tags contains 'card-007' or product.title contains '#007' %}
+  {% assign card_code = '007' %}
+{% elsif product.tags contains 'card-008' or product.title contains '#008' %}
+  {% assign card_code = '008' %}
+{% elsif product.tags contains 'card-009' or product.title contains '#009' %}
+  {% assign card_code = '009' %}
+{% elsif product.tags contains 'card-010' or product.title contains '#010' %}
+  {% assign card_code = '010' %}
+{% elsif product.tags contains 'card-011' or product.title contains '#011' %}
+  {% assign card_code = '011' %}
+{% elsif product.tags contains 'card-012' or product.title contains '#012' %}
+  {% assign card_code = '012' %}
+{% elsif product.tags contains 'card-013' or product.title contains '#013' %}
+  {% assign card_code = '013' %}
+{% elsif product.tags contains 'card-014' or product.title contains '#014' %}
+  {% assign card_code = '014' %}
+{% elsif product.tags contains 'card-015' or product.title contains '#015' %}
+  {% assign card_code = '015' %}
+{% elsif product.tags contains 'card-016' or product.title contains '#016' %}
+  {% assign card_code = '016' %}
+{% else %}
+  {% if product.sku contains 'TG-S1-' %}
+    {% assign sku_parts = product.sku | split: 'TG-S1-' %}
+    {% assign card_code = sku_parts.last %}
+  {% elsif product.title contains '#' %}
+    {% assign title_parts = product.title | split: '#' %}
+    {% assign num_part = title_parts[1] | split: ' ' %}
+    {% assign card_code = num_part[0] %}
+  {% endif %}
+{% endif %}
+
+{% assign subcol_name = 'Series 1 Collection' %}
+{% assign subcol_handle = 'tapgreetings-series-1' %}
+{% assign subcol_emoji = '🎄' %}
+{% if product.tags contains 'Classic Icons' %}
+  {% assign subcol_name = 'Classic Icons' %}
+  {% assign subcol_handle = 'series-1-classic-icons' %}
+  {% assign subcol_emoji = '🎅' %}
+{% elsif product.tags contains 'Winter Magic' %}
+  {% assign subcol_name = 'Winter Magic' %}
+  {% assign subcol_handle = 'series-1-winter-magic' %}
+  {% assign subcol_emoji = '❄️' %}
+{% elsif product.tags contains 'Hearth & Holiday' %}
+  {% assign subcol_name = 'Hearth & Holiday' %}
+  {% assign subcol_handle = 'series-1-hearth-holiday' %}
+  {% assign subcol_emoji = '🔥' %}
+{% elsif product.tags contains 'Festive Friends' %}
+  {% assign subcol_name = 'Festive Friends' %}
+  {% assign subcol_handle = 'series-1-festive-friends' %}
+  {% assign subcol_emoji = '🐾' %}
+{% endif %}
+
+{% assign video_filename = 'tapgreeting_' | append: card_code | append: '.mp4' %}
+{% assign video_url = video_filename | asset_url %}
+{% assign tap_demo_url = 'card_01_tap.mp4' | asset_url %}
+{% assign web_portal_url = 'https://tapgreetings.com/' | append: card_code | append: '/' %}
+
+{% assign front_img_url = '' %}
+{% assign back_img_url = '' %}
+{% if product.images.size > 0 %}
+  {% assign front_img_url = product.images[0] | image_url: width: 1200 %}
+  {% if product.images.size > 1 %}
+    {% assign back_img_url = product.images[1] | image_url: width: 1200 %}
+  {% else %}
+    {% assign back_img_url = front_img_url %}
+  {% endif %}
+{% endif %}
+
+<style>
+  /* --- TAPGREETINGS SERIES 1 THEMING --- */
+  .tg-product-wrapper {
+    --tg-bg: #140C08;
+    --tg-surface: #1E130D;
+    --tg-surface-card: rgba(255, 255, 255, 0.05);
+    --tg-border: rgba(251, 191, 36, 0.28);
+    --tg-border-active: #FBBF24;
+    --tg-text: #F5EBE1;
+    --tg-text-muted: #D1BDB0;
+    --tg-heading: #FFF8E7;
+    --tg-gold: #FBBF24;
+    --tg-gold-glow: rgba(251, 191, 36, 0.45);
+    --tg-red: #D62839;
+    --tg-red-dark: #9E1B32;
+    --tg-shadow: rgba(0, 0, 0, 0.5);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    padding: 16px 16px 48px;
+    background: var(--tg-bg) !important;
+    color: var(--tg-text) !important;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-sizing: border-box;
+  }
+
+  body.tt-light-mode .tg-product-wrapper {
+    --tg-bg: #FFFDF7;
+    --tg-surface: #FDF6EE;
+    --tg-surface-card: #FFFFFF;
+    --tg-border: #E8D5C4;
+    --tg-border-active: #9E1B32;
+    --tg-text: #2D1A10;
+    --tg-text-muted: #6B4226;
+    --tg-heading: #9E1B32;
+    --tg-gold: #B45309;
+    --tg-gold-glow: rgba(180, 83, 9, 0.2);
+    --tg-red: #D62839;
+    --tg-red-dark: #9E1B32;
+    --tg-shadow: rgba(61, 35, 20, 0.08);
+    background: var(--tg-bg) !important;
+    color: var(--tg-text) !important;
+  }
+
+  .tg-product-wrapper * {
+    box-sizing: border-box;
+  }
+
+  .tg-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* Top Nav */
+  .tg-top-nav {
+    margin-bottom: 14px;
+    padding: 4px 0;
+  }
+  .tg-top-nav a {
+    color: var(--tg-gold) !important;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.92rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: opacity 0.2s;
+  }
+  .tg-top-nav a:hover {
+    opacity: 0.85;
+  }
+
+  /* Header Badges */
+  .tg-header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, #9E1B32, #D62839) !important;
+    color: #FFFFFF !important;
+    padding: 6px 18px;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 0.82rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(214, 40, 57, 0.35);
+    margin-bottom: 10px;
+  }
+
+  .tg-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.85rem;
+    font-weight: 900;
+    color: var(--tg-heading) !important;
+    margin: 0 0 10px 0;
+    line-height: 1.25;
+  }
+
+  .tg-subcol-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--tg-surface-card) !important;
+    border: 1.5px solid var(--tg-border) !important;
+    color: var(--tg-gold) !important;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  /* Media Showcase Card */
+  .tg-media-box {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto 16px;
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 9/16;
+    background: #000000;
+    border: 2px solid var(--tg-border-active);
+    box-shadow: 0 10px 35px var(--tg-shadow);
+  }
+
+  .tg-slide {
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: relative;
+  }
+  .tg-slide.active-slide {
+    display: block;
+  }
+  .tg-slide video,
+  .tg-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .tg-sound-toggle-btn {
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    z-index: 20;
+    background: rgba(20, 12, 8, 0.85);
+    border: 1.5px solid var(--tg-gold);
+    color: var(--tg-gold);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 1.15rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(6px);
+    transition: transform 0.2s, background 0.2s;
+  }
+  .tg-sound-toggle-btn:hover {
+    transform: scale(1.08);
+    background: rgba(20, 12, 8, 0.98);
+  }
+
+  /* Thumbnail Reel */
+  .tg-thumb-reel {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .tg-thumb-btn {
+    flex: 0 0 74px;
+    width: 74px;
+    height: 74px;
+    border-radius: 14px;
+    background: var(--tg-surface-card);
+    border: 2px solid var(--tg-border);
+    cursor: pointer;
+    overflow: hidden;
+    padding: 0;
+    transition: all 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--tg-text);
+  }
+  .tg-thumb-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .tg-thumb-btn.active {
+    border-color: var(--tg-border-active) !important;
+    box-shadow: 0 0 16px var(--tg-gold-glow) !important;
+    transform: translateY(-2px);
+  }
+  .tg-thumb-label {
+    font-size: 0.76rem;
+    font-weight: 800;
+    color: var(--tg-gold);
+    margin-top: 2px;
+  }
+
+  /* Collapsible Details */
+  .tg-details {
+    background: var(--tg-surface-card) !important;
+    border: 1.5px solid var(--tg-border) !important;
+    border-radius: 20px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 16px var(--tg-shadow);
+  }
+  .tg-summary {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--tg-heading) !important;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+  }
+  .tg-details[open] .tg-icon {
+    transform: rotate(180deg);
+  }
+  .tg-icon {
+    transition: transform 0.2s ease;
+    color: var(--tg-gold);
+    font-size: 0.9rem;
+  }
+
+  /* Quotes & Descriptions */
+  .tg-motto-quote {
+    border-left: 4px solid var(--tg-gold) !important;
+    background: rgba(251, 191, 36, 0.08) !important;
+    margin: 16px 0;
+    padding: 12px 18px;
+    border-radius: 0 12px 12px 0;
+    font-style: italic;
+    color: var(--tg-gold) !important;
+    font-size: 1.05rem;
+    line-height: 1.5;
+  }
+
+  /* Buy Action Box */
+  .tg-buy-box {
+    background: linear-gradient(135deg, #1E130D, #2B161B) !important;
+    border: 2px solid var(--tg-border-active) !important;
+    border-radius: 24px;
+    padding: 28px 20px;
+    text-align: center;
+    box-shadow: 0 8px 30px var(--tg-shadow);
+    margin-bottom: 24px;
+  }
+  body.tt-light-mode .tg-buy-box {
+    background: #FFFFFF !important;
+    border-color: #9E1B32 !important;
+    box-shadow: 0 4px 20px rgba(158, 27, 50, 0.12);
+  }
+
+  .tg-price-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .tg-current-price {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #FBBF24 !important;
+  }
+  body.tt-light-mode .tg-current-price {
+    color: #9E1B32 !important;
+  }
+  .tg-compare-price {
+    font-size: 1.3rem;
+    text-decoration: line-through;
+    color: var(--tg-text-muted) !important;
+  }
+  .tg-save-badge {
+    background: #D62839 !important;
+    color: #FFFFFF !important;
+    font-size: 0.78rem;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 999px;
+    text-transform: uppercase;
+  }
+
+  .tg-add-to-cart-btn {
+    width: 100%;
+    max-width: 440px;
+    background: linear-gradient(90deg, #D62839, #E65100) !important;
+    color: #FFFFFF !important;
+    border: none;
+    padding: 16px 24px;
+    border-radius: 30px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 1.15rem;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(214, 40, 57, 0.4);
+    letter-spacing: 0.5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 14px;
+  }
+  .tg-add-to-cart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(214, 40, 57, 0.55);
+  }
+
+  .tg-share-btn {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: var(--tg-text) !important;
+    border: 1.5px solid var(--tg-border) !important;
+    padding: 12px 20px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s;
+  }
+  .tg-share-btn:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+  }
+</style>
+
+<div class="tg-product-wrapper">
+  <div class="tg-container">
+
+    <!-- Top Navigation Link -->
+    <div class="tg-top-nav">
+      <a href="/collections/{{ subcol_handle }}">
+        &larr; Back to {{ subcol_name }} Collection
+      </a>
+    </div>
+
+    <!-- Header Section -->
+    <div style="text-align: center; margin-bottom: 20px;">
+      <div class="tg-header-badge">
+        ✦ TAPGREETINGS SERIES 1 &bull; CARD #{{ card_code }} OF 016 ✦
+      </div>
+      <h1 class="tg-title">
+        {{ product.title }}
+      </h1>
+      <div>
+        <span class="tg-subcol-pill">
+          {{ subcol_emoji }} {{ subcol_name }} &bull; Smart NFC Keepsake Card
+        </span>
+      </div>
+    </div>
+
+    <!-- Media Showcase (9:16 Aspect Ratio) -->
+    <div class="tg-media-box">
+      <!-- Slide 1: 1080p Stop-Motion Video -->
+      <div id="tg-slide-1" class="tg-slide active-slide">
+        <video id="tg-hero-video" loop muted playsinline autoplay poster="{{ front_img_url }}">
+          <source src="{{ video_url }}" type="video/mp4">
+        </video>
+        <button id="tg-sound-btn" class="tg-sound-toggle-btn" onclick="toggleTgSound()" title="Toggle Audio">
+          🔇
+        </button>
+      </div>
+
+      <!-- Slide 2: Digital Front Artwork -->
+      <div id="tg-slide-2" class="tg-slide">
+        <img src="{{ front_img_url }}" alt="{{ product.title }} Front Artwork" loading="lazy">
+      </div>
+
+      <!-- Slide 3: Digital Back Design & NFC Target -->
+      <div id="tg-slide-3" class="tg-slide">
+        <img src="{{ back_img_url }}" alt="{{ product.title }} Back Design & NFC Antenna" loading="lazy">
+      </div>
+
+      <!-- Slide 4: NFC Smartphone Tap Demonstration (Features Ghost Tap Demo) -->
+      <div id="tg-slide-4" class="tg-slide">
+        <video id="tg-tap-video" loop muted playsinline poster="{{ front_img_url }}">
+          <source src="{{ tap_demo_url }}" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <!-- 4 Interactive Media Thumbnails -->
+    <div class="tg-thumb-reel">
+      <button class="tg-thumb-btn active" onclick="switchTgSlide(1)" title="Stop-Motion Video">
+        <span style="font-size: 1.4rem;">🎬</span>
+        <span class="tg-thumb-label">Video</span>
+      </button>
+
+      <button class="tg-thumb-btn" onclick="switchTgSlide(2)" title="Front Artwork">
+        <img src="{{ front_img_url }}" alt="Front Thumbnail">
+      </button>
+
+      <button class="tg-thumb-btn" onclick="switchTgSlide(3)" title="Collector Back">
+        <img src="{{ back_img_url }}" alt="Back Thumbnail">
+      </button>
+
+      <button class="tg-thumb-btn" onclick="switchTgSlide(4)" title="Mobile Tap Demo">
+        <span style="font-size: 1.4rem;">📱</span>
+        <span class="tg-thumb-label">Tap Demo</span>
+      </button>
+    </div>
+
+    <!-- 1. Lore & Description Accordion -->
+    <details open class="tg-details">
+      <summary class="tg-summary">
+        <span>✨ Character Lore &amp; Keepsake Description</span>
+        <span class="tg-icon">&#9660;</span>
+      </summary>
+      <div style="padding-top: 14px;">
+        <div class="tg-raw-desc">
+          {{ product.description }}
+        </div>
+      </div>
+    </details>
+
+    <!-- 2. Technical Specs Accordion -->
+    <details open class="tg-details">
+      <summary class="tg-summary">
+        <span>🛡️ Hardware Specs &amp; NFC Technology</span>
+        <span class="tg-icon">&#9660;</span>
+      </summary>
+      <div style="padding-top: 14px;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.92rem; text-align: left;">
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--tg-border);">
+              <td style="padding: 10px 0; font-weight: 700; color: var(--tg-gold); width: 40%;">Smartphone Compatibility:</td>
+              <td style="padding: 10px 0; color: var(--tg-text);">100% Compatible with iPhone (XS through 16 Pro) &amp; all Android devices (Zero app required).</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--tg-border);">
+              <td style="padding: 10px 0; font-weight: 700; color: var(--tg-gold);">Card Format &amp; Specs:</td>
+              <td style="padding: 10px 0; color: var(--tg-text);">CR80 Standard Credit Card Dimensions (85.6mm &times; 53.98mm &times; 0.76mm / 30 mil).</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--tg-border);">
+              <td style="padding: 10px 0; font-weight: 700; color: var(--tg-gold);">Materials &amp; Finish:</td>
+              <td style="padding: 10px 0; color: var(--tg-text);">Solid waterproof PVC core, scratch-resistant matte tactile finish, and gold-foil stamping.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--tg-border);">
+              <td style="padding: 10px 0; font-weight: 700; color: var(--tg-gold);">Embedded Microchip:</td>
+              <td style="padding: 10px 0; color: var(--tg-text);">NXP NTAG215 High-Speed NFC Chip (504 Bytes rewritable user memory, 10+ year data retention).</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--tg-border);">
+              <td style="padding: 10px 0; font-weight: 700; color: var(--tg-gold);">Live Web Experience:</td>
+              <td style="padding: 10px 0; color: var(--tg-text);">
+                <a href="{{ web_portal_url }}" target="_blank" style="color: var(--tg-gold); font-weight: 700; text-decoration: underline;">
+                  {{ web_portal_url }}
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; font-weight: 700; color: var(--tg-gold);">Official Series:</td>
+              <td style="padding: 10px 0; color: var(--tg-text);">TapGreetings Series 1 &bull; {{ subcol_name }} &bull; Card #{{ card_code }} of 016</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <!-- 3. Primary Purchase Action Box -->
+    <div class="tg-buy-box">
+      <div class="tg-price-row">
+        <span class="tg-current-price">{{ product.selected_or_first_available_variant.price | money }}</span>
+        {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+          <span class="tg-compare-price">{{ product.selected_or_first_available_variant.compare_at_price | money }}</span>
+          <span class="tg-save-badge">Save $10.00</span>
+        {% endif %}
+      </div>
+
+      <div style="color: #4ADE80; font-weight: 700; font-size: 0.92rem; margin-bottom: 16px;">
+        &#10004; In Stock &bull; Ready to Ship (Holiday Series 1)
+      </div>
+
+      {% form 'product', product, id: 'tg-buy-form' %}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        
+        <div style="display: flex; gap: 12px; justify-content: center; align-items: center; max-width: 440px; margin: 0 auto; flex-wrap: wrap;">
+          <div style="background: rgba(255, 255, 255, 0.08); border: 1.5px solid var(--tg-border); border-radius: 30px; padding: 4px 16px; display: flex; align-items: center;">
+            <label for="Quantity" style="font-size: 0.85rem; color: var(--tg-gold); margin-right: 8px; font-weight: 700;">Qty:</label>
+            <input type="number" id="Quantity" name="quantity" value="1" min="1" max="25" style="width: 45px; background: transparent; border: none; color: #FFF; font-size: 1.05rem; font-weight: 800; text-align: center;">
+          </div>
+
+          <button type="submit" name="add" class="tg-add-to-cart-btn" style="flex: 1; min-width: 240px; margin-top: 0;">
+            🛒 ORDER KEEPSAKE &bull; {{ product.selected_or_first_available_variant.price | money }}
+          </button>
+        </div>
+      {% endform %}
+
+      <div style="display: flex; gap: 12px; justify-content: center; margin-top: 20px; flex-wrap: wrap;">
+        <button class="tg-share-btn" onclick="openTgShareModal()">
+          🔗 Share Card Link
+        </button>
+        <a href="/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" class="tg-share-btn" style="text-decoration: none;">
+          ⚙️ NFC Reprogram Webtool
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Share Modal Popup -->
+<div id="tg-share-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 99999; justify-content: center; align-items: center; padding: 16px; backdrop-filter: blur(8px);">
+  <div style="background: #1E130D; border: 2px solid #FBBF24; border-radius: 20px; padding: 28px 24px; max-width: 420px; width: 100%; text-align: center; color: #FFF; box-shadow: 0 10px 40px rgba(0,0,0,0.6); position: relative;">
+    <button onclick="closeTgShareModal()" style="position: absolute; top: 12px; right: 14px; background: transparent; border: none; color: #FBBF24; font-size: 1.4rem; cursor: pointer; font-weight: 800;">✕</button>
+
+    <h3 style="font-family: 'Outfit', sans-serif; color: #FBBF24; margin: 0 0 8px 0; font-size: 1.35rem;">
+      ✨ Share TapGreetings Keepsake
+    </h3>
+    <p style="font-size: 0.9rem; color: #D1BDB0; margin-bottom: 16px;">
+      Direct link to stream the 1080p stop-motion holiday video experience:
+    </p>
+
+    <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(251,191,36,0.3); border-radius: 12px; padding: 10px 14px; margin-bottom: 18px; word-break: break-all; font-size: 0.85rem; color: #FFF8E7;" id="tg-share-url-text">
+      {{ web_portal_url }}
+    </div>
+
+    <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+      <a href="{{ web_portal_url }}" target="_blank" rel="noopener noreferrer" style="flex: 1; min-width: 140px; background: linear-gradient(90deg, #D62839, #E65100); color: #FFF; text-decoration: none; padding: 12px 16px; border-radius: 16px; font-weight: 700; font-size: 0.9rem; display: inline-flex; align-items: center; justify-content: center; gap: 6px;">
+        ↗ Open Experience
+      </a>
+      <button onclick="copyTgShareUrl()" style="flex: 1; min-width: 120px; background: rgba(255,255,255,0.1); border: 1px solid #FBBF24; color: #FBBF24; padding: 12px 16px; border-radius: 16px; font-weight: 700; font-size: 0.9rem; cursor: pointer;">
+        📋 Copy Link
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Slide Switcher
+  function switchTgSlide(index) {
+    var slides = document.querySelectorAll('.tg-slide');
+    var thumbs = document.querySelectorAll('.tg-thumb-btn');
+
+    slides.forEach(function(s, i) {
+      if (i === (index - 1)) {
+        s.classList.add('active-slide');
+      } else {
+        s.classList.remove('active-slide');
+      }
+    });
+
+    thumbs.forEach(function(t, i) {
+      if (i === (index - 1)) {
+        t.classList.add('active');
+      } else {
+        t.classList.remove('active');
+      }
+    });
+
+    var heroVideo = document.getElementById('tg-hero-video');
+    var tapVideo = document.getElementById('tg-tap-video');
+
+    if (heroVideo) {
+      if (index === 1) { heroVideo.play().catch(function(){}); } else { heroVideo.pause(); }
+    }
+    if (tapVideo) {
+      if (index === 4) { tapVideo.play().catch(function(){}); } else { tapVideo.pause(); }
+    }
+  }
+
+  // Audio Toggle with Sound Persistence
+  function toggleTgSound() {
+    var video = document.getElementById('tg-hero-video');
+    var btn = document.getElementById('tg-sound-btn');
+    if (!video) return;
+
+    if (video.muted) {
+      video.muted = false;
+      localStorage.setItem('tg_sound', 'unmuted');
+      if (btn) btn.textContent = '🔊';
+    } else {
+      video.muted = true;
+      localStorage.setItem('tg_sound', 'muted');
+      if (btn) btn.textContent = '🔇';
+    }
+  }
+
+  // Check persisted sound preference
+  (function initTgSound() {
+    var saved = localStorage.getItem('tg_sound');
+    var video = document.getElementById('tg-hero-video');
+    var btn = document.getElementById('tg-sound-btn');
+    if (saved === 'unmuted' && video) {
+      video.muted = false;
+      if (btn) btn.textContent = '🔊';
+    }
+  })();
+
+  // Share Modal Functions
+  function openTgShareModal() {
+    var modal = document.getElementById('tg-share-modal');
+    if (modal) modal.style.display = 'flex';
+  }
+  function closeTgShareModal() {
+    var modal = document.getElementById('tg-share-modal');
+    if (modal) modal.style.display = 'none';
+  }
+  function copyTgShareUrl() {
+    var url = '{{ web_portal_url }}';
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(url).then(function() {
+        alert('Keepsake experience link copied to clipboard!');
+      });
+    } else {
+      prompt('Copy this link:', url);
+    }
+  }
+</script>

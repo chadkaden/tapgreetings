@@ -1,100 +1,267 @@
-<!--
-  SHOPIFY STOREFRONT PAGE: Series 1 Holiday Keepsakes Showcase
-  Recommended Shopify Page Title: TapGreetings Series 1: The Clay & Needle-Felt Holiday Collection
-  Recommended URL Handle: tapgreetings-series-1
-  Instructions:
-  1. In Shopify Admin, navigate to Online Store > Pages > Add page.
-  2. Set Title to: TapGreetings Series 1: The Clay & Needle-Felt Holiday Collection
-  3. Click the "< >" (Show HTML) button in the content editor.
-  4. Paste this entire file contents into the HTML editor and click Save.
--->
-<div id="tapgreetings-shopify-landing" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #2D1A10; max-width: 1200px; margin: 0 auto; padding: 20px 10px;">
-  
+<div id="tapgreetings-shopify-landing" class="tg-storefront-wrapper">
+  <style>
+    /* Scoped Contrast & Theme Resiliency */
+    #tapgreetings-shopify-landing {
+      --tg-bg: #180F0B;
+      --tg-surface: #221510;
+      --tg-card-bg: rgba(255, 255, 255, 0.05);
+      --tg-card-border: rgba(251, 191, 36, 0.3);
+      --tg-card-hover: rgba(255, 255, 255, 0.08);
+      --tg-text: #F5EBE1;
+      --tg-text-muted: #D1BDB0;
+      --tg-heading: #FFF8E7;
+      --tg-gold: #FBBF24;
+      --tg-red: #D62839;
+      --tg-shadow: rgba(0, 0, 0, 0.4);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 16px;
+      border-radius: 24px;
+      background: var(--tg-bg) !important;
+      color: var(--tg-text) !important;
+      box-sizing: border-box;
+    }
+
+    body.tt-light-mode #tapgreetings-shopify-landing {
+      --tg-bg: #FFFDF9;
+      --tg-surface: #FDF6EE;
+      --tg-card-bg: #FFFFFF;
+      --tg-card-border: #E8D5C4;
+      --tg-card-hover: #FFF8F0;
+      --tg-text: #3D2314;
+      --tg-text-muted: #6B4226;
+      --tg-heading: #9E1B32;
+      --tg-gold: #B45309;
+      --tg-red: #D62839;
+      --tg-shadow: rgba(61, 35, 20, 0.08);
+      background: var(--tg-bg) !important;
+      color: var(--tg-text) !important;
+    }
+
+    #tapgreetings-shopify-landing * {
+      box-sizing: border-box;
+    }
+    #tapgreetings-shopify-landing h1,
+    #tapgreetings-shopify-landing h2,
+    #tapgreetings-shopify-landing h3,
+    #tapgreetings-shopify-landing h4 {
+      color: var(--tg-heading) !important;
+      margin-top: 0;
+    }
+    #tapgreetings-shopify-landing p,
+    #tapgreetings-shopify-landing li {
+      color: var(--tg-text) !important;
+      line-height: 1.6;
+    }
+    #tapgreetings-shopify-landing .tg-card {
+      background: var(--tg-card-bg) !important;
+      border: 1.5px solid var(--tg-card-border) !important;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 4px 16px var(--tg-shadow) !important;
+      transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+    }
+    #tapgreetings-shopify-landing .tg-card:hover {
+      transform: translateY(-3px);
+      border-color: #FBBF24 !important;
+      background: var(--tg-card-hover) !important;
+    }
+    #tapgreetings-shopify-landing .tg-card p {
+      color: var(--tg-text-muted) !important;
+      font-size: 14px;
+      margin: 0 0 16px 0;
+    }
+    #tapgreetings-shopify-landing a.tg-btn-primary {
+      background: linear-gradient(90deg, #D62839, #E65100) !important;
+      color: #FFFFFF !important;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 14px;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 15px rgba(214, 40, 57, 0.4);
+      transition: opacity 0.2s;
+    }
+    #tapgreetings-shopify-landing a.tg-btn-primary:hover {
+      opacity: 0.92;
+    }
+    #tapgreetings-shopify-landing a.tg-btn-secondary {
+      background: rgba(255, 255, 255, 0.1) !important;
+      color: #FBBF24 !important;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 14px;
+      font-size: 14px;
+      border: 1px solid rgba(251, 191, 36, 0.5);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    #tapgreetings-shopify-landing a.tg-subcol-link {
+      font-weight: 800;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #FBBF24 !important;
+    }
+    body.tt-light-mode #tapgreetings-shopify-landing a.tg-subcol-link {
+      color: #9E1B32 !important;
+    }
+    #tapgreetings-shopify-landing .tg-step-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 900;
+      color: #FFFFFF !important;
+      flex-shrink: 0;
+    }
+  </style>
+
   <!-- Hero Section -->
-  <div style="background: linear-gradient(135deg, #1E130D 0%, #2A1A12 50%, #3B191D 100%); color: #FFF8E7; border-radius: 24px; padding: 40px 24px; text-align: center; border: 2px solid rgba(251, 191, 36, 0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.25); margin-bottom: 35px;">
-    <span style="display: inline-block; background: linear-gradient(90deg, #9E1B32, #D62839); color: #FFF; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; padding: 6px 16px; rounded-full; border-radius: 999px; margin-bottom: 14px;">
+  <div style="background: linear-gradient(135deg, #1E130D 0%, #2A1A12 50%, #3B191D 100%) !important; color: #FFF8E7 !important; border-radius: 24px; padding: 44px 24px; text-align: center; border: 2px solid rgba(251, 191, 36, 0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-bottom: 35px;">
+    <span style="display: inline-block; background: linear-gradient(90deg, #9E1B32, #D62839) !important; color: #FFFFFF !important; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; padding: 6px 18px; border-radius: 999px; margin-bottom: 16px;">
       ✦ Official TapGreetings Collection ✦
     </span>
-    <h1 style="font-size: 36px; font-weight: 900; margin: 0 0 10px 0; color: #FFF8E7; letter-spacing: -0.5px;">
+    <h1 style="font-size: 34px; font-weight: 900; margin: 0 0 12px 0; color: #FFF8E7 !important; letter-spacing: -0.5px; line-height: 1.25;">
       TapGreetings Series 1: The Clay &amp; Needle-Felt Holiday Collection
     </h1>
-    <p style="font-size: 16px; max-width: 720px; margin: 0 auto 20px auto; color: #FEE2E2; line-height: 1.6;">
-      16 handcrafted miniature stop-motion clay characters sculpted with needle-felted wool accents and embedded with high-speed smartphone NFC technology. Tap any card to stream 1080p holiday greeting animations and voice dialogue!
+    <p style="font-size: 16px; max-width: 740px; margin: 0 auto 24px auto; color: #FEE2E2 !important; line-height: 1.6;">
+      16 handcrafted miniature stop-motion clay characters sculpted with needle-felted wool accents and embedded with high-speed smartphone NFC technology. Tap any card to stream 1080p holiday greeting animations and voice blessings!
     </p>
-    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
-      <a href="/collections/tapgreetings-series-1" style="background: linear-gradient(90deg, #D62839, #E65100); color: #FFF; font-weight: 700; text-decoration: none; padding: 12px 28px; border-radius: 14px; font-size: 14px; box-shadow: 0 4px 15px rgba(214,40,57,0.4); display: inline-flex; align-items: center; gap: 8px;">
+    <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+      <a href="/collections/tapgreetings-series-1" class="tg-btn-primary">
         Shop All 16 Cards ($14.99) &rarr;
       </a>
-      <a href="https://tapgreetings.com" target="_blank" style="background: rgba(255,255,255,0.1); color: #FBBF24; font-weight: 700; text-decoration: none; padding: 12px 24px; border-radius: 14px; font-size: 14px; border: 1px solid rgba(251,191,36,0.5);">
+      <a href="https://tapgreetings.com" target="_blank" class="tg-btn-secondary">
         Explore Live Video Portal ↗
       </a>
     </div>
   </div>
 
-  <!-- Subcollection Highlights -->
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-bottom: 40px;">
+  <!-- Subcollection Highlights (4 Subcollections) -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 40px;">
     
     <!-- Subcol 1: Classic Icons -->
-    <div style="background: #FFFDF9; border: 1px solid #E5D5C4; border-radius: 20px; padding: 22px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
-      <h3 style="margin: 0 0 8px 0; color: #9E1B32; font-size: 18px; font-weight: 800;">🎅 Classic Icons</h3>
-      <p style="font-size: 13px; color: #5C3214; line-height: 1.5; margin: 0 0 14px 0;">
-        Santa (#001), Frosty (#002), Rudolph (#003), and Mrs. Claus (#010). Timeless warmth in matte cranberry clay and wool fleece.
+    <div class="tg-card">
+      <div style="font-size: 28px; margin-bottom: 8px;">🎅</div>
+      <h3 style="font-size: 20px; font-weight: 800; margin-bottom: 8px;">Classic Icons</h3>
+      <p>
+        Santa (#001), Frosty (#002), Rudolph (#003), and Mrs. Claus (#010). Timeless holiday warmth in matte cranberry polymer clay, wool felt, and glowing amber accents.
       </p>
-      <a href="/collections/series-1-classic-icons" style="color: #9E1B32; font-weight: 700; font-size: 13px; text-decoration: underline;">View Classic Icons &rarr;</a>
+      <a href="/collections/series-1-classic-icons" class="tg-subcol-link">View Classic Icons &rarr;</a>
     </div>
 
     <!-- Subcol 2: Winter Magic -->
-    <div style="background: #FFFDF9; border: 1px solid #E5D5C4; border-radius: 20px; padding: 22px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
-      <h3 style="margin: 0 0 8px 0; color: #1565C0; font-size: 18px; font-weight: 800;">❄️ Winter Magic</h3>
-      <p style="font-size: 13px; color: #5C3214; line-height: 1.5; margin: 0 0 14px 0;">
-        Jack Frost (#004), Snowflake (#007), Sugar Plum Fairy (#014), and Snow Monster (#015). Frosted crystalline wonder and celestial fairy wings.
+    <div class="tg-card">
+      <div style="font-size: 28px; margin-bottom: 8px;">❄️</div>
+      <h3 style="font-size: 20px; font-weight: 800; margin-bottom: 8px;">Winter Magic</h3>
+      <p>
+        Jack Frost (#004), Snowflake (#007), Sugar Plum Fairy (#014), and Snow Monster (#015). Frosted crystalline glass, pearlescent resin wings, and celestial snowfall.
       </p>
-      <a href="/collections/series-1-winter-magic" style="color: #1565C0; font-weight: 700; font-size: 13px; text-decoration: underline;">View Winter Magic &rarr;</a>
+      <a href="/collections/series-1-winter-magic" class="tg-subcol-link">View Winter Magic &rarr;</a>
     </div>
 
     <!-- Subcol 3: Hearth & Holiday -->
-    <div style="background: #FFFDF9; border: 1px solid #E5D5C4; border-radius: 20px; padding: 22px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
-      <h3 style="margin: 0 0 8px 0; color: #2E7D32; font-size: 18px; font-weight: 800;">🎄 Hearth &amp; Holiday</h3>
-      <p style="font-size: 13px; color: #5C3214; line-height: 1.5; margin: 0 0 14px 0;">
-        Nutcracker (#005), The Tree (#006), Surprise Gift (#008), and Gingerbread Man (#009). Fireside traditions, gold stars, and royal icing.
+    <div class="tg-card">
+      <div style="font-size: 28px; margin-bottom: 8px;">🔥</div>
+      <h3 style="font-size: 20px; font-weight: 800; margin-bottom: 8px;">Hearth &amp; Holiday</h3>
+      <p>
+        Nutcracker (#005), The Tree (#006), Surprise Gift (#008), and Gingerbread Man (#009). Fireside craftsmanship, baked cinnamon textures, and radiant star toppers.
       </p>
-      <a href="/collections/series-1-hearth-holiday" style="color: #2E7D32; font-weight: 700; font-size: 13px; text-decoration: underline;">View Hearth &amp; Holiday &rarr;</a>
+      <a href="/collections/series-1-hearth-holiday" class="tg-subcol-link">View Hearth &amp; Holiday &rarr;</a>
     </div>
 
     <!-- Subcol 4: Festive Friends -->
-    <div style="background: #FFFDF9; border: 1px solid #E5D5C4; border-radius: 20px; padding: 22px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
-      <h3 style="margin: 0 0 8px 0; color: #C2185B; font-size: 18px; font-weight: 800;">🐾 Festive Friends</h3>
-      <p style="font-size: 13px; color: #5C3214; line-height: 1.5; margin: 0 0 14px 0;">
-        Workshop Elf (#011), Polar Bear (#012), Penguin (#013), and Stocking Puppy (#016). Playful animal companions and toy artisans.
+    <div class="tg-card">
+      <div style="font-size: 28px; margin-bottom: 8px;">🐾</div>
+      <h3 style="font-size: 20px; font-weight: 800; margin-bottom: 8px;">Festive Friends</h3>
+      <p>
+        Workshop Elf (#011), Polar Bear (#012), Penguin (#013), and Stocking Puppy (#016). Playful arctic buddies with chunky cable-knit scarves and cheerful holiday spirits.
       </p>
-      <a href="/collections/series-1-festive-friends" style="color: #C2185B; font-weight: 700; font-size: 13px; text-decoration: underline;">View Festive Friends &rarr;</a>
+      <a href="/collections/series-1-festive-friends" class="tg-subcol-link">View Festive Friends &rarr;</a>
     </div>
 
   </div>
 
-  <!-- How It Works Technology Infographic -->
-  <div style="background: #140D08; color: #FFF8E7; border-radius: 24px; padding: 35px 24px; text-align: center; border: 2px solid rgba(251,191,36,0.3); margin-bottom: 40px;">
-    <h2 style="font-size: 26px; font-weight: 800; margin: 0 0 12px 0; color: #FBBF24;">How TapGreetings Smart Cards Work</h2>
-    <p style="font-size: 14px; max-width: 650px; margin: 0 auto 30px auto; color: #FEE2E2; line-height: 1.5;">
-      Each physical card contains an embedded high-speed NTAG215 microchip. No batteries, no charging, no mobile apps required!
+  <!-- How NFC Works Quick Walkthrough -->
+  <div style="background: var(--tg-surface) !important; border: 1.5px solid var(--tg-card-border) !important; border-radius: 24px; padding: 36px 24px; margin-bottom: 40px; box-shadow: 0 4px 20px var(--tg-shadow) !important;">
+    <div style="text-align: center; margin-bottom: 30px;">
+      <span style="background: rgba(251, 191, 36, 0.15) !important; color: #FBBF24 !important; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; padding: 5px 14px; border-radius: 999px; border: 1px solid rgba(251, 191, 36, 0.4);">
+        ✦ Instant Magic &bull; Zero Apps Required ✦
+      </span>
+      <h2 style="font-size: 28px; font-weight: 900; margin: 12px 0 8px 0;">
+        How TapGreetings NFC Works
+      </h2>
+      <p style="font-size: 15px; max-width: 620px; margin: 0 auto; color: var(--tg-text-muted) !important;">
+        Every card is embedded with a high-speed NTAG215 microchip built into waterproof CR80 PVC hardware.
+      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+      
+      <div style="display: flex; align-items: flex-start; gap: 16px; background: var(--tg-card-bg) !important; border: 1px solid var(--tg-card-border) !important; border-radius: 18px; padding: 20px;">
+        <div class="tg-step-badge" style="background: #9E1B32 !important;">1</div>
+        <div>
+          <h4 style="font-size: 17px; font-weight: 800; margin: 0 0 6px 0;">Hold Phone Near Antenna</h4>
+          <p style="margin: 0; font-size: 13.5px; color: var(--tg-text-muted) !important;">
+            Hold top edge of iPhone or center back of Android near the golden bell, star, or ribbon icon on the card.
+          </p>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: flex-start; gap: 16px; background: var(--tg-card-bg) !important; border: 1px solid var(--tg-card-border) !important; border-radius: 18px; padding: 20px;">
+        <div class="tg-step-badge" style="background: #D62839 !important;">2</div>
+        <div>
+          <h4 style="font-size: 17px; font-weight: 800; margin: 0 0 6px 0;">Tap Screen Notification</h4>
+          <p style="margin: 0; font-size: 13.5px; color: var(--tg-text-muted) !important;">
+            A native browser banner appears instantly. Tap to open the high-definition video card with zero app downloads.
+          </p>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: flex-start; gap: 16px; background: var(--tg-card-bg) !important; border: 1px solid var(--tg-card-border) !important; border-radius: 18px; padding: 20px;">
+        <div class="tg-step-badge" style="background: #E65100 !important;">3</div>
+        <div>
+          <h4 style="font-size: 17px; font-weight: 800; margin: 0 0 6px 0;">Stream Claymation &amp; Voice</h4>
+          <p style="margin: 0; font-size: 13.5px; color: var(--tg-text-muted) !important;">
+            Enjoy full 1080p stop-motion animation, voice blessings, and tactile 3D keepsake details on your phone!
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+      <a href="/pages/how-tapgreetings-nfc-works" style="color: #FBBF24 !important; font-weight: 800; font-size: 14px; text-decoration: underline;">
+        Read the Complete NFC Smartphone Compatibility Guide &rarr;
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer Link Callout -->
+  <div style="text-align: center; padding: 20px 0;">
+    <p style="font-size: 14px; color: var(--tg-text-muted) !important; margin-bottom: 12px;">
+      Looking for custom event cards or NFC reprogramming?
     </p>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; text-align: left;">
-      <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(251,191,36,0.2); border-radius: 16px; padding: 20px;">
-        <div style="font-size: 28px; margin-bottom: 8px;">1️⃣ 🎁</div>
-        <div style="font-weight: 700; color: #FBBF24; font-size: 15px; margin-bottom: 6px;">Give the Physical Keepsake</div>
-        <div style="font-size: 12px; color: #E5D5C4; line-height: 1.5;">Deliver the credit-card-sized, waterproof polymer clay card in person or in a greeting envelope.</div>
-      </div>
-      <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(251,191,36,0.2); border-radius: 16px; padding: 20px;">
-        <div style="font-size: 28px; margin-bottom: 8px;">2️⃣ 📱</div>
-        <div style="font-weight: 700; color: #FBBF24; font-size: 15px; margin-bottom: 6px;">Tap with Smartphone</div>
-        <div style="font-size: 12px; color: #E5D5C4; line-height: 1.5;">Touch the top edge of any iPhone or the back of any Android phone to the card's golden NFC target.</div>
-      </div>
-      <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(251,191,36,0.2); border-radius: 16px; padding: 20px;">
-        <div style="font-size: 28px; margin-bottom: 8px;">3️⃣ 🎬</div>
-        <div style="font-weight: 700; color: #FBBF24; font-size: 15px; margin-bottom: 6px;">Experience the Magic</div>
-        <div style="font-size: 12px; color: #E5D5C4; line-height: 1.5;">The browser instantly opens to full 1080p stop-motion claymation, holiday dialogue, and character lore!</div>
-      </div>
+    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+      <a href="/products/tap-thingy-nfc-custom-pvc-card" style="color: var(--tg-text) !important; font-weight: 700; font-size: 13px; text-decoration: underline;">
+        Design Custom PVC Cards &rarr;
+      </a>
+      <span style="color: var(--tg-text-muted) !important;">&bull;</span>
+      <a href="/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" style="color: var(--tg-text) !important; font-weight: 700; font-size: 13px; text-decoration: underline;">
+        Free Webtool NFC Reprogrammer &rarr;
+      </a>
     </div>
   </div>
-
 </div>
