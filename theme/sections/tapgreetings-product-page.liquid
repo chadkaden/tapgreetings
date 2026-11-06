@@ -282,7 +282,11 @@
     display: flex;
     justify-content: center;
     gap: 10px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 4px 4px 10px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
     margin-bottom: 24px;
   }
   .tg-thumb-btn {
@@ -359,6 +363,46 @@
     color: var(--tg-gold) !important;
     font-size: 1.05rem;
     line-height: 1.5;
+  }
+
+  /* Category Tag Box - High contrast in both Dark and Light modes */
+  .tg-category-box,
+  .tg-raw-desc div[style*="background: #FFF8E7"],
+  .tg-raw-desc div[style*="background:#FFF8E7"] {
+    background: rgba(251, 191, 36, 0.08) !important;
+    border: 1px solid rgba(251, 191, 36, 0.35) !important;
+    border-radius: 12px !important;
+    padding: 14px 18px !important;
+    margin-top: 24px !important;
+  }
+  .tg-category-box p,
+  .tg-raw-desc div[style*="background: #FFF8E7"] p,
+  .tg-raw-desc div[style*="background:#FFF8E7"] p {
+    color: #FBBF24 !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    margin: 0 !important;
+  }
+  .tg-category-box strong,
+  .tg-raw-desc div[style*="background: #FFF8E7"] strong,
+  .tg-raw-desc div[style*="background:#FFF8E7"] strong {
+    color: #FFFFFF !important;
+  }
+  body.tt-light-mode .tg-category-box,
+  body.tt-light-mode .tg-raw-desc div[style*="background: #FFF8E7"],
+  body.tt-light-mode .tg-raw-desc div[style*="background:#FFF8E7"] {
+    background: #FFF8E7 !important;
+    border: 1px solid #FDE68A !important;
+  }
+  body.tt-light-mode .tg-category-box p,
+  body.tt-light-mode .tg-raw-desc div[style*="background: #FFF8E7"] p,
+  body.tt-light-mode .tg-raw-desc div[style*="background:#FFF8E7"] p {
+    color: #92400E !important;
+  }
+  body.tt-light-mode .tg-category-box strong,
+  body.tt-light-mode .tg-raw-desc div[style*="background: #FFF8E7"] strong,
+  body.tt-light-mode .tg-raw-desc div[style*="background:#FFF8E7"] strong {
+    color: #78350F !important;
   }
 
   /* Buy Action Box */
@@ -452,28 +496,6 @@
 <div class="tg-product-wrapper">
   <div class="tg-container">
 
-    <!-- Top Navigation Link -->
-    <div class="tg-top-nav">
-      <a href="/collections/{{ subcol_handle }}">
-        &larr; Back to {{ subcol_name }} Collection
-      </a>
-    </div>
-
-    <!-- Header Section -->
-    <div style="text-align: center; margin-bottom: 20px;">
-      <div class="tg-header-badge">
-        ✦ TAPGREETINGS SERIES 1 &bull; CARD #{{ card_code }} OF 016 ✦
-      </div>
-      <h1 class="tg-title">
-        {{ product.title }}
-      </h1>
-      <div>
-        <span class="tg-subcol-pill">
-          {{ subcol_emoji }} {{ subcol_name }} &bull; Smart NFC Keepsake Card
-        </span>
-      </div>
-    </div>
-
     <!-- Media Showcase (Dynamic Container: Enlarges for 9:16 Video, Shrinks for CR80 Card Art) -->
     <div id="tg-media-box" class="tg-media-box is-video">
       <!-- Slide 1: Video -->
@@ -526,7 +548,7 @@
     </div>
 
     <!-- Secondary Direct Add to Cart Form (Immediately Below Multimedia) -->
-    <div class="tg-quick-atc-wrap" style="text-align: center; margin: 0 auto 28px; max-width: 440px;">
+    <div class="tg-quick-atc-wrap" style="text-align: center; margin: 0 auto 20px; max-width: 440px;">
       {% form 'product', product, id: 'tg-buy-form-top' %}
         <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
         <input type="hidden" name="quantity" value="1">
@@ -534,6 +556,30 @@
           <span>🛒 Add to Cart &bull; {{ product.selected_or_first_available_variant.price | money }}</span>
         </button>
       {% endform %}
+    </div>
+
+    <!-- Navigation, Title & Subcollection Section (Positioned Under Add to Cart) -->
+    <div class="tg-post-media-header" style="text-align: center; margin: 0 auto 26px; max-width: 650px;">
+      <!-- Back to Collection Link -->
+      <div class="tg-top-nav" style="margin-bottom: 12px;">
+        <a href="/collections/{{ subcol_handle }}">
+          &larr; Back to {{ subcol_name }} Collection
+        </a>
+      </div>
+
+      <div class="tg-header-badge">
+        ✦ TAPGREETINGS SERIES 1 &bull; CARD #{{ card_code }} OF 016 ✦
+      </div>
+      
+      <h1 class="tg-title">
+        TapThingy TapGreetings &bull; {{ product.title }}
+      </h1>
+      
+      <div>
+        <span class="tg-subcol-pill">
+          {{ subcol_emoji }} {{ subcol_name }} &bull; Smart NFC Keepsake Card
+        </span>
+      </div>
     </div>
 
     <!-- 1. Lore & Description Accordion -->
@@ -552,7 +598,7 @@
             <strong>Tap this card</strong> against the top edge of your iPhone or Android to instantly launch the exclusive holiday video and voice greeting—zero app download required.
           </p>
           <p style="margin: 0; font-size: 0.88rem; line-height: 1.5; color: var(--tg-text-muted);">
-            <strong>⚡ Rewritable NTAG215 Microchip:</strong> Want to personalize this card? It can easily be reprogrammed to link to your own custom family holiday video, voice note, photos, or personalized greeting anytime using our free Web NFC Tool at <a href="https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" target="_blank" style="color: var(--tg-gold); font-weight: 700; text-decoration: underline;">shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide</a> (or the NFC Tools app on iPhone &amp; Android).
+            <strong>⚡ Rewritable NTAG215 Microchip:</strong> Want to personalize this card? It can easily be reprogrammed to link to your own custom family holiday video, voice note, photos, or personalized greeting anytime using our free Web NFC Tool at <a href="https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" target="_blank" style="color: var(--tg-gold); font-weight: 700; text-decoration: underline;">/tools</a> (or the NFC Tools app on iPhone &amp; Android).
           </p>
         </div>
 
