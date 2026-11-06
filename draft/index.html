@@ -82,6 +82,14 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
+        }
         /* 3D Flip Card Styles - Exact CR80 Credit Card Ratio (53.98 x 85.60 mm -> 54/86) */
         .perspective-container {
             perspective: 1200px;
@@ -362,149 +370,149 @@
             <!-- Pre-rendered Cards Grid -->
             <div id="colGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 w-full">
                 
-      <a href="/draft/01/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="0" data-num="17" data-series="draft" data-code="draft-01" data-name="delphine" data-greeting="happy holidays!" data-keywords="delphine ice starlet draft series winter glamour champagne gala" data-lore="stepping onto the frosted red carpet at dusk outside a luxury gala, delphine sparkles under flashbulbs, spreading warm cheer and champagne wishes across the winter gala." data-category="occasions" data-front="/assets/img/cr80/draft-01-front.jpg?v=cr80" data-back="/assets/img/cr80/draft-01-back.jpg?v=cr80">
-          <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
+      <div class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-purple-800/40 hover:border-purple-400/70 shadow-purple-900/20 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="0" data-num="17" data-series="draft" data-code="draft-01" data-name="delphine" data-greeting="happy holidays!" data-keywords="delphine ice starlet draft series winter glamour champagne gala" data-lore="stepping onto the frosted red carpet at dusk outside a luxury gala, delphine sparkles under flashbulbs, spreading warm cheer and champagne wishes across the winter gala." data-category="occasions" data-front="/assets/img/cr80/draft-01-front.jpg?v=cr80" data-back="/assets/img/cr80/draft-01-back.jpg?v=cr80">
+          <a href="/draft/01/" class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center block">
               <img src="/assets/img/cr80/draft-01-front.jpg?v=cr80" alt="Delphine" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
               <div class="absolute top-2 right-2 bg-gradient-to-r from-purple-900 to-indigo-900 text-purple-200 border border-purple-400/50 text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg shadow flex items-center gap-1"><i class="fa-solid fa-wand-magic-sparkles text-purple-300"></i> Draft #01</div>
-          </div>
+          </a>
           <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
-              <div class="min-w-0">
+              <a href="/draft/01/" class="min-w-0 block">
                   <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
-                      <span class="text-[9px] sm:text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">Happy Holidays!</span>
-                      <span class="text-[8px] sm:text-[9px] bg-[#140D08] text-amber-200/90 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">Seasonal Occasions</span>
+                      <span class="text-[9px] sm:text-[10px] font-bold text-purple-300 tracking-wider uppercase truncate">Happy Holidays!</span>
+                      <span class="text-[8px] sm:text-[9px] bg-[#180E24] text-purple-200/90 border-purple-800/40 px-1.5 sm:px-2 py-0.5 rounded-full border flex-shrink-0">Seasonal Occasions</span>
                   </div>
                   <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Delphine</div>
                   <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Ice Starlet</div>
-              </div>
+              </a>
               
         <div class="mt-2 pt-1.5 sm:pt-2 border-t border-purple-900/40 flex flex-col gap-1.5">
-            <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-purple-300">
+            <a href="/draft/01/" class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-purple-300 hover:text-purple-200 transition-colors">
                 <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-purple-300"><i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i> Concept Art</span>
                 <span class="group-hover:translate-x-1 transition-transform text-purple-300">Explore &rarr;</span>
-            </div>
+            </a>
             <div class="w-full bg-[#1F122B] text-purple-200 border border-purple-700/40 font-semibold py-1 px-2 rounded-xl text-center text-[10px] flex items-center justify-center gap-1">
                 <i class="fa-solid fa-palette text-purple-400"></i> Pre-Clay Edition
             </div>
         </div>
       
           </div>
-      </a>
+      </div>
     
 
-      <a href="/draft/02/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="1" data-num="18" data-series="draft" data-code="draft-02" data-name="autumn gratitude" data-greeting="happy thanksgiving!" data-keywords="autumn gratitude thanksgiving draft series hearth gatherer warm brew" data-lore="surrounded by crisp november foliage, she raises a warm seasonal brew in celebration of family, abundance, and heartfelt togetherness." data-category="occasions" data-front="/assets/img/cr80/draft-02-front.jpg?v=cr80" data-back="/assets/img/cr80/draft-02-back.jpg?v=cr80">
-          <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
+      <div class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-purple-800/40 hover:border-purple-400/70 shadow-purple-900/20 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="1" data-num="18" data-series="draft" data-code="draft-02" data-name="autumn gratitude" data-greeting="happy thanksgiving!" data-keywords="autumn gratitude thanksgiving draft series hearth gatherer warm brew" data-lore="surrounded by crisp november foliage, she raises a warm seasonal brew in celebration of family, abundance, and heartfelt togetherness." data-category="occasions" data-front="/assets/img/cr80/draft-02-front.jpg?v=cr80" data-back="/assets/img/cr80/draft-02-back.jpg?v=cr80">
+          <a href="/draft/02/" class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center block">
               <img src="/assets/img/cr80/draft-02-front.jpg?v=cr80" alt="Autumn Gratitude" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
               <div class="absolute top-2 right-2 bg-gradient-to-r from-purple-900 to-indigo-900 text-purple-200 border border-purple-400/50 text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg shadow flex items-center gap-1"><i class="fa-solid fa-wand-magic-sparkles text-purple-300"></i> Draft #02</div>
-          </div>
+          </a>
           <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
-              <div class="min-w-0">
+              <a href="/draft/02/" class="min-w-0 block">
                   <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
-                      <span class="text-[9px] sm:text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">Happy Thanksgiving!</span>
-                      <span class="text-[8px] sm:text-[9px] bg-[#140D08] text-amber-200/90 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">Seasonal Occasions</span>
+                      <span class="text-[9px] sm:text-[10px] font-bold text-purple-300 tracking-wider uppercase truncate">Happy Thanksgiving!</span>
+                      <span class="text-[8px] sm:text-[9px] bg-[#180E24] text-purple-200/90 border-purple-800/40 px-1.5 sm:px-2 py-0.5 rounded-full border flex-shrink-0">Seasonal Occasions</span>
                   </div>
                   <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Autumn Gratitude</div>
                   <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Hearth Gatherer</div>
-              </div>
+              </a>
               
         <div class="mt-2 pt-1.5 sm:pt-2 border-t border-purple-900/40 flex flex-col gap-1.5">
-            <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-purple-300">
+            <a href="/draft/02/" class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-purple-300 hover:text-purple-200 transition-colors">
                 <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-purple-300"><i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i> Concept Art</span>
                 <span class="group-hover:translate-x-1 transition-transform text-purple-300">Explore &rarr;</span>
-            </div>
+            </a>
             <div class="w-full bg-[#1F122B] text-purple-200 border border-purple-700/40 font-semibold py-1 px-2 rounded-xl text-center text-[10px] flex items-center justify-center gap-1">
                 <i class="fa-solid fa-palette text-purple-400"></i> Pre-Clay Edition
             </div>
         </div>
       
           </div>
-      </a>
+      </div>
     
 
-      <a href="/draft/03/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="2" data-num="19" data-series="draft" data-code="draft-03" data-name="aria" data-greeting="warm winter wishes" data-keywords="aria village lantern draft series winter wishes snow village" data-lore="holding an ornate brass lantern in a snow-cloaked alpine village, aria guides travelers home with a soft, steady amber glow." data-category="occasions" data-front="/assets/img/cr80/draft-03-front.jpg?v=cr80" data-back="/assets/img/cr80/draft-03-back.jpg?v=cr80">
-          <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
+      <div class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-purple-800/40 hover:border-purple-400/70 shadow-purple-900/20 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="2" data-num="19" data-series="draft" data-code="draft-03" data-name="aria" data-greeting="warm winter wishes" data-keywords="aria village lantern draft series winter wishes snow village" data-lore="holding an ornate brass lantern in a snow-cloaked alpine village, aria guides travelers home with a soft, steady amber glow." data-category="occasions" data-front="/assets/img/cr80/draft-03-front.jpg?v=cr80" data-back="/assets/img/cr80/draft-03-back.jpg?v=cr80">
+          <a href="/draft/03/" class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center block">
               <img src="/assets/img/cr80/draft-03-front.jpg?v=cr80" alt="Aria" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
               <div class="absolute top-2 right-2 bg-gradient-to-r from-purple-900 to-indigo-900 text-purple-200 border border-purple-400/50 text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg shadow flex items-center gap-1"><i class="fa-solid fa-wand-magic-sparkles text-purple-300"></i> Draft #03</div>
-          </div>
+          </a>
           <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
-              <div class="min-w-0">
+              <a href="/draft/03/" class="min-w-0 block">
                   <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
-                      <span class="text-[9px] sm:text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">Warm Winter Wishes</span>
-                      <span class="text-[8px] sm:text-[9px] bg-[#140D08] text-amber-200/90 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">Seasonal Occasions</span>
+                      <span class="text-[9px] sm:text-[10px] font-bold text-purple-300 tracking-wider uppercase truncate">Warm Winter Wishes</span>
+                      <span class="text-[8px] sm:text-[9px] bg-[#180E24] text-purple-200/90 border-purple-800/40 px-1.5 sm:px-2 py-0.5 rounded-full border flex-shrink-0">Seasonal Occasions</span>
                   </div>
                   <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Aria</div>
                   <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Village Lantern</div>
-              </div>
+              </a>
               
         <div class="mt-2 pt-1.5 sm:pt-2 border-t border-purple-900/40 flex flex-col gap-1.5">
-            <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-purple-300">
+            <a href="/draft/03/" class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-purple-300 hover:text-purple-200 transition-colors">
                 <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-purple-300"><i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i> Concept Art</span>
                 <span class="group-hover:translate-x-1 transition-transform text-purple-300">Explore &rarr;</span>
-            </div>
+            </a>
             <div class="w-full bg-[#1F122B] text-purple-200 border border-purple-700/40 font-semibold py-1 px-2 rounded-xl text-center text-[10px] flex items-center justify-center gap-1">
                 <i class="fa-solid fa-palette text-purple-400"></i> Pre-Clay Edition
             </div>
         </div>
       
           </div>
-      </a>
+      </div>
     
 
-      <a href="/draft/04/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="3" data-num="20" data-series="draft" data-code="draft-04" data-name="cyber starlet" data-greeting="black friday spree!" data-keywords="cyber starlet black friday draft series neon shopper deals" data-lore="under shimmering neon holograms, she strides through the futuristic holiday shopping district with metallic totes and glowing deals." data-category="occasions" data-front="/assets/img/cr80/draft-04-front.jpg?v=cr80" data-back="/assets/img/cr80/draft-04-back.jpg?v=cr80">
-          <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
+      <div class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-purple-800/40 hover:border-purple-400/70 shadow-purple-900/20 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="3" data-num="20" data-series="draft" data-code="draft-04" data-name="cyber starlet" data-greeting="black friday spree!" data-keywords="cyber starlet black friday draft series neon shopper deals" data-lore="under shimmering neon holograms, she strides through the futuristic holiday shopping district with metallic totes and glowing deals." data-category="occasions" data-front="/assets/img/cr80/draft-04-front.jpg?v=cr80" data-back="/assets/img/cr80/draft-04-back.jpg?v=cr80">
+          <a href="/draft/04/" class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center block">
               <img src="/assets/img/cr80/draft-04-front.jpg?v=cr80" alt="Cyber Starlet" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
               <div class="absolute top-2 right-2 bg-gradient-to-r from-purple-900 to-indigo-900 text-purple-200 border border-purple-400/50 text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg shadow flex items-center gap-1"><i class="fa-solid fa-wand-magic-sparkles text-purple-300"></i> Draft #04</div>
-          </div>
+          </a>
           <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
-              <div class="min-w-0">
+              <a href="/draft/04/" class="min-w-0 block">
                   <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
-                      <span class="text-[9px] sm:text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">Black Friday Spree!</span>
-                      <span class="text-[8px] sm:text-[9px] bg-[#140D08] text-amber-200/90 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">Seasonal Occasions</span>
+                      <span class="text-[9px] sm:text-[10px] font-bold text-purple-300 tracking-wider uppercase truncate">Black Friday Spree!</span>
+                      <span class="text-[8px] sm:text-[9px] bg-[#180E24] text-purple-200/90 border-purple-800/40 px-1.5 sm:px-2 py-0.5 rounded-full border flex-shrink-0">Seasonal Occasions</span>
                   </div>
                   <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Cyber Starlet</div>
                   <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Neon Shopper</div>
-              </div>
+              </a>
               
         <div class="mt-2 pt-1.5 sm:pt-2 border-t border-purple-900/40 flex flex-col gap-1.5">
-            <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-purple-300">
+            <a href="/draft/04/" class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-purple-300 hover:text-purple-200 transition-colors">
                 <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-purple-300"><i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i> Concept Art</span>
                 <span class="group-hover:translate-x-1 transition-transform text-purple-300">Explore &rarr;</span>
-            </div>
+            </a>
             <div class="w-full bg-[#1F122B] text-purple-200 border border-purple-700/40 font-semibold py-1 px-2 rounded-xl text-center text-[10px] flex items-center justify-center gap-1">
                 <i class="fa-solid fa-palette text-purple-400"></i> Pre-Clay Edition
             </div>
         </div>
       
           </div>
-      </a>
+      </div>
     
 
-      <a href="/draft/05/" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="4" data-num="21" data-series="draft" data-code="draft-05" data-name="midnight toast" data-greeting="happy new year 2026!" data-keywords="midnight toast new year 2026 draft series fireworks celebration" data-lore="as the clock strikes midnight and golden fireworks cascade across the skyline, she raises a crystal flute to toast the promise of 2026." data-category="occasions" data-front="/assets/img/cr80/draft-05-front.jpg?v=cr80" data-back="/assets/img/cr80/draft-05-back.jpg?v=cr80">
-          <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
+      <div class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-purple-800/40 hover:border-purple-400/70 shadow-purple-900/20 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="4" data-num="21" data-series="draft" data-code="draft-05" data-name="midnight toast" data-greeting="happy new year 2026!" data-keywords="midnight toast new year 2026 draft series fireworks celebration" data-lore="as the clock strikes midnight and golden fireworks cascade across the skyline, she raises a crystal flute to toast the promise of 2026." data-category="occasions" data-front="/assets/img/cr80/draft-05-front.jpg?v=cr80" data-back="/assets/img/cr80/draft-05-back.jpg?v=cr80">
+          <a href="/draft/05/" class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center block">
               <img src="/assets/img/cr80/draft-05-front.jpg?v=cr80" alt="Midnight Toast" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
               <div class="absolute top-2 right-2 bg-gradient-to-r from-purple-900 to-indigo-900 text-purple-200 border border-purple-400/50 text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg shadow flex items-center gap-1"><i class="fa-solid fa-wand-magic-sparkles text-purple-300"></i> Draft #05</div>
-          </div>
+          </a>
           <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
-              <div class="min-w-0">
+              <a href="/draft/05/" class="min-w-0 block">
                   <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
-                      <span class="text-[9px] sm:text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">Happy New Year 2026!</span>
-                      <span class="text-[8px] sm:text-[9px] bg-[#140D08] text-amber-200/90 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">Seasonal Occasions</span>
+                      <span class="text-[9px] sm:text-[10px] font-bold text-purple-300 tracking-wider uppercase truncate">Happy New Year 2026!</span>
+                      <span class="text-[8px] sm:text-[9px] bg-[#180E24] text-purple-200/90 border-purple-800/40 px-1.5 sm:px-2 py-0.5 rounded-full border flex-shrink-0">Seasonal Occasions</span>
                   </div>
                   <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Midnight Toast</div>
                   <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The New Year Sovereign</div>
-              </div>
+              </a>
               
         <div class="mt-2 pt-1.5 sm:pt-2 border-t border-purple-900/40 flex flex-col gap-1.5">
-            <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-purple-300">
+            <a href="/draft/05/" class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-purple-300 hover:text-purple-200 transition-colors">
                 <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-purple-300"><i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i> Concept Art</span>
                 <span class="group-hover:translate-x-1 transition-transform text-purple-300">Explore &rarr;</span>
-            </div>
+            </a>
             <div class="w-full bg-[#1F122B] text-purple-200 border border-purple-700/40 font-semibold py-1 px-2 rounded-xl text-center text-[10px] flex items-center justify-center gap-1">
                 <i class="fa-solid fa-palette text-purple-400"></i> Pre-Clay Edition
             </div>
         </div>
       
           </div>
-      </a>
+      </div>
     
             </div>
         </section>

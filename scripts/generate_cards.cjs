@@ -219,6 +219,14 @@ function getHeadHtml(title, cardStyle = null, seoData = null, mediaData = null, 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
+        }
         /* 3D Flip Card Styles - Exact CR80 Credit Card Ratio (53.98 x 85.60 mm -> 54/86) */
         .perspective-container {
             perspective: 1200px;
@@ -626,14 +634,24 @@ cards.forEach((card, index) => {
                         </div>
                     </div>
 
-                    <!-- Micro-Lore Box -->
-                    <div class="bg-[#150D09]/95 p-4 sm:p-5 rounded-3xl border border-amber-700/30 shadow-xl relative min-w-0">
-                        <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300 block mb-1.5 flex items-center gap-1.5">
-                            <i class="fa-solid fa-feather-pointed text-rose-400"></i> Clay Artisan Craft &amp; Lore
-                        </span>
-                        <p class="text-xs sm:text-sm text-amber-100/90 leading-relaxed font-body break-words">
-                            ${char.micro_lore}
-                        </p>
+                    <!-- Living Keepsake & Artisan Craft Details -->
+                    <div class="bg-[#150D09]/95 p-4 sm:p-5 rounded-3xl border border-amber-700/30 shadow-xl relative min-w-0 flex flex-col gap-3">
+                        <div>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300 block mb-1.5 flex items-center gap-1.5">
+                                <i class="fa-solid fa-wand-magic-sparkles text-rose-400"></i> Smart Keepsake Experience
+                            </span>
+                            <p class="text-xs sm:text-sm text-amber-100/90 leading-relaxed font-body break-words">
+                                Tap this physical <strong>${char.name}</strong> card against any smartphone (iPhone or Android) to instantly view the exclusive 1080p claymation video and character greeting—zero app download required. This card can also be reprogrammed anytime to play your own custom video message, family photos, voice note, or personal web link using our free NFC Web Tool at <a href="${meta.tools_url}" target="_blank" class="text-rose-400 underline font-semibold hover:text-amber-300">/tools</a>!
+                            </p>
+                        </div>
+                        <div class="pt-2.5 border-t border-amber-900/40">
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-amber-400 block mb-1.5 flex items-center gap-1.5">
+                                <i class="fa-solid fa-feather-pointed text-rose-400"></i> Clay Artisan Craft &amp; Lore
+                            </span>
+                            <p class="text-xs sm:text-sm text-amber-100/80 leading-relaxed font-body italic break-words">
+                                ${char.micro_lore}
+                            </p>
+                        </div>
                     </div>
 
                     <!-- Festive Indicators / Character Stats -->
@@ -848,13 +866,17 @@ cards.forEach((card, index) => {
             }
         }
 
-        // AUTO-SCROLL TO TOP OF VIDEO ON LOAD (Mobile Friendly)
+        // AUTO-SCROLL TO TOP OF VIDEO (Accounting for Sticky Header)
         function autoScrollToVideo() {
             if (window.innerWidth < 1024) {
                 var vid = document.getElementById('cardVideo');
+                var header = document.querySelector('header');
                 if (vid) {
                     setTimeout(function() {
-                        vid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        var headerHeight = header ? header.offsetHeight : 64;
+                        var vidRect = vid.getBoundingClientRect();
+                        var targetY = window.pageYOffset + vidRect.top - headerHeight - 16;
+                        window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
                     }, 350);
                 }
             }
@@ -1075,14 +1097,24 @@ draftCards.forEach((card, index) => {
                         </div>
                     </div>
 
-                    <!-- Concept Lore Box -->
-                    <div class="bg-[#150B1C]/95 p-4 sm:p-5 rounded-3xl border border-purple-700/30 shadow-xl relative min-w-0">
-                        <span class="text-[11px] font-bold uppercase tracking-wider text-purple-300 block mb-1.5 flex items-center gap-1.5">
-                            <i class="fa-solid fa-palette text-purple-400"></i> Original Draft Series Lore &amp; Concept
-                        </span>
-                        <p class="text-xs sm:text-sm text-amber-100/90 leading-relaxed font-body break-words">
-                            ${char.micro_lore}
-                        </p>
+                    <!-- Concept Lore & Keepsake Details -->
+                    <div class="bg-[#150B1C]/95 p-4 sm:p-5 rounded-3xl border border-purple-700/30 shadow-xl relative min-w-0 flex flex-col gap-3">
+                        <div>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-purple-300 block mb-1.5 flex items-center gap-1.5">
+                                <i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i> Smart Keepsake Experience
+                            </span>
+                            <p class="text-xs sm:text-sm text-amber-100/90 leading-relaxed font-body break-words">
+                                Tap this physical <strong>${char.name}</strong> card against any smartphone to stream the exclusive glamour motion video and seasonal greeting. Can also be reprogrammed anytime to your own custom video or web link!
+                            </p>
+                        </div>
+                        <div class="pt-2.5 border-t border-purple-900/40">
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-purple-300 block mb-1.5 flex items-center gap-1.5">
+                                <i class="fa-solid fa-palette text-purple-400"></i> Original Draft Series Lore &amp; Concept
+                            </span>
+                            <p class="text-xs sm:text-sm text-amber-100/80 leading-relaxed font-body italic break-words">
+                                ${char.micro_lore}
+                            </p>
+                        </div>
                     </div>
 
                     <!-- Character Indicators / Stats -->
@@ -1276,12 +1308,17 @@ draftCards.forEach((card, index) => {
             }
         }
 
+        // AUTO-SCROLL TO TOP OF VIDEO (Accounting for Sticky Header)
         function autoScrollToVideo() {
             if (window.innerWidth < 1024) {
                 var vid = document.getElementById('cardVideo');
+                var header = document.querySelector('header');
                 if (vid) {
                     setTimeout(function() {
-                        vid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        var headerHeight = header ? header.offsetHeight : 64;
+                        var vidRect = vid.getBoundingClientRect();
+                        var targetY = window.pageYOffset + vidRect.top - headerHeight - 16;
+                        window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
                     }, 350);
                 }
             }
@@ -1385,21 +1422,21 @@ const renderedCardsHtml = allCards.map((c, idx) => {
   const footerActionHtml = c.is_series_1
     ? `
       <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex flex-col gap-1.5">
-          <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
+          <a href="${c.page_url}" class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300 hover:text-amber-200 transition-colors">
               <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
               <span class="group-hover:translate-x-1 transition-transform text-amber-300">View &rarr;</span>
-          </div>
-          <a href="${setCardPurchaseUrl}" target="_blank" onclick="event.stopPropagation()" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-1.5 px-2 rounded-xl text-center text-[10px] sm:text-[11px] flex items-center justify-center gap-1.5 shadow-md hover:scale-[1.02] transition-transform">
+          </a>
+          <a href="${setCardPurchaseUrl}" target="_blank" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-1.5 px-2 rounded-xl text-center text-[10px] sm:text-[11px] flex items-center justify-center gap-1.5 shadow-md hover:scale-[1.02] transition-transform">
               <i class="fa-solid fa-cart-shopping"></i> <span>Buy in Set &bull; $14.99</span>
           </a>
       </div>
     `
     : `
       <div class="mt-2 pt-1.5 sm:pt-2 border-t border-purple-900/40 flex flex-col gap-1.5">
-          <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-purple-300">
+          <a href="${c.page_url}" class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-purple-300 hover:text-purple-200 transition-colors">
               <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-purple-300"><i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i> Concept Art</span>
               <span class="group-hover:translate-x-1 transition-transform text-purple-300">Explore &rarr;</span>
-          </div>
+          </a>
           <div class="w-full bg-[#1F122B] text-purple-200 border border-purple-700/40 font-semibold py-1 px-2 rounded-xl text-center text-[10px] flex items-center justify-center gap-1">
               <i class="fa-solid fa-palette text-purple-400"></i> Pre-Clay Edition
           </div>
@@ -1417,25 +1454,25 @@ const renderedCardsHtml = allCards.map((c, idx) => {
   const greetingClass = c.is_series_1 ? 'text-rose-300' : 'text-purple-300';
 
   return `
-    <a href="${c.page_url}" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border ${borderClass} transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="${idx}" data-num="${c.global_num}" data-series="${c.series}" data-code="${c.card_code}" data-name="${(ch.name || '').toLowerCase()}" data-greeting="${(c.event_greeting || '').toLowerCase()}" data-keywords="${keywords}" data-lore="${(ch.micro_lore || '').toLowerCase()}" data-category="${category}" data-front="${front}" data-back="${back}">
+    <div class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border ${borderClass} transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="${idx}" data-num="${c.global_num}" data-series="${c.series}" data-code="${c.card_code}" data-name="${(ch.name || '').toLowerCase()}" data-greeting="${(c.event_greeting || '').toLowerCase()}" data-keywords="${keywords}" data-lore="${(ch.micro_lore || '').toLowerCase()}" data-category="${category}" data-front="${front}" data-back="${back}">
         <!-- Clean Image Box - 100% Unobstructed Art (CR80 Credit Card Ratio) -->
-        <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
+        <a href="${c.page_url}" class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center block">
             <img src="${front}" alt="${ch.name}" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
             ${badgeHtml}
-        </div>
+        </a>
         <!-- Card Details Footer -->
         <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
-            <div class="min-w-0">
+            <a href="${c.page_url}" class="min-w-0 block">
                 <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
                     <span class="text-[9px] sm:text-[10px] font-bold ${greetingClass} tracking-wider uppercase truncate">${c.event_greeting || 'Holiday Greeting'}</span>
                     <span class="text-[8px] sm:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-full border ${catBadgeClass} flex-shrink-0">${getCategoryName(category)}</span>
                 </div>
                 <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">${ch.name}</div>
                 <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">${ch.title}</div>
-            </div>
+            </a>
             ${footerActionHtml}
         </div>
-    </a>
+    </div>
   `;
 }).join('\n');
 
@@ -1988,45 +2025,55 @@ collectionsData.forEach(col => {
     const footerActionHtml = c.is_series_1
       ? `
         <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex flex-col gap-1.5">
-            <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300">
+            <a href="${c.page_url}" class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-amber-300 hover:text-amber-200 transition-colors">
                 <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
                 <span class="group-hover:translate-x-1 transition-transform text-amber-300">View &rarr;</span>
-            </div>
-            <a href="${setCardPurchaseUrl}" target="_blank" onclick="event.stopPropagation()" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-1.5 px-2 rounded-xl text-center text-[10px] sm:text-[11px] flex items-center justify-center gap-1.5 shadow-md hover:scale-[1.02] transition-transform">
+            </a>
+            <a href="${setCardPurchaseUrl}" target="_blank" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-1.5 px-2 rounded-xl text-center text-[10px] sm:text-[11px] flex items-center justify-center gap-1.5 shadow-md hover:scale-[1.02] transition-transform">
                 <i class="fa-solid fa-cart-shopping"></i> <span>Buy in Set &bull; $14.99</span>
             </a>
         </div>
       `
       : `
         <div class="mt-2 pt-1.5 sm:pt-2 border-t border-purple-900/40 flex flex-col gap-1.5">
-            <div class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-purple-300">
+            <a href="${c.page_url}" class="flex justify-between items-center text-[10px] sm:text-xs font-bold text-purple-300 hover:text-purple-200 transition-colors">
                 <span class="flex items-center gap-1 text-[10px] sm:text-[11px] text-purple-300"><i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i> Concept Art</span>
                 <span class="group-hover:translate-x-1 transition-transform text-purple-300">Explore &rarr;</span>
-            </div>
+            </a>
             <div class="w-full bg-[#1F122B] text-purple-200 border border-purple-700/40 font-semibold py-1 px-2 rounded-xl text-center text-[10px] flex items-center justify-center gap-1">
                 <i class="fa-solid fa-palette text-purple-400"></i> Pre-Clay Edition
             </div>
         </div>
       `;
 
+    const borderClass = c.is_series_1
+      ? 'border-amber-800/40 hover:border-amber-500/70 glow-amber'
+      : 'border-purple-800/40 hover:border-purple-400/70 shadow-purple-900/20';
+
+    const catBadgeClass = c.is_series_1
+      ? 'bg-[#140D08] text-amber-200/90 border-amber-800/40'
+      : 'bg-[#180E24] text-purple-200/90 border-purple-800/40';
+
+    const greetingClass = c.is_series_1 ? 'text-rose-300' : 'text-purple-300';
+
     return `
-      <a href="${c.page_url}" class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="${idx}" data-num="${c.global_num}" data-series="${c.series}" data-code="${c.card_code}" data-name="${(ch.name || '').toLowerCase()}" data-greeting="${(c.event_greeting || '').toLowerCase()}" data-keywords="${keywords}" data-lore="${(ch.micro_lore || '').toLowerCase()}" data-category="${category}" data-front="${front}" data-back="${back}">
-          <div class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center">
+      <div class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border ${borderClass} transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="${idx}" data-num="${c.global_num}" data-series="${c.series}" data-code="${c.card_code}" data-name="${(ch.name || '').toLowerCase()}" data-greeting="${(c.event_greeting || '').toLowerCase()}" data-keywords="${keywords}" data-lore="${(ch.micro_lore || '').toLowerCase()}" data-category="${category}" data-front="${front}" data-back="${back}">
+          <a href="${c.page_url}" class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center block">
               <img src="${front}" alt="${ch.name}" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
               ${badgeHtml}
-          </div>
+          </a>
           <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
-              <div class="min-w-0">
+              <a href="${c.page_url}" class="min-w-0 block">
                   <div class="flex justify-between items-center mb-0.5 sm:mb-1 gap-1">
-                      <span class="text-[9px] sm:text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">${c.event_greeting || 'Holiday Greeting'}</span>
-                      <span class="text-[8px] sm:text-[9px] bg-[#140D08] text-amber-200/90 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">${getCategoryName(category)}</span>
+                      <span class="text-[9px] sm:text-[10px] font-bold ${greetingClass} tracking-wider uppercase truncate">${c.event_greeting || 'Holiday Greeting'}</span>
+                      <span class="text-[8px] sm:text-[9px] ${catBadgeClass} px-1.5 sm:px-2 py-0.5 rounded-full border flex-shrink-0">${getCategoryName(category)}</span>
                   </div>
                   <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">${ch.name}</div>
                   <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">${ch.title}</div>
-              </div>
+              </a>
               ${footerActionHtml}
           </div>
-      </a>
+      </div>
     `;
   }).join('\n');
 
