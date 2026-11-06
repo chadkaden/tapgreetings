@@ -17,15 +17,15 @@
     <meta property="og:url" content="https://TapGreetings.com/001">
     <meta property="og:title" content="Santa (The Master Artisan) | Series 1 NFC Holiday Card | TapGreetings Series 1">
     <meta property="og:description" content="Experience Santa, crafted in polymer clay & needle felt. Tap this smart NFC card for instant 1080p stop-motion workshop video and voice greeting.">
-    <meta property="og:image" content="https://TapGreetings.com/assets/img/001-front.jpg">
-    <meta property="og:video" content="https://TapGreetings.com/assets/video/001-video.mp4">
+    <meta property="og:image" content="/assets/img/001-front.jpg">
+    <meta property="og:video" content="/assets/video/001-video.mp4">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://TapGreetings.com/001">
     <meta property="twitter:title" content="Santa (The Master Artisan) | Series 1 NFC Holiday Card | TapGreetings Series 1">
     <meta property="twitter:description" content="Experience Santa, crafted in polymer clay & needle felt. Tap this smart NFC card for instant 1080p stop-motion workshop video and voice greeting.">
-    <meta property="twitter:image" content="https://TapGreetings.com/assets/img/001-front.jpg">
+    <meta property="twitter:image" content="/assets/img/001-front.jpg">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -55,18 +55,12 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400&family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Canvas Confetti Library -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 
     <style>
-        :root {
-            --mocha-base: #180F0B;
-            --cranberry: #9E1B32;
-            --buttercream: #FFF8E7;
-            --gold-foil: #FBBF24;
-        }
         * {
             box-sizing: border-box;
         }
@@ -83,8 +77,8 @@
         .glow-amber {
             box-shadow: 0 0 35px -5px rgba(251, 191, 36, 0.25);
         }
-        .glow-cranberry {
-            box-shadow: 0 0 35px -5px rgba(158, 27, 50, 0.35);
+        .glow-rose {
+            box-shadow: 0 0 35px -5px rgba(244, 63, 94, 0.35);
         }
         .clay-corner {
             position: absolute;
@@ -97,43 +91,47 @@
             pointer-events: none;
             filter: drop-shadow(0 0 4px #F59E0B);
         }
-        .perspective-1000 {
-            perspective: 1000px;
+        /* Bulletproof 3D Perspective Flip */
+        .perspective-container {
+            perspective: 1200px;
+            -webkit-perspective: 1200px;
         }
-        .transform-style-3d {
+        .card-3d {
+            position: relative;
+            width: 100%;
+            height: 100%;
             transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            transition: transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);
         }
-        .backface-hidden {
+        .card-3d.flipped {
+            transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
+        }
+        .card-face {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
+            border-radius: 1.25rem;
+            overflow: hidden;
         }
-        .flip-card-inner {
-            transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+        .card-face-front {
+            transform: rotateY(0deg);
+            -webkit-transform: rotateY(0deg);
         }
-        .flipped .flip-card-inner {
+        .card-face-back {
             transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
         }
-        @keyframes soundWave {
-            0%, 100% { height: 4px; }
-            50% { height: 18px; }
-        }
-        .wave-bar {
-            width: 3px;
-            border-radius: 9999px;
-            background-color: #FBBF24;
-            animation: soundWave 0.8s ease-in-out infinite;
-        }
-        .wave-bar:nth-child(1) { animation-delay: 0.1s; }
-        .wave-bar:nth-child(2) { animation-delay: 0.3s; }
-        .wave-bar:nth-child(3) { animation-delay: 0.2s; }
-        .wave-bar:nth-child(4) { animation-delay: 0.4s; }
-        .wave-bar:nth-child(5) { animation-delay: 0.15s; }
     </style>
 </head>
 <body class="font-sans bg-[#120C08] text-amber-50 min-h-screen transition-colors duration-300 selection:bg-rose-600 selection:text-white flex flex-col justify-between overflow-x-hidden">
     <!-- Header -->
     <header class="sticky top-0 z-50 bg-[#160E09]/95 backdrop-blur-md border-b border-amber-900/40 px-4 sm:px-8 py-3.5 flex justify-between items-center shadow-xl w-full">
-        <a href="../index.html" class="font-header text-lg sm:text-2xl font-bold text-white flex items-center gap-2 sm:gap-2.5 drop-shadow-[0_0_15px_rgba(251,191,36,0.35)] flex-shrink-0">
+        <a href="/" class="font-header text-lg sm:text-2xl font-bold text-white flex items-center gap-2 sm:gap-2.5 drop-shadow-[0_0_15px_rgba(251,191,36,0.35)] flex-shrink-0">
             <span class="w-8 h-8 rounded-xl bg-gradient-to-tr from-rose-700 via-amber-600 to-amber-300 flex items-center justify-center text-xs sm:text-sm font-black text-white shadow-md">TG</span>
             <div class="flex flex-col">
                 <span class="tracking-tight leading-none">TapGreetings</span>
@@ -142,8 +140,8 @@
         </a>
         <div class="flex items-center gap-3 sm:gap-6">
             <nav class="hidden md:flex gap-6 text-sm font-semibold text-amber-200/90">
-                <a href="../index.html" class="hover:text-amber-300 transition-colors">Home</a>
-                <a href="../index.html#collection" class="hover:text-amber-300 transition-colors">Series 1 (001–008)</a>
+                <a href="/" class="hover:text-amber-300 transition-colors">Home</a>
+                <a href="/#collection" class="hover:text-amber-300 transition-colors">Series 1 (001–008)</a>
                 <a href="https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card" target="_blank" class="hover:text-amber-300 transition-colors">Custom Keepsake</a>
                 <a href="https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" target="_blank" class="hover:text-amber-300 transition-colors">NFC Webtool</a>
             </nav>
@@ -163,36 +161,15 @@
                 html.classList.remove('dark');
                 html.classList.add('light');
                 icon.className = 'fa-solid fa-sun';
-                localStorage.setItem('tapgreetings_theme', 'light');
             } else {
                 html.classList.remove('light');
                 html.classList.add('dark');
                 icon.className = 'fa-solid fa-moon';
-                localStorage.setItem('tapgreetings_theme', 'dark');
-            }
-        }
-        const savedTheme = localStorage.getItem('tapgreetings_theme') || 'dark';
-        if (savedTheme === 'light') {
-            document.documentElement.classList.remove('dark');
-            document.documentElement.classList.add('light');
-            document.addEventListener('DOMContentLoaded', () => {
-                const icon = document.getElementById('themeIcon');
-                if (icon) icon.className = 'fa-solid fa-sun';
-            });
-        }
-        function triggerConfetti() {
-            if (typeof confetti === 'function') {
-                confetti({
-                    particleCount: 65,
-                    spread: 60,
-                    origin: { y: 0.7 },
-                    colors: ['#FBBF24', '#9E1B32', '#FFF8E7', '#23412B', '#A8DADC']
-                });
             }
         }
     </script>
 
-    <main class="w-full max-w-5xl mx-auto px-3 sm:px-6 py-6 sm:py-10 flex-grow">
+    <main class="w-full max-w-5xl mx-auto px-3 sm:px-6 py-5 sm:py-8 flex-grow">
         <!-- Main Card Container with Clay Embossed Borders and Amber Glow -->
         <div class="relative bg-[#1A110C]/95 rounded-3xl p-4 sm:p-8 shadow-2xl border-[2px] border-amber-600/40 backdrop-blur-md flex flex-col gap-6 sm:gap-8 glow-amber w-full overflow-hidden">
             
@@ -204,7 +181,7 @@
 
             <!-- Top Event & Series Banner -->
             <div class="text-center pt-1 w-full max-w-full">
-                <div class="flex flex-wrap justify-center items-center gap-2 mb-3">
+                <div class="flex flex-wrap justify-center items-center gap-2 mb-2">
                     <span class="inline-block bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 text-white text-[11px] sm:text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-widest shadow-md">
                         Happy Holidays!
                     </span>
@@ -219,7 +196,7 @@
                 <h1 class="font-clayTitle text-2xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-amber-100 via-amber-200 to-rose-200 bg-clip-text text-transparent drop-shadow-md break-words">
                     Santa
                 </h1>
-                <p class="font-sans text-xs sm:text-sm text-amber-300 font-semibold tracking-wide mt-1.5 break-words">
+                <p class="font-sans text-xs sm:text-sm text-amber-300 font-semibold tracking-wide mt-1 break-words">
                     The Master Artisan &bull; <span class="text-rose-300 italic font-serif">Matte Polymer Clay & Needle Felt</span>
                 </p>
                 <p class="text-xs sm:text-sm text-amber-100/90 italic max-w-xl mx-auto mt-2 px-2 leading-relaxed break-words">
@@ -227,86 +204,50 @@
                 </p>
 
                 <!-- Keywords / SEO Tag Pills -->
-                <div class="flex flex-wrap justify-center gap-1.5 mt-3 max-w-2xl mx-auto"><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#santa card</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#clay santa</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#polymer clay</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#needle felt</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#nfc holiday card</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#master artisan</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#happy holidays</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#smart card</span></div>
+                <div class="flex flex-wrap justify-center gap-1.5 mt-2.5 max-w-2xl mx-auto"><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#santa card</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#clay santa</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#polymer clay</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#needle felt</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#nfc holiday card</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#master artisan</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#happy holidays</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#smart card</span></div>
             </div>
 
-            <!-- Main Layout: Video Player Column + Interactive Experience Column -->
+            <!-- Main Layout: 1. Video Player FIRST + 2. Interactive Card Flipper & Info -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start w-full min-w-0">
                 
-                <!-- Left: 1080p Stop-Motion Video Player with Interactive Tap -->
-                <div class="flex flex-col items-center justify-center bg-black/95 rounded-3xl p-2 sm:p-3 border-[2px] border-amber-600/50 ring-2 ring-rose-500/20 shadow-2xl relative overflow-hidden group w-full min-w-0">
-                    <div class="relative w-full max-w-[340px] sm:max-w-[400px] mx-auto rounded-2xl overflow-hidden bg-black flex justify-center">
-                        <video id="cardVideo" autoplay loop muted playsinline controls poster="../assets/img/001-front.jpg" class="aspect-[9/16] w-full max-h-[68vh] sm:max-h-[72vh] object-contain rounded-2xl shadow-inner bg-black">
-                            <source src="../assets/video/001-video.mp4" type="video/mp4">
-                            Your browser does not support HTML5 video.
-                        </video>
-                    </div>
-
-                    <div class="mt-3 w-full flex items-center justify-between px-2 text-xs font-semibold text-amber-200">
-                        <button onclick="simulateNfcTap()" class="flex items-center gap-1.5 text-amber-300 hover:text-white transition-colors">
-                            <i class="fa-solid fa-bolt text-rose-400 animate-pulse"></i> <span>NFC Tap-to-Video</span>
-                        </button>
-                        <span class="px-2.5 py-0.5 rounded-full bg-[#1F140E] border border-amber-700/50 text-[11px] font-mono text-amber-300">
-                            9:16 &bull; 8s HD Claymation
+                <!-- COLUMN 1 (VIDEO FIRST): 1080p Stop-Motion Video Player with Instant Unmute Button -->
+                <div class="flex flex-col items-center justify-center bg-black/95 rounded-3xl p-3 sm:p-4 border-[2px] border-amber-600/50 ring-2 ring-rose-500/20 shadow-2xl relative overflow-hidden group w-full min-w-0">
+                    
+                    <div class="w-full flex justify-between items-center mb-2 px-1">
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
+                            <i class="fa-solid fa-play text-rose-400"></i> Stop-Motion Video Greeting
+                        </span>
+                        <span class="px-2.5 py-0.5 rounded-full bg-[#1F140E] border border-amber-700/50 text-[10px] font-mono text-amber-300">
+                            9:16 HD Claymation
                         </span>
                     </div>
 
-                    <!-- Audio Dialogue Speech & Voiceover Box -->
-                    
-    <div class="mt-3.5 w-full bg-[#1B110B]/95 border border-rose-500/40 rounded-2xl p-3.5 sm:p-4 shadow-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 min-w-0">
-        <div class="flex items-start gap-3 min-w-0 flex-1">
-            <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-rose-600 to-amber-400 flex-shrink-0 flex items-center justify-center text-white font-black text-xs shadow-md">
-                <i class="fa-solid fa-volume-high"></i>
-            </div>
-            <div class="min-w-0 flex-1">
-                <div class="flex items-center gap-2">
-                    <span class="text-[10px] uppercase font-bold text-amber-300 tracking-wider">Holiday Voiceover Line</span>
-                    <div id="audioWave" class="hidden items-center gap-1 h-4">
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
+                    <!-- Video Container with Overlay Controls -->
+                    <div class="relative w-full max-w-[320px] sm:max-w-[360px] mx-auto rounded-2xl overflow-hidden bg-black flex justify-center shadow-inner cursor-pointer" onclick="toggleMute()">
+                        <video id="cardVideo" autoplay loop muted playsinline poster="/assets/img/001-front.jpg" class="aspect-[9/16] w-full max-h-[66vh] sm:max-h-[70vh] object-cover rounded-2xl">
+                            <source src="/assets/video/001-video.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+
+                        <!-- Big Prominent Unmute Button -->
+                        <button id="unmuteBtn" onclick="event.stopPropagation(); toggleMute();" class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold px-5 py-2.5 rounded-full shadow-2xl shadow-rose-950/80 flex items-center gap-2 text-xs sm:text-sm tracking-wide transition-all hover:scale-105 active:scale-95 animate-pulse border border-amber-300/40 z-20 whitespace-nowrap">
+                            <i id="muteIcon" class="fa-solid fa-volume-xmark text-amber-200"></i>
+                            <span id="muteText">Tap to Unmute Video</span>
+                        </button>
+                    </div>
+
+                    <!-- Video Controls Row -->
+                    <div class="mt-3 w-full flex items-center justify-between px-2 text-xs font-semibold text-amber-200">
+                        <button onclick="restartVideo()" class="flex items-center gap-1.5 text-amber-300 hover:text-white transition-colors">
+                            <i class="fa-solid fa-rotate-left"></i> <span>Replay</span>
+                        </button>
+                        <button onclick="toggleMute()" class="flex items-center gap-1.5 text-amber-300 hover:text-white transition-colors">
+                            <i class="fa-solid fa-volume-high text-rose-400"></i> <span id="muteStatusLabel">Sound: Muted (Tap to Play)</span>
+                        </button>
                     </div>
                 </div>
-                <p class="text-xs sm:text-sm text-amber-100 italic leading-snug mt-1 break-words">
-                    &ldquo;Ho ho ho! Every heart has a spark of magic—share yours generously this season. Happy Holidays!&rdquo;
-                </p>
-            </div>
-        </div>
-        <button onclick="speakDialogue()" class="bg-gradient-to-r from-rose-700 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white text-xs font-bold px-3.5 py-2 rounded-xl flex items-center gap-1.5 shadow flex-shrink-0 transition-transform hover:scale-105" title="Listen Aloud">
-            <i class="fa-solid fa-play"></i> Listen Voice
-        </button>
-    </div>
-    <script>
-        function speakDialogue() {
-            triggerConfetti();
-            const wave = document.getElementById('audioWave');
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const u = new SpeechSynthesisUtterance("Ho ho ho! Every heart has a spark of magic—share yours generously this season. Happy Holidays!");
-                u.rate = 0.95;
-                u.pitch = 1.05;
-                if (wave) {
-                    wave.classList.remove('hidden');
-                    wave.classList.add('flex');
-                }
-                u.onend = () => {
-                    if (wave) {
-                        wave.classList.add('hidden');
-                        wave.classList.remove('flex');
-                    }
-                };
-                window.speechSynthesis.speak(u);
-            } else {
-                alert("Ho ho ho! Every heart has a spark of magic—share yours generously this season. Happy Holidays!");
-            }
-        }
-    </script>
-  
-                </div>
 
-                <!-- Right: Lore, Indicators, Physical Card 3D Flip, & Utility Action -->
+                <!-- COLUMN 2: Physical Smart Card 3D Flip (Front/Back) + Lore & Actions -->
                 <div class="flex flex-col gap-5 sm:gap-6 w-full min-w-0">
                     
                     <!-- Micro Lore Box -->
@@ -317,6 +258,39 @@
                         <p class="text-xs sm:text-sm text-amber-100/90 leading-relaxed font-body break-words">
                             A round, plump clay Santa with soft thumbprint textures, sporting a matte cranberry coat with needle-felted wool collar and cuffs. He cradles a glowing gold-leaf key while winking from his cozy workshop shelf surrounded by wooden toys and fairy lights.
                         </p>
+                    </div>
+
+                    <!-- Interactive Flippable 3D Physical Keepsake Card (Front & Back) -->
+                    <div class="bg-[#150D09]/95 p-4 sm:p-5 rounded-3xl border border-amber-700/30 shadow-xl flex flex-col items-center min-w-0">
+                        <div class="w-full flex justify-between items-center mb-3">
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
+                                <i class="fa-solid fa-id-card text-rose-400"></i> Physical CR80 Smart Card
+                            </span>
+                            <button onclick="toggleCardFlip()" class="bg-[#241710] hover:bg-[#301F15] text-amber-300 text-xs font-bold px-3 py-1.5 rounded-xl border border-amber-600/40 flex items-center gap-1.5 transition-all shadow">
+                                <i class="fa-solid fa-arrows-rotate"></i> Flip (Front / Back)
+                            </button>
+                        </div>
+
+                        <!-- 3D Card Container -->
+                        <div class="perspective-container w-full max-w-[260px] sm:max-w-[290px] aspect-[9/16] cursor-pointer group my-1" onclick="toggleCardFlip()">
+                            <div id="physicalCard3d" class="card-3d shadow-2xl border-[2px] border-amber-600/70 rounded-2xl bg-[#140D08]">
+                                <!-- Front Face -->
+                                <div class="card-face card-face-front bg-[#120C08]">
+                                    <img src="/assets/img/001-front.jpg" alt="Santa Front Artwork" class="w-full h-full object-contain">
+                                    <div class="absolute bottom-2 left-2 right-2 bg-black/80 backdrop-blur-sm text-center py-1 text-[10px] font-bold text-amber-300 uppercase tracking-widest rounded-lg">
+                                        Front Artwork &bull; Tap to Flip ↻
+                                    </div>
+                                </div>
+                                <!-- Back Face (Clean Artwork Display) -->
+                                <div class="card-face card-face-back bg-[#120C08]">
+                                    <img src="/assets/img/001-back.jpg" alt="Santa Collector Back" class="w-full h-full object-contain">
+                                    <div class="absolute bottom-2 left-2 right-2 bg-black/80 backdrop-blur-sm text-center py-1 text-[10px] font-bold text-amber-300 uppercase tracking-widest rounded-lg">
+                                        Back Collector Design &bull; Tap to Flip ↻
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-amber-200/70 mt-2 italic text-center">Click or tap card to flip between front sculpture and back NFC antenna layout</p>
                     </div>
 
                     <!-- Festive Indicators / Character Stats -->
@@ -346,68 +320,6 @@
     </div>
   
 
-                    <!-- Interactive Flippable 3D Physical Keepsake Card -->
-                    <div class="bg-[#150D09]/95 p-4 sm:p-5 rounded-3xl border border-amber-700/30 shadow-xl flex flex-col items-center min-w-0">
-                        <div class="w-full flex justify-between items-center mb-3">
-                            <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
-                                <i class="fa-solid fa-id-card text-rose-400"></i> Physical CR80 PVC Smart Card
-                            </span>
-                            <button onclick="toggleCardFlip()" class="bg-[#241710] hover:bg-[#301F15] text-amber-300 text-xs font-bold px-3 py-1.5 rounded-xl border border-amber-600/40 flex items-center gap-1.5 transition-all">
-                                <i class="fa-solid fa-arrows-rotate"></i> Flip (Front/Back)
-                            </button>
-                        </div>
-
-                        <!-- 3D Card Container -->
-                        <div id="card3dContainer" class="perspective-1000 w-full max-w-[260px] sm:max-w-[300px] aspect-[9/16] cursor-pointer group my-1" onclick="toggleCardFlip()">
-                            <div class="flip-card-inner relative w-full h-full transform-style-3d shadow-2xl rounded-2xl border-[2px] border-amber-600/70 overflow-hidden bg-[#180F0B]">
-                                <!-- Front Face -->
-                                <div class="absolute inset-0 backface-hidden">
-                                    <img src="../assets/img/001-front.jpg" alt="Santa Front" class="w-full h-full object-contain bg-[#120C08]">
-                                    <div class="absolute bottom-2 left-2 right-2 bg-black/85 backdrop-blur-sm text-center py-1 text-[10px] font-bold text-amber-300 uppercase tracking-widest rounded-lg">
-                                        Front Artwork &bull; Tap to Flip ↻
-                                    </div>
-                                </div>
-                                <!-- Back Face with NFC Target -->
-                                <div class="absolute inset-0 backface-hidden rotate-y-180 bg-[#120C08] flex flex-col justify-between p-3" style="transform: rotateY(180deg);">
-                                    <img src="../assets/img/001-back.jpg" alt="Santa Back" class="w-full h-full object-contain">
-                                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none w-11/12 text-center">
-                                        <div class="w-14 h-14 rounded-full border-2 border-dashed border-amber-300/80 bg-rose-600/30 backdrop-blur-sm flex items-center justify-center text-amber-300 text-lg font-bold shadow-lg animate-pulse">
-                                            ⟡
-                                        </div>
-                                        <span class="text-[9px] font-bold text-amber-200 mt-1 drop-shadow bg-black/75 px-2 py-0.5 rounded-full">⟡ TAP SLEIGH BELL ⟡</span>
-                                        <span class="text-[8px] text-amber-100 drop-shadow mt-0.5 bg-black/60 px-1.5 py-0.5 rounded">Tap phone to golden sleigh bell to unlock Santa's workshop</span>
-                                    </div>
-                                    <div class="absolute bottom-2 left-2 right-2 bg-black/85 backdrop-blur-sm text-center py-1 text-[10px] font-bold text-amber-300 uppercase tracking-widest rounded-lg">
-                                        Back Antenna Target &bull; Tap to Flip ↻
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-[11px] text-amber-200/70 mt-2 italic text-center">Click or tap card to inspect front sculpture and back NFC antenna layout</p>
-                    </div>
-
-                    <!-- Hidden Collector Items Easter Egg -->
-                    
-    <div class="bg-[#150D09]/85 p-3.5 sm:p-4 rounded-2xl border border-amber-600/30 flex flex-col gap-2 min-w-0">
-        <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
-            <i class="fa-solid fa-magnifying-glass text-rose-400"></i> Hidden Clay Collector Hunt (On Physical Card)
-        </span>
-        <div class="grid grid-cols-2 gap-2 text-xs">
-            
-    <div class="bg-[#1C120C] p-2.5 rounded-xl border border-amber-900/40 flex justify-between items-center min-w-0">
-        <span class="capitalize text-slate-300 font-medium truncate mr-1">gold keys:</span>
-        <span class="text-amber-300 font-bold">3 Hidden</span>
-    </div>
-  
-    <div class="bg-[#1C120C] p-2.5 rounded-xl border border-amber-900/40 flex justify-between items-center min-w-0">
-        <span class="capitalize text-slate-300 font-medium truncate mr-1">felt cuffs:</span>
-        <span class="text-amber-300 font-bold">2 Hidden</span>
-    </div>
-  
-        </div>
-    </div>
-  
-
                     <!-- Prompts Accordion -->
                     
     <details class="bg-[#150D09]/70 p-4 rounded-2xl border border-amber-900/40 group min-w-0">
@@ -422,12 +334,14 @@
                     Cinematic miniature studio photography of a round, plump polymer clay Santa with soft thumbprint textures, sporting a matte cranberry red coat with needle-felted wool collar and cuffs. Cradling a glowing gold-leaf key while winking. Soft-focus wooden workshop shelf in background with wooden toys and glowing warm fairy lights. Warm amber rim lighting, shallow depth of field, 8k resolution, 9:16 vertical.
                 </div>
             </div>
+            
             <div>
                 <span class="font-bold text-amber-300 block mb-1">Stop-Motion Claymation Video Prompt:</span>
                 <div class="bg-[#1A100B] p-2.5 rounded-xl border border-amber-950 text-slate-300 font-mono text-[11px] leading-relaxed break-words whitespace-pre-wrap">
                     9:16 vertical video. Clay Santa winks warmly, lifts the glowing gold-leaf key which pulses with golden sparkle dust. Subtle camera push-in as fairy lights twinkle warmly in the background. Stop-motion tactile claymation style.
                 </div>
             </div>
+            
         </div>
     </details>
   
@@ -450,15 +364,15 @@
                         </div>
                     </div>
 
-                    <!-- Navigation Footer -->
+                    <!-- Navigation Footer (Root-Relative Links) -->
                     <div class="flex justify-between items-center pt-4 border-t border-amber-900/40 text-xs">
-                        <a href="../008/index.html" class="bg-[#20140D] hover:bg-rose-700 text-white font-bold px-3 py-2 rounded-xl flex items-center gap-1.5 transition-colors shadow border border-amber-800/40">
+                        <a href="/008/" class="bg-[#20140D] hover:bg-rose-700 text-white font-bold px-3 py-2 rounded-xl flex items-center gap-1.5 transition-colors shadow border border-amber-800/40">
                             <i class="fa-solid fa-arrow-left"></i> #008
                         </a>
-                        <a href="../index.html" class="bg-[#20140D] hover:bg-rose-700 text-white font-bold px-3 py-2 rounded-xl flex items-center gap-1.5 transition-colors shadow border border-amber-800/40">
-                            <i class="fa-solid fa-home"></i> Series 1 Gallery
+                        <a href="/#collection" class="bg-[#20140D] hover:bg-rose-700 text-white font-bold px-3 py-2 rounded-xl flex items-center gap-1.5 transition-colors shadow border border-amber-800/40">
+                            <i class="fa-solid fa-boxes-stacked"></i> All Cards
                         </a>
-                        <a href="../002/index.html" class="bg-[#20140D] hover:bg-rose-700 text-white font-bold px-3 py-2 rounded-xl flex items-center gap-1.5 transition-colors shadow border border-amber-800/40">
+                        <a href="/002/" class="bg-[#20140D] hover:bg-rose-700 text-white font-bold px-3 py-2 rounded-xl flex items-center gap-1.5 transition-colors shadow border border-amber-800/40">
                             #002 <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
@@ -471,62 +385,98 @@
 
     <script>
         function toggleCardFlip() {
-            const container = document.getElementById('card3dContainer');
-            container.classList.toggle('flipped');
+            const card = document.getElementById('physicalCard3d');
+            if (card) {
+                card.classList.toggle('flipped');
+                triggerConfetti();
+            }
         }
 
-        function simulateNfcTap() {
-            triggerConfetti();
+        function toggleMute() {
+            const vid = document.getElementById('cardVideo');
+            const icon = document.getElementById('muteIcon');
+            const text = document.getElementById('muteText');
+            const btn = document.getElementById('unmuteBtn');
+            const statusLabel = document.getElementById('muteStatusLabel');
+            if (!vid) return;
+
+            if (vid.muted) {
+                vid.muted = false;
+                vid.play();
+                if (icon) icon.className = 'fa-solid fa-volume-high text-white';
+                if (text) text.innerText = 'Sound Playing (Tap to Mute)';
+                if (btn) btn.classList.remove('animate-pulse');
+                if (statusLabel) statusLabel.innerText = 'Sound: Playing 🔊';
+                triggerConfetti();
+            } else {
+                vid.muted = true;
+                if (icon) icon.className = 'fa-solid fa-volume-xmark text-amber-200';
+                if (text) text.innerText = 'Tap to Unmute Video';
+                if (btn) btn.classList.add('animate-pulse');
+                if (statusLabel) statusLabel.innerText = 'Sound: Muted (Tap to Play)';
+            }
+        }
+
+        function restartVideo() {
             const vid = document.getElementById('cardVideo');
             if (vid) {
                 vid.currentTime = 0;
-                vid.muted = false;
-                vid.play().catch(() => {
-                    vid.muted = true;
-                    vid.play();
+                vid.play();
+            }
+        }
+
+        function triggerConfetti() {
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 40,
+                    spread: 60,
+                    origin: { y: 0.7 },
+                    colors: ['#FBBF24', '#F87171', '#9E1B32', '#FFF8E7']
                 });
             }
         }
 
         function shareGreeting() {
-            triggerConfetti();
             const shareData = {
-                title: "Santa - Happy Holidays!",
-                text: "Every heart has a spark of magic! 🎅✨ Tap to experience Santa (The Master Artisan) smart NFC card: https://TapGreetings.com/001",
-                url: window.location.href
+                title: "Santa | TapGreetings Series 1",
+                text: "Santa (The Master Artisan): 'Every heart has a spark of magic—share yours generously!'",
+                url: "https://TapGreetings.com/001"
             };
             if (navigator.share) {
-                navigator.share(shareData).catch(console.error);
+                navigator.share(shareData).catch(() => {});
             } else {
-                navigator.clipboard.writeText(window.location.href);
-                alert('Greeting link copied to clipboard!');
+                navigator.clipboard.writeText(shareData.url).then(() => {
+                    alert('Greeting card link copied to clipboard! ✦');
+                });
             }
         }
     </script>
 
-    <footer class="w-full text-center py-12 px-4 text-xs sm:text-sm text-amber-200/70 border-t border-amber-900/40 mt-16 sm:mt-24 flex flex-col items-center gap-6 bg-[#0E0704]">
-        <div class="flex flex-wrap justify-center gap-6 text-xl text-amber-400">
-            <a href="https://tiktok.com/@tapthingy" target="_blank" class="hover:text-rose-400 transition-transform hover:scale-110" title="TikTok"><i class="fa-brands fa-tiktok"></i></a><a href="https://instagram.com/tapthingy" target="_blank" class="hover:text-rose-400 transition-transform hover:scale-110" title="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="https://youtube.com/@tapthingy" target="_blank" class="hover:text-rose-400 transition-transform hover:scale-110" title="YouTube"><i class="fa-brands fa-youtube"></i></a><a href="https://x.com/tapthingy" target="_blank" class="hover:text-rose-400 transition-transform hover:scale-110" title="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+    <footer class="w-full text-center py-12 px-4 text-xs sm:text-sm text-slate-400 border-t border-slate-800/80 mt-16 sm:mt-24 flex flex-col items-center gap-6 bg-[#0E0704]">
+        <div class="flex flex-wrap justify-center gap-6 text-xl text-rose-400">
+            <a href="https://tiktok.com/@tapthingy" target="_blank" class="hover:text-amber-300 transition-transform hover:scale-110" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://instagram.com/tapthingy" target="_blank" class="hover:text-amber-300 transition-transform hover:scale-110" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://youtube.com/@tapthingy" target="_blank" class="hover:text-amber-300 transition-transform hover:scale-110" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://x.com/tapthingy" target="_blank" class="hover:text-amber-300 transition-transform hover:scale-110" title="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
         </div>
         <div class="max-w-xl text-center space-y-2 px-2">
-            <p class="font-bold text-amber-100 text-sm">
-                TapGreetings &bull; Series 1: The Clay &amp; Needle-Felt Holiday Collection
+            <p class="font-bold text-slate-200">
+                TapGreetings &bull; Smart NFC Living Keepsake Greeting Cards
             </p>
-            <p class="leading-relaxed text-amber-200/80 text-xs">
-                Crafted in textured polymer clay, needle-felted wool, cast translucent resin ice, and stamped gold-foil hardware. Embedded with high-speed rewritable NTAG215 microchips. Powered by <a href="https://tapthingy.com" target="_blank" class="text-amber-300 font-bold hover:underline">TapThingy</a>.
+            <p class="leading-relaxed text-slate-400 text-xs">
+                Featuring rewritable NTAG215 waterproof CR80 PVC hardware, 1080p motion video streaming, and instant over-the-air reprogrammability. Powered by <a href="https://tapthingy.com" target="_blank" class="text-rose-400 font-bold hover:underline">TapThingy</a>.
             </p>
         </div>
-        <div class="flex flex-wrap justify-center gap-4 text-xs text-amber-200/70">
+        <div class="flex flex-wrap justify-center gap-4 text-xs text-slate-400">
             <a href="https://shop.tapthingy.com/collections/all" target="_blank" class="hover:text-amber-300">Shop Collection</a>
             <span>&bull;</span>
-            <a href="https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card" target="_blank" class="hover:text-amber-300">Custom Keepsake Studio</a>
+            <a href="https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card" target="_blank" class="hover:text-amber-300">Custom Video Studio</a>
             <span>&bull;</span>
-            <a href="https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" target="_blank" class="hover:text-amber-300">NFC Tools Guide</a>
+            <a href="https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" target="_blank" class="hover:text-rose-300">NFC Tools Guide</a>
         </div>
-        <p class="text-[11px] text-amber-200/50">
-            &copy; 2026 TapGreetings &bull; TapThingy LLC. Handcrafted in Polymer Clay &amp; Needle Felt.
+        <p class="text-[11px] text-slate-500">
+            &copy; 2026 TapGreetings &bull; TapThingy LLC. All rights reserved.
         </p>
     </footer>
 </body>
 </html>
-
