@@ -15,6 +15,10 @@
 /celestial-crystal /007/ 301
 /gift /008/ 301
 /surprise-box /008/ 301
+/gingerbread /009/ 301
+/gingerbread-man /009/ 301
+/mrs-claus /010/ 301
+/hearth-matron /010/ 301
 
 # Backward-compatible 2-digit redirects
 /01 /001/ 301
@@ -25,6 +29,8 @@
 /06 /006/ 301
 /07 /007/ 301
 /08 /008/ 301
+/09 /009/ 301
+/10 /010/ 301
 
 /tools https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide 302
 /reprogram https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide 302

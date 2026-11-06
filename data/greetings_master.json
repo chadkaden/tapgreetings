@@ -3,7 +3,7 @@
     "series_id": "holiday-series-1",
     "series_name": "TapGreetings Series 1: The Clay & Needle-Felt Holiday Collection",
     "series_number": 1,
-    "total_cards": 8,
+    "total_cards": 10,
     "tagline": "Handcrafted Polymer Clay & Needle-Felt Keepsakes That Come Alive with a Smartphone Tap",
     "publisher": "TapGreetings by TapThingy",
     "website": "https://tapgreetings.com",
@@ -925,9 +925,209 @@
         "target_url": "https://TapGreetings.com/008"
       },
       "commerce": {
-        "price": 29.99,
-        "compare_at_price": 39.99,
+        "price": 14.99,
+        "compare_at_price": 24.99,
         "sku": "TG-S1-008",
+        "inventory_qty": 100,
+        "card_format": "CR80 30mil Waterproof PVC",
+        "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
+      }
+    },
+    {
+      "card_id": "holiday-gingerbread-009",
+      "series_id": "holiday-series-1",
+      "card_number": 9,
+      "card_code": "009",
+      "slug": "009",
+      "aliases_slugs": [
+        "gingerbread",
+        "gingerbread-man"
+      ],
+      "event_greeting": "Happy Holidays!",
+      "web_address": "https://TapGreetings.com/009",
+      "character": {
+        "name": "Gingerbread Man",
+        "title": "The Sweet Reveler",
+        "aliases": [
+          "Gingerbread Man",
+          "The Sweet Reveler",
+          "Clay Gingerbread"
+        ],
+        "profile_theme": "Warm Spiced Clay & Royal Icing",
+        "motto": "Run toward joy, catch every sweet moment, and spice up the season!",
+        "micro_lore": "A cheerful, baked gingerbread man sculpted in warm cinnamon-spiced polymer clay with dimensional white royal icing piping and gumdrop buttons, waving happily from a flour-dusted holiday kitchen table.",
+        "indicators": {
+          "sweetness": "★★★★★",
+          "agility": "★★★★★",
+          "cheer": "★★★★★"
+        },
+        "rarity_tier": "Series 1 Sweet Treat"
+      },
+      "prompts": {
+        "prompt_front_artwork": "Cinematic miniature studio photography of a cheerful polymer clay Gingerbread Man with warm cinnamon dough texture, white puffy royal icing trims, and tiny gumdrop buttons. Waving excitedly on a flour-dusted kitchen surface next to candy canes and anise stars. Warm ambient lighting, shallow depth of field, 8k resolution, 9:16 vertical.",
+        "prompt_back_design": "Collector card back in warm Gingerbread Cinnamon and Royal Frosting White, royal icing piping filigree, central icing swirl NFC antenna target.",
+        "prompt_motion_video": "9:16 vertical video. Clay Gingerbread Man springs to life, does a cute cheerful hop and wave as cookie crumbs sprinkle with sugar sparkle dust. Stop-motion claymation.",
+        "prompt_voice_dialogue": "Vocal style: Playful, speedy, sweet holiday joy. 'Catch me if you can—bringing all the sweet holiday cheer your way! Happy Holidays!'",
+        "prompt_negative": "blurry, low quality, cartoon, deformed"
+      },
+      "descriptions": {
+        "shopify_short_desc": "✦ Handcrafted Polymer Clay & Royal Icing Gingerbread Keepsake\n✦ 1080p Stop-Motion Motion Video\n✦ Embedded NTAG215 Rewritable NFC Chip\n✦ Premium CR80 30mil Waterproof PVC",
+        "shopify_full_html": "<div class=\"tg-product-desc\"><h3>🍪✨ Gingerbread Man (The Sweet Reveler) - Series 1</h3><p>Spice up the holidays with Gingerbread Man, crafted in warm cinnamon-spiced clay and dimensional royal icing. Tap with any smartphone for instant claymation video celebration.</p></div>",
+        "social_share_caption": "Run toward joy! 🍪✨ Tap to experience Gingerbread Man (The Sweet Reveler) smart NFC card: https://TapGreetings.com/009"
+      },
+      "seo": {
+        "primary_occasion": "Winter Holidays",
+        "keywords": [
+          "gingerbread card",
+          "gingerbread man",
+          "clay gingerbread",
+          "royal icing",
+          "nfc holiday card",
+          "smart card",
+          "tapgreetings"
+        ],
+        "seo_title": "Gingerbread Man (The Sweet Reveler) | Series 1 NFC Holiday Card",
+        "seo_meta_desc": "Discover Gingerbread Man, crafted in cinnamon clay and royal icing. Tap this smart NFC card for instant holiday stop-motion video greeting."
+      },
+      "media": {
+        "aspect_ratio": "9:16",
+        "video_url": "https://TapGreetings.com/assets/video/009-video.mp4",
+        "local_video_path": "/assets/video/009-video.mp4",
+        "video_duration_seconds": 8,
+        "audio_dialogue": "Catch me if you can—bringing all the sweet holiday cheer your way! Happy Holidays!",
+        "front_image_url": "https://TapGreetings.com/assets/img/009-front.jpg",
+        "local_front_image_path": "/assets/img/009-front.jpg",
+        "back_image_url": "https://TapGreetings.com/assets/img/009-back.jpg",
+        "local_back_image_path": "/assets/img/009-back.jpg"
+      },
+      "style_tokens": {
+        "theme_name": "Cinnamon & Royal Icing",
+        "colors": {
+          "bg_obsidian_midnight": "#1A1009",
+          "bg_frosted_ice_blue": "#FFFBF0",
+          "accent_blush_pink": "#F87171",
+          "accent_champagne_gold": "#FBBF24",
+          "border_rose_gold": "#D97706",
+          "text_charcoal": "#29180E",
+          "text_white": "#FFFFFF",
+          "neon_halo_glow": "#F59E0B"
+        }
+      },
+      "nfc_config": {
+        "target_shape": "icing_swirl",
+        "tap_label": "⟡ TAP TO CRUNCH ⟡",
+        "instruction": "Tap phone to royal icing medallion",
+        "hidden_items_count": {}
+      },
+      "utility_action": {
+        "action_type": "SWEET_TREAT",
+        "button_text": "Unwrap Sweet Holiday Treat",
+        "target_url": "https://TapGreetings.com/009"
+      },
+      "commerce": {
+        "price": 14.99,
+        "compare_at_price": 24.99,
+        "sku": "TG-S1-009",
+        "inventory_qty": 100,
+        "card_format": "CR80 30mil Waterproof PVC",
+        "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
+      }
+    },
+    {
+      "card_id": "holiday-mrsclaus-010",
+      "series_id": "holiday-series-1",
+      "card_number": 10,
+      "card_code": "010",
+      "slug": "010",
+      "aliases_slugs": [
+        "mrs-claus",
+        "hearth-matron"
+      ],
+      "event_greeting": "Happy Holidays!",
+      "web_address": "https://TapGreetings.com/010",
+      "character": {
+        "name": "Mrs. Claus",
+        "title": "The Hearth Matron",
+        "aliases": [
+          "Mrs. Claus",
+          "The Hearth Matron",
+          "Clay Mrs. Claus"
+        ],
+        "profile_theme": "Flocked Wool & Warm Oven Clay",
+        "motto": "A dash of kindness and a home full of warmth bake the sweetest memories.",
+        "micro_lore": "A warm, grandmotherly Mrs. Claus in cozy crimson wool and a lace-trimmed apron, presenting a steaming tray of golden star cookies straight from the North Pole oven with a loving smile.",
+        "indicators": {
+          "warmth": "★★★★★",
+          "comfort": "★★★★★",
+          "cheer": "★★★★★"
+        },
+        "rarity_tier": "Series 1 Hearth Edition"
+      },
+      "prompts": {
+        "prompt_front_artwork": "Cinematic miniature studio photography of a gentle, smiling polymer clay Mrs. Claus wearing miniature wire-rim spectacles, a red needle-felted dress, and white lace apron. She holds a tiny tray of star-shaped butter cookies. Warm kitchen oven glow in background, shallow depth of field, 8k resolution, 9:16 vertical.",
+        "prompt_back_design": "Collector card back in Cranberry and Warm Cream, scalloped cookie edge borders, star cookie NFC target.",
+        "prompt_motion_video": "9:16 vertical video. Clay Mrs. Claus smiles lovingly and offers a star cookie toward the camera, warm steam gently rising. Stop-motion claymation.",
+        "prompt_voice_dialogue": "Vocal style: Tender, warm, caring holiday matron. 'From our warm hearth to yours, may your holidays be filled with joy and sweetness. Happy Holidays, dear!'",
+        "prompt_negative": "blurry, low quality, cartoon, deformed"
+      },
+      "descriptions": {
+        "shopify_short_desc": "✦ Handcrafted Polymer Clay Mrs. Claus Keepsake\n✦ 1080p Stop-Motion Kitchen Video\n✦ Embedded NTAG215 Rewritable NFC Chip\n✦ Premium CR80 30mil Waterproof PVC",
+        "shopify_full_html": "<div class=\"tg-product-desc\"><h3>🍪❤️ Mrs. Claus (The Hearth Matron) - Series 1</h3><p>Bring the warmth of the North Pole kitchen to your holiday celebrations with Mrs. Claus. Tap with any smartphone for instant heartfelt claymation video blessing.</p></div>",
+        "social_share_caption": "A dash of kindness! 🍪❤️ Tap to experience Mrs. Claus (The Hearth Matron) smart NFC card: https://TapGreetings.com/010"
+      },
+      "seo": {
+        "primary_occasion": "Winter Holidays",
+        "keywords": [
+          "mrs claus card",
+          "mrs claus",
+          "clay mrs claus",
+          "needle felt",
+          "nfc holiday card",
+          "smart card",
+          "tapgreetings"
+        ],
+        "seo_title": "Mrs. Claus (The Hearth Matron) | Series 1 NFC Holiday Card",
+        "seo_meta_desc": "Experience Mrs. Claus, sculpted in warm clay and needle-felted crimson wool. Tap this smart NFC card for instant warm holiday motion video greeting."
+      },
+      "media": {
+        "aspect_ratio": "9:16",
+        "video_url": "https://TapGreetings.com/assets/video/010-video.mp4",
+        "local_video_path": "/assets/video/010-video.mp4",
+        "video_duration_seconds": 8,
+        "audio_dialogue": "From our warm hearth to yours, may your holidays be filled with joy and sweetness. Happy Holidays, dear!",
+        "front_image_url": "https://TapGreetings.com/assets/img/010-front.jpg",
+        "local_front_image_path": "/assets/img/010-front.jpg",
+        "back_image_url": "https://TapGreetings.com/assets/img/010-back.jpg",
+        "local_back_image_path": "/assets/img/010-back.jpg"
+      },
+      "style_tokens": {
+        "theme_name": "Warm Oven & Crimson Wool",
+        "colors": {
+          "bg_obsidian_midnight": "#180E0B",
+          "bg_frosted_ice_blue": "#FFF8F0",
+          "accent_blush_pink": "#F87171",
+          "accent_champagne_gold": "#FBBF24",
+          "border_rose_gold": "#BE123C",
+          "text_charcoal": "#28170F",
+          "text_white": "#FFFFFF",
+          "neon_halo_glow": "#E11D48"
+        }
+      },
+      "nfc_config": {
+        "target_shape": "star_cookie",
+        "tap_label": "⟡ TAP FOR WARMTH ⟡",
+        "instruction": "Tap phone to warm cookie medallion",
+        "hidden_items_count": {}
+      },
+      "utility_action": {
+        "action_type": "HEARTH_BLESSING",
+        "button_text": "Receive Hearth Cookie Blessing",
+        "target_url": "https://TapGreetings.com/010"
+      },
+      "commerce": {
+        "price": 14.99,
+        "compare_at_price": 24.99,
+        "sku": "TG-S1-010",
         "inventory_qty": 100,
         "card_format": "CR80 30mil Waterproof PVC",
         "nfc_chip": "NTAG215 (504 Bytes Rewritable)"

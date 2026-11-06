@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>TapGreetings Series 1: The Clay & Needle-Felt Holiday Collection | TapGreetings Series 1</title>
     
+    <!-- Instant Theme Detection Before Render -->
+    <script>
+        (function() {
+            try {
+                var saved = localStorage.getItem('tg_theme');
+                if (saved === 'light') {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.classList.add('light');
+                } else {
+                    document.documentElement.classList.remove('light');
+                    document.documentElement.classList.add('dark');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
     <!-- Primary SEO Meta Tags -->
     <meta name="title" content="TapGreetings Series 1: The Clay & Needle-Felt Holiday Collection | TapGreetings Series 1">
     <meta name="description" content="Experience Santa, crafted in polymer clay & needle felt. Tap this smart NFC card for instant 1080p stop-motion workshop video and voice greeting.">
@@ -69,6 +85,7 @@
             width: 100%;
             max-width: 100vw;
             background-color: #120C08;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         .break-anywhere {
             overflow-wrap: anywhere;
@@ -126,6 +143,123 @@
             transform: rotateY(180deg);
             -webkit-transform: rotateY(180deg);
         }
+
+        /* COMPREHENSIVE LIGHT MODE THEME OVERRIDES */
+        html.light {
+            color-scheme: light;
+        }
+        html.light body {
+            background-color: #FAF6F0 !important;
+            color: #26160F !important;
+        }
+        html.light header {
+            background-color: rgba(255, 253, 249, 0.96) !important;
+            border-color: #E6D7C8 !important;
+        }
+        html.light header a,
+        html.light header nav a {
+            color: #3D2214 !important;
+        }
+        html.light header nav a:hover {
+            color: #B91C1C !important;
+        }
+        html.light .bg-[#120C08],
+        html.light .bg-[#140D08] {
+            background-color: #FAF4EB !important;
+            border-color: #E2D2C0 !important;
+        }
+        html.light .bg-[#160E09]/95,
+        html.light .bg-[#160E09] {
+            background-color: #FFFDF9 !important;
+            border-color: #E2D2C0 !important;
+        }
+        html.light .bg-[#1A110C]/95,
+        html.light .bg-[#1A110C] {
+            background-color: #FFFFFF !important;
+            border-color: #E8DACB !important;
+            box-shadow: 0 10px 25px -5px rgba(60, 30, 10, 0.08) !important;
+        }
+        html.light .bg-[#150D09]/95,
+        html.light .bg-[#150D09],
+        html.light .bg-[#150D09]/70 {
+            background-color: #F8F2E8 !important;
+            border-color: #E5D5C4 !important;
+        }
+        html.light .bg-[#1C120C]/90,
+        html.light .bg-[#1C120C] {
+            background-color: #F3ECE0 !important;
+            border-color: #E0CFC0 !important;
+        }
+        html.light .bg-[#241710] {
+            background-color: #EFE4D6 !important;
+            border-color: #D8C3B0 !important;
+        }
+        html.light .bg-[#20140D] {
+            background-color: #EFE5D8 !important;
+            border-color: #D8C3B0 !important;
+        }
+        html.light .bg-[#1F140E] {
+            background-color: #F3ECE0 !important;
+            border-color: #E0CFC0 !important;
+        }
+        html.light .bg-[#0E0704] {
+            background-color: #F5EFEB !important;
+            border-color: #E2D2C0 !important;
+        }
+        html.light .text-white {
+            color: #1F1108 !important;
+        }
+        html.light .text-amber-50,
+        html.light .text-amber-100,
+        html.light .text-amber-100/90,
+        html.light .text-amber-100/80 {
+            color: #382012 !important;
+        }
+        html.light .text-amber-200,
+        html.light .text-amber-200/95,
+        html.light .text-amber-200/90,
+        html.light .text-amber-200/80,
+        html.light .text-amber-200/70 {
+            color: #5C3214 !important;
+        }
+        html.light .text-amber-300 {
+            color: #8C430B !important;
+        }
+        html.light .text-amber-400 {
+            color: #A34E0E !important;
+        }
+        html.light .border-amber-600/40,
+        html.light .border-amber-600/50,
+        html.light .border-amber-600/70,
+        html.light .border-amber-700/30,
+        html.light .border-amber-700/40,
+        html.light .border-amber-800/30,
+        html.light .border-amber-800/40,
+        html.light .border-amber-900/40 {
+            border-color: #E2D2C0 !important;
+        }
+        html.light .glow-amber {
+            box-shadow: 0 0 25px 0 rgba(217, 119, 6, 0.12) !important;
+        }
+        html.light footer {
+            background-color: #F5EFEB !important;
+            border-color: #E5D6C8 !important;
+        }
+        html.light footer .text-slate-200 {
+            color: #24140B !important;
+        }
+        html.light footer .text-slate-400,
+        html.light footer .text-slate-500 {
+            color: #6C5240 !important;
+        }
+        html.light #searchInput {
+            background-color: #FFFFFF !important;
+            color: #24140B !important;
+            border-color: #DAC7B5 !important;
+        }
+        html.light #searchInput::placeholder {
+            color: #9C7D68 !important;
+        }
     </style>
 </head>
 <body class="font-sans bg-[#120C08] text-amber-50 min-h-screen transition-colors duration-300 selection:bg-rose-600 selection:text-white flex flex-col justify-between overflow-x-hidden">
@@ -141,7 +275,7 @@
         <div class="flex items-center gap-3 sm:gap-6">
             <nav class="hidden md:flex gap-6 text-sm font-semibold text-amber-200/90">
                 <a href="/" class="hover:text-amber-300 transition-colors">Home</a>
-                <a href="/#collection" class="hover:text-amber-300 transition-colors">Series 1 (001–008)</a>
+                <a href="/#collection" class="hover:text-amber-300 transition-colors">Series 1 (001–010)</a>
                 <a href="https://shop.tapthingy.com/products/tap-thingy-nfc-custom-pvc-card" target="_blank" class="hover:text-amber-300 transition-colors">Custom Keepsake</a>
                 <a href="https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" target="_blank" class="hover:text-amber-300 transition-colors">NFC Webtool</a>
             </nav>
@@ -155,69 +289,40 @@
     </header>
     <script>
         function toggleTheme() {
-            const html = document.documentElement;
-            const icon = document.getElementById('themeIcon');
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                html.classList.add('light');
-                icon.className = 'fa-solid fa-sun';
-            } else {
+            var html = document.documentElement;
+            var icon = document.getElementById('themeIcon');
+            if (html.classList.contains('light')) {
                 html.classList.remove('light');
                 html.classList.add('dark');
-                icon.className = 'fa-solid fa-moon';
+                try { localStorage.setItem('tg_theme', 'dark'); } catch (e) {}
+                if (icon) icon.className = 'fa-solid fa-moon';
+            } else {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                try { localStorage.setItem('tg_theme', 'light'); } catch (e) {}
+                if (icon) icon.className = 'fa-solid fa-sun';
             }
         }
+        document.addEventListener('DOMContentLoaded', function() {
+            var isLight = document.documentElement.classList.contains('light');
+            var icon = document.getElementById('themeIcon');
+            if (icon) icon.className = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+        });
     </script>
 
-    <main class="w-full max-w-7xl mx-auto px-3 sm:px-6 py-6 sm:py-12 flex-grow overflow-hidden">
+    <main class="w-full max-w-7xl mx-auto px-3 sm:px-6 py-4 sm:py-10 flex-grow overflow-hidden">
         
         <!-- Hero Spotlight Section Featuring Santa (Card 001) -->
-        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#1E130D] via-[#2A1A12] to-[#3B191D] p-5 sm:p-10 lg:p-12 mb-10 shadow-2xl border-[2px] border-amber-600/50 backdrop-blur-md glow-amber w-full">
+        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#1E130D] via-[#2A1A12] to-[#3B191D] p-4 sm:p-10 lg:p-12 mb-8 sm:mb-10 shadow-2xl border-[2px] border-amber-600/50 backdrop-blur-md glow-amber w-full">
             <span class="clay-corner top-4 left-4">✦</span>
             <span class="clay-corner top-4 right-4">✦</span>
             <span class="clay-corner bottom-4 left-4">✦</span>
             <span class="clay-corner bottom-4 right-4">✦</span>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center w-full">
-                <!-- Hero Left: Text & CTA -->
-                <div class="lg:col-span-7 flex flex-col items-start text-left min-w-0">
-                    <div class="flex flex-wrap items-center gap-2 mb-3">
-                        <span class="bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 text-white text-[11px] sm:text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-widest shadow">
-                            🎅 SERIES 1 &bull; THE CLAY &amp; NEEDLE-FELT COLLECTION
-                        </span>
-                        <span class="bg-[#1C120B] text-amber-300 border border-amber-600/40 text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                            8 Handcrafted Characters
-                        </span>
-                    </div>
-
-                    <h1 class="font-clayTitle text-3xl sm:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-amber-100 via-amber-200 to-rose-200 bg-clip-text text-transparent mb-3 drop-shadow-[0_0_30px_rgba(251,191,36,0.3)] break-words">
-                        TapGreetings
-                    </h1>
-                    
-                    <h2 class="font-sans text-lg sm:text-2xl font-bold text-amber-200 mb-3 break-words">
-                        Santa &mdash; <span class="text-rose-300 font-serif italic">The Master Artisan</span>
-                    </h2>
-
-                    <p class="text-xs sm:text-sm lg:text-base text-amber-100/90 max-w-xl mb-4 leading-relaxed break-words">
-                        A round, plump clay Santa with soft thumbprint textures, sporting a matte cranberry coat with needle-felted wool collar and cuffs. He cradles a glowing gold-leaf key while winking from his cozy workshop shelf surrounded by wooden toys and fairy lights.
-                    </p>
-
-                    <blockquote class="text-xs sm:text-sm italic text-amber-200/95 border-l-2 border-amber-400 pl-3 mb-6 max-w-xl break-words">
-                        &ldquo;Every heart has a spark of magic—share yours generously!&rdquo;
-                    </blockquote>
-
-                    <div class="flex flex-wrap gap-3 w-full sm:w-auto">
-                        <a href="/001/" class="bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold px-6 sm:px-8 py-3 rounded-2xl shadow-xl shadow-rose-950/50 transition-transform hover:scale-105 flex items-center justify-center gap-2 text-xs sm:text-sm flex-1 sm:flex-initial">
-                            <i class="fa-solid fa-play"></i> Experience Santa (001)
-                        </a>
-                        <a href="#collection" class="bg-[#20140D] hover:bg-[#2C1C13] text-amber-200 border border-amber-600/40 font-bold px-5 sm:px-6 py-3 rounded-2xl shadow-lg transition-transform hover:scale-105 flex items-center justify-center gap-2 text-xs sm:text-sm flex-1 sm:flex-initial">
-                            <i class="fa-solid fa-boxes-stacked"></i> Explore All 8 Characters
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Hero Right: Live Stop-Motion Video Tap Preview with Unmute Button -->
-                <div class="lg:col-span-5 flex flex-col items-center justify-center w-full min-w-0">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center w-full">
+                
+                <!-- MOBILE VIDEO FIRST: Video shows at the very top of hero on mobile -->
+                <div class="lg:col-span-5 flex flex-col items-center justify-center w-full min-w-0 order-1 lg:order-2">
                     <div class="relative group block w-60 sm:w-72 aspect-[9/16] rounded-3xl overflow-hidden border-[2px] border-amber-500/70 shadow-2xl bg-black glow-amber transition-transform hover:scale-[1.02] cursor-pointer" onclick="toggleHeroMute()">
                         <video id="heroVideo" autoplay loop muted playsinline poster="/assets/img/001-front.jpg" class="w-full h-full object-cover">
                             <source src="/assets/video/001-video.mp4" type="video/mp4">
@@ -234,10 +339,48 @@
                         </a>
                     </div>
                 </div>
+
+                <!-- Hero Text & CTA: Order 2 on mobile, Order 1 on desktop -->
+                <div class="lg:col-span-7 flex flex-col items-start text-left min-w-0 order-2 lg:order-1">
+                    <div class="flex flex-wrap items-center gap-2 mb-2 sm:mb-3">
+                        <span class="bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 text-white text-[10px] sm:text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-widest shadow">
+                            🎅 SERIES 1 &bull; CLAY &amp; NEEDLE-FELT
+                        </span>
+                        <span class="bg-[#1C120B] text-amber-300 border border-amber-600/40 text-[10px] sm:text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                            10 Handcrafted Characters
+                        </span>
+                    </div>
+
+                    <h1 class="font-clayTitle text-3xl sm:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-amber-100 via-amber-200 to-rose-200 bg-clip-text text-transparent mb-2 sm:mb-3 drop-shadow-[0_0_30px_rgba(251,191,36,0.3)] break-words">
+                        TapGreetings
+                    </h1>
+                    
+                    <h2 class="font-sans text-base sm:text-2xl font-bold text-amber-200 mb-2 sm:mb-3 break-words">
+                        Santa &mdash; <span class="text-rose-300 font-serif italic">The Master Artisan</span>
+                    </h2>
+
+                    <p class="text-xs sm:text-sm lg:text-base text-amber-100/90 max-w-xl mb-3 sm:mb-4 leading-relaxed break-words">
+                        A round, plump clay Santa with soft thumbprint textures, sporting a matte cranberry coat with needle-felted wool collar and cuffs. He cradles a glowing gold-leaf key while winking from his cozy workshop shelf surrounded by wooden toys and fairy lights.
+                    </p>
+
+                    <blockquote class="text-xs sm:text-sm italic text-amber-200/95 border-l-2 border-amber-400 pl-3 mb-5 max-w-xl break-words">
+                        &ldquo;Every heart has a spark of magic—share yours generously!&rdquo;
+                    </blockquote>
+
+                    <div class="flex flex-wrap gap-3 w-full sm:w-auto">
+                        <a href="/001/" class="bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold px-5 sm:px-8 py-2.5 sm:py-3 rounded-2xl shadow-xl shadow-rose-950/50 transition-transform hover:scale-105 flex items-center justify-center gap-2 text-xs sm:text-sm flex-1 sm:flex-initial">
+                            <i class="fa-solid fa-play"></i> Experience Santa (001)
+                        </a>
+                        <a href="#collection" class="bg-[#20140D] hover:bg-[#2C1C13] text-amber-200 border border-amber-600/40 font-bold px-4 sm:px-6 py-2.5 sm:py-3 rounded-2xl shadow-lg transition-transform hover:scale-105 flex items-center justify-center gap-2 text-xs sm:text-sm flex-1 sm:flex-initial">
+                            <i class="fa-solid fa-boxes-stacked"></i> Explore All 10 Cards
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <!-- Collection Section: Controls & 8 Pre-Rendered Cards -->
+        <!-- Collection Section: Controls & 10 Pre-Rendered Cards -->
         <section id="collection" class="mb-14">
             <div class="bg-[#1C120C]/90 rounded-3xl p-4 sm:p-6 mb-8 shadow-xl border border-amber-700/40 backdrop-blur-md flex flex-col md:flex-row gap-4 items-center justify-between w-full">
                 <div class="flex items-center gap-3 w-full md:w-auto">
@@ -245,7 +388,7 @@
                         <i class="fa-solid fa-boxes-stacked text-amber-400"></i> Series 1 Gallery
                     </h2>
                     <span id="cardCountBadge" class="bg-[#140D08] text-amber-300 text-xs font-bold px-3 py-1 rounded-full border border-amber-700/40">
-                        8 Cards (001&ndash;008)
+                        10 Cards (001&ndash;010)
                     </span>
                 </div>
 
@@ -264,7 +407,7 @@
             </div>
 
             <!-- Pre-rendered Static Cards Grid (Instant View, Zero Blank State) -->
-            <div id="cardsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
+            <div id="cardsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6 w-full">
                 
     <a href="/001/" class="card-item group bg-[#1A110C]/95 rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-name="santa" data-greeting="happy holidays!" data-keywords="santa card clay santa polymer clay needle felt nfc holiday card master artisan happy holidays smart card" data-lore="a round, plump clay santa with soft thumbprint textures, sporting a matte cranberry coat with needle-felted wool collar and cuffs. he cradles a glowing gold-leaf key while winking from his cozy workshop shelf surrounded by wooden toys and fairy lights." data-front="/assets/img/001-front.jpg" data-back="/assets/img/001-back.jpg">
         <div class="relative w-full aspect-[9/16] bg-[#120C08] overflow-hidden flex items-center justify-center">
@@ -481,6 +624,60 @@
         </div>
     </a>
   
+
+    <a href="/009/" class="card-item group bg-[#1A110C]/95 rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-name="gingerbread man" data-greeting="happy holidays!" data-keywords="gingerbread card gingerbread man clay gingerbread royal icing nfc holiday card smart card tapgreetings" data-lore="a cheerful, baked gingerbread man sculpted in warm cinnamon-spiced polymer clay with dimensional white royal icing piping and gumdrop buttons, waving happily from a flour-dusted holiday kitchen table." data-front="/assets/img/009-front.jpg" data-back="/assets/img/009-back.jpg">
+        <div class="relative w-full aspect-[9/16] bg-[#120C08] overflow-hidden flex items-center justify-center">
+            <img src="/assets/img/009-front.jpg" alt="Gingerbread Man" class="card-img w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" loading="lazy">
+            <div class="absolute top-2.5 right-2.5 bg-black/85 backdrop-blur-sm text-[10px] font-bold px-2 py-0.5 rounded-md border border-amber-600/50 text-amber-300">
+                #009
+            </div>
+            <div class="absolute bottom-2 left-2 right-2 bg-black/80 backdrop-blur-sm text-center py-1 text-[10px] font-bold text-amber-300 uppercase tracking-widest rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                Tap to View Card &rarr;
+            </div>
+        </div>
+        <div class="p-4 flex flex-col gap-1.5 flex-grow justify-between min-w-0">
+            <div class="min-w-0">
+                <div class="flex justify-between items-center mb-1 gap-2">
+                    <span class="text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">Happy Holidays!</span>
+                    <span class="text-[9px] bg-[#140D08] text-amber-200/90 px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">Series 1</span>
+                </div>
+                <div class="font-clayTitle text-base sm:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Gingerbread Man</div>
+                <div class="text-xs text-amber-200/80 italic truncate mt-0.5">The Sweet Reveler</div>
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-amber-900/40 flex justify-between items-center text-xs font-bold text-amber-300">
+                <span class="flex items-center gap-1 text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
+                <span class="group-hover:translate-x-1 transition-transform">View &rarr;</span>
+            </div>
+        </div>
+    </a>
+  
+
+    <a href="/010/" class="card-item group bg-[#1A110C]/95 rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-name="mrs. claus" data-greeting="happy holidays!" data-keywords="mrs claus card mrs claus clay mrs claus needle felt nfc holiday card smart card tapgreetings" data-lore="a warm, grandmotherly mrs. claus in cozy crimson wool and a lace-trimmed apron, presenting a steaming tray of golden star cookies straight from the north pole oven with a loving smile." data-front="/assets/img/010-front.jpg" data-back="/assets/img/010-back.jpg">
+        <div class="relative w-full aspect-[9/16] bg-[#120C08] overflow-hidden flex items-center justify-center">
+            <img src="/assets/img/010-front.jpg" alt="Mrs. Claus" class="card-img w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" loading="lazy">
+            <div class="absolute top-2.5 right-2.5 bg-black/85 backdrop-blur-sm text-[10px] font-bold px-2 py-0.5 rounded-md border border-amber-600/50 text-amber-300">
+                #010
+            </div>
+            <div class="absolute bottom-2 left-2 right-2 bg-black/80 backdrop-blur-sm text-center py-1 text-[10px] font-bold text-amber-300 uppercase tracking-widest rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                Tap to View Card &rarr;
+            </div>
+        </div>
+        <div class="p-4 flex flex-col gap-1.5 flex-grow justify-between min-w-0">
+            <div class="min-w-0">
+                <div class="flex justify-between items-center mb-1 gap-2">
+                    <span class="text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">Happy Holidays!</span>
+                    <span class="text-[9px] bg-[#140D08] text-amber-200/90 px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">Series 1</span>
+                </div>
+                <div class="font-clayTitle text-base sm:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Mrs. Claus</div>
+                <div class="text-xs text-amber-200/80 italic truncate mt-0.5">The Hearth Matron</div>
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-amber-900/40 flex justify-between items-center text-xs font-bold text-amber-300">
+                <span class="flex items-center gap-1 text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
+                <span class="group-hover:translate-x-1 transition-transform">View &rarr;</span>
+            </div>
+        </div>
+    </a>
+  
             </div>
             
             <div id="noResults" class="hidden text-center py-16 text-amber-200/60 font-clayTitle text-base sm:text-lg">
@@ -489,7 +686,7 @@
         </section>
 
         <!-- Web NFC Reprogrammer Tool Feature -->
-        <div class="mt-14 sm:mt-20 bg-gradient-to-r from-[#1E130D] via-[#261710] to-[#1E130D] rounded-3xl p-6 sm:p-10 border-[2px] border-amber-600/40 glow-amber text-center max-w-4xl mx-auto w-full">
+        <div class="mt-12 sm:mt-18 bg-gradient-to-r from-[#1E130D] via-[#261710] to-[#1E130D] rounded-3xl p-6 sm:p-10 border-[2px] border-amber-600/40 glow-amber text-center max-w-4xl mx-auto w-full">
             <span class="inline-block bg-rose-900/30 text-rose-300 text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider mb-3 border border-rose-800/40">
                 ✦ TapThingy NFC Web Reprogrammer Tool ✦
             </span>
@@ -513,10 +710,10 @@
 
     <script>
         function toggleHeroMute() {
-            const vid = document.getElementById('heroVideo');
-            const icon = document.getElementById('heroMuteIcon');
-            const text = document.getElementById('heroMuteText');
-            const btn = document.getElementById('heroUnmuteBtn');
+            var vid = document.getElementById('heroVideo');
+            var icon = document.getElementById('heroMuteIcon');
+            var text = document.getElementById('heroMuteText');
+            var btn = document.getElementById('heroUnmuteBtn');
             if (!vid) return;
 
             if (vid.muted) {
@@ -533,12 +730,12 @@
             }
         }
 
-        let currentGridSide = 'front';
+        var currentGridSide = 'front';
 
         function setGridSide(side) {
             currentGridSide = side;
-            const btnF = document.getElementById('btnFront');
-            const btnB = document.getElementById('btnBack');
+            var btnF = document.getElementById('btnFront');
+            var btnB = document.getElementById('btnBack');
             if (side === 'front') {
                 btnF.className = 'px-3 py-1 text-xs font-bold rounded-lg bg-rose-700 text-white shadow transition-all';
                 btnB.className = 'px-3 py-1 text-xs font-bold rounded-lg text-amber-200/70 transition-all';
@@ -547,29 +744,29 @@
                 btnF.className = 'px-3 py-1 text-xs font-bold rounded-lg text-amber-200/70 transition-all';
             }
 
-            document.querySelectorAll('.card-item').forEach(card => {
-                const img = card.querySelector('.card-img');
+            document.querySelectorAll('.card-item').forEach(function(card) {
+                var img = card.querySelector('.card-img');
                 if (img) {
-                    const src = side === 'back' ? card.getAttribute('data-back') : card.getAttribute('data-front');
+                    var src = side === 'back' ? card.getAttribute('data-back') : card.getAttribute('data-front');
                     if (src) img.src = src;
                 }
             });
         }
 
         function filterCards() {
-            const query = (document.getElementById('searchInput')?.value || '').toLowerCase().trim();
-            const cards = document.querySelectorAll('.card-item');
-            const noResults = document.getElementById('noResults');
-            const badge = document.getElementById('cardCountBadge');
-            let visibleCount = 0;
+            var query = (document.getElementById('searchInput')?.value || '').toLowerCase().trim();
+            var cards = document.querySelectorAll('.card-item');
+            var noResults = document.getElementById('noResults');
+            var badge = document.getElementById('cardCountBadge');
+            var visibleCount = 0;
 
-            cards.forEach(card => {
-                const name = card.getAttribute('data-name') || '';
-                const greeting = card.getAttribute('data-greeting') || '';
-                const keywords = card.getAttribute('data-keywords') || '';
-                const lore = card.getAttribute('data-lore') || '';
+            cards.forEach(function(card) {
+                var name = card.getAttribute('data-name') || '';
+                var greeting = card.getAttribute('data-greeting') || '';
+                var keywords = card.getAttribute('data-keywords') || '';
+                var lore = card.getAttribute('data-lore') || '';
 
-                const matches = !query || name.includes(query) || greeting.includes(query) || keywords.includes(query) || lore.includes(query);
+                var matches = !query || name.includes(query) || greeting.includes(query) || keywords.includes(query) || lore.includes(query);
                 if (matches) {
                     card.style.display = 'flex';
                     visibleCount++;
@@ -585,19 +782,19 @@
         }
     </script>
 
-    <footer class="w-full text-center py-12 px-4 text-xs sm:text-sm text-slate-400 border-t border-slate-800/80 mt-16 sm:mt-24 flex flex-col items-center gap-6 bg-[#0E0704]">
+    <footer class="w-full text-center py-10 px-4 text-xs sm:text-sm text-slate-400 border-t border-slate-800/80 mt-14 sm:mt-20 flex flex-col items-center gap-5 bg-[#0E0704]">
         <div class="flex flex-wrap justify-center gap-6 text-xl text-rose-400">
             <a href="https://tiktok.com/@tapthingy" target="_blank" class="hover:text-amber-300 transition-transform hover:scale-110" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
             <a href="https://instagram.com/tapthingy" target="_blank" class="hover:text-amber-300 transition-transform hover:scale-110" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
             <a href="https://youtube.com/@tapthingy" target="_blank" class="hover:text-amber-300 transition-transform hover:scale-110" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
             <a href="https://x.com/tapthingy" target="_blank" class="hover:text-amber-300 transition-transform hover:scale-110" title="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
         </div>
-        <div class="max-w-xl text-center space-y-2 px-2">
+        <div class="max-w-xl text-center space-y-1.5 px-2">
             <p class="font-bold text-slate-200">
                 TapGreetings &bull; Smart NFC Living Keepsake Greeting Cards
             </p>
             <p class="leading-relaxed text-slate-400 text-xs">
-                Featuring rewritable NTAG215 waterproof CR80 PVC hardware, 1080p motion video streaming, and instant over-the-air reprogrammability. Powered by <a href="https://tapthingy.com" target="_blank" class="text-rose-400 font-bold hover:underline">TapThingy</a>.
+                Powered by <a href="https://tapthingy.com" target="_blank" class="text-rose-400 font-bold hover:underline">TapThingy</a>.
             </p>
         </div>
         <div class="flex flex-wrap justify-center gap-4 text-xs text-slate-400">
@@ -608,7 +805,7 @@
             <a href="https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" target="_blank" class="hover:text-rose-300">NFC Tools Guide</a>
         </div>
         <p class="text-[11px] text-slate-500">
-            &copy; 2026 TapGreetings &bull; TapThingy LLC. All rights reserved.
+            &copy; 2026 TapGreetings &bull; TapThingy. All rights reserved.
         </p>
     </footer>
 </body>
