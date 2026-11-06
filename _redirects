@@ -19,6 +19,18 @@
 /gingerbread-man /009/ 301
 /mrs-claus /010/ 301
 /hearth-matron /010/ 301
+/elf /011/ 301
+/workshop-elf /011/ 301
+/polar-bear /012/ 301
+/gentle-giant /012/ 301
+/penguin /013/ 301
+/ice-dancer /013/ 301
+/fairy /014/ 301
+/sugar-plum-fairy /014/ 301
+/snow-monster /015/ 301
+/yeti /015/ 301
+/puppy /016/ 301
+/stocking-puppy /016/ 301
 
 # Backward-compatible 2-digit redirects
 /01 /001/ 301
@@ -31,6 +43,12 @@
 /08 /008/ 301
 /09 /009/ 301
 /10 /010/ 301
+/11 /011/ 301
+/12 /012/ 301
+/13 /013/ 301
+/14 /014/ 301
+/15 /015/ 301
+/16 /016/ 301
 
 /tools https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide 302
 /reprogram https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide 302

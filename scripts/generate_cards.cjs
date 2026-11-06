@@ -26,6 +26,26 @@ function resolveAssetPath(filePath) {
   return '/' + filePath.replace(/^\.\//, '');
 }
 
+// Assign category to each card for filtering
+function getCardCategory(code) {
+  const num = parseInt(code, 10);
+  if ([1, 2, 3, 10].includes(num)) return 'classic';
+  if ([4, 7, 14, 15].includes(num)) return 'magic';
+  if ([5, 6, 8, 9].includes(num)) return 'hearth';
+  if ([11, 12, 13, 16].includes(num)) return 'friends';
+  return 'all';
+}
+
+function getCategoryName(category) {
+  switch (category) {
+    case 'classic': return 'Classic Icons';
+    case 'magic': return 'Winter Magic';
+    case 'hearth': return 'Hearth & Holiday';
+    case 'friends': return 'Festive Friends';
+    default: return 'All Cards';
+  }
+}
+
 // Clean HTML snippet helpers
 function renderKeywords(keywords) {
   if (!keywords || !Array.isArray(keywords) || keywords.length === 0) return '';
@@ -235,6 +255,15 @@ function getHeadHtml(title, cardStyle = null, seoData = null, mediaData = null, 
             -webkit-transform: rotateY(180deg);
         }
 
+        /* Custom scrollbar for horizontal card slider */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
         /* COMPREHENSIVE LIGHT MODE THEME OVERRIDES */
         html.light {
             color-scheme: light;
@@ -366,7 +395,7 @@ function getHeadHtml(title, cardStyle = null, seoData = null, mediaData = null, 
         <div class="flex items-center gap-3 sm:gap-6">
             <nav class="hidden md:flex gap-6 text-sm font-semibold text-amber-200/90">
                 <a href="/" class="hover:text-amber-300 transition-colors">Home</a>
-                <a href="/#collection" class="hover:text-amber-300 transition-colors">Series 1 (001–010)</a>
+                <a href="/#collection" class="hover:text-amber-300 transition-colors">Series 1 (001–016)</a>
                 <a href="${meta.custom_designer_url}" target="_blank" class="hover:text-amber-300 transition-colors">Custom Keepsake</a>
                 <a href="${meta.tools_url}" target="_blank" class="hover:text-amber-300 transition-colors">NFC Webtool</a>
             </nav>
@@ -437,16 +466,17 @@ function getFooterHtml() {
 `;
 }
 
-// 1. Generate Individual Card Pages (001 - 010)
+// 1. Generate Individual Card Pages (001 - 016)
 console.log(`Generating Series 1 card pages (001 - ${cards.length})...`);
 cards.forEach((card, index) => {
   const prevCard = index > 0 ? cards[index - 1] : cards[cards.length - 1];
   const nextCard = index < cards.length - 1 ? cards[index + 1] : cards[0];
+  const prevChar = prevCard.character || {};
+  const nextChar = nextCard.character || {};
 
   const char = card.character || {};
   const media = card.media || {};
   const nfc = card.nfc_config || {};
-  const utility = card.utility_action || {};
   const prompts = card.prompts || {};
   const seo = card.seo || {};
   const comm = card.commerce || {};
@@ -458,7 +488,7 @@ cards.forEach((card, index) => {
 
   const cardPageHtml = `${getHeadHtml(seo.seo_title || `${char.name} (${char.title})`, card.style_tokens, seo, media, card.web_address)}
     <main class="w-full max-w-5xl mx-auto px-3 sm:px-6 py-4 sm:py-8 flex-grow">
-        <!-- Main Card Container with Clay Embossed Borders and Amber Glow -->
+        <!-- Main Card Container with Amber Glow -->
         <div class="relative bg-[#1A110C]/95 rounded-3xl p-3 sm:p-8 shadow-2xl border-[2px] border-amber-600/40 backdrop-blur-md flex flex-col gap-4 sm:gap-6 glow-amber w-full overflow-hidden">
             
             <!-- 4-Point Gold Starburst Filigree Accents in Corners -->
@@ -474,7 +504,7 @@ cards.forEach((card, index) => {
                         ${card.event_greeting || 'Happy Holidays!'}
                     </span>
                     <span class="inline-block bg-[#241710] text-amber-300 border border-amber-600/40 text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                        SERIES 1 &bull; CARD #${card.card_code} OF 010
+                        SERIES 1 &bull; CARD #${card.card_code} OF 016
                     </span>
                     <span class="inline-block bg-[#241710] text-rose-300 border border-rose-600/40 text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                         ${char.rarity_tier || 'Series 1 Premier'}
@@ -496,47 +526,60 @@ cards.forEach((card, index) => {
             </div>
 
             <!-- MAIN CONTENT: On Mobile, Video is at the very top! -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-8 items-start w-full min-w-0">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start w-full min-w-0">
                 
-                <!-- COLUMN 1: VIDEO FIRST (Top on Mobile, Left Column on Desktop) -->
-                <div class="order-1 flex flex-col items-center justify-center bg-black/95 rounded-3xl p-2.5 sm:p-4 border-[2px] border-amber-600/50 ring-2 ring-rose-500/20 shadow-2xl relative overflow-hidden group w-full min-w-0">
+                <!-- COLUMN 1: VIDEO FIRST & NAVIGATION DIRECTLY UNDER VIDEO (No bulky outer container) -->
+                <div class="order-1 flex flex-col items-center w-full min-w-0">
                     
                     <!-- Compact Mobile Header directly above video -->
                     <div class="lg:hidden w-full flex justify-between items-center mb-2 px-1">
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-amber-300 bg-[#1F140E] px-2.5 py-1 rounded-full border border-amber-700/40">
+                        <span class="text-xs font-bold uppercase tracking-wider text-amber-300 bg-[#1F140E] px-3 py-1 rounded-full border border-amber-700/40">
                             #${card.card_code} &bull; ${char.name}
                         </span>
-                        <span class="text-[10px] font-bold text-rose-300 uppercase tracking-wider">
+                        <span class="text-xs font-bold text-rose-300 uppercase tracking-wider">
                             ${card.event_greeting || 'Happy Holidays!'}
                         </span>
                     </div>
 
-                    <!-- Video Frame with Big Unmute Button -->
-                    <div class="relative w-full max-w-[320px] sm:max-w-[360px] mx-auto rounded-2xl overflow-hidden bg-black flex justify-center shadow-inner cursor-pointer" onclick="toggleMute()">
-                        <video id="cardVideo" autoplay loop muted playsinline poster="${frontImg}" class="aspect-[9/16] w-full max-h-[66vh] sm:max-h-[70vh] object-cover rounded-2xl">
+                    <!-- Video Frame - Larger, Edge-to-Edge Without Heavy Enclosing Container -->
+                    <div class="relative w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[500px] aspect-[9/16] rounded-3xl overflow-hidden bg-black shadow-2xl ring-1 ring-amber-500/30 flex justify-center items-center cursor-pointer group" onclick="toggleMute()">
+                        <video id="cardVideo" autoplay loop muted playsinline poster="${frontImg}" class="w-full h-full object-cover">
                             <source src="${videoSrc}" type="video/mp4">
                             Your browser does not support HTML5 video.
                         </video>
 
                         <!-- Big Prominent Unmute Button -->
-                        <button id="unmuteBtn" onclick="event.stopPropagation(); toggleMute();" class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold px-5 py-2.5 rounded-full shadow-2xl shadow-rose-950/80 flex items-center gap-2 text-xs sm:text-sm tracking-wide transition-all hover:scale-105 active:scale-95 animate-pulse border border-amber-300/40 z-20 whitespace-nowrap">
-                            <i id="muteIcon" class="fa-solid fa-volume-xmark text-amber-200"></i>
+                        <button id="unmuteBtn" onclick="event.stopPropagation(); toggleMute();" class="absolute bottom-5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold px-6 py-3 rounded-full shadow-2xl shadow-rose-950/80 flex items-center gap-2.5 text-xs sm:text-sm tracking-wide transition-all hover:scale-105 active:scale-95 animate-pulse border border-amber-300/40 z-20 whitespace-nowrap">
+                            <i id="muteIcon" class="fa-solid fa-volume-xmark text-amber-200 text-base"></i>
                             <span id="muteText">Tap to Unmute Video</span>
                         </button>
                     </div>
 
                     <!-- Video Controls Row -->
-                    <div class="mt-2.5 w-full flex items-center justify-between px-2 text-xs font-semibold text-amber-200">
-                        <button onclick="restartVideo()" class="flex items-center gap-1.5 text-amber-300 hover:text-white transition-colors">
+                    <div class="mt-3 w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[500px] flex items-center justify-between px-2 text-xs font-semibold text-amber-200">
+                        <button onclick="restartVideo()" class="flex items-center gap-1.5 text-amber-300 hover:text-white transition-colors bg-[#1A110C] px-3 py-1.5 rounded-xl border border-amber-900/40">
                             <i class="fa-solid fa-rotate-left"></i> <span>Replay</span>
                         </button>
-                        <button onclick="toggleMute()" class="flex items-center gap-1.5 text-amber-300 hover:text-white transition-colors">
+                        <button onclick="toggleMute()" class="flex items-center gap-1.5 text-amber-300 hover:text-white transition-colors bg-[#1A110C] px-3 py-1.5 rounded-xl border border-amber-900/40">
                             <i class="fa-solid fa-volume-high text-rose-400"></i> <span id="muteStatusLabel">Sound: Muted (Tap to Play)</span>
                         </button>
                     </div>
+
+                    <!-- NEXT & PREV DIRECTLY UNDER VIDEO -->
+                    <div class="mt-4 w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[500px] flex items-center justify-between gap-2 text-xs font-bold">
+                        <a href="/${prevCard.card_code}/" class="flex-1 bg-[#1F140E] hover:bg-rose-700 text-amber-200 hover:text-white px-3 py-2.5 rounded-2xl flex items-center justify-center gap-1.5 transition-all shadow border border-amber-800/40 truncate">
+                            <i class="fa-solid fa-arrow-left"></i> <span class="truncate">#${prevCard.card_code} ${prevChar.name}</span>
+                        </a>
+                        <a href="/#collection" class="bg-[#180E09] hover:bg-[#281810] text-amber-300 px-3.5 py-2.5 rounded-2xl flex items-center justify-center gap-1.5 transition-all shadow border border-amber-800/40 whitespace-nowrap">
+                            <i class="fa-solid fa-boxes-stacked"></i> <span class="hidden sm:inline">All</span> 16
+                        </a>
+                        <a href="/${nextCard.card_code}/" class="flex-1 bg-[#1F140E] hover:bg-rose-700 text-amber-200 hover:text-white px-3 py-2.5 rounded-2xl flex items-center justify-center gap-1.5 transition-all shadow border border-amber-800/40 truncate">
+                            <span class="truncate">#${nextCard.card_code} ${nextChar.name}</span> <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
 
-                <!-- COLUMN 2: Details + Physical Smart Card 3D Flip (Front/Back) + Lore & Actions -->
+                <!-- COLUMN 2: Details + Physical Smart Card 3D Flip (Front/Back) + Lore & Order Button -->
                 <div class="order-2 flex flex-col gap-4 sm:gap-6 w-full min-w-0">
                     
                     <!-- MOBILE TITLE & MOTTO (Displayed right under video on mobile) -->
@@ -553,7 +596,7 @@ cards.forEach((card, index) => {
                         ${renderKeywords(seo.keywords)}
                     </div>
 
-                    <!-- Interactive Flippable 3D Physical Keepsake Card (Front & Back) -->
+                    <!-- Interactive Flippable 3D Physical Keepsake Card (Front & Back - CLEAN ARTWORK WITH NO OVERLAYS) -->
                     <div class="bg-[#150D09]/95 p-4 sm:p-5 rounded-3xl border border-amber-700/30 shadow-xl flex flex-col items-center min-w-0">
                         <div class="w-full flex justify-between items-center mb-3">
                             <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
@@ -564,26 +607,20 @@ cards.forEach((card, index) => {
                             </button>
                         </div>
 
-                        <!-- 3D Card Container -->
-                        <div class="perspective-container w-full max-w-[260px] sm:max-w-[290px] aspect-[9/16] cursor-pointer group my-1" onclick="toggleCardFlip()">
+                        <!-- 3D Card Container (Clean, zero text overlays on the artwork) -->
+                        <div class="perspective-container w-full max-w-[280px] sm:max-w-[320px] aspect-[9/16] cursor-pointer group my-1" onclick="toggleCardFlip()">
                             <div id="physicalCard3d" class="card-3d shadow-2xl border-[2px] border-amber-600/70 rounded-2xl bg-[#140D08]">
-                                <!-- Front Face -->
+                                <!-- Front Face (Pure Art, No Overlays) -->
                                 <div class="card-face card-face-front bg-[#120C08]">
-                                    <img src="${frontImg}" alt="${char.name} Front Artwork" class="w-full h-full object-contain">
-                                    <div class="absolute bottom-2 left-2 right-2 bg-black/80 backdrop-blur-sm text-center py-1 text-[10px] font-bold text-amber-300 uppercase tracking-widest rounded-lg">
-                                        Front Artwork &bull; Tap to Flip ↻
-                                    </div>
+                                    <img src="${frontImg}" alt="${char.name} Front Artwork" class="w-full h-full object-cover">
                                 </div>
-                                <!-- Back Face (Clean Artwork Display) -->
+                                <!-- Back Face (Pure Art, No Overlays) -->
                                 <div class="card-face card-face-back bg-[#120C08]">
-                                    <img src="${backImg}" alt="${char.name} Collector Back" class="w-full h-full object-contain">
-                                    <div class="absolute bottom-2 left-2 right-2 bg-black/80 backdrop-blur-sm text-center py-1 text-[10px] font-bold text-amber-300 uppercase tracking-widest rounded-lg">
-                                        Back Collector Design &bull; Tap to Flip ↻
-                                    </div>
+                                    <img src="${backImg}" alt="${char.name} Collector Back" class="w-full h-full object-cover">
                                 </div>
                             </div>
                         </div>
-                        <p class="text-[11px] text-amber-200/70 mt-2 italic text-center">Click or tap card to flip between front sculpture and back NFC antenna layout</p>
+                        <p class="text-[11px] text-amber-200/70 mt-2 italic text-center">Tap card to flip between front sculpture and back NFC antenna layout</p>
                     </div>
 
                     <!-- Micro Lore Box -->
@@ -602,35 +639,14 @@ cards.forEach((card, index) => {
                     <!-- Prompts Accordion -->
                     ${renderPromptsAccordion(prompts)}
 
-                    <!-- Utility Action & Order Buttons -->
-                    <div class="flex flex-col gap-3 pt-1 min-w-0">
-                        ${utility.button_text ? `
-                        <a href="${utility.target_url || '#'}" target="_blank" onclick="triggerConfetti()" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-3.5 px-4 rounded-2xl shadow-xl shadow-rose-900/40 text-center flex items-center justify-center gap-2 transition-transform hover:scale-[1.01] text-sm">
-                            <i class="fa-solid fa-sparkles"></i> <span>${utility.button_text}</span> &rarr;
+                    <!-- Actions: Order Keepsake Card & Share (NO extra button above) -->
+                    <div class="flex flex-col sm:flex-row gap-3 pt-2 min-w-0">
+                        <a href="${meta.shop_url}" target="_blank" class="flex-1 bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-3.5 px-5 rounded-2xl shadow-xl shadow-rose-900/40 text-center flex items-center justify-center gap-2 transition-transform hover:scale-[1.01] text-sm">
+                            <i class="fa-solid fa-cart-shopping"></i> Order Keepsake Card &bull; $${comm.price ? comm.price.toFixed(2) : '14.99'}
                         </a>
-                        ` : ''}
-
-                        <div class="flex flex-col sm:flex-row gap-2.5">
-                            <a href="${meta.shop_url}" target="_blank" class="flex-1 bg-[#20140D] hover:bg-[#2C1C13] text-amber-300 font-bold py-3 px-4 rounded-2xl border border-amber-600/40 shadow-lg text-center flex items-center justify-center gap-2 transition-transform hover:scale-[1.01] text-xs sm:text-sm">
-                                <i class="fa-solid fa-cart-shopping"></i> Order Keepsake Card &bull; $${comm.price ? comm.price.toFixed(2) : '14.99'}
-                            </a>
-                            <button onclick="shareGreeting()" class="bg-[#20140D] hover:bg-[#2C1C13] text-white font-bold py-3 px-4 rounded-2xl border border-amber-800/40 shadow-lg flex items-center justify-center gap-2 transition-transform hover:scale-[1.01] text-xs sm:text-sm">
-                                <i class="fa-solid fa-share-nodes text-rose-400"></i> Share
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Navigation Footer (Root-Relative Links) -->
-                    <div class="flex justify-between items-center pt-4 border-t border-amber-900/40 text-xs">
-                        <a href="/${prevCard.card_code}/" class="bg-[#20140D] hover:bg-rose-700 text-white font-bold px-3 py-2 rounded-xl flex items-center gap-1.5 transition-colors shadow border border-amber-800/40">
-                            <i class="fa-solid fa-arrow-left"></i> #${prevCard.card_code}
-                        </a>
-                        <a href="/#collection" class="bg-[#20140D] hover:bg-rose-700 text-white font-bold px-3 py-2 rounded-xl flex items-center gap-1.5 transition-colors shadow border border-amber-800/40">
-                            <i class="fa-solid fa-boxes-stacked"></i> All Cards
-                        </a>
-                        <a href="/${nextCard.card_code}/" class="bg-[#20140D] hover:bg-rose-700 text-white font-bold px-3 py-2 rounded-xl flex items-center gap-1.5 transition-colors shadow border border-amber-800/40">
-                            #${nextCard.card_code} <i class="fa-solid fa-arrow-right"></i>
-                        </a>
+                        <button onclick="shareGreeting()" class="bg-[#20140D] hover:bg-[#2C1C13] text-white font-bold py-3.5 px-5 rounded-2xl border border-amber-800/40 shadow-lg flex items-center justify-center gap-2 transition-transform hover:scale-[1.01] text-sm">
+                            <i class="fa-solid fa-share-nodes text-rose-400"></i> Share
+                        </button>
                     </div>
 
                 </div>
@@ -659,14 +675,14 @@ cards.forEach((card, index) => {
             if (vid.muted) {
                 vid.muted = false;
                 vid.play();
-                if (icon) icon.className = 'fa-solid fa-volume-high text-white';
+                if (icon) icon.className = 'fa-solid fa-volume-high text-white text-base';
                 if (text) text.innerText = 'Sound Playing (Tap to Mute)';
                 if (btn) btn.classList.remove('animate-pulse');
                 if (statusLabel) statusLabel.innerText = 'Sound: Playing 🔊';
                 triggerConfetti();
             } else {
                 vid.muted = true;
-                if (icon) icon.className = 'fa-solid fa-volume-xmark text-amber-200';
+                if (icon) icon.className = 'fa-solid fa-volume-xmark text-amber-200 text-base';
                 if (text) text.innerText = 'Tap to Unmute Video';
                 if (btn) btn.classList.add('animate-pulse');
                 if (statusLabel) statusLabel.innerText = 'Sound: Muted (Tap to Play)';
@@ -735,34 +751,34 @@ const featuredMedia = featuredCard.media || {};
 const featuredFront = resolveAssetPath(featuredMedia.local_front_image_path || featuredMedia.front_image_url);
 const featuredVideo = resolveAssetPath(featuredMedia.local_video_path || featuredMedia.video_url);
 
-// Generate pre-rendered static HTML cards for the collection grid
-const renderedCardsHtml = cards.map(c => {
+// Generate pre-rendered static HTML cards for the collection grid (CLEAN, NO OVERLAYS ON ART)
+const renderedCardsHtml = cards.map((c, idx) => {
   const ch = c.character || {};
   const front = resolveAssetPath(c.media?.local_front_image_path || c.media?.front_image_url);
   const back = resolveAssetPath(c.media?.local_back_image_path || c.media?.back_image_url);
   const keywords = (c.seo?.keywords || []).join(' ').toLowerCase();
+  const category = getCardCategory(c.card_code);
 
   return `
-    <a href="/${c.card_code}/" class="card-item group bg-[#1A110C]/95 rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-name="${(ch.name || '').toLowerCase()}" data-greeting="${(c.event_greeting || '').toLowerCase()}" data-keywords="${keywords}" data-lore="${(ch.micro_lore || '').toLowerCase()}" data-front="${front}" data-back="${back}">
+    <a href="/${c.card_code}/" class="card-item group bg-[#1A110C]/95 rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between glow-amber min-w-0" data-index="${idx}" data-code="${c.card_code}" data-name="${(ch.name || '').toLowerCase()}" data-greeting="${(c.event_greeting || '').toLowerCase()}" data-keywords="${keywords}" data-lore="${(ch.micro_lore || '').toLowerCase()}" data-category="${category}" data-front="${front}" data-back="${back}">
+        <!-- Clean Image Box - 100% Unobstructed Art -->
         <div class="relative w-full aspect-[9/16] bg-[#120C08] overflow-hidden flex items-center justify-center">
-            <img src="${front}" alt="${ch.name}" class="card-img w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" loading="lazy">
-            <div class="absolute top-2.5 right-2.5 bg-black/85 backdrop-blur-sm text-[10px] font-bold px-2 py-0.5 rounded-md border border-amber-600/50 text-amber-300">
+            <img src="${front}" alt="${ch.name}" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+            <div class="absolute top-2.5 right-2.5 bg-black/85 backdrop-blur-sm text-[10px] font-bold px-2.5 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">
                 #${c.card_code}
             </div>
-            <div class="absolute bottom-2 left-2 right-2 bg-black/80 backdrop-blur-sm text-center py-1 text-[10px] font-bold text-amber-300 uppercase tracking-widest rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
-                Tap to View Card &rarr;
-            </div>
         </div>
-        <div class="p-4 flex flex-col gap-1.5 flex-grow justify-between min-w-0">
+        <!-- Card Details Footer -->
+        <div class="p-3.5 sm:p-4 flex flex-col gap-1.5 flex-grow justify-between min-w-0">
             <div class="min-w-0">
                 <div class="flex justify-between items-center mb-1 gap-2">
                     <span class="text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">${c.event_greeting || 'Happy Holidays!'}</span>
-                    <span class="text-[9px] bg-[#140D08] text-amber-200/90 px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">Series 1</span>
+                    <span class="text-[9px] bg-[#140D08] text-amber-200/90 px-2 py-0.5 rounded-full border border-amber-800/40 flex-shrink-0">${getCategoryName(category)}</span>
                 </div>
                 <div class="font-clayTitle text-base sm:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">${ch.name}</div>
                 <div class="text-xs text-amber-200/80 italic truncate mt-0.5">${ch.title}</div>
             </div>
-            <div class="mt-3 pt-2.5 border-t border-amber-900/40 flex justify-between items-center text-xs font-bold text-amber-300">
+            <div class="mt-2.5 pt-2 border-t border-amber-900/40 flex justify-between items-center text-xs font-bold text-amber-300">
                 <span class="flex items-center gap-1 text-[11px] text-amber-300"><i class="fa-solid fa-play text-rose-400"></i> Video &amp; NFC</span>
                 <span class="group-hover:translate-x-1 transition-transform">View &rarr;</span>
             </div>
@@ -809,7 +825,7 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings Series 1: The Clay & Needle-F
                             🎅 SERIES 1 &bull; CLAY &amp; NEEDLE-FELT
                         </span>
                         <span class="bg-[#1C120B] text-amber-300 border border-amber-600/40 text-[10px] sm:text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
-                            10 Handcrafted Characters
+                            16 Handcrafted Characters
                         </span>
                     </div>
 
@@ -834,7 +850,7 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings Series 1: The Clay & Needle-F
                             <i class="fa-solid fa-play"></i> Experience Santa (001)
                         </a>
                         <a href="#collection" class="bg-[#20140D] hover:bg-[#2C1C13] text-amber-200 border border-amber-600/40 font-bold px-4 sm:px-6 py-2.5 sm:py-3 rounded-2xl shadow-lg transition-transform hover:scale-105 flex items-center justify-center gap-2 text-xs sm:text-sm flex-1 sm:flex-initial">
-                            <i class="fa-solid fa-boxes-stacked"></i> Explore All 10 Cards
+                            <i class="fa-solid fa-boxes-stacked"></i> Explore All 16 Cards
                         </a>
                     </div>
                 </div>
@@ -842,35 +858,122 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings Series 1: The Clay & Needle-F
             </div>
         </div>
 
-        <!-- Collection Section: Controls & 10 Pre-Rendered Cards -->
+        <!-- Collection Section: Filters, Sorts, Slider & Responsive Grid -->
         <section id="collection" class="mb-14">
-            <div class="bg-[#1C120C]/90 rounded-3xl p-4 sm:p-6 mb-8 shadow-xl border border-amber-700/40 backdrop-blur-md flex flex-col md:flex-row gap-4 items-center justify-between w-full">
-                <div class="flex items-center gap-3 w-full md:w-auto">
-                    <h2 class="font-clayTitle text-xl sm:text-2xl font-bold text-white whitespace-nowrap flex items-center gap-2">
-                        <i class="fa-solid fa-boxes-stacked text-amber-400"></i> Series 1 Gallery
-                    </h2>
-                    <span id="cardCountBadge" class="bg-[#140D08] text-amber-300 text-xs font-bold px-3 py-1 rounded-full border border-amber-700/40">
-                        ${cards.length} Cards (001&ndash;${cards[cards.length - 1].card_code})
-                    </span>
+            
+            <!-- Filter & Sort Control Hub -->
+            <div class="bg-[#1C120C]/90 rounded-3xl p-4 sm:p-6 mb-6 shadow-xl border border-amber-700/40 backdrop-blur-md flex flex-col gap-4 w-full">
+                
+                <!-- Row 1: Header, Search, and Front/Back Toggle -->
+                <div class="flex flex-col lg:flex-row gap-4 items-center justify-between w-full">
+                    <div class="flex items-center gap-3 w-full lg:w-auto justify-between lg:justify-start">
+                        <h2 class="font-clayTitle text-xl sm:text-2xl font-bold text-white whitespace-nowrap flex items-center gap-2">
+                            <i class="fa-solid fa-boxes-stacked text-amber-400"></i> Series 1 Gallery
+                        </h2>
+                        <span id="cardCountBadge" class="bg-[#140D08] text-amber-300 text-xs font-bold px-3 py-1 rounded-full border border-amber-700/40">
+                            ${cards.length} Cards (001&ndash;${cards[cards.length - 1].card_code})
+                        </span>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2.5 sm:gap-3 w-full lg:w-auto items-center justify-between lg:justify-end">
+                        <!-- Search Input -->
+                        <div class="relative flex-grow sm:flex-grow-0 w-full sm:w-64">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-amber-300/50 text-xs"></i>
+                            <input type="text" id="searchInput" placeholder="Search characters, mottos, stats..." oninput="filterCards()" class="w-full bg-[#140D08] text-amber-100 placeholder-amber-200/50 text-xs sm:text-sm pl-9 pr-3.5 py-2 rounded-xl border border-amber-800/40 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+
+                        <!-- Sort Dropdown -->
+                        <div class="relative flex-grow sm:flex-grow-0">
+                            <select id="sortSelect" onchange="sortCards()" class="w-full sm:w-auto bg-[#140D08] text-amber-200 text-xs font-bold px-3 py-2 rounded-xl border border-amber-800/40 focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer">
+                                <option value="num-asc">Sort: Card # (001 &rarr; 016)</option>
+                                <option value="num-desc">Sort: Card # (016 &rarr; 001)</option>
+                                <option value="name-asc">Sort: Name (A &rarr; Z)</option>
+                                <option value="name-desc">Sort: Name (Z &rarr; A)</option>
+                            </select>
+                        </div>
+
+                        <!-- Front / Back Toggle -->
+                        <div class="flex bg-[#140D08] p-1 rounded-xl border border-amber-800/40">
+                            <button onclick="setGridSide('front')" id="btnFront" class="px-3 py-1 text-xs font-bold rounded-lg bg-rose-700 text-white shadow transition-all">Front</button>
+                            <button onclick="setGridSide('back')" id="btnBack" class="px-3 py-1 text-xs font-bold rounded-lg text-amber-200/70 transition-all">Back</button>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="flex flex-wrap gap-2.5 sm:gap-3 w-full md:w-auto items-center justify-start md:justify-end">
-                    <!-- Search Input -->
-                    <div class="relative flex-grow sm:flex-grow-0 w-full sm:w-auto">
-                        <input type="text" id="searchInput" placeholder="Search characters, mottos, stats..." oninput="filterCards()" class="w-full sm:w-64 bg-[#140D08] text-amber-100 placeholder-amber-200/50 text-xs sm:text-sm px-3.5 py-2 rounded-xl border border-amber-800/40 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                <!-- Row 2: Category Filter Pills -->
+                <div class="flex flex-wrap gap-2 items-center pt-2 border-t border-amber-900/30">
+                    <span class="text-xs font-bold text-amber-300/80 mr-1 flex items-center gap-1.5">
+                        <i class="fa-solid fa-filter text-rose-400"></i> Categories:
+                    </span>
+                    <button onclick="setCategoryFilter('all')" class="cat-pill active px-3 py-1 text-xs font-bold rounded-xl bg-amber-500 text-[#120C08] border border-amber-400 shadow transition-all" data-cat="all">All 16</button>
+                    <button onclick="setCategoryFilter('classic')" class="cat-pill px-3 py-1 text-xs font-bold rounded-xl bg-[#140D08] text-amber-200 hover:text-white border border-amber-800/40 transition-all" data-cat="classic">Classic Icons</button>
+                    <button onclick="setCategoryFilter('magic')" class="cat-pill px-3 py-1 text-xs font-bold rounded-xl bg-[#140D08] text-amber-200 hover:text-white border border-amber-800/40 transition-all" data-cat="magic">Winter Magic</button>
+                    <button onclick="setCategoryFilter('hearth')" class="cat-pill px-3 py-1 text-xs font-bold rounded-xl bg-[#140D08] text-amber-200 hover:text-white border border-amber-800/40 transition-all" data-cat="hearth">Hearth &amp; Holiday</button>
+                    <button onclick="setCategoryFilter('friends')" class="cat-pill px-3 py-1 text-xs font-bold rounded-xl bg-[#140D08] text-amber-200 hover:text-white border border-amber-800/40 transition-all" data-cat="friends">Festive Friends</button>
+                </div>
+
+                <!-- Row 3: Columns & Rows Slider Controls (Up to 4, default 4 desktop, 2 mobile) -->
+                <div class="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-amber-900/30 text-xs font-bold text-amber-200">
+                    
+                    <!-- Columns Selector & Slider -->
+                    <div class="flex flex-wrap items-center gap-2.5">
+                        <span class="text-amber-300 flex items-center gap-1">
+                            <i class="fa-solid fa-table-columns text-amber-400"></i> Columns:
+                        </span>
+                        <div class="flex items-center gap-1 bg-[#140D08] p-1 rounded-xl border border-amber-800/40">
+                            <button onclick="setColumns(1)" id="colBtn1" class="col-btn px-2.5 py-0.5 rounded-lg text-amber-200/80 hover:text-white transition-all">1</button>
+                            <button onclick="setColumns(2)" id="colBtn2" class="col-btn px-2.5 py-0.5 rounded-lg text-amber-200/80 hover:text-white transition-all">2</button>
+                            <button onclick="setColumns(3)" id="colBtn3" class="col-btn px-2.5 py-0.5 rounded-lg text-amber-200/80 hover:text-white transition-all">3</button>
+                            <button onclick="setColumns(4)" id="colBtn4" class="col-btn px-2.5 py-0.5 rounded-lg text-amber-200/80 hover:text-white transition-all">4</button>
+                        </div>
+                        <input type="range" id="colSlider" min="1" max="4" value="4" oninput="setColumns(parseInt(this.value))" class="w-20 accent-amber-500 cursor-pointer hidden sm:inline-block">
                     </div>
 
-                    <!-- Front / Back Toggle -->
-                    <div class="flex bg-[#140D08] p-1 rounded-xl border border-amber-800/40">
-                        <button onclick="setGridSide('front')" id="btnFront" class="px-3 py-1 text-xs font-bold rounded-lg bg-rose-700 text-white shadow transition-all">Front</button>
-                        <button onclick="setGridSide('back')" id="btnBack" class="px-3 py-1 text-xs font-bold rounded-lg text-amber-200/70 transition-all">Back</button>
+                    <!-- Rows Selector & Slider with Overflow-Hidden control -->
+                    <div class="flex flex-wrap items-center gap-2.5">
+                        <span class="text-amber-300 flex items-center gap-1">
+                            <i class="fa-solid fa-bars text-amber-400"></i> Display Rows:
+                        </span>
+                        <div class="flex items-center gap-1 bg-[#140D08] p-1 rounded-xl border border-amber-800/40">
+                            <button onclick="setRows(1)" id="rowBtn1" class="row-btn px-2.5 py-0.5 rounded-lg text-amber-200/80 hover:text-white transition-all">1</button>
+                            <button onclick="setRows(2)" id="rowBtn2" class="row-btn px-2.5 py-0.5 rounded-lg text-amber-200/80 hover:text-white transition-all">2</button>
+                            <button onclick="setRows(3)" id="rowBtn3" class="row-btn px-2.5 py-0.5 rounded-lg text-amber-200/80 hover:text-white transition-all">3</button>
+                            <button onclick="setRows(4)" id="rowBtn4" class="row-btn px-2.5 py-0.5 rounded-lg text-amber-200/80 hover:text-white transition-all">4</button>
+                            <button onclick="setRows(0)" id="rowBtn0" class="row-btn px-2.5 py-0.5 rounded-lg text-amber-200/80 hover:text-white transition-all">All</button>
+                        </div>
+                        <input type="range" id="rowSlider" min="1" max="4" value="4" oninput="setRows(parseInt(this.value))" class="w-20 accent-amber-500 cursor-pointer hidden sm:inline-block">
                     </div>
+
+                    <!-- Horizontal Carousel Slider Mode Toggle -->
+                    <div class="flex items-center gap-2">
+                        <button onclick="toggleSliderView()" id="btnSliderView" class="px-3 py-1 rounded-xl bg-[#140D08] text-amber-300 hover:text-white border border-amber-800/40 flex items-center gap-1.5 transition-all shadow">
+                            <i class="fa-solid fa-arrows-left-right text-rose-400"></i> <span id="sliderModeLabel">Carousel Mode</span>
+                        </button>
+                    </div>
+
                 </div>
             </div>
 
-            <!-- Pre-rendered Static Cards Grid (Instant View, Zero Blank State) -->
-            <div id="cardsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6 w-full">
-                ${renderedCardsHtml}
+            <!-- Pre-rendered Static Cards Grid Container (Supports dynamic columns and row limits) -->
+            <div id="gridWrapper" class="w-full relative transition-all duration-300">
+                <div id="cardsGrid" class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 w-full transition-all duration-300">
+                    ${renderedCardsHtml}
+                </div>
+
+                <!-- Carousel Navigation Arrows (Shown when in Carousel Slider Mode) -->
+                <button id="sliderPrevBtn" onclick="slideCards(-1)" class="hidden absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 w-10 h-10 rounded-full bg-black/90 text-amber-300 border border-amber-600/50 shadow-2xl items-center justify-center hover:scale-110 active:scale-95 transition-all z-20">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button id="sliderNextBtn" onclick="slideCards(1)" class="hidden absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 w-10 h-10 rounded-full bg-black/90 text-amber-300 border border-amber-600/50 shadow-2xl items-center justify-center hover:scale-110 active:scale-95 transition-all z-20">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Expand / Show All Button (Shown when row limiter is active) -->
+            <div id="expandRowContainer" class="hidden text-center mt-6">
+                <button onclick="setRows(0)" class="bg-[#1C120C] hover:bg-[#281810] text-amber-300 border border-amber-600/40 text-xs sm:text-sm font-bold px-6 py-2.5 rounded-2xl shadow-lg transition-transform hover:scale-105 inline-flex items-center gap-2">
+                    <i class="fa-solid fa-chevron-down"></i> <span id="expandRowText">Show All 16 Cards</span>
+                </button>
             </div>
             
             <div id="noResults" class="hidden text-center py-16 text-amber-200/60 font-clayTitle text-base sm:text-lg">
@@ -924,6 +1027,148 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings Series 1: The Clay & Needle-F
         }
 
         var currentGridSide = 'front';
+        var currentCategory = 'all';
+        var currentColumns = 4;
+        var currentRows = 0; // 0 = all rows
+        var isCarouselMode = false;
+
+        // Responsive initial defaults (Desktop = 4 cols, Mobile = 2 cols)
+        function initGridDefaults() {
+            var isMobile = window.innerWidth < 768;
+            currentColumns = isMobile ? 2 : 4;
+            setColumns(currentColumns, false);
+            setRows(0, false);
+        }
+
+        function setColumns(cols, applyRows = true) {
+            currentColumns = Math.max(1, Math.min(4, cols));
+            var grid = document.getElementById('cardsGrid');
+            var slider = document.getElementById('colSlider');
+            if (slider) slider.value = currentColumns;
+
+            // Update button styles
+            for (var i = 1; i <= 4; i++) {
+                var btn = document.getElementById('colBtn' + i);
+                if (btn) {
+                    if (i === currentColumns) {
+                        btn.className = 'col-btn px-2.5 py-0.5 rounded-lg bg-amber-500 text-[#120C08] font-bold shadow transition-all';
+                    } else {
+                        btn.className = 'col-btn px-2.5 py-0.5 rounded-lg text-amber-200/80 hover:text-white transition-all';
+                    }
+                }
+            }
+
+            if (grid && !isCarouselMode) {
+                grid.className = 'grid gap-4 sm:gap-6 w-full transition-all duration-300 ' +
+                    (currentColumns === 1 ? 'grid-cols-1 max-w-md mx-auto' :
+                     currentColumns === 2 ? 'grid-cols-2' :
+                     currentColumns === 3 ? 'grid-cols-2 md:grid-cols-3' :
+                     'grid-cols-2 md:grid-cols-3 lg:grid-cols-4');
+            }
+
+            if (applyRows) {
+                applyRowLimit();
+            }
+        }
+
+        function setRows(rows, updateUI = true) {
+            currentRows = rows;
+            var slider = document.getElementById('rowSlider');
+            if (slider) slider.value = rows === 0 ? 4 : rows;
+
+            // Update row button states
+            [0, 1, 2, 3, 4].forEach(function(r) {
+                var btn = document.getElementById('rowBtn' + r);
+                if (btn) {
+                    if (r === currentRows) {
+                        btn.className = 'row-btn px-2.5 py-0.5 rounded-lg bg-amber-500 text-[#120C08] font-bold shadow transition-all';
+                    } else {
+                        btn.className = 'row-btn px-2.5 py-0.5 rounded-lg text-amber-200/80 hover:text-white transition-all';
+                    }
+                }
+            });
+
+            applyRowLimit();
+        }
+
+        function applyRowLimit() {
+            var cards = document.querySelectorAll('.card-item');
+            var expandBox = document.getElementById('expandRowContainer');
+            var expandText = document.getElementById('expandRowText');
+
+            if (currentRows === 0 || isCarouselMode) {
+                // Show all matching cards
+                cards.forEach(function(card) {
+                    if (card.dataset.matchesCategory !== 'false' && card.dataset.matchesSearch !== 'false') {
+                        card.style.display = 'flex';
+                    }
+                });
+                if (expandBox) expandBox.className = 'hidden';
+                return;
+            }
+
+            var maxVisible = currentRows * currentColumns;
+            var count = 0;
+            var totalMatching = 0;
+
+            cards.forEach(function(card) {
+                var matches = card.dataset.matchesCategory !== 'false' && card.dataset.matchesSearch !== 'false';
+                if (matches) {
+                    totalMatching++;
+                    if (count < maxVisible) {
+                        card.style.display = 'flex';
+                        count++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+
+            if (expandBox) {
+                if (totalMatching > maxVisible) {
+                    expandBox.className = 'block text-center mt-6';
+                    if (expandText) expandText.innerText = 'Show All ' + totalMatching + ' Cards (' + (totalMatching - maxVisible) + ' hidden)';
+                } else {
+                    expandBox.className = 'hidden';
+                }
+            }
+        }
+
+        function toggleSliderView() {
+            isCarouselMode = !isCarouselMode;
+            var grid = document.getElementById('cardsGrid');
+            var label = document.getElementById('sliderModeLabel');
+            var btnPrev = document.getElementById('sliderPrevBtn');
+            var btnNext = document.getElementById('sliderNextBtn');
+            var btn = document.getElementById('btnSliderView');
+
+            if (isCarouselMode) {
+                grid.className = 'flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 no-scrollbar scroll-smooth w-full';
+                document.querySelectorAll('.card-item').forEach(function(c) {
+                    c.classList.add('flex-shrink-0', 'w-64', 'sm:w-72', 'snap-center');
+                });
+                if (btnPrev) btnPrev.classList.remove('hidden');
+                if (btnNext) btnNext.classList.remove('hidden');
+                if (label) label.innerText = 'Grid Mode';
+                if (btn) btn.className = 'px-3 py-1 rounded-xl bg-amber-500 text-[#120C08] font-bold border border-amber-400 flex items-center gap-1.5 transition-all shadow';
+            } else {
+                document.querySelectorAll('.card-item').forEach(function(c) {
+                    c.classList.remove('flex-shrink-0', 'w-64', 'sm:w-72', 'snap-center');
+                });
+                setColumns(currentColumns);
+                if (btnPrev) btnPrev.classList.add('hidden');
+                if (btnNext) btnNext.classList.add('hidden');
+                if (label) label.innerText = 'Carousel Mode';
+                if (btn) btn.className = 'px-3 py-1 rounded-xl bg-[#140D08] text-amber-300 hover:text-white border border-amber-800/40 flex items-center gap-1.5 transition-all shadow';
+            }
+        }
+
+        function slideCards(direction) {
+            var grid = document.getElementById('cardsGrid');
+            if (grid) {
+                grid.scrollBy({ left: direction * 300, behavior: 'smooth' });
+            }
+        }
 
         function setGridSide(side) {
             currentGridSide = side;
@@ -946,6 +1191,43 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings Series 1: The Clay & Needle-F
             });
         }
 
+        function setCategoryFilter(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.cat-pill').forEach(function(btn) {
+                if (btn.getAttribute('data-cat') === cat) {
+                    btn.className = 'cat-pill active px-3 py-1 text-xs font-bold rounded-xl bg-amber-500 text-[#120C08] border border-amber-400 shadow transition-all';
+                } else {
+                    btn.className = 'cat-pill px-3 py-1 text-xs font-bold rounded-xl bg-[#140D08] text-amber-200 hover:text-white border border-amber-800/40 transition-all';
+                }
+            });
+            filterCards();
+        }
+
+        function sortCards() {
+            var grid = document.getElementById('cardsGrid');
+            var sortMode = document.getElementById('sortSelect')?.value || 'num-asc';
+            var cards = Array.from(document.querySelectorAll('.card-item'));
+
+            cards.sort(function(a, b) {
+                var codeA = parseInt(a.getAttribute('data-code') || '0', 10);
+                var codeB = parseInt(b.getAttribute('data-code') || '0', 10);
+                var nameA = (a.getAttribute('data-name') || '').toLowerCase();
+                var nameB = (b.getAttribute('data-name') || '').toLowerCase();
+
+                if (sortMode === 'num-asc') return codeA - codeB;
+                if (sortMode === 'num-desc') return codeB - codeA;
+                if (sortMode === 'name-asc') return nameA.localeCompare(nameB);
+                if (sortMode === 'name-desc') return nameB.localeCompare(nameA);
+                return 0;
+            });
+
+            cards.forEach(function(card) {
+                grid.appendChild(card);
+            });
+
+            applyRowLimit();
+        }
+
         function filterCards() {
             var query = (document.getElementById('searchInput')?.value || '').toLowerCase().trim();
             var cards = document.querySelectorAll('.card-item');
@@ -958,21 +1240,31 @@ const mainIndexHtml = `${getHeadHtml('TapGreetings Series 1: The Clay & Needle-F
                 var greeting = card.getAttribute('data-greeting') || '';
                 var keywords = card.getAttribute('data-keywords') || '';
                 var lore = card.getAttribute('data-lore') || '';
+                var category = card.getAttribute('data-category') || '';
 
-                var matches = !query || name.includes(query) || greeting.includes(query) || keywords.includes(query) || lore.includes(query);
-                if (matches) {
-                    card.style.display = 'flex';
+                var matchesCat = currentCategory === 'all' || category === currentCategory;
+                var matchesSearch = !query || name.includes(query) || greeting.includes(query) || keywords.includes(query) || lore.includes(query);
+
+                card.dataset.matchesCategory = matchesCat ? 'true' : 'false';
+                card.dataset.matchesSearch = matchesSearch ? 'true' : 'false';
+
+                if (matchesCat && matchesSearch) {
                     visibleCount++;
-                } else {
-                    card.style.display = 'none';
                 }
             });
+
+            applyRowLimit();
 
             if (badge) badge.innerText = visibleCount + ' Cards';
             if (noResults) {
                 noResults.className = visibleCount === 0 ? 'text-center py-16 text-amber-200/60 font-clayTitle text-base sm:text-lg block' : 'hidden';
             }
         }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', function() {
+            initGridDefaults();
+        });
     </script>
 ${getFooterHtml()}`;
 

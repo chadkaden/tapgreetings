@@ -6,7 +6,7 @@ const masterData = {
     series_id: "holiday-series-1",
     series_name: "TapGreetings Series 1: The Clay & Needle-Felt Holiday Collection",
     series_number: 1,
-    total_cards: 10,
+    total_cards: 16,
     tagline: "Handcrafted Polymer Clay & Needle-Felt Keepsakes That Come Alive with a Smartphone Tap",
     publisher: "TapGreetings by TapThingy",
     website: "https://tapgreetings.com",
@@ -997,6 +997,522 @@ const masterData = {
         price: 14.99,
         compare_at_price: 24.99,
         sku: "TG-S1-010",
+        inventory_qty: 100,
+        card_format: "CR80 30mil Waterproof PVC",
+        nfc_chip: "NTAG215 (504 Bytes Rewritable)"
+      }
+    },
+    // CARD 011: Workshop Elf (The Toymaker)
+    {
+      card_id: "holiday-elf-011",
+      series_id: "holiday-series-1",
+      card_number: 11,
+      card_code: "011",
+      slug: "011",
+      aliases_slugs: ["elf", "workshop-elf", "toymaker"],
+      event_greeting: "Happy Holidays!",
+      web_address: "https://TapGreetings.com/011",
+      character: {
+        name: "Workshop Elf",
+        title: "The Toymaker",
+        aliases: ["Workshop Elf", "The Toymaker", "Clay Elf"],
+        profile_theme: "Carved Pine & Painted Clay",
+        motto: "Small hands shape the greatest wonders—craft joy into everything you do!",
+        micro_lore: "A nimble artisan elf crafted in hand-painted clay with pointy ears and felt cap, meticulously detailing a miniature wooden rocking horse with a gold-leaf brush amid cedar shavings.",
+        indicators: {
+          craftsmanship: "★★★★★",
+          whimsy: "★★★★★",
+          precision: "★★★★★"
+        },
+        rarity_tier: "Series 1 Artisan Edition"
+      },
+      prompts: {
+        prompt_front_artwork: "Cinematic miniature studio photography of a delightful polymer clay Workshop Elf with pointed ears and green felt hat, holding a tiny paintbrush, detailing a miniature wooden rocking horse. Wood shavings and tiny toy parts scattered on workbench. Soft warm incandescent lighting, shallow depth of field, 8k resolution, 9:16 vertical.",
+        prompt_back_design: "Collector card back in Forest Pine and Warm Cedar with gold trim, central crossed paintbrushes and wooden hammer NFC target.",
+        prompt_motion_video: "9:16 vertical video. Clay elf paints a golden star on the toy rocking horse, which gently rocks as golden sparkle dust swirls around the workshop. Stop-motion claymation.",
+        prompt_voice_dialogue: "Vocal style: Energetic, joyful, artisan sprite. 'Every toy has a spark of holiday magic! Wishing you endless wonder and happy crafting this season!'",
+        prompt_negative: "blurry, low quality, cartoon, deformed"
+      },
+      descriptions: {
+        shopify_short_desc: "✦ Handcrafted Polymer Clay Workshop Elf Keepsake\n✦ 1080p Stop-Motion Toymaker Video\n✦ Embedded NTAG215 Rewritable NFC Chip\n✦ Premium CR80 30mil Waterproof PVC",
+        shopify_full_html: `<div class="tg-product-desc"><h3>🧝‍♂️🎨 Workshop Elf (The Toymaker) - Series 1</h3><p>Celebrate the craftsmanship of the season with the Workshop Elf, meticulously sculpted in painted polymer clay. Tap with any smartphone for instant workshop stop-motion video magic.</p></div>`,
+        social_share_caption: "Craft joy into everything you do! 🧝‍♂️✨ Tap to experience Workshop Elf (The Toymaker) smart NFC card: https://TapGreetings.com/011"
+      },
+      seo: {
+        primary_occasion: "Winter Holidays",
+        keywords: ["elf card", "workshop elf", "clay elf", "toymaker", "nfc holiday card", "smart card", "tapgreetings"],
+        seo_title: "Workshop Elf (The Toymaker) | Series 1 NFC Holiday Card",
+        seo_meta_desc: "Experience the Workshop Elf, sculpted in painted clay and green felt. Tap this smart NFC card for instant 1080p stop-motion workshop video greeting."
+      },
+      media: {
+        aspect_ratio: "9:16",
+        video_url: "https://TapGreetings.com/assets/video/011-video.mp4",
+        local_video_path: "/assets/video/011-video.mp4",
+        video_duration_seconds: 8,
+        audio_dialogue: "Every toy has a spark of holiday magic! Wishing you endless wonder and happy crafting this season!",
+        front_image_url: "https://TapGreetings.com/assets/img/011-front.jpg",
+        local_front_image_path: "/assets/img/011-front.jpg",
+        back_image_url: "https://TapGreetings.com/assets/img/011-back.jpg",
+        local_back_image_path: "/assets/img/011-back.jpg"
+      },
+      style_tokens: {
+        theme_name: "Forest Pine & Toymaker Cedar",
+        colors: {
+          bg_obsidian_midnight: "#121A14",
+          bg_frosted_ice_blue: "#F0FDF4",
+          accent_blush_pink: "#F87171",
+          accent_champagne_gold: "#FBBF24",
+          border_rose_gold: "#15803D",
+          text_charcoal: "#14281B",
+          text_white: "#FFFFFF",
+          neon_halo_glow: "#22C55E"
+        }
+      },
+      nfc_config: {
+        target_shape: "crossed_tools",
+        tap_label: "⟡ TAP TO CRAFT ⟡",
+        instruction: "Tap phone to workshop crest",
+        hidden_items_count: {}
+      },
+      utility_action: {
+        action_type: "TOYMAKER_WORKSHOP",
+        button_text: "Enter Toymaker Workshop",
+        target_url: "https://TapGreetings.com/011"
+      },
+      commerce: {
+        price: 14.99,
+        compare_at_price: 24.99,
+        sku: "TG-S1-011",
+        inventory_qty: 100,
+        card_format: "CR80 30mil Waterproof PVC",
+        nfc_chip: "NTAG215 (504 Bytes Rewritable)"
+      }
+    },
+    // CARD 012: Polar Bear (The Gentle Giant)
+    {
+      card_id: "holiday-polarbear-012",
+      series_id: "holiday-series-1",
+      card_number: 12,
+      card_code: "012",
+      slug: "012",
+      aliases_slugs: ["polar-bear", "gentle-giant"],
+      event_greeting: "Happy Holidays!",
+      web_address: "https://TapGreetings.com/012",
+      character: {
+        name: "Polar Bear",
+        title: "The Gentle Giant",
+        aliases: ["Polar Bear", "The Gentle Giant", "Flocked Bear"],
+        profile_theme: "Flocked White Wool & Amber Glass",
+        motto: "True strength is found in gentle warmth amidst the coldest winds.",
+        micro_lore: "A majestic, cozy polar bear in soft white flocked wool wearing a thick teal knit scarf, cradling an amber glass lantern that casts a reassuring warm glow across glacial snowbanks.",
+        indicators: {
+          warmth: "★★★★★",
+          strength: "★★★★★",
+          peace: "★★★★★"
+        },
+        rarity_tier: "Series 1 Arctic Edition"
+      },
+      prompts: {
+        prompt_front_artwork: "Cinematic miniature studio photography of a soft flocked white polymer clay Polar Bear sitting gently in a snowbank, wearing an oversized chunky knitted teal scarf, holding a glowing amber glass lantern. Twilight Arctic backdrop with soft falling snow, warm rim glow, shallow depth of field, 8k resolution, 9:16 vertical.",
+        prompt_back_design: "Collector card back in Arctic Navy and Glacier Teal, radiant lantern medallion NFC target with concentric gold rings.",
+        prompt_motion_video: "9:16 vertical video. Clay polar bear gently adjusts his knit scarf, breathes a soft puff of warm vapor, and lifts the lantern as snow falls peacefully. Stop-motion claymation.",
+        prompt_voice_dialogue: "Vocal style: Deep, comforting, gentle giant. 'May your winter nights be warm and your journey brightly lit. Peace to you and yours!'",
+        prompt_negative: "blurry, low quality, aggressive, cartoon"
+      },
+      descriptions: {
+        shopify_short_desc: "✦ Handcrafted Flocked Polar Bear Keepsake Card\n✦ 1080p Stop-Motion Arctic Lantern Video\n✦ Embedded NTAG215 Rewritable NFC Chip\n✦ Premium CR80 30mil Waterproof PVC",
+        shopify_full_html: `<div class="tg-product-desc"><h3>🐻‍❄️🏮 Polar Bear (The Gentle Giant) - Series 1</h3><p>Find calm and comforting light with Polar Bear, crafted in velvety flocked wool with glowing amber lantern. Tap with any smartphone for peaceful arctic stop-motion video.</p></div>`,
+        social_share_caption: "True strength is gentle warmth! 🐻‍❄️✨ Tap to experience Polar Bear (The Gentle Giant) smart NFC card: https://TapGreetings.com/012"
+      },
+      seo: {
+        primary_occasion: "Winter Holidays",
+        keywords: ["polar bear card", "polar bear", "flocked bear", "arctic lantern", "nfc holiday card", "smart card", "tapgreetings"],
+        seo_title: "Polar Bear (The Gentle Giant) | Series 1 NFC Holiday Card",
+        seo_meta_desc: "Discover Polar Bear, sculpted in flocked white wool and teal knit scarf. Tap this smart NFC card for instant arctic stop-motion video greeting."
+      },
+      media: {
+        aspect_ratio: "9:16",
+        video_url: "https://TapGreetings.com/assets/video/012-video.mp4",
+        local_video_path: "/assets/video/012-video.mp4",
+        video_duration_seconds: 8,
+        audio_dialogue: "May your winter nights be warm and your journey brightly lit. Peace to you and yours!",
+        front_image_url: "https://TapGreetings.com/assets/img/012-front.jpg",
+        local_front_image_path: "/assets/img/012-front.jpg",
+        back_image_url: "https://TapGreetings.com/assets/img/012-back.jpg",
+        local_back_image_path: "/assets/img/012-back.jpg"
+      },
+      style_tokens: {
+        theme_name: "Arctic Twilight & Amber Glow",
+        colors: {
+          bg_obsidian_midnight: "#0C141F",
+          bg_frosted_ice_blue: "#E0F2FE",
+          accent_blush_pink: "#93C5FD",
+          accent_champagne_gold: "#FBBF24",
+          border_rose_gold: "#0284C7",
+          text_charcoal: "#0F172A",
+          text_white: "#FFFFFF",
+          neon_halo_glow: "#38BDF8"
+        }
+      },
+      nfc_config: {
+        target_shape: "lantern_core",
+        tap_label: "⟡ TAP LANTERN ⟡",
+        instruction: "Tap phone to glowing lantern",
+        hidden_items_count: {}
+      },
+      utility_action: {
+        action_type: "ARCTIC_PEACE",
+        button_text: "Kindle Arctic Hearth Light",
+        target_url: "https://TapGreetings.com/012"
+      },
+      commerce: {
+        price: 14.99,
+        compare_at_price: 24.99,
+        sku: "TG-S1-012",
+        inventory_qty: 100,
+        card_format: "CR80 30mil Waterproof PVC",
+        nfc_chip: "NTAG215 (504 Bytes Rewritable)"
+      }
+    },
+    // CARD 013: Penguin (The Ice Dancer)
+    {
+      card_id: "holiday-penguin-013",
+      series_id: "holiday-series-1",
+      card_number: 13,
+      card_code: "013",
+      slug: "013",
+      aliases_slugs: ["penguin", "ice-dancer"],
+      event_greeting: "Happy Holidays!",
+      web_address: "https://TapGreetings.com/013",
+      character: {
+        name: "Penguin",
+        title: "The Ice Dancer",
+        aliases: ["Penguin", "The Ice Dancer", "Clay Penguin"],
+        profile_theme: "Gloss Black & White Clay with Felt Scarf",
+        motto: "Glide through every obstacle with balance, grace, and an open heart.",
+        micro_lore: "An adorable, chubby clay penguin wearing a ruby knit pom-pom beanie and tiny brass-bladed ice skates, performing a joyous pirouette across a mirror-finish frozen pond under festive fairy lights.",
+        indicators: {
+          agility: "★★★★★",
+          joy: "★★★★★",
+          spark: "★★★★★"
+        },
+        rarity_tier: "Series 1 Ice Gala"
+      },
+      prompts: {
+        prompt_front_artwork: "Cinematic miniature studio photography of a chubby polymer clay Penguin wearing a ruby red wool pom-pom beanie and knitted scarf, gliding effortlessly on tiny brass ice skates across a mirrored ice sheet. Pine trees with twinkle lights in background, shallow depth of field, 8k resolution, 9:16 vertical.",
+        prompt_back_design: "Collector card back in Midnight Indigo and Glacial Ice, sculpted silver ice skate blade NFC antenna target with snowflake swirl.",
+        prompt_motion_video: "9:16 vertical video. Clay penguin glides across the ice, spins gracefully, and gives a cheerful flipper wave as frost crystals glisten under the lights. Stop-motion claymation.",
+        prompt_voice_dialogue: "Vocal style: Perky, buoyant, playful skater. 'Whoosh! Glide into the holidays with a giant leap of joy! Happy Holidays from the ice!'",
+        prompt_negative: "blurry, low quality, cartoon, deformed"
+      },
+      descriptions: {
+        shopify_short_desc: "✦ Handcrafted Polymer Clay Skating Penguin Keepsake\n✦ 1080p Stop-Motion Ice Dancing Video\n✦ Embedded NTAG215 Rewritable NFC Chip\n✦ Premium CR80 30mil Waterproof PVC",
+        shopify_full_html: `<div class="tg-product-desc"><h3>🐧⛸️ Penguin (The Ice Dancer) - Series 1</h3><p>Glide into festive joy with Penguin, sculpted in gloss clay and real wool accents. Tap with any smartphone for an instant ice-skating claymation performance.</p></div>`,
+        social_share_caption: "Glide through with joy! 🐧⛸️ Tap to experience Penguin (The Ice Dancer) smart NFC card: https://TapGreetings.com/013"
+      },
+      seo: {
+        primary_occasion: "Winter Holidays",
+        keywords: ["penguin card", "skating penguin", "clay penguin", "ice dancer", "nfc holiday card", "smart card", "tapgreetings"],
+        seo_title: "Penguin (The Ice Dancer) | Series 1 NFC Holiday Card",
+        seo_meta_desc: "Experience Penguin, sculpted in smooth clay on brass skates. Tap this smart NFC card for instant holiday stop-motion ice skating video greeting."
+      },
+      media: {
+        aspect_ratio: "9:16",
+        video_url: "https://TapGreetings.com/assets/video/013-video.mp4",
+        local_video_path: "/assets/video/013-video.mp4",
+        video_duration_seconds: 8,
+        audio_dialogue: "Whoosh! Glide into the holidays with a giant leap of joy! Happy Holidays from the ice!",
+        front_image_url: "https://TapGreetings.com/assets/img/013-front.jpg",
+        local_front_image_path: "/assets/img/013-front.jpg",
+        back_image_url: "https://TapGreetings.com/assets/img/013-back.jpg",
+        local_back_image_path: "/assets/img/013-back.jpg"
+      },
+      style_tokens: {
+        theme_name: "Mirrored Ice & Cranberry Knit",
+        colors: {
+          bg_obsidian_midnight: "#0F141C",
+          bg_frosted_ice_blue: "#EBF8FF",
+          accent_blush_pink: "#F87171",
+          accent_champagne_gold: "#FBBF24",
+          border_rose_gold: "#BE123C",
+          text_charcoal: "#1E293B",
+          text_white: "#FFFFFF",
+          neon_halo_glow: "#38BDF8"
+        }
+      },
+      nfc_config: {
+        target_shape: "skate_blade",
+        tap_label: "⟡ TAP ICE SKATE ⟡",
+        instruction: "Tap phone to silver skate blade",
+        hidden_items_count: {}
+      },
+      utility_action: {
+        action_type: "ICE_DANCE",
+        button_text: "Join the Ice Pond Dance",
+        target_url: "https://TapGreetings.com/013"
+      },
+      commerce: {
+        price: 14.99,
+        compare_at_price: 24.99,
+        sku: "TG-S1-013",
+        inventory_qty: 100,
+        card_format: "CR80 30mil Waterproof PVC",
+        nfc_chip: "NTAG215 (504 Bytes Rewritable)"
+      }
+    },
+    // CARD 014: Sugar Plum Fairy (The Twilight Sprite)
+    {
+      card_id: "holiday-fairy-014",
+      series_id: "holiday-series-1",
+      card_number: 14,
+      card_code: "014",
+      slug: "014",
+      aliases_slugs: ["fairy", "sugar-plum-fairy", "twilight-sprite"],
+      event_greeting: "Happy Holidays!",
+      web_address: "https://TapGreetings.com/014",
+      character: {
+        name: "Sugar Plum Fairy",
+        title: "The Twilight Sprite",
+        aliases: ["Sugar Plum Fairy", "The Twilight Sprite", "Clay Fairy"],
+        profile_theme: "Translucent Spun Sugar & Frosted Resin",
+        motto: "Every dream takes flight when dusted with a little holiday faith.",
+        micro_lore: "A graceful miniature fairy sculpted in delicate lavender-pearl clay with iridescent spun-sugar wings, floating over a snow-covered Scandinavian village as she touches a golden star wand to a frosted rooftop.",
+        indicators: {
+          magic: "★★★★★",
+          grace: "★★★★★",
+          starlight: "★★★★★"
+        },
+        rarity_tier: "Series 1 Enchanted Edition"
+      },
+      prompts: {
+        prompt_front_artwork: "Cinematic miniature studio photography of a graceful polymer clay Sugar Plum Fairy with translucent spun-sugar wings and lavender ballet dress, tapping a radiant golden star wand against a frosted rooftop. Twilight indigo sky with volumetric auroral shimmer, shallow depth of field, 8k resolution, 9:16 vertical.",
+        prompt_back_design: "Collector card back in Deep Violet and Champagne Gold, four-pointed starlight wand NFC antenna target with celestial filigree.",
+        prompt_motion_video: "9:16 vertical video. Clay fairy pirouettes weightlessly in the twilight air, taps her glowing star wand, unleashing a cascade of golden stardust over the village. Stop-motion claymation.",
+        prompt_voice_dialogue: "Vocal style: Ethereal, delicate, enchanting sprite. 'Close your eyes and make a wish—magic is all around you tonight. Happy Holidays!'",
+        prompt_negative: "blurry, low quality, CGI cartoon, deformed"
+      },
+      descriptions: {
+        shopify_short_desc: "✦ Handcrafted Polymer Clay Sugar Plum Fairy Keepsake\n✦ 1080p Stop-Motion Starlight Video\n✦ Embedded NTAG215 Rewritable NFC Chip\n✦ Premium CR80 30mil Waterproof PVC",
+        shopify_full_html: `<div class="tg-product-desc"><h3>🧚‍♀️✨ Sugar Plum Fairy (The Twilight Sprite) - Series 1</h3><p>Infuse your holiday with pure wonder with Sugar Plum Fairy, sculpted in lavender clay with spun-sugar wings. Tap with any smartphone for an enchanting stop-motion starlight video.</p></div>`,
+        social_share_caption: "Every dream takes flight! 🧚‍♀️✨ Tap to experience Sugar Plum Fairy smart NFC card: https://TapGreetings.com/014"
+      },
+      seo: {
+        primary_occasion: "Winter Holidays",
+        keywords: ["fairy card", "sugar plum fairy", "clay fairy", "twilight sprite", "nfc holiday card", "smart card", "tapgreetings"],
+        seo_title: "Sugar Plum Fairy (The Twilight Sprite) | Series 1 NFC Holiday Card",
+        seo_meta_desc: "Discover Sugar Plum Fairy, sculpted in lavender clay with spun-sugar wings. Tap this smart NFC card for instant holiday stop-motion video greeting."
+      },
+      media: {
+        aspect_ratio: "9:16",
+        video_url: "https://TapGreetings.com/assets/video/014-video.mp4",
+        local_video_path: "/assets/video/014-video.mp4",
+        video_duration_seconds: 8,
+        audio_dialogue: "Close your eyes and make a wish—magic is all around you tonight. Happy Holidays!",
+        front_image_url: "https://TapGreetings.com/assets/img/014-front.jpg",
+        local_front_image_path: "/assets/img/014-front.jpg",
+        back_image_url: "https://TapGreetings.com/assets/img/014-back.jpg",
+        local_back_image_path: "/assets/img/014-back.jpg"
+      },
+      style_tokens: {
+        theme_name: "Twilight Violet & Spun Sugar",
+        colors: {
+          bg_obsidian_midnight: "#150E20",
+          bg_frosted_ice_blue: "#FAF5FF",
+          accent_blush_pink: "#F472B6",
+          accent_champagne_gold: "#FBBF24",
+          border_rose_gold: "#A855F7",
+          text_charcoal: "#2E1065",
+          text_white: "#FFFFFF",
+          neon_halo_glow: "#C084FC"
+        }
+      },
+      nfc_config: {
+        target_shape: "star_wand",
+        tap_label: "⟡ TAP STAR WAND ⟡",
+        instruction: "Tap phone to golden wand tip",
+        hidden_items_count: {}
+      },
+      utility_action: {
+        action_type: "FAIRY_WISH",
+        button_text: "Make a Starlight Wish",
+        target_url: "https://TapGreetings.com/014"
+      },
+      commerce: {
+        price: 14.99,
+        compare_at_price: 24.99,
+        sku: "TG-S1-014",
+        inventory_qty: 100,
+        card_format: "CR80 30mil Waterproof PVC",
+        nfc_chip: "NTAG215 (504 Bytes Rewritable)"
+      }
+    },
+    // CARD 015: Snow Monster (The Frost Guardian)
+    {
+      card_id: "holiday-snowmonster-015",
+      series_id: "holiday-series-1",
+      card_number: 15,
+      card_code: "015",
+      slug: "015",
+      aliases_slugs: ["snow-monster", "yeti", "frost-guardian"],
+      event_greeting: "Happy Holidays!",
+      web_address: "https://TapGreetings.com/015",
+      character: {
+        name: "Snow Monster",
+        title: "The Frost Guardian",
+        aliases: ["Snow Monster", "Friendly Yeti", "The Frost Guardian"],
+        profile_theme: "Shaggy Needle Felt & Periwinkle Clay",
+        motto: "Big hugs melt away the deepest winter chills!",
+        micro_lore: "A giant, gentle snow yeti crafted in shaggy needle-felted white wool with cute periwinkle clay horns and rosy cheeks, gently rocking and offering big fuzzy hugs in a serene snowy forest.",
+        indicators: {
+          hug_power: "★★★★★",
+          wonder: "★★★★★",
+          chill_factor: "★★★★★"
+        },
+        rarity_tier: "Series 1 Mythic Creature"
+      },
+      prompts: {
+        prompt_front_artwork: "Cinematic miniature studio photography of a lovable, fluffy white needle-felted Snow Monster (Yeti) with tiny periwinkle clay horns, blue eyes, and pink cheeks, swaying gently among frosted pine trees. Soft volumetric amber lighting, shallow depth of field, 8k resolution, 9:16 vertical.",
+        prompt_back_design: "Collector card back in Glacier Slate and Icy Blue, embossed yeti footprint NFC antenna target with snowflake border.",
+        prompt_motion_video: "9:16 vertical video. Fluffy clay yeti winks playfully, sways from side to side, and pats his belly with joy as snowflakes drift down. Stop-motion claymation.",
+        prompt_voice_dialogue: "Vocal style: Deep, rumbling, adorable gentle beast. 'Roar-y warmth to your hearth! Sending giant fluffy monster hugs this holiday!'",
+        prompt_negative: "scary, ferocious, bloody, blurry, low quality"
+      },
+      descriptions: {
+        shopify_short_desc: "✦ Handcrafted Needle-Felt Snow Monster Keepsake\n✦ 1080p Stop-Motion Gentle Yeti Video\n✦ Embedded NTAG215 Rewritable NFC Chip\n✦ Premium CR80 30mil Waterproof PVC",
+        shopify_full_html: `<div class="tg-product-desc"><h3>🏔️❄️ Snow Monster (The Frost Guardian) - Series 1</h3><p>Warm up the winter with Snow Monster, crafted in fluffy needle-felt wool and periwinkle clay. Tap with any smartphone for an adorable stop-motion yeti greeting.</p></div>`,
+        social_share_caption: "Big hugs melt the chill! 🏔️❄️ Tap to experience Snow Monster (The Frost Guardian) smart NFC card: https://TapGreetings.com/015"
+      },
+      seo: {
+        primary_occasion: "Winter Holidays",
+        keywords: ["snow monster card", "yeti", "frost guardian", "needle felt yeti", "nfc holiday card", "smart card", "tapgreetings"],
+        seo_title: "Snow Monster (The Frost Guardian) | Series 1 NFC Holiday Card",
+        seo_meta_desc: "Meet Snow Monster, crafted in fluffy needle-felt wool and clay. Tap this smart NFC card for instant gentle yeti stop-motion video greeting."
+      },
+      media: {
+        aspect_ratio: "9:16",
+        video_url: "https://TapGreetings.com/assets/video/015-video.mp4",
+        local_video_path: "/assets/video/015-video.mp4",
+        video_duration_seconds: 8,
+        audio_dialogue: "Roar-y warmth to your hearth! Sending giant fluffy monster hugs this holiday!",
+        front_image_url: "https://TapGreetings.com/assets/img/015-front.jpg",
+        local_front_image_path: "/assets/img/015-front.jpg",
+        back_image_url: "https://TapGreetings.com/assets/img/015-back.jpg",
+        local_back_image_path: "/assets/img/015-back.jpg"
+      },
+      style_tokens: {
+        theme_name: "Glacier Slate & Fluffy Wool",
+        colors: {
+          bg_obsidian_midnight: "#0F161C",
+          bg_frosted_ice_blue: "#F0F9FF",
+          accent_blush_pink: "#BAE6FD",
+          accent_champagne_gold: "#FBBF24",
+          border_rose_gold: "#0284C7",
+          text_charcoal: "#0C4A6E",
+          text_white: "#FFFFFF",
+          neon_halo_glow: "#38BDF8"
+        }
+      },
+      nfc_config: {
+        target_shape: "yeti_footprint",
+        tap_label: "⟡ TAP YETI PAW ⟡",
+        instruction: "Tap phone to embossed paw medallion",
+        hidden_items_count: {}
+      },
+      utility_action: {
+        action_type: "YETI_HUG",
+        button_text: "Claim Warm Yeti Hug",
+        target_url: "https://TapGreetings.com/015"
+      },
+      commerce: {
+        price: 14.99,
+        compare_at_price: 24.99,
+        sku: "TG-S1-015",
+        inventory_qty: 100,
+        card_format: "CR80 30mil Waterproof PVC",
+        nfc_chip: "NTAG215 (504 Bytes Rewritable)"
+      }
+    },
+    // CARD 016: Stocking Puppy (The Little Surprise)
+    {
+      card_id: "holiday-puppy-016",
+      series_id: "holiday-series-1",
+      card_number: 16,
+      card_code: "016",
+      slug: "016",
+      aliases_slugs: ["puppy", "stocking-puppy", "little-surprise"],
+      event_greeting: "Happy Holidays!",
+      web_address: "https://TapGreetings.com/016",
+      character: {
+        name: "Stocking Puppy",
+        title: "The Little Surprise",
+        aliases: ["Stocking Puppy", "Holiday Pup", "The Little Surprise"],
+        profile_theme: "Soft Knit Wool Stocking & Warm Clay Pup",
+        motto: "The best gifts in life come with a wagging tail and boundless love.",
+        micro_lore: "An utterly precious clay puppy with velvety brown floppy ears peeking eagerly out of a chunky red cable-knit holiday stocking hanging by the fireside mantle, barking a joyous holiday greeting.",
+        indicators: {
+          cuteness: "★★★★★",
+          joy: "★★★★★",
+          loyalty: "★★★★★"
+        },
+        rarity_tier: "Series 1 Cozy Companion"
+      },
+      prompts: {
+        prompt_front_artwork: "Cinematic miniature studio photography of an adorable polymer clay golden puppy with floppy felt ears, peeking out of a rich red cable-knit holiday stocking with white wool cuff. Hanging beside glowing fireplace mantle, shallow depth of field, 8k resolution, 9:16 vertical.",
+        prompt_back_design: "Collector card back in Fireside Crimson and Wool Cream, embossed bone and paw print NFC target with golden stitching.",
+        prompt_motion_video: "9:16 vertical video. Clay puppy peeks out of stocking, winks, perks up floppy ears, and gives a cheerful tail-wagging holiday pant. Stop-motion claymation.",
+        prompt_voice_dialogue: "Vocal style: Cheerful, excited, playful pup. 'Yip yip! Wags and kisses coming your way! Have the happiest, warmest holidays ever!'",
+        prompt_negative: "blurry, low quality, cartoon, deformed"
+      },
+      descriptions: {
+        shopify_short_desc: "✦ Handcrafted Polymer Clay Stocking Puppy Keepsake\n✦ 1080p Stop-Motion Cozy Fireside Video\n✦ Embedded NTAG215 Rewritable NFC Chip\n✦ Premium CR80 30mil Waterproof PVC",
+        shopify_full_html: `<div class="tg-product-desc"><h3>🐶🧦 Stocking Puppy (The Little Surprise) - Series 1</h3><p>Unwrap pure love with Stocking Puppy, crafted in warm clay and real wool textures. Tap with any smartphone for an irresistible fireside puppy stop-motion video.</p></div>`,
+        social_share_caption: "The best gifts have wagging tails! 🐶❤️ Tap to experience Stocking Puppy (The Little Surprise) smart NFC card: https://TapGreetings.com/016"
+      },
+      seo: {
+        primary_occasion: "Winter Holidays",
+        keywords: ["puppy card", "stocking puppy", "clay puppy", "holiday pup", "nfc holiday card", "smart card", "tapgreetings"],
+        seo_title: "Stocking Puppy (The Little Surprise) | Series 1 NFC Holiday Card",
+        seo_meta_desc: "Discover Stocking Puppy, sculpted in clay peeking from a knit stocking. Tap this smart NFC card for instant cozy puppy stop-motion video greeting."
+      },
+      media: {
+        aspect_ratio: "9:16",
+        video_url: "https://TapGreetings.com/assets/video/016-video.mp4",
+        local_video_path: "/assets/video/016-video.mp4",
+        video_duration_seconds: 8,
+        audio_dialogue: "Yip yip! Wags and kisses coming your way! Have the happiest, warmest holidays ever!",
+        front_image_url: "https://TapGreetings.com/assets/img/016-front.jpg",
+        local_front_image_path: "/assets/img/016-front.jpg",
+        back_image_url: "https://TapGreetings.com/assets/img/016-back.jpg",
+        local_back_image_path: "/assets/img/016-back.jpg"
+      },
+      style_tokens: {
+        theme_name: "Fireside Crimson & Knit Wool",
+        colors: {
+          bg_obsidian_midnight: "#1A0F0D",
+          bg_frosted_ice_blue: "#FFF1F2",
+          accent_blush_pink: "#FDA4AF",
+          accent_champagne_gold: "#FBBF24",
+          border_rose_gold: "#E11D48",
+          text_charcoal: "#4C0519",
+          text_white: "#FFFFFF",
+          neon_halo_glow: "#F43F5E"
+        }
+      },
+      nfc_config: {
+        target_shape: "paw_print",
+        tap_label: "⟡ TAP PUPPY PAW ⟡",
+        instruction: "Tap phone to golden paw print",
+        hidden_items_count: {}
+      },
+      utility_action: {
+        action_type: "PUPPY_LOVE",
+        button_text: "Receive Puppy Holiday Love",
+        target_url: "https://TapGreetings.com/016"
+      },
+      commerce: {
+        price: 14.99,
+        compare_at_price: 24.99,
+        sku: "TG-S1-016",
         inventory_qty: 100,
         card_format: "CR80 30mil Waterproof PVC",
         nfc_chip: "NTAG215 (504 Bytes Rewritable)"
