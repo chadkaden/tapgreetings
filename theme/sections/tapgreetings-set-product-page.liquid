@@ -392,30 +392,7 @@
 <div class="tg-set-wrapper">
   <div class="tg-set-container">
 
-    <!-- Top Navigation -->
-    <div class="tg-set-nav">
-      <a href="/collections/tapgreetings-series-1">
-        &larr; Back to Series 1 Collection
-      </a>
-      <a href="https://tapgreetings.com/#collection" target="_blank">
-        🎬 View All 21 Cards on TapGreetings ↗
-      </a>
-    </div>
-
-    <!-- Header Section -->
-    <div style="text-align: center; margin-bottom: 20px;">
-      <div class="tg-set-badge">
-        ✦ HAPPY HOLIDAYS SERIES 1 &bull; MASTER COLLECTION ✦
-      </div>
-      <h1 class="tg-set-title">
-        Happy Holidays Series 1: Master Collector Box Set
-      </h1>
-      <div class="tg-set-subtitle">
-        Choose the Complete 16-Card Box Set or Select Any Individual Card Keepsake
-      </div>
-    </div>
-
-    <!-- 2. CARD MULTIMEDIA & ARTWORK SHOWCASE (Centered, uncropped 9:16, matches Pink-O-Ween) -->
+    <!-- 1. CARD MULTIMEDIA & ARTWORK SHOWCASE (At Top of Page) -->
     <div class="tg-media-section">
       
       <!-- Main Media Viewport -->
@@ -473,12 +450,8 @@
         </button>
       </div>
 
-      
-
       <!-- Variant Selection Thumbnail Reel (Pink-O-Ween Style) -->
       <div class="tg-var-section">
-        
-
         <div class="tg-var-scroll" id="tg-var-scroll">
           {% for v in product.variants %}
             {% assign v_code = 'box' %}
@@ -504,8 +477,8 @@
 
     </div>
 
-    <!-- 3. Form & Purchase Details Panel -->
-    <div style="max-width: 720px; margin: 0 auto 28px;">
+    <!-- 2. Form & Purchase Details Panel (Directly Below Multimedia) -->
+    <div style="max-width: 720px; margin: 0 auto 24px;">
       {% form 'product', product, id: 'tg-set-form' %}
         
         <input type="hidden" name="id" id="tg-selected-variant-id" value="{{ product.selected_or_first_available_variant.id }}">
@@ -538,7 +511,7 @@
           </span>
         </div>
 
-        <!-- Quantity & Secondary Add to Cart -->
+        <!-- Quantity & Add to Cart -->
         <div style="display: flex; gap: 12px; margin-bottom: 24px; align-items: center;">
           <div style="background: var(--tg-surface-card); border: 2px solid var(--tg-border); border-radius: 14px; padding: 0 12px; display: flex; align-items: center; height: 56px;">
             <label for="Quantity" style="font-size: 0.8rem; font-weight: 700; color: var(--tg-text-muted); margin-right: 8px;">QTY:</label>
@@ -553,6 +526,29 @@
         </div>
 
       {% endform %}
+    </div>
+
+    <!-- 3. Navigation & Header Section (Positioned Under Add to Cart) -->
+    <div style="text-align: center; margin: 0 auto 28px; max-width: 720px;">
+      <!-- Top Navigation -->
+      <div class="tg-set-nav" style="margin-bottom: 14px; justify-content: center;">
+        <a href="/collections/tapgreetings-series-1">
+          &larr; Back to Series 1 Collection
+        </a>
+        <a href="https://tapgreetings.com/#collection" target="_blank">
+          🎬 View All 21 Cards on TapGreetings ↗
+        </a>
+      </div>
+
+      <div class="tg-set-badge">
+        ✦ HAPPY HOLIDAYS SERIES 1 &bull; MASTER COLLECTION ✦
+      </div>
+      <h1 class="tg-set-title">
+        TapThingy TapGreetings &bull; {{ product.title }}
+      </h1>
+      <div class="tg-set-subtitle">
+        Choose the Complete 16-Card Box Set or Select Any Individual Card Keepsake
+      </div>
     </div>
 
     <!-- 4. Detailed Accordions with Enhanced Reprogrammability Lore -->
