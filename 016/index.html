@@ -530,7 +530,105 @@
         html.light #searchInput::placeholder {
             color: #9C7D68 !important;
         }
+
+        /* Star Twinkle Animations for Festive Indicators */
+        @keyframes starTwinkle {
+            0%, 100% { transform: scale(1); opacity: 0.85; }
+            50% { transform: scale(1.3); opacity: 1; filter: drop-shadow(0 0 8px rgba(251, 191, 36, 1)); }
+        }
+        .star-twinkle-1 { animation: starTwinkle 2s ease-in-out infinite; }
+        .star-twinkle-2 { animation: starTwinkle 2s ease-in-out infinite 0.25s; }
+        .star-twinkle-3 { animation: starTwinkle 2s ease-in-out infinite 0.5s; }
+        .star-twinkle-4 { animation: starTwinkle 2s ease-in-out infinite 0.75s; }
+        .star-twinkle-5 { animation: starTwinkle 2s ease-in-out infinite 1s; }
+
+        /* Progress Meter Glow Bar */
+        @keyframes meterPulse {
+            0%, 100% { opacity: 0.9; }
+            50% { opacity: 1; box-shadow: 0 0 10px rgba(251, 191, 36, 0.6); }
+        }
+        .tghh-meter-fill {
+            animation: meterPulse 2.5s ease-in-out infinite;
+            transition: width 1s ease-out;
+        }
+
+        /* Card Glow Pulsing Border */
+        @keyframes cardGlowPulse {
+            0%, 100% { border-color: rgba(217, 119, 6, 0.35); box-shadow: 0 10px 25px -5px rgba(217, 119, 6, 0.1); }
+            50% { border-color: rgba(245, 158, 11, 0.65); box-shadow: 0 15px 30px -5px rgba(245, 158, 11, 0.25); }
+        }
+        .tghh-quote-card, .tghh-ability-card, .tghh-nfc-motif-card {
+            animation: cardGlowPulse 4s ease-in-out infinite;
+        }
     </style>
+
+    <!-- AI & Answer Engine Optimization (AEO) Meta Tags -->
+    <meta name="ai-content-type" content="Physical Smart NFC Keepsake Greeting Card, CR80 Claymation Art, Living Audio/Video Experience">
+    
+    <meta name="ai-character-name" content="The Stocking Pup">
+    <meta name="ai-character-title" content="The Hearth Companion">
+    <meta name="ai-character-series" content="Series 2: North Pole &amp; Winter Legends">
+    <meta name="ai-character-motto" content="Unconditional love, boundless joy, and the best kind of holiday warmth.">
+    <meta name="ai-character-abilities" content="Delivers unconditional love and boundless joy straight from the fireplace mantle.">
+    <meta name="ai-character-nfc-motif" content="A golden holiday dog bone badge.">
+    <meta name="ai-product-sku" content="TG-HH-016">
+    <meta name="ai-summary" content="The Stocking Pup (The Hearth Companion) - Unconditional love, boundless joy, and the best kind of holiday warmth.. Handcrafted physical CR80 smart keepsake card by TapGreetings. Tap smartphone against card to instantly stream exclusive claymation animation and holiday greeting. Rewritable anytime with custom media.">
+    
+
+    <!-- Schema.org Structured Data (JSON-LD) for AI & Semantic Engines -->
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Product",
+          "@id": "https://TapGreetings.com/016#product",
+          "name": "The Stocking Pup (The Hearth Companion) - TapGreetings Smart Keepsake Card",
+          "description": "Discover Stocking Puppy, sculpted in clay peeking from a knit stocking. Tap this smart NFC card for instant cozy puppy stop-motion video greeting.",
+          "image": "/assets/img/cr80/016-front.jpg?v=cr80",
+          "brand": {
+            "@type": "Brand",
+            "name": "TapGreetings"
+          },
+          "sku": "TG-HH-016",
+          "category": "Greeting Cards > Smart Keepsake Cards",
+          "offers": {
+            "@type": "Offer",
+            "price": "14.99",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock",
+            "url": "https://shop.tapthingy.com/products/happy-holidays-series-1?variant=68065709523266"
+          }
+        },
+        {
+          "@type": "CreativeWork",
+          "@id": "https://TapGreetings.com/016#creativework",
+          "name": "The Stocking Pup - The Hearth Companion",
+          "headline": "Unconditional love, boundless joy, and the best kind of holiday warmth.",
+          "description": "An utterly precious clay puppy with velvety brown floppy ears peeking eagerly out of a chunky red cable-knit holiday stocking hanging by the fireside mantle, barking a joyous holiday greeting.",
+          "creator": {
+            "@type": "Organization",
+            "name": "TapGreetings",
+            "url": "https://tapgreetings.com"
+          },
+          "genre": "Holiday Art, Claymation, Augmented Reality Keepsake",
+          "keywords": "puppy card, stocking puppy, clay puppy, holiday pup, nfc holiday card, smart card, tapgreetings"
+        },
+        {
+          "@type": "VideoObject",
+          "@id": "https://TapGreetings.com/016#video",
+          "name": "The Stocking Pup Living Animation",
+          "description": "Unconditional love, boundless joy, and the best kind of holiday warmth.",
+          "thumbnailUrl": "/assets/img/cr80/016-front.jpg?v=cr80",
+          "contentUrl": "/assets/video/016-video.mp4",
+          "embedUrl": "https://TapGreetings.com/016",
+          "uploadDate": "2024-11-01T00:00:00Z"
+        }
+      ]
+    }
+    </script>
+    
 </head>
 <body class="font-sans bg-[#120C08] text-amber-50 min-h-screen transition-colors duration-300 selection:bg-rose-600 selection:text-white flex flex-col justify-between overflow-x-hidden">
     <!-- Header -->
@@ -787,14 +885,14 @@
                     </span>
                 </div>
                 
-                <h1 class="font-clayTitle text-2xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-amber-100 via-amber-200 to-rose-200 bg-clip-text text-transparent drop-shadow-md break-words">
-                    Stocking Puppy
+                <h1 class="font-clayTitle text-3xl sm:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-amber-100 via-amber-200 to-rose-200 bg-clip-text text-transparent drop-shadow-md break-words">
+                    The Stocking Pup
                 </h1>
-                <p class="font-sans text-sm sm:text-base text-amber-300 font-semibold tracking-wide mt-1.5 break-words">
-                    The Little Surprise &bull; <span class="text-rose-300 italic font-serif">Soft Knit Wool Stocking & Warm Clay Pup</span>
+                <p class="font-sans text-base sm:text-lg text-amber-300 font-semibold tracking-wide mt-2 break-words">
+                    The Hearth Companion &bull; <span class="text-rose-300 italic font-serif">Soft Knit Wool Stocking & Warm Clay Pup</span>
                 </p>
-                <p class="text-sm sm:text-base text-amber-100/90 italic max-w-xl mx-auto mt-2 px-2 leading-relaxed break-words">
-                    &ldquo;The best gifts in life come with a wagging tail and boundless love.&rdquo;
+                <p class="text-base sm:text-lg text-amber-100/90 italic max-w-2xl mx-auto mt-2 px-2 leading-relaxed break-words">
+                    &ldquo;Unconditional love, boundless joy, and the best kind of holiday warmth.&rdquo;
                 </p>
 
                 <!-- Keywords / SEO Tag Pills -->
@@ -810,7 +908,7 @@
                     <!-- Compact Mobile Header directly above video -->
                     <div class="lg:hidden w-full flex justify-between items-center mb-2 px-1">
                         <span class="text-xs font-bold uppercase tracking-wider text-amber-300 bg-[#1F140E] px-3 py-1 rounded-full border border-amber-700/40">
-                            #016 &bull; Stocking Puppy
+                            #016 &bull; The Stocking Pup
                         </span>
                         <span class="text-xs font-bold text-rose-300 uppercase tracking-wider">
                             Happy Holidays!
@@ -827,13 +925,13 @@
 
                     <!-- Mobile Touch Swipe Hint -->
                     <div class="w-full max-w-[440px] sm:max-w-[480px] flex items-center justify-between text-[11px] text-amber-300/80 px-2 mt-1.5 mb-1 select-none">
-                        <a href="/015/" class="hover:text-white flex items-center gap-1">
+                        <a href="/015/" onclick="preserveAudio(this, event)" class="hover:text-white flex items-center gap-1">
                             <i class="fa-solid fa-chevron-left text-rose-400"></i> Swipe Right: #015
                         </a>
                         <span class="text-[9px] uppercase tracking-wider text-amber-400/60 font-semibold flex items-center gap-1">
                             <i class="fa-solid fa-arrows-left-right text-amber-400"></i> Swipe Video
                         </span>
-                        <a href="/001/" class="hover:text-white flex items-center gap-1">
+                        <a href="/001/" onclick="preserveAudio(this, event)" class="hover:text-white flex items-center gap-1">
                             Swipe Left: #001 <i class="fa-solid fa-chevron-right text-rose-400"></i>
                         </a>
                     </div>
@@ -851,7 +949,7 @@
                     <!-- PREV / NEXT NAVIGATION DIRECTLY UNDER VIDEO -->
                     <div class="mt-4 w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[500px] flex items-center justify-between gap-2 text-xs font-bold">
                         <a href="/015/" class="flex-1 bg-[#1F140E] hover:bg-rose-700 text-amber-200 hover:text-white px-3 py-2.5 rounded-2xl flex items-center justify-center gap-1.5 transition-all shadow border border-amber-800/40 truncate">
-                            <i class="fa-solid fa-arrow-left"></i> <span class="truncate">#015 Snow Monster</span>
+                            <i class="fa-solid fa-arrow-left"></i> <span class="truncate">#015 The Abominable Yeti</span>
                         </a>
                         <a href="/#collection" class="bg-[#180E09] hover:bg-[#281810] text-amber-300 px-3.5 py-2.5 rounded-2xl flex items-center justify-center gap-1.5 transition-all shadow border border-amber-800/40 whitespace-nowrap">
                             <i class="fa-solid fa-boxes-stacked"></i> <span class="hidden sm:inline">All</span> 21
@@ -867,34 +965,52 @@
                     </button>
                 </div>
 
-                <!-- COLUMN 2: Details + Physical Smart Card 3D Flip (Front/Back) + Fullscreen Zoom + Order Button -->
+                <!-- COLUMN 2: 3D CARD, LIVING CREED, ABILITIES, MOTIF, ARTISAN LORE, STATS, PURCHASE -->
                 <div class="order-2 flex flex-col gap-4 sm:gap-6 w-full min-w-0">
                     
-                    <!-- MOBILE TITLE & MOTTO (Displayed right under video on mobile) -->
-                    <div class="lg:hidden text-center bg-[#150D09]/95 p-3.5 rounded-2xl border border-amber-700/30">
-                        <h1 class="font-clayTitle text-2xl font-extrabold bg-gradient-to-r from-amber-100 via-amber-200 to-rose-200 bg-clip-text text-transparent break-words">
-                            Stocking Puppy
+                    <!-- Mobile Compact Title & Banner (Above 3D Card on phone) -->
+                    <div class="lg:hidden text-center bg-[#150D09]/95 p-4 rounded-2xl border border-amber-700/40">
+                        <span class="inline-block bg-gradient-to-r from-rose-700 to-amber-600 text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">
+                            SERIES 1 &bull; CARD #016 OF 016
+                        </span>
+                        <h1 class="font-clayTitle text-3xl font-extrabold bg-gradient-to-r from-amber-100 via-amber-200 to-rose-200 bg-clip-text text-transparent break-words">
+                            The Stocking Pup
                         </h1>
-                        <p class="font-sans text-sm text-amber-300 font-semibold tracking-wide mt-1">
-                            The Little Surprise &bull; <span class="text-rose-300 italic font-serif">Soft Knit Wool Stocking & Warm Clay Pup</span>
-                        </p>
-                        <p class="text-sm text-amber-100/90 italic mt-1.5 px-1 leading-relaxed break-words">
-                            &ldquo;The best gifts in life come with a wagging tail and boundless love.&rdquo;
+                        <p class="font-sans text-base text-amber-300 font-semibold tracking-wide mt-1">
+                            The Hearth Companion &bull; <span class="text-rose-300 italic font-serif">Soft Knit Wool Stocking & Warm Clay Pup</span>
                         </p>
                         <div class="flex flex-wrap justify-center gap-1.5 mt-2.5 max-w-2xl mx-auto"><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#puppy card</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#stocking puppy</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#clay puppy</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#holiday pup</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#nfc holiday card</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#smart card</span><span class="text-[10px] bg-[#231710]/90 text-amber-200/90 border border-amber-900/40 px-2.5 py-0.5 rounded-full font-medium">#tapgreetings</span></div>
                     </div>
 
+                    <!-- Living Creed & Motto Card (Exciting Animated) -->
+                    
+    <div class="tghh-quote-card my-3 p-5 sm:p-6 rounded-3xl border border-amber-500/40 shadow-2xl relative overflow-hidden bg-gradient-to-br from-[#20120B] via-[#160D08] to-[#25130A]">
+      <div class="absolute -top-10 -right-10 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
+      <div class="flex items-center gap-2 mb-2">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-widest bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-sm animate-pulse">
+          ✦ LIVING CREED &amp; MOTTO ✦
+        </span>
+      </div>
+      <div class="relative">
+        <span class="text-4xl sm:text-5xl font-serif text-amber-500/30 absolute -top-4 -left-2 select-none">&ldquo;</span>
+        <p class="font-clayTitle text-lg sm:text-2xl font-bold bg-gradient-to-r from-amber-100 via-amber-200 to-rose-200 bg-clip-text text-transparent italic leading-relaxed pl-6 pr-2 pt-1 break-words">
+          Unconditional love, boundless joy, and the best kind of holiday warmth.
+        </p>
+      </div>
+    </div>
+  
+
                     <!-- Interactive Flippable 3D Physical Keepsake Card (Front & Back - CLEAN ARTWORK WITH NO OVERLAYS) -->
                     <div class="bg-[#150D09]/95 p-4 sm:p-5 rounded-3xl border border-amber-700/30 shadow-xl flex flex-col items-center min-w-0">
                         <div class="w-full flex justify-between items-center mb-3">
-                            <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
+                            <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
                                 <i class="fa-solid fa-id-card text-rose-400"></i> Physical CR80 Smart Card
                             </span>
                             <div class="flex items-center gap-2">
-                                <button onclick="openCardZoom()" class="bg-[#241710] hover:bg-[#301F15] text-amber-300 text-xs font-bold px-3 py-1.5 rounded-xl border border-amber-600/40 flex items-center gap-1.5 transition-all shadow" title="Open Fullscreen Zoom Lightbox">
+                                <button onclick="openCardZoom()" class="bg-[#241710] hover:bg-[#301F15] text-amber-300 text-xs sm:text-sm font-bold px-3 py-1.5 rounded-xl border border-amber-600/40 flex items-center gap-1.5 transition-all shadow" title="Open Fullscreen Zoom Lightbox">
                                     <i class="fa-solid fa-expand text-rose-400"></i> Zoom
                                 </button>
-                                <button onclick="toggleCardFlip()" class="bg-[#241710] hover:bg-[#301F15] text-amber-300 text-xs font-bold px-3 py-1.5 rounded-xl border border-amber-600/40 flex items-center gap-1.5 transition-all shadow">
+                                <button onclick="toggleCardFlip()" class="bg-[#241710] hover:bg-[#301F15] text-amber-300 text-xs sm:text-sm font-bold px-3 py-1.5 rounded-xl border border-amber-600/40 flex items-center gap-1.5 transition-all shadow">
                                     <i class="fa-solid fa-arrows-rotate"></i> Flip
                                 </button>
                             </div>
@@ -905,11 +1021,11 @@
                             <div id="physicalCard3d" class="flip-card-inner relative w-full h-full shadow-2xl rounded-2xl">
                                 <!-- FRONT FACE (Art Only) -->
                                 <div class="flip-face bg-[#120C08] border-[2px] border-amber-600/40 flex items-center justify-center overflow-hidden">
-                                    <img src="/assets/img/cr80/016-front.jpg?v=cr80" alt="Stocking Puppy Front Artwork" class="w-full h-full object-cover">
+                                    <img src="/assets/img/cr80/016-front.jpg?v=cr80" alt="The Stocking Pup Front Artwork" class="w-full h-full object-cover">
                                 </div>
                                 <!-- BACK FACE (Collectible Card Back Only) -->
                                 <div class="flip-face flip-back bg-[#120C08] border-[2px] border-amber-600/40 flex items-center justify-center overflow-hidden">
-                                    <img src="/assets/img/cr80/016-back.jpg?v=cr80" alt="Stocking Puppy Back Design" class="w-full h-full object-cover">
+                                    <img src="/assets/img/cr80/016-back.jpg?v=cr80" alt="The Stocking Pup Back Design" class="w-full h-full object-cover">
                                 </div>
                             </div>
                         </div>
@@ -922,52 +1038,122 @@
                         </div>
                     </div>
 
-                    <!-- Living Keepsake & Artisan Craft Details -->
-                    <div class="bg-[#150D09]/95 p-4 sm:p-5 rounded-3xl border border-amber-700/30 shadow-xl relative min-w-0 flex flex-col gap-3">
+                    <!-- Special Abilities & Features -->
+                    
+    <div class="tghh-ability-card bg-gradient-to-br from-[#1C120C] to-[#140C08] p-4 sm:p-5 rounded-3xl border border-amber-600/40 shadow-xl relative overflow-hidden">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="w-7 h-7 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-300 text-sm shadow-sm animate-bounce">
+          ⚡
+        </span>
+        <span class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-amber-300">
+          Special Abilities &amp; Features
+        </span>
+      </div>
+      <p class="text-base sm:text-lg text-amber-100/90 leading-relaxed font-body pl-1 break-words">
+        Delivers unconditional love and boundless joy straight from the fireplace mantle.
+      </p>
+    </div>
+  
+
+                    <!-- NFC Tap Target Motif -->
+                    
+    <div class="tghh-nfc-motif-card bg-gradient-to-br from-[#1A100B] to-[#120B07] p-4 sm:p-5 rounded-3xl border border-amber-600/40 shadow-xl relative overflow-hidden">
+      <div class="flex items-center justify-between mb-2">
+        <div class="flex items-center gap-2">
+          <div class="relative w-7 h-7 flex items-center justify-center">
+            <span class="absolute w-full h-full rounded-full bg-rose-500/20 border border-rose-500/40 animate-ping"></span>
+            <i class="fa-solid fa-satellite-dish text-rose-400 text-sm relative z-10"></i>
+          </div>
+          <span class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-amber-300">
+            NFC Tap Target Motif
+          </span>
+        </div>
+        <span class="text-[10px] font-bold uppercase tracking-wider text-amber-400/80 bg-amber-950/60 px-2.5 py-0.5 rounded-full border border-amber-800/40">
+          Contactless Chip
+        </span>
+      </div>
+      <p class="text-base sm:text-lg text-amber-100/90 leading-relaxed font-body pl-1 break-words">
+        A golden holiday dog bone badge.
+      </p>
+      <div class="mt-2.5 pt-2 border-t border-amber-900/40 text-xs sm:text-sm text-amber-300/80 flex items-center gap-2">
+        <i class="fa-solid fa-mobile-screen text-rose-400"></i>
+        <span>Touch smartphone to physical card motif to launch animation instantly.</span>
+      </div>
+    </div>
+  
+
+                    <!-- Festive Indicators / Character Stats -->
+                    
+    <div class="bg-[#150D09]/95 p-4 sm:p-5 rounded-3xl border border-amber-700/40 shadow-xl min-w-0">
+      <div class="flex items-center justify-between mb-3 border-b border-amber-900/40 pb-2">
+        <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
+          <i class="fa-solid fa-chart-simple text-rose-400"></i> Festive Character Indicators
+        </span>
+        <span class="text-[10px] uppercase font-bold text-amber-400/80 tracking-widest bg-amber-950/60 px-2.5 py-0.5 rounded-full border border-amber-800/40">
+          ★ Master Ratings ★
+        </span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        
+      <div class="bg-[#1C120C]/90 p-3 sm:p-4 rounded-2xl border border-amber-800/40 shadow-inner flex flex-col justify-between">
+        <div class="text-xs uppercase font-extrabold text-amber-200/90 tracking-wider truncate mb-1">
+          Loyalty
+        </div>
+        <div class="flex items-center gap-1 text-base sm:text-lg font-bold my-1 tracking-widest">
+          <span class="inline-block star-twinkle-1 text-amber-400 drop-shadow-[0_0_6px_rgba(251,191,36,0.8)]">★</span> <span class="inline-block star-twinkle-2 text-amber-400 drop-shadow-[0_0_6px_rgba(251,191,36,0.8)]">★</span> <span class="inline-block star-twinkle-3 text-amber-400 drop-shadow-[0_0_6px_rgba(251,191,36,0.8)]">★</span> <span class="inline-block star-twinkle-4 text-amber-400 drop-shadow-[0_0_6px_rgba(251,191,36,0.8)]">★</span> <span class="inline-block star-twinkle-5 text-amber-400 drop-shadow-[0_0_6px_rgba(251,191,36,0.8)]">★</span>
+        </div>
+        <div class="w-full bg-[#100A06] h-2 rounded-full overflow-hidden border border-amber-900/50 mt-1">
+          <div class="tghh-meter-fill h-full bg-gradient-to-r from-amber-500 via-rose-500 to-amber-300 rounded-full" style="width: 100%;"></div>
+        </div>
+      </div>
+    
+      <div class="bg-[#1C120C]/90 p-3 sm:p-4 rounded-2xl border border-amber-800/40 shadow-inner flex flex-col justify-between">
+        <div class="text-xs uppercase font-extrabold text-amber-200/90 tracking-wider truncate mb-1">
+          Delight
+        </div>
+        <div class="flex items-center gap-1 text-base sm:text-lg font-bold my-1 tracking-widest">
+          <span class="inline-block star-twinkle-1 text-amber-400 drop-shadow-[0_0_6px_rgba(251,191,36,0.8)]">★</span> <span class="inline-block star-twinkle-2 text-amber-400 drop-shadow-[0_0_6px_rgba(251,191,36,0.8)]">★</span> <span class="inline-block star-twinkle-3 text-amber-400 drop-shadow-[0_0_6px_rgba(251,191,36,0.8)]">★</span> <span class="inline-block star-twinkle-4 text-amber-400 drop-shadow-[0_0_6px_rgba(251,191,36,0.8)]">★</span> <span class="inline-block star-twinkle-5 text-amber-400 drop-shadow-[0_0_6px_rgba(251,191,36,0.8)]">★</span>
+        </div>
+        <div class="w-full bg-[#100A06] h-2 rounded-full overflow-hidden border border-amber-900/50 mt-1">
+          <div class="tghh-meter-fill h-full bg-gradient-to-r from-amber-500 via-rose-500 to-amber-300 rounded-full" style="width: 100%;"></div>
+        </div>
+      </div>
+    
+      <div class="bg-[#1C120C]/90 p-3 sm:p-4 rounded-2xl border border-amber-800/40 shadow-inner flex flex-col justify-between">
+        <div class="text-xs uppercase font-extrabold text-amber-200/90 tracking-wider truncate mb-1">
+          Warmth
+        </div>
+        <div class="flex items-center gap-1 text-base sm:text-lg font-bold my-1 tracking-widest">
+          <span class="inline-block star-twinkle-1 text-amber-400 drop-shadow-[0_0_6px_rgba(251,191,36,0.8)]">★</span> <span class="inline-block star-twinkle-2 text-amber-400 drop-shadow-[0_0_6px_rgba(251,191,36,0.8)]">★</span> <span class="inline-block star-twinkle-3 text-amber-400 drop-shadow-[0_0_6px_rgba(251,191,36,0.8)]">★</span> <span class="inline-block star-twinkle-4 text-amber-400 drop-shadow-[0_0_6px_rgba(251,191,36,0.8)]">★</span> <span class="inline-block star-twinkle-5 text-amber-400 drop-shadow-[0_0_6px_rgba(251,191,36,0.8)]">★</span>
+        </div>
+        <div class="w-full bg-[#100A06] h-2 rounded-full overflow-hidden border border-amber-900/50 mt-1">
+          <div class="tghh-meter-fill h-full bg-gradient-to-r from-amber-500 via-rose-500 to-amber-300 rounded-full" style="width: 100%;"></div>
+        </div>
+      </div>
+    
+      </div>
+    </div>
+  
+
+                    <!-- Living Keepsake & Artisan Craft Details (Larger Text) -->
+                    <div class="bg-[#150D09]/95 p-4 sm:p-6 rounded-3xl border border-amber-700/30 shadow-xl relative min-w-0 flex flex-col gap-3.5">
                         <div>
                             <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-300 block mb-1.5 flex items-center gap-1.5">
                                 <i class="fa-solid fa-wand-magic-sparkles text-rose-400"></i> Smart Keepsake Experience
                             </span>
-                            <p class="text-sm sm:text-base text-amber-100/90 leading-relaxed font-body break-words">
-                                Tap this physical <strong>Stocking Puppy</strong> card against any smartphone (iPhone or Android) to instantly view the exclusive 1080p claymation video and character greeting—zero app download required. This card can also be reprogrammed anytime to play your own custom video message, family photos, voice note, or personal web link using our free NFC Web Tool at <a href="https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" target="_blank" class="text-rose-400 underline font-semibold hover:text-amber-300">/tools</a>!
+                            <p class="text-base sm:text-lg text-amber-100/90 leading-relaxed font-body break-words">
+                                Tap this physical <strong>The Stocking Pup</strong> card against any smartphone (iPhone or Android) to instantly view the exclusive 1080p claymation video and character greeting—zero app download required. This card can also be reprogrammed anytime to play your own custom video message, family photos, voice note, or personal web link using our free NFC Web Tool at <a href="https://shop.tapthingy.com/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" target="_blank" class="text-rose-400 underline font-semibold hover:text-amber-300">/tools</a>!
                             </p>
                         </div>
-                        <div class="pt-2.5 border-t border-amber-900/40">
+                        <div class="pt-3 border-t border-amber-900/40">
                             <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-400 block mb-1.5 flex items-center gap-1.5">
                                 <i class="fa-solid fa-feather-pointed text-rose-400"></i> Clay Artisan Craft &amp; Lore
                             </span>
-                            <p class="text-sm sm:text-base text-amber-100/80 leading-relaxed font-body italic break-words">
+                            <p class="text-base sm:text-lg text-amber-100/80 leading-relaxed font-body italic break-words">
                                 An utterly precious clay puppy with velvety brown floppy ears peeking eagerly out of a chunky red cable-knit holiday stocking hanging by the fireside mantle, barking a joyous holiday greeting.
                             </p>
                         </div>
                     </div>
-
-                    <!-- Festive Indicators / Character Stats -->
-                    
-    <div class="bg-[#150D09]/95 p-4 sm:p-5 rounded-3xl border border-amber-700/30 shadow-xl min-w-0">
-        <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300 block mb-3 flex items-center gap-1.5">
-            <i class="fa-solid fa-star text-amber-400"></i> Festive Indicators &amp; Character Stats
-        </span>
-        <div class="grid grid-cols-3 gap-2 text-center min-w-0">
-            
-    <div class="bg-[#1C120C]/90 p-2.5 rounded-2xl border border-amber-800/30 min-w-0 overflow-hidden shadow-inner">
-        <div class="text-[11px] uppercase font-bold text-amber-200/80 tracking-wider truncate">cuteness</div>
-        <div class="font-sans text-sm sm:text-base font-bold text-amber-300 mt-1 tracking-wider truncate">★★★★★</div>
-    </div>
-  
-    <div class="bg-[#1C120C]/90 p-2.5 rounded-2xl border border-amber-800/30 min-w-0 overflow-hidden shadow-inner">
-        <div class="text-[11px] uppercase font-bold text-amber-200/80 tracking-wider truncate">joy</div>
-        <div class="font-sans text-sm sm:text-base font-bold text-amber-300 mt-1 tracking-wider truncate">★★★★★</div>
-    </div>
-  
-    <div class="bg-[#1C120C]/90 p-2.5 rounded-2xl border border-amber-800/30 min-w-0 overflow-hidden shadow-inner">
-        <div class="text-[11px] uppercase font-bold text-amber-200/80 tracking-wider truncate">loyalty</div>
-        <div class="font-sans text-sm sm:text-base font-bold text-amber-300 mt-1 tracking-wider truncate">★★★★★</div>
-    </div>
-  
-        </div>
-    </div>
-  
 
                     <!-- Prompts Accordion -->
                     
@@ -995,13 +1181,10 @@
     </details>
   
 
-                    <!-- Primary Full-Width Order Keepsake Card Button (Direct to Set Option) -->
+                    <!-- Primary Full-Width Order Keepsake Card Button (Single Button, Removed 16-card set option) -->
                     <div class="pt-2 min-w-0 flex flex-col gap-2.5">
-                        <a href="https://shop.tapthingy.com/products/happy-holidays-series-1?variant=68065709523266" target="_blank" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-3.5 sm:py-4 px-6 rounded-2xl shadow-xl shadow-rose-900/40 text-center flex items-center justify-center gap-2.5 transition-transform hover:scale-[1.01] text-sm sm:text-base">
-                            <i class="fa-solid fa-cart-shopping"></i> <span>Order #016 in Happy Holidays Set &bull; $14.99</span>
-                        </a>
-                        <a href="https://shop.tapthingy.com/products/happy-holidays-series-1" target="_blank" class="w-full bg-[#180E09] hover:bg-[#281810] text-amber-300 font-bold py-2.5 px-4 rounded-xl border border-amber-600/40 text-center flex items-center justify-center gap-2 transition-all text-xs sm:text-sm">
-                            <i class="fa-solid fa-boxes-stacked text-rose-400"></i> <span>Or Order Complete 16-Card Master Box Set &bull; $199.00 (Save $40)</span>
+                        <a href="https://shop.tapthingy.com/products/happy-holidays-series-1?variant=68065709523266" target="_blank" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-4 px-6 rounded-2xl shadow-xl shadow-rose-900/40 text-center flex items-center justify-center gap-2.5 transition-transform hover:scale-[1.01] text-base sm:text-lg">
+                            <i class="fa-solid fa-cart-shopping"></i> <span>Order #016 in Happy Holidays Set &bull; 14.99</span>
                         </a>
                     </div>
 
@@ -1017,7 +1200,7 @@
         <div class="w-full max-w-4xl mx-auto flex items-center justify-between gap-3 text-white">
             <div class="flex items-center gap-2 sm:gap-3 min-w-0">
                 <span class="bg-[#241710] text-amber-300 text-xs font-bold px-2.5 py-1 rounded-lg border border-amber-700/40">#016</span>
-                <h2 class="font-clayTitle text-base sm:text-xl font-bold truncate">Stocking Puppy</h2>
+                <h2 class="font-clayTitle text-base sm:text-xl font-bold truncate">The Stocking Pup</h2>
                 <span id="zoomSideBadge" class="text-[10px] sm:text-xs bg-rose-900/50 text-rose-300 border border-rose-800/40 px-2 py-0.5 rounded-full uppercase tracking-wider font-semibold">Front Art</span>
             </div>
             <div class="flex items-center gap-2">
@@ -1032,7 +1215,7 @@
 
         <!-- Lightbox Image Stage with Magnify Toggle -->
         <div class="relative flex-grow flex items-center justify-center my-2 sm:my-4 overflow-hidden cursor-zoom-in" onclick="toggleZoomMagnify()">
-            <img id="zoomImage" src="/assets/img/cr80/016-front.jpg?v=cr80" alt="Stocking Puppy Fullscreen" class="max-h-[76vh] sm:max-h-[82vh] max-w-[92vw] object-contain rounded-2xl shadow-2xl transition-transform duration-300 border-[2px] border-amber-600/40">
+            <img id="zoomImage" src="/assets/img/cr80/016-front.jpg?v=cr80" alt="The Stocking Pup Fullscreen" class="max-h-[76vh] sm:max-h-[82vh] max-w-[92vw] object-contain rounded-2xl shadow-2xl transition-transform duration-300 border-[2px] border-amber-600/40">
         </div>
 
         <!-- Lightbox Bottom Toolbar -->
@@ -1147,27 +1330,62 @@
             var vid = document.getElementById('cardVideo');
             if (!vid) return;
 
+            var urlParams = new URLSearchParams(window.location.search);
+            var soundParam = urlParams.get('sound');
+            if (soundParam === '1') {
+                try { localStorage.setItem('tg_sound', 'unmuted'); } catch (e) {}
+            }
+
             var soundPref = null;
             try { soundPref = localStorage.getItem('tg_sound'); } catch (e) {}
 
-            // If user has unmuted anywhere or default on navigation, try unmuted playback
-            if (soundPref === 'muted') {
-                vid.muted = true;
-                updateSoundUI(true);
-            } else {
+            var wantsSound = (soundParam === '1' || soundPref === 'unmuted');
+
+            if (wantsSound) {
                 vid.muted = false;
+                vid.removeAttribute('muted');
                 var promise = vid.play();
                 if (promise !== undefined) {
-                    promise.catch(function(err) {
-                        // Browser policy blocked unmuted autoplay; smoothly fallback to muted without intrusive overlay
+                    promise.then(function() {
+                        updateSoundUI(false);
+                    }).catch(function(err) {
+                        console.log('Autoplay unmuted blocked by policy, will unmute on interaction:', err);
                         vid.muted = true;
-                        vid.play();
+                        vid.setAttribute('muted', '');
+                        vid.play().catch(function() {});
                         updateSoundUI(true);
-                    }).then(function() {
-                        updateSoundUI(vid.muted);
+                        setupInteractionUnmute();
                     });
                 }
+            } else {
+                vid.muted = true;
+                vid.setAttribute('muted', '');
+                vid.play().catch(function(e) {});
+                updateSoundUI(true);
             }
+        }
+
+        var interactionListenerAttached = false;
+        function setupInteractionUnmute() {
+            if (interactionListenerAttached) return;
+            interactionListenerAttached = true;
+            function unlock() {
+                var vid = document.getElementById('cardVideo');
+                if (vid && vid.muted) {
+                    vid.muted = false;
+                    vid.removeAttribute('muted');
+                    vid.play().then(function() {
+                        updateSoundUI(false);
+                    }).catch(function(e) {});
+                }
+                window.removeEventListener('click', unlock);
+                window.removeEventListener('touchstart', unlock);
+                window.removeEventListener('keydown', unlock);
+                interactionListenerAttached = false;
+            }
+            window.addEventListener('click', unlock, { once: true, passive: true });
+            window.addEventListener('touchstart', unlock, { once: true, passive: true });
+            window.addEventListener('keydown', unlock, { once: true, passive: true });
         }
 
         function toggleMute() {
@@ -1175,10 +1393,35 @@
             if (!vid) return;
 
             vid.muted = !vid.muted;
+            if (vid.muted) {
+                vid.setAttribute('muted', '');
+            } else {
+                vid.removeAttribute('muted');
+            }
             try {
                 localStorage.setItem('tg_sound', vid.muted ? 'muted' : 'unmuted');
             } catch (e) {}
             updateSoundUI(vid.muted);
+        }
+
+        function preserveAudio(link, e) {
+            var vid = document.getElementById('cardVideo');
+            var isUnmuted = (vid && !vid.muted) || (localStorage.getItem('tg_sound') === 'unmuted');
+            if (isUnmuted) {
+                var href = link.getAttribute('href');
+                if (href && !href.includes('sound=1')) {
+                    link.href = href + (href.includes('?') ? '&' : '?') + 'sound=1';
+                }
+            }
+        }
+
+        function navigatePreservingAudio(url) {
+            var vid = document.getElementById('cardVideo');
+            var isUnmuted = (vid && !vid.muted) || (localStorage.getItem('tg_sound') === 'unmuted');
+            if (isUnmuted) {
+                url += (url.includes('?') ? '&' : '?') + 'sound=1';
+            }
+            window.location.href = url;
         }
 
         function updateSoundUI(isMuted) {
@@ -1231,7 +1474,7 @@
         function shareGreeting() {
             var shareData = {
                 title: document.title,
-                text: "Stocking Puppy (The Little Surprise) - TapGreetings Keepsake Card",
+                text: "The Stocking Pup (The Hearth Companion) - TapGreetings Keepsake Card",
                 url: window.location.href
             };
             if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
@@ -1335,10 +1578,10 @@
                         if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY) * 1.3 && elapsed < 600) {
                             if (deltaX < 0) {
                                 // Swipe LEFT -> Go to NEXT Card
-                                window.location.href = '/001/';
+                                navigatePreservingAudio('/001/');
                             } else {
                                 // Swipe RIGHT -> Go to PREVIOUS Card
-                                window.location.href = '/015/';
+                                navigatePreservingAudio('/015/');
                             }
                         }
                     }

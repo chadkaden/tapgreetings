@@ -530,7 +530,63 @@
         html.light #searchInput::placeholder {
             color: #9C7D68 !important;
         }
+
+        /* Star Twinkle Animations for Festive Indicators */
+        @keyframes starTwinkle {
+            0%, 100% { transform: scale(1); opacity: 0.85; }
+            50% { transform: scale(1.3); opacity: 1; filter: drop-shadow(0 0 8px rgba(251, 191, 36, 1)); }
+        }
+        .star-twinkle-1 { animation: starTwinkle 2s ease-in-out infinite; }
+        .star-twinkle-2 { animation: starTwinkle 2s ease-in-out infinite 0.25s; }
+        .star-twinkle-3 { animation: starTwinkle 2s ease-in-out infinite 0.5s; }
+        .star-twinkle-4 { animation: starTwinkle 2s ease-in-out infinite 0.75s; }
+        .star-twinkle-5 { animation: starTwinkle 2s ease-in-out infinite 1s; }
+
+        /* Progress Meter Glow Bar */
+        @keyframes meterPulse {
+            0%, 100% { opacity: 0.9; }
+            50% { opacity: 1; box-shadow: 0 0 10px rgba(251, 191, 36, 0.6); }
+        }
+        .tghh-meter-fill {
+            animation: meterPulse 2.5s ease-in-out infinite;
+            transition: width 1s ease-out;
+        }
+
+        /* Card Glow Pulsing Border */
+        @keyframes cardGlowPulse {
+            0%, 100% { border-color: rgba(217, 119, 6, 0.35); box-shadow: 0 10px 25px -5px rgba(217, 119, 6, 0.1); }
+            50% { border-color: rgba(245, 158, 11, 0.65); box-shadow: 0 15px 30px -5px rgba(245, 158, 11, 0.25); }
+        }
+        .tghh-quote-card, .tghh-ability-card, .tghh-nfc-motif-card {
+            animation: cardGlowPulse 4s ease-in-out infinite;
+        }
     </style>
+
+    <!-- AI & Answer Engine Optimization (AEO) Meta Tags -->
+    <meta name="ai-content-type" content="Physical Smart NFC Keepsake Greeting Card, CR80 Claymation Art, Living Audio/Video Experience">
+    
+    <meta name="ai-summary" content="TapGreetings: Handcrafted physical smart NFC living keepsake greeting cards. Tap any smartphone to stream exclusive claymation animation and audio greetings.">
+    
+
+    <!-- Schema.org Structured Data (JSON-LD) for AI & Semantic Engines -->
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://tapgreetings.com/#website",
+      "url": "https://tapgreetings.com",
+      "name": "TapGreetings",
+      "description": "TapGreetings - Living Keepsake Smart NFC Greeting Cards. Tap any smartphone to stream exclusive claymation animation and audio greetings.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "TapGreetings",
+        "url": "https://tapgreetings.com",
+        "logo": "https://tapgreetings.com/assets/img/tapthingy-logo-white.png"
+      }
+    }
+    </script>
+    
 </head>
 <body class="font-sans bg-[#120C08] text-amber-50 min-h-screen transition-colors duration-300 selection:bg-rose-600 selection:text-white flex flex-col justify-between overflow-x-hidden">
     <!-- Header -->
@@ -662,7 +718,7 @@
                         <a href="https://shop.tapthingy.com/products/nfc-tap-to-video-pvc-greeting-card-pink-o-ween-master-collection" target="_blank" class="flex items-center justify-between px-3 py-1.5 rounded-xl text-xs text-pink-200/90 hover:bg-pink-950/60 hover:text-white transition-colors">
                             <span>🎀 Master Box Set (31 Cards)</span> <span class="text-[10px] text-pink-400 font-bold">$199.00</span>
                         </a>
-                        <a href="https://shop.tapthingy.com/pages/pink-o-ween" target="_blank" class="flex items-center justify-between px-3 py-1.5 rounded-xl text-xs text-pink-200/80 hover:bg-pink-950/60 hover:text-white transition-colors">
+                        <a href="https://shop.tapthingy.com/TGPOW-S01" target="_blank" class="flex items-center justify-between px-3 py-1.5 rounded-xl text-xs text-pink-200/80 hover:bg-pink-950/60 hover:text-white transition-colors">
                             <span>🦇 Halloween Archive Showcase</span> <span class="text-[10px] text-pink-400">&rarr;</span>
                         </a>
                     </div>
@@ -916,9 +972,9 @@
       </div>
     
 
-      <div class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 glow-amber transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="3" data-num="9" data-series="series-1" data-code="009" data-name="gingerbread man" data-greeting="happy holidays!" data-keywords="gingerbread card gingerbread man clay gingerbread royal icing nfc holiday card smart card tapgreetings" data-lore="a cheerful, baked gingerbread man sculpted in warm cinnamon-spiced polymer clay with dimensional white royal icing piping and gumdrop buttons, waving happily from a flour-dusted holiday kitchen table." data-category="hearth" data-front="/assets/img/cr80/009-front.jpg?v=cr80" data-back="/assets/img/cr80/009-back.jpg?v=cr80">
+      <div class="card-item group bg-[#1A110C]/95 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-amber-800/40 hover:border-amber-500/70 glow-amber transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-w-0" data-index="3" data-num="9" data-series="series-1" data-code="009" data-name="the gingerbread man" data-greeting="happy holidays!" data-keywords="gingerbread card gingerbread man clay gingerbread royal icing nfc holiday card smart card tapgreetings" data-lore="a cheerful, baked gingerbread man sculpted in warm cinnamon-spiced polymer clay with dimensional white royal icing piping and gumdrop buttons, waving happily from a flour-dusted holiday kitchen table." data-category="hearth" data-front="/assets/img/cr80/009-front.jpg?v=cr80" data-back="/assets/img/cr80/009-back.jpg?v=cr80">
           <a href="/009/" class="relative w-full aspect-[54/86] bg-[#120C08] overflow-hidden flex items-center justify-center block">
-              <img src="/assets/img/cr80/009-front.jpg?v=cr80" alt="Gingerbread Man" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="/assets/img/cr80/009-front.jpg?v=cr80" alt="The Gingerbread Man" class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
               <div class="absolute top-2 right-2 bg-black/85 backdrop-blur-sm text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-600/50 text-amber-300">#009</div>
           </a>
           <div class="p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-1.5 flex-grow justify-between min-w-0">
@@ -927,8 +983,8 @@
                       <span class="text-[9px] sm:text-[10px] font-bold text-rose-300 tracking-wider uppercase truncate">Happy Holidays!</span>
                       <span class="text-[8px] sm:text-[9px] bg-[#140D08] text-amber-200/90 border-amber-800/40 px-1.5 sm:px-2 py-0.5 rounded-full border flex-shrink-0">Hearth & Holiday</span>
                   </div>
-                  <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">Gingerbread Man</div>
-                  <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Sweet Reveler</div>
+                  <div class="font-clayTitle text-xs sm:text-base lg:text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug truncate">The Gingerbread Man</div>
+                  <div class="text-[10px] sm:text-xs text-amber-200/80 italic truncate mt-0.5">The Classic Runner</div>
               </a>
               
         <div class="mt-2 pt-1.5 sm:pt-2 border-t border-amber-900/40 flex flex-col gap-1.5">
