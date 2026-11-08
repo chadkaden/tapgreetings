@@ -60,9 +60,17 @@ async function main() {
   const setSection = fs.readFileSync(path.join(__dirname, '../theme/sections/tapgreetings-set-product-page.liquid'), 'utf8');
   await uploadThemeAsset('sections/tapgreetings-set-product-page.liquid', setSection, token, themeId, store);
 
+  // 1b. Upload sections/tapgreetings-product-page.liquid
+  const prodSection = fs.readFileSync(path.join(__dirname, '../theme/sections/tapgreetings-product-page.liquid'), 'utf8');
+  await uploadThemeAsset('sections/tapgreetings-product-page.liquid', prodSection, token, themeId, store);
+
   // 2. Upload templates/product.tapgreetings-set.json
   const setTemplate = fs.readFileSync(path.join(__dirname, '../theme/templates/product.tapgreetings-set.json'), 'utf8');
   await uploadThemeAsset('templates/product.tapgreetings-set.json', setTemplate, token, themeId, store);
+
+  // 2b. Upload templates/product.tapgreetings.json
+  const prodTemplate = fs.readFileSync(path.join(__dirname, '../theme/templates/product.tapgreetings.json'), 'utf8');
+  await uploadThemeAsset('templates/product.tapgreetings.json', prodTemplate, token, themeId, store);
 
   // 3. Upload default templates/product.json (points to tapgreetings-product-page instead of pinkoween)
   const defaultProdTemplate = fs.readFileSync(path.join(__dirname, '../theme/templates/product.json'), 'utf8');
