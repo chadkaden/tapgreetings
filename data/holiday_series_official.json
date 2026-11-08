@@ -1,0 +1,210 @@
+{
+  "001": {
+    "name": "Santa",
+    "title": "The Master Artisan",
+    "series": "Series 1: Winter Legends & Iconic Holiday Characters",
+    "abilities": "Winks with a subtle magical twinkle; cradles a glowing gold-leaf key that unlocks holiday cheer.",
+    "motto": "Every heart has a spark of magic—share yours generously!",
+    "nfcMotif": "A sculpted golden sleigh bell with concentric sonar waves.",
+    "indicators": [
+      { "name": "Cheer", "stars": "★★★★★", "score": 5 },
+      { "name": "Warmth", "stars": "★★★★★", "score": 5 },
+      { "name": "Wonder", "stars": "★★★★☆", "score": 4 }
+    ]
+  },
+  "002": {
+    "name": "Frosty",
+    "title": "The Snowbound Joy",
+    "series": "Series 1: Winter Legends & Iconic Holiday Characters",
+    "abilities": "Balances a tiny red-breasted clay robin on his twig hand amidst swirling felt snowflakes.",
+    "motto": "Stay cool, melt barriers, and always bring the sunshine with you!",
+    "nfcMotif": "A glowing clay carrot nose medallion.",
+    "indicators": [
+      { "name": "Chill Factor", "stars": "★★★★★", "score": 5 },
+      { "name": "Whimsy", "stars": "★★★★★", "score": 5 },
+      { "name": "Heart", "stars": "★★★★★", "score": 5 }
+    ]
+  },
+  "003": {
+    "name": "Rudolph",
+    "title": "The Beacon of Light",
+    "series": "Series 1: Winter Legends & Iconic Holiday Characters",
+    "abilities": "Emits an atmospheric amber glow from his translucent ruby-red resin nose to light up snowy paths.",
+    "motto": "Never dim your light—it is the very compass someone needs to find their way.",
+    "nfcMotif": "A glowing ruby sphere icon labeled \"TAP THE RED NOSE\".",
+    "indicators": [
+      { "name": "Lumens", "stars": "★★★★★", "score": 5 },
+      { "name": "Bravery", "stars": "★★★★★", "score": 5 },
+      { "name": "Cheer", "stars": "★★★★☆", "score": 4 }
+    ]
+  },
+  "004": {
+    "name": "Jack Frost",
+    "title": "The Frost Sprite",
+    "series": "Series 1: Winter Legends & Iconic Holiday Characters",
+    "abilities": "Blows miniature glowing fractal frost plumes across icy surfaces using a slender crystal wand.",
+    "motto": "Winter’s chill only makes the fireside laughter that much sweeter.",
+    "nfcMotif": "A carved six-point ice crystal badge.",
+    "indicators": [
+      { "name": "Frost Magic", "stars": "★★★★★", "score": 5 },
+      { "name": "Agility", "stars": "★★★★★", "score": 5 },
+      { "name": "Spark", "stars": "★★★★☆", "score": 4 }
+    ]
+  },
+  "005": {
+    "name": "Nutcracker",
+    "title": "The Hearth Sentry",
+    "series": "Series 1: Winter Legends & Iconic Holiday Characters",
+    "abilities": "Stands at strict attention in polished lacquer armor, guarding the festive space beside a wrapped drum.",
+    "motto": "Stand tall in purpose, guard what you cherish, and march toward joy!",
+    "nfcMotif": "A royal golden crest with crossed drumsticks.",
+    "indicators": [
+      { "name": "Loyalty", "stars": "★★★★★", "score": 5 },
+      { "name": "Valor", "stars": "★★★★★", "score": 5 },
+      { "name": "Splendor", "stars": "★★★★☆", "score": 4 }
+    ]
+  },
+  "006": {
+    "name": "The Tree",
+    "title": "The Evergreen Hearth",
+    "series": "Series 1: Winter Legends & Iconic Holiday Characters",
+    "abilities": "Casts volumetric downward light from an internal-glowing buttercream star through layered felt branches.",
+    "motto": "Deeply rooted in love, reaching endlessly toward the light.",
+    "nfcMotif": "A radiant eight-pointed hearth star.",
+    "indicators": [
+      { "name": "Hearth Glow", "stars": "★★★★★", "score": 5 },
+      { "name": "Tradition", "stars": "★★★★★", "score": 5 },
+      { "name": "Wonder", "stars": "★★★★★", "score": 5 }
+    ]
+  },
+  "007": {
+    "name": "Snowflake",
+    "title": "The Celestial Crystal",
+    "series": "Series 1: Winter Legends & Iconic Holiday Characters",
+    "abilities": "Radiates soft cyan bioluminescence from its opalescent resin core, floating weightlessly in twilight.",
+    "motto": "Unique in every angle, fleeting in time, infinite in beauty.",
+    "nfcMotif": "An intricate embossed hexagonal snowflake core.",
+    "indicators": [
+      { "name": "Pure Magic", "stars": "★★★★★", "score": 5 },
+      { "name": "Precision", "stars": "★★★★★", "score": 5 },
+      { "name": "Peace", "stars": "★★★★★", "score": 5 }
+    ]
+  },
+  "008": {
+    "name": "Gift",
+    "title": "The Surprise Box",
+    "series": "Series 1: Winter Legends & Iconic Holiday Characters",
+    "abilities": "Cracks open its lid to project a beam of warm golden light, magical ribbons, and star dust.",
+    "motto": "The sweetest presents aren’t tied in ribbons, but wrapped in presence.",
+    "nfcMotif": "The center knot of the cherry-red satin ribbon bow.",
+    "indicators": [
+      { "name": "Anticipation", "stars": "★★★★★", "score": 5 },
+      { "name": "Delight", "stars": "★★★★★", "score": 5 },
+      { "name": "Mystery", "stars": "★★★★★", "score": 5 }
+    ]
+  },
+  "009": {
+    "name": "The Gingerbread Man",
+    "title": "The Classic Runner",
+    "series": "Series 2: North Pole & Winter Legends",
+    "abilities": "Sprints mid-stride across powdered sugar with bouncy energy and gumdrop button resilience.",
+    "motto": "Run toward joy, embrace the adventure, and savor every sweet second!",
+    "nfcMotif": "A scalloped frosted gingerbread cookie medallion labeled \"TAP FOR SWEET CHEER\".",
+    "indicators": [
+      { "name": "Sweetness", "stars": "★★★★★", "score": 5 },
+      { "name": "Energy", "stars": "★★★★★", "score": 5 },
+      { "name": "Cheer", "stars": "★★★★★", "score": 5 }
+    ]
+  },
+  "010": {
+    "name": "Mrs. Claus",
+    "title": "The North Pole Hearth",
+    "series": "Series 2: North Pole & Winter Legends",
+    "abilities": "Radiates soothing kitchen warmth and supplies an endless batch of fresh, comforting holiday treats.",
+    "motto": "The greatest gift you can bring to any room is a warm welcome.",
+    "nfcMotif": "A steaming mug of spiced cider with a cinnamon-stick accent.",
+    "indicators": [
+      { "name": "Warmth", "stars": "★★★★★", "score": 5 },
+      { "name": "Comfort", "stars": "★★★★★", "score": 5 },
+      { "name": "Generosity", "stars": "★★★★★", "score": 5 }
+    ]
+  },
+  "011": {
+    "name": "The Workshop Elf",
+    "title": "The Master Toymaker",
+    "series": "Series 2: North Pole & Winter Legends",
+    "abilities": "Crafts toys with lightning speed using magical paintbrushes and ringing jester-boot bells.",
+    "motto": "Craft your days with passion, and put a little play into everything you make!",
+    "nfcMotif": "A brass gear framed by crossed craft hammers.",
+    "indicators": [
+      { "name": "Craft", "stars": "★★★★★", "score": 5 },
+      { "name": "Whimsy", "stars": "★★★★★", "score": 5 },
+      { "name": "Spirit", "stars": "★★★★★", "score": 5 }
+    ]
+  },
+  "012": {
+    "name": "The Cozy Polar Bear",
+    "title": "The Gentle Giant",
+    "series": "Series 2: North Pole & Winter Legends",
+    "abilities": "Provides grounding calm and cradles a tiny, protective paper lantern against cold winter winds.",
+    "motto": "Stay soft in a cold world, and let your inner light lead the way.",
+    "nfcMotif": "An embossed bear paw print with expanding radio ripples.",
+    "indicators": [
+      { "name": "Coziness", "stars": "★★★★★", "score": 5 },
+      { "name": "Calm", "stars": "★★★★★", "score": 5 },
+      { "name": "Heart", "stars": "★★★★★", "score": 5 }
+    ]
+  },
+  "013": {
+    "name": "The Holiday Penguin",
+    "title": "The Arctic Glider",
+    "series": "Series 2: North Pole & Winter Legends",
+    "abilities": "Navigates tricky obstacles with effortless agility, kicking up crystalline ice shavings on silver skates.",
+    "motto": "Glide through the bumps, find your rhythm, and enjoy the slide!",
+    "nfcMotif": "A stylized ice-skate blade emblem encircled by radar rings.",
+    "indicators": [
+      { "name": "Agility", "stars": "★★★★★", "score": 5 },
+      { "name": "Mirth", "stars": "★★★★★", "score": 5 },
+      { "name": "Cool Factor", "stars": "★★★★★", "score": 5 }
+    ]
+  },
+  "014": {
+    "name": "The Sugar Plum Fairy",
+    "title": "The Dream Weaver",
+    "series": "Series 2: North Pole & Winter Legends",
+    "abilities": "Hovers mid-air, casting quiet enchantment and sparkling sugar crystals with a starlight wand.",
+    "motto": "Believe in the quiet magic that dances just beyond what eyes can see.",
+    "nfcMotif": "A faceted plum crystal star.",
+    "indicators": [
+      { "name": "Grace", "stars": "★★★★★", "score": 5 },
+      { "name": "Wonder", "stars": "★★★★★", "score": 5 },
+      { "name": "Magic", "stars": "★★★★★", "score": 5 }
+    ]
+  },
+  "015": {
+    "name": "The Abominable Yeti",
+    "title": "The Gentle Snow Monster",
+    "series": "Series 2: North Pole & Winter Legends",
+    "abilities": "Converts awkward moments into pure laughter while playfully tangling in colorful holiday lights.",
+    "motto": "Big hearts make the best kind of holiday magic.",
+    "nfcMotif": "A vintage teardrop holiday lightbulb with radial glow lines.",
+    "indicators": [
+      { "name": "Hug Factor", "stars": "★★★★★", "score": 5 },
+      { "name": "Cheer", "stars": "★★★★★", "score": 5 },
+      { "name": "Spark", "stars": "★★★★☆", "score": 4 }
+    ]
+  },
+  "016": {
+    "name": "The Stocking Pup",
+    "title": "The Hearth Companion",
+    "series": "Series 2: North Pole & Winter Legends",
+    "abilities": "Delivers unconditional love and boundless joy straight from the fireplace mantle.",
+    "motto": "Unconditional love, boundless joy, and the best kind of holiday warmth.",
+    "nfcMotif": "A golden holiday dog bone badge.",
+    "indicators": [
+      { "name": "Loyalty", "stars": "★★★★★", "score": 5 },
+      { "name": "Delight", "stars": "★★★★★", "score": 5 },
+      { "name": "Warmth", "stars": "★★★★★", "score": 5 }
+    ]
+  }
+}
