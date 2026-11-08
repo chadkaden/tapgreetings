@@ -856,6 +856,211 @@ function getHeadHtml(title, cardStyle = null, seoData = null, mediaData = null, 
         .tghh-quote-card, .tghh-ability-card, .tghh-nfc-motif-card {
             animation: cardGlowPulse 4s ease-in-out infinite;
         }
+    
+        /* Centered Luxury Card Immersion Layout (Matches shop.tapthingy.com/pages) */
+        .tghh-experience-wrap {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #140C08 !important;
+            color: #FFF8E7 !important;
+            border-radius: 28px !important;
+            padding: 24px 16px 40px !important;
+            max-width: 680px !important;
+            margin: 12px auto 36px !important;
+            box-shadow: 0 12px 50px rgba(0,0,0,0.7), 0 0 35px rgba(251,191,36,0.18) !important;
+            border: 2px solid rgba(251,191,36,0.4) !important;
+            position: relative;
+            overflow: hidden;
+        }
+        @media (min-width: 640px) {
+            .tghh-experience-wrap {
+                padding: 32px 24px 48px !important;
+            }
+        }
+        .tghh-corner {
+            position: absolute;
+            color: #FBBF24;
+            font-size: 14px;
+            opacity: 0.85;
+            text-shadow: 0 0 8px rgba(251,191,36,0.7);
+            user-select: none;
+            animation: cornerTwinkle 3s ease-in-out infinite alternate;
+        }
+        .tghh-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #9E1B32, #D62839, #E65100, #FBBF24, #9E1B32) !important;
+            background-size: 300% 300% !important;
+            animation: badgeSweep 6s ease infinite !important;
+            color: #FFFFFF !important;
+            padding: 7px 20px;
+            border-radius: 999px;
+            font-weight: 800;
+            font-size: 0.82rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 18px rgba(214,40,57,0.45);
+            margin-bottom: 12px;
+        }
+        .tghh-dyn-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.3rem;
+            font-weight: 900;
+            color: #FFFFFF !important;
+            margin: 4px 0 6px;
+            line-height: 1.2;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+        }
+        @media (min-width: 640px) {
+            .tghh-dyn-title {
+                font-size: 2.8rem;
+            }
+        }
+        .tghh-dyn-subtitle {
+            font-size: 1.05rem;
+            color: #FBBF24 !important;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+        .tghh-video-box {
+            position: relative;
+            width: 100%;
+            max-width: 440px;
+            margin: 0 auto 16px;
+            border-radius: 22px;
+            overflow: hidden;
+            background: #000;
+            aspect-ratio: 9/16;
+            border: 2.5px solid #FBBF24;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8), 0 0 25px rgba(251,191,36,0.25);
+            animation: mediaAuraPulse 4s ease-in-out infinite;
+        }
+        .tghh-video-box video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .tghh-sound-btn {
+            position: absolute;
+            bottom: 14px;
+            right: 14px;
+            z-index: 10;
+            background: rgba(20,12,8,0.85);
+            border: 1.5px solid #FBBF24;
+            color: #FBBF24;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            font-size: 1.15rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(6px);
+            transition: transform 0.2s;
+        }
+        .tghh-sound-btn:hover {
+            transform: scale(1.1);
+        }
+        .tghh-nav-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 12px 0 16px;
+            padding: 0 4px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+        .tghh-nav-row a {
+            color: #FBBF24;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 12px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(251,191,36,0.25);
+            transition: background 0.2s, transform 0.2s;
+        }
+        .tghh-nav-row a:hover {
+            background: rgba(251,191,36,0.15);
+            transform: translateY(-1px);
+        }
+        .tghh-lore-card {
+            background: rgba(255,255,255,0.03) !important;
+            border: 1px solid rgba(251,191,36,0.2) !important;
+            border-radius: 18px;
+            padding: 18px;
+            margin: 18px 0;
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: #FFF8E7;
+        }
+        .tghh-card-flip-wrap {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 320px;
+            aspect-ratio: 53.98/85.60;
+            margin: 18px auto;
+            cursor: pointer;
+        }
+        .tghh-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .tghh-card-inner.flipped {
+            transform: rotateY(180deg);
+        }
+        .tghh-card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid #FBBF24;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+        }
+        .tghh-card-face img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .tghh-card-back {
+            transform: rotateY(180deg);
+        }
+        .tghh-atc-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            max-width: 440px;
+            background: linear-gradient(135deg, #9E1B32, #D62839, #E65100, #FBBF24, #D62839) !important;
+            background-size: 250% 250% !important;
+            animation: btnGlowShimmer 4s ease infinite !important;
+            color: #FFFFFF !important;
+            border: none;
+            padding: 16px 24px;
+            border-radius: 30px;
+            font-size: 1.15rem;
+            font-weight: 900;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 6px 25px rgba(214,40,57,0.45);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .tghh-atc-btn:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 35px rgba(214,40,57,0.8), 0 0 30px rgba(251,191,36,0.6);
+        }
+
     </style>
 
     <!-- AI & Answer Engine Optimization (AEO) Meta Tags -->
@@ -1256,208 +1461,129 @@ cards.forEach((card, index) => {
   };
 
   const cardPageHtml = `${getHeadHtml(seo.seo_title || `${char.name} (${char.title})`, card.style_tokens, seo, media, card.web_address, true, extraData)}
-    <main class="w-full max-w-5xl mx-auto px-3 sm:px-6 py-4 sm:py-8 flex-grow">
-        <!-- Main Card Container with Amber Glow -->
-        <div class="relative bg-[#1A110C]/95 rounded-3xl p-3 sm:p-8 shadow-2xl border-[2px] border-amber-600/40 backdrop-blur-md flex flex-col gap-4 sm:gap-6 glow-amber w-full overflow-hidden">
-            
-            <!-- 4-Point Gold Starburst Filigree Accents in Corners -->
-            <span class="clay-corner top-3 left-3">✦</span>
-            <span class="clay-corner top-3 right-3">✦</span>
-            <span class="clay-corner bottom-3 left-3">✦</span>
-            <span class="clay-corner bottom-3 right-3">✦</span>
+    <main class="w-full max-w-4xl mx-auto px-3 sm:px-4 py-4 sm:py-8 flex-grow">
+        <!-- Luxury Centered Card Immersion Frame (Matches shop.tapthingy.com/pages) -->
+        <div class="tghh-experience-wrap">
+            <!-- 4 Corner Starburst Accents -->
+            <div class="tghh-corner" style="top: 14px; left: 16px;">&#10022;</div>
+            <div class="tghh-corner" style="top: 14px; right: 16px;">&#10022;</div>
+            <div class="tghh-corner" style="bottom: 14px; left: 16px;">&#10022;</div>
+            <div class="tghh-corner" style="bottom: 14px; right: 16px;">&#10022;</div>
 
-            <!-- DESKTOP TOP BANNER (Hidden on Mobile so Video is #1 on phone screen) -->
-            <div class="hidden lg:block text-center pt-1 w-full max-w-full">
-                <div class="flex flex-wrap justify-center items-center gap-2 mb-2">
-                    <span class="inline-block bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 text-white text-[11px] sm:text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-widest shadow-md">
-                        ${card.event_greeting || 'Happy Holidays!'}
-                    </span>
-                    <span class="inline-block bg-[#241710] text-amber-300 border border-amber-600/40 text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                        SERIES 1 &bull; CARD #${card.card_code} OF 016
-                    </span>
-                    <span class="inline-block bg-[#241710] text-rose-300 border border-rose-600/40 text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                        ${char.rarity_tier || 'Series 1 Premier'}
-                    </span>
-                </div>
-                
-                <h1 class="font-clayTitle text-3xl sm:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-amber-100 via-amber-200 to-rose-200 bg-clip-text text-transparent drop-shadow-md break-words">
-                    ${char.name}
-                </h1>
-                <p class="font-sans text-base sm:text-lg text-amber-300 font-semibold tracking-wide mt-2 break-words">
-                    ${char.title} &bull; <span class="text-rose-300 italic font-serif">${char.profile_theme || card.series_name || 'Happy Holidays Series 1'}</span>
-                </p>
-                <p class="text-base sm:text-lg text-amber-100/90 italic max-w-2xl mx-auto mt-2 px-2 leading-relaxed break-words">
-                    &ldquo;${char.motto}&rdquo;
-                </p>
-
-                <!-- Keywords / SEO Tag Pills -->
-                ${renderKeywords(seo.keywords)}
+            <!-- 1. Top Video First (Entertainment Hero) -->
+            <div class="tghh-video-box" onclick="toggleMute()">
+                <video id="cardVideo" autoplay loop playsinline poster="${frontImg}">
+                    <source src="${videoSrc}" type="video/mp4">
+                    Your browser does not support HTML5 video.
+                </video>
+                <button class="tghh-sound-btn" onclick="event.stopPropagation(); toggleMute();" id="soundToggleBtn" title="Toggle Sound">
+                    <i id="muteIcon" class="fa-solid fa-volume-high"></i>
+                </button>
             </div>
 
-            <!-- MAIN CONTENT: On Mobile, Video is at the very top! -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start w-full min-w-0">
-                
-                <!-- COLUMN 1: VIDEO FIRST, CONTROLS, PREV/NEXT, AND SHARE BUTTON -->
-                <div class="order-1 flex flex-col items-center w-full min-w-0">
-                    
-                    <!-- Compact Mobile Header directly above video -->
-                    <div class="lg:hidden w-full flex justify-between items-center mb-2 px-1">
-                        <span class="text-xs font-bold uppercase tracking-wider text-amber-300 bg-[#1F140E] px-3 py-1 rounded-full border border-amber-700/40">
-                            #${card.card_code} &bull; ${char.name}
-                        </span>
-                        <span class="text-xs font-bold text-rose-300 uppercase tracking-wider">
-                            ${card.event_greeting || 'Happy Holidays!'}
-                        </span>
-                    </div>
+            <!-- 2. Quick Nav Row Directly Beneath Video -->
+            <div class="tghh-nav-row">
+                <a href="/${prevCard.card_code}/" onclick="preserveAudio(this, event)">
+                    <i class="fa-solid fa-arrow-left"></i> #${prevCard.card_code} Prev
+                </a>
+                <span style="font-size: 0.85rem; color: #D1BDB0; text-transform: uppercase; letter-spacing: 1px; font-weight: 800;">
+                    #${card.card_code} of 016
+                </span>
+                <a href="/${nextCard.card_code}/" onclick="preserveAudio(this, event)">
+                    Next #${nextCard.card_code} <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
 
-                    <!-- Video Frame - Larger, Edge-to-Edge Without Enclosing Container or Unmute Overlay -->
-                    <div id="videoContainer" class="relative w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[500px] aspect-[9/16] rounded-3xl overflow-hidden bg-black shadow-2xl ring-1 ring-amber-500/30 flex justify-center items-center cursor-pointer group" onclick="toggleMute()">
-                        <video id="cardVideo" autoplay loop playsinline poster="${frontImg}" class="w-full h-full object-cover">
-                            <source src="${videoSrc}" type="video/mp4">
-                            Your browser does not support HTML5 video.
-                        </video>
-                    </div>
+            <!-- 3. Header Section -->
+            <div style="text-align: center; margin: 20px 0 16px;">
+                <div class="tghh-badge">
+                    &#10022; TapGreetings Series 1 &bull; Card #${card.card_code} of 016 &#10022;
+                </div>
+                <h1 class="tghh-dyn-title">
+                    ${char.name}
+                </h1>
+                <div class="tghh-dyn-subtitle">
+                    ${char.title} &bull; <span style="font-style: italic; color: #FDE68A;">${char.profile_theme || card.series_name || 'Happy Holidays Series 1'}</span>
+                </div>
+            </div>
 
-                    <!-- Mobile Touch Swipe Hint -->
-                    <div class="w-full max-w-[440px] sm:max-w-[480px] flex items-center justify-between text-[11px] text-amber-300/80 px-2 mt-1.5 mb-1 select-none">
-                        <a href="/${prevCard.card_code}/" onclick="preserveAudio(this, event)" class="hover:text-white flex items-center gap-1">
-                            <i class="fa-solid fa-chevron-left text-rose-400"></i> Swipe Right: #${prevCard.card_code}
-                        </a>
-                        <span class="text-[9px] uppercase tracking-wider text-amber-400/60 font-semibold flex items-center gap-1">
-                            <i class="fa-solid fa-arrows-left-right text-amber-400"></i> Swipe Video
-                        </span>
-                        <a href="/${nextCard.card_code}/" onclick="preserveAudio(this, event)" class="hover:text-white flex items-center gap-1">
-                            Swipe Left: #${nextCard.card_code} <i class="fa-solid fa-chevron-right text-rose-400"></i>
-                        </a>
-                    </div>
+            <!-- 4. Living Creed / Motto Card -->
+            ${renderLivingCreed(char)}
 
-                    <!-- Video Controls Row: Replay & Sound Toggle -->
-                    <div class="mt-3 w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[500px] flex items-center justify-between px-2 text-xs font-semibold text-amber-200">
-                        <button onclick="restartVideo()" class="flex items-center gap-1.5 text-amber-300 hover:text-white transition-colors bg-[#1A110C] px-3 py-1.5 rounded-xl border border-amber-900/40">
-                            <i class="fa-solid fa-rotate-left"></i> <span>Replay</span>
-                        </button>
-                        <button onclick="toggleMute()" id="soundToggleBtn" class="flex items-center gap-1.5 text-amber-300 hover:text-white transition-colors bg-[#1A110C] px-3 py-1.5 rounded-xl border border-amber-900/40">
-                            <i id="muteIcon" class="fa-solid fa-volume-high text-rose-400"></i> <span id="muteStatusLabel">Sound: Unmuted</span>
-                        </button>
-                    </div>
+            <!-- 5. Lore & Backstory Card -->
+            <div class="tghh-lore-card">
+                <div style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: #FBBF24; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                    <span>&#10022;</span> <span>Artisan Craft &amp; Lore</span>
+                </div>
+                <p style="margin: 0 0 12px; font-size: 0.98rem; line-height: 1.7; color: #FFF8E7;">
+                    ${char.micro_lore || char.description || ''}
+                </p>
+                <p style="margin: 0; font-size: 0.9rem; color: #D1BDB0;">
+                    <strong style="color: #FBBF24;">Signature Motif:</strong> ${char.nfcMotif || char.signature_motif || 'Handcrafted detail & golden foil.'}
+                </p>
+            </div>
 
-                    <!-- PREV / NEXT NAVIGATION DIRECTLY UNDER VIDEO -->
-                    <div class="mt-4 w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[500px] flex items-center justify-between gap-2 text-xs font-bold">
-                        <a href="/${prevCard.card_code}/" class="flex-1 bg-[#1F140E] hover:bg-rose-700 text-amber-200 hover:text-white px-3 py-2.5 rounded-2xl flex items-center justify-center gap-1.5 transition-all shadow border border-amber-800/40 truncate">
-                            <i class="fa-solid fa-arrow-left"></i> <span class="truncate">#${prevCard.card_code} ${prevChar.name}</span>
-                        </a>
-                        <a href="/#collection" class="bg-[#180E09] hover:bg-[#281810] text-amber-300 px-3.5 py-2.5 rounded-2xl flex items-center justify-center gap-1.5 transition-all shadow border border-amber-800/40 whitespace-nowrap">
-                            <i class="fa-solid fa-boxes-stacked"></i> <span class="hidden sm:inline">All</span> 21
-                        </a>
-                        <a href="/${nextCard.card_code}/" class="flex-1 bg-[#1F140E] hover:bg-rose-700 text-amber-200 hover:text-white px-3 py-2.5 rounded-2xl flex items-center justify-center gap-1.5 transition-all shadow border border-amber-800/40 truncate">
-                            <span class="truncate">#${nextCard.card_code} ${nextChar.name}</span> <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
+            <!-- 6. Festive Indicators Stats Row -->
+            ${char.officialIndicators ? renderOfficialIndicators(char.officialIndicators) : renderIndicators(char.indicators)}
 
-                    <!-- SHARE BUTTON DIRECTLY UNDER PREV / NEXT -->
-                    <button onclick="shareGreeting()" class="w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[500px] mt-2.5 bg-[#20140D] hover:bg-[#2C1C13] text-amber-200 hover:text-white font-bold py-3 px-4 rounded-2xl border border-amber-800/40 shadow-lg flex items-center justify-center gap-2 transition-transform hover:scale-[1.01] text-xs sm:text-sm">
-                        <i class="fa-solid fa-share-nodes text-rose-400"></i> <span>Share This Keepsake Card ✦</span>
+            <!-- 7. Interactive Physical Keepsake 3D Card Flip (Front / Back) -->
+            <div style="text-align: center; margin: 24px 0 16px;">
+                <div style="font-size: 0.85rem; font-weight: 700; color: #FBBF24; margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <span><i class="fa-solid fa-id-card text-rose-400"></i> Physical CR80 Smart Card</span>
+                    <button onclick="openCardZoom()" class="bg-[#241710] hover:bg-[#301F15] text-amber-300 text-xs font-bold px-3 py-1 rounded-xl border border-amber-600/40 inline-flex items-center gap-1.5 transition-all shadow">
+                        <i class="fa-solid fa-expand text-rose-400"></i> Zoom
                     </button>
                 </div>
-
-                <!-- COLUMN 2: 3D CARD, LIVING CREED, ABILITIES, MOTIF, ARTISAN LORE, STATS, PURCHASE -->
-                <div class="order-2 flex flex-col gap-4 sm:gap-6 w-full min-w-0">
-                    
-                    <!-- Mobile Compact Title & Banner (Above 3D Card on phone) -->
-                    <div class="lg:hidden text-center bg-[#150D09]/95 p-4 rounded-2xl border border-amber-700/40">
-                        <span class="inline-block bg-gradient-to-r from-rose-700 to-amber-600 text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">
-                            SERIES 1 &bull; CARD #${card.card_code} OF 016
-                        </span>
-                        <h1 class="font-clayTitle text-3xl font-extrabold bg-gradient-to-r from-amber-100 via-amber-200 to-rose-200 bg-clip-text text-transparent break-words">
-                            ${char.name}
-                        </h1>
-                        <p class="font-sans text-base text-amber-300 font-semibold tracking-wide mt-1">
-                            ${char.title} &bull; <span class="text-rose-300 italic font-serif">${char.profile_theme || card.series_name || 'Happy Holidays Series 1'}</span>
-                        </p>
-                        ${renderKeywords(seo.keywords)}
-                    </div>
-
-                    <!-- Living Creed & Motto Card (Exciting Animated) -->
-                    ${renderLivingCreed(char)}
-
-                    <!-- Interactive Flippable 3D Physical Keepsake Card (Front & Back - CLEAN ARTWORK WITH NO OVERLAYS) -->
-                    <div class="bg-[#150D09]/95 p-4 sm:p-5 rounded-3xl border border-amber-700/30 shadow-xl flex flex-col items-center min-w-0">
-                        <div class="w-full flex justify-between items-center mb-3">
-                            <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
-                                <i class="fa-solid fa-id-card text-rose-400"></i> Physical CR80 Smart Card
-                            </span>
-                            <div class="flex items-center gap-2">
-                                <button onclick="openCardZoom()" class="bg-[#241710] hover:bg-[#301F15] text-amber-300 text-xs sm:text-sm font-bold px-3 py-1.5 rounded-xl border border-amber-600/40 flex items-center gap-1.5 transition-all shadow" title="Open Fullscreen Zoom Lightbox">
-                                    <i class="fa-solid fa-expand text-rose-400"></i> Zoom
-                                </button>
-                                <button onclick="toggleCardFlip()" class="bg-[#241710] hover:bg-[#301F15] text-amber-300 text-xs sm:text-sm font-bold px-3 py-1.5 rounded-xl border border-amber-600/40 flex items-center gap-1.5 transition-all shadow">
-                                    <i class="fa-solid fa-arrows-rotate"></i> Flip
-                                </button>
-                            </div>
+                <div class="tghh-card-flip-wrap" onclick="toggleCardFlip()" title="Click to Flip Front/Back">
+                    <div id="physicalCard3d" class="tghh-card-inner">
+                        <div class="tghh-card-face tghh-card-front">
+                            <img src="${frontImg}" alt="${char.name} Front Artwork" loading="lazy">
                         </div>
-
-                        <!-- 3D Card Container (Clean, zero text overlays on the artwork - CR80 ratio) -->
-                        <div class="perspective-container w-full max-w-[280px] sm:max-w-[320px] aspect-[54/86] cursor-pointer group my-1" onclick="toggleCardFlip()">
-                            <div id="physicalCard3d" class="flip-card-inner relative w-full h-full shadow-2xl rounded-2xl">
-                                <!-- FRONT FACE (Art Only) -->
-                                <div class="flip-face bg-[#120C08] border-[2px] border-amber-600/40 flex items-center justify-center overflow-hidden">
-                                    <img src="${frontImg}" alt="${char.name} Front Artwork" class="w-full h-full object-cover">
-                                </div>
-                                <!-- BACK FACE (Collectible Card Back Only) -->
-                                <div class="flip-face flip-back bg-[#120C08] border-[2px] border-amber-600/40 flex items-center justify-center overflow-hidden">
-                                    <img src="${backImg}" alt="${char.name} Back Design" class="w-full h-full object-cover">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Micro caption explaining tap to flip & zoom -->
-                        <div class="mt-3 text-center flex items-center gap-2 text-xs sm:text-sm text-amber-200/70">
-                            <span class="flex items-center gap-1"><i class="fa-solid fa-hand-pointer text-rose-400"></i> Tap card to flip</span>
-                            <span>&bull;</span>
-                            <span class="flex items-center gap-1 cursor-pointer hover:text-amber-300" onclick="openCardZoom()"><i class="fa-solid fa-magnifying-glass-plus text-amber-400"></i> Zoom fullscreen</span>
+                        <div class="tghh-card-face tghh-card-back">
+                            <img src="${backImg}" alt="${char.name} Back Design" loading="lazy">
                         </div>
                     </div>
-
-                    <!-- Special Abilities & Features -->
-                    ${renderSpecialAbilities(char)}
-
-                    <!-- NFC Tap Target Motif -->
-                    ${renderNfcMotif(char)}
-
-                    <!-- Festive Indicators / Character Stats -->
-                    ${char.officialIndicators ? renderOfficialIndicators(char.officialIndicators) : renderIndicators(char.indicators)}
-
-                    <!-- Living Keepsake & Artisan Craft Details (Larger Text) -->
-                    <div class="bg-[#150D09]/95 p-4 sm:p-6 rounded-3xl border border-amber-700/30 shadow-xl relative min-w-0 flex flex-col gap-3.5">
-                        <div>
-                            <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-300 block mb-1.5 flex items-center gap-1.5">
-                                <i class="fa-solid fa-wand-magic-sparkles text-rose-400"></i> Smart Keepsake Experience
-                            </span>
-                            <p class="text-base sm:text-lg text-amber-100/90 leading-relaxed font-body break-words">
-                                Tap this physical <strong>${char.name}</strong> card against any smartphone (iPhone or Android) to instantly view the exclusive 1080p claymation video and character greeting—zero app download required. This card can also be reprogrammed anytime to play your own custom video message, family photos, voice note, or personal web link using our free NFC Web Tool at <a href="${meta.tools_url}" target="_blank" class="text-rose-400 underline font-semibold hover:text-amber-300">/tools</a>!
-                            </p>
-                        </div>
-                        <div class="pt-3 border-t border-amber-900/40">
-                            <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-400 block mb-1.5 flex items-center gap-1.5">
-                                <i class="fa-solid fa-feather-pointed text-rose-400"></i> Clay Artisan Craft &amp; Lore
-                            </span>
-                            <p class="text-base sm:text-lg text-amber-100/80 leading-relaxed font-body italic break-words">
-                                ${char.micro_lore}
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Prompts Accordion -->
-                    ${renderPromptsAccordion(prompts)}
-
-                    <!-- Primary Full-Width Order Keepsake Card Button (Single Button, Removed 16-card set option) -->
-                    <div class="pt-2 min-w-0 flex flex-col gap-2.5">
-                        <a href="${setCardPurchaseUrl}" target="_blank" class="w-full bg-gradient-to-r from-rose-700 via-rose-600 to-amber-600 hover:from-rose-600 hover:to-amber-500 text-white font-bold py-4 px-6 rounded-2xl shadow-xl shadow-rose-900/40 text-center flex items-center justify-center gap-2.5 transition-transform hover:scale-[1.01] text-base sm:text-lg">
-                            <i class="fa-solid fa-cart-shopping"></i> <span>Order #${card.card_code} in Happy Holidays Set &bull; ${comm.price ? comm.price.toFixed(2) : '14.99'}</span>
-                        </a>
-                    </div>
-
                 </div>
+                <div style="font-size: 0.8rem; color: #D1BDB0; margin-top: 6px;">
+                    &#128070; Tap card above to flip between Front Artwork &amp; Collector Back
+                </div>
+            </div>
+
+            <!-- 8. Special Abilities & Features -->
+            ${renderSpecialAbilities(char)}
+
+            <!-- 9. NFC Tap Target Motif -->
+            ${renderNfcMotif(char)}
+
+            <!-- 10. Smart Keepsake Experience & Rewritable NFC Callout -->
+            <div style="background: rgba(251, 191, 36, 0.08); border: 1.5px solid #FBBF24; border-radius: 18px; padding: 18px; margin: 20px 0 10px;">
+                <h4 style="margin: 0 0 8px 0; color: #FBBF24; font-size: 1rem; font-weight: 800; display: flex; align-items: center; gap: 8px;">
+                    <span><i class="fa-solid fa-wand-magic-sparkles text-rose-400"></i></span> <span>Tap to Stream &bull; Rewritable to Your Own Message Anytime!</span>
+                </h4>
+                <p style="margin: 0 0 10px 0; font-size: 0.92rem; line-height: 1.6; color: #FFF8E7;">
+                    <strong>Tap this card</strong> against the top edge of your iPhone or Android to instantly stream the exclusive 1080p claymation video and character greeting&mdash;zero app download required.
+                </p>
+                <p style="margin: 0; font-size: 0.88rem; line-height: 1.5; color: #D1BDB0;">
+                    <strong><i class="fa-solid fa-microchip text-rose-400"></i> Rewritable NTAG215 Microchip:</strong> Want to personalize this card? It can easily be reprogrammed to link to your own custom family holiday video, voice note, photos, or personalized greeting anytime using our free Web NFC Tool at <a href="${meta.tools_url}" target="_blank" style="color: #FBBF24; font-weight: 700; text-decoration: underline;">/tools</a>!
+                </p>
+            </div>
+
+            <!-- 11. Prompts Accordion (Hidden inside collapsible) -->
+            ${renderPromptsAccordion(prompts)}
+
+            <!-- 12. Single Sleek Glowing Order Button (Direct to Shopify) -->
+            <div style="margin-top: 28px; text-align: center;">
+                <a href="${setCardPurchaseUrl}" target="_blank" class="tghh-atc-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span>Order #${card.card_code} Keepsake Card &bull; ${comm.price ? comm.price.toFixed(2) : '14.99'}</span>
+                </a>
+            </div>
+
+            <!-- Share Button -->
+            <div style="margin-top: 14px; text-align: center;">
+                <button onclick="shareGreeting()" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(251,191,36,0.3); color: #FDE68A; padding: 10px 20px; border-radius: 16px; font-size: 0.88rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+                    <i class="fa-solid fa-share-nodes text-rose-400"></i> Share This Keepsake Card &#10022;
+                </button>
             </div>
 
         </div>

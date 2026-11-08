@@ -560,6 +560,211 @@
         .tghh-quote-card, .tghh-ability-card, .tghh-nfc-motif-card {
             animation: cardGlowPulse 4s ease-in-out infinite;
         }
+    
+        /* Centered Luxury Card Immersion Layout (Matches shop.tapthingy.com/pages) */
+        .tghh-experience-wrap {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #140C08 !important;
+            color: #FFF8E7 !important;
+            border-radius: 28px !important;
+            padding: 24px 16px 40px !important;
+            max-width: 680px !important;
+            margin: 12px auto 36px !important;
+            box-shadow: 0 12px 50px rgba(0,0,0,0.7), 0 0 35px rgba(251,191,36,0.18) !important;
+            border: 2px solid rgba(251,191,36,0.4) !important;
+            position: relative;
+            overflow: hidden;
+        }
+        @media (min-width: 640px) {
+            .tghh-experience-wrap {
+                padding: 32px 24px 48px !important;
+            }
+        }
+        .tghh-corner {
+            position: absolute;
+            color: #FBBF24;
+            font-size: 14px;
+            opacity: 0.85;
+            text-shadow: 0 0 8px rgba(251,191,36,0.7);
+            user-select: none;
+            animation: cornerTwinkle 3s ease-in-out infinite alternate;
+        }
+        .tghh-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #9E1B32, #D62839, #E65100, #FBBF24, #9E1B32) !important;
+            background-size: 300% 300% !important;
+            animation: badgeSweep 6s ease infinite !important;
+            color: #FFFFFF !important;
+            padding: 7px 20px;
+            border-radius: 999px;
+            font-weight: 800;
+            font-size: 0.82rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 18px rgba(214,40,57,0.45);
+            margin-bottom: 12px;
+        }
+        .tghh-dyn-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.3rem;
+            font-weight: 900;
+            color: #FFFFFF !important;
+            margin: 4px 0 6px;
+            line-height: 1.2;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+        }
+        @media (min-width: 640px) {
+            .tghh-dyn-title {
+                font-size: 2.8rem;
+            }
+        }
+        .tghh-dyn-subtitle {
+            font-size: 1.05rem;
+            color: #FBBF24 !important;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+        .tghh-video-box {
+            position: relative;
+            width: 100%;
+            max-width: 440px;
+            margin: 0 auto 16px;
+            border-radius: 22px;
+            overflow: hidden;
+            background: #000;
+            aspect-ratio: 9/16;
+            border: 2.5px solid #FBBF24;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8), 0 0 25px rgba(251,191,36,0.25);
+            animation: mediaAuraPulse 4s ease-in-out infinite;
+        }
+        .tghh-video-box video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .tghh-sound-btn {
+            position: absolute;
+            bottom: 14px;
+            right: 14px;
+            z-index: 10;
+            background: rgba(20,12,8,0.85);
+            border: 1.5px solid #FBBF24;
+            color: #FBBF24;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            font-size: 1.15rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(6px);
+            transition: transform 0.2s;
+        }
+        .tghh-sound-btn:hover {
+            transform: scale(1.1);
+        }
+        .tghh-nav-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 12px 0 16px;
+            padding: 0 4px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+        .tghh-nav-row a {
+            color: #FBBF24;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 12px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(251,191,36,0.25);
+            transition: background 0.2s, transform 0.2s;
+        }
+        .tghh-nav-row a:hover {
+            background: rgba(251,191,36,0.15);
+            transform: translateY(-1px);
+        }
+        .tghh-lore-card {
+            background: rgba(255,255,255,0.03) !important;
+            border: 1px solid rgba(251,191,36,0.2) !important;
+            border-radius: 18px;
+            padding: 18px;
+            margin: 18px 0;
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: #FFF8E7;
+        }
+        .tghh-card-flip-wrap {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 320px;
+            aspect-ratio: 53.98/85.60;
+            margin: 18px auto;
+            cursor: pointer;
+        }
+        .tghh-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .tghh-card-inner.flipped {
+            transform: rotateY(180deg);
+        }
+        .tghh-card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid #FBBF24;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+        }
+        .tghh-card-face img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .tghh-card-back {
+            transform: rotateY(180deg);
+        }
+        .tghh-atc-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            max-width: 440px;
+            background: linear-gradient(135deg, #9E1B32, #D62839, #E65100, #FBBF24, #D62839) !important;
+            background-size: 250% 250% !important;
+            animation: btnGlowShimmer 4s ease infinite !important;
+            color: #FFFFFF !important;
+            border: none;
+            padding: 16px 24px;
+            border-radius: 30px;
+            font-size: 1.15rem;
+            font-weight: 900;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 6px 25px rgba(214,40,57,0.45);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .tghh-atc-btn:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 35px rgba(214,40,57,0.8), 0 0 30px rgba(251,191,36,0.6);
+        }
+
     </style>
 
     <!-- AI & Answer Engine Optimization (AEO) Meta Tags -->
