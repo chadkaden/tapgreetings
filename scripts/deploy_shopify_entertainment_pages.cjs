@@ -12,6 +12,7 @@ if (fs.existsSync(envPath)) {
 
 const greetingsMaster = require('../data/greetings_master.json');
 const pinkCards = require('G:/Server/projects/pinkoween/data/cards.json');
+const powMapped = require('./pow_mapped_variants.json');
 
 async function getAccessToken() {
   const store = process.env.SHOPIFY_STORE_DOMAIN;
@@ -48,19 +49,43 @@ const HH_VARIANTS = {
   '016': { variantId: 68065557315906, price: '14.99', name: 'Stocking Puppy — The Little Surprise' }
 };
 
-// Map variant IDs for Pink-O-Ween Series 1
-const POW_VARIANTS = {
-  '01': { variantId: 56260398088514, price: '19.99', title: 'THE BOW GHOST' },
-  '02': { variantId: 56260398154050, price: '19.99', title: 'THE LINEN MUMMY' },
-  '04': { variantId: 56260398252354, price: '19.99', title: 'THE BLUSHING JACK' },
-  '05': { variantId: 56260398383426, price: '19.99', title: 'THE MIDNIGHT KITTY' },
-  '06': { variantId: 56260398416194, price: '19.99', title: 'THE DANCING SKELETON' },
-  '07': { variantId: 56260398481730, price: '19.99', title: 'THE SWEET VAMPIRE' },
-  '08': { variantId: 56260398514498, price: '19.99', title: 'THE CANDY CORN QUEEN' },
-  '09': { variantId: 56260398547266, price: '19.99', title: 'THE PEARLED SPIDER' },
-  '10': { variantId: 56260398711106, price: '19.99', title: 'THE MUSHROOM TOAD' }
-};
 const POW_BOX_SET_VARIANT = 67585254555970;
+
+// Common Immersion CSS to hide site header, announcement bar, and theme default H1 title
+const IMMERSION_CSS = `
+  /* 1. HIDE ALL DEFAULT SHOPIFY THEME HEADERS & NAV ON ENTERTAINMENT PAGES */
+  header,
+  sticky-header,
+  .header-wrapper,
+  #shopify-section-header,
+  #shopify-section-sections--28819598901570__header_section,
+  #shopify-section-sections--28819598901570__header_announcements_9jGBFp,
+  [id*="__header_section"],
+  [id*="__header_announcements"],
+  .announcement-bar,
+  header-actions {
+    display: none !important;
+  }
+
+  /* 2. HIDE DEFAULT THEME PAGE TITLE H1 BLOCK */
+  .section-content-wrapper > .text-block:first-child,
+  .text-block--AMWl2ZDJIZDFPUjlHU__heading,
+  [class*="__heading"]:has(h1),
+  .page-header,
+  .main-page-title,
+  h1.main-page-title {
+    display: none !important;
+  }
+
+  /* 3. REMOVE EXCESS MARGIN & PADDING ABOVE THE VIDEO HERO */
+  #MainContent,
+  .section.page-width-content,
+  .section-content-wrapper {
+    padding-top: 0px !important;
+    margin-top: 0px !important;
+    --padding-block-start: 0px !important;
+  }
+`;
 
 // Helper to generate Holiday Card HTML
 function generateHolidayCardHtml(card) {
@@ -75,6 +100,8 @@ function generateHolidayCardHtml(card) {
 
   return `
 <style>
+  ${IMMERSION_CSS}
+
   .tghh-experience-wrap {
     font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background: #140C08;
@@ -252,10 +279,10 @@ function generateHolidayCardHtml(card) {
 </style>
 
 <div class="tghh-experience-wrap">
-  <span class="tghh-corner" style="top:12px; left:14px;">✦</span>
-  <span class="tghh-corner" style="top:12px; right:14px;">✦</span>
-  <span class="tghh-corner" style="bottom:12px; left:14px;">✦</span>
-  <span class="tghh-corner" style="bottom:12px; right:14px;">✦</span>
+  <div class="tghh-corner" style="top: 14px; left: 16px;">✦</div>
+  <div class="tghh-corner" style="top: 14px; right: 16px;">✦</div>
+  <div class="tghh-corner" style="bottom: 14px; left: 16px;">✦</div>
+  <div class="tghh-corner" style="bottom: 14px; right: 16px;">✦</div>
 
   <!-- Top Video First (Entertainment Hero) -->
   <div class="tghh-video-box">
@@ -267,36 +294,39 @@ function generateHolidayCardHtml(card) {
     </button>
   </div>
 
-  <!-- Video Controls & Quick Nav -->
+  <!-- Quick Nav -->
   <div class="tghh-nav-row">
-    <a href="/pages/tghh${prevCode}">&larr; #${prevCode} Prev</a>
+    <a href="/pages/tghh${prevCode}">&larr; #${prevCode} Prev Card</a>
     <span style="font-size: 0.8rem; color: #D1BDB0; text-transform: uppercase; letter-spacing: 1px;">
-      Card #${code} of 016
+      #${code} of 016
     </span>
     <a href="/pages/tghh${nextCode}">#${nextCode} Next &rarr;</a>
   </div>
 
-  <!-- Header & Character Details -->
+  <!-- Header Section -->
   <div style="text-align: center; margin: 20px 0 14px;">
     <div class="tghh-badge">
       ✦ TapGreetings Series 1 &bull; Card #${code} ✦
     </div>
-    <h1 style="font-size: 2.2rem; font-weight: 900; color: #FFF; margin: 4px 0 8px; font-family: 'Playfair Display', serif;">
+    <h1 style="font-size: 2.2rem; font-weight: 900; color: #FFF; margin: 4px 0 6px; font-family: 'Playfair Display', serif;">
       ${card.character.name}
     </h1>
-    <div style="font-size: 1.05rem; color: #FBBF24; font-weight: 700;">
-      ${card.character.title} &bull; <span style="font-weight: 500; color: #F87171;">${card.character.profile_theme}</span>
+    <div style="font-size: 1.05rem; color: #FBBF24; font-weight: 700; font-style: italic;">
+      ${card.character.title} &bull; ${card.character.craft_style}
     </div>
   </div>
 
-  <!-- Illuminated Motto -->
+  <!-- Character Motto / Greeting -->
   <div class="tghh-quote-box">
-    &ldquo;${card.character.motto}&rdquo;
+    &ldquo;${card.character.greeting_quote || card.character.greeting_headline}&rdquo;
   </div>
 
-  <!-- Micro-Lore Story -->
-  <div style="font-size: 0.95rem; line-height: 1.7; color: #E5D5C5; margin-bottom: 20px;">
-    ${card.character.micro_lore}
+  <!-- Lore & Backstory -->
+  <div style="background: rgba(255,255,255,0.03); border-radius: 16px; padding: 16px; margin: 18px 0; font-size: 0.95rem; line-height: 1.65; color: #FFF8E7;">
+    <p style="margin: 0 0 10px;">${card.character.lore_backstory || card.character.description}</p>
+    <p style="margin: 0; font-size: 0.88rem; color: #D1BDB0;">
+      <strong style="color: #FBBF24;">Signature Motif:</strong> ${card.character.signature_motif || 'Handcrafted detail & golden foil.'}
+    </p>
   </div>
 
   <!-- Festive Indicators Stats -->
@@ -379,15 +409,15 @@ function generateHolidayCardHtml(card) {
 
   function tghhShareCard(name, title) {
     var shareData = {
-      title: name + ' — ' + title + ' | TapGreetings',
-      text: 'Experience ' + name + ' (' + title + ') smart NFC holiday keepsake card!',
+      title: name + ' (' + title + ') — TapGreetings Experience',
+      text: 'Check out the ' + name + ' smart keepsake card experience from TapGreetings!',
       url: window.location.href
     };
     if (navigator.share) {
       navigator.share(shareData).catch(function(){});
     } else if (navigator.clipboard) {
       navigator.clipboard.writeText(window.location.href).then(function() {
-        alert('Keepsake experience link copied to clipboard!');
+        alert('Keepsake link copied to clipboard!');
       });
     } else {
       prompt('Share this keepsake link:', window.location.href);
@@ -427,19 +457,22 @@ function generateHolidayCardHtml(card) {
 // Helper to generate Pink-O-Ween Hub & Card HTML
 function generatePinkoweenCardHtml(card) {
   const cardId = card.id; // '01'
-  const vInfo = POW_VARIANTS[cardId] || { variantId: 56260398088514, price: '19.99' };
+  const vInfo = powMapped[cardId] || { variantId: 56260398088514, price: '19.99' };
   const num = parseInt(cardId, 10);
   const prevNum = num === 1 ? 31 : num - 1;
   const nextNum = num === 31 ? 1 : num + 1;
   const prevId = String(prevNum).padStart(2, '0');
   const nextId = String(nextNum).padStart(2, '0');
 
-  const videoUrl = `https://cdn.shopify.com/s/files/1/0951/0803/8978/files/card_${cardId}.mp4?v=1730000000`;
-  const frontImg = `https://cdn.shopify.com/s/files/1/0951/0803/8978/files/card_${cardId}_front.png?v=1730000000`;
-  const backImg = `https://cdn.shopify.com/s/files/1/0951/0803/8978/files/card_${cardId}_back.png?v=1730000000`;
+  // Real faststart CDN video and high-res card artwork from pink-o-ween.com
+  const videoUrl = `https://pink-o-ween.com/multimedia/videos/card_${cardId}.mp4`;
+  const frontImg = `https://pink-o-ween.com/multimedia/cards/card_${cardId}_front.png`;
+  const backImg = `https://pink-o-ween.com/multimedia/cards/card_${cardId}_back.png`;
 
   return `
 <style>
+  ${IMMERSION_CSS}
+
   .tgpow-experience-wrap {
     font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background: #0F0510;
@@ -612,12 +645,12 @@ function generatePinkoweenCardHtml(card) {
     </button>
   </div>
 
-  <!-- Quick Nav -->
+  <!-- Quick Nav (Continuous Looping 01 to 31) -->
   <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding: 0 4px; font-size: 0.88rem; font-weight: 700;">
     <a href="/pages/tgpow-${prevId}" style="color: #FF69B4; text-decoration: none;">&larr; #${prevId} Prev</a>
-    <span style="font-size: 0.8rem; color: #D8B4FE; text-transform: uppercase; letter-spacing: 1px;">
+    <a href="/pages/tgpow-s01" style="font-size: 0.8rem; color: #D8B4FE; text-transform: uppercase; letter-spacing: 1px; text-decoration: underline;">
       ${card.headerDisplay || `OCTOBER ${cardId} OF 31`}
-    </span>
+    </a>
     <a href="/pages/tgpow-${nextId}" style="color: #FF69B4; text-decoration: none;">#${nextId} Next &rarr;</a>
   </div>
 
@@ -639,39 +672,42 @@ function generatePinkoweenCardHtml(card) {
     &ldquo;${card.mottoQuote || 'Happy Pink-O-Ween!'}&rdquo;
   </div>
 
-  <!-- Lore Description -->
-  <div style="font-size: 0.95rem; line-height: 1.7; color: #F5D0E0; margin-bottom: 20px;">
-    ${card.lore}
+  <!-- Lore & Visual Action -->
+  <div style="background: rgba(255,255,255,0.03); border-radius: 16px; padding: 16px; margin: 18px 0; font-size: 0.95rem; line-height: 1.65; color: #FFF0F5;">
+    <p style="margin: 0 0 10px;">${card.lore || 'An exclusive collectible spectral video experience from Pink-O-Ween.'}</p>
+    <p style="margin: 0; font-size: 0.88rem; color: #D8B4FE;">
+      <strong style="color: #FF69B4;">Spooky Action:</strong> ${card.visualAction || 'Animated loop with ambient sound.'}
+    </p>
   </div>
 
-  <!-- Stats Grid -->
+  <!-- Spectral Stats Grid -->
   <div class="tgpow-stats-grid">
     <div class="tgpow-stat-item">
-      <div class="tgpow-stat-label">Creature Class</div>
-      <div class="tgpow-stat-val">${card.creatureClass || 'Ethereal Guide'}</div>
-    </div>
-    <div class="tgpow-stat-item">
       <div class="tgpow-stat-label">Spook Rating</div>
-      <div class="tgpow-stat-val">${card.spookRating || '12 / 100'}</div>
+      <div class="tgpow-stat-val">${card.spookRating || '15 / 100'}</div>
     </div>
     <div class="tgpow-stat-item">
       <div class="tgpow-stat-label">Sweetness Index</div>
-      <div class="tgpow-stat-val">${card.sweetnessIndex || '99 / 100'}</div>
+      <div class="tgpow-stat-val">${card.sweetnessIndex || '95 / 100'}</div>
     </div>
     <div class="tgpow-stat-item">
       <div class="tgpow-stat-label">Signature Item</div>
-      <div class="tgpow-stat-val">${card.signatureItem || 'Pastel Ribbon'}</div>
+      <div class="tgpow-stat-val" style="font-size:0.82rem;">${card.signatureItem || 'Enchanted Keepsake'}</div>
+    </div>
+    <div class="tgpow-stat-item">
+      <div class="tgpow-stat-label">Special Ability</div>
+      <div class="tgpow-stat-val" style="font-size:0.82rem;">${card.specialAbility || 'Pastel Charm'}</div>
     </div>
   </div>
 
-  <!-- Physical Keepsake 3D Card Flip -->
+  <!-- Physical Keepsake 3D Card Flip (Front / Back) -->
   <div style="text-align: center; margin: 24px 0 10px;">
     <div style="font-size: 0.85rem; font-weight: 700; color: #FF69B4; margin-bottom: 6px;">
-      🎴 Physical Collector Card (Click to Flip Front/Back)
+      🎴 Physical Smart Keepsake Card (Click to Flip Front/Back)
     </div>
     <div class="tgpow-card-flip-wrap" onclick="this.classList.toggle('flipped')" title="Click to Flip">
       <div class="tgpow-card-inner">
-        <div class="tgpow-card-face">
+        <div class="tgpow-card-face tgpow-card-front">
           <img src="${frontImg}" alt="${card.title} Front Card" loading="lazy">
         </div>
         <div class="tgpow-card-face tgpow-card-back">
@@ -680,29 +716,29 @@ function generatePinkoweenCardHtml(card) {
       </div>
     </div>
     <div style="font-size: 0.75rem; color: #D8B4FE;">
-      Coquette Spooky Chic &bull; High-Definition NFC Keepsake
+      Standard CR80 30mil Waterproof PVC &bull; Embedded NTAG215 Microchip
     </div>
   </div>
 
-  <!-- Share Button -->
+  <!-- Share Keepsake Button -->
   <div style="margin: 22px 0; text-align: center;">
     <button onclick="tgpowShareCard('${card.title}')" style="background: rgba(255,255,255,0.08); border: 1.5px solid #FF69B4; color: #FF69B4; padding: 12px 24px; border-radius: 20px; font-weight: 800; font-size: 0.95rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
       ✨ Share Keepsake Experience
     </button>
   </div>
 
-  <!-- NFC Reprogramming -->
-  <div style="background: rgba(255,105,180,0.06); border: 1px solid rgba(255,105,180,0.25); border-radius: 16px; padding: 14px 18px; margin: 20px 0; font-size: 0.85rem; line-height: 1.6; color: #E0C0D5;">
-    <strong style="color: #FF69B4;">⚡ Rewritable NFC Microchip:</strong> This card comes pre-programmed to launch this portal on any smartphone. Reprogram anytime with your own messages at <a href="/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" style="color: #FF69B4; font-weight: 700; text-decoration: underline;">/tools</a>.
+  <!-- Rewritable NFC Feature Info -->
+  <div style="background: rgba(255,105,180,0.06); border: 1px solid rgba(255,105,180,0.25); border-radius: 16px; padding: 14px 18px; margin: 20px 0; font-size: 0.85rem; line-height: 1.6; color: #E9D5FF;">
+    <strong style="color: #FF69B4;">⚡ Rewritable NFC Microchip:</strong> This physical card comes pre-linked to this exclusive video portal, but can be reprogrammed anytime to link to your own video, social profile, or custom message using our free web tool at <a href="/pages/tap-thingy-tools-nfc-reprogram-webtool-and-guide" style="color: #FF69B4; font-weight: 700; text-decoration: underline;">/tools</a>.
   </div>
 
-  <!-- Single Elegant Add to Cart Button -->
+  <!-- Single Elegant Add to Cart Button at the Bottom -->
   <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(255,105,180,0.3); text-align: center;">
     <div style="font-size: 0.82rem; color: #4ADE80; font-weight: 700; margin-bottom: 12px;">
-      &#10004; Collectible Smart Card Ready to Ship
+      &#10004; In Stock &bull; Collectible Smart Card Ready to Ship
     </div>
     <button class="tgpow-atc-btn" onclick="tgpowAddToCart(${vInfo.variantId}, this)">
-      <span>🛒 Order Physical Keepsake Card &bull; $${vInfo.price}</span>
+      <span>🛒 Order Physical Keepsake Card &bull; $${vInfo.price || '19.99'}</span>
     </button>
     <div id="tgpow-atc-msg-${cardId}" style="display:none; color: #4ADE80; font-weight: 700; font-size: 0.9rem; margin-top: 10px;">
       ✨ Added to your cart! <a href="/cart" style="color: #FF69B4; text-decoration: underline;">View Cart &rarr;</a>
@@ -726,7 +762,7 @@ function generatePinkoweenCardHtml(card) {
 
   function tgpowShareCard(title) {
     var shareData = {
-      title: title + ' | Pink-O-Ween Keepsake',
+      title: title + ' — Pink-O-Ween Keepsake Experience',
       text: 'Check out ' + title + ' from Pink-O-Ween Series 1!',
       url: window.location.href
     };
@@ -775,6 +811,8 @@ function generatePinkoweenCardHtml(card) {
 function generatePinkoweenHubHtml() {
   return `
 <style>
+  ${IMMERSION_CSS}
+
   .tgpow-hub-wrap {
     font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background: #0B040C;
@@ -837,10 +875,10 @@ function generatePinkoweenHubHtml() {
   </div>
 
   <div class="tgpow-hub-grid">
-    ${Object.keys(POW_VARIANTS).map(id => {
-      const v = POW_VARIANTS[id];
-      const card = pinkCards.find(c => c.id === id) || { title: v.title, alias: v.title };
-      const frontImg = `https://cdn.shopify.com/s/files/1/0951/0803/8978/files/card_${id}_front.png?v=1730000000`;
+    ${pinkCards.map(card => {
+      const id = card.id;
+      const v = powMapped[id] || { price: '19.99' };
+      const frontImg = `https://pink-o-ween.com/multimedia/cards/card_${id}_front.png`;
       return `
       <a href="/pages/tgpow-${id}" class="tgpow-hub-card">
         <img src="${frontImg}" alt="${card.title}" loading="lazy">
@@ -848,11 +886,11 @@ function generatePinkoweenHubHtml() {
           <div>
             <div style="font-size: 0.72rem; color: #FF69B4; font-weight: 800; text-transform: uppercase;">October ${id} of 31</div>
             <div style="font-size: 1.05rem; font-weight: 900; color: #FFF; margin: 4px 0 2px;">${card.title}</div>
-            <div style="font-size: 0.8rem; color: #D8B4FE; font-style: italic;">${card.alias}</div>
+            <div style="font-size: 0.8rem; color: #D8B4FE; font-style: italic;">${card.alias || card.title}</div>
           </div>
           <div style="margin-top: 12px; font-size: 0.85rem; font-weight: 800; color: #FF69B4; display: flex; align-items: center; justify-content: space-between;">
             <span>Tap Experience &rarr;</span>
-            <span style="color: #4ADE80;">$${v.price}</span>
+            <span style="color: #4ADE80;">$${v.price || '19.99'}</span>
           </div>
         </div>
       </a>
@@ -889,23 +927,21 @@ async function main() {
     const bodyHtml = generateHolidayCardHtml(card);
 
     if (pageMap[handle]) {
-      console.log(`Updating existing page: /pages/${handle} (ID: ${pageMap[handle].id})...`);
-      const updateRes = await fetch(`https://${store}/admin/api/2024-07/pages/${pageMap[handle].id}.json`, {
+      console.log(`Updating existing page: /pages/${handle}...`);
+      await fetch(`https://${store}/admin/api/2024-07/pages/${pageMap[handle].id}.json`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': token },
         body: JSON.stringify({ page: { id: pageMap[handle].id, title, body_html: bodyHtml } })
       });
-      if (updateRes.ok) console.log(`  ✅ /pages/${handle} updated!`);
-      else console.error(`  ❌ Failed /pages/${handle}:`, await updateRes.text());
+      console.log(`  ✅ /pages/${handle} updated!`);
     } else {
       console.log(`Creating new page: /pages/${handle}...`);
-      const createRes = await fetch(`https://${store}/admin/api/2024-07/pages.json`, {
+      await fetch(`https://${store}/admin/api/2024-07/pages.json`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': token },
         body: JSON.stringify({ page: { title, handle, body_html: bodyHtml } })
       });
-      if (createRes.ok) console.log(`  ✅ /pages/${handle} created!`);
-      else console.error(`  ❌ Failed /pages/${handle}:`, await createRes.text());
+      console.log(`  ✅ /pages/${handle} created!`);
     }
   }
 
@@ -932,10 +968,9 @@ async function main() {
     console.log(`  ✅ /pages/${powHubHandle} created!`);
   }
 
-  console.log('\n=== Step 4: Deploy Pink-O-Ween Individual Card Pages (TGPOW-01 to TGPOW-10) ===');
-  for (const cardId of Object.keys(POW_VARIANTS)) {
-    const card = pinkCards.find(c => c.id === cardId);
-    if (!card) continue;
+  console.log('\n=== Step 4: Deploy All 31 Pink-O-Ween Individual Card Pages (TGPOW-01 to TGPOW-31) ===');
+  for (const card of pinkCards) {
+    const cardId = card.id; // '01' to '31'
     const handle = `tgpow-${cardId}`; // 'tgpow-01'
     const title = `${card.title} — Pink-O-Ween Series 1 Keepsake Experience`;
     const bodyHtml = generatePinkoweenCardHtml(card);
@@ -959,52 +994,59 @@ async function main() {
     }
   }
 
-  console.log('\n=== Step 5: Setup Root URL Redirects (e.g. /TGHH001 -> /pages/tghh001) ===');
+  console.log('\n=== Step 5: Setup Root URL Redirects ===');
   const redirectsRes = await fetch(`https://${store}/admin/api/2024-07/redirects.json?limit=250`, {
     headers: { 'X-Shopify-Access-Token': token }
   });
   const existingRedirects = (await redirectsRes.json()).redirects || [];
   const redirectPaths = new Set(existingRedirects.map(r => r.path.toLowerCase()));
 
-  // List of desired redirects
   const desiredRedirects = [];
 
   // Holiday series: TGHH001 through TGHH016
   for (const card of greetingsMaster.cards) {
     const code = card.card_code; // '001'
     desiredRedirects.push({ path: `/TGHH${code}`, target: `/pages/tghh${code}` });
-    desiredRedirects.push({ path: `/tghh${code}`, target: `/pages/tghh${code}` });
-    desiredRedirects.push({ path: `/${card.slug}`, target: `/pages/tghh${code}` }); // '/001'
+    desiredRedirects.push({ path: `/${code}`, target: `/pages/tghh${code}` });
   }
 
-  // Pink-O-Ween Series 1
-  desiredRedirects.push({ path: `/TGPOW-S01`, target: `/pages/tgpow-s01` });
-  desiredRedirects.push({ path: `/tgpow-s01`, target: `/pages/tgpow-s01` });
-  desiredRedirects.push({ path: `/TGPOW`, target: `/pages/tgpow-s01` });
-  desiredRedirects.push({ path: `/tgpow`, target: `/pages/tgpow-s01` });
+  // Pink-O-Ween Hub aliases
+  desiredRedirects.push({ path: '/TGPOW-S01', target: '/pages/tgpow-s01' });
+  desiredRedirects.push({ path: '/TGPOW', target: '/pages/tgpow-s01' });
+  desiredRedirects.push({ path: '/pages/pink-o-ween', target: '/pages/tgpow-s01' });
+  desiredRedirects.push({ path: '/pink-o-ween', target: '/pages/tgpow-s01' });
 
-  for (const cardId of Object.keys(POW_VARIANTS)) {
-    desiredRedirects.push({ path: `/TGPOW${cardId}`, target: `/pages/tgpow-${cardId}` });
-    desiredRedirects.push({ path: `/tgpow${cardId}`, target: `/pages/tgpow-${cardId}` });
-    desiredRedirects.push({ path: `/TGPOW-${cardId}`, target: `/pages/tgpow-${cardId}` });
+  // Pink-O-Ween cards: 01 to 31
+  for (const card of pinkCards) {
+    const id = card.id;
+    desiredRedirects.push({ path: `/TGPOW${id}`, target: `/pages/tgpow-${id}` });
+    desiredRedirects.push({ path: `/TGPOW-${id}`, target: `/pages/tgpow-${id}` });
   }
 
   for (const r of desiredRedirects) {
-    if (!redirectPaths.has(r.path.toLowerCase())) {
-      console.log(`Creating redirect: ${r.path} -> ${r.target}...`);
-      const createRedir = await fetch(`https://${store}/admin/api/2024-07/redirects.json`, {
+    if (redirectPaths.has(r.path.toLowerCase())) {
+      continue;
+    }
+    console.log(`Creating redirect: ${r.path} -> ${r.target}...`);
+    try {
+      const res = await fetch(`https://${store}/admin/api/2024-07/redirects.json`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': token },
         body: JSON.stringify({ redirect: { path: r.path, target: r.target } })
       });
-      if (createRedir.ok) console.log(`  ✅ Redirect ${r.path} created!`);
-      else console.error(`  ❌ Failed redirect ${r.path}:`, await createRedir.text());
-    } else {
-      console.log(`Redirect ${r.path} already exists.`);
+      const data = await res.json();
+      if (res.ok) {
+        console.log(`  ✅ Redirect ${r.path} created!`);
+        redirectPaths.add(r.path.toLowerCase());
+      } else {
+        console.log(`  ⚠️ Notice for ${r.path}:`, JSON.stringify(data));
+      }
+    } catch (e) {
+      console.error(`  ❌ Error ${r.path}:`, e.message);
     }
   }
 
-  console.log('\n🎉 ALL ENTERTAINMENT PAGES & ROOT REDIRECTS DEPLOYED SUCCESSFULLY!');
+  console.log('\n🎉 ALL ENTERTAINMENT PAGES, MEDIA, & REDIRECTS DEPLOYED SUCCESSFULLY!');
 }
 
 main().catch(console.error);

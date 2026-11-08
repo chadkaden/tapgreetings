@@ -904,7 +904,8 @@
         {% endfor %}
 
         <!-- SUBSEQUENT ITEMS: CARDS 01 TO 31 -->
-        {% for prod in pink_col.products %}
+        {% assign sorted_pink_prods = pink_col.products | reverse %}
+        {% for prod in sorted_pink_prods %}
           {% unless prod.handle contains 'master-collection' or prod.tags contains 'Full Set' %}
             {% assign card_code = '' %}
             {% if prod.title contains 'OCTOBER' %}
@@ -933,7 +934,7 @@
                 </div>
                 <div class="tg-card-action">
                   <span class="tg-card-price">{{ prod.price | money }}</span>
-                  <span class="tg-card-btn-view">View &bull; $14.99</span>
+                  <span class="tg-card-btn-view">View &bull; {{ prod.price | money }}</span>
                 </div>
               </div>
             </a>

@@ -1,0 +1,226 @@
+{
+  "10": {
+    "productId": 10552330551618,
+    "variantId": 56260398711106,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Flora, The Mushroom Toad (OCTOBER 10 OF 31)",
+    "handle": "flora-the-mushroom-toad"
+  },
+  "11": {
+    "productId": 10552330617154,
+    "variantId": 56260398809410,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Morgana, The Sparkling Cauldron (OCTOBER 11 OF 31)",
+    "handle": "morgana-the-sparkling-cauldron"
+  },
+  "12": {
+    "productId": 10552330682690,
+    "variantId": 56260398940482,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Valentina, Love Potion No. 13 (OCTOBER 12 OF 31)",
+    "handle": "valentina-love-potion-no-13"
+  },
+  "13": {
+    "productId": 10552330780994,
+    "variantId": 56260399071554,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Tabitha, The Pastel Planchette (OCTOBER 13 OF 31)",
+    "handle": "tabitha-the-pastel-planchette"
+  },
+  "14": {
+    "productId": 10552330813762,
+    "variantId": 56260399104322,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Aurelia, The Misty Crystal Ball (OCTOBER 14 OF 31)",
+    "handle": "aurelia-the-misty-crystal-ball"
+  },
+  "15": {
+    "productId": 10552330912066,
+    "variantId": 56260399268162,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Lucinda, The Coffin Compact (OCTOBER 15 OF 31)",
+    "handle": "lucinda-the-coffin-compact"
+  },
+  "16": {
+    "productId": 10552330944834,
+    "variantId": 56260399300930,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Cordelia, The Enchanted Grimoire (OCTOBER 16 OF 31)",
+    "handle": "cordelia-the-enchanted-grimoire"
+  },
+  "17": {
+    "productId": 10552331010370,
+    "variantId": 56260399366466,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Delilah, The Glazed Poison Apple (OCTOBER 17 OF 31)",
+    "handle": "delilah-the-glazed-poison-apple"
+  },
+  "18": {
+    "productId": 10552331141442,
+    "variantId": 56260399497538,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Lyra, The Celestial Tarot (OCTOBER 18 OF 31)",
+    "handle": "lyra-the-celestial-tarot"
+  },
+  "19": {
+    "productId": 10552331239746,
+    "variantId": 56260399661378,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Rowan, The Witch's Broom (OCTOBER 19 OF 31)",
+    "handle": "rowan-the-witch-s-broom"
+  },
+  "20": {
+    "productId": 10552331338050,
+    "variantId": 56260399857986,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Mirabelle, The Haunted Teacup (OCTOBER 20 OF 31)",
+    "handle": "mirabelle-the-haunted-teacup"
+  },
+  "21": {
+    "productId": 10552331370818,
+    "variantId": 56260399890754,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Seraphina, The Pink Haunted Dollhouse (OCTOBER 21 OF 31)",
+    "handle": "seraphina-the-pink-haunted-dollhouse"
+  },
+  "22": {
+    "productId": 10552331436354,
+    "variantId": 56260399956290,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Colette, The Iced Spooky Latte (OCTOBER 22 OF 31)",
+    "handle": "colette-the-iced-spooky-latte"
+  },
+  "23": {
+    "productId": 10552331469122,
+    "variantId": 56260399989058,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Vivienne, The Glitter Spiderweb (OCTOBER 23 OF 31)",
+    "handle": "vivienne-the-glitter-spiderweb"
+  },
+  "24": {
+    "productId": 10552331567426,
+    "variantId": 56260400152898,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Evangeline, The Rest in Pink Tombstone (OCTOBER 24 OF 31)",
+    "handle": "evangeline-the-rest-in-pink-tombstone"
+  },
+  "25": {
+    "productId": 10552331632962,
+    "variantId": 56260400218434,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Beatrice, The Ornate Candelabra (OCTOBER 25 OF 31)",
+    "handle": "beatrice-the-ornate-candelabra"
+  },
+  "26": {
+    "productId": 10552331698498,
+    "variantId": 56260400283970,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Giselle, The Skeletal Carousel (OCTOBER 26 OF 31)",
+    "handle": "giselle-the-skeletal-carousel"
+  },
+  "27": {
+    "productId": 10552331731266,
+    "variantId": 56260400349506,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Rowena, The Black Flame Candle (OCTOBER 27 OF 31)",
+    "handle": "rowena-the-black-flame-candle"
+  },
+  "28": {
+    "productId": 10552331796802,
+    "variantId": 56260400415042,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Victoria, The Haute Bride (OCTOBER 28 OF 31)",
+    "handle": "victoria-the-haute-bride"
+  },
+  "29": {
+    "productId": 10552331862338,
+    "variantId": 56260400546114,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Selene, The High Sorceress (OCTOBER 29 OF 31)",
+    "handle": "selene-the-high-sorceress"
+  },
+  "30": {
+    "productId": 10552331927874,
+    "variantId": 56260400742722,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Morrigan, The Haute Reaper (OCTOBER 30 OF 31)",
+    "handle": "morrigan-the-haute-reaper"
+  },
+  "31": {
+    "productId": 10552331960642,
+    "variantId": 56260400775490,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween The Sovereign Manor & The Radiant Mirror (OCTOBER 31 OF 31)",
+    "handle": "the-sovereign-manor-the-radiant-mirror"
+  },
+  "box_set": {
+    "productId": 15395168682306,
+    "variantId": 67585254555970,
+    "price": "399.00",
+    "title": "NFC Tap-to-Video PVC Greeting Card Pink-O-Ween Master Collection (31 Card Selection & Full Box Set)",
+    "handle": "nfc-tap-to-video-pvc-greeting-card-pink-o-ween-master-collection"
+  },
+  "09": {
+    "productId": 10552330453314,
+    "variantId": 56260398547266,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Octavia, The Pearled Spider (OCTOBER 09 OF 31)",
+    "handle": "octavia-the-pearled-spider"
+  },
+  "08": {
+    "productId": 10552330420546,
+    "variantId": 56260398514498,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Blair, The Candy Corn Queen (OCTOBER 08 OF 31)",
+    "handle": "blair-the-candy-corn-queen"
+  },
+  "07": {
+    "productId": 10552330387778,
+    "variantId": 56260398481730,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Marceline, The Sweet Vampire (OCTOBER 07 OF 31)",
+    "handle": "marceline-the-sweet-vampire"
+  },
+  "06": {
+    "productId": 10552330322242,
+    "variantId": 56260398416194,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Bianca, The Dancing Skeleton (OCTOBER 06 OF 31)",
+    "handle": "bianca-the-dancing-skeleton"
+  },
+  "05": {
+    "productId": 10552330289474,
+    "variantId": 56260398383426,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Cleo, The Midnight Kitty (OCTOBER 05 OF 31)",
+    "handle": "cleo-the-midnight-kitty"
+  },
+  "04": {
+    "productId": 10552330223938,
+    "variantId": 56260398252354,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Phoebe, The Blushing Jack (OCTOBER 04 OF 31)",
+    "handle": "phoebe-the-blushing-jack"
+  },
+  "03": {
+    "productId": 10552330191170,
+    "variantId": 56260398219586,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Vesper, The Velvet Cryptid (OCTOBER 03 OF 31)",
+    "handle": "vesper-the-velvet-cryptid"
+  },
+  "02": {
+    "productId": 10552330125634,
+    "variantId": 56260398154050,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Aveline, The Linen Mummy (OCTOBER 02 OF 31)",
+    "handle": "aveline-the-linen-mummy"
+  },
+  "01": {
+    "productId": 10552330060098,
+    "variantId": 56260398088514,
+    "price": "19.99",
+    "title": "Tap Greeting Card NFC Video Pinkoween Celeste, The Bow Ghost (OCTOBER 01 OF 31)",
+    "handle": "celeste-the-bow-ghost"
+  }
+}
