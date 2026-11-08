@@ -211,6 +211,7 @@ function resolveAssetPath(filePath) {
 function getCardCategory(code, series = 'series-1') {
   if (series === 'draft' || String(code).startsWith('draft-')) return 'occasions';
   const num = parseInt(code, 10);
+  if (num >= 17 && num <= 24) return 'solstice';
   if ([1, 2, 3, 10].includes(num)) return 'classic';
   if ([4, 7, 14, 15].includes(num)) return 'magic';
   if ([5, 6, 8, 9].includes(num)) return 'hearth';
@@ -922,6 +923,10 @@ function getHeadHtml(title, cardStyle = null, seoData = null, mediaData = null, 
             font-weight: 700;
             margin-bottom: 18px;
         }
+        .tghh-video-box.is-landscape {
+            aspect-ratio: 16/9 !important;
+            max-width: 580px !important;
+        }
         .tghh-video-box {
             position: relative;
             width: 100%;
@@ -1453,6 +1458,7 @@ cards.forEach((card, index) => {
     if (official.series) card.series_name = official.series;
   }
 
+  const isLandscape = (official && official.is_landscape) || card.is_landscape || (official && official.aspect_ratio === '16/9');
   const extraData = {
     char,
     card,
@@ -1471,7 +1477,7 @@ cards.forEach((card, index) => {
             <div class="tghh-corner" style="bottom: 14px; right: 16px;">&#10022;</div>
 
             <!-- 1. Top Video First (Entertainment Hero) -->
-            <div class="tghh-video-box" onclick="toggleMute()">
+            <div class="tghh-video-box ${isLandscape ? 'is-landscape' : ''}" onclick="toggleMute()">
                 <video id="cardVideo" autoplay loop playsinline poster="${frontImg}">
                     <source src="${videoSrc}" type="video/mp4">
                     Your browser does not support HTML5 video.
@@ -1487,7 +1493,7 @@ cards.forEach((card, index) => {
                     <i class="fa-solid fa-arrow-left"></i> #${prevCard.card_code} Prev
                 </a>
                 <span style="font-size: 0.85rem; color: #D1BDB0; text-transform: uppercase; letter-spacing: 1px; font-weight: 800;">
-                    #${card.card_code} of 016
+                    #${card.card_code} of ${String(cards.length).padStart(3, '0')}
                 </span>
                 <a href="/${nextCard.card_code}/" onclick="preserveAudio(this, event)">
                     Next #${nextCard.card_code} <i class="fa-solid fa-arrow-right"></i>
@@ -1497,7 +1503,7 @@ cards.forEach((card, index) => {
             <!-- 3. Header Section -->
             <div style="text-align: center; margin: 20px 0 16px;">
                 <div class="tghh-badge">
-                    &#10022; TapGreetings Series 1 &bull; Card #${card.card_code} of 016 &#10022;
+                    &#10022; TapGreetings Series 1 &bull; Card #${card.card_code} of ${String(cards.length).padStart(3, '0')} &#10022;
                 </div>
                 <h1 class="tghh-dyn-title">
                     ${char.name}
@@ -3350,6 +3356,25 @@ console.log(`Successfully generated Main Gallery index.html with ${allCards.leng
 console.log('Generating Dedicated Collection and Subcollection Pages...');
 
 const collectionsData = [
+  {
+    slug: 'series-3',
+    category: 'solstice',
+    title: 'TapGreetings Series 3: The Celestial Clockwork Solstice (Cards 017�024)',
+    heading: 'Series 3: Solstice Magic',
+    subtitle: 'Nordic Folklore, Starlight & Clockwork Automata (Cards 017�024)',
+    description: 'Blending Scandinavian birchwood, astronomical starlight, and vintage brass clockwork into physical and digital NFC keepsakes. Featuring Orrery Stag (#017), Tomte (#018), Julbock (#019), Astrolabe Owl (#020), Lucia Automaton (#021), Cuckoo Horologe (#022), Aurora Hare (#023), and Sunstone Locomotive (#024).',
+    filter: c => [17, 18, 19, 20, 21, 22, 23, 24].includes(parseInt(c.card_code, 10))
+  },
+  {
+    slug: 'solstice-magic',
+    category: 'solstice',
+    title: 'Solstice Magic! Series 3 | TapGreetings',
+    heading: 'Solstice Magic! Collection Hub',
+    subtitle: 'The Celestial Clockwork Solstice Collection (Cards 017�024)',
+    description: 'Nordic winter folklore meets astronomical clockwork. Tap to align the stars, listen to crystal carillons, and journey across the aurora.',
+    filter: c => [17, 18, 19, 20, 21, 22, 23, 24].includes(parseInt(c.card_code, 10))
+  },
+
   {
     slug: 'series-1',
     category: 'all',

@@ -626,6 +626,10 @@
             font-weight: 700;
             margin-bottom: 18px;
         }
+        .tghh-video-box.is-landscape {
+            aspect-ratio: 16/9 !important;
+            max-width: 580px !important;
+        }
         .tghh-video-box {
             position: relative;
             width: 100%;
@@ -1076,7 +1080,7 @@
             <div class="tghh-corner" style="bottom: 14px; right: 16px;">&#10022;</div>
 
             <!-- 1. Top Video First (Entertainment Hero) -->
-            <div class="tghh-video-box" onclick="toggleMute()">
+            <div class="tghh-video-box " onclick="toggleMute()">
                 <video id="cardVideo" autoplay loop playsinline poster="/assets/img/cr80/016-front.jpg?v=cr80">
                     <source src="/assets/video/016-video.mp4" type="video/mp4">
                     Your browser does not support HTML5 video.
@@ -1092,17 +1096,17 @@
                     <i class="fa-solid fa-arrow-left"></i> #015 Prev
                 </a>
                 <span style="font-size: 0.85rem; color: #D1BDB0; text-transform: uppercase; letter-spacing: 1px; font-weight: 800;">
-                    #016 of 016
+                    #016 of 024
                 </span>
-                <a href="/001/" onclick="preserveAudio(this, event)">
-                    Next #001 <i class="fa-solid fa-arrow-right"></i>
+                <a href="/017/" onclick="preserveAudio(this, event)">
+                    Next #017 <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
 
             <!-- 3. Header Section -->
             <div style="text-align: center; margin: 20px 0 16px;">
                 <div class="tghh-badge">
-                    &#10022; TapGreetings Series 1 &bull; Card #016 of 016 &#10022;
+                    &#10022; TapGreetings Series 1 &bull; Card #016 of 024 &#10022;
                 </div>
                 <h1 class="tghh-dyn-title">
                     The Stocking Pup
@@ -1704,7 +1708,7 @@
                         if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY) * 1.3 && elapsed < 600) {
                             if (deltaX < 0) {
                                 // Swipe LEFT -> Go to NEXT Card
-                                navigatePreservingAudio('/001/');
+                                navigatePreservingAudio('/017/');
                             } else {
                                 // Swipe RIGHT -> Go to PREVIOUS Card
                                 navigatePreservingAudio('/015/');

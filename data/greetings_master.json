@@ -1800,6 +1800,766 @@
       "subcollection_handle": "festive-friends",
       "series": "series-1",
       "series_name": "Happy Holidays Series 1"
+    },
+    {
+      "card_id": "solstice-017",
+      "series_id": "solstice-series-3",
+      "card_number": 17,
+      "card_code": "017",
+      "slug": "017",
+      "aliases_slugs": [
+        "the-solstice-orrery-stag",
+        "the-armillary-sovereign"
+      ],
+      "event_greeting": "Solstice Magic!",
+      "web_address": "https://tapgreetings.com/017/",
+      "character": {
+        "name": "The Solstice Orrery Stag",
+        "title": "The Armillary Sovereign",
+        "profile_theme": "Nordic Birch, Starlight Gold & Clockwork Brass",
+        "motto": "Through every winding cycle of the cosmos, dawn unfailingly finds its way.",
+        "micro_lore": "Articulated brass ball joints and rotating armillary sphere antler rack cradling glowing opalescent solstice stars and a spinning sunstone.",
+        "signature_motif": "An interlocking brass gear sunburst labeled \"TAP TO ALIGN THE STARS\".",
+        "rarity_tier": "Series 3 Celestial Edition",
+        "indicators": {
+          "cheer": "★★★★★",
+          "warmth": "★★★★★",
+          "wonder": "★★★★★"
+        },
+        "officialIndicators": [
+          {
+            "name": "Orbit Precision",
+            "stars": "★★★★★",
+            "score": 5
+          },
+          {
+            "name": "Majesty",
+            "stars": "★★★★★",
+            "score": 5
+          },
+          {
+            "name": "Solstice Lumens",
+            "stars": "★★★★★",
+            "score": 5
+          }
+        ],
+        "is_landscape": false
+      },
+      "seo": {
+        "primary_occasion": "Winter Solstice & Holiday",
+        "keywords": [
+          "the solstice orrery stag",
+          "solstice magic",
+          "clockwork solstice",
+          "nfc holiday card",
+          "smart card",
+          "astronomical keepsake",
+          "series 3"
+        ],
+        "seo_title": "The Solstice Orrery Stag (The Armillary Sovereign) | Solstice Magic NFC Keepsake Card",
+        "seo_meta_desc": "Experience The Solstice Orrery Stag, handcrafted in pale birch, starlight gold & clockwork brass. Tap smartphone to unlock 1080p animation and sound."
+      },
+      "media": {
+        "aspect_ratio": "CR80 (53.98:85.60)",
+        "is_landscape": false,
+        "video_url": "https://tapgreetings.com/assets/video/017-video.mp4",
+        "local_video_path": "/assets/video/017-video.mp4",
+        "video_duration_seconds": 8,
+        "front_image_url": "https://tapgreetings.com/assets/img/cr80/017-front.jpg?v=cr80",
+        "local_front_image_path": "/assets/img/cr80/017-front.jpg?v=cr80",
+        "back_image_url": "https://tapgreetings.com/assets/img/cr80/017-back.jpg?v=cr80",
+        "local_back_image_path": "/assets/img/cr80/017-back.jpg?v=cr80"
+      },
+      "style_tokens": {
+        "theme_name": "Celestial Clockwork Solstice",
+        "colors": {
+          "bg_obsidian_midnight": "#0A1128",
+          "bg_frosted_ice_blue": "#E6DACB",
+          "accent_blush_pink": "#F59E0B",
+          "accent_champagne_gold": "#FBBF24",
+          "border_rose_gold": "#CD7F32",
+          "text_charcoal": "#0E1626",
+          "text_white": "#FFFFFF",
+          "neon_halo_glow": "#10B981"
+        }
+      },
+      "commerce": {
+        "price": 14.99,
+        "compare_at_price": 24.99,
+        "sku": "TG-S3-017",
+        "inventory_qty": 100,
+        "card_format": "CR80 30mil Waterproof PVC",
+        "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
+      },
+      "subcollection": "Solstice Magic",
+      "subcollection_handle": "solstice-magic",
+      "series": "series-3",
+      "series_name": "Series 3: The Celestial Clockwork Solstice"
+    },
+    {
+      "card_id": "solstice-018",
+      "series_id": "solstice-series-3",
+      "card_number": 18,
+      "card_code": "018",
+      "slug": "018",
+      "aliases_slugs": [
+        "the-star-keeper-tomte",
+        "the-chronologer-nisse"
+      ],
+      "event_greeting": "Solstice Magic!",
+      "web_address": "https://tapgreetings.com/018/",
+      "character": {
+        "name": "The Star-Keeper Tomte",
+        "title": "The Chronologer Nisse",
+        "profile_theme": "Nordic Birch, Starlight Gold & Clockwork Brass",
+        "motto": "Mind the quiet gears, tend the smallest hearth, and guide the night forward.",
+        "micro_lore": "Tending the smallest homestead hearth while timing falling snowflakes with an illuminated miniature brass star-sextant.",
+        "signature_motif": "An antique brass winding key flanked by celestial compass dots.",
+        "rarity_tier": "Series 3 Celestial Edition",
+        "indicators": {
+          "cheer": "★★★★★",
+          "warmth": "★★★★★",
+          "wonder": "★★★★★"
+        },
+        "officialIndicators": [
+          {
+            "name": "Diligence",
+            "stars": "★★★★★",
+            "score": 5
+          },
+          {
+            "name": "Starlight",
+            "stars": "★★★★★",
+            "score": 5
+          },
+          {
+            "name": "Hygge",
+            "stars": "★★★★★",
+            "score": 5
+          }
+        ],
+        "is_landscape": false
+      },
+      "seo": {
+        "primary_occasion": "Winter Solstice & Holiday",
+        "keywords": [
+          "the star-keeper tomte",
+          "solstice magic",
+          "clockwork solstice",
+          "nfc holiday card",
+          "smart card",
+          "astronomical keepsake",
+          "series 3"
+        ],
+        "seo_title": "The Star-Keeper Tomte (The Chronologer Nisse) | Solstice Magic NFC Keepsake Card",
+        "seo_meta_desc": "Experience The Star-Keeper Tomte, handcrafted in pale birch, starlight gold & clockwork brass. Tap smartphone to unlock 1080p animation and sound."
+      },
+      "media": {
+        "aspect_ratio": "CR80 (53.98:85.60)",
+        "is_landscape": false,
+        "video_url": "https://tapgreetings.com/assets/video/018-video.mp4",
+        "local_video_path": "/assets/video/018-video.mp4",
+        "video_duration_seconds": 8,
+        "front_image_url": "https://tapgreetings.com/assets/img/cr80/018-front.jpg?v=cr80",
+        "local_front_image_path": "/assets/img/cr80/018-front.jpg?v=cr80",
+        "back_image_url": "https://tapgreetings.com/assets/img/cr80/018-back.jpg?v=cr80",
+        "local_back_image_path": "/assets/img/cr80/018-back.jpg?v=cr80"
+      },
+      "style_tokens": {
+        "theme_name": "Celestial Clockwork Solstice",
+        "colors": {
+          "bg_obsidian_midnight": "#0A1128",
+          "bg_frosted_ice_blue": "#E6DACB",
+          "accent_blush_pink": "#F59E0B",
+          "accent_champagne_gold": "#FBBF24",
+          "border_rose_gold": "#CD7F32",
+          "text_charcoal": "#0E1626",
+          "text_white": "#FFFFFF",
+          "neon_halo_glow": "#10B981"
+        }
+      },
+      "commerce": {
+        "price": 14.99,
+        "compare_at_price": 24.99,
+        "sku": "TG-S3-018",
+        "inventory_qty": 100,
+        "card_format": "CR80 30mil Waterproof PVC",
+        "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
+      },
+      "subcollection": "Solstice Magic",
+      "subcollection_handle": "solstice-magic",
+      "series": "series-3",
+      "series_name": "Series 3: The Celestial Clockwork Solstice"
+    },
+    {
+      "card_id": "solstice-019",
+      "series_id": "solstice-series-3",
+      "card_number": 19,
+      "card_code": "019",
+      "slug": "019",
+      "aliases_slugs": [
+        "the-clockwork-julbock",
+        "the-braided-straw-automaton"
+      ],
+      "event_greeting": "Solstice Magic!",
+      "web_address": "https://tapgreetings.com/019/",
+      "character": {
+        "name": "The Clockwork Julbock",
+        "title": "The Braided Straw Automaton",
+        "profile_theme": "Nordic Birch, Starlight Gold & Clockwork Brass",
+        "motto": "Bound in ancient craft, driven by the steady heartbeat of joy.",
+        "micro_lore": "Ticking brass gears and copper clockwork ribs that hum with soft astral bioluminescence, standing over frosted astronomical charts.",
+        "signature_motif": "A stamped crimson-and-brass knot medallion.",
+        "rarity_tier": "Series 3 Celestial Edition",
+        "indicators": {
+          "cheer": "★★★★★",
+          "warmth": "★★★★★",
+          "wonder": "★★★★☆"
+        },
+        "officialIndicators": [
+          {
+            "name": "Heritage",
+            "stars": "★★★★★",
+            "score": 5
+          },
+          {
+            "name": "Torque",
+            "stars": "★★★★★",
+            "score": 5
+          },
+          {
+            "name": "Astral Spirit",
+            "stars": "★★★★☆",
+            "score": 4
+          }
+        ],
+        "is_landscape": false
+      },
+      "seo": {
+        "primary_occasion": "Winter Solstice & Holiday",
+        "keywords": [
+          "the clockwork julbock",
+          "solstice magic",
+          "clockwork solstice",
+          "nfc holiday card",
+          "smart card",
+          "astronomical keepsake",
+          "series 3"
+        ],
+        "seo_title": "The Clockwork Julbock (The Braided Straw Automaton) | Solstice Magic NFC Keepsake Card",
+        "seo_meta_desc": "Experience The Clockwork Julbock, handcrafted in pale birch, starlight gold & clockwork brass. Tap smartphone to unlock 1080p animation and sound."
+      },
+      "media": {
+        "aspect_ratio": "CR80 (53.98:85.60)",
+        "is_landscape": false,
+        "video_url": "https://tapgreetings.com/assets/video/019-video.mp4",
+        "local_video_path": "/assets/video/019-video.mp4",
+        "video_duration_seconds": 8,
+        "front_image_url": "https://tapgreetings.com/assets/img/cr80/019-front.jpg?v=cr80",
+        "local_front_image_path": "/assets/img/cr80/019-front.jpg?v=cr80",
+        "back_image_url": "https://tapgreetings.com/assets/img/cr80/019-back.jpg?v=cr80",
+        "local_back_image_path": "/assets/img/cr80/019-back.jpg?v=cr80"
+      },
+      "style_tokens": {
+        "theme_name": "Celestial Clockwork Solstice",
+        "colors": {
+          "bg_obsidian_midnight": "#0A1128",
+          "bg_frosted_ice_blue": "#E6DACB",
+          "accent_blush_pink": "#F59E0B",
+          "accent_champagne_gold": "#FBBF24",
+          "border_rose_gold": "#CD7F32",
+          "text_charcoal": "#0E1626",
+          "text_white": "#FFFFFF",
+          "neon_halo_glow": "#10B981"
+        }
+      },
+      "commerce": {
+        "price": 14.99,
+        "compare_at_price": 24.99,
+        "sku": "TG-S3-019",
+        "inventory_qty": 100,
+        "card_format": "CR80 30mil Waterproof PVC",
+        "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
+      },
+      "subcollection": "Solstice Magic",
+      "subcollection_handle": "solstice-magic",
+      "series": "series-3",
+      "series_name": "Series 3: The Celestial Clockwork Solstice"
+    },
+    {
+      "card_id": "solstice-020",
+      "series_id": "solstice-series-3",
+      "card_number": 20,
+      "card_code": "020",
+      "slug": "020",
+      "aliases_slugs": [
+        "the-astrolabe-owl",
+        "the-celestial-watcher"
+      ],
+      "event_greeting": "Solstice Magic!",
+      "web_address": "https://tapgreetings.com/020/",
+      "character": {
+        "name": "The Astrolabe Owl",
+        "title": "The Celestial Watcher",
+        "profile_theme": "Nordic Birch, Starlight Gold & Clockwork Brass",
+        "motto": "Wisdom tracks the motion of the heavens and listens to the quiet forest.",
+        "micro_lore": "Articulated etched-brass wing pinions perched upon a Victorian brass astrolabe ring, tracking northern aurora ribbons.",
+        "signature_motif": "A concentric brass astrolabe dial labeled \"TAP FOR ASTRAL SIGHT\".",
+        "rarity_tier": "Series 3 Celestial Edition",
+        "indicators": {
+          "cheer": "★★★★★",
+          "warmth": "★★★★★",
+          "wonder": "★★★★★"
+        },
+        "officialIndicators": [
+          {
+            "name": "Navigation",
+            "stars": "★★★★★",
+            "score": 5
+          },
+          {
+            "name": "Vision",
+            "stars": "★★★★★",
+            "score": 5
+          },
+          {
+            "name": "Precision",
+            "stars": "★★★★★",
+            "score": 5
+          }
+        ],
+        "is_landscape": false
+      },
+      "seo": {
+        "primary_occasion": "Winter Solstice & Holiday",
+        "keywords": [
+          "the astrolabe owl",
+          "solstice magic",
+          "clockwork solstice",
+          "nfc holiday card",
+          "smart card",
+          "astronomical keepsake",
+          "series 3"
+        ],
+        "seo_title": "The Astrolabe Owl (The Celestial Watcher) | Solstice Magic NFC Keepsake Card",
+        "seo_meta_desc": "Experience The Astrolabe Owl, handcrafted in pale birch, starlight gold & clockwork brass. Tap smartphone to unlock 1080p animation and sound."
+      },
+      "media": {
+        "aspect_ratio": "CR80 (53.98:85.60)",
+        "is_landscape": false,
+        "video_url": "https://tapgreetings.com/assets/video/020-video.mp4",
+        "local_video_path": "/assets/video/020-video.mp4",
+        "video_duration_seconds": 8,
+        "front_image_url": "https://tapgreetings.com/assets/img/cr80/020-front.jpg?v=cr80",
+        "local_front_image_path": "/assets/img/cr80/020-front.jpg?v=cr80",
+        "back_image_url": "https://tapgreetings.com/assets/img/cr80/020-back.jpg?v=cr80",
+        "local_back_image_path": "/assets/img/cr80/020-back.jpg?v=cr80"
+      },
+      "style_tokens": {
+        "theme_name": "Celestial Clockwork Solstice",
+        "colors": {
+          "bg_obsidian_midnight": "#0A1128",
+          "bg_frosted_ice_blue": "#E6DACB",
+          "accent_blush_pink": "#F59E0B",
+          "accent_champagne_gold": "#FBBF24",
+          "border_rose_gold": "#CD7F32",
+          "text_charcoal": "#0E1626",
+          "text_white": "#FFFFFF",
+          "neon_halo_glow": "#10B981"
+        }
+      },
+      "commerce": {
+        "price": 14.99,
+        "compare_at_price": 24.99,
+        "sku": "TG-S3-020",
+        "inventory_qty": 100,
+        "card_format": "CR80 30mil Waterproof PVC",
+        "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
+      },
+      "subcollection": "Solstice Magic",
+      "subcollection_handle": "solstice-magic",
+      "series": "series-3",
+      "series_name": "Series 3: The Celestial Clockwork Solstice"
+    },
+    {
+      "card_id": "solstice-021",
+      "series_id": "solstice-series-3",
+      "card_number": 21,
+      "card_code": "021",
+      "slug": "021",
+      "aliases_slugs": [
+        "the-lucia-automaton",
+        "maiden-of-the-solstice-dawn"
+      ],
+      "event_greeting": "Solstice Magic!",
+      "web_address": "https://tapgreetings.com/021/",
+      "character": {
+        "name": "The Lucia Automaton",
+        "title": "Maiden of the Solstice Dawn",
+        "profile_theme": "Nordic Birch, Starlight Gold & Clockwork Brass",
+        "motto": "A single steady flame turns the tide against the longest night.",
+        "micro_lore": "Rotating brass crown bearing glowing candles and celestial crystal prisms that cast prismatic dawn light across long winter shadows.",
+        "signature_motif": "A rotating star-candle gear medallion.",
+        "rarity_tier": "Series 3 Celestial Edition",
+        "indicators": {
+          "cheer": "★★★★★",
+          "warmth": "★★★★★",
+          "wonder": "★★★★★"
+        },
+        "officialIndicators": [
+          {
+            "name": "Radiance",
+            "stars": "★★★★★",
+            "score": 5
+          },
+          {
+            "name": "Harmony",
+            "stars": "★★★★★",
+            "score": 5
+          },
+          {
+            "name": "Dawn Hope",
+            "stars": "★★★★★",
+            "score": 5
+          }
+        ],
+        "is_landscape": true
+      },
+      "seo": {
+        "primary_occasion": "Winter Solstice & Holiday",
+        "keywords": [
+          "the lucia automaton",
+          "solstice magic",
+          "clockwork solstice",
+          "nfc holiday card",
+          "smart card",
+          "astronomical keepsake",
+          "series 3"
+        ],
+        "seo_title": "The Lucia Automaton (Maiden of the Solstice Dawn) | Solstice Magic NFC Keepsake Card",
+        "seo_meta_desc": "Experience The Lucia Automaton, handcrafted in pale birch, starlight gold & clockwork brass. Tap smartphone to unlock 1080p animation and sound."
+      },
+      "media": {
+        "aspect_ratio": "16:9",
+        "is_landscape": true,
+        "video_url": "https://tapgreetings.com/assets/video/021-video.mp4",
+        "local_video_path": "/assets/video/021-video.mp4",
+        "video_duration_seconds": 8,
+        "front_image_url": "https://tapgreetings.com/assets/img/cr80/021-front.jpg?v=cr80",
+        "local_front_image_path": "/assets/img/cr80/021-front.jpg?v=cr80",
+        "back_image_url": "https://tapgreetings.com/assets/img/cr80/021-back.jpg?v=cr80",
+        "local_back_image_path": "/assets/img/cr80/021-back.jpg?v=cr80"
+      },
+      "style_tokens": {
+        "theme_name": "Celestial Clockwork Solstice",
+        "colors": {
+          "bg_obsidian_midnight": "#0A1128",
+          "bg_frosted_ice_blue": "#E6DACB",
+          "accent_blush_pink": "#F59E0B",
+          "accent_champagne_gold": "#FBBF24",
+          "border_rose_gold": "#CD7F32",
+          "text_charcoal": "#0E1626",
+          "text_white": "#FFFFFF",
+          "neon_halo_glow": "#10B981"
+        }
+      },
+      "commerce": {
+        "price": 14.99,
+        "compare_at_price": 24.99,
+        "sku": "TG-S3-021",
+        "inventory_qty": 100,
+        "card_format": "CR80 30mil Waterproof PVC",
+        "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
+      },
+      "subcollection": "Solstice Magic",
+      "subcollection_handle": "solstice-magic",
+      "series": "series-3",
+      "series_name": "Series 3: The Celestial Clockwork Solstice"
+    },
+    {
+      "card_id": "solstice-022",
+      "series_id": "solstice-series-3",
+      "card_number": 22,
+      "card_code": "022",
+      "slug": "022",
+      "aliases_slugs": [
+        "the-solstice-cuckoo-horologe",
+        "the-birch-chalet"
+      ],
+      "event_greeting": "Solstice Magic!",
+      "web_address": "https://tapgreetings.com/022/",
+      "character": {
+        "name": "The Solstice Cuckoo Horologe",
+        "title": "The Birch Chalet",
+        "profile_theme": "Nordic Birch, Starlight Gold & Clockwork Brass",
+        "motto": "Count the winter hours in warmth, laughter, and fellowship around the fire.",
+        "micro_lore": "Twin brass chalet doors swing open to reveal a mechanized celestial hare under a revolving moon-phase globe and swinging pinecone weights.",
+        "signature_motif": "A swinging brass pendulum disc engraved with solar solstice runes.",
+        "rarity_tier": "Series 3 Celestial Edition",
+        "indicators": {
+          "cheer": "★★★★★",
+          "warmth": "★★★★★",
+          "wonder": "★★★★★"
+        },
+        "officialIndicators": [
+          {
+            "name": "Craftsmanship",
+            "stars": "★★★★★",
+            "score": 5
+          },
+          {
+            "name": "Tradition",
+            "stars": "★★★★★",
+            "score": 5
+          },
+          {
+            "name": "Wonder",
+            "stars": "★★★★★",
+            "score": 5
+          }
+        ],
+        "is_landscape": false
+      },
+      "seo": {
+        "primary_occasion": "Winter Solstice & Holiday",
+        "keywords": [
+          "the solstice cuckoo horologe",
+          "solstice magic",
+          "clockwork solstice",
+          "nfc holiday card",
+          "smart card",
+          "astronomical keepsake",
+          "series 3"
+        ],
+        "seo_title": "The Solstice Cuckoo Horologe (The Birch Chalet) | Solstice Magic NFC Keepsake Card",
+        "seo_meta_desc": "Experience The Solstice Cuckoo Horologe, handcrafted in pale birch, starlight gold & clockwork brass. Tap smartphone to unlock 1080p animation and sound."
+      },
+      "media": {
+        "aspect_ratio": "CR80 (53.98:85.60)",
+        "is_landscape": false,
+        "video_url": "https://tapgreetings.com/assets/video/022-video.mp4",
+        "local_video_path": "/assets/video/022-video.mp4",
+        "video_duration_seconds": 8,
+        "front_image_url": "https://tapgreetings.com/assets/img/cr80/022-front.jpg?v=cr80",
+        "local_front_image_path": "/assets/img/cr80/022-front.jpg?v=cr80",
+        "back_image_url": "https://tapgreetings.com/assets/img/cr80/022-back.jpg?v=cr80",
+        "local_back_image_path": "/assets/img/cr80/022-back.jpg?v=cr80"
+      },
+      "style_tokens": {
+        "theme_name": "Celestial Clockwork Solstice",
+        "colors": {
+          "bg_obsidian_midnight": "#0A1128",
+          "bg_frosted_ice_blue": "#E6DACB",
+          "accent_blush_pink": "#F59E0B",
+          "accent_champagne_gold": "#FBBF24",
+          "border_rose_gold": "#CD7F32",
+          "text_charcoal": "#0E1626",
+          "text_white": "#FFFFFF",
+          "neon_halo_glow": "#10B981"
+        }
+      },
+      "commerce": {
+        "price": 14.99,
+        "compare_at_price": 24.99,
+        "sku": "TG-S3-022",
+        "inventory_qty": 100,
+        "card_format": "CR80 30mil Waterproof PVC",
+        "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
+      },
+      "subcollection": "Solstice Magic",
+      "subcollection_handle": "solstice-magic",
+      "series": "series-3",
+      "series_name": "Series 3: The Celestial Clockwork Solstice"
+    },
+    {
+      "card_id": "solstice-023",
+      "series_id": "solstice-series-3",
+      "card_number": 23,
+      "card_code": "023",
+      "slug": "023",
+      "aliases_slugs": [
+        "the-aurora-music-hare",
+        "the-astral-melodist"
+      ],
+      "event_greeting": "Solstice Magic!",
+      "web_address": "https://tapgreetings.com/023/",
+      "character": {
+        "name": "The Aurora Music Hare",
+        "title": "The Astral Melodist",
+        "profile_theme": "Nordic Birch, Starlight Gold & Clockwork Brass",
+        "motto": "Spin wonder from simple stillness, and fill the quiet dark with song.",
+        "micro_lore": "Turns the antique hand-crank of an open walnut music box, striking steel tines to project spiraling aurora ribbons of light and sound.",
+        "signature_motif": "A revolving music-cylinder icon with musical note pips.",
+        "rarity_tier": "Series 3 Celestial Edition",
+        "indicators": {
+          "cheer": "★★★★★",
+          "warmth": "★★★★★",
+          "wonder": "★★★★★"
+        },
+        "officialIndicators": [
+          {
+            "name": "Melody",
+            "stars": "★★★★★",
+            "score": 5
+          },
+          {
+            "name": "Mystic Power",
+            "stars": "★★★★★",
+            "score": 5
+          },
+          {
+            "name": "Whimsy",
+            "stars": "★★★★★",
+            "score": 5
+          }
+        ],
+        "is_landscape": true
+      },
+      "seo": {
+        "primary_occasion": "Winter Solstice & Holiday",
+        "keywords": [
+          "the aurora music hare",
+          "solstice magic",
+          "clockwork solstice",
+          "nfc holiday card",
+          "smart card",
+          "astronomical keepsake",
+          "series 3"
+        ],
+        "seo_title": "The Aurora Music Hare (The Astral Melodist) | Solstice Magic NFC Keepsake Card",
+        "seo_meta_desc": "Experience The Aurora Music Hare, handcrafted in pale birch, starlight gold & clockwork brass. Tap smartphone to unlock 1080p animation and sound."
+      },
+      "media": {
+        "aspect_ratio": "16:9",
+        "is_landscape": true,
+        "video_url": "https://tapgreetings.com/assets/video/023-video.mp4",
+        "local_video_path": "/assets/video/023-video.mp4",
+        "video_duration_seconds": 8,
+        "front_image_url": "https://tapgreetings.com/assets/img/cr80/023-front.jpg?v=cr80",
+        "local_front_image_path": "/assets/img/cr80/023-front.jpg?v=cr80",
+        "back_image_url": "https://tapgreetings.com/assets/img/cr80/023-back.jpg?v=cr80",
+        "local_back_image_path": "/assets/img/cr80/023-back.jpg?v=cr80"
+      },
+      "style_tokens": {
+        "theme_name": "Celestial Clockwork Solstice",
+        "colors": {
+          "bg_obsidian_midnight": "#0A1128",
+          "bg_frosted_ice_blue": "#E6DACB",
+          "accent_blush_pink": "#F59E0B",
+          "accent_champagne_gold": "#FBBF24",
+          "border_rose_gold": "#CD7F32",
+          "text_charcoal": "#0E1626",
+          "text_white": "#FFFFFF",
+          "neon_halo_glow": "#10B981"
+        }
+      },
+      "commerce": {
+        "price": 14.99,
+        "compare_at_price": 24.99,
+        "sku": "TG-S3-023",
+        "inventory_qty": 100,
+        "card_format": "CR80 30mil Waterproof PVC",
+        "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
+      },
+      "subcollection": "Solstice Magic",
+      "subcollection_handle": "solstice-magic",
+      "series": "series-3",
+      "series_name": "Series 3: The Celestial Clockwork Solstice"
+    },
+    {
+      "card_id": "solstice-024",
+      "series_id": "solstice-series-3",
+      "card_number": 24,
+      "card_code": "024",
+      "slug": "024",
+      "aliases_slugs": [
+        "the-sunstone-locomotive",
+        "the-midwinter-express"
+      ],
+      "event_greeting": "Solstice Magic!",
+      "web_address": "https://tapgreetings.com/024/",
+      "character": {
+        "name": "The Sunstone Locomotive",
+        "title": "The Midwinter Express",
+        "profile_theme": "Nordic Birch, Starlight Gold & Clockwork Brass",
+        "motto": "Full steam toward the returning light; every winding track leads home.",
+        "micro_lore": "Faceted raw golden sunstone boiler lamp casting piercing warm rays forward across frosted tracks toward the returning dawn.",
+        "signature_motif": "The glowing sunstone headlamp encircled by radar radio waves.",
+        "rarity_tier": "Series 3 Celestial Edition",
+        "indicators": {
+          "cheer": "★★★★★",
+          "warmth": "★★★★★",
+          "wonder": "★★★★★"
+        },
+        "officialIndicators": [
+          {
+            "name": "Momentum",
+            "stars": "★★★★★",
+            "score": 5
+          },
+          {
+            "name": "Solstice Lumens",
+            "stars": "★★★★★",
+            "score": 5
+          },
+          {
+            "name": "Hearth Warmth",
+            "stars": "★★★★★",
+            "score": 5
+          }
+        ],
+        "is_landscape": true
+      },
+      "seo": {
+        "primary_occasion": "Winter Solstice & Holiday",
+        "keywords": [
+          "the sunstone locomotive",
+          "solstice magic",
+          "clockwork solstice",
+          "nfc holiday card",
+          "smart card",
+          "astronomical keepsake",
+          "series 3"
+        ],
+        "seo_title": "The Sunstone Locomotive (The Midwinter Express) | Solstice Magic NFC Keepsake Card",
+        "seo_meta_desc": "Experience The Sunstone Locomotive, handcrafted in pale birch, starlight gold & clockwork brass. Tap smartphone to unlock 1080p animation and sound."
+      },
+      "media": {
+        "aspect_ratio": "16:9",
+        "is_landscape": true,
+        "video_url": "https://tapgreetings.com/assets/video/024-video.mp4",
+        "local_video_path": "/assets/video/024-video.mp4",
+        "video_duration_seconds": 8,
+        "front_image_url": "https://tapgreetings.com/assets/img/cr80/024-front.jpg?v=cr80",
+        "local_front_image_path": "/assets/img/cr80/024-front.jpg?v=cr80",
+        "back_image_url": "https://tapgreetings.com/assets/img/cr80/024-back.jpg?v=cr80",
+        "local_back_image_path": "/assets/img/cr80/024-back.jpg?v=cr80"
+      },
+      "style_tokens": {
+        "theme_name": "Celestial Clockwork Solstice",
+        "colors": {
+          "bg_obsidian_midnight": "#0A1128",
+          "bg_frosted_ice_blue": "#E6DACB",
+          "accent_blush_pink": "#F59E0B",
+          "accent_champagne_gold": "#FBBF24",
+          "border_rose_gold": "#CD7F32",
+          "text_charcoal": "#0E1626",
+          "text_white": "#FFFFFF",
+          "neon_halo_glow": "#10B981"
+        }
+      },
+      "commerce": {
+        "price": 14.99,
+        "compare_at_price": 24.99,
+        "sku": "TG-S3-024",
+        "inventory_qty": 100,
+        "card_format": "CR80 30mil Waterproof PVC",
+        "nfc_chip": "NTAG215 (504 Bytes Rewritable)"
+      },
+      "subcollection": "Solstice Magic",
+      "subcollection_handle": "solstice-magic",
+      "series": "series-3",
+      "series_name": "Series 3: The Celestial Clockwork Solstice"
     }
   ],
   "draft_cards": [
